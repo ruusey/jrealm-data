@@ -1,0 +1,16 @@
+[
+	{
+		"accountName": "JRealm Admin Account",
+		"email": "ru-admin@jrealm.com",
+		"accountSubscriptions": [
+			"ADMIN"
+		],
+		"accountProvisions": [
+			"JREALM"
+		],
+		"accountProperties": {
+			"test_property": "value-12345"
+		},
+		"password": "password"
+	}
+]

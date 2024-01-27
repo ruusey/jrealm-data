@@ -1,0 +1,41 @@
+spring:
+  web:
+    resources:
+      static-locations: classpath:static/
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  mvc:
+      pathmatch:
+            matching-strategy: ant-path-matcher
+  jpa:
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://127.0.0.1:3306/jrealm
+    username: root
+    password: Database123
+    driverClassName: com.mysql.cj.jdbc.Driver
+  main:
+    web-environment: false
+    allow-bean-definition-overriding: true
+server:
+  error:
+    include-stacktrace: never
+  tomcat:
+    relaxed-query-chars: ['{','}','[',']','\','/']
+    relaxed-path-chars: ['{','}','[',']','\','/']
+  port: 8085
+  servlet:
+    context-path: /
+logging:
+  pattern:
+    console: '%d{HH:mm:ss.SSS} %-5level- %msg%n'
+  level:
+    root: INFO
+    '[org.springframework.beans]': WARN
+springfox:
+  documentation:
+    enabled: false
+    
