@@ -1,6 +1,5 @@
 package com.jrealm.data.entity;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -32,7 +31,7 @@ public class ChestEntity extends TemporalEntity{
 	private Integer chestId;
 	private Integer accountId;
 	private Integer ordinal;
-	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
-	@JoinColumn(name = "chestId", referencedColumnName = "chestId", foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
+	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
+	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	private Set<GameItemRefEntity> items;
 }

@@ -1,5 +1,6 @@
 package com.jrealm.data.service;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -9,14 +10,9 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
-import com.jrealm.data.dto.CharacterDto;
-import com.jrealm.data.dto.CharacterDto.CharacterDtoBuilder;
-import com.jrealm.data.dto.CharacterStatsDto;
-import com.jrealm.data.dto.ChestDto;
-import com.jrealm.data.dto.ChestDto.ChestDtoBuilder;
-import com.jrealm.data.dto.GameItemRefDto;
 import com.jrealm.data.dto.PlayerAccountDto;
-import com.jrealm.data.dto.PlayerAccountDto.PlayerAccountDtoBuilder;
+import com.jrealm.data.entity.CharacterEntity;
+import com.jrealm.data.entity.CharacterStatsEntity;
 import com.jrealm.data.entity.ChestEntity;
 import com.jrealm.data.entity.GameItemRefEntity;
 import com.jrealm.data.entity.PlayerAccountEntity;
@@ -66,31 +62,43 @@ public class PlayerDataService {
 
 	public PlayerAccountDto createInitialAccount(final String email, final String accountName,
 			final Integer characterClass) throws Exception {
-		final PlayerAccountDtoBuilder account = PlayerAccountDto.builder().accountEmail(email).accountName(accountName)
-				.accountGuid(PlayerDataService.randomUuid());
+		
+		PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
+				.accountGuid(PlayerDataService.randomUuid()).build();
+		// Save the account with no joined characters or vault chests
+		//account = this.playerAccountRepository.save(account);
+		
+		// Save the empty chest for this account
+		final ChestEntity initialChest = ChestEntity.builder().ordinal(0).accountId(account.getAccountId()).build();
+		// Create a new GameItem and put it in this chest
+		final GameItemRefEntity gameItemDBow = GameItemRefEntity.builder().gameItemId(47).itemGuid(randomUuid()).build();
+		final Set<GameItemRefEntity> chestItems = new HashSet<>();
+		chestItems.add(gameItemDBow);
+		initialChest.setItems(chestItems);
+		// Re-save the chest with item
+		
+		// Build a character from the provided classId, give it a weakpon and give it default stats from GameDataManager and save it
+		final GameItemRefEntity gameItemDirk = GameItemRefEntity.builder().gameItemId(49).itemGuid(randomUuid()).build();
+		final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(characterClass);
+		final CharacterEntity character = CharacterEntity.builder().characterClass(characterClass)
+				.stats(characterStats).build();
+		final Set<GameItemRefEntity> characterItems = new HashSet<>();
+		characterItems.add(gameItemDirk);
+		character.setItems(characterItems);
+		//character = this.playerCharacterRepository.save(character);
 
-		final ChestDtoBuilder initialChest = ChestDto.builder().ordinal(0);
-
-		final GameItemRefDto gameItemDirk = GameItemRefDto.builder().gameItemId(49).itemGuid(randomUuid()).build();
-
-		final GameItemRefDto gameItemDBow = GameItemRefDto.builder().gameItemId(47).itemGuid(randomUuid()).build();
-		initialChest.items(Set.of(gameItemDBow));
-
-		final CharacterStatsDto characterStats = CharacterStatsDto.characterDefaults(characterClass);
-		final CharacterDtoBuilder character = CharacterDto.builder().characterClass(characterClass)
-				.stats(characterStats);
-		character.items(Set.of(gameItemDirk));
-		account.characters(Set.of(character.build()));
-		account.playerVault(Set.of(initialChest.build()));
-
-		PlayerAccountEntity mappedAccount = this.mapper.map(account.build(), PlayerAccountEntity.class);
-
-		//mappedAccount = this.playerAccountRepository.save(mappedAccount);
-//		GameItemRefEntity dirkResult = this.gameItemRefRepository.save(mapper.map(gameItemDirk, GameItemRefEntity.class));
-//		GameItemRefEntity dbowResult = this.gameItemRefRepository.save(mapper.map(gameItemDBow, GameItemRefEntity.class));
-		ChestEntity test = this.playerChestRepository.save(this.mapper.map(initialChest.build(), ChestEntity.class));
-		return this.mapper.map(mappedAccount, PlayerAccountDto.class);
-
+		// Give the account reference to the character and chest we just saved
+		// and re-save it.
+		final Set<CharacterEntity> characters = new HashSet<>();
+		characters.add(character);
+		account.setCharacters(characters);
+		
+		final Set<ChestEntity> chests = new HashSet<>();
+		chests.add(initialChest);
+		account.setPlayerVault(chests);
+		
+		final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
+		return this.mapper.map(finalAccount, PlayerAccountDto.class);
 	}
 
 	private static String randomUuid() {

@@ -29,15 +29,17 @@ public class CharacterEntity extends TemporalEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer characterId;
-	private Integer accountId;
 	private Integer characterGuid;
 	private Integer characterClass;
 	
-	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = CharacterStatsEntity.class)
-	@JoinColumn(name = "characterId", referencedColumnName = "characterId", foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
+	@OneToOne(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = CharacterStatsEntity.class)
+	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	private CharacterStatsEntity stats;
 	
-	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
-	@JoinColumn(name = "characterId", referencedColumnName = "characterId", foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
+	@OneToOne(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
+	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	private Set<GameItemRefEntity> items;
+	
+	
+	
 }

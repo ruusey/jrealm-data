@@ -12,9 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,12 +32,10 @@ public class PlayerAccountEntity {
 	private String accountName;
 	
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = ChestEntity.class)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinColumn(name = "accountId", referencedColumnName = "accountId", foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
+	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	private Set<ChestEntity> playerVault;
 	
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = CharacterEntity.class)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinColumn(name = "accountId", referencedColumnName = "accountId", foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
+	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	private Set<CharacterEntity> characters;
 }
