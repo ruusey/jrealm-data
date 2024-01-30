@@ -1,6 +1,7 @@
 package com.jrealm.data.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,7 +24,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class ChestEntity {
+public class ChestEntity extends TemporalEntity{
+	private static final long serialVersionUID = 7607170635634825869L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer chestId;
@@ -31,5 +34,5 @@ public class ChestEntity {
 	private Integer ordinal;
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
 	@JoinColumn(name = "chestId", referencedColumnName = "chestId", foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
-	private List<GameItemRefEntity> items;
+	private Set<GameItemRefEntity> items;
 }

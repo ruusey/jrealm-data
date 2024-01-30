@@ -1,6 +1,7 @@
 package com.jrealm.data.dto;
 
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,11 +18,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ChestDto extends TemporalDto{
+public class ChestDto extends TemporalDto {
 	private static final long serialVersionUID = 4633372389187160480L;
 	
 	private Integer chestId;
 	private Integer accountId;
 	private Integer ordinal;
-	private List<GameItemRefDto> items;
+	private Set<GameItemRefDto> items;
 }

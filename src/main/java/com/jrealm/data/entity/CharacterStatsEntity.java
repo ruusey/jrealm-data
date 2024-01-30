@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class CharacterStatsEntity extends TemporalEntity{
+public class CharacterStatsEntity extends TemporalEntity {
 	private static final long serialVersionUID = 186218452080820122L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

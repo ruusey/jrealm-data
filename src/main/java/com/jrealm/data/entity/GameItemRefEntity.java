@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class GameItemRefEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer gameItemRefId;
+	public Integer gameItemRefId;
 	private Integer chestId;
 	private Integer characterId;
 	private Integer gameItemId;

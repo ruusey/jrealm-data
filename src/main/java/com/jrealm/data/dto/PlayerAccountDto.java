@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PlayerAccountDto extends TemporalDto{
+public class PlayerAccountDto extends TemporalDto {
 
 	private static final long serialVersionUID = -3553188514579673153L;
 	
