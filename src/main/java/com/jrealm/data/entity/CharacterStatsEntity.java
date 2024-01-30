@@ -12,18 +12,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "player_game_item")
+@Table(name = "player_character_stats")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class GameItemRefEntity {
+public class CharacterStatsEntity extends TemporalEntity{
+	private static final long serialVersionUID = 186218452080820122L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer gameItemRefId;
-	private Integer chestId;
+	private Integer characterStatsId;
 	private Integer characterId;
-	private Integer gameItemId;
-	private String itemGuid;
-
+	private Long xp;
+	private Integer classId;
+	private Integer hp;
+	private Integer mp;
+	private Integer def;
+	private Integer att;
+	private Integer spd;
+	private Integer dex;
+	private Integer vit;
+	private Integer wis;
 }

@@ -12,10 +12,9 @@ spring:
     hibernate.ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL5Dialect
   datasource:
-    platform: mysql
     url: jdbc:mysql://127.0.0.1:3306/jrealm
     username: root
-    password: Database123
+    password: password
     driverClassName: com.mysql.cj.jdbc.Driver
   main:
     web-environment: false
