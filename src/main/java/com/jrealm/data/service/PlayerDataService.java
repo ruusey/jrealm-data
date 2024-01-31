@@ -3,7 +3,7 @@ package com.jrealm.data.service;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
+import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -22,6 +22,8 @@ import com.jrealm.data.repository.ChestRepository;
 import com.jrealm.data.repository.GameItemRefRepository;
 import com.jrealm.data.repository.PlayerAccountRepository;
 import com.jrealm.game.contants.CharacterClass;
+import com.jrealm.game.data.GameDataManager;
+import com.jrealm.game.entity.item.GameItem;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -64,7 +66,7 @@ public class PlayerDataService {
 			final Integer characterClass) throws Exception {
 		
 		final PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
-				.accountGuid(PlayerDataService.randomUuid()).build();
+				.accountUuid(PlayerDataService.randomUuid()).build();
 		// Save the account with no joined characters or vault chests
 		//account = this.playerAccountRepository.save(account);
 		
@@ -93,6 +95,54 @@ public class PlayerDataService {
 		
 		final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);
+	}
+	
+	public PlayerAccountDto getAccountById(final Integer accountId) throws Exception {
+		Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findById(accountId);
+		if(entity.isPresent()) {
+			return mapper.map(entity.get(), PlayerAccountDto.class);
+		}else{
+			throw new Exception("PlayerAccount with id "+ accountId+" not found");
+		}
+	}
+	
+	public PlayerAccountDto getAccountByEmail(final String email) throws Exception {
+		Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findByAccountEmail(email);
+		if(entity.isPresent()) {
+			return mapper.map(entity.get(), PlayerAccountDto.class);
+		}else{
+			throw new Exception("PlayerAccount with email "+ email+" not found");
+		}
+	}
+	
+	public PlayerAccountDto getAccountByUuid(final String accountUuid) throws Exception {
+		Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findByAccountUuid(accountUuid);
+		if(entity.isPresent()) {
+			return mapper.map(entity.get(), PlayerAccountDto.class);
+		}else{
+			throw new Exception("PlayerAccount with account UUID "+ accountUuid+" not found");
+		}
+	}
+	
+	private GameItemRefEntity newGameItem(final int gameItemId) throws Exception{
+		GameItem model = GameDataManager.GAME_ITEMS.get(gameItemId);
+		if(model == null) {
+			throw new IllegalArgumentException("GameItem with id "+gameItemId+" does not exist.");
+		}
+		return GameItemRefEntity.builder().gameItemId(49).itemGuid(randomUuid()).build();
+	}
+	
+	private ChestEntity newChest(final int ordinal) {
+		return ChestEntity.builder().ordinal(ordinal).build();
+	}
+	
+	private CharacterEntity newCharacter(final int characterClassId) {
+		return CharacterEntity.builder().characterClass(characterClassId).build();
+	}
+	
+	private PlayerAccountEntity newPlayerAccount(final String email, final String accountName) {
+		return PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
+				.accountUuid(PlayerDataService.randomUuid()).build();
 	}
 
 	private static String randomUuid() {

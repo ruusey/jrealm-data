@@ -56,6 +56,7 @@ public class CharacterEntity extends TemporalEntity {
 	
 	public void setStats(final CharacterStatsEntity stats) {
 		stats.setOwnerCharacter(this);
+		this.stats = stats;
 	}
 	
 	@Override
@@ -67,6 +68,4 @@ public class CharacterEntity extends TemporalEntity {
 	public String toString() {
 		return characterId+", "+this.characterClass+", "+this.characterGuid;
 	}
-	
-	
 }

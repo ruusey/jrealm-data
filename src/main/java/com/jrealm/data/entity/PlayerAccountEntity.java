@@ -30,7 +30,7 @@ public class PlayerAccountEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer accountId;
 	private String accountEmail;
-	private String accountGuid;
+	private String accountUuid;
 	private String accountName;
 	
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = ChestEntity.class)
@@ -55,7 +55,7 @@ public class PlayerAccountEntity {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(accountId, accountEmail, accountGuid, accountName, playerVault, characters);
+		return Objects.hash(accountId, accountEmail, accountUuid, accountName, playerVault, characters);
 	}
 	
 	
