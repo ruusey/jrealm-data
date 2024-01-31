@@ -33,8 +33,6 @@ public class ChestEntity extends TemporalEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer chestId;
-//	@Column(name = "account_id")
-//	private Integer accountId;
 	private Integer ordinal;
 	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))

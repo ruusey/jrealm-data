@@ -1,6 +1,8 @@
 package com.jrealm.data.entity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,12 +24,13 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class GameItemRefEntity extends TemporalEntity {
+	public static final transient GameItemRefEntity EMPTY = GameItemRefEntity.builder().gameItemId(-1).itemUuid(null).build();
 	private static final long serialVersionUID = -6575476631353169695L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer gameItemRefId;
 	private Integer gameItemId;
-	private String itemGuid;
+	private String itemUuid;
 	
 	@ManyToOne
     @JoinColumn(name = "chest_id")
@@ -39,18 +42,25 @@ public class GameItemRefEntity extends TemporalEntity {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gameItemRefId, gameItemId, itemGuid);
+		return Objects.hash(gameItemRefId, gameItemId, itemUuid);
 	}
 	
 	@Override
 	public boolean equals(Object other) {
 		GameItemRefEntity cast = (GameItemRefEntity) other;
-		return (this.gameItemRefId == cast.getGameItemRefId()) && this.gameItemId==cast.getGameItemId() && this.itemGuid.equals(cast.getItemGuid());
+		return (this.gameItemRefId == cast.getGameItemRefId()) && this.gameItemId==cast.getGameItemId() && this.itemUuid.equals(cast.getItemUuid());
 	}
 	
 	@Override
 	public String toString() {
-		return gameItemRefId+", "+this.gameItemId+", "+this.itemGuid;
+		return gameItemRefId+", "+this.gameItemId+", "+this.itemUuid;
 	}
-
+	
+	public static Set<GameItemRefEntity> SET_OF_NULL_ITEM(final int size){
+		final Set<GameItemRefEntity> items = new HashSet<>();
+		for(int i = 0; i<size; i++) {
+			items.add(EMPTY);
+		}
+		return items;
+	}
 }

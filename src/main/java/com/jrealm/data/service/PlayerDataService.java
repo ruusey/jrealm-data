@@ -1,9 +1,9 @@
 package com.jrealm.data.service;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 import java.util.Optional;
+
+import org.hibernate.mapping.Set;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -73,18 +73,24 @@ public class PlayerDataService {
 		// Save the empty chest for this account
 		final ChestEntity initialChest = ChestEntity.builder().ordinal(0).build();
 		// Create a new GameItem and put it in this chest
-		final GameItemRefEntity gameItemDBow = GameItemRefEntity.builder().gameItemId(47).itemGuid(randomUuid()).build();
+		final GameItemRefEntity gameItemDBow = GameItemRefEntity.builder().gameItemId(47).itemUuid(randomUuid()).build();
 
 		initialChest.addItem(gameItemDBow);
+		GameItemRefEntity.SET_OF_NULL_ITEM(7).forEach(item->{
+			initialChest.addItem(item);
+		});
 		// Re-save the chest with item
 		
 		// Build a character from the provided classId, give it a weakpon and give it default stats from GameDataManager and save it
 		final CharacterEntity character = CharacterEntity.builder().characterClass(characterClass).build();
 
-		final GameItemRefEntity gameItemDirk = GameItemRefEntity.builder().gameItemId(49).itemGuid(randomUuid()).build();
+		final GameItemRefEntity gameItemDirk = GameItemRefEntity.builder().gameItemId(49).itemUuid(randomUuid()).build();
 		final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(characterClass);
 		character.setStats(characterStats);
 		character.addItem(gameItemDirk);
+		GameItemRefEntity.SET_OF_NULL_ITEM(7).forEach(item->{
+			character.addItem(item);
+		});
 		//character = this.playerCharacterRepository.save(character);
 
 		// Give the account reference to the character and chest we just saved
@@ -129,9 +135,9 @@ public class PlayerDataService {
 		if(model == null) {
 			throw new IllegalArgumentException("GameItem with id "+gameItemId+" does not exist.");
 		}
-		return GameItemRefEntity.builder().gameItemId(49).itemGuid(randomUuid()).build();
+		return GameItemRefEntity.builder().gameItemId(49).itemUuid(randomUuid()).build();
 	}
-	
+		
 	private ChestEntity newChest(final int ordinal) {
 		return ChestEntity.builder().ordinal(ordinal).build();
 	}
