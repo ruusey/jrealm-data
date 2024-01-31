@@ -1,9 +1,14 @@
 package com.jrealm.data.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.jrealm.data.dto.CharacterStatsDto;
@@ -37,6 +42,10 @@ public class CharacterStatsEntity extends TemporalEntity {
 	private Integer vit;
 	private Integer wis;
 	
+	@OneToOne
+    @JoinColumn(name = "character_id")
+	private CharacterEntity ownerCharacter;
+	
 	public static CharacterStatsEntity characterDefaults(final Integer characterClass) {
 		final CharacterClassModel model = GameDataManager.CHARACTER_CLASSES.get(characterClass);
 		return CharacterStatsEntity.builder()
@@ -51,4 +60,15 @@ public class CharacterStatsEntity extends TemporalEntity {
 				.wis((int)model.getBaseStats().getWis())
 				.build();
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(characterStatsId, xp, classId, hp, mp, def, att, spd, dex, vit, wis);
+	}
+	
+	@Override
+	public String toString() {
+		return characterStatsId+", "+this.xp+", "+this.classId;
+	}
+	
 }

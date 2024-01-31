@@ -1,5 +1,7 @@
 package com.jrealm.data.entity;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -33,9 +35,32 @@ public class PlayerAccountEntity {
 	
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = ChestEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
-	private Set<ChestEntity> playerVault;
+	@Builder.Default
+	private Set<ChestEntity> playerVault = new HashSet<>();
 	
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = CharacterEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
-	private Set<CharacterEntity> characters;
+	@Builder.Default
+	private Set<CharacterEntity> characters = new HashSet<>();
+	
+	public void addChest(final ChestEntity chest) {
+		chest.setOwnerAccount(this);
+		this.playerVault.add(chest);
+	}
+	
+	public void addCharacter(final CharacterEntity character) {
+		character.setOwnerAccount(this);
+		this.characters.add(character);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(accountId, accountEmail, accountGuid, accountName, playerVault, characters);
+	}
+	
+	
+	@Override
+	public String toString() {
+		return accountId+", "+this.accountEmail+", "+this.accountName;
+	}
 }

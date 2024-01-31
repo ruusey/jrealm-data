@@ -47,5 +47,10 @@ public class GameItemRefEntity extends TemporalEntity {
 		GameItemRefEntity cast = (GameItemRefEntity) other;
 		return (this.gameItemRefId == cast.getGameItemRefId()) && this.gameItemId==cast.getGameItemId() && this.itemGuid.equals(cast.getItemGuid());
 	}
+	
+	@Override
+	public String toString() {
+		return gameItemRefId+", "+this.gameItemId+", "+this.itemGuid;
+	}
 
 }

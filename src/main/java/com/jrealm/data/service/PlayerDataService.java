@@ -63,39 +63,33 @@ public class PlayerDataService {
 	public PlayerAccountDto createInitialAccount(final String email, final String accountName,
 			final Integer characterClass) throws Exception {
 		
-		PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
+		final PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
 				.accountGuid(PlayerDataService.randomUuid()).build();
 		// Save the account with no joined characters or vault chests
 		//account = this.playerAccountRepository.save(account);
 		
 		// Save the empty chest for this account
-		final ChestEntity initialChest = ChestEntity.builder().ordinal(0).accountId(account.getAccountId()).build();
+		final ChestEntity initialChest = ChestEntity.builder().ordinal(0).build();
 		// Create a new GameItem and put it in this chest
 		final GameItemRefEntity gameItemDBow = GameItemRefEntity.builder().gameItemId(47).itemGuid(randomUuid()).build();
-		final Set<GameItemRefEntity> chestItems = new HashSet<>();
-		chestItems.add(gameItemDBow);
-		initialChest.setItems(chestItems);
+
+		initialChest.addItem(gameItemDBow);
 		// Re-save the chest with item
 		
 		// Build a character from the provided classId, give it a weakpon and give it default stats from GameDataManager and save it
+		final CharacterEntity character = CharacterEntity.builder().characterClass(characterClass).build();
+
 		final GameItemRefEntity gameItemDirk = GameItemRefEntity.builder().gameItemId(49).itemGuid(randomUuid()).build();
 		final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(characterClass);
-		final CharacterEntity character = CharacterEntity.builder().characterClass(characterClass)
-				.stats(characterStats).build();
-		final Set<GameItemRefEntity> characterItems = new HashSet<>();
-		characterItems.add(gameItemDirk);
-		character.setItems(characterItems);
+		character.setStats(characterStats);
+		character.addItem(gameItemDirk);
 		//character = this.playerCharacterRepository.save(character);
 
 		// Give the account reference to the character and chest we just saved
 		// and re-save it.
-		final Set<CharacterEntity> characters = new HashSet<>();
-		characters.add(character);
-		account.setCharacters(characters);
-		
-		final Set<ChestEntity> chests = new HashSet<>();
-		chests.add(initialChest);
-		account.setPlayerVault(chests);
+
+		account.addCharacter(character);
+		account.addChest(initialChest);
 		
 		final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);

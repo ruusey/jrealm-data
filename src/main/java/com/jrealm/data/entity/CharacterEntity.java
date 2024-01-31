@@ -1,5 +1,7 @@
 package com.jrealm.data.entity;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,10 +40,33 @@ public class CharacterEntity extends TemporalEntity {
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	private CharacterStatsEntity stats;
 	
-	@OneToOne(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
+	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
-	private Set<GameItemRefEntity> items;
+	@Builder.Default
+	private Set<GameItemRefEntity> items = new HashSet<>();
 	
+	@ManyToOne
+    @JoinColumn(name = "account_id")
+	private PlayerAccountEntity ownerAccount;
+	
+	public void addItem(final GameItemRefEntity item) {
+		item.setOwnerCharacter(this);
+		this.items.add(item);
+	}
+	
+	public void setStats(final CharacterStatsEntity stats) {
+		stats.setOwnerCharacter(this);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(characterId, characterGuid, characterClass, items, stats);
+	}
+	
+	@Override
+	public String toString() {
+		return characterId+", "+this.characterClass+", "+this.characterGuid;
+	}
 	
 	
 }
