@@ -47,6 +47,7 @@ public class CharacterStatsEntity extends TemporalEntity {
 	public static CharacterStatsEntity characterDefaults(final Integer characterClass) {
 		final CharacterClassModel model = GameDataManager.CHARACTER_CLASSES.get(characterClass);
 		return CharacterStatsEntity.builder()
+				.classId(characterClass)
 				.xp(0l)
 				.hp((int)model.getBaseStats().getHp())
 				.mp((int)model.getBaseStats().getMp())

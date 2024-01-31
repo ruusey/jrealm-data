@@ -33,7 +33,7 @@ public class CharacterEntity extends TemporalEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer characterId;
-	private Integer characterGuid;
+	private Integer characterUuid;
 	private Integer characterClass;
 	
 	@OneToOne(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = CharacterStatsEntity.class)
@@ -61,11 +61,11 @@ public class CharacterEntity extends TemporalEntity {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(characterId, characterGuid, characterClass, items, stats);
+		return Objects.hash(characterId, characterUuid, characterClass, items, stats);
 	}
 	
 	@Override
 	public String toString() {
-		return characterId+", "+this.characterClass+", "+this.characterGuid;
+		return characterId+", "+this.characterClass+", "+this.characterUuid;
 	}
 }

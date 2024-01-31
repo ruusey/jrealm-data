@@ -3,6 +3,7 @@ package com.jrealm.data.entity;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.jrealm.data.service.PlayerDataService;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +27,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class GameItemRefEntity extends TemporalEntity {
-	public static final transient GameItemRefEntity EMPTY = GameItemRefEntity.builder().gameItemId(-1).itemUuid(null).build();
 	private static final long serialVersionUID = -6575476631353169695L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,8 +61,12 @@ public class GameItemRefEntity extends TemporalEntity {
 	public static Set<GameItemRefEntity> SET_OF_NULL_ITEM(final int size){
 		final Set<GameItemRefEntity> items = new HashSet<>();
 		for(int i = 0; i<size; i++) {
-			items.add(EMPTY);
+			items.add(EMPTY());
 		}
 		return items;
+	}
+	
+	public static GameItemRefEntity EMPTY() {
+		 return GameItemRefEntity.builder().gameItemId(-1).itemUuid(PlayerDataService.randomUuid()).build();
 	}
 }

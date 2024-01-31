@@ -1,6 +1,7 @@
 package com.jrealm.data.service;
 
 import java.util.UUID;
+import java.time.Instant;
 import java.util.Optional;
 
 import org.hibernate.mapping.Set;
@@ -64,7 +65,7 @@ public class PlayerDataService {
 
 	public PlayerAccountDto createInitialAccount(final String email, final String accountName,
 			final Integer characterClass) throws Exception {
-		
+		final long start = Instant.now().toEpochMilli();
 		final PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
 				.accountUuid(PlayerDataService.randomUuid()).build();
 		// Save the account with no joined characters or vault chests
@@ -100,6 +101,7 @@ public class PlayerDataService {
 		account.addChest(initialChest);
 		
 		final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
+		log.info("Successfully created account for user {} in {}ms", finalAccount.getAccountEmail(), (Instant.now().toEpochMilli()-start));
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);
 	}
 	
@@ -151,7 +153,7 @@ public class PlayerDataService {
 				.accountUuid(PlayerDataService.randomUuid()).build();
 	}
 
-	private static String randomUuid() {
+	public static String randomUuid() {
 		return UUID.randomUUID().toString();
 	}
 }
