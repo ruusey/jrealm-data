@@ -31,7 +31,8 @@ public class GameItemRefEntity extends TemporalEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer gameItemRefId;
-	private Integer gameItemId;
+	private Integer itemId;
+	private Integer slotIdx;
 	private String itemUuid;
 	
 	@ManyToOne
@@ -44,18 +45,22 @@ public class GameItemRefEntity extends TemporalEntity {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gameItemRefId, gameItemId, itemUuid);
+		return Objects.hash(gameItemRefId, itemId, itemUuid);
 	}
 	
 	@Override
 	public boolean equals(Object other) {
 		GameItemRefEntity cast = (GameItemRefEntity) other;
-		return (this.gameItemRefId == cast.getGameItemRefId()) && this.gameItemId==cast.getGameItemId() && this.itemUuid.equals(cast.getItemUuid());
+		return (this.gameItemRefId == cast.getGameItemRefId()) && this.itemId==cast.getItemId() && this.itemUuid.equals(cast.getItemUuid()) && this.slotIdx == cast.getSlotIdx();
 	}
 	
 	@Override
 	public String toString() {
-		return gameItemRefId+", "+this.gameItemId+", "+this.itemUuid;
+		return gameItemRefId+", "+this.itemId+", "+this.itemUuid;
+	}
+	
+	public static GameItemRefEntity from(final int targetIndex, final int itemId) {
+		return GameItemRefEntity.builder().itemUuid(PlayerDataService.randomUuid()).slotIdx(targetIndex).itemId(itemId).build();
 	}
 	
 	public static Set<GameItemRefEntity> SET_OF_NULL_ITEM(final int size){
@@ -67,6 +72,6 @@ public class GameItemRefEntity extends TemporalEntity {
 	}
 	
 	public static GameItemRefEntity EMPTY() {
-		 return GameItemRefEntity.builder().gameItemId(-1).itemUuid(PlayerDataService.randomUuid()).build();
+		 return GameItemRefEntity.builder().itemId(-1).itemUuid(PlayerDataService.randomUuid()).build();
 	}
 }

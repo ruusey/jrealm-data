@@ -72,37 +72,69 @@ public class PlayerDataService {
 		//account = this.playerAccountRepository.save(account);
 		
 		// Save the empty chest for this account
-		final ChestEntity initialChest = ChestEntity.builder().ordinal(0).build();
+		final ChestEntity initialChest = ChestEntity.builder().chestUuid(PlayerDataService.randomUuid()).ordinal(0).build();
 		// Create a new GameItem and put it in this chest
-		final GameItemRefEntity gameItemDBow = GameItemRefEntity.builder().gameItemId(47).itemUuid(randomUuid()).build();
+		final GameItemRefEntity gameItemDBow = GameItemRefEntity.from(0, 47);
 
 		initialChest.addItem(gameItemDBow);
-		GameItemRefEntity.SET_OF_NULL_ITEM(7).forEach(item->{
-			initialChest.addItem(item);
-		});
+
 		// Re-save the chest with item
 		
-		// Build a character from the provided classId, give it a weakpon and give it default stats from GameDataManager and save it
+		// Build a character from the provided classId, give it a weapon and give it default stats from GameDataManager and save it
 		final CharacterEntity character = CharacterEntity.builder().characterClass(characterClass).build();
 
-		final GameItemRefEntity gameItemDirk = GameItemRefEntity.builder().gameItemId(49).itemUuid(randomUuid()).build();
+		final GameItemRefEntity gameItemDirk = GameItemRefEntity.from(0, 49);
 		final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(characterClass);
 		character.setStats(characterStats);
 		character.addItem(gameItemDirk);
-		GameItemRefEntity.SET_OF_NULL_ITEM(7).forEach(item->{
-			character.addItem(item);
-		});
-		//character = this.playerCharacterRepository.save(character);
 
-		// Give the account reference to the character and chest we just saved
-		// and re-save it.
 
 		account.addCharacter(character);
 		account.addChest(initialChest);
 		
 		final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
+		
+		this.replaceChestItem(initialChest.getChestUuid(), gameItemDBow.getItemUuid(), null);
 		log.info("Successfully created account for user {} in {}ms", finalAccount.getAccountEmail(), (Instant.now().toEpochMilli()-start));
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);
+	}
+	
+	public boolean replaceChestItem(final String chestUuid, final String targetItemUuid, final GameItemRefEntity replacement) throws Exception{
+		final ChestEntity targetChest = this.playerChestRepository.findByChestUuid(chestUuid);
+		boolean success = false;
+		if(targetChest==null) {
+			throw new Exception("Chest with UUID "+chestUuid+" does not exist");
+		}
+		final GameItemRefEntity targetItem = this.gameItemRefRepository.findByItemUuid(targetItemUuid);
+		if(targetItem==null) {
+			throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist");
+		}
+		if(replacement==null) {
+			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
+			if(itemInChest.isEmpty()) {
+				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+			}
+			final GameItemRefEntity toRemove = itemInChest.get();
+			success = targetChest.removeItem(targetItem);
+			this.deleteGameItem(toRemove);
+		}else {
+			// TODO: Impl swap
+		}
+		//this.playerChestRepository.save(targetChest);
+		return success;
+	}
+	
+	public void deleteGameItem(final GameItemRefEntity toDelete) throws Exception{
+		this.gameItemRefRepository.delete(toDelete.getItemUuid());
+	}
+	
+	public void deleteGameItem(final String gameItemUuid) throws Exception {
+		GameItemRefEntity toDelete = this.gameItemRefRepository.findByItemUuid(gameItemUuid);
+		if(toDelete==null) {
+			throw new Exception("GameItem with UUID "+ gameItemUuid+ " does not exist");
+		}
+		
+		this.gameItemRefRepository.delete(toDelete.getItemUuid());
 	}
 	
 	public PlayerAccountDto getAccountById(final Integer accountId) throws Exception {
@@ -137,7 +169,7 @@ public class PlayerDataService {
 		if(model == null) {
 			throw new IllegalArgumentException("GameItem with id "+gameItemId+" does not exist.");
 		}
-		return GameItemRefEntity.builder().gameItemId(49).itemUuid(randomUuid()).build();
+		return GameItemRefEntity.builder().itemId(49).itemUuid(randomUuid()).build();
 	}
 		
 	private ChestEntity newChest(final int ordinal) {

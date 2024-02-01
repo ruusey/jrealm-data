@@ -33,12 +33,12 @@ public class PlayerAccountEntity {
 	private String accountUuid;
 	private String accountName;
 	
-	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = ChestEntity.class)
+	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = ChestEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	@Builder.Default
 	private Set<ChestEntity> playerVault = new HashSet<>();
 	
-	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = CharacterEntity.class)
+	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = CharacterEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	@Builder.Default
 	private Set<CharacterEntity> characters = new HashSet<>();

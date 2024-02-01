@@ -33,6 +33,7 @@ public class ChestEntity extends TemporalEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer chestId;
+	private String chestUuid;
 	private Integer ordinal;
 	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
@@ -48,14 +49,19 @@ public class ChestEntity extends TemporalEntity{
 		this.items.add(item);
 	}
 	
+	public boolean removeItem(final GameItemRefEntity item) {
+		item.setOwnerChest(null);
+		return this.items.remove(item);
+	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(chestId, ordinal, items);
+		return Objects.hash(chestId, ordinal, items, chestUuid);
 	}
 	
 	@Override
 	public boolean equals(Object other) {
 		ChestEntity cast = (ChestEntity) other;
-		return (this.chestId == cast.getChestId()) && this.ordinal == cast.getOrdinal();
+		return (this.chestId == cast.getChestId()) && this.ordinal == cast.getOrdinal() && this.chestUuid.equals(cast.getChestUuid());
 	}
 }
