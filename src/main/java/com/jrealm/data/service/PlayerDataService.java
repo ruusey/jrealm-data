@@ -86,7 +86,7 @@ public class PlayerDataService {
 		initialChest.addItem(gameItemDBow);
 		
 		// Build a character from the provided classId, give it a weapon and give it default stats from GameDataManager
-		final CharacterEntity character = CharacterEntity.builder().characterClass(characterClass).build();
+		final CharacterEntity character = CharacterEntity.builder().characterUuid(PlayerDataService.randomUuid()).characterClass(characterClass).build();
 		
 		// Equip the player with their starting equipment
 		final Map<Integer, GameItem> startingEquip = GameDataManager.getStartingEquipment(CharacterClass.valueOf(characterClass));
@@ -104,7 +104,7 @@ public class PlayerDataService {
 		
 		final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
 		
-		this.replaceChestItem(initialChest.getChestUuid(), gameItemDBow.getItemUuid(), null);
+		//this.replaceChestItem(initialChest.getChestUuid(), gameItemDBow.getItemUuid(), null);
 		log.info("Successfully created account for user {} in {}ms", finalAccount.getAccountEmail(), (Instant.now().toEpochMilli()-start));
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);
 	}

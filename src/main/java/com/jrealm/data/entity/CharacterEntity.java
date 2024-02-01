@@ -33,7 +33,7 @@ public class CharacterEntity extends TemporalEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer characterId;
-	private Integer characterUuid;
+	private String characterUuid;
 	private Integer characterClass;
 	
 	@OneToOne(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = CharacterStatsEntity.class)
