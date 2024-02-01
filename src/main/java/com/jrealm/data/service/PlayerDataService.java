@@ -129,7 +129,14 @@ public class PlayerDataService {
 			success = targetChest.removeItem(targetItem);
 			this.deleteGameItem(toRemove);
 		}else {
-			// TODO: Impl swap
+			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
+			if(itemInChest.isEmpty()) {
+				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+			}
+			final GameItemRefEntity toRemove = itemInChest.get();
+			success = targetChest.removeItem(targetItem);
+			this.deleteGameItem(toRemove);
+			targetChest.addItem(replacement);
 		}
 		this.playerAccountRepository.save(ownerAccount);
 		return success;
