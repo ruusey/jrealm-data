@@ -23,7 +23,7 @@ public class PlayerAccountDto extends TemporalDto {
 	
 	private Integer accountId;
 	private String accountEmail;
-	private String accountGuid;
+	private String accountUuid;
 	private String accountName;
 	
 	private Set<ChestDto> playerVault;

@@ -36,11 +36,9 @@ public class GameItemRefEntity extends TemporalEntity {
 	private String itemUuid;
 	
 	@ManyToOne
-    @JoinColumn(name = "chest_id")
 	private ChestEntity ownerChest;
 	
 	@ManyToOne
-    @JoinColumn(name = "character_id")
 	private CharacterEntity ownerCharacter;
 
 	@Override

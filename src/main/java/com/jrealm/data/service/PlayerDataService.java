@@ -2,6 +2,7 @@ package com.jrealm.data.service;
 
 import java.util.UUID;
 import java.time.Instant;
+import java.util.Map;
 import java.util.Optional;
 
 import org.hibernate.mapping.Set;
@@ -62,32 +63,41 @@ public class PlayerDataService {
 			log.error("Failed to seed Player Account. Reason: {}", e);
 		}
 	}
+	
+	public PlayerAccountDto saveAccount(final PlayerAccountDto dto) {
+		PlayerAccountEntity entity = this.mapper.map(dto, PlayerAccountEntity.class);
+		entity = this.playerAccountRepository.save(entity);
+		return this.mapper.map(entity, PlayerAccountDto.class);
+	}
 
 	public PlayerAccountDto createInitialAccount(final String email, final String accountName,
 			final Integer characterClass) throws Exception {
 		final long start = Instant.now().toEpochMilli();
+		// Build a new account with a random uuid and the provided email + accountName;
 		final PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
-				.accountUuid(PlayerDataService.randomUuid()).build();
-		// Save the account with no joined characters or vault chests
-		//account = this.playerAccountRepository.save(account);
+				.accountUuid("db8671a7-66b2-4750-b95c-aaafc4f17e59").build();
 		
-		// Save the empty chest for this account
+		// Create a single chest with one item in it
 		final ChestEntity initialChest = ChestEntity.builder().chestUuid(PlayerDataService.randomUuid()).ordinal(0).build();
-		// Create a new GameItem and put it in this chest
-		final GameItemRefEntity gameItemDBow = GameItemRefEntity.from(0, 47);
-
-		initialChest.addItem(gameItemDBow);
-
-		// Re-save the chest with item
+		// Create a new GameItemRef and put it in this chest
 		
-		// Build a character from the provided classId, give it a weapon and give it default stats from GameDataManager and save it
+		final GameItemRefEntity gameItemDBow = GameItemRefEntity.from(0, 47);
+		// Add the item to the chest
+		initialChest.addItem(gameItemDBow);
+		
+		// Build a character from the provided classId, give it a weapon and give it default stats from GameDataManager
 		final CharacterEntity character = CharacterEntity.builder().characterClass(characterClass).build();
-
-		final GameItemRefEntity gameItemDirk = GameItemRefEntity.from(0, 49);
+		
+		// Equip the player with their starting equipment
+		final Map<Integer, GameItem> startingEquip = GameDataManager.getStartingEquipment(CharacterClass.valueOf(characterClass));
+		for(int i = 0; i<startingEquip.values().size(); i++) {
+			final GameItem toEquip = startingEquip.get(i);
+			final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(i, toEquip.getItemId());
+			character.addItem(toEquipEntity);
+		}
+		
 		final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(characterClass);
 		character.setStats(characterStats);
-		character.addItem(gameItemDirk);
-
 
 		account.addCharacter(character);
 		account.addChest(initialChest);
@@ -105,6 +115,7 @@ public class PlayerDataService {
 		if(targetChest==null) {
 			throw new Exception("Chest with UUID "+chestUuid+" does not exist");
 		}
+		final PlayerAccountEntity ownerAccount = targetChest.getOwnerAccount();
 		final GameItemRefEntity targetItem = this.gameItemRefRepository.findByItemUuid(targetItemUuid);
 		if(targetItem==null) {
 			throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist");
@@ -120,20 +131,24 @@ public class PlayerDataService {
 		}else {
 			// TODO: Impl swap
 		}
-		//this.playerChestRepository.save(targetChest);
+		this.playerAccountRepository.save(ownerAccount);
 		return success;
 	}
 	
-	public void deleteGameItem(final GameItemRefEntity toDelete) throws Exception{
+	public void deleteGameItem(final GameItemRefEntity toDelete) {
+		this.gameItemRefRepository.delete(toDelete);
+
+	}
+	
+	public void hardDeleteGameItem(final GameItemRefEntity toDelete) throws Exception{
 		this.gameItemRefRepository.delete(toDelete.getItemUuid());
 	}
 	
-	public void deleteGameItem(final String gameItemUuid) throws Exception {
-		GameItemRefEntity toDelete = this.gameItemRefRepository.findByItemUuid(gameItemUuid);
+	public void hardDeleteGameItem(final String gameItemUuid) throws Exception {
+		final GameItemRefEntity toDelete = this.gameItemRefRepository.findByItemUuid(gameItemUuid);
 		if(toDelete==null) {
 			throw new Exception("GameItem with UUID "+ gameItemUuid+ " does not exist");
 		}
-		
 		this.gameItemRefRepository.delete(toDelete.getItemUuid());
 	}
 	

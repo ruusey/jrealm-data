@@ -46,7 +46,6 @@ public class CharacterEntity extends TemporalEntity {
 	private Set<GameItemRefEntity> items = new HashSet<>();
 	
 	@ManyToOne
-    @JoinColumn(name = "account_id")
 	private PlayerAccountEntity ownerAccount;
 	
 	public void addItem(final GameItemRefEntity item) {

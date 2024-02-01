@@ -19,8 +19,7 @@ public class GameItemRefDto extends TemporalDto {
 	private static final long serialVersionUID = -5119762736198793613L;
 	
 	private Integer gameItemRefId;
-	private Integer chestId;
-	private Integer characterId;
-	private Integer gameItemId;
-	private String itemGuid;
+	private Integer itemId;
+	private Integer slotIdx;
+	private String itemUuid;
 }

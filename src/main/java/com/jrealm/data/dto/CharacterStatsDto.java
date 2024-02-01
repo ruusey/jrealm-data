@@ -1,7 +1,5 @@
 package com.jrealm.data.dto;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -23,7 +21,6 @@ public class CharacterStatsDto extends TemporalDto{
 	private static final long serialVersionUID = -966774703891631356L;
 	
 	private Integer characterStatsId;
-	private Integer characterId;
 	private Long xp;
 	private Integer classId;
 	private Integer hp;

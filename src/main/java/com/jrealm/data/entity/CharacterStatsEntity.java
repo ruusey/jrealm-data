@@ -41,7 +41,6 @@ public class CharacterStatsEntity extends TemporalEntity {
 	private Integer wis;
 	
 	@OneToOne
-    @JoinColumn(name = "character_id")
 	private CharacterEntity ownerCharacter;
 	
 	public static CharacterStatsEntity characterDefaults(final Integer characterClass) {
