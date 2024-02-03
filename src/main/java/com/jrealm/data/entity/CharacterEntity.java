@@ -53,9 +53,21 @@ public class CharacterEntity extends TemporalEntity {
 		this.items.add(item);
 	}
 	
+	public boolean removeItem(final GameItemRefEntity item) {
+		item.setOwnerCharacter(null);
+		return this.items.remove(item);
+	}
+	
 	public void setStats(final CharacterStatsEntity stats) {
 		stats.setOwnerCharacter(this);
 		this.stats = stats;
+	}
+	
+	public void removeItems() {
+		for(final GameItemRefEntity item : items) {
+			item.setOwnerCharacter(null);
+		}
+		this.items.clear();
 	}
 	
 	@Override

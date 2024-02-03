@@ -14,7 +14,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/jrealm
     username: root
-    password: password
+    password: Database123
     driverClassName: com.mysql.cj.jdbc.Driver
   main:
     web-environment: false

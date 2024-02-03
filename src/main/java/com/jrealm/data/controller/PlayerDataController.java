@@ -1,7 +1,6 @@
 package com.jrealm.data.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,16 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jrealm.data.dto.CharacterDto;
 import com.jrealm.data.dto.PlayerAccountDto;
-import com.jrealm.data.entity.PlayerAccountEntity;
-import com.jrealm.data.repository.PlayerAccountRepository;
 import com.jrealm.data.service.PlayerDataService;
 import com.jrealm.data.util.ApiUtils;
 
-import lombok.extern.slf4j.Slf4j;
-
 @RestController
-@Slf4j
 @RequestMapping("/data")
 public class PlayerDataController {
 
@@ -47,6 +42,19 @@ public class PlayerDataController {
 			res = ApiUtils.buildSuccess(this.playerDataService.saveAccount(account));
 		} catch (Exception e) {
 			res = ApiUtils.buildAndLogError("Failed to save account", e.getMessage());
+		}
+		return res;
+	}
+	
+	@PostMapping(value = "/account/character/{characterUuid}", produces = { "application/json" })
+	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String characterUuid, @RequestBody final CharacterDto character) {
+		ResponseEntity<?> res = null;
+		try {
+			res = ApiUtils.buildSuccess(this.playerDataService.saveCharacterStats(characterUuid, character));
+		} catch (Exception e) {
+			
+			res = ApiUtils.buildAndLogError("Failed to save character stats", e.getMessage());
+			e.printStackTrace();
 		}
 		return res;
 	}

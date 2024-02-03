@@ -43,12 +43,15 @@ public class GameItemRefEntity extends TemporalEntity {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gameItemRefId, itemId, itemUuid);
+		return Objects.hash(gameItemRefId, itemId, itemUuid, this.slotIdx);
 	}
 	
 	@Override
 	public boolean equals(Object other) {
 		GameItemRefEntity cast = (GameItemRefEntity) other;
+		if(cast==null || this.getItemUuid()==null || cast.getItemUuid()==null) {
+			System.out.println();
+		}
 		return (this.gameItemRefId == cast.getGameItemRefId()) && this.itemId==cast.getItemId() && this.itemUuid.equals(cast.getItemUuid()) && this.slotIdx == cast.getSlotIdx();
 	}
 	

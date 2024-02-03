@@ -5,24 +5,28 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.Optional;
 
-import org.hibernate.mapping.Set;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
+import com.jrealm.data.dto.CharacterDto;
+import com.jrealm.data.dto.GameItemRefDto;
 import com.jrealm.data.dto.PlayerAccountDto;
 import com.jrealm.data.entity.CharacterEntity;
 import com.jrealm.data.entity.CharacterStatsEntity;
 import com.jrealm.data.entity.ChestEntity;
 import com.jrealm.data.entity.GameItemRefEntity;
 import com.jrealm.data.entity.PlayerAccountEntity;
+import com.jrealm.data.entity.auth.AccountEntity;
 import com.jrealm.data.repository.CharacterRepository;
 import com.jrealm.data.repository.CharacterStatsRepository;
 import com.jrealm.data.repository.ChestRepository;
 import com.jrealm.data.repository.GameItemRefRepository;
 import com.jrealm.data.repository.PlayerAccountRepository;
+import com.jrealm.data.repository.auth.AccountRepository;
 import com.jrealm.game.contants.CharacterClass;
 import com.jrealm.game.data.GameDataManager;
 import com.jrealm.game.entity.item.GameItem;
@@ -32,6 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class PlayerDataService {
+	private final transient AccountRepository accountRepository;
 	private final transient PlayerAccountRepository playerAccountRepository;
 	private final transient ChestRepository playerChestRepository;
 	private final transient CharacterRepository playerCharacterRepository;
@@ -39,11 +44,13 @@ public class PlayerDataService {
 	private final transient GameItemRefRepository gameItemRefRepository;
 	private final transient ModelMapper mapper;
 
-	public PlayerDataService(@Autowired final PlayerAccountRepository playerAccountRepository,
+	public PlayerDataService(@Autowired final AccountRepository accountRepository,
+			@Autowired final PlayerAccountRepository playerAccountRepository,
 			@Autowired final ChestRepository playerChestRepository,
 			@Autowired final CharacterRepository playerCharacterRepository,
 			@Autowired final CharacterStatsRepository playerStatsRepository,
 			@Autowired final GameItemRefRepository gameItemRefRepository, @Autowired final ModelMapper mapper) {
+		this.accountRepository = accountRepository;
 		this.playerAccountRepository = playerAccountRepository;
 		this.playerChestRepository = playerChestRepository;
 		this.playerCharacterRepository = playerCharacterRepository;
@@ -53,15 +60,52 @@ public class PlayerDataService {
 	}
 
 	@EventListener(ApplicationReadyEvent.class)
+	@Order(2)
 	public void seedAccounts() {
 		try {
 
 			if (this.playerAccountRepository.count() == 0L) {
-				this.createInitialAccount("ru-admin@jrealm.com", "ruusey", CharacterClass.ROGUE.classId);
+				for(AccountEntity account : this.accountRepository.findAll()) {
+					this.createInitialAccount(account.getAccountGuid(), account.getEmail(), "ruusey", CharacterClass.ROGUE.classId);
+				}
 			}
 		} catch (Exception e) {
 			log.error("Failed to seed Player Account. Reason: {}", e);
 		}
+	}
+	
+	public CharacterDto saveCharacterStats(final String characterUuid, final CharacterDto newData) throws Exception{
+		CharacterEntity character = this.playerCharacterRepository.findByCharacterUuid(characterUuid);
+		if(character==null) {
+			throw new Exception("Character with UUID "+characterUuid+" was not found.");
+		}
+		
+		character.getStats().setHp(newData.getStats().getHp());
+		character.getStats().setMp(newData.getStats().getMp());
+		character.getStats().setDef(newData.getStats().getDef());
+		character.getStats().setAtt(newData.getStats().getAtt());
+		character.getStats().setSpd(newData.getStats().getSpd());
+		character.getStats().setDex(newData.getStats().getDex());
+		character.getStats().setWis(newData.getStats().getWis());
+		character.getStats().setVit(newData.getStats().getVit());
+		character.getStats().setXp(newData.getStats().getXp());
+		
+		for(GameItemRefEntity gameItem : character.getItems()) {
+			//character.removeItem(gameItem);
+			this.deleteGameItem(gameItem);
+		}
+		character.removeItems();
+		character = this.playerCharacterRepository.save(character);
+
+		for(GameItemRefDto item: newData.getItems()) {
+			if(item==null) continue;
+			GameItemRefEntity itemEntity = this.mapper.map(item, GameItemRefEntity.class);
+			itemEntity = this.gameItemRefRepository.save(itemEntity);
+			character.addItem(itemEntity);
+		}		
+
+		character = this.playerCharacterRepository.save(character);
+		return this.mapper.map(character, CharacterDto.class);
 	}
 	
 	public PlayerAccountDto saveAccount(final PlayerAccountDto dto) {
@@ -70,12 +114,12 @@ public class PlayerDataService {
 		return this.mapper.map(entity, PlayerAccountDto.class);
 	}
 
-	public PlayerAccountDto createInitialAccount(final String email, final String accountName,
+	public PlayerAccountDto createInitialAccount(final String accountUuid, final String email, final String accountName,
 			final Integer characterClass) throws Exception {
 		final long start = Instant.now().toEpochMilli();
 		// Build a new account with a random uuid and the provided email + accountName;
 		final PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
-				.accountUuid("db8671a7-66b2-4750-b95c-aaafc4f17e59").build();
+				.accountUuid(accountUuid).build();
 		
 		// Create a single chest with one item in it
 		final ChestEntity initialChest = ChestEntity.builder().chestUuid(PlayerDataService.randomUuid()).ordinal(0).build();
@@ -186,26 +230,26 @@ public class PlayerDataService {
 		}
 	}
 	
-	private GameItemRefEntity newGameItem(final int gameItemId) throws Exception{
-		GameItem model = GameDataManager.GAME_ITEMS.get(gameItemId);
-		if(model == null) {
-			throw new IllegalArgumentException("GameItem with id "+gameItemId+" does not exist.");
-		}
-		return GameItemRefEntity.builder().itemId(49).itemUuid(randomUuid()).build();
-	}
-		
-	private ChestEntity newChest(final int ordinal) {
-		return ChestEntity.builder().ordinal(ordinal).build();
-	}
-	
-	private CharacterEntity newCharacter(final int characterClassId) {
-		return CharacterEntity.builder().characterClass(characterClassId).build();
-	}
-	
-	private PlayerAccountEntity newPlayerAccount(final String email, final String accountName) {
-		return PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
-				.accountUuid(PlayerDataService.randomUuid()).build();
-	}
+//	private GameItemRefEntity newGameItem(final int gameItemId) throws Exception{
+//		GameItem model = GameDataManager.GAME_ITEMS.get(gameItemId);
+//		if(model == null) {
+//			throw new IllegalArgumentException("GameItem with id "+gameItemId+" does not exist.");
+//		}
+//		return GameItemRefEntity.builder().itemId(49).itemUuid(randomUuid()).build();
+//	}
+//		
+//	private ChestEntity newChest(final int ordinal) {
+//		return ChestEntity.builder().ordinal(ordinal).build();
+//	}
+//	
+//	private CharacterEntity newCharacter(final int characterClassId) {
+//		return CharacterEntity.builder().characterClass(characterClassId).build();
+//	}
+//	
+//	private PlayerAccountEntity newPlayerAccount(final String email, final String accountName) {
+//		return PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
+//				.accountUuid(PlayerDataService.randomUuid()).build();
+//	}
 
 	public static String randomUuid() {
 		return UUID.randomUUID().toString();

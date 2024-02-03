@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.jrealm.data.entity.CharacterEntity;
 
 public interface CharacterRepository extends CrudRepository<CharacterEntity, Integer>{
-
+	public CharacterEntity findByCharacterUuid(String characterUuid);
 }

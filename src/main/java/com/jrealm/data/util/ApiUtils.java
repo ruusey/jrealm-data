@@ -16,7 +16,7 @@ public class ApiUtils {
 	}
 
 	public static ResponseEntity<ErrorResponseObject> buildAndLogError(String msg, String reason) {
-		ApiUtils.log.error("CLAB ERROR > [{}] REASON: [{}]", msg, reason);
+		ApiUtils.log.error("JRealm Data ERROR > [{}] REASON: [{}]", msg, reason);
 		return new ResponseEntity<ErrorResponseObject>(ApiUtils.getError(msg, reason), HttpStatus.BAD_REQUEST);
 	}
 
