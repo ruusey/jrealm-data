@@ -4,6 +4,7 @@ import java.util.UUID;
 import java.time.Instant;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,14 @@ public class PlayerDataService {
 
 		character = this.playerCharacterRepository.save(character);
 		return this.mapper.map(character, CharacterDto.class);
+	}
+	
+	public Set<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception{
+		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+		if(account==null) {
+			throw new Exception("Player account with UUID "+ accountUuid+" was not found");
+		}
+		return account.getCharacters();
 	}
 	
 	public PlayerAccountDto saveAccount(final PlayerAccountDto dto) {
