@@ -1,6 +1,7 @@
 package com.jrealm.data.service;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
@@ -77,6 +78,7 @@ public class PlayerDataService {
 	}
 
 	public CharacterDto saveCharacterStats(final String characterUuid, final CharacterDto newData) throws Exception{
+		final long start = Instant.now().toEpochMilli();
 		CharacterEntity character = this.playerCharacterRepository.findByCharacterUuid(characterUuid);
 		if(character==null)
 			throw new Exception("Character with UUID "+characterUuid+" was not found.");
@@ -107,6 +109,8 @@ public class PlayerDataService {
 
 		character = this.playerCharacterRepository.save(character);
 		this.hardDeleteItems(itemsToHardDelete);
+		PlayerDataService.log.info("Successfully saved character stats for character {} in {}ms",
+				character.getCharacterUuid(), (Instant.now().toEpochMilli() - start));
 		return this.mapper.map(character, CharacterDto.class);
 	}
 
@@ -114,6 +118,44 @@ public class PlayerDataService {
 		for (final Integer itemId : itemIds) {
 			this.gameItemRefRepository.delete(itemId);
 		}
+	}
+
+	public PlayerAccountDto createCharacter(final String accountUuid, final Integer classId) throws Exception {
+		final long start = Instant.now().toEpochMilli();
+		final CharacterClass clazz = CharacterClass.valueOf(classId);
+		if (clazz == null)
+			throw new Exception("Character class with id " + classId + " does not exist");
+		PlayerAccountEntity accountEntity = this.playerAccountRepository.findByAccountUuid(accountUuid).get();
+		final CharacterEntity character = CharacterEntity.builder().characterUuid(PlayerDataService.randomUuid())
+				.characterClass(classId).build();
+
+		// Equip the player with their starting equipment
+		final Map<Integer, GameItem> startingEquip = GameDataManager
+				.getStartingEquipment(clazz);
+		for (int i = 0; i < startingEquip.values().size(); i++) {
+			final GameItem toEquip = startingEquip.get(i);
+			final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(i, toEquip.getItemId());
+			character.addItem(toEquipEntity);
+		}
+
+		final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(classId);
+		character.setStats(characterStats);
+
+		accountEntity.addCharacter(character);
+
+		accountEntity = this.playerAccountRepository.save(accountEntity);
+		PlayerDataService.log.info("Successfully created character for account {} in {}ms", accountUuid,
+				(Instant.now().toEpochMilli() - start));
+
+		return this.mapper.map(accountEntity, PlayerAccountDto.class);
+
+	}
+
+	public void deleteCharacter(final String characterUuid) throws Exception {
+		final CharacterEntity character = this.playerCharacterRepository.findByCharacterUuid(characterUuid);
+		character.setDeleted(new Date(Instant.now().toEpochMilli()));
+
+		this.playerAccountRepository.save(character.getOwnerAccount());
 	}
 
 	public Set<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception{

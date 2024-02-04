@@ -32,35 +32,35 @@ public class PlayerAccountEntity {
 	private String accountEmail;
 	private String accountUuid;
 	private String accountName;
-	
-	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = ChestEntity.class)
+
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = ChestEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	@Builder.Default
 	private Set<ChestEntity> playerVault = new HashSet<>();
-	
-	@OneToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.EAGER, targetEntity = CharacterEntity.class)
+
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = CharacterEntity.class)
 	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	@Builder.Default
 	private Set<CharacterEntity> characters = new HashSet<>();
-	
+
 	public void addChest(final ChestEntity chest) {
 		chest.setOwnerAccount(this);
 		this.playerVault.add(chest);
 	}
-	
+
 	public void addCharacter(final CharacterEntity character) {
 		character.setOwnerAccount(this);
 		this.characters.add(character);
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(accountId, accountEmail, accountUuid, accountName, playerVault, characters);
+		return Objects.hash(this.accountId, this.accountEmail, this.accountUuid, this.accountName, this.playerVault, this.characters);
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
-		return accountId+", "+this.accountEmail+", "+this.accountName;
+		return this.accountId+", "+this.accountEmail+", "+this.accountName;
 	}
 }
