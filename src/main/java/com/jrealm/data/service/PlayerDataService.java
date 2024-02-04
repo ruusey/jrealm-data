@@ -3,6 +3,7 @@ package com.jrealm.data.service;
 import java.time.Instant;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
@@ -109,6 +110,13 @@ public class PlayerDataService {
 		return this.mapper.map(character, CharacterDto.class);
 	}
 
+	public Set<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception{
+		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+		if(account==null)
+			throw new Exception("Player account with UUID "+ accountUuid+" was not found");
+		return account.getCharacters();
+	}
+	
 	public PlayerAccountDto saveAccount(final PlayerAccountDto dto) {
 		PlayerAccountEntity entity = this.mapper.map(dto, PlayerAccountEntity.class);
 		entity = this.playerAccountRepository.save(entity);

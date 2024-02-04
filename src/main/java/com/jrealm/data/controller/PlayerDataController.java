@@ -35,6 +35,17 @@ public class PlayerDataController {
 		return res;
 	}
 	
+	@GetMapping(value = "/account/{accountUuid}/character", produces = { "application/json" })
+	public ResponseEntity<?> getPlayerAccountCharacters(@PathVariable final String accountUuid) {
+		ResponseEntity<?> res = null;
+		try {
+			res = ApiUtils.buildSuccess(this.playerDataService.getPlayerCharacters(accountUuid));
+		} catch (Exception e) {
+			res = ApiUtils.buildAndLogError("Failed to get player characters", e.getMessage());
+		}
+		return res;
+	}
+	
 	@PostMapping(value = "/account", produces = { "application/json" })
 	public ResponseEntity<?> saveAccountData(@RequestBody final PlayerAccountDto account) {
 		ResponseEntity<?> res = null;
