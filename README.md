@@ -1,4 +1,4 @@
-# JRealm0Data
+# JRealm-Data
 ### Backend Data Application for JRealm 
 ![alt text](https://i.imgur.com/E4MiMd5.jpg) </br>
 
