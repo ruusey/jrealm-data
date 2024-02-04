@@ -1,6 +1,7 @@
 package com.jrealm.data.service;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -89,13 +90,12 @@ public class PlayerDataService {
 		character.getStats().setWis(newData.getStats().getWis());
 		character.getStats().setVit(newData.getStats().getVit());
 		character.getStats().setXp(newData.getStats().getXp());
-
+		Set<Integer> itemsToHardDelete = new HashSet<>();
 		for(GameItemRefEntity gameItem : character.getItems()) {
-			//character.removeItem(gameItem);
-			this.deleteGameItem(gameItem);
+			itemsToHardDelete.add(gameItem.getGameItemRefId());
+			// this.deleteGameItem(gameItem);
 		}
 		character.removeItems();
-		character = this.playerCharacterRepository.save(character);
 
 		for(GameItemRefDto item: newData.getItems()) {
 			if(item==null) {
@@ -107,7 +107,14 @@ public class PlayerDataService {
 		}
 
 		character = this.playerCharacterRepository.save(character);
+		this.hardDeleteItems(itemsToHardDelete);
 		return this.mapper.map(character, CharacterDto.class);
+	}
+
+	public void hardDeleteItems(Set<Integer> itemIds) {
+		for (final Integer itemId : itemIds) {
+			this.gameItemRefRepository.delete(itemId);
+		}
 	}
 
 	public Set<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception{
@@ -116,7 +123,7 @@ public class PlayerDataService {
 			throw new Exception("Player account with UUID "+ accountUuid+" was not found");
 		return account.getCharacters();
 	}
-	
+
 	public PlayerAccountDto saveAccount(final PlayerAccountDto dto) {
 		PlayerAccountEntity entity = this.mapper.map(dto, PlayerAccountEntity.class);
 		entity = this.playerAccountRepository.save(entity);

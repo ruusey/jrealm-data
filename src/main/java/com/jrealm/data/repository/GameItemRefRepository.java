@@ -13,4 +13,9 @@ public interface GameItemRefRepository extends CrudRepository<GameItemRefEntity,
 	@Modifying
 	@Transactional
 	public void delete(String itemUuid);
+
+	@Query("DELETE FROM com.jrealm.data.entity.GameItemRefEntity gi WHERE gi.gameItemRefId=?1")
+	@Modifying
+	@Transactional
+	public void delete(Integer gameItemRefId);
 }
