@@ -3,13 +3,11 @@ package com.jrealm.data.entity;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -43,21 +41,21 @@ public class GameItemRefEntity extends TemporalEntity {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gameItemRefId, itemId, itemUuid, this.slotIdx);
+		return Objects.hash(this.gameItemRefId, this.itemId, this.itemUuid, this.slotIdx);
 	}
 	
 	@Override
 	public boolean equals(Object other) {
 		GameItemRefEntity cast = (GameItemRefEntity) other;
-		if(cast==null || this.getItemUuid()==null || cast.getItemUuid()==null) {
+		if((cast==null) || (this.getItemUuid()==null) || (cast.getItemUuid()==null)) {
 			System.out.println();
 		}
-		return (this.gameItemRefId == cast.getGameItemRefId()) && this.itemId==cast.getItemId() && this.itemUuid.equals(cast.getItemUuid()) && this.slotIdx == cast.getSlotIdx();
+		return (this.gameItemRefId == cast.getGameItemRefId()) && (this.itemId==cast.getItemId()) && this.itemUuid.equals(cast.getItemUuid()) && (this.slotIdx == cast.getSlotIdx());
 	}
 	
 	@Override
 	public String toString() {
-		return gameItemRefId+", "+this.itemId+", "+this.itemUuid;
+		return this.gameItemRefId+", "+this.itemId+", "+this.itemUuid;
 	}
 	
 	public static GameItemRefEntity from(final int targetIndex, final int itemId) {
@@ -67,7 +65,7 @@ public class GameItemRefEntity extends TemporalEntity {
 	public static Set<GameItemRefEntity> SET_OF_NULL_ITEM(final int size){
 		final Set<GameItemRefEntity> items = new HashSet<>();
 		for(int i = 0; i<size; i++) {
-			items.add(EMPTY());
+			items.add(GameItemRefEntity.EMPTY());
 		}
 		return items;
 	}

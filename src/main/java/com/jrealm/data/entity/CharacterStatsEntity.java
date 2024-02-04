@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -61,12 +60,12 @@ public class CharacterStatsEntity extends TemporalEntity {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(characterStatsId, xp, classId, hp, mp, def, att, spd, dex, vit, wis);
+		return Objects.hash(this.characterStatsId, this.xp, this.classId, this.hp, this.mp, this.def, this.att, this.spd, this.dex, this.vit, this.wis);
 	}
 	
 	@Override
 	public String toString() {
-		return characterStatsId+", "+this.xp+", "+this.classId;
+		return this.characterStatsId+", "+this.xp+", "+this.classId;
 	}
 	
 }
