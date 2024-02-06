@@ -1,14 +1,10 @@
 package com.jrealm.data.entity.auth;
 
-import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.jrealm.data.entity.TemporalEntity;
 
@@ -17,27 +13,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "account_auth")
+@Document("account_auth")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountAuthEntity extends TemporalEntity {
+	private static final long serialVersionUID = 2284941915967483605L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer accountAuthId;
-	@Column(unique = true)
+	private String accountAuthId;
 	private String identifier;
 
-	@Column(name = "guid", length = 50)
 	private String accountGuid;
-	@Column(name = "password", length = 200)
 	private String password;
-	@Column(name = "token", length = 100)
 	private String sessionToken;
-	@Column(name = "expires")
-	private Timestamp tokenExpires;
+	private Date tokenExpires;
 
 	public boolean isExpiredOrEmpty() {
 		if (this.tokenExpires == null)

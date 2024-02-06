@@ -2,10 +2,9 @@ package com.jrealm.data.service;
 
 import java.time.Instant;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
@@ -79,7 +78,9 @@ public class PlayerDataService {
 
 	public CharacterDto saveCharacterStats(final String characterUuid, final CharacterDto newData) throws Exception{
 		final long start = Instant.now().toEpochMilli();
-		CharacterEntity character = this.playerCharacterRepository.findByCharacterUuid(characterUuid);
+		PlayerAccountEntity ownerAccount = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
+		CharacterEntity character = ownerAccount
+				.findCharacterByUuid(characterUuid);
 		if(character==null)
 			throw new Exception("Character with UUID "+characterUuid+" was not found.");
 
@@ -92,10 +93,7 @@ public class PlayerDataService {
 		character.getStats().setWis(newData.getStats().getWis());
 		character.getStats().setVit(newData.getStats().getVit());
 		character.getStats().setXp(newData.getStats().getXp());
-		final Set<Integer> itemsToHardDelete = new HashSet<>();
-		for (final GameItemRefEntity gameItem : character.getItems()) {
-			itemsToHardDelete.add(gameItem.getGameItemRefId());
-		}
+
 		character.removeItems();
 
 		for(GameItemRefDto item: newData.getItems()) {
@@ -103,21 +101,13 @@ public class PlayerDataService {
 				continue;
 			}
 			GameItemRefEntity itemEntity = this.mapper.map(item, GameItemRefEntity.class);
-			itemEntity = this.gameItemRefRepository.save(itemEntity);
 			character.addItem(itemEntity);
 		}
 
-		character = this.playerCharacterRepository.save(character);
-		this.hardDeleteItems(itemsToHardDelete);
+		ownerAccount = this.playerAccountRepository.save(ownerAccount);
 		PlayerDataService.log.info("Successfully saved character stats for character {} in {}ms",
 				character.getCharacterUuid(), (Instant.now().toEpochMilli() - start));
 		return this.mapper.map(character, CharacterDto.class);
-	}
-
-	public void hardDeleteItems(Set<Integer> itemIds) {
-		for (final Integer itemId : itemIds) {
-			this.gameItemRefRepository.delete(itemId);
-		}
 	}
 
 	public PlayerAccountDto createCharacter(final String accountUuid, final Integer classId) throws Exception {
@@ -155,10 +145,10 @@ public class PlayerDataService {
 		final CharacterEntity character = this.playerCharacterRepository.findByCharacterUuid(characterUuid);
 		character.setDeleted(new Date(Instant.now().toEpochMilli()));
 
-		this.playerAccountRepository.save(character.getOwnerAccount());
+		// this.playerAccountRepository.save(character.getOwnerAccount());
 	}
 
-	public Set<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception{
+	public List<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception {
 		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
 		if(account==null)
 			throw new Exception("Player account with UUID "+ accountUuid+" was not found");
@@ -210,48 +200,37 @@ public class PlayerDataService {
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);
 	}
 
-	public boolean replaceChestItem(final String chestUuid, final String targetItemUuid, final GameItemRefEntity replacement) throws Exception{
-		final ChestEntity targetChest = this.playerChestRepository.findByChestUuid(chestUuid);
-		boolean success = false;
-		if(targetChest==null)
-			throw new Exception("Chest with UUID "+chestUuid+" does not exist");
-		final PlayerAccountEntity ownerAccount = targetChest.getOwnerAccount();
-		final GameItemRefEntity targetItem = this.gameItemRefRepository.findByItemUuid(targetItemUuid);
-		if(targetItem==null)
-			throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist");
-		if(replacement==null) {
-			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
-			if(itemInChest.isEmpty())
-				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
-			final GameItemRefEntity toRemove = itemInChest.get();
-			success = targetChest.removeItem(targetItem);
-			this.deleteGameItem(toRemove);
-		}else {
-			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
-			if(itemInChest.isEmpty())
-				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
-			final GameItemRefEntity toRemove = itemInChest.get();
-			success = targetChest.removeItem(targetItem);
-			this.deleteGameItem(toRemove);
-			targetChest.addItem(replacement);
-		}
-		this.playerAccountRepository.save(ownerAccount);
-		return success;
-	}
+	//	public boolean replaceChestItem(final String chestUuid, final String targetItemUuid, final GameItemRefEntity replacement) throws Exception{
+	//		final ChestEntity targetChest = this.playerChestRepository.findByChestUuid(chestUuid);
+	//		boolean success = false;
+	//		if(targetChest==null)
+	//			throw new Exception("Chest with UUID "+chestUuid+" does not exist");
+	//		final PlayerAccountEntity ownerAccount = targetChest.getOwnerAccount();
+	//		final GameItemRefEntity targetItem = this.gameItemRefRepository.findByItemUuid(targetItemUuid);
+	//		if(targetItem==null)
+	//			throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist");
+	//		if(replacement==null) {
+	//			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
+	//			if(itemInChest.isEmpty())
+	//				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+	//			final GameItemRefEntity toRemove = itemInChest.get();
+	//			success = targetChest.removeItem(targetItem);
+	//			this.deleteGameItem(toRemove);
+	//		}else {
+	//			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
+	//			if(itemInChest.isEmpty())
+	//				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+	//			final GameItemRefEntity toRemove = itemInChest.get();
+	//			success = targetChest.removeItem(targetItem);
+	//			this.deleteGameItem(toRemove);
+	//			targetChest.addItem(replacement);
+	//		}
+	//		this.playerAccountRepository.save(ownerAccount);
+	//		return success;
+	//	}
 
 	public void deleteGameItem(final GameItemRefEntity toDelete) {
 		this.gameItemRefRepository.delete(toDelete);
-	}
-
-	public void hardDeleteGameItem(final GameItemRefEntity toDelete) throws Exception{
-		this.gameItemRefRepository.delete(toDelete.getItemUuid());
-	}
-
-	public void hardDeleteGameItem(final String gameItemUuid) throws Exception {
-		final GameItemRefEntity toDelete = this.gameItemRefRepository.findByItemUuid(gameItemUuid);
-		if(toDelete==null)
-			throw new Exception("GameItem with UUID "+ gameItemUuid+ " does not exist");
-		this.gameItemRefRepository.delete(toDelete.getItemUuid());
 	}
 
 	public PlayerAccountDto getAccountById(final Integer accountId) throws Exception {

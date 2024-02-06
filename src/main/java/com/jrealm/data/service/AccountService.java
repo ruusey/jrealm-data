@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -77,7 +78,7 @@ public class AccountService {
 		this.accessRepo = accessRepo;
 		this.mapper = mapper;
 	}
-	
+
 	@EventListener(ApplicationReadyEvent.class)
 	@Order(1)
 	public void seedAccounts() {
@@ -301,13 +302,13 @@ public class AccountService {
 	}
 
 	public AccountDto getAccountByGuid(String guid) {
-		AccountEntity account = this.accountRepo.findByGuid(guid);
+		AccountEntity account = this.accountRepo.findByAccountGuid(guid);
 		// log.info("Getting account information for email={}", account.getEmail());
 		return this.getAccountById(account.getAccountId());
 	}
 
 	public List<AccountDto> getAllAccounts(Integer page, Integer size) {
-		List<AccountEntity> accounts = this.accountRepo.findAll(PageRequest.of(page, size));
+		Page<AccountEntity> accounts = this.accountRepo.findAll(PageRequest.of(page, size));
 		List<AccountDto> results = new ArrayList<>();
 		for (AccountEntity acc : accounts) {
 			results.add(this.getAccountById(acc.getAccountId()));
@@ -320,15 +321,6 @@ public class AccountService {
 		List<AccountDto> results = new ArrayList<>();
 		for (AccountEntity acc : accounts) {
 			results.add(this.getAccountById(acc.getAccountId()));
-		}
-		return results;
-	}
-
-	public List<AccountDto> getAllAccountsFuzzy() {
-		Iterable<AccountEntity> accounts = this.accountRepo.findAllFuzzy();
-		List<AccountDto> results = new ArrayList<>();
-		for (AccountEntity acc : accounts) {
-			results.add(this.mapper.map(acc, AccountDto.class));
 		}
 		return results;
 	}
@@ -346,9 +338,9 @@ public class AccountService {
 	}
 
 	public void deleteAccount(String guid) throws Exception {
-		AccountEntity account = this.accountRepo.findByGuid(guid);
-		List<AccountPropertyEntity> properties = this.propertyRepo.getAccountProperties(account.getAccountId());
-		List<AccountProvisionEntity> provisions = this.provisionRepo.getAccountProvisions(account.getAccountId());
+		AccountEntity account = this.accountRepo.findByAccountGuid(guid);
+		List<AccountPropertyEntity> properties = this.propertyRepo.findAllByAccountId(account.getAccountId());
+		List<AccountProvisionEntity> provisions = this.provisionRepo.findAllByAccountId(account.getAccountId());
 		List<AccountAccessEntity> subscriptions = this.accessRepo.findAllByAccountGuid(account.getAccountGuid());
 		AccountAuthEntity auth = this.authRepo.findByAccountGuid(guid);
 
@@ -367,15 +359,15 @@ public class AccountService {
 		AccountService.log.info("Successfully deleted Account [{}]", account.getEmail());
 	}
 
-	public AccountDto getAccountById(Integer id) {
+	public AccountDto getAccountById(String accountId) {
 		AccountEntity account = null;
 		try {
-			account = this.accountRepo.findById(id).get();
+			account = this.accountRepo.findById(accountId).get();
 		} catch (Exception e) {
 			return null;
 		}
-		List<AccountPropertyEntity> properties = this.propertyRepo.getAccountProperties(account.getAccountId());
-		List<AccountProvisionEntity> provisions = this.provisionRepo.getAccountProvisions(account.getAccountId());
+		List<AccountPropertyEntity> properties = this.propertyRepo.findAllByAccountId(account.getAccountId());
+		List<AccountProvisionEntity> provisions = this.provisionRepo.findAllByAccountId(account.getAccountId());
 		List<AccountAccessEntity> subscriptions = this.accessRepo.findAllByAccountGuid(account.getAccountGuid());
 
 		Map<String, String> accProperties = new HashMap<>();

@@ -1,13 +1,7 @@
 package com.jrealm.data.entity;
 
-import java.util.Objects;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.jrealm.game.data.GameDataManager;
 import com.jrealm.game.model.CharacterClassModel;
@@ -17,8 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "player_character_stats")
+@Document("player_character_stats")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -26,8 +19,7 @@ import lombok.NoArgsConstructor;
 public class CharacterStatsEntity extends TemporalEntity {
 	private static final long serialVersionUID = 186218452080820122L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer characterStatsId;
+	private String characterStatsId;
 	private Long xp;
 	private Integer classId;
 	private Integer hp;
@@ -38,10 +30,7 @@ public class CharacterStatsEntity extends TemporalEntity {
 	private Integer dex;
 	private Integer vit;
 	private Integer wis;
-	
-	@OneToOne
-	private CharacterEntity ownerCharacter;
-	
+
 	public static CharacterStatsEntity characterDefaults(final Integer characterClass) {
 		final CharacterClassModel model = GameDataManager.CHARACTER_CLASSES.get(characterClass);
 		return CharacterStatsEntity.builder()
@@ -57,15 +46,4 @@ public class CharacterStatsEntity extends TemporalEntity {
 				.wis((int)model.getBaseStats().getWis())
 				.build();
 	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.characterStatsId, this.xp, this.classId, this.hp, this.mp, this.def, this.att, this.spd, this.dex, this.vit, this.wis);
-	}
-	
-	@Override
-	public String toString() {
-		return this.characterStatsId+", "+this.xp+", "+this.classId;
-	}
-	
 }

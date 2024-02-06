@@ -1,29 +1,17 @@
 package com.jrealm.data.entity;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Entity
-@Table(name = "player_character")
+@Document("player_character")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -31,52 +19,26 @@ import lombok.NoArgsConstructor;
 public class CharacterEntity extends TemporalEntity {
 	private static final long serialVersionUID = -6906497561358089565L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer characterId;
+	private String characterId;
 	private String characterUuid;
 	private Integer characterClass;
-
-	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = CharacterStatsEntity.class)
-	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	private CharacterStatsEntity stats;
-
-	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER, targetEntity = GameItemRefEntity.class)
-	@JoinColumn(foreignKey = @javax.persistence.ForeignKey(javax.persistence.ConstraintMode.NO_CONSTRAINT))
 	@Builder.Default
-	private Set<GameItemRefEntity> items = new HashSet<>();
-
-	@ManyToOne
-	private PlayerAccountEntity ownerAccount;
+	private List<GameItemRefEntity> items = new ArrayList<>();
 
 	public void addItem(final GameItemRefEntity item) {
-		item.setOwnerCharacter(this);
 		this.items.add(item);
 	}
 
 	public boolean removeItem(final GameItemRefEntity item) {
-		item.setOwnerCharacter(null);
 		return this.items.remove(item);
 	}
 
 	public void setStats(final CharacterStatsEntity stats) {
-		stats.setOwnerCharacter(this);
 		this.stats = stats;
 	}
 
 	public void removeItems() {
-		for(final GameItemRefEntity item : this.items) {
-			item.setOwnerCharacter(null);
-		}
 		this.items.clear();
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.characterId, this.characterUuid, this.characterClass, this.items, this.stats);
-	}
-
-	@Override
-	public String toString() {
-		return this.characterId+", "+this.characterClass+", "+this.characterUuid;
 	}
 }

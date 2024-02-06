@@ -1,21 +1,10 @@
 package com.jrealm.data.repository;
 
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.jrealm.data.entity.GameItemRefEntity;
 
-public interface GameItemRefRepository extends CrudRepository<GameItemRefEntity, Integer> {
+public interface GameItemRefRepository extends MongoRepository<GameItemRefEntity, String> {
 	public GameItemRefEntity findByItemUuid(String itemUuid);
-	@Query("DELETE FROM com.jrealm.data.entity.GameItemRefEntity gi WHERE gi.itemUuid=?1")
-	@Modifying
-	@Transactional
-	public void delete(String itemUuid);
 
-	@Query("DELETE FROM com.jrealm.data.entity.GameItemRefEntity gi WHERE gi.gameItemRefId=?1")
-	@Modifying
-	@Transactional
-	public void delete(Integer gameItemRefId);
 }

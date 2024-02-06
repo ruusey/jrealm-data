@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserApiTokenDto {
-	private Integer userTokenId;
+	private String userTokenId;
 	private String tokenName;
 }

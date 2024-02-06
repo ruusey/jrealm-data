@@ -3,12 +3,8 @@ package com.jrealm.data.entity.auth;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.jrealm.data.entity.TemporalEntity;
 
@@ -17,31 +13,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Document("account_property")
 @Data
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@Entity
-@Table(name = "account_property")
+
 public class AccountPropertyEntity extends TemporalEntity {
+	private static final long serialVersionUID = -8541553300204408886L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer accountPropertyId;
-	@Column(unique = true)
+	private String accountPropertyId;
 	private String identifier;
-	@Column(name = "account_id")
-	private Integer accountId;
-
-	@Column(name = "key_name", length = 50)
+	private String accountId;
 	private String key;
-
-	@Column(name = "value", columnDefinition = "TEXT")
 	private String value;
-
-	@Column(name = "expires")
 	private Timestamp expires;
 
-	public AccountPropertyEntity(Integer accountPropertyId, String identifier, Integer accountId, String key,
+	public AccountPropertyEntity(String accountPropertyId, String identifier, String accountId, String key,
 			String value, Date expires) {
 		this.accountPropertyId = accountPropertyId;
 		this.accountId = accountId;

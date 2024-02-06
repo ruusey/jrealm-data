@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class AccountDto implements Serializable {
 	private static final long serialVersionUID = -8182611782332882587L;
 
-	private Integer accountId;
+	private String accountId;
 	private Integer externalId;
 	private String identifier;
 	private String accountGuid;

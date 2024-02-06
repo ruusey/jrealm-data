@@ -76,7 +76,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/admin/account/{accountId}", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<?> getAccount(final HttpServletRequest req, @PathVariable final Integer accountId) {
+	public ResponseEntity<?> getAccount(final HttpServletRequest req, @PathVariable final String accountId) {
 		ResponseEntity<?> res = null;
 		try {
 			final AccountDto account = this.jrealmAccounts.getAccountById(accountId);
