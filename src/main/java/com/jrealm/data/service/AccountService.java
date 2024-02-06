@@ -12,7 +12,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -53,30 +52,25 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class AccountService {
-
 	private final transient AccountAuthRepo authRepo;
 	private final transient AccountTokenRepo tokenRepo;
 	private final transient AccountPropertyRepository propertyRepo;
 	private final transient AccountProvisionRepository provisionRepo;
 	private final transient AccountRepository accountRepo;
 	private final transient AccountAccessRepository accessRepo;
-	private final transient ModelMapper mapper;
-
 
 	public AccountService(@Autowired final AccountAuthRepo authRepo,
 			@Autowired final AccountTokenRepo tokenRepo,
 			@Autowired final AccountPropertyRepository propertyRepo,
 			@Autowired final AccountProvisionRepository provisionRepo,
 			@Autowired final AccountRepository accountRepo,
-			@Autowired final AccountAccessRepository accessRepo,
-			@Autowired final ModelMapper mapper) {
+			@Autowired final AccountAccessRepository accessRepo) {
 		this.authRepo = authRepo;
 		this.tokenRepo = tokenRepo;
 		this.propertyRepo = propertyRepo;
 		this.provisionRepo = provisionRepo;
 		this.accountRepo = accountRepo;
 		this.accessRepo = accessRepo;
-		this.mapper = mapper;
 	}
 
 	@EventListener(ApplicationReadyEvent.class)

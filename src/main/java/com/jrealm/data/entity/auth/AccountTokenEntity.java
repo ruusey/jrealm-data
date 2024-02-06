@@ -7,12 +7,14 @@ import com.jrealm.data.entity.TemporalEntity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Document("account_token")
 @Data
 @Builder
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
 public class AccountTokenEntity extends TemporalEntity {
 
 	private static final long serialVersionUID = -7299181282690860879L;

@@ -9,6 +9,7 @@ import com.jrealm.game.model.CharacterClassModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Document("player_character_stats")
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
+@EqualsAndHashCode(callSuper=false)
 public class CharacterStatsEntity extends TemporalEntity {
 	private static final long serialVersionUID = 186218452080820122L;
 	@Id
