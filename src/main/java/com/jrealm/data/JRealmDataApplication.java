@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.jrealm.game.data.GameDataManager;
 
 @SpringBootApplication
-public class JrealmDataApplication {
+public class JRealmDataApplication {
 
 	public static void main(String[] args) {
 		GameDataManager.loadGameData();
-		SpringApplication.run(JrealmDataApplication.class, args);
+		SpringApplication.run(JRealmDataApplication.class, args);
 	}
 
 }
