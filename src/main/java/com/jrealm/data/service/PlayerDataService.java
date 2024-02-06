@@ -68,7 +68,8 @@ public class PlayerDataService {
 
 			if (this.playerAccountRepository.count() == 0L) {
 				for(AccountEntity account : this.accountRepository.findAll()) {
-					this.createInitialAccount(account.getAccountGuid(), account.getEmail(), "ruusey", CharacterClass.ROGUE.classId);
+					this.createInitialAccount(account.getAccountGuid(), account.getEmail(), account.getAccountName(),
+							CharacterClass.ROGUE.classId);
 				}
 			}
 		} catch (Exception e) {
