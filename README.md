@@ -12,5 +12,6 @@ need to build and run from source
 2) Clone this repository
 3) Clone JRealm `(https://github.com/ruusey/jrealm)`
 4) in /jrealm/ execute `mvn clean install` (JRealm Data has a dependency on GameData objects)
-5) in /jrealm-data/ execute `mvn clean package`
-6) in /jrealm-data/target execute `java -jar jrealm-data-{version}-jar`
+5) Before compiling jrealm-data, modify `/src/main/resources/account_seed.json` with your desired account information
+6) in /jrealm-data/ execute `mvn clean package`
+7) in /jrealm-data/target execute `java -jar jrealm-data-{version}-jar`
