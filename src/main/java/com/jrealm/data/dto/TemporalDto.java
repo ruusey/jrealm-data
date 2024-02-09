@@ -25,4 +25,7 @@ public class TemporalDto implements Serializable {
 	private Date updated;
 	private Date deleted;
 
+	public boolean isDeleted() {
+		return this.deleted != null;
+	}
 }

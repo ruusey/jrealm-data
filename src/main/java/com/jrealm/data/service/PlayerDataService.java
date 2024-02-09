@@ -48,7 +48,7 @@ public class PlayerDataService {
 			@Autowired final PlayerAccountRepository playerAccountRepository,
 			@Autowired final ChestRepository playerChestRepository,
 			@Autowired final CharacterRepository playerCharacterRepository,
-			@Autowired final GameItemRefRepository gameItemRefRepository, 
+			@Autowired final GameItemRefRepository gameItemRefRepository,
 			@Autowired final ModelMapper mapper) {
 		this.accountRepository = accountRepository;
 		this.playerAccountRepository = playerAccountRepository;
@@ -142,10 +142,13 @@ public class PlayerDataService {
 	}
 
 	public void deleteCharacter(final String characterUuid) throws Exception {
-		final CharacterEntity character = this.playerCharacterRepository.findByCharacterUuid(characterUuid);
-		character.setDeleted(new Date(Instant.now().toEpochMilli()));
+		PlayerAccountEntity account = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
+		Optional<CharacterEntity> characterToDelete = account.getCharacters().stream().filter(character->character.getCharacterUuid().equals(characterUuid)).findAny();
+		if (characterToDelete.isEmpty())
+			throw new Exception("Player character with UUID "+characterUuid+" does not exist");
+		characterToDelete.get().setDeleted(new Date(Instant.now().toEpochMilli()));
 
-		// this.playerAccountRepository.save(character.getOwnerAccount());
+		this.playerAccountRepository.save(account);
 	}
 
 	public List<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception {

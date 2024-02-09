@@ -2,6 +2,7 @@ package com.jrealm.data.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,6 +76,20 @@ public class PlayerDataController {
 		ResponseEntity<?> res = null;
 		try {
 			res = ApiUtils.buildSuccess(this.playerDataService.saveCharacterStats(characterUuid, character));
+		} catch (Exception e) {
+
+			res = ApiUtils.buildAndLogError("Failed to save character stats", e.getMessage());
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@DeleteMapping(value = "/account/character/{characterUuid}", produces = { "application/json" })
+	public ResponseEntity<?> deleteCharacter(@PathVariable String characterUuid) {
+		ResponseEntity<?> res = null;
+		try {
+			this.playerDataService.deleteCharacter(characterUuid);
+			res = ApiUtils.buildSuccess("Character " + characterUuid + " successfully deleted");
 		} catch (Exception e) {
 
 			res = ApiUtils.buildAndLogError("Failed to save character stats", e.getMessage());
