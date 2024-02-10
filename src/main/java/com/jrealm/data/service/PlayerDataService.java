@@ -138,16 +138,17 @@ public class PlayerDataService {
 				(Instant.now().toEpochMilli() - start));
 
 		return this.mapper.map(accountEntity, PlayerAccountDto.class);
-
 	}
 
 	public void deleteCharacter(final String characterUuid) throws Exception {
+		final long start = Instant.now().toEpochMilli();
 		PlayerAccountEntity account = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
 		Optional<CharacterEntity> characterToDelete = account.getCharacters().stream().filter(character->character.getCharacterUuid().equals(characterUuid)).findAny();
 		if (characterToDelete.isEmpty())
 			throw new Exception("Player character with UUID "+characterUuid+" does not exist");
 		characterToDelete.get().setDeleted(new Date(Instant.now().toEpochMilli()));
-
+		PlayerDataService.log.info("Successfully deleted character {} in {}ms", characterUuid,
+				(Instant.now().toEpochMilli() - start));
 		this.playerAccountRepository.save(account);
 	}
 
@@ -237,23 +238,35 @@ public class PlayerDataService {
 	}
 
 	public PlayerAccountDto getAccountById(final String accountId) throws Exception {
+		final long start = Instant.now().toEpochMilli();
 		Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findById(accountId);
-		if(entity.isPresent())
+		if (entity.isPresent()) {
+			PlayerDataService.log.info("Fetched account by id {} in {}ms", accountId,
+					(Instant.now().toEpochMilli() - start));
 			return this.mapper.map(entity, PlayerAccountDto.class);
+		}
 		throw new Exception("PlayerAccount with id "+ accountId+" not found");
 	}
 
 	public PlayerAccountDto getAccountByEmail(final String email) throws Exception {
+		final long start = Instant.now().toEpochMilli();
 		PlayerAccountEntity entity = this.playerAccountRepository.findByAccountEmail(email);
-		if(entity!=null)
+		if (entity != null) {
+			PlayerDataService.log.info("Fetched account by email {} in {}ms", email,
+					(Instant.now().toEpochMilli() - start));
 			return this.mapper.map(entity, PlayerAccountDto.class);
+		}
 		throw new Exception("PlayerAccount with email "+ email+" not found");
 	}
 
 	public PlayerAccountDto getAccountByUuid(final String accountUuid) throws Exception {
+		final long start = Instant.now().toEpochMilli();
 		PlayerAccountEntity entity = this.playerAccountRepository.findByAccountUuid(accountUuid);
-		if(entity!=null)
+		if (entity != null) {
+			PlayerDataService.log.info("Fetched account by UUID {} in {}ms", accountUuid,
+					(Instant.now().toEpochMilli() - start));
 			return this.mapper.map(entity, PlayerAccountDto.class);
+		}
 		throw new Exception("PlayerAccount with account UUID "+ accountUuid+" not found");
 	}
 
