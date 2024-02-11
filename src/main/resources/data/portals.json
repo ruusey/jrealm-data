@@ -18,7 +18,7 @@
 	{
 		"portalId": 2,
 		"portalName": "Exit_Portal",
-		"mapId": -1,
+		"mapId": 2,
 		"row": 3,
 		"col": 7,
 		"spriteKey": "entity/rotmg-tiles-2.png"
