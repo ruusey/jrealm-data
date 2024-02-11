@@ -9,7 +9,7 @@ import com.jrealm.game.data.GameDataManager;
 public class JRealmDataApplication {
 
 	public static void main(String[] args) {
-		GameDataManager.loadGameData();
+		GameDataManager.loadGameData(false);
 		SpringApplication.run(JRealmDataApplication.class, args);
 	}
 
