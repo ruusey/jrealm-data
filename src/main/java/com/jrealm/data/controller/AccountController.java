@@ -1,5 +1,6 @@
 package com.jrealm.data.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jrealm.data.dto.PingResponseDto;
 import com.jrealm.data.dto.auth.AccountDto;
 import com.jrealm.data.dto.auth.CreateTokenRequestDto;
 import com.jrealm.data.dto.auth.CreateTokenResponseDto;
@@ -37,8 +39,20 @@ public class AccountController {
 		this.jrealmData = jrealmData;
 	}
 
-	@RequestMapping(value = "/admin/account", method = RequestMethod.PUT, produces = { "application/json" })
+	@RequestMapping(value = "/ping", method = RequestMethod.GET, produces = { "application/json" })
+	public ResponseEntity<?> ping(final HttpServletRequest req) {
+		ResponseEntity<?> res = null;
+		try {
+			PingResponseDto response = PingResponseDto.builder().time(new Date().toString()).status("UP").build();
+			res = ApiUtils.buildSuccess(response);
+		} catch (final Exception e) {
+			final String errMsg = "Failed to get JRealm Account using headers ";
+			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
+		}
+		return res;
+	}
 
+	@RequestMapping(value = "/admin/account", method = RequestMethod.PUT, produces = { "application/json" })
 	public ResponseEntity<?> updateAccount(final HttpServletRequest req, @RequestBody final AccountDto account) {
 		ResponseEntity<?> res = null;
 		try {
