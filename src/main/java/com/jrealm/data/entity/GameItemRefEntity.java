@@ -8,6 +8,7 @@ import com.jrealm.data.service.PlayerDataService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Document("player_game_item")
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
+@EqualsAndHashCode(callSuper=false)
 public class GameItemRefEntity extends TemporalEntity {
 	private static final long serialVersionUID = -6575476631353169695L;
 	@Id

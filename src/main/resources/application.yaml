@@ -1,7 +1,7 @@
 spring:
   web:
     resources:
-      static-locations: classpath:static/
+      static-locations: classpath:data/, classpath:entity/, classpath:ui/
   jackson:
     serialization:
       fail-on-empty-beans: false

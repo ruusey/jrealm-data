@@ -24,7 +24,6 @@ import com.jrealm.data.entity.GameItemRefEntity;
 import com.jrealm.data.entity.PlayerAccountEntity;
 import com.jrealm.data.entity.auth.AccountEntity;
 import com.jrealm.data.repository.CharacterRepository;
-import com.jrealm.data.repository.CharacterStatsRepository;
 import com.jrealm.data.repository.ChestRepository;
 import com.jrealm.data.repository.GameItemRefRepository;
 import com.jrealm.data.repository.PlayerAccountRepository;
@@ -42,7 +41,6 @@ public class PlayerDataService {
 	private final transient PlayerAccountRepository playerAccountRepository;
 	private final transient ChestRepository playerChestRepository;
 	private final transient CharacterRepository playerCharacterRepository;
-	private final transient CharacterStatsRepository playerStatsRepository;
 	private final transient GameItemRefRepository gameItemRefRepository;
 	private final transient ModelMapper mapper;
 
@@ -50,13 +48,12 @@ public class PlayerDataService {
 			@Autowired final PlayerAccountRepository playerAccountRepository,
 			@Autowired final ChestRepository playerChestRepository,
 			@Autowired final CharacterRepository playerCharacterRepository,
-			@Autowired final CharacterStatsRepository playerStatsRepository,
-			@Autowired final GameItemRefRepository gameItemRefRepository, @Autowired final ModelMapper mapper) {
+			@Autowired final GameItemRefRepository gameItemRefRepository,
+			@Autowired final ModelMapper mapper) {
 		this.accountRepository = accountRepository;
 		this.playerAccountRepository = playerAccountRepository;
 		this.playerChestRepository = playerChestRepository;
 		this.playerCharacterRepository = playerCharacterRepository;
-		this.playerStatsRepository = playerStatsRepository;
 		this.gameItemRefRepository = gameItemRefRepository;
 		this.mapper = mapper;
 	}
@@ -116,7 +113,9 @@ public class PlayerDataService {
 		final CharacterClass clazz = CharacterClass.valueOf(classId);
 		if (clazz == null)
 			throw new Exception("Character class with id " + classId + " does not exist");
-		PlayerAccountEntity accountEntity = this.playerAccountRepository.findByAccountUuid(accountUuid).get();
+		PlayerAccountEntity accountEntity = this.playerAccountRepository.findByAccountUuid(accountUuid);
+		if (accountEntity == null)
+			throw new Exception("Account with with UUID " + accountUuid + " does not exist");
 		final CharacterEntity character = CharacterEntity.builder().characterUuid(PlayerDataService.randomUuid())
 				.characterClass(classId).build();
 
@@ -139,14 +138,18 @@ public class PlayerDataService {
 				(Instant.now().toEpochMilli() - start));
 
 		return this.mapper.map(accountEntity, PlayerAccountDto.class);
-
 	}
 
 	public void deleteCharacter(final String characterUuid) throws Exception {
-		final CharacterEntity character = this.playerCharacterRepository.findByCharacterUuid(characterUuid);
-		character.setDeleted(new Date(Instant.now().toEpochMilli()));
-
-		// this.playerAccountRepository.save(character.getOwnerAccount());
+		final long start = Instant.now().toEpochMilli();
+		PlayerAccountEntity account = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
+		Optional<CharacterEntity> characterToDelete = account.getCharacters().stream().filter(character->character.getCharacterUuid().equals(characterUuid)).findAny();
+		if (characterToDelete.isEmpty())
+			throw new Exception("Player character with UUID "+characterUuid+" does not exist");
+		characterToDelete.get().setDeleted(new Date(Instant.now().toEpochMilli()));
+		PlayerDataService.log.info("Successfully deleted character {} in {}ms", characterUuid,
+				(Instant.now().toEpochMilli() - start));
+		this.playerAccountRepository.save(account);
 	}
 
 	public List<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception {
@@ -201,57 +204,69 @@ public class PlayerDataService {
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);
 	}
 
-	//	public boolean replaceChestItem(final String chestUuid, final String targetItemUuid, final GameItemRefEntity replacement) throws Exception{
-	//		final ChestEntity targetChest = this.playerChestRepository.findByChestUuid(chestUuid);
-	//		boolean success = false;
-	//		if(targetChest==null)
-	//			throw new Exception("Chest with UUID "+chestUuid+" does not exist");
-	//		final PlayerAccountEntity ownerAccount = targetChest.getOwnerAccount();
-	//		final GameItemRefEntity targetItem = this.gameItemRefRepository.findByItemUuid(targetItemUuid);
-	//		if(targetItem==null)
-	//			throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist");
-	//		if(replacement==null) {
-	//			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
-	//			if(itemInChest.isEmpty())
-	//				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
-	//			final GameItemRefEntity toRemove = itemInChest.get();
-	//			success = targetChest.removeItem(targetItem);
-	//			this.deleteGameItem(toRemove);
-	//		}else {
-	//			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
-	//			if(itemInChest.isEmpty())
-	//				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
-	//			final GameItemRefEntity toRemove = itemInChest.get();
-	//			success = targetChest.removeItem(targetItem);
-	//			this.deleteGameItem(toRemove);
-	//			targetChest.addItem(replacement);
-	//		}
-	//		this.playerAccountRepository.save(ownerAccount);
-	//		return success;
-	//	}
+	public boolean replaceChestItem(final String accountUuid, final String chestUuid, final String targetItemUuid, final GameItemRefEntity replacement) throws Exception{
+		final PlayerAccountEntity account = this.playerAccountRepository.findByAccountUuid(accountUuid);
+		final ChestEntity targetChest = this.playerChestRepository.findByChestUuid(chestUuid);
+		boolean success = false;
+		if(targetChest==null)
+			throw new Exception("Chest with UUID "+chestUuid+" does not exist");
+		final GameItemRefEntity targetItem = this.gameItemRefRepository.findByItemUuid(targetItemUuid);
+		if(targetItem==null)
+			throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist");
+		if(replacement==null) {
+			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
+			if(itemInChest.isEmpty())
+				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+			final GameItemRefEntity toRemove = itemInChest.get();
+			success = targetChest.removeItem(targetItem);
+			this.deleteGameItem(toRemove);
+		}else {
+			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
+			if(itemInChest.isEmpty())
+				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+			final GameItemRefEntity toRemove = itemInChest.get();
+			success = targetChest.removeItem(targetItem);
+			this.deleteGameItem(toRemove);
+			targetChest.addItem(replacement);
+		}
+		this.playerAccountRepository.save(account);
+		return success;
+	}
 
 	public void deleteGameItem(final GameItemRefEntity toDelete) {
 		this.gameItemRefRepository.delete(toDelete);
 	}
 
-	public PlayerAccountDto getAccountById(final Integer accountId) throws Exception {
+	public PlayerAccountDto getAccountById(final String accountId) throws Exception {
+		final long start = Instant.now().toEpochMilli();
 		Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findById(accountId);
-		if(entity.isPresent())
-			return this.mapper.map(entity.get(), PlayerAccountDto.class);
+		if (entity.isPresent()) {
+			PlayerDataService.log.info("Fetched account by id {} in {}ms", accountId,
+					(Instant.now().toEpochMilli() - start));
+			return this.mapper.map(entity, PlayerAccountDto.class);
+		}
 		throw new Exception("PlayerAccount with id "+ accountId+" not found");
 	}
 
 	public PlayerAccountDto getAccountByEmail(final String email) throws Exception {
-		Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findByAccountEmail(email);
-		if(entity.isPresent())
-			return this.mapper.map(entity.get(), PlayerAccountDto.class);
+		final long start = Instant.now().toEpochMilli();
+		PlayerAccountEntity entity = this.playerAccountRepository.findByAccountEmail(email);
+		if (entity != null) {
+			PlayerDataService.log.info("Fetched account by email {} in {}ms", email,
+					(Instant.now().toEpochMilli() - start));
+			return this.mapper.map(entity, PlayerAccountDto.class);
+		}
 		throw new Exception("PlayerAccount with email "+ email+" not found");
 	}
 
 	public PlayerAccountDto getAccountByUuid(final String accountUuid) throws Exception {
-		Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findByAccountUuid(accountUuid);
-		if(entity.isPresent())
-			return this.mapper.map(entity.get(), PlayerAccountDto.class);
+		final long start = Instant.now().toEpochMilli();
+		PlayerAccountEntity entity = this.playerAccountRepository.findByAccountUuid(accountUuid);
+		if (entity != null) {
+			PlayerDataService.log.info("Fetched account by UUID {} in {}ms", accountUuid,
+					(Instant.now().toEpochMilli() - start));
+			return this.mapper.map(entity, PlayerAccountDto.class);
+		}
 		throw new Exception("PlayerAccount with account UUID "+ accountUuid+" not found");
 	}
 

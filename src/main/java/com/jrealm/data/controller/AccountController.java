@@ -1,5 +1,6 @@
 package com.jrealm.data.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jrealm.data.dto.PingResponseDto;
 import com.jrealm.data.dto.auth.AccountDto;
 import com.jrealm.data.dto.auth.CreateTokenRequestDto;
 import com.jrealm.data.dto.auth.CreateTokenResponseDto;
@@ -22,26 +24,42 @@ import com.jrealm.data.dto.auth.UserApiTokenDto;
 import com.jrealm.data.entity.auth.AccountAuthEntity;
 import com.jrealm.data.entity.auth.AccountEntity;
 import com.jrealm.data.service.AccountService;
+import com.jrealm.data.service.PlayerDataService;
 import com.jrealm.data.util.ApiUtils;
 
 
 @RestController
 public class AccountController {
 	private transient final AccountService jrealmAccounts;
+	private transient final PlayerDataService jrealmData;
 
-	public AccountController(@Autowired final AccountService clabAccount) {
-		this.jrealmAccounts = clabAccount;
+	public AccountController(@Autowired final AccountService jrealmAccountService,
+			@Autowired final PlayerDataService jrealmData) {
+		this.jrealmAccounts = jrealmAccountService;
+		this.jrealmData = jrealmData;
+	}
+
+	@RequestMapping(value = "/ping", method = RequestMethod.GET, produces = { "application/json" })
+	public ResponseEntity<?> ping(final HttpServletRequest req) {
+		ResponseEntity<?> res = null;
+		try {
+			PingResponseDto response = PingResponseDto.builder().time(new Date().toString()).status("UP").build();
+			res = ApiUtils.buildSuccess(response);
+		} catch (final Exception e) {
+			final String errMsg = "Failed to get JRealm Account using headers ";
+			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
+		}
+		return res;
 	}
 
 	@RequestMapping(value = "/admin/account", method = RequestMethod.PUT, produces = { "application/json" })
-
 	public ResponseEntity<?> updateAccount(final HttpServletRequest req, @RequestBody final AccountDto account) {
 		ResponseEntity<?> res = null;
 		try {
 			final AccountEntity updatedAccount = this.jrealmAccounts.updateAccountAndAuth(account);
 			res = ApiUtils.buildSuccess(updatedAccount);
 		} catch (final Exception e) {
-			final String errMsg = "Failed to update CLAB Account";
+			final String errMsg = "Failed to update JRealm Account";
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;
@@ -55,7 +73,7 @@ public class AccountController {
 			final AccountDto account = this.jrealmAccounts.getAccountByEmail(email);
 			res = ApiUtils.buildSuccess(account);
 		} catch (final Exception e) {
-			final String errMsg = "Failed to get CLAB Account with email " + email;
+			final String errMsg = "Failed to get JRealm Account with email " + email;
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;
@@ -69,7 +87,7 @@ public class AccountController {
 			final AccountDto account = this.jrealmAccounts.getAccountByGuid(auth.getAccountGuid());
 			res = ApiUtils.buildSuccess(account);
 		} catch (final Exception e) {
-			final String errMsg = "Failed to get CLAB Account using headers ";
+			final String errMsg = "Failed to get JRealm Account using headers ";
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;
@@ -82,7 +100,7 @@ public class AccountController {
 			final AccountDto account = this.jrealmAccounts.getAccountById(accountId);
 			res = ApiUtils.buildSuccess(account);
 		} catch (final Exception e) {
-			final String errMsg = "Failed to get CLAB Account using headers ";
+			final String errMsg = "Failed to get JRealm Account using headers ";
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;
@@ -99,7 +117,7 @@ public class AccountController {
 			final List<AccountDto> accounts = this.jrealmAccounts.getAllAccounts(page, size);
 			res = ApiUtils.buildSuccess(accounts);
 		} catch (final Exception e) {
-			final String errMsg = "Failed to get All CLAB Accounts using headers ";
+			final String errMsg = "Failed to get All JRealm Accounts using headers ";
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;
@@ -112,28 +130,7 @@ public class AccountController {
 			final SessionTokenDto userToken = this.jrealmAccounts.login(login);
 			res = ApiUtils.buildSuccess(userToken);
 		} catch (final Exception e) {
-			final String errMsg = "Error trying to login CLAB Account " + login.getEmail();
-			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
-		}
-		return res;
-	}
-
-	@RequestMapping(value = "/admin/account/learner-login", method = RequestMethod.POST, produces = {
-	"application/json" })
-	public ResponseEntity<?> learnerLogin(final HttpServletRequest request, @RequestBody final LoginRequestDto login) {
-		ResponseEntity<?> res = null;
-		try {
-			final SessionTokenDto userToken = this.jrealmAccounts.learnerLogin(login);
-			if (userToken != null) {
-				res = ApiUtils.buildSuccess(userToken);
-			} else {
-				final String errMsg = "Unable to retrieve session token for account " + login.getEmail();
-				final String exception = "Login failed, make sure a learner account with email" + login.toString()
-				+ " exists";
-				res = ApiUtils.buildAndLogError(errMsg, exception);
-			}
-		} catch (final Exception e) {
-			final String errMsg = "Login failed for user with email " + login.getEmail();
+			final String errMsg = "Error trying to login JRealm Account " + login.getEmail();
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;
@@ -159,9 +156,11 @@ public class AccountController {
 		ResponseEntity<?> res = null;
 		try {
 			final AccountEntity created = this.jrealmAccounts.registerJrealmAccount(account);
+			this.jrealmData.createInitialAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName(),
+					0);
 			res = ApiUtils.buildSuccess(created);
 		} catch (final Exception e) {
-			final String errMsg = "Failed to register CLAB Account";
+			final String errMsg = "Failed to register JRealm Account";
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;

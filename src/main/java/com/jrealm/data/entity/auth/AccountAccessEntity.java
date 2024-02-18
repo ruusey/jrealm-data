@@ -9,6 +9,7 @@ import com.jrealm.data.entity.TemporalEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(callSuper=false)
 public class AccountAccessEntity extends TemporalEntity {
 
 	private static final long serialVersionUID = -4754594739686465193L;

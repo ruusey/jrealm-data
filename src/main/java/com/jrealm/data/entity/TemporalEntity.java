@@ -22,4 +22,8 @@ public class TemporalEntity implements Serializable {
 	@LastModifiedDate
 	private Date updated;
 	private Date deleted;
+
+	public boolean isDelete() {
+		return this.deleted != null;
+	}
 }
