@@ -1,5 +1,7 @@
 package com.jrealm.data.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jrealm.data.dto.CharacterDto;
+import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.PlayerAccountDto;
 import com.jrealm.data.service.PlayerDataService;
 import com.jrealm.data.util.ApiUtils;
@@ -79,6 +82,20 @@ public class PlayerDataController {
 		} catch (Exception e) {
 
 			res = ApiUtils.buildAndLogError("Failed to save character stats", e.getMessage());
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@PostMapping(value = "/account/{accountUuid}/chest", produces = { "application/json" })
+	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String accountUuid,
+			@RequestBody final List<ChestDto> chests) {
+		ResponseEntity<?> res = null;
+		try {
+			res = ApiUtils.buildSuccess(this.playerDataService.saveChests(accountUuid, chests));
+		} catch (Exception e) {
+
+			res = ApiUtils.buildAndLogError("Failed to save account chests", e.getMessage());
 			e.printStackTrace();
 		}
 		return res;

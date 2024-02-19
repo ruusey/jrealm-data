@@ -15,6 +15,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import com.jrealm.data.dto.CharacterDto;
+import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.GameItemRefDto;
 import com.jrealm.data.dto.PlayerAccountDto;
 import com.jrealm.data.entity.CharacterEntity;
@@ -157,6 +158,15 @@ public class PlayerDataService {
 		if(account==null)
 			throw new Exception("Player account with UUID "+ accountUuid+" was not found");
 		return account.getCharacters();
+	}
+
+	public PlayerAccountDto saveChests(final String accountUuid, final List<ChestDto> chests) throws Exception {
+		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+		if (account == null)
+			throw new Exception("Player account with UUID " + accountUuid + " was not found");
+
+		account.setPlayerVault(chests);
+		return this.saveAccount(account);
 	}
 
 	public PlayerAccountDto saveAccount(final PlayerAccountDto dto) {
