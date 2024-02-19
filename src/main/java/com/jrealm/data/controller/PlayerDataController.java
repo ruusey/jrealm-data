@@ -101,6 +101,19 @@ public class PlayerDataController {
 		return res;
 	}
 
+	@PostMapping(value = "/account/{accountUuid}/chest/new", produces = { "application/json" })
+	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String accountUuid) {
+		ResponseEntity<?> res = null;
+		try {
+			res = ApiUtils.buildSuccess(this.playerDataService.createChest(accountUuid));
+		} catch (Exception e) {
+
+			res = ApiUtils.buildAndLogError("Failed to create account chest", e.getMessage());
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 	@DeleteMapping(value = "/account/character/{characterUuid}", produces = { "application/json" })
 	public ResponseEntity<?> deleteCharacter(@PathVariable String characterUuid) {
 		ResponseEntity<?> res = null;

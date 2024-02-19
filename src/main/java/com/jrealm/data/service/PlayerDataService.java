@@ -160,6 +160,18 @@ public class PlayerDataService {
 		return account.getCharacters();
 	}
 
+	public PlayerAccountDto createChest(final String accountUuid) throws Exception {
+		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+		if (account == null)
+			throw new Exception("Player account with UUID " + accountUuid + " was not found");
+
+		final ChestDto initialChest = ChestDto.builder().chestUuid(PlayerDataService.randomUuid()).ordinal(account.getPlayerVault().size()).build();
+
+		account.getPlayerVault().add(initialChest);
+		return this.saveAccount(account);
+
+	}
+
 	public PlayerAccountDto saveChests(final String accountUuid, final List<ChestDto> chests) throws Exception {
 		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
 		if (account == null)
