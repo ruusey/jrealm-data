@@ -11,8 +11,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 100.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -29,8 +29,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 350.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -47,8 +47,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 350.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -65,8 +65,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 350.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -83,8 +83,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 350.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -101,8 +101,8 @@
 		"xp": 250,
 		"health": 500,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 500.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -119,8 +119,8 @@
 		"xp": 250,
 		"health": 500,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 300.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -137,8 +137,8 @@
 		"xp": 250,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 500.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -155,8 +155,8 @@
 		"xp": 500,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 500.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
@@ -173,8 +173,8 @@
 		"xp": 500,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 650.0,
-		"attackRange": 500.0,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
 		"stats": {
 			"def": 5
 		}
