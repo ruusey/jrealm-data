@@ -169,7 +169,6 @@ public class PlayerDataService {
 
 		account.getPlayerVault().add(initialChest);
 		return this.saveAccount(account);
-
 	}
 
 	public PlayerAccountDto saveChests(final String accountUuid, final List<ChestDto> chests) throws Exception {
