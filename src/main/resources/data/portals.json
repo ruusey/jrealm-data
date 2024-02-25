@@ -30,5 +30,13 @@
 		"row": 9,
 		"col": 12,
 		"spriteKey": "entity/rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 4,
+		"portalName": "Boss_0_Portal",
+		"mapId": 5,
+		"row": 9,
+		"col": 13,
+		"spriteKey": "entity/rotmg-tiles-2.png"
 	}
 ]

@@ -11,7 +11,7 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -30,7 +30,7 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -49,7 +49,7 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -68,7 +68,7 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -87,7 +87,7 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -106,7 +106,7 @@
 		"xp": 250,
 		"health": 500,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -125,7 +125,7 @@
 		"xp": 250,
 		"health": 500,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -144,7 +144,7 @@
 		"xp": 250,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -163,7 +163,7 @@
 		"xp": 600,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -182,7 +182,7 @@
 		"xp": 600,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
@@ -201,7 +201,7 @@
 		"xp": 750,
 		"health": 1800,
 		"maxSpeed": 1.4,
-		"chaseRange": 232.0,
+		"chaseRange": 250.0,
 		"attackRange": 140.0,
 		"stats": {
 			"def": 20,
@@ -225,6 +225,25 @@
 		"stats": {
 			"def": 20,
 			"dex": 15
+		}
+	},
+	{
+		"enemyId": 13,
+		"name": "The Man",
+		"spriteKey": "entity/rotmg-bosses.png",
+		"row": 2,
+		"col": 3,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 10000,
+		"health": 5000,
+		"maxSpeed": 1.4,
+		"chaseRange": 350.0,
+		"attackRange": 232.0,
+		"stats": {
+			"def": 25,
+			"dex": 25
 		}
 	}
 ]
