@@ -2364,7 +2364,7 @@
 		},
 		"effect": {
 			"effectId": 6,
-			"mpCost": 25
+			"mpCost": 50
 		},
 		"consumable": false,
 		"tier": 14,

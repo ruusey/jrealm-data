@@ -11,10 +11,11 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 20
 		}
 	},
 	{
@@ -29,10 +30,11 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 16
 		}
 	},
 	{
@@ -47,10 +49,11 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 12
 		}
 	},
 	{
@@ -65,10 +68,11 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 10
 		}
 	},
 	{
@@ -83,10 +87,11 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 12
 		}
 	},
 	{
@@ -101,10 +106,11 @@
 		"xp": 250,
 		"health": 500,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 15
 		}
 	},
 	{
@@ -119,10 +125,11 @@
 		"xp": 250,
 		"health": 500,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 15
 		}
 	},
 	{
@@ -137,10 +144,11 @@
 		"xp": 250,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 15
 		}
 	},
 	{
@@ -152,13 +160,14 @@
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 24,
-		"xp": 500,
+		"xp": 600,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 10
 		}
 	},
 	{
@@ -169,14 +178,53 @@
 		"col": 2,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": 25,
-		"xp": 500,
+		"attackId": -1,
+		"xp": 600,
 		"health": 1000,
 		"maxSpeed": 1.4,
-		"chaseRange": 200.0,
-		"attackRange": 120.0,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
 		"stats": {
-			"def": 5
+			"def": 5,
+			"dex": 10
+		}
+	},
+	{
+		"enemyId": 11,
+		"name": "Slime God",
+		"spriteKey": "entity/rotmg-bosses.png",
+		"row": 2,
+		"col": 6,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 750,
+		"health": 1800,
+		"maxSpeed": 1.4,
+		"chaseRange": 232.0,
+		"attackRange": 140.0,
+		"stats": {
+			"def": 20,
+			"dex": 10
+		}
+	},
+	{
+		"enemyId": 12,
+		"name": "Generic Monster",
+		"spriteKey": "entity/rotmg-bosses.png",
+		"row": 3,
+		"col": 6,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 850,
+		"health": 1900,
+		"maxSpeed": 1.4,
+		"chaseRange": 250.0,
+		"attackRange": 140.0,
+		"stats": {
+			"def": 20,
+			"dex": 15
 		}
 	}
 ]
