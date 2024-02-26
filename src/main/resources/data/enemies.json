@@ -2,7 +2,7 @@
 	{
 		"enemyId": 1,
 		"name": "Cube God",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 4,
 		"col": 7,
 		"spriteSize": 16,
@@ -21,7 +21,7 @@
 	{
 		"enemyId": 2,
 		"name": "Skull Shrine",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 4,
 		"col": 5,
 		"spriteSize": 16,
@@ -40,7 +40,7 @@
 	{
 		"enemyId": 3,
 		"name": "Ghost God",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 4,
 		"col": 0,
 		"spriteSize": 16,
@@ -59,7 +59,7 @@
 	{
 		"enemyId": 4,
 		"name": "Medusa",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 1,
 		"col": 2,
 		"spriteSize": 16,
@@ -78,7 +78,7 @@
 	{
 		"enemyId": 5,
 		"name": "Red Demon",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 0,
 		"col": 1,
 		"spriteSize": 16,
@@ -97,7 +97,7 @@
 	{
 		"enemyId": 6,
 		"name": "Pirate_0",
-		"spriteKey": "entity/rotmg-bosses-1.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 0,
 		"col": 11,
 		"spriteSize": 8,
@@ -116,7 +116,7 @@
 	{
 		"enemyId": 7,
 		"name": "Red_Bandit_0",
-		"spriteKey": "entity/rotmg-bosses-1.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 0,
 		"col": 9,
 		"spriteSize": 8,
@@ -135,7 +135,7 @@
 	{
 		"enemyId": 8,
 		"name": "Purple_Mage_0",
-		"spriteKey": "entity/rotmg-bosses-1.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 2,
 		"col": 10,
 		"spriteSize": 8,
@@ -154,7 +154,7 @@
 	{
 		"enemyId": 9,
 		"name": "Minotaur",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 1,
 		"col": 0,
 		"spriteSize": 16,
@@ -173,7 +173,7 @@
 	{
 		"enemyId": 10,
 		"name": "Cyclops",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 0,
 		"col": 2,
 		"spriteSize": 16,
@@ -192,7 +192,7 @@
 	{
 		"enemyId": 11,
 		"name": "Slime God",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 2,
 		"col": 6,
 		"spriteSize": 16,
@@ -211,7 +211,7 @@
 	{
 		"enemyId": 12,
 		"name": "Generic Monster",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 3,
 		"col": 6,
 		"spriteSize": 16,
@@ -230,7 +230,7 @@
 	{
 		"enemyId": 13,
 		"name": "The Man",
-		"spriteKey": "entity/rotmg-bosses.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 2,
 		"col": 3,
 		"spriteSize": 16,

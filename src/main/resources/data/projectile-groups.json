@@ -4,7 +4,7 @@
 		"projectileGroupId": 0,
 		"row": 7,
 		"col": 4,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -77,7 +77,7 @@
 		"projectileGroupId": 1,
 		"row": 14,
 		"col": 6,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 1,
@@ -150,7 +150,7 @@
 		"projectileGroupId": 2,
 		"row": 13,
 		"col": 6,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 2,
@@ -366,7 +366,7 @@
 		"projectileGroupId": 4,
 		"row": 6,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -388,7 +388,7 @@
 		"projectileGroupId": 5,
 		"row": 6,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -410,7 +410,7 @@
 		"projectileGroupId": 6,
 		"row": 4,
 		"col": 13,
-		"spriteKey": "entity/rotmg-tiles.png",
+		"spriteKey": "rotmg-tiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -432,7 +432,7 @@
 		"projectileGroupId": 7,
 		"row": 10,
 		"col": 10,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -506,7 +506,7 @@
 		"projectileGroupId": 8,
 		"row": 8,
 		"col": 1,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 8,
@@ -604,7 +604,7 @@
 		"projectileGroupId": 9,
 		"row": 7,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -652,7 +652,7 @@
 		"projectileGroupId": 10,
 		"row": 8,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -691,7 +691,7 @@
 		"projectileGroupId": 11,
 		"row": 8,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -713,7 +713,7 @@
 		"projectileGroupId": 12,
 		"row": 7,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -734,7 +734,7 @@
 		"projectileGroupId": 13,
 		"row": 13,
 		"col": 14,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 13,
@@ -755,7 +755,7 @@
 		"projectileGroupId": 14,
 		"row": 9,
 		"col": 10,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -788,7 +788,7 @@
 		"projectileGroupId": 15,
 		"row": 11,
 		"col": 10,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -1005,7 +1005,7 @@
 		"projectileGroupId": 16,
 		"row": 10,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 16,
@@ -1026,7 +1026,7 @@
 		"projectileGroupId": 17,
 		"row": 10,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 17,
@@ -1047,7 +1047,7 @@
 		"projectileGroupId": 18,
 		"row": 1,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{3PI/4}}",
 		"projectiles": [
 			{
@@ -1095,7 +1095,7 @@
 		"projectileGroupId": 19,
 		"row": 12,
 		"col": 1,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 19,
@@ -1133,7 +1133,7 @@
 		"projectileGroupId": 20,
 		"row": 9,
 		"col": 7,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 20,
@@ -1193,7 +1193,7 @@
 		"projectileGroupId": 21,
 		"row": 4,
 		"col": 12,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 21,
@@ -1261,7 +1261,7 @@
 		"projectileGroupId": 22,
 		"row": 7,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -1282,7 +1282,7 @@
 		"projectileGroupId": 23,
 		"row": 4,
 		"col": 14,
-		"spriteKey": "entity/rotmg-tiles.png",
+		"spriteKey": "rotmg-tiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -1304,7 +1304,7 @@
 		"projectileGroupId": 24,
 		"row": 4,
 		"col": 15,
-		"spriteKey": "entity/rotmg-tiles.png",
+		"spriteKey": "rotmg-tiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -1361,7 +1361,7 @@
 		"projectileGroupId": 25,
 		"row": 4,
 		"col": 12,
-		"spriteKey": "entity/rotmg-tiles.png",
+		"spriteKey": "rotmg-tiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -1418,7 +1418,7 @@
 		"projectileGroupId": 26,
 		"row": 7,
 		"col": 8,
-		"spriteKey": "entity/rotmg-projectiles.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 26,
@@ -1439,7 +1439,7 @@
 		"projectileGroupId": 27,
 		"row": 4,
 		"col": 7,
-		"spriteKey": "entity/rotmg-tiles.png",
+		"spriteKey": "rotmg-tiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -1461,7 +1461,7 @@
 		"projectileGroupId": 28,
 		"row": 8,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
