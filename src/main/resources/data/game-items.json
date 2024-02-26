@@ -2340,7 +2340,7 @@
 		"name": "Staff of the Fundamental Core",
 		"description": "An otherworldly staff of omnipresent elation, embodied of cardinal essence and the power of deathless peace.",
 		"damage": {
-			"projectileGroupId": 10,
+			"projectileGroupId": 28,
 			"min": 75,
 			"max": 115
 		},
