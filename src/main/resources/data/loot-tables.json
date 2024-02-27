@@ -4,6 +4,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
+			"group:31": 0.40,
 			"group:10": 0.10,
 			"group:11": 0.10,
 			"group:12": 0.05,
@@ -17,6 +18,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
+			"group:31": 0.40,
 			"group:13": 0.10,
 			"group:14": 0.10,
 			"group:15": 0.05,
@@ -30,6 +32,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
+			"group:31": 0.40,
 			"group:10": 0.10,
 			"group:11": 0.10,
 			"group:12": 0.05,
@@ -43,6 +46,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
+			"group:31": 0.40,
 			"group:10": 0.10,
 			"group:11": 0.10,
 			"group:12": 0.05,
@@ -56,6 +60,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
+			"group:31": 0.40,
 			"group:10": 0.10,
 			"group:11": 0.10,
 			"group:12": 0.05,
@@ -69,6 +74,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
+			"group:31": 0.40,
 			"group:10": 0.10,
 			"group:11": 0.10,
 			"group:12": 0.05,
@@ -81,6 +87,7 @@
 		"enemyId": 7,
 		"drops": {
 			"group:0": 0.40,
+			"group:31": 0.40,
 			"group:4": 0.10,
 			"group:5": 0.10,
 			"group:6": 0.05,
@@ -93,6 +100,7 @@
 		"enemyId": 8,
 		"drops": {
 			"group:0": 0.40,
+			"group:31": 0.40,
 			"group:4": 0.10,
 			"group:5": 0.10,
 			"group:6": 0.05,
@@ -106,6 +114,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.20,
+			"group:31": 0.40,
 			"group:7": 0.10,
 			"group:8": 0.10,
 			"group:9": 0.05,
@@ -119,6 +128,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.20,
+			"group:31": 0.40,
 			"group:7": 0.10,
 			"group:8": 0.10,
 			"group:9": 0.05,
@@ -145,6 +155,7 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
+			"group:2": 0.30,
 			"group:13": 0.10,
 			"group:14": 0.10,
 			"group:15": 0.10,
@@ -157,6 +168,7 @@
 		"enemyId": 13,
 		"drops": {
 			"group:1": 1.00,
+			"group:2": 0.30,
 			"group:16": 0.50,
 			"group:17": 0.30,
 			"group:29": 0.50,
