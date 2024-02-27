@@ -3,6 +3,7 @@ package com.jrealm.data.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.PlayerAccountDto;
 import com.jrealm.data.service.PlayerDataService;
 import com.jrealm.data.util.ApiUtils;
+import com.jrealm.data.util.ErrorResponseObject;
 
 @RestController
 @RequestMapping("/data")
@@ -119,7 +121,8 @@ public class PlayerDataController {
 		ResponseEntity<?> res = null;
 		try {
 			this.playerDataService.deleteCharacter(characterUuid);
-			res = ApiUtils.buildSuccess("Character " + characterUuid + " successfully deleted");
+			
+			res = ApiUtils.buildSuccess(ErrorResponseObject.builder().message("successfully deleted character "+characterUuid).reason("Character deleted").status(HttpStatus.OK).build());
 		} catch (Exception e) {
 
 			res = ApiUtils.buildAndLogError("Failed to save character stats", e.getMessage());

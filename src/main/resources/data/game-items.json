@@ -2086,7 +2086,7 @@
 		"col": 0,
 		"spriteKey": "rotmg-items.png",
 		"name": "Energy Staff",
-		"description": "A magical wooden staff topped with a white crystal.",
+		"description": "A magical wooden staff topped with a white .",
 		"damage": {
 			"projectileGroupId": 10,
 			"min": 10,
