@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>com.jrealm.game</groupId>
 			<artifactId>jrealm</artifactId>
-			<version>0.3.2</version>
+			<version>0.3.3-Testing</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
