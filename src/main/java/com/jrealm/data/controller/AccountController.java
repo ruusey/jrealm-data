@@ -79,28 +79,14 @@ public class AccountController {
 		return res;
 	}
 
-	@RequestMapping(value = "/admin/account", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<?> getAccount(final HttpServletRequest req) {
-		ResponseEntity<?> res = null;
-		try {
-			final AccountAuthEntity auth = this.jrealmAccounts.extractAuth(req);
-			final AccountDto account = this.jrealmAccounts.getAccountByGuid(auth.getAccountGuid());
-			res = ApiUtils.buildSuccess(account);
-		} catch (final Exception e) {
-			final String errMsg = "Failed to get JRealm Account using headers ";
-			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
-		}
-		return res;
-	}
-
 	@RequestMapping(value = "/admin/account/{accountId}", method = RequestMethod.GET, produces = { "application/json" })
-	public ResponseEntity<?> getAccount(final HttpServletRequest req, @PathVariable final String accountId) {
+	public ResponseEntity<?> getAccount(final HttpServletRequest req, @PathVariable final String accountGuid) {
 		ResponseEntity<?> res = null;
 		try {
-			final AccountDto account = this.jrealmAccounts.getAccountById(accountId);
+			final AccountDto account = this.jrealmAccounts.getAccountByGuid(accountGuid);
 			res = ApiUtils.buildSuccess(account);
 		} catch (final Exception e) {
-			final String errMsg = "Failed to get JRealm Account using headers ";
+			final String errMsg = "Account with UUID "+accountGuid+" does not exist.";
 			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
 		}
 		return res;
