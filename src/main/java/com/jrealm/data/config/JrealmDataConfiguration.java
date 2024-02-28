@@ -10,6 +10,11 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+
 @Configuration
 public class JrealmDataConfiguration extends AbstractMongoClientConfiguration {
 	@Bean
@@ -31,5 +36,14 @@ public class JrealmDataConfiguration extends AbstractMongoClientConfiguration {
 		final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
 				.applyConnectionString(connectionString).build();
 		return MongoClients.create(mongoClientSettings);
+	}
+	
+	@Bean
+	public Docket swaggerDocs() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.any())
+				.build();
 	}
 }
