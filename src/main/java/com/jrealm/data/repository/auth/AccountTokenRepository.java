@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.jrealm.data.entity.auth.AccountTokenEntity;
 
-public interface AccountTokenRepo extends MongoRepository<AccountTokenEntity, String> {
+public interface AccountTokenRepository extends MongoRepository<AccountTokenEntity, String> {
 	AccountTokenEntity findByToken(String token);
 	List<AccountTokenEntity> findAllByAccountGuid(String accountGuid);
 }

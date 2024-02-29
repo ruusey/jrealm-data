@@ -42,6 +42,9 @@ public class AccountDto implements Serializable {
 	private Date updated;
 	private Date deleted;
 
+	public boolean isAdmin() {
+		return this.accountSubscriptions!=null && this.accountSubscriptions.size()>0 && this.accountSubscriptions.contains(AccountSubscription.ADMIN);
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
