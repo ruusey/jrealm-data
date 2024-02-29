@@ -79,7 +79,7 @@ public class AccountController {
 		return res;
 	}
 
-	@RequestMapping(value = "/admin/account/{accountId}", method = RequestMethod.GET, produces = { "application/json" })
+	@RequestMapping(value = "/admin/account/{accountGuid}", method = RequestMethod.GET, produces = { "application/json" })
 	public ResponseEntity<?> getAccount(final HttpServletRequest req, @PathVariable final String accountGuid) {
 		ResponseEntity<?> res = null;
 		try {
