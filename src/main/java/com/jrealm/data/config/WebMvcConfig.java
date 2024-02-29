@@ -15,6 +15,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
-	  	registry.addInterceptor(yourInjectedInterceptor);
+	  	registry.addInterceptor(this.yourInjectedInterceptor)
+	  	.addPathPatterns("/data/**", "/admin/**");
   }
 }

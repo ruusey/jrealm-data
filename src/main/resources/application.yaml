@@ -6,8 +6,9 @@ spring:
     serialization:
       fail-on-empty-beans: false
   mvc:
-      pathmatch:
-            matching-strategy: ant-path-matcher
+    pathmatch:
+      matching-strategy: ant-path-matcher
+    static-path-pattern: /game-data/**
   main:
     web-environment: false
     allow-bean-definition-overriding: true

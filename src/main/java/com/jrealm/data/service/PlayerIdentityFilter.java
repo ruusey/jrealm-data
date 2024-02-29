@@ -32,8 +32,16 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		if (request.getServletPath().equals("/admin/account/login") || request.getServletPath().matches("/.*[a-z0-9 -].png") || request.getServletPath().matches("/.*[a-z0-9 -].json")) {
-			log.info("Safe path detected {}", request.getServletPath());
+		log.info(request.getRemoteAddr());
+		
+		if (request.getRemoteAddr().equals("127.0.0.1") || request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
+				|| request.getServletPath().equals("/admin/account/login")
+				|| request.getServletPath().equals("/v2/api-docs") || request.getServletPath().equals("/ping")
+				|| request.getServletPath().contains("/swagger-ui")
+				|| request.getServletPath().contains("/swagger-resources")
+				|| request.getServletPath().matches("/.*[a-z0-9 -].png")
+				|| request.getServletPath().matches("/.*[a-z0-9 -].json")) {
+			log.debug("Safe path detected {}", request.getServletPath());
 			filterChain.doFilter(request, response);
 			return;
 		}
@@ -59,6 +67,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 		final String authHeader = request.getHeader("Authorization");
 
 		if (authHeader == null || authHeader.isEmpty()) {
+			log.info(request.getServletPath());
 			throw new ServletException("Authorization is required to access this resource.");
 		}
 		return authHeader;
