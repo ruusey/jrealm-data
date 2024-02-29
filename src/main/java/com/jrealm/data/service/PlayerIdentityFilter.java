@@ -32,7 +32,8 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		if (request.getServletPath().equals("/admin/account/login")) {
+		if (request.getServletPath().equals("/admin/account/login") || request.getServletPath().matches("/.*[a-z0-9 -].png") || request.getServletPath().matches("/.*[a-z0-9 -].json")) {
+			log.info("Safe path detected {}", request.getServletPath());
 			filterChain.doFilter(request, response);
 			return;
 		}
