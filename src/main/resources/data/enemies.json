@@ -245,5 +245,24 @@
 			"def": 25,
 			"dex": 15
 		}
+	},
+	{
+		"enemyId": 14,
+		"name": "Beach Bandit",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 1,
+		"col": 15,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": -1,
+		"xp": 500,
+		"health": 800,
+		"maxSpeed": 1.4,
+		"chaseRange": 350.0,
+		"attackRange": 252.0,
+		"stats": {
+			"def": 5,
+			"dex": 5
+		}
 	}
 ]
