@@ -24,7 +24,6 @@ import com.jrealm.data.entity.ChestEntity;
 import com.jrealm.data.entity.GameItemRefEntity;
 import com.jrealm.data.entity.PlayerAccountEntity;
 import com.jrealm.data.entity.auth.AccountEntity;
-import com.jrealm.data.repository.CharacterRepository;
 import com.jrealm.data.repository.ChestRepository;
 import com.jrealm.data.repository.GameItemRefRepository;
 import com.jrealm.data.repository.PlayerAccountRepository;
@@ -41,20 +40,17 @@ public class PlayerDataService {
 	private final transient AccountRepository accountRepository;
 	private final transient PlayerAccountRepository playerAccountRepository;
 	private final transient ChestRepository playerChestRepository;
-	private final transient CharacterRepository playerCharacterRepository;
 	private final transient GameItemRefRepository gameItemRefRepository;
 	private final transient ModelMapper mapper;
 
 	public PlayerDataService(@Autowired final AccountRepository accountRepository,
 			@Autowired final PlayerAccountRepository playerAccountRepository,
 			@Autowired final ChestRepository playerChestRepository,
-			@Autowired final CharacterRepository playerCharacterRepository,
 			@Autowired final GameItemRefRepository gameItemRefRepository,
 			@Autowired final ModelMapper mapper) {
 		this.accountRepository = accountRepository;
 		this.playerAccountRepository = playerAccountRepository;
 		this.playerChestRepository = playerChestRepository;
-		this.playerCharacterRepository = playerCharacterRepository;
 		this.gameItemRefRepository = gameItemRefRepository;
 		this.mapper = mapper;
 	}

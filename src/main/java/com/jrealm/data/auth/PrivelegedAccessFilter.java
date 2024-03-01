@@ -1,4 +1,4 @@
-package com.jrealm.data.service;
+package com.jrealm.data.auth;
 
 import javax.annotation.Priority;
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +9,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
-
 import com.jrealm.data.dto.auth.AccountDto;
+import com.jrealm.data.service.AccountService;
 import com.jrealm.data.util.AdminRestricted;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +29,7 @@ public class PrivelegedAccessFilter implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		final HandlerMethod handlerMethod = (HandlerMethod) handler; // the last parameter
+		final HandlerMethod handlerMethod = (HandlerMethod) handler;
 		final java.lang.reflect.Method method = handlerMethod.getMethod();
 		if (method.getDeclaredAnnotation(AdminRestricted.class) != null) {
 			AccountDto account = this.accountService.getAccountByGuid(request.getHeader("Account-Uuid"));

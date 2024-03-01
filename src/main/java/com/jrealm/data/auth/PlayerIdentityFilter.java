@@ -1,4 +1,4 @@
-package com.jrealm.data.service;
+package com.jrealm.data.auth;
 
 import java.io.IOException;
 
