@@ -31,10 +31,9 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
-		log.info(request.getRemoteAddr());
-		
-		if (request.getRemoteAddr().equals("127.0.0.1") || request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
+			throws ServletException, IOException {		
+		if (request.getRemoteAddr().equals("127.0.0.1") 
+				|| request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
 				|| request.getServletPath().equals("/admin/account/login")
 				|| request.getServletPath().equals("/v2/api-docs") || request.getServletPath().equals("/ping")
 				|| request.getServletPath().contains("/swagger-ui")

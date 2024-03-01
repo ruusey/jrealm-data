@@ -30,20 +30,16 @@ public class JrealmDataConfiguration extends AbstractMongoClientConfiguration {
 	@Override
 	@Bean
 	public MongoClient mongoClient() {
-		final ConnectionString connectionString = new ConnectionString(
-				"mongodb://localhost:27017/jrealm");
+		final ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/jrealm");
 
 		final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
 				.applyConnectionString(connectionString).build();
 		return MongoClients.create(mongoClientSettings);
 	}
-	
+
 	@Bean
 	public Docket swaggerDocs() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.any())
-				.paths(PathSelectors.any())
-				.build();
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.any()).build();
 	}
 }

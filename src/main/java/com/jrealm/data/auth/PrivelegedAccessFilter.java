@@ -16,7 +16,7 @@ import com.jrealm.data.util.AdminRestricted;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Order(Integer.MIN_VALUE+1)
+@Order(Integer.MIN_VALUE + 1)
 @Priority(2)
 @Slf4j
 public class PrivelegedAccessFilter implements HandlerInterceptor {
@@ -34,7 +34,7 @@ public class PrivelegedAccessFilter implements HandlerInterceptor {
 		if (method.getDeclaredAnnotation(AdminRestricted.class) != null) {
 			AccountDto account = this.accountService.getAccountByGuid(request.getHeader("Account-Uuid"));
 			log.info("User {} accessing Admin-Restricted endpoint...");
-			if(account.isAdmin()) {
+			if (account.isAdmin()) {
 				return true;
 			}
 			response.setStatus(401);

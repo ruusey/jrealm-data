@@ -77,7 +77,8 @@ public class PlayerDataController {
 	}
 
 	@PostMapping(value = "/account/character/{characterUuid}", produces = { "application/json" })
-	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String characterUuid, @RequestBody final CharacterDto character) {
+	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String characterUuid,
+			@RequestBody final CharacterDto character) {
 		ResponseEntity<?> res = null;
 		try {
 			res = ApiUtils.buildSuccess(this.playerDataService.saveCharacterStats(characterUuid, character));
@@ -121,8 +122,10 @@ public class PlayerDataController {
 		ResponseEntity<?> res = null;
 		try {
 			this.playerDataService.deleteCharacter(characterUuid);
-			
-			res = ApiUtils.buildSuccess(ErrorResponseObject.builder().message("successfully deleted character "+characterUuid).reason("Character deleted").status(HttpStatus.OK).build());
+
+			res = ApiUtils.buildSuccess(
+					ErrorResponseObject.builder().message("successfully deleted character " + characterUuid)
+							.reason("Character deleted").status(HttpStatus.OK).build());
 		} catch (Exception e) {
 
 			res = ApiUtils.buildAndLogError("Failed to save character stats", e.getMessage());

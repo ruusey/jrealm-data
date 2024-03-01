@@ -48,7 +48,6 @@ import com.jrealm.data.util.Util;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 @Service
 @Slf4j
 public class AccountService {
@@ -60,10 +59,8 @@ public class AccountService {
 	private final transient AccountAccessRepository accessRepo;
 
 	public AccountService(@Autowired final AccountAuthRepository authRepo,
-			@Autowired final AccountTokenRepository tokenRepo,
-			@Autowired final AccountPropertyRepository propertyRepo,
-			@Autowired final AccountProvisionRepository provisionRepo,
-			@Autowired final AccountRepository accountRepo,
+			@Autowired final AccountTokenRepository tokenRepo, @Autowired final AccountPropertyRepository propertyRepo,
+			@Autowired final AccountProvisionRepository provisionRepo, @Autowired final AccountRepository accountRepo,
 			@Autowired final AccountAccessRepository accessRepo) {
 		this.authRepo = authRepo;
 		this.tokenRepo = tokenRepo;
