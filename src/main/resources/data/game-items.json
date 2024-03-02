@@ -2364,7 +2364,7 @@
 		},
 		"effect": {
 			"effectId": 6,
-			"mpCost": 50
+			"mpCost": 90
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2657,7 +2657,7 @@
 			"self": true,
 			"effectId": 0,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2681,7 +2681,7 @@
 			"self": true,
 			"effectId": 1,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2705,7 +2705,7 @@
 			"self": false,
 			"effectId": 2,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"damage": {
 			"projectileGroupId": 23,
@@ -2734,7 +2734,7 @@
 			"self": false,
 			"effectId": 3,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"damage": {
 			"projectileGroupId": 18,
@@ -2763,7 +2763,7 @@
 			"self": true,
 			"effectId": 4,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 70
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2787,7 +2787,7 @@
 			"self": true,
 			"effectId": 5,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 70
 		},
 		"consumable": false,
 		"tier": 14,

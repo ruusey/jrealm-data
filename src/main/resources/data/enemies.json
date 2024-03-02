@@ -129,7 +129,7 @@
 		"attackRange": 140.0,
 		"stats": {
 			"def": 5,
-			"dex": 15
+			"dex": 1
 		}
 	},
 	{
@@ -205,7 +205,7 @@
 		"attackRange": 140.0,
 		"stats": {
 			"def": 20,
-			"dex": 10
+			"dex": 5
 		}
 	},
 	{
@@ -258,8 +258,8 @@
 		"xp": 500,
 		"health": 800,
 		"maxSpeed": 1.4,
-		"chaseRange": 350.0,
-		"attackRange": 252.0,
+		"chaseRange": 260.0,
+		"attackRange": 152.0,
 		"stats": {
 			"def": 5,
 			"dex": 5
