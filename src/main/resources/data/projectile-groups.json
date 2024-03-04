@@ -602,8 +602,8 @@
 	},
 	{
 		"projectileGroupId": 9,
-		"row": 7,
-		"col": 3,
+		"row": 6,
+		"col": 5,
 		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -612,7 +612,7 @@
 				"positionMode": 0,
 				"damage": 25,
 				"angle": -0.10,
-				"range": 216.0,
+				"range": 180.0,
 				"size": 16,
 				"magnitude": 5.0,
 				"flags": [
@@ -625,7 +625,7 @@
 				"positionMode": 0,
 				"damage": 25,
 				"angle": 0.0,
-				"range": 216.0,
+				"range": 180.0,
 				"size": 16,
 				"magnitude": 5.0,
 				"flags": [
@@ -638,7 +638,7 @@
 				"positionMode": 0,
 				"damage": 25,
 				"angle": 0.10,
-				"range": 216.0,
+				"range": 180.0,
 				"size": 16,
 				"magnitude": 5.0,
 				"flags": [
@@ -1476,6 +1476,89 @@
 				"flags": [
 					0,
 					12
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 29,
+		"row": 6,
+		"col": 6,
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 29,
+				"positionMode": 0,
+				"damage": 25,
+				"angle": -0.10,
+				"range": 180.0,
+				"size": 16,
+				"magnitude": 5.0,
+				"flags": [
+					0,
+					10
+				]
+			},
+			{
+				"projectileId": 29,
+				"positionMode": 0,
+				"damage": 25,
+				"angle": 0.0,
+				"range": 180.0,
+				"size": 16,
+				"magnitude": 5.0,
+				"flags": [
+					0,
+					10
+				]
+			},
+			{
+				"projectileId": 29,
+				"positionMode": 0,
+				"damage": 25,
+				"angle": 0.10,
+				"range": 180.0,
+				"size": 16,
+				"magnitude": 5.0,
+				"flags": [
+					0,
+					10
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 30,
+		"row": 6,
+		"col": 4,
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 30,
+				"positionMode": 0,
+				"damage": 25,
+				"angle": -0.05,
+				"range": 195.0,
+				"size": 16,
+				"magnitude": 5.0,
+				"flags": [
+					0,
+					10
+				]
+			},
+			{
+				"projectileId": 30,
+				"positionMode": 0,
+				"damage": 25,
+				"angle": 0.05,
+				"range": 195.0,
+				"size": 16,
+				"magnitude": 5.0,
+				"flags": [
+					0,
+					10
 				]
 			}
 		]

@@ -515,7 +515,7 @@
 		"name": "Bow of Deep Enchantment",
 		"description": "A peerless triple bow crafted of nightmatter and diamondwire by the exalted bowyers of the primeval overgods.",
 		"damage": {
-			"projectileGroupId": 9,
+			"projectileGroupId": 29,
 			"min": 130,
 			"max": 140
 		},
@@ -2791,6 +2791,27 @@
 		},
 		"consumable": false,
 		"tier": 14,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 8
+	},
+	{
+		"itemId": 158,
+		"row": 0,
+		"col": 4,
+		"spriteKey": "rotmg-items-1.png",
+		"name": "Coral Bow",
+		"description": "A bow made of living coral",
+		"stats": {
+			"dex": 10
+		},
+		"damage": {
+			"projectileGroupId": 30,
+			"min": 200,
+			"max": 210
+		},
+		"consumable": false,
+		"tier": -1,
 		"targetSlot": 1,
 		"targetClass": 1,
 		"fameBonus": 8
