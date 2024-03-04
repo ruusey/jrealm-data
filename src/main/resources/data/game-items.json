@@ -2812,7 +2812,7 @@
 		},
 		"consumable": false,
 		"tier": -1,
-		"targetSlot": 1,
+		"targetSlot": 0,
 		"targetClass": 1,
 		"fameBonus": 8
 	}
