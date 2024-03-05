@@ -1482,8 +1482,8 @@
 	},
 	{
 		"projectileGroupId": 29,
-		"row": 6,
-		"col": 6,
+		"row": 7,
+		"col": 3,
 		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
