@@ -259,7 +259,7 @@
 		"health": 800,
 		"maxSpeed": 1.4,
 		"chaseRange": 260.0,
-		"attackRange": 152.0,
+		"attackRange": 122.0,
 		"stats": {
 			"def": 5,
 			"dex": 5
