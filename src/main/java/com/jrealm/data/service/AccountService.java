@@ -234,8 +234,8 @@ public class AccountService {
 			throw new IllegalArgumentException("Login information does not match");
 		} catch (Exception e) {
 			AccountService.log.error("Error during user login {}", e.getMessage());
+			throw new Exception(e.getMessage());
 		}
-		return null;
 	}
 
 	public SessionTokenDto learnerLogin(LoginRequestDto request) throws Exception {
