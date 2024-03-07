@@ -4,7 +4,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.jrealm.data.entity.auth.AccountAuthEntity;
 
-public interface AccountAuthRepo extends MongoRepository<AccountAuthEntity, String> {
+public interface AccountAuthRepository extends MongoRepository<AccountAuthEntity, String> {
 	AccountAuthEntity findByAccountGuid(String guid);
 
 	AccountAuthEntity findBySessionToken(String sessionToken);

@@ -1,6 +1,9 @@
 package com.jrealm.data.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jrealm.data.dto.CharacterDto;
+import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.PlayerAccountDto;
 import com.jrealm.data.service.PlayerDataService;
 import com.jrealm.data.util.ApiUtils;
+import com.jrealm.data.util.ErrorResponseObject;
 
 @RestController
 @RequestMapping("/data")
@@ -72,7 +77,8 @@ public class PlayerDataController {
 	}
 
 	@PostMapping(value = "/account/character/{characterUuid}", produces = { "application/json" })
-	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String characterUuid, @RequestBody final CharacterDto character) {
+	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String characterUuid,
+			@RequestBody final CharacterDto character) {
 		ResponseEntity<?> res = null;
 		try {
 			res = ApiUtils.buildSuccess(this.playerDataService.saveCharacterStats(characterUuid, character));
@@ -84,12 +90,42 @@ public class PlayerDataController {
 		return res;
 	}
 
+	@PostMapping(value = "/account/{accountUuid}/chest", produces = { "application/json" })
+	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String accountUuid,
+			@RequestBody final List<ChestDto> chests) {
+		ResponseEntity<?> res = null;
+		try {
+			res = ApiUtils.buildSuccess(this.playerDataService.saveChests(accountUuid, chests));
+		} catch (Exception e) {
+
+			res = ApiUtils.buildAndLogError("Failed to save account chests", e.getMessage());
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@PostMapping(value = "/account/{accountUuid}/chest/new", produces = { "application/json" })
+	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String accountUuid) {
+		ResponseEntity<?> res = null;
+		try {
+			res = ApiUtils.buildSuccess(this.playerDataService.createChest(accountUuid));
+		} catch (Exception e) {
+
+			res = ApiUtils.buildAndLogError("Failed to create account chest", e.getMessage());
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 	@DeleteMapping(value = "/account/character/{characterUuid}", produces = { "application/json" })
 	public ResponseEntity<?> deleteCharacter(@PathVariable String characterUuid) {
 		ResponseEntity<?> res = null;
 		try {
 			this.playerDataService.deleteCharacter(characterUuid);
-			res = ApiUtils.buildSuccess("Character " + characterUuid + " successfully deleted");
+
+			res = ApiUtils.buildSuccess(
+					ErrorResponseObject.builder().message("successfully deleted character " + characterUuid)
+							.reason("Character deleted").status(HttpStatus.OK).build());
 		} catch (Exception e) {
 
 			res = ApiUtils.buildAndLogError("Failed to save character stats", e.getMessage());

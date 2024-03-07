@@ -37,33 +37,30 @@ import com.jrealm.data.entity.auth.AccountPropertyEntity;
 import com.jrealm.data.entity.auth.AccountProvisionEntity;
 import com.jrealm.data.entity.auth.AccountTokenEntity;
 import com.jrealm.data.repository.auth.AccountAccessRepository;
-import com.jrealm.data.repository.auth.AccountAuthRepo;
+import com.jrealm.data.repository.auth.AccountAuthRepository;
 import com.jrealm.data.repository.auth.AccountPropertyRepository;
 import com.jrealm.data.repository.auth.AccountProvisionRepository;
 import com.jrealm.data.repository.auth.AccountRepository;
-import com.jrealm.data.repository.auth.AccountTokenRepo;
+import com.jrealm.data.repository.auth.AccountTokenRepository;
 import com.jrealm.data.util.SHAHash;
 import com.jrealm.data.util.SHAValidate;
 import com.jrealm.data.util.Util;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 @Service
 @Slf4j
 public class AccountService {
-	private final transient AccountAuthRepo authRepo;
-	private final transient AccountTokenRepo tokenRepo;
+	private final transient AccountAuthRepository authRepo;
+	private final transient AccountTokenRepository tokenRepo;
 	private final transient AccountPropertyRepository propertyRepo;
 	private final transient AccountProvisionRepository provisionRepo;
 	private final transient AccountRepository accountRepo;
 	private final transient AccountAccessRepository accessRepo;
 
-	public AccountService(@Autowired final AccountAuthRepo authRepo,
-			@Autowired final AccountTokenRepo tokenRepo,
-			@Autowired final AccountPropertyRepository propertyRepo,
-			@Autowired final AccountProvisionRepository provisionRepo,
-			@Autowired final AccountRepository accountRepo,
+	public AccountService(@Autowired final AccountAuthRepository authRepo,
+			@Autowired final AccountTokenRepository tokenRepo, @Autowired final AccountPropertyRepository propertyRepo,
+			@Autowired final AccountProvisionRepository provisionRepo, @Autowired final AccountRepository accountRepo,
 			@Autowired final AccountAccessRepository accessRepo) {
 		this.authRepo = authRepo;
 		this.tokenRepo = tokenRepo;
@@ -237,8 +234,8 @@ public class AccountService {
 			throw new IllegalArgumentException("Login information does not match");
 		} catch (Exception e) {
 			AccountService.log.error("Error during user login {}", e.getMessage());
+			throw new Exception(e.getMessage());
 		}
-		return null;
 	}
 
 	public SessionTokenDto learnerLogin(LoginRequestDto request) throws Exception {

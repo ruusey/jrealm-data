@@ -4,12 +4,13 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
-			
+			"group:31": 0.40,
+			"group:10": 0.10,
+			"group:11": 0.10,
+			"group:12": 0.05,
+			"group:24": 0.10,
+			"group:25": 0.10,
+			"group:26": 0.05
 		}
 	},
 	{
@@ -17,11 +18,13 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:31": 0.40,
+			"group:13": 0.10,
+			"group:14": 0.10,
+			"group:15": 0.05,
+			"group:27": 0.10,
+			"group:28": 0.10,
+			"group:29": 0.05
 		}
 	},
 	{
@@ -29,11 +32,13 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:31": 0.40,
+			"group:10": 0.10,
+			"group:11": 0.10,
+			"group:12": 0.05,
+			"group:24": 0.10,
+			"group:25": 0.10,
+			"group:26": 0.05
 		}
 	},
 	{
@@ -41,11 +46,13 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:31": 0.40,
+			"group:10": 0.10,
+			"group:11": 0.10,
+			"group:12": 0.05,
+			"group:24": 0.10,
+			"group:25": 0.10,
+			"group:26": 0.05
 		}
 	},
 	{
@@ -53,11 +60,13 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:31": 0.40,
+			"group:10": 0.10,
+			"group:11": 0.10,
+			"group:12": 0.05,
+			"group:24": 0.10,
+			"group:25": 0.10,
+			"group:26": 0.05
 		}
 	},
 	{
@@ -65,59 +74,124 @@
 		"drops": {
 			"group:0": 0.40,
 			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:31": 0.40,
+			"group:10": 0.10,
+			"group:11": 0.10,
+			"group:12": 0.05,
+			"group:24": 0.10,
+			"group:25": 0.10,
+			"group:26": 0.05
 		}
 	},
 	{
 		"enemyId": 7,
 		"drops": {
 			"group:0": 0.40,
-			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:31": 0.40,
+			"group:4": 0.10,
+			"group:5": 0.10,
+			"group:6": 0.05,
+			"group:18": 0.10,
+			"group:19": 0.10,
+			"group:20": 0.05
 		}
 	},
 	{
 		"enemyId": 8,
 		"drops": {
 			"group:0": 0.40,
-			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:31": 0.40,
+			"group:4": 0.10,
+			"group:5": 0.10,
+			"group:6": 0.05,
+			"group:18": 0.10,
+			"group:19": 0.10,
+			"group:20": 0.05
 		}
 	},
 	{
 		"enemyId": 9,
 		"drops": {
 			"group:0": 0.40,
-			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:1": 0.20,
+			"group:31": 0.40,
+			"group:7": 0.10,
+			"group:8": 0.10,
+			"group:9": 0.05,
+			"group:21": 0.10,
+			"group:22": 0.10,
+			"group:23": 0.05
 		}
 	},
 	{
 		"enemyId": 10,
 		"drops": {
 			"group:0": 0.40,
+			"group:1": 0.20,
+			"group:31": 0.40,
+			"group:7": 0.10,
+			"group:8": 0.10,
+			"group:9": 0.05,
+			"group:21": 0.10,
+			"group:22": 0.10,
+			"group:23": 0.05
+		}
+	},
+	{
+		"enemyId": 11,
+		"drops": {
+			"group:0": 0.40,
+			"group:1": 0.20,
+			"group:7": 0.10,
+			"group:8": 0.10,
+			"group:9": 0.05,
+			"group:21": 0.10,
+			"group:22": 0.10,
+			"group:23": 0.05
+		}
+	},
+	{
+		"enemyId": 12,
+		"drops": {
+			"group:0": 0.40,
 			"group:1": 0.40,
-			"group:16": 0.10,
-			"group:17": 0.10,
-			"group:29": 0.10,
-			"group:30": 0.10,
-			"item:48": 0.05
+			"group:2": 0.30,
+			"group:13": 0.10,
+			"group:14": 0.10,
+			"group:15": 0.10,
+			"group:27": 0.10,
+			"group:28": 0.10,
+			"group:29": 0.10
+		}
+	},
+	{
+		"enemyId": 13,
+		"drops": {
+			"group:1": 1.00,
+			"group:2": 0.30,
+			"group:16": 0.50,
+			"group:17": 0.30,
+			"group:29": 0.50,
+			"group:30": 0.30,
+			"item:47": 0.05,
+			"item:48": 0.05,
+			"item:49": 0.05,
+			"item:59": 0.05,
+			"item:89": 0.05,
+			"item:158": 0.05
+		}
+	},	
+	{
+		"enemyId": 14,
+		"drops": {
+			"group:0": 0.40,
+			"group:31": 0.40,
+			"group:4": 0.10,
+			"group:5": 0.10,
+			"group:6": 0.05,
+			"group:18": 0.10,
+			"group:19": 0.10,
+			"group:20": 0.05
 		}
 	}
 ]

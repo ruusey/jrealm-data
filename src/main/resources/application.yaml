@@ -6,16 +6,9 @@ spring:
     serialization:
       fail-on-empty-beans: false
   mvc:
-      pathmatch:
-            matching-strategy: ant-path-matcher
-  jpa:
-    hibernate.ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL5Dialect
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/jrealm
-    username: root
-    password: Database123
-    driverClassName: com.mysql.cj.jdbc.Driver
+    pathmatch:
+      matching-strategy: ant-path-matcher
+    static-path-pattern: /game-data/**
   main:
     web-environment: false
     allow-bean-definition-overriding: true
@@ -36,5 +29,5 @@ logging:
     '[org.springframework.beans]': WARN
 springfox:
   documentation:
-    enabled: false
+    enabled: true
     

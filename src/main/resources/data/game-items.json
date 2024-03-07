@@ -3,7 +3,7 @@
 		"itemId": 0,
 		"row": 3,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Defense",
 		"description": "A potion that permenently increases defense.",
 		"stats": {
@@ -19,7 +19,7 @@
 		"itemId": 1,
 		"row": 3,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Attack",
 		"description": "A potion that permenently increases attack.",
 		"stats": {
@@ -35,7 +35,7 @@
 		"itemId": 2,
 		"row": 3,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Dexterity",
 		"description": "A potion that permenently increases dexterity.",
 		"stats": {
@@ -51,7 +51,7 @@
 		"itemId": 3,
 		"row": 3,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Speed",
 		"description": "A potion that permenently increases speed.",
 		"stats": {
@@ -67,7 +67,7 @@
 		"itemId": 4,
 		"row": 3,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Vitality",
 		"description": "A potion that permenently increases vitality.",
 		"stats": {
@@ -83,7 +83,7 @@
 		"itemId": 5,
 		"row": 3,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Wisdom",
 		"description": "A potion that permenently increases widsom.",
 		"stats": {
@@ -99,7 +99,7 @@
 		"itemId": 6,
 		"row": 2,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Mana",
 		"description": "A potion that permenently increases mana points.",
 		"stats": {
@@ -115,7 +115,7 @@
 		"itemId": 7,
 		"row": 2,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Potion of Life",
 		"description": "A potion that permenently increases life points.",
 		"stats": {
@@ -131,7 +131,7 @@
 		"itemId": 8,
 		"row": 12,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Attack",
 		"description": "A huge ring that increases attack.",
 		"stats": {
@@ -147,7 +147,7 @@
 		"itemId": 9,
 		"row": 12,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Defense",
 		"description": "A huge ring that increases defense.",
 		"stats": {
@@ -163,7 +163,7 @@
 		"itemId": 10,
 		"row": 12,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Speed",
 		"description": "A huge ring that increases speed.",
 		"stats": {
@@ -179,7 +179,7 @@
 		"itemId": 11,
 		"row": 12,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Vitality",
 		"description": "A huge ring that increases vitality.",
 		"stats": {
@@ -195,7 +195,7 @@
 		"itemId": 12,
 		"row": 12,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Wisdom",
 		"description": "A huge ring that increases widsom.",
 		"stats": {
@@ -211,7 +211,7 @@
 		"itemId": 13,
 		"row": 12,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Dexterity",
 		"description": "A huge ring that increases dexterity.",
 		"stats": {
@@ -227,7 +227,7 @@
 		"itemId": 14,
 		"row": 12,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Health",
 		"description": "A huge ring that increases health.",
 		"stats": {
@@ -243,7 +243,7 @@
 		"itemId": 15,
 		"row": 12,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Exalted Ring of Mana",
 		"description": "A huge ring that increases mana.",
 		"stats": {
@@ -259,7 +259,7 @@
 		"itemId": 17,
 		"row": 5,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Short Bow",
 		"description": "A well-made shortbow.",
 		"damage": {
@@ -277,7 +277,7 @@
 		"itemId": 18,
 		"row": 5,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Reinforced Bow",
 		"description": "An iron-reinforced bow.",
 		"damage": {
@@ -295,7 +295,7 @@
 		"itemId": 19,
 		"row": 5,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Hardwood Bow",
 		"description": "A bow made from sturdy hardwood.",
 		"damage": {
@@ -313,7 +313,7 @@
 		"itemId": 20,
 		"row": 5,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Greywood Bow",
 		"description": "A bow made from the rare greywood tree.",
 		"damage": {
@@ -331,7 +331,7 @@
 		"itemId": 21,
 		"row": 5,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Ironwood Bow",
 		"description": "A high-quality bow made of magical ironwood.",
 		"damage": {
@@ -349,7 +349,7 @@
 		"itemId": 22,
 		"row": 5,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Fire Bow",
 		"description": "A bow that shoots arrows that burn with an unholy fire.",
 		"damage": {
@@ -367,7 +367,7 @@
 		"itemId": 23,
 		"row": 5,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Sharpshooter Bow",
 		"description": "A well-crafted bow carried by master marksmen.",
 		"damage": {
@@ -385,7 +385,7 @@
 		"itemId": 24,
 		"row": 5,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Redwood Bow",
 		"description": "An elven enchanted bow that originates from the elusive redwood forests.",
 		"damage": {
@@ -403,7 +403,7 @@
 		"itemId": 25,
 		"row": 5,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Golden Bow",
 		"description": "A gilded bow gifted to mortals from the gods themselves.",
 		"damage": {
@@ -421,7 +421,7 @@
 		"itemId": 26,
 		"row": 5,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Verdant Bow",
 		"description": "A highly effective bow fashioned of still-living magical springwood.",
 		"damage": {
@@ -439,7 +439,7 @@
 		"itemId": 27,
 		"row": 5,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Bow of Fey Magic",
 		"description": "A powerful bow crafted by dryads and blessed by the spirits of the woodlands.",
 		"damage": {
@@ -457,7 +457,7 @@
 		"itemId": 28,
 		"row": 5,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Bow of Innocent Blood",
 		"description": "A runed bow steeped in the dark power of ancient injustice.",
 		"damage": {
@@ -475,7 +475,7 @@
 		"itemId": 29,
 		"row": 5,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Bow of Covert Havens",
 		"description": "A diamondwire bow used by guardians of the unseen ethereal shrines.",
 		"damage": {
@@ -493,7 +493,7 @@
 		"itemId": 30,
 		"row": 5,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Bow of Mystical Energy",
 		"description": "A superlative bow of sunsteel and diamondwire, created by a secretive race of star-dwelling entities.",
 		"damage": {
@@ -511,11 +511,11 @@
 		"itemId": 31,
 		"row": 5,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Bow of Deep Enchantment",
 		"description": "A peerless triple bow crafted of nightmatter and diamondwire by the exalted bowyers of the primeval overgods.",
 		"damage": {
-			"projectileGroupId": 9,
+			"projectileGroupId": 29,
 			"min": 130,
 			"max": 140
 		},
@@ -529,7 +529,7 @@
 		"itemId": 32,
 		"row": 0,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wolfskin Armor",
 		"description": "Leather armor fashioned from wolf pelts.",
 		"stats": {
@@ -545,7 +545,7 @@
 		"itemId": 33,
 		"row": 0,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Leather Armor",
 		"description": "Armor made of hardened leather.",
 		"stats": {
@@ -561,7 +561,7 @@
 		"itemId": 34,
 		"row": 0,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Basilisk Hide Armor",
 		"description": "Leather armor made from the skin of a magical lizard.",
 		"stats": {
@@ -577,7 +577,7 @@
 		"itemId": 35,
 		"row": 0,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Minotaur Hide Armor",
 		"description": "Leather armor made from the tough hide of a minotaur.",
 		"stats": {
@@ -594,7 +594,7 @@
 		"itemId": 36,
 		"row": 0,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Bearskin Armor",
 		"description": "Armor made from the thick leather of a dire bear.",
 		"stats": {
@@ -611,7 +611,7 @@
 		"itemId": 37,
 		"row": 0,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Chimera Hide Armor",
 		"description": "Magically protective leather armor made from chimera hides.",
 		"stats": {
@@ -628,7 +628,7 @@
 		"itemId": 38,
 		"row": 0,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wyvern Skin Armor",
 		"description": "Tough, durable armor made from wyvern leather.",
 		"stats": {
@@ -645,7 +645,7 @@
 		"itemId": 39,
 		"row": 0,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Studded Leather Armor",
 		"description": "Leather armor studded with metal rivets that provide extra protection.",
 		"stats": {
@@ -662,7 +662,7 @@
 		"itemId": 40,
 		"row": 0,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Drake Hide Armor",
 		"description": "Leather armor fashioned from the scaly skin of a firebreathing drake.",
 		"stats": {
@@ -679,7 +679,7 @@
 		"itemId": 41,
 		"row": 0,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Roc Leather Armor",
 		"description": "Leather armor made from the durable hide of a roc.",
 		"stats": {
@@ -696,7 +696,7 @@
 		"itemId": 42,
 		"row": 0,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Hippogriff Hide Armor",
 		"description": "Leather armor made from the protective skin of hippogriffs.",
 		"stats": {
@@ -713,7 +713,7 @@
 		"itemId": 43,
 		"row": 0,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Griffon Hide Armor",
 		"description": "Superior leather armor made from the magical hide of a griffon.",
 		"stats": {
@@ -730,7 +730,7 @@
 		"itemId": 44,
 		"row": 0,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Hydra Skin Armor",
 		"description": "Superlative leather armor fashioned from the skin of a twelve-headed swamp hydra.",
 		"stats": {
@@ -747,7 +747,7 @@
 		"itemId": 45,
 		"row": 0,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wyrmhide Armor",
 		"description": "Outstanding leather armor made from the virtually impregnable hide of a great desert wyrm.",
 		"stats": {
@@ -764,7 +764,7 @@
 		"itemId": 46,
 		"row": 0,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Leviathan Armor",
 		"description": "Magnificent leather armor made from the hide of the great leviathan, slain hundreds of years ago in a savage battle in the vast deeps.",
 		"stats": {
@@ -781,7 +781,7 @@
 		"itemId": 47,
 		"row": 6,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Doom Bow",
 		"description": "The Doom Bow (tm)",
 		"damage": {
@@ -799,7 +799,7 @@
 		"itemId": 48,
 		"row": 5,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Amulet of Ressurection",
 		"description": "An Amulet that when worn, prevents death.",
 		"stats": {
@@ -822,7 +822,7 @@
 		"itemId": 49,
 		"row": 5,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Dirk of Cronus",
 		"description": "Commisioned by me",
 		"stats": {
@@ -843,7 +843,7 @@
 		"itemId": 50,
 		"row": 10,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Defense",
 		"description": "A medium ring that increases defense.",
 		"stats": {
@@ -859,7 +859,7 @@
 		"itemId": 51,
 		"row": 10,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Attack",
 		"description": "A medium ring that increases attack.",
 		"stats": {
@@ -875,7 +875,7 @@
 		"itemId": 52,
 		"row": 10,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Speed",
 		"description": "A medium ring that increases speed.",
 		"stats": {
@@ -891,7 +891,7 @@
 		"itemId": 53,
 		"row": 10,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Vit",
 		"description": "A medium ring that increases vitality.",
 		"stats": {
@@ -907,7 +907,7 @@
 		"itemId": 54,
 		"row": 10,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Wisdom",
 		"description": "A medium ring that increases wisdom.",
 		"stats": {
@@ -923,7 +923,7 @@
 		"itemId": 55,
 		"row": 10,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Deterity",
 		"description": "A medium ring that increases wisdom.",
 		"stats": {
@@ -939,7 +939,7 @@
 		"itemId": 56,
 		"row": 10,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Health",
 		"description": "A medium ring that increases health.",
 		"stats": {
@@ -955,7 +955,7 @@
 		"itemId": 57,
 		"row": 10,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Superior Ring of Mana",
 		"description": "A medium ring that increases mana.",
 		"stats": {
@@ -971,7 +971,7 @@
 		"itemId": 58,
 		"row": 5,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Da Staff",
 		"description": "A great staff",
 		"damage": {
@@ -992,7 +992,7 @@
 		"itemId": 59,
 		"row": 6,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Crystal Sword",
 		"description": "A Sword made of a crystaline substance",
 		"damage": {
@@ -1010,7 +1010,7 @@
 		"itemId": 60,
 		"row": 2,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Iron Mail",
 		"description": "Armor made from interlocking iron links.",
 		"stats": {
@@ -1026,7 +1026,7 @@
 		"itemId": 61,
 		"row": 2,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Chainmail",
 		"description": "Armor made from interlocking links of metal.",
 		"stats": {
@@ -1042,7 +1042,7 @@
 		"itemId": 62,
 		"row": 2,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Blue Steel Mail",
 		"description": "Mail made from blued steel.",
 		"stats": {
@@ -1058,7 +1058,7 @@
 		"itemId": 63,
 		"row": 2,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Silver Chainmail",
 		"description": "Well-made chainmail plated with silver.",
 		"stats": {
@@ -1074,7 +1074,7 @@
 		"itemId": 64,
 		"row": 2,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Golden Chainmail",
 		"description": "Well-made chainmail plated with gold, clearly intended for the use of a great lord.",
 		"stats": {
@@ -1090,7 +1090,7 @@
 		"itemId": 65,
 		"row": 2,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Plate Mail",
 		"description": "Armor made from overlapping plates of metal.",
 		"stats": {
@@ -1106,7 +1106,7 @@
 		"itemId": 66,
 		"row": 2,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Mithril Chainmail",
 		"description": "Chainmail made with reinforcing mithril ribs.",
 		"stats": {
@@ -1122,7 +1122,7 @@
 		"itemId": 67,
 		"row": 2,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Mithril Armor",
 		"description": "Armor made from the strongest and most desirable of all metals.",
 		"stats": {
@@ -1138,7 +1138,7 @@
 		"itemId": 68,
 		"row": 2,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dragonscale Armor",
 		"description": "Armor made from the scales of a full grown dragon.",
 		"stats": {
@@ -1154,7 +1154,7 @@
 		"itemId": 69,
 		"row": 2,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Desolation Armor",
 		"description": "Magical cold plate armor inscribed with tales of destruction and murder.",
 		"stats": {
@@ -1170,7 +1170,7 @@
 		"itemId": 70,
 		"row": 2,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Vengeance Armor",
 		"description": "Tremendously strong plate armor shrouded by an aura of demonic revenge.",
 		"stats": {
@@ -1186,7 +1186,7 @@
 		"itemId": 71,
 		"row": 2,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Abyssal Armor",
 		"description": "Mighty felplate armor designed for the most powerful of demon lords.",
 		"stats": {
@@ -1202,7 +1202,7 @@
 		"itemId": 72,
 		"row": 2,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Acropolis Armor",
 		"description": "Indestructible magical armor made for the elite stoneborn champions of the eastern citadels.",
 		"stats": {
@@ -1218,7 +1218,7 @@
 		"itemId": 73,
 		"row": 2,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dominion Armor",
 		"description": "Exquisitely decorated adamantine armor smithed by underdeep dwarves for the wardens of the demonclefts.",
 		"stats": {
@@ -1234,7 +1234,7 @@
 		"itemId": 74,
 		"row": 2,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Annihilation Armor",
 		"description": "Impenetrable forceplate armor worn by the blackguard conquerors of the necromantic uprising.",
 		"stats": {
@@ -1250,7 +1250,7 @@
 		"itemId": 75,
 		"row": 3,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Short Sword",
 		"description": "A steel short sword.",
 		"damage": {
@@ -1268,7 +1268,7 @@
 		"itemId": 76,
 		"row": 3,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Broad Sword",
 		"description": "A broad-bladed steel sword.",
 		"damage": {
@@ -1286,7 +1286,7 @@
 		"itemId": 77,
 		"row": 3,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Saber",
 		"description": "A single-edged light sword.",
 		"damage": {
@@ -1304,7 +1304,7 @@
 		"itemId": 78,
 		"row": 3,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Long Sword",
 		"description": "A well-made sword with a double edged blade.",
 		"damage": {
@@ -1322,7 +1322,7 @@
 		"itemId": 79,
 		"row": 3,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Falchion",
 		"description": "A single-edged broad-bladed sword.",
 		"damage": {
@@ -1340,7 +1340,7 @@
 		"itemId": 80,
 		"row": 3,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Fire Sword",
 		"description": "A fiery blade capable of burning flesh and bone.",
 		"damage": {
@@ -1358,7 +1358,7 @@
 		"itemId": 81,
 		"row": 3,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Glass Sword",
 		"description": "A sword formed from a single shard of unbreakable glass.",
 		"damage": {
@@ -1376,7 +1376,7 @@
 		"itemId": 82,
 		"row": 3,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Golden Sword",
 		"description": "A sharp sword plated with gold, clearly intended for the use of a great lord.",
 		"damage": {
@@ -1394,7 +1394,7 @@
 		"itemId": 83,
 		"row": 3,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Ravenheart Sword",
 		"description": "A powerful sword infused with the spirit of dark rituals.",
 		"damage": {
@@ -1412,7 +1412,7 @@
 		"itemId": 84,
 		"row": 3,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dragonsoul Sword",
 		"description": "A sword forged in a great volcano and consecrated with dragon magic.",
 		"damage": {
@@ -1430,7 +1430,7 @@
 		"itemId": 85,
 		"row": 3,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Archon Sword",
 		"description": "A sword pulsing with the powerful magic of ancient beings.",
 		"damage": {
@@ -1448,7 +1448,7 @@
 		"itemId": 86,
 		"row": 3,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Skysplitter Sword",
 		"description": "An unfathomably powerful sword wielded by titanic air elementals in their great war of revolution.",
 		"damage": {
@@ -1466,7 +1466,7 @@
 		"itemId": 87,
 		"row": 3,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Sword of Acclaim",
 		"description": "A great sword of recognition, forged by the gods for the champions of humankind.",
 		"damage": {
@@ -1484,7 +1484,7 @@
 		"itemId": 88,
 		"row": 3,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Sword of Splendor",
 		"description": "An exalted weapon of the august kings of old, hallowed with the spirit of nations and yearning to grant power anew.",
 		"damage": {
@@ -1502,7 +1502,7 @@
 		"itemId": 89,
 		"row": 6,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Demon Blade",
 		"description": "An exalted weapon of the august kings of old, hallowed with the spirit of nations and yearning to grant power anew.",
 		"damage": {
@@ -1520,7 +1520,7 @@
 		"itemId": 90,
 		"row": 3,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Sword of Majesty",
 		"description": "A gleaming obsidian sword of imperial power, fashioned by enslaved demons for the personal use of a world-conquering leader of mortals.",
 		"damage": {
@@ -1538,7 +1538,7 @@
 		"itemId": 91,
 		"row": 6,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Steel Dagger",
 		"description": "A sharp dagger made of steel.",
 		"damage": {
@@ -1556,7 +1556,7 @@
 		"itemId": 92,
 		"row": 6,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dirk",
 		"description": "A short sword blade mounted on a dagger hilt.",
 		"damage": {
@@ -1574,7 +1574,7 @@
 		"itemId": 93,
 		"row": 6,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Blue Steel Dagger",
 		"description": "A dagger made of blued steel.",
 		"damage": {
@@ -1592,7 +1592,7 @@
 		"itemId": 94,
 		"row": 6,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dusky Rose Dagger",
 		"description": "A dagger made of rose tinted steel.",
 		"damage": {
@@ -1610,7 +1610,7 @@
 		"itemId": 95,
 		"row": 6,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Silver Dagger",
 		"description": "A silver-plated steel dagger.",
 		"damage": {
@@ -1628,7 +1628,7 @@
 		"itemId": 96,
 		"row": 6,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Golden Dagger",
 		"description": "A well-made dagger plated with gold and inscribed with evil runes.",
 		"damage": {
@@ -1646,7 +1646,7 @@
 		"itemId": 97,
 		"row": 6,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Obsidian Dagger",
 		"description": "A dagger with a blade made of volcanic glass.",
 		"damage": {
@@ -1664,7 +1664,7 @@
 		"itemId": 98,
 		"row": 6,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Mithril Dagger",
 		"description": "An extremely sharp dagger made from the strongest and most desirable of all metals.",
 		"damage": {
@@ -1682,7 +1682,7 @@
 		"itemId": 99,
 		"row": 6,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Fire Dagger",
 		"description": "A dagger with a blade that burns with an unholy magic.",
 		"damage": {
@@ -1700,7 +1700,7 @@
 		"itemId": 100,
 		"row": 6,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Ragetalon Dagger",
 		"description": "A sharp druidic dagger vibrating with primal energies.",
 		"damage": {
@@ -1718,7 +1718,7 @@
 		"itemId": 101,
 		"row": 6,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Emeraldshard Dagger",
 		"description": "A deadly dagger of glittering magical emerald.",
 		"damage": {
@@ -1736,7 +1736,7 @@
 		"itemId": 102,
 		"row": 6,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Agateclaw Dagger",
 		"description": "A dagger of rare purple agate, infused with powerful dark magics.",
 		"damage": {
@@ -1754,7 +1754,7 @@
 		"itemId": 103,
 		"row": 6,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dagger of Foul Malevolence",
 		"description": "A crimson felsteel dagger saturated with evil deeds and the hatred of the gods.",
 		"damage": {
@@ -1772,7 +1772,7 @@
 		"itemId": 104,
 		"row": 6,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dagger of Sinister Deeds",
 		"description": "A moonsteel dagger of the underworld, corrupted by loathsome enchantments and profane spells.",
 		"damage": {
@@ -1791,7 +1791,7 @@
 		"itemId": 105,
 		"row": 6,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Dagger of Dire Hatred",
 		"description": "A jagged, wickedly barbed blade of evil, charged with the unreasoning rage of ancestral vendettas.",
 		"damage": {
@@ -1809,7 +1809,7 @@
 		"itemId": 106,
 		"row": 1,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Neophyte",
 		"description": "A long woolen robe favored by students of magic.",
 		"stats": {
@@ -1825,7 +1825,7 @@
 		"itemId": 107,
 		"row": 1,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Apprentice",
 		"description": "A robe woven of rare yellow silk.",
 		"stats": {
@@ -1842,7 +1842,7 @@
 		"itemId": 108,
 		"row": 1,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Acolyte",
 		"description": "A well-made robe of enchanted blue silk.",
 		"stats": {
@@ -1860,7 +1860,7 @@
 		"itemId": 109,
 		"row": 1,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Student",
 		"description": "A magical robe of faintly glowing wizardcloth.",
 		"stats": {
@@ -1878,7 +1878,7 @@
 		"itemId": 110,
 		"row": 1,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Conjurer",
 		"description": "A magical robe of gray moonsilk.",
 		"stats": {
@@ -1896,7 +1896,7 @@
 		"itemId": 111,
 		"row": 1,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Adept",
 		"description": "An enchanted robe of dark moonweave.",
 		"stats": {
@@ -1914,7 +1914,7 @@
 		"itemId": 112,
 		"row": 1,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Invoker",
 		"description": "A powerful robe of delicately embroidered red feythread.",
 		"stats": {
@@ -1932,7 +1932,7 @@
 		"itemId": 113,
 		"row": 1,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Illusionist",
 		"description": "A silversilk robe masterfully sewn with morningdew spider threads.",
 		"stats": {
@@ -1951,7 +1951,7 @@
 		"itemId": 114,
 		"row": 1,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Master",
 		"description": "A beautiful and versatile robe of the lightest magethread.",
 		"stats": {
@@ -1970,7 +1970,7 @@
 		"itemId": 115,
 		"row": 1,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Shadow Magus",
 		"description": "A highly decorated robe of purple wizardcloth, imbued with powers of sorcery and darkness.",
 		"stats": {
@@ -1989,7 +1989,7 @@
 		"itemId": 116,
 		"row": 1,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Moon Wizard",
 		"description": "A robe of rarest moonsilk, enhanced long ago with deep nocturnal enchantments.",
 		"stats": {
@@ -2008,7 +2008,7 @@
 		"itemId": 117,
 		"row": 1,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Elder Warlock",
 		"description": "A brightly colored robe of metallic threads, woven in the ancient elvish style and steeped in fey auras.",
 		"stats": {
@@ -2027,7 +2027,7 @@
 		"itemId": 118,
 		"row": 1,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Grand Sorcerer",
 		"description": "A bloodweft robe adorned with rubies and firegarnets, worn by an ancient sect of masterful wizards.",
 		"stats": {
@@ -2046,7 +2046,7 @@
 		"itemId": 119,
 		"row": 1,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Star Mother",
 		"description": "A robe of gossamer glowthread, used by the sorceress matriarchs of the western kingdoms.",
 		"stats": {
@@ -2065,7 +2065,7 @@
 		"itemId": 120,
 		"row": 1,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Robe of the Ancient Intellect",
 		"description": "A phenomenal robe magically woven from fibers of sapphire, topaz and lapis lazuli, created for the archwizard of the seraphic realms.",
 		"stats": {
@@ -2084,9 +2084,9 @@
 		"itemId": 121,
 		"row": 7,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Energy Staff",
-		"description": "A magical wooden staff topped with a white crystal.",
+		"description": "A magical wooden staff topped with a white .",
 		"damage": {
 			"projectileGroupId": 10,
 			"min": 10,
@@ -2102,7 +2102,7 @@
 		"itemId": 122,
 		"row": 7,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Firebrand Staff",
 		"description": "A staff imbued with potent magical fire.",
 		"damage": {
@@ -2120,7 +2120,7 @@
 		"itemId": 123,
 		"row": 7,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Comet Staff",
 		"description": "A staff charged with the icy powers of the heavens.",
 		"damage": {
@@ -2138,7 +2138,7 @@
 		"itemId": 124,
 		"row": 7,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Serpentine Staff",
 		"description": "A staff powered by the magic of Stheno�s minions.",
 		"damage": {
@@ -2156,7 +2156,7 @@
 		"itemId": 125,
 		"row": 7,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Meteor Staff",
 		"description": "A staff that harnesses the energy of shooting stars.",
 		"damage": {
@@ -2174,7 +2174,7 @@
 		"itemId": 126,
 		"row": 7,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Slayer Staff",
 		"description": "A powerful staff crafted by demons for waging war on mortals.",
 		"damage": {
@@ -2192,7 +2192,7 @@
 		"itemId": 127,
 		"row": 7,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Avenger Staff",
 		"description": "A slender felwood staff pulsing with auras of vengeance and justice.",
 		"damage": {
@@ -2210,7 +2210,7 @@
 		"itemId": 128,
 		"row": 7,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of Destruction",
 		"description": "An ancient knurlwood staff crackling with power and exuding thin gray vapors.",
 		"damage": {
@@ -2228,7 +2228,7 @@
 		"itemId": 129,
 		"row": 7,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of Horror",
 		"description": "A mysterious runewood staff decorated with horrific figures.",
 		"damage": {
@@ -2246,7 +2246,7 @@
 		"itemId": 130,
 		"row": 7,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of Necrotic Arcana",
 		"description": "A golden staff imbued with the powers of death magic.",
 		"damage": {
@@ -2264,7 +2264,7 @@
 		"itemId": 131,
 		"row": 7,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of Diabolic Secrets",
 		"description": "An imposing golden staff of tremendous otherworldly power.",
 		"damage": {
@@ -2282,7 +2282,7 @@
 		"itemId": 132,
 		"row": 7,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of Astral Knowledge",
 		"description": "A splendid golden staff of astonishing power, bathed in light and brimming with magical energy.",
 		"damage": {
@@ -2300,7 +2300,7 @@
 		"itemId": 133,
 		"row": 7,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of the Cosmic Whole",
 		"description": "A golden staff of transcendent understanding, made from crystals present at the formation of the universe.",
 		"damage": {
@@ -2318,7 +2318,7 @@
 		"itemId": 134,
 		"row": 7,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of the Vital Unity",
 		"description": "A golden staff of elysian consciousness, shining with the base power of empyrean truths.",
 		"damage": {
@@ -2336,11 +2336,11 @@
 		"itemId": 135,
 		"row": 7,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Staff of the Fundamental Core",
 		"description": "An otherworldly staff of omnipresent elation, embodied of cardinal essence and the power of deathless peace.",
 		"damage": {
-			"projectileGroupId": 10,
+			"projectileGroupId": 28,
 			"min": 75,
 			"max": 115
 		},
@@ -2354,7 +2354,7 @@
 		"itemId": 136,
 		"row": 5,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Penetrating Blast Spell",
 		"description": "A super powerful spell",
 		"damage": {
@@ -2364,7 +2364,7 @@
 		},
 		"effect": {
 			"effectId": 6,
-			"mpCost": 25
+			"mpCost": 90
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2376,7 +2376,7 @@
 		"itemId": 137,
 		"row": 4,
 		"col": 0,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Fire Wand",
 		"description": "A wand that casts a simple fire spell.",
 		"damage": {
@@ -2394,7 +2394,7 @@
 		"itemId": 138,
 		"row": 4,
 		"col": 1,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Force Wand",
 		"description": "A wand that emits bolts of pure force.",
 		"damage": {
@@ -2412,7 +2412,7 @@
 		"itemId": 139,
 		"row": 4,
 		"col": 2,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Power Wand",
 		"description": "A wand that fires power bolts.",
 		"damage": {
@@ -2430,7 +2430,7 @@
 		"itemId": 140,
 		"row": 4,
 		"col": 3,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Missile Wand",
 		"description": "A wand that casts a strong missile.",
 		"damage": {
@@ -2448,7 +2448,7 @@
 		"itemId": 141,
 		"row": 4,
 		"col": 4,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Eldritch Wand",
 		"description": "A wand that shoots dark eldritch energy.",
 		"damage": {
@@ -2466,7 +2466,7 @@
 		"itemId": 142,
 		"row": 4,
 		"col": 5,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Hell's Fire Wand",
 		"description": "A wand that casts a strong fire spell.",
 		"damage": {
@@ -2484,7 +2484,7 @@
 		"itemId": 143,
 		"row": 4,
 		"col": 6,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Dark Magic",
 		"description": "A wand that casts a bolt of pure magic force.",
 		"damage": {
@@ -2502,7 +2502,7 @@
 		"itemId": 144,
 		"row": 4,
 		"col": 7,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Arcane Flame",
 		"description": "A deadly wand that channels magefire from the nether planes.",
 		"damage": {
@@ -2520,7 +2520,7 @@
 		"itemId": 145,
 		"row": 4,
 		"col": 8,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Death",
 		"description": "A fearsome wand that fires bolts of penetrating death magic.",
 		"damage": {
@@ -2538,7 +2538,7 @@
 		"itemId": 146,
 		"row": 4,
 		"col": 9,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Deep Sorcery",
 		"description": "A mysterious wand of otherworldly origin, imbued with the purest of arcane energies.",
 		"damage": {
@@ -2556,7 +2556,7 @@
 		"itemId": 147,
 		"row": 4,
 		"col": 10,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Shadow",
 		"description": "A wand of demonic enigmas, cloaked in darkness and crackling with dark enchantments.",
 		"damage": {
@@ -2574,7 +2574,7 @@
 		"itemId": 148,
 		"row": 4,
 		"col": 11,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Ancient Warning",
 		"description": "A centuries-old wand of great power, heralding long-destined destruction.",
 		"damage": {
@@ -2592,7 +2592,7 @@
 		"itemId": 149,
 		"row": 4,
 		"col": 12,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Recompense",
 		"description": "A great golden wand of the heavens, created by angels to wreak justice on the slayers of the innocent.",
 		"damage": {
@@ -2610,7 +2610,7 @@
 		"itemId": 150,
 		"row": 4,
 		"col": 13,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Evocation",
 		"description": "A shining gold wand of force, built by a diabolic archmagus to channel vast corrupting energies into the material plane.",
 		"damage": {
@@ -2628,7 +2628,7 @@
 		"itemId": 151,
 		"row": 4,
 		"col": 14,
-		"spriteKey": "entity/rotmg-items.png",
+		"spriteKey": "rotmg-items.png",
 		"name": "Wand of Retribution",
 		"description": "A golden wand of breathtaking power, created by elemental forces from the realms of ice and flame to unleash revenge on their enemies.",
 		"damage": {
@@ -2646,7 +2646,7 @@
 		"itemId": 152,
 		"row": 2,
 		"col": 6,
-		"spriteKey": "entity/rotmg-abilities.png",
+		"spriteKey": "rotmg-abilities.png",
 		"name": "Test Cloak",
 		"description": "A cloak for testing",
 		"stats": {
@@ -2657,7 +2657,7 @@
 			"self": true,
 			"effectId": 0,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2669,7 +2669,7 @@
 		"itemId": 153,
 		"row": 10,
 		"col": 6,
-		"spriteKey": "entity/rotmg-abilities.png",
+		"spriteKey": "rotmg-abilities.png",
 		"name": "Test Seal",
 		"description": "A palladin seal for testing",
 		"stats": {
@@ -2681,7 +2681,7 @@
 			"self": true,
 			"effectId": 1,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2693,7 +2693,7 @@
 		"itemId": 154,
 		"row": 3,
 		"col": 6,
-		"spriteKey": "entity/rotmg-abilities.png",
+		"spriteKey": "rotmg-abilities.png",
 		"name": "Test Quiver",
 		"description": "An archer quiver for testing",
 		"stats": {
@@ -2705,7 +2705,7 @@
 			"self": false,
 			"effectId": 2,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"damage": {
 			"projectileGroupId": 23,
@@ -2722,7 +2722,7 @@
 		"itemId": 155,
 		"row": 7,
 		"col": 6,
-		"spriteKey": "entity/rotmg-abilities.png",
+		"spriteKey": "rotmg-abilities.png",
 		"name": "Test Shield",
 		"description": "A knight shield for testing",
 		"stats": {
@@ -2734,7 +2734,7 @@
 			"self": false,
 			"effectId": 3,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 80
 		},
 		"damage": {
 			"projectileGroupId": 18,
@@ -2751,7 +2751,7 @@
 		"itemId": 156,
 		"row": 6,
 		"col": 6,
-		"spriteKey": "entity/rotmg-abilities.png",
+		"spriteKey": "rotmg-abilities.png",
 		"name": "Test Helmet",
 		"description": "A warrior helmet for testing",
 		"stats": {
@@ -2763,7 +2763,7 @@
 			"self": true,
 			"effectId": 4,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 70
 		},
 		"consumable": false,
 		"tier": 14,
@@ -2775,7 +2775,7 @@
 		"itemId": 157,
 		"row": 5,
 		"col": 6,
-		"spriteKey": "entity/rotmg-abilities.png",
+		"spriteKey": "rotmg-abilities.png",
 		"name": "Test Tome",
 		"description": "A priest tome for testing",
 		"stats": {
@@ -2787,11 +2787,32 @@
 			"self": true,
 			"effectId": 5,
 			"duration": 5000,
-			"mpCost": 50
+			"mpCost": 70
 		},
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 8
+	},
+	{
+		"itemId": 158,
+		"row": 0,
+		"col": 4,
+		"spriteKey": "rotmg-items-1.png",
+		"name": "Coral Bow",
+		"description": "A bow made of living coral",
+		"stats": {
+			"dex": 10
+		},
+		"damage": {
+			"projectileGroupId": 30,
+			"min": 200,
+			"max": 210
+		},
+		"consumable": false,
+		"tier": -1,
+		"targetSlot": 0,
 		"targetClass": 1,
 		"fameBonus": 8
 	}

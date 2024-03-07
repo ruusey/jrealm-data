@@ -15,6 +15,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import com.jrealm.data.dto.CharacterDto;
+import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.GameItemRefDto;
 import com.jrealm.data.dto.PlayerAccountDto;
 import com.jrealm.data.entity.CharacterEntity;
@@ -23,7 +24,6 @@ import com.jrealm.data.entity.ChestEntity;
 import com.jrealm.data.entity.GameItemRefEntity;
 import com.jrealm.data.entity.PlayerAccountEntity;
 import com.jrealm.data.entity.auth.AccountEntity;
-import com.jrealm.data.repository.CharacterRepository;
 import com.jrealm.data.repository.ChestRepository;
 import com.jrealm.data.repository.GameItemRefRepository;
 import com.jrealm.data.repository.PlayerAccountRepository;
@@ -40,20 +40,16 @@ public class PlayerDataService {
 	private final transient AccountRepository accountRepository;
 	private final transient PlayerAccountRepository playerAccountRepository;
 	private final transient ChestRepository playerChestRepository;
-	private final transient CharacterRepository playerCharacterRepository;
 	private final transient GameItemRefRepository gameItemRefRepository;
 	private final transient ModelMapper mapper;
 
 	public PlayerDataService(@Autowired final AccountRepository accountRepository,
 			@Autowired final PlayerAccountRepository playerAccountRepository,
 			@Autowired final ChestRepository playerChestRepository,
-			@Autowired final CharacterRepository playerCharacterRepository,
-			@Autowired final GameItemRefRepository gameItemRefRepository,
-			@Autowired final ModelMapper mapper) {
+			@Autowired final GameItemRefRepository gameItemRefRepository, @Autowired final ModelMapper mapper) {
 		this.accountRepository = accountRepository;
 		this.playerAccountRepository = playerAccountRepository;
 		this.playerChestRepository = playerChestRepository;
-		this.playerCharacterRepository = playerCharacterRepository;
 		this.gameItemRefRepository = gameItemRefRepository;
 		this.mapper = mapper;
 	}
@@ -64,7 +60,7 @@ public class PlayerDataService {
 		try {
 
 			if (this.playerAccountRepository.count() == 0L) {
-				for(AccountEntity account : this.accountRepository.findAll()) {
+				for (AccountEntity account : this.accountRepository.findAll()) {
 					this.createInitialAccount(account.getAccountGuid(), account.getEmail(), account.getAccountName(),
 							CharacterClass.ROGUE.classId);
 				}
@@ -74,13 +70,12 @@ public class PlayerDataService {
 		}
 	}
 
-	public CharacterDto saveCharacterStats(final String characterUuid, final CharacterDto newData) throws Exception{
+	public CharacterDto saveCharacterStats(final String characterUuid, final CharacterDto newData) throws Exception {
 		final long start = Instant.now().toEpochMilli();
 		PlayerAccountEntity ownerAccount = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
-		CharacterEntity character = ownerAccount
-				.findCharacterByUuid(characterUuid);
-		if(character==null)
-			throw new Exception("Character with UUID "+characterUuid+" was not found.");
+		CharacterEntity character = ownerAccount.findCharacterByUuid(characterUuid);
+		if (character == null)
+			throw new Exception("Character with UUID " + characterUuid + " was not found.");
 
 		character.getStats().setHp(newData.getStats().getHp());
 		character.getStats().setMp(newData.getStats().getMp());
@@ -94,8 +89,8 @@ public class PlayerDataService {
 
 		character.removeItems();
 
-		for(GameItemRefDto item: newData.getItems()) {
-			if(item==null) {
+		for (GameItemRefDto item : newData.getItems()) {
+			if (item == null) {
 				continue;
 			}
 			GameItemRefEntity itemEntity = this.mapper.map(item, GameItemRefEntity.class);
@@ -120,8 +115,7 @@ public class PlayerDataService {
 				.characterClass(classId).build();
 
 		// Equip the player with their starting equipment
-		final Map<Integer, GameItem> startingEquip = GameDataManager
-				.getStartingEquipment(clazz);
+		final Map<Integer, GameItem> startingEquip = GameDataManager.getStartingEquipment(clazz);
 		for (int i = 0; i < startingEquip.values().size(); i++) {
 			final GameItem toEquip = startingEquip.get(i);
 			final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(i, toEquip.getItemId());
@@ -143,9 +137,10 @@ public class PlayerDataService {
 	public void deleteCharacter(final String characterUuid) throws Exception {
 		final long start = Instant.now().toEpochMilli();
 		PlayerAccountEntity account = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
-		Optional<CharacterEntity> characterToDelete = account.getCharacters().stream().filter(character->character.getCharacterUuid().equals(characterUuid)).findAny();
+		Optional<CharacterEntity> characterToDelete = account.getCharacters().stream()
+				.filter(character -> character.getCharacterUuid().equals(characterUuid)).findAny();
 		if (characterToDelete.isEmpty())
-			throw new Exception("Player character with UUID "+characterUuid+" does not exist");
+			throw new Exception("Player character with UUID " + characterUuid + " does not exist");
 		characterToDelete.get().setDeleted(new Date(Instant.now().toEpochMilli()));
 		PlayerDataService.log.info("Successfully deleted character {} in {}ms", characterUuid,
 				(Instant.now().toEpochMilli() - start));
@@ -154,9 +149,30 @@ public class PlayerDataService {
 
 	public List<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception {
 		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
-		if(account==null)
-			throw new Exception("Player account with UUID "+ accountUuid+" was not found");
+		if (account == null)
+			throw new Exception("Player account with UUID " + accountUuid + " was not found");
 		return account.getCharacters();
+	}
+
+	public PlayerAccountDto createChest(final String accountUuid) throws Exception {
+		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+		if (account == null)
+			throw new Exception("Player account with UUID " + accountUuid + " was not found");
+
+		final ChestDto initialChest = ChestDto.builder().chestUuid(PlayerDataService.randomUuid())
+				.ordinal(account.getPlayerVault().size()).build();
+
+		account.getPlayerVault().add(initialChest);
+		return this.saveAccount(account);
+	}
+
+	public PlayerAccountDto saveChests(final String accountUuid, final List<ChestDto> chests) throws Exception {
+		PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+		if (account == null)
+			throw new Exception("Player account with UUID " + accountUuid + " was not found");
+
+		account.setPlayerVault(chests);
+		return this.saveAccount(account);
 	}
 
 	public PlayerAccountDto saveAccount(final PlayerAccountDto dto) {
@@ -173,19 +189,23 @@ public class PlayerDataService {
 				.accountUuid(accountUuid).build();
 
 		// Create a single chest with one item in it
-		final ChestEntity initialChest = ChestEntity.builder().chestUuid(PlayerDataService.randomUuid()).ordinal(0).build();
+		final ChestEntity initialChest = ChestEntity.builder().chestUuid(PlayerDataService.randomUuid()).ordinal(0)
+				.build();
 		// Create a new GameItemRef and put it in this chest
 
 		final GameItemRefEntity gameItemDBow = GameItemRefEntity.from(0, 47);
 		// Add the item to the chest
 		initialChest.addItem(gameItemDBow);
 
-		// Build a character from the provided classId, give it a weapon and give it default stats from GameDataManager
-		final CharacterEntity character = CharacterEntity.builder().characterUuid(PlayerDataService.randomUuid()).characterClass(characterClass).build();
+		// Build a character from the provided classId, give it a weapon and give it
+		// default stats from GameDataManager
+		final CharacterEntity character = CharacterEntity.builder().characterUuid(PlayerDataService.randomUuid())
+				.characterClass(characterClass).build();
 
 		// Equip the player with their starting equipment
-		final Map<Integer, GameItem> startingEquip = GameDataManager.getStartingEquipment(CharacterClass.valueOf(characterClass));
-		for(int i = 0; i<startingEquip.values().size(); i++) {
+		final Map<Integer, GameItem> startingEquip = GameDataManager
+				.getStartingEquipment(CharacterClass.valueOf(characterClass));
+		for (int i = 0; i < startingEquip.values().size(); i++) {
 			final GameItem toEquip = startingEquip.get(i);
 			final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(i, toEquip.getItemId());
 			character.addItem(toEquipEntity);
@@ -199,31 +219,38 @@ public class PlayerDataService {
 
 		final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
 
-		//this.replaceChestItem(initialChest.getChestUuid(), gameItemDBow.getItemUuid(), null);
-		PlayerDataService.log.info("Successfully created account for user {} in {}ms", finalAccount.getAccountEmail(), (Instant.now().toEpochMilli()-start));
+		// this.replaceChestItem(initialChest.getChestUuid(),
+		// gameItemDBow.getItemUuid(), null);
+		PlayerDataService.log.info("Successfully created account for user {} in {}ms", finalAccount.getAccountEmail(),
+				(Instant.now().toEpochMilli() - start));
 		return this.mapper.map(finalAccount, PlayerAccountDto.class);
 	}
 
-	public boolean replaceChestItem(final String accountUuid, final String chestUuid, final String targetItemUuid, final GameItemRefEntity replacement) throws Exception{
+	public boolean replaceChestItem(final String accountUuid, final String chestUuid, final String targetItemUuid,
+			final GameItemRefEntity replacement) throws Exception {
 		final PlayerAccountEntity account = this.playerAccountRepository.findByAccountUuid(accountUuid);
 		final ChestEntity targetChest = this.playerChestRepository.findByChestUuid(chestUuid);
 		boolean success = false;
-		if(targetChest==null)
-			throw new Exception("Chest with UUID "+chestUuid+" does not exist");
+		if (targetChest == null)
+			throw new Exception("Chest with UUID " + chestUuid + " does not exist");
 		final GameItemRefEntity targetItem = this.gameItemRefRepository.findByItemUuid(targetItemUuid);
-		if(targetItem==null)
-			throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist");
-		if(replacement==null) {
-			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
-			if(itemInChest.isEmpty())
-				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+		if (targetItem == null)
+			throw new Exception("Target item with UUID " + targetItemUuid + " does not exist");
+		if (replacement == null) {
+			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream()
+					.filter(item -> item.getItemUuid().equals(targetItemUuid)).findAny();
+			if (itemInChest.isEmpty())
+				throw new Exception(
+						"Target item with UUID " + targetItemUuid + " does not exist in chest with UUID " + chestUuid);
 			final GameItemRefEntity toRemove = itemInChest.get();
 			success = targetChest.removeItem(targetItem);
 			this.deleteGameItem(toRemove);
-		}else {
-			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream().filter(item->item.getItemUuid().equals(targetItemUuid)).findAny();
-			if(itemInChest.isEmpty())
-				throw new Exception("Target item with UUID "+targetItemUuid+ " does not exist in chest with UUID "+chestUuid );
+		} else {
+			Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream()
+					.filter(item -> item.getItemUuid().equals(targetItemUuid)).findAny();
+			if (itemInChest.isEmpty())
+				throw new Exception(
+						"Target item with UUID " + targetItemUuid + " does not exist in chest with UUID " + chestUuid);
 			final GameItemRefEntity toRemove = itemInChest.get();
 			success = targetChest.removeItem(targetItem);
 			this.deleteGameItem(toRemove);
@@ -245,7 +272,7 @@ public class PlayerDataService {
 					(Instant.now().toEpochMilli() - start));
 			return this.mapper.map(entity, PlayerAccountDto.class);
 		}
-		throw new Exception("PlayerAccount with id "+ accountId+" not found");
+		throw new Exception("PlayerAccount with id " + accountId + " not found");
 	}
 
 	public PlayerAccountDto getAccountByEmail(final String email) throws Exception {
@@ -256,7 +283,7 @@ public class PlayerDataService {
 					(Instant.now().toEpochMilli() - start));
 			return this.mapper.map(entity, PlayerAccountDto.class);
 		}
-		throw new Exception("PlayerAccount with email "+ email+" not found");
+		throw new Exception("PlayerAccount with email " + email + " not found");
 	}
 
 	public PlayerAccountDto getAccountByUuid(final String accountUuid) throws Exception {
@@ -267,7 +294,7 @@ public class PlayerDataService {
 					(Instant.now().toEpochMilli() - start));
 			return this.mapper.map(entity, PlayerAccountDto.class);
 		}
-		throw new Exception("PlayerAccount with account UUID "+ accountUuid+" not found");
+		throw new Exception("PlayerAccount with account UUID " + accountUuid + " not found");
 	}
 
 	public static String randomUuid() {
