@@ -1,6 +1,7 @@
 package com.jrealm.data.auth;
 
 import java.io.IOException;
+import java.net.InetAddress;
 
 import javax.annotation.Priority;
 import javax.servlet.FilterChain;
@@ -32,7 +33,8 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {	
-		//log.info("Request addr: {}", request.getRemoteAddr());
+		log.info("Request addr: {}", request.getRemoteAddr());
+		log.info("My addr: {}", InetAddress.getLocalHost());
 		if (request.getRemoteAddr().equals("127.0.0.1") 
 				|| request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
 				|| request.getServletPath().equals("/admin/account/login")
