@@ -30,7 +30,7 @@ public class JrealmDataConfiguration extends AbstractMongoClientConfiguration {
 	@Override
 	@Bean
 	public MongoClient mongoClient() {
-		final ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/jrealm");
+		final ConnectionString connectionString = new ConnectionString("mongodb://host.docker.internal:27017/jrealm");
 
 		final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
 				.applyConnectionString(connectionString).build();
