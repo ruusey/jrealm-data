@@ -33,14 +33,12 @@
 				"name": "World_0_Beach_0_Enemies",
 				"ordinal": 0,
 				"enemyIds": [
-					3,
-					4,
-					5,
 					6,
 					7,
 					8,
-					10,
-					12
+					9,
+					11,
+					14
 				]
 			}
 		]
@@ -122,12 +120,14 @@
 				"name": "Grasslands_0_Enemies",
 				"ordinal": 0,
 				"enemyIds": [
+					3,
+					4,
+					5,
 					6,
 					7,
 					8,
-					9,
-					11,
-					14
+					10,
+					12
 				]
 			}
 		]
