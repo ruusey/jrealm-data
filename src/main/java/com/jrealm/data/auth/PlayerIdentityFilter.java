@@ -33,8 +33,8 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 	@Override
 	public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {	
-		log.info("Request addr: {}", request.getRemoteAddr());
-		log.info("My addr: {}", InetAddress.getLocalHost());
+//		log.info("Request addr: {}", request.getRemoteAddr());
+//		log.info("My addr: {}", InetAddress.getLocalHost());
 		if (request.getRemoteAddr().equals("127.0.0.1") 
 				|| request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
 				|| request.getServletPath().equals("/admin/account/login")
