@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.jrealm.data</groupId>
 	<artifactId>jrealm-data</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>jrealm-data</name>
 	<description>Data access for JRealm</description>
 	<properties>

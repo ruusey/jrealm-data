@@ -38,11 +38,14 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 		if (request.getRemoteAddr().equals("127.0.0.1") 
 				|| request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
 				|| request.getServletPath().equals("/admin/account/login")
-				|| request.getServletPath().equals("/v2/api-docs") || request.getServletPath().equals("/ping")
+				|| request.getServletPath().equals("/admin/account/register")
+				|| request.getServletPath().equals("/v3/api-docs") || request.getServletPath().equals("/ping")
 				|| request.getServletPath().contains("/swagger-ui")
 				|| request.getServletPath().contains("/swagger-resources")
+				|| request.getServletPath().contains("/swagger-config")
 				|| request.getServletPath().matches("/.*[a-z0-9 -].png")
-				|| request.getServletPath().matches("/.*[a-z0-9 -].json")) {
+				|| request.getServletPath().matches("/.*[a-z0-9 -].json")
+				|| request.getServletPath().matches("/game-data/[^/]+")) {
 			log.debug("Safe path detected {}", request.getServletPath());
 			filterChain.doFilter(request, response);
 			return;
