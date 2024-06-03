@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.jrealm.data</groupId>
 	<artifactId>jrealm-data</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>jrealm-data</name>
 	<description>Data access for JRealm</description>
 	<properties>
@@ -19,9 +19,9 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.12</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>com.jrealm.game</groupId>
 			<artifactId>jrealm</artifactId>
-			<version>0.3.3</version>
+			<version>0.3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

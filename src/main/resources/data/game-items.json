@@ -1776,7 +1776,7 @@
 		"name": "Dagger of Sinister Deeds",
 		"description": "A moonsteel dagger of the underworld, corrupted by loathsome enchantments and profane spells.",
 		"damage": {
-			"projectileGroupId": 13,
+			"projectileGroupId": 32,
 			"min": 125,
 			"max": 220
 		},
@@ -1795,7 +1795,7 @@
 		"name": "Dagger of Dire Hatred",
 		"description": "A jagged, wickedly barbed blade of evil, charged with the unreasoning rage of ancestral vendettas.",
 		"damage": {
-			"projectileGroupId": 13,
+			"projectileGroupId": 31,
 			"min": 140,
 			"max": 235
 		},

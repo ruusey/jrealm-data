@@ -3,38 +3,52 @@
 		"portalId": 0,
 		"portalName": "Beach_0_Portal",
 		"mapId": 2,
+		"targetRealmDepth": 0,
 		"row": 8,
 		"col": 12,
 		"spriteKey": "rotmg-tiles-2.png"
 	},
 	{
 		"portalId": 1,
+		"portalName": "Grasslands_0_Portal",
+		"mapId": 4,
+		"targetRealmDepth": 1,
+		"row": 8,
+		"col": 15,
+		"spriteKey": "rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 2,
 		"portalName": "Vault_Portal",
 		"mapId": 1,
+		"targetRealmDepth": -1,
 		"row": 3,
 		"col": 6,
 		"spriteKey": "rotmg-tiles-2.png"
 	},
 	{
-		"portalId": 2,
+		"portalId": 3,
 		"portalName": "Exit_Portal",
 		"mapId": 2,
+		"targetRealmDepth": -1,
 		"row": 3,
 		"col": 7,
 		"spriteKey": "rotmg-tiles-2.png"
 	},
 	{
-		"portalId": 3,
+		"portalId": 4,
 		"portalName": "Cave_0_Portal",
 		"mapId": 3,
+		"targetRealmDepth": 2,
 		"row": 9,
 		"col": 12,
 		"spriteKey": "rotmg-tiles-2.png"
 	},
 	{
-		"portalId": 4,
+		"portalId": 5,
 		"portalName": "Boss_0_Portal",
 		"mapId": 5,
+		"targetRealmDepth": 3,
 		"row": 9,
 		"col": 13,
 		"spriteKey": "rotmg-tiles-2.png"

@@ -1561,6 +1561,92 @@
 				]
 			}
 		]
+	},
+	{
+		"projectileGroupId": 31,
+		"row": 14,
+		"col": 6,
+		"spriteKey": "rotmg-projectiles.png",
+		"projectiles": [
+			{
+				"projectileId": 31,
+				"positionMode": 0,
+				"damage": 125,
+				"angle": 0,
+				"range": 150,
+				"size": 24,
+				"magnitude": 5.0,
+				"flags": [
+					0
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 32,
+		"row": 13,
+		"col": 6,
+		"spriteKey": "rotmg-projectiles.png",
+		"projectiles": [
+			{
+				"projectileId": 32,
+				"positionMode": 0,
+				"damage": 125,
+				"angle": 0,
+				"range": 150,
+				"size": 24,
+				"magnitude": 5.0,
+				"flags": [
+					0
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 33,
+		"row": 6,
+		"col": 9,
+		"spriteKey": "rotmg-projectiles.png",
+		"projectiles": [
+			{
+				"projectileId": 33,
+				"positionMode": 0,
+				"damage": 50,
+				"angle": 0,
+				"range": 120,
+				"size": 24,
+				"magnitude": 1.0,
+				"amplitude": 2,
+				"frequency": 7,
+				"flags": [
+					0,
+					12
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 34,
+		"row": 31,
+		"col": 13,
+		"spriteKey": "rotmg-tiles-all.png",
+		"projectiles": [
+			{
+				"projectileId": 34,
+				"positionMode": 0,
+				"damage": 50,
+				"angle": 0,
+				"range": 200,
+				"size": 24,
+				"magnitude": 2.5,
+				"amplitude": 3,
+				"frequency": 7,
+				"flags": [
+					0,
+					12
+				]
+			}
+		]
 	}
 ]
 

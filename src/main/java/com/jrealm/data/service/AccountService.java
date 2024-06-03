@@ -3,6 +3,7 @@ package com.jrealm.data.service;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -177,8 +178,8 @@ public class AccountService {
 		try {
 			AccountEntity existing = this.accountRepo.findByEmail(account.getEmail());
 			if (existing != null) {
-				AccountService.log.info("GCN user {} already Exists", account);
-				return null;
+				AccountService.log.info("JRealm user {} already Exists", account.getEmail());
+				throw new Exception(MessageFormat.format("JRealm user {0} already Exists", account.getEmail()));
 			}
 
 			AccountEntity accountEntity = this.saveAccountDetails(account);
@@ -193,8 +194,8 @@ public class AccountService {
 			return accountEntity;
 		} catch (Exception e) {
 			AccountService.log.error("Error registering account [" + e.getMessage() + "]");
+			throw e;
 		}
-		return null;
 	}
 
 	public CreateTokenResponseDto createApiToken(CreateTokenRequestDto req) {
