@@ -9,6 +9,9 @@
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous">
 </script>
+<link href="https://cdn.datatables.net/v/dt/dt-2.0.8/datatables.css" rel="stylesheet">
+ 
+<script src="https://cdn.datatables.net/v/dt/dt-2.0.8/datatables.js"></script>
 <link href="style.css" rel="stylesheet">
 
 </head>
@@ -19,15 +22,15 @@
 
 
 	</div>
-	<div class="container">
+	<div class="container" id="content-pane">
 
 		<h4>User Information</h4>
-		Email: <input id="user-email" type="text" value="user@jrealm.com">
+		Email: <input id="user-email" type="text" value="ru-admin@jrealm.com">
 		<br>
-		Password:  <input id="user-pass" type="text" value="xxxxxxx">
+		Password:  <input id="user-pass" type="text" value="password">
 		<br>
-		<button id="login" style="margin-left: 20px;">Login</button>
-		<button id="create-account" style="margin-left: 20px;">Create Account</button>
+		<button id="login">Login</button>
+		<button id="create-account">Create Account</button>
 
 
 	</div>
@@ -42,5 +45,6 @@
 
 		</div>
 	</div>
+	<table id="example" class="display" width="100%"></table>
 </body>
 </html>

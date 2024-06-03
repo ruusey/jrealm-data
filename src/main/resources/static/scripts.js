@@ -10,22 +10,58 @@ function addToConsole(message) {
 	txt.scrollTop(txt[0].scrollHeight)
 }
 
+function getAddChestButton(accountUuid){
+	var button = $("<button>");
+	button.text("Add Vault Chest")
+	button.on("click", function(event) {
+		$.postJSON(BASE_URL + "data/account/"+accountUuid+"/chest/new", null, function(data) {
+			addToConsole(data)
+		})
+	})
+	return button;
+}
 
+function getAddCharacterButton(accountUuid){
+	var button = $("<button>");
+	button.text("Create Character")
+	button.on("click", function(event) {
+		let classId = prompt("Character Class - ROGUE(0), ARCHER(1), WIZARD(2), PRIEST(3), WARRIOR(4), KNIGHT(5), PALLADIN(6)");
+		if(!classId || Number.parseInt(classId)) return;
+		$.postJSON(BASE_URL + "data/account/"+accountUuid+"/character?classId="+classId, null, function(data) {
+			addToConsole(data)
+		})
+	})
+	return button;
+}
 function login() {
 	var login = { "email": $("#user-email").val(), "password": $("#user-pass").val() }
 	$.postJSON(BASE_URL + "admin/account/login", login, function(data) {
 		token = data.token;
 		accountId = data.accountGuid;
 		addToConsole(data)
-		
-		$.getJSON(BASE_URL + "data/account/"+accountId+"/character", function(data) {
+		$("#content-pane").append(getAddChestButton(accountId));
+		$("#content-pane").append(getAddCharacterButton(accountId));
+
+		$.getJSON(BASE_URL + "data/account/" + accountId + "/character", function(data) {
 			addToConsole(data)
+			$('#example').DataTable({
+				data: data,
+				columns: [
+					{ data: 'characterUuid' },
+					{ data: 'characterClass' },
+					{ data: 'items.itemId' },
+					{ data: 'stats.xp' }
+				]
+			});
 		})
 	})
 }
 
 function createAccount() {
 	let accountName = prompt('Account Name');
+	if(!accountName){
+		addToConsole({"error":"Invalid Account Name"})
+	}
 	var acc = { "email": $("#user-email").val(), "password": $("#user-pass").val(), "accountName": accountName, "accountProvisions": ["JREALM"], "accountSubscriptions": ["TRIAL"], "accountProperties": {} }
 	$.postJSON(BASE_URL + "admin/account/register", acc, function(data) {
 		addToConsole(data);
