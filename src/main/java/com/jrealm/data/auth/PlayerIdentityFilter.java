@@ -1,7 +1,6 @@
 package com.jrealm.data.auth;
 
 import java.io.IOException;
-import java.net.InetAddress;
 
 import javax.annotation.Priority;
 import javax.servlet.FilterChain;
