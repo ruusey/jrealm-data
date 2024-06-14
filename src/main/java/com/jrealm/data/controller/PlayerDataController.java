@@ -18,6 +18,7 @@ import com.jrealm.data.dto.CharacterDto;
 import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.PlayerAccountDto;
 import com.jrealm.data.service.PlayerDataService;
+import com.jrealm.data.util.AdminRestricted;
 import com.jrealm.data.util.ApiUtils;
 import com.jrealm.data.util.ErrorResponseObject;
 
@@ -54,6 +55,7 @@ public class PlayerDataController {
 	}
 
 	@PostMapping(value = "/account/{accountUuid}/character", produces = { "application/json" })
+	@AdminRestricted
 	public ResponseEntity<?> createPlayerAccountCharacter(@PathVariable final String accountUuid,
 			@RequestParam Integer classId) {
 		ResponseEntity<?> res = null;
@@ -66,6 +68,7 @@ public class PlayerDataController {
 	}
 
 	@PostMapping(value = "/account", produces = { "application/json" })
+	@AdminRestricted
 	public ResponseEntity<?> saveAccountData(@RequestBody final PlayerAccountDto account) {
 		ResponseEntity<?> res = null;
 		try {
@@ -77,6 +80,7 @@ public class PlayerDataController {
 	}
 
 	@PostMapping(value = "/account/character/{characterUuid}", produces = { "application/json" })
+	@AdminRestricted
 	public ResponseEntity<?> saveCharacterStatsData(@PathVariable String characterUuid,
 			@RequestBody final CharacterDto character) {
 		ResponseEntity<?> res = null;

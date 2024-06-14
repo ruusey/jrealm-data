@@ -76,7 +76,7 @@ public class AccountService {
 	public void seedAccounts() {
 		try {
 
-			if (this.accountRepo.count() == 0L) {
+			if (this.accountRepo.count() == 1L) {
 				ObjectMapper mapper = new ObjectMapper();
 				InputStream inputStream = this.getClass().getResourceAsStream("/account_seed.json");
 				String text = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
@@ -84,12 +84,27 @@ public class AccountService {
 				AccountDto[] accounts = mapper.readValue(text, AccountDto[].class);
 
 				for (AccountDto account : accounts) {
-					AccountService.log.info("Seeded account {}", this.registerJrealmAccount(account));
+					final AccountEntity createdAccount = this.registerJrealmAccount(account);
+					if(account.isAdmin()) {
+						final CreateTokenRequestDto createApiKey = CreateTokenRequestDto.builder()
+								.accountGuid(createdAccount.getAccountGuid())
+								.tokenName("SYS_TOKEN")
+								.build();
+						final CreateTokenResponseDto createdApiKey = this.createApiToken(createApiKey);
+						log.info("SYSTOKEN Created for account {}\n SYS_TOKEN={}", account, createdApiKey.getToken());
+					}
+					AccountService.log.info("Seeded account {}", createdAccount);
 				}
+				
 			}
 		} catch (Exception e) {
 			AccountService.log.error("Failed to seed Accounts", e);
 		}
+	}
+	
+	public String getSystoken() {
+		final AccountTokenEntity sysToken = this.tokenRepo.findByTokenName("SYS_TOKEN");
+		return sysToken.getToken();
 	}
 
 	public AccountEntity saveAccountDetails(AccountDto account) {
@@ -379,6 +394,25 @@ public class AccountService {
 				.email(account.getEmail()).accountGuid(account.getAccountGuid()).accountName(account.getAccountName())
 				.accountProperties(accProperties).accountProvisions(accProvisions)
 				.accountSubscriptions(accSubscriptions).build();
+	}
+
+	public boolean isAdminApiKey(final String apiToken) throws Exception{
+		final AccountDto adminAccount = this.getAccountByToken(apiToken);
+		return adminAccount.isAdmin();
+	}
+
+	public AccountDto getAccountByToken(String apiToken) throws Exception {
+		final Exception errorMsg = new Exception("Invalid JRealm API Token");
+		AccountTokenEntity accountToken = this.tokenRepo.findByToken(apiToken);
+		if (accountToken == null) {
+			throw errorMsg;
+		}
+		final AccountDto apiTokenOwner = this.getAccountByGuid(accountToken.getAccountGuid());
+		if (apiTokenOwner == null) {
+			log.error("Token {} found but does not belong to a valid account", accountToken);
+			throw errorMsg;
+		}
+		return apiTokenOwner;
 	}
 
 	public List<AccountAccessEntity> getAccountSubscriptions(String guid) {

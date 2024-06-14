@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.jrealm.data.entity.auth.AccountAuthEntity;
+import com.jrealm.data.entity.auth.AccountTokenEntity;
 import com.jrealm.data.repository.auth.AccountAuthRepository;
+import com.jrealm.data.repository.auth.AccountTokenRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,9 +27,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PlayerIdentityFilter extends OncePerRequestFilter {
 	private AccountAuthRepository accountAuthRepo;
+	private AccountTokenRepository accountTokenRepo;
 
-	public PlayerIdentityFilter(@Autowired final AccountAuthRepository accountAuthRepo) {
+	public PlayerIdentityFilter(@Autowired final AccountAuthRepository accountAuthRepo,
+			@Autowired final AccountTokenRepository accountTokenRepo) {
 		this.accountAuthRepo = accountAuthRepo;
+		this.accountTokenRepo = accountTokenRepo;
 	}
 
 	@Override
@@ -35,6 +40,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {	
 //		log.info("Request addr: {}", request.getRemoteAddr());
 //		log.info("My addr: {}", InetAddress.getLocalHost());
+		
 		if (request.getRemoteAddr().equals("127.0.0.1") 
 				|| request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
 				|| request.getServletPath().equals("/admin/account/login")
@@ -51,17 +57,28 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 			return;
 		}
 		String authToken = null;
+		AccountAuthEntity authedUser = null;
+		AccountTokenEntity systemToken = null;
 		try {
-			authToken = this.extractAuthToken(request);
+			if(request.getHeader("Authorization").contains("Bearer")) {
+				authToken = this.extractBearerToken(request);
+				systemToken = this.accountTokenRepo.findByToken(authToken);
+			}else {
+				authToken = this.extractAuthToken(request);
+				authedUser = this.accountAuthRepo.findBySessionToken(authToken);
+			}
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			response.sendError(401, e.getMessage());
 			return;
 		}
-		final AccountAuthEntity authedUser = this.accountAuthRepo.findBySessionToken(authToken);
-		if (!authedUser.isExpiredOrEmpty()) {
-			response.setHeader("Account-Uuid", authToken);
-			response.setHeader("Authorization", authedUser.getSessionToken());
+		if (authedUser!=null && !authedUser.isExpiredOrEmpty()) {
+			response.setHeader("Account-Uuid", authedUser.getAccountGuid());
+			//response.setHeader("Authorization", authedUser.getSessionToken());
+			filterChain.doFilter(request, response);
+		}else if(systemToken!=null){
+			response.setHeader("Account-Uuid", authedUser.getAccountGuid());
+			//response.setHeader("Authorization", systemToken.getToken());
 			filterChain.doFilter(request, response);
 		} else {
 			response.sendError(401, "Authorization is invalid.");
@@ -70,6 +87,16 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 
 	private String extractAuthToken(HttpServletRequest request) throws ServletException {
 		final String authHeader = request.getHeader("Authorization");
+
+		if (authHeader == null || authHeader.isEmpty()) {
+			log.info(request.getServletPath());
+			throw new ServletException("Authorization is required to access this resource.");
+		}
+		return authHeader;
+	}
+	
+	private String extractBearerToken(HttpServletRequest request) throws ServletException {
+		final String authHeader = request.getHeader("Authorization").split(" ")[1];
 
 		if (authHeader == null || authHeader.isEmpty()) {
 			log.info(request.getServletPath());

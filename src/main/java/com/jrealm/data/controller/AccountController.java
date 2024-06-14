@@ -38,6 +38,22 @@ public class AccountController {
 		this.jrealmData = jrealmData;
 	}
 
+	@RequestMapping(value = "/token", method = RequestMethod.GET, produces = { "application/json" })
+	public ResponseEntity<?> getSysToken(final HttpServletRequest req) {
+		ResponseEntity<?> res = null;
+		try {
+			if (req.getRemoteAddr().equals("127.0.0.1") || req.getRemoteAddr().equals("0:0:0:0:0:0:0:1")) {
+				res = ApiUtils.buildSuccess(this.jrealmAccounts.getSystoken());
+			}else {
+				throw new Exception("Invalid SYS_TOKEN request");
+			}
+		} catch (final Exception e) {
+			final String errMsg = "Failed to get Sys_Token, Are you requesting from a valid data service?";
+			res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
+		}
+		return res;
+	}
+
 	@RequestMapping(value = "/ping", method = RequestMethod.GET, produces = { "application/json" })
 	public ResponseEntity<?> ping(final HttpServletRequest req) {
 		ResponseEntity<?> res = null;

@@ -1,7 +1,21 @@
 [
 	{
 		"accountName": "ruusey",
-		"email": "ru-admin@jrealm.com",
+		"email": "ru@jrealm.com",
+		"accountSubscriptions": [
+			"TRIAL"
+		],
+		"accountProvisions": [
+			"JREALM"
+		],
+		"accountProperties": {
+			"isOwner": "true"
+		},
+		"password": "password"
+	},
+	{
+		"accountName": "SYSADMIN",
+		"email": "admin@jrealm.com",
 		"accountSubscriptions": [
 			"ADMIN"
 		],
@@ -9,8 +23,7 @@
 			"JREALM"
 		],
 		"accountProperties": {
-			"test_property": "value-12345"
-		},
-		"password": "password"
+			"sysAdmin": "true"
+		}
 	}
 ]
