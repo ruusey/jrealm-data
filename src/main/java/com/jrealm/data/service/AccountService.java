@@ -76,7 +76,7 @@ public class AccountService {
     public void seedAccounts() {
         try {
 
-            if (this.accountRepo.count() == 1L) {
+            if (this.accountRepo.count() == 0L) {
                 ObjectMapper mapper = new ObjectMapper();
                 InputStream inputStream = this.getClass().getResourceAsStream("/account_seed.json");
                 String text = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);

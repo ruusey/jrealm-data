@@ -24,6 +24,8 @@
 		],
 		"accountProperties": {
 			"sysAdmin": "true"
-		}
+		},
+		"password": "Sy5Adm1n%"
+
 	}
 ]
