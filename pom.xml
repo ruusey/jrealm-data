@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.jrealm.data</groupId>
 	<artifactId>jrealm-data</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<name>jrealm-data</name>
 	<description>Data access for JRealm</description>
 	<properties>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>com.jrealm.game</groupId>
 			<artifactId>jrealm</artifactId>
-			<version>0.3.4</version>
+			<version>0.3.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
