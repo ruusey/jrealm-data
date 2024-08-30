@@ -2,8 +2,8 @@
 	{
 		"name": "World_0_Beach_0",
 		"terrainId": 0,
-		"width": 64,
-		"height": 64,
+		"width": 256,
+		"height": 256,
 		"tileSize": 32,
 		"tileGroups": [
 			{
@@ -47,8 +47,8 @@
 	{
 		"name": "World_0_Cave_0",
 		"terrainId": 1,
-		"width": 64,
-		"height": 64,
+		"width": 256,
+		"height": 256,
 		"tileSize": 32,
 		"tileGroups": [
 			{
@@ -90,8 +90,8 @@
 	{
 		"name": "Grasslands_0",
 		"terrainId": 2,
-		"width": 64,
-		"height": 64,
+		"width": 256,
+		"height": 256,
 		"tileSize": 32,
 		"tileGroups": [
 			{

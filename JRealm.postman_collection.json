@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "1e17bb59-58de-43a2-8b5c-f8afd23e3f3c",
+		"name": "JRealm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10066083"
+	},
+	"item": [
+		{
+			"name": "ACCOUNT BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://18.117.127.158:8085/data/account/{{ACCOUNT_GUID}}",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"data",
+						"account",
+						"{{ACCOUNT_GUID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTH ACCOUNT BY EMAIL",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://18.117.127.158:8085/admin/account/email/harrison@jrealm.com",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"admin",
+						"account",
+						"email",
+						"harrison@jrealm.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTH ACCOUNT BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://18.117.127.158:8085/admin/account/{{ACCOUNT_GUID}}",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"admin",
+						"account",
+						"{{ACCOUNT_GUID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET CHARACTERS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://18.117.127.158:8085/data/account/bfaecb01-2f54-4085-8ed5-a5bbde4b2fa3/character",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"data",
+						"account",
+						"bfaecb01-2f54-4085-8ed5-a5bbde4b2fa3",
+						"character"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SAVE CHARACTER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"characterClass\": 0,\n  \"stats\": {\n    \"characterStatsId\": \"string\",\n    \"xp\": 0,\n    \"classId\": 0,\n    \"hp\": 0,\n    \"mp\": 0,\n    \"def\": 0,\n    \"att\": 0,\n    \"spd\": 0,\n    \"dex\": 0,\n    \"vit\": 0,\n    \"wis\": 0\n  },\n  \"items\": [\n    {\n      \"itemId\": 0,\n      \"slotIdx\": 0,\n      \"itemUuid\": \"string\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://18.117.127.158:8085/data/account/character/b6f717c6-1861-408f-b20e-1053c43045ae",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"data",
+						"account",
+						"character",
+						"b6f717c6-1861-408f-b20e-1053c43045ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE CHARACTER",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"characterClass\": 0,\n  \"stats\": {\n    \"characterStatsId\": \"string\",\n    \"xp\": 0,\n    \"classId\": 0,\n    \"hp\": 0,\n    \"mp\": 0,\n    \"def\": 0,\n    \"att\": 0,\n    \"spd\": 0,\n    \"dex\": 0,\n    \"vit\": 0,\n    \"wis\": 0\n  },\n  \"items\": [\n    {\n      \"itemId\": 0,\n      \"slotIdx\": 0,\n      \"itemUuid\": \"string\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://18.117.127.158:8085/data/account/character/b6f717c6-1861-408f-b20e-1053c43045ae",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"data",
+						"account",
+						"character",
+						"b6f717c6-1861-408f-b20e-1053c43045ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE NEW CHEST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://18.117.127.158:8085/data/account/{{ACCOUNT_GUID}}/chest/new",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"data",
+						"account",
+						"{{ACCOUNT_GUID}}",
+						"chest",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ACCOUNT LOGIN",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"pm.collectionVariables.set(\"TOKEN\", responseData.token);",
+							"pm.collectionVariables.set(\"ACCOUNT_GUID\", responseData.accountGuid);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"robert@jrealm.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://18.117.127.158:8085/admin/account/login",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"admin",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ACCOUNT LOGOUT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://18.117.127.158:8085/admin/account/logout",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"admin",
+						"account",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE CHARACTER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://18.117.127.158:8085/data/account/{{ACCOUNT_GUID}}/character?classId=2",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"data",
+						"account",
+						"{{ACCOUNT_GUID}}",
+						"character"
+					],
+					"query": [
+						{
+							"key": "classId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE ACCOUNT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"password\",\n    \"accountName\": \"OrangeSalts\",\n    \"accountProvisions\": [\n        \"JREALM\"\n    ],\n    \"accountSubscriptions\": [\n        \"TRIAL\"\n    ],\n    \"admin\": false,\n    \"email\": \"robert@jrealm.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://18.117.127.158:8085/admin/account/register",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"admin",
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PING",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://18.117.127.158:8085/ping",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE ACCOUNT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountId\": \"66d1ca887b4d4a03e4fa6c8f\",\n    \"accountGuid\": \"bfaecb01-2f54-4085-8ed5-a5bbde4b2fa3\",\n    \"accountName\": \"lupper9\",\n    \"accountProperties\": {},\n    \"accountProvisions\": [\n        \"JREALM\"\n    ],\n    \"accountSubscriptions\": [\n        \"TRIAL\"\n    ],\n    \"admin\": false,\n    \"email\": \"harrison@jrealm.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://18.117.127.158:8085/admin/account",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"admin",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE VAULT",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n        {\n            \"chestUuid\": \"ccc7238f-4fed-4845-a3a6-b09012867731\",\n            \"ordinal\": 0,\n            \"items\": [\n                {\n                    \"itemId\": 47,\n                    \"slotIdx\": 0,\n                    \"itemUuid\": \"b6cd6949-fcb9-4229-ac6d-261c355385ea\"\n                }\n            ]\n        },\n        {\n            \"chestUuid\": \"657e4035-54e5-41b6-9ca6-5244f06d53d3\",\n            \"ordinal\": 1,\n            \"items\": []\n        }\n    ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://18.117.127.158:8085/data/account/bfaecb01-2f54-4085-8ed5-a5bbde4b2fa3/chest",
+					"protocol": "http",
+					"host": [
+						"18",
+						"117",
+						"127",
+						"158"
+					],
+					"port": "8085",
+					"path": [
+						"data",
+						"account",
+						"bfaecb01-2f54-4085-8ed5-a5bbde4b2fa3",
+						"chest"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Authorization",
+			"value": ""
+		},
+		{
+			"key": "TOKEN",
+			"value": ""
+		},
+		{
+			"key": "ACCOUNT_GUID",
+			"value": ""
+		}
+	]
+}

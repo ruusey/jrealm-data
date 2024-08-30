@@ -80,8 +80,8 @@
 		"mapName": "World_1_Beach",
 		"mapKey": "overworld.world1.beach",
 		"tileSize" : 32,
-		"width": 128,
-		"height": 128,
+		"width": 256,
+		"height": 256,
 		"terrainId": 0
 	},
 	{
@@ -89,8 +89,8 @@
 		"mapName": "World_1_Cave",
 		"mapKey": "overworld.world1.cave",
 		"tileSize" : 32,
-		"width": 128,
-		"height": 128,
+		"width": 256,
+		"height": 256,
 		"terrainId": 1
 	},
 	{
@@ -98,8 +98,8 @@
 		"mapName": "Grasslands_0",
 		"mapKey": "overworld.grasslands0",
 		"tileSize" : 32,
-		"width": 128,
-		"height": 128,
+		"width": 256,
+		"height": 256,
 		"terrainId": 2
 	},
 		{
