@@ -135,6 +135,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
     public boolean accountGuidMatch(String providedGuid, HttpServletRequest actualRequest) {
        final AccountDto actualAccount = this.getAuthedUser(actualRequest);
        final AccountDto providedAccount =  this.accountService.getAccountByGuid(providedGuid);
-       return actualAccount.getAccountGuid().equals(providedAccount);
+       if(actualAccount.isAdmin()) return true;
+       return actualAccount.getAccountGuid().equals(providedAccount.getAccountGuid());
     }
 }
