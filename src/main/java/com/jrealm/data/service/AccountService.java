@@ -308,6 +308,9 @@ public class AccountService {
 
     public AccountDto getAccountByGuid(String guid) {
         AccountEntity account = this.accountRepo.findByAccountGuid(guid);
+        if(account==null) {
+            return null;
+        }
         // log.info("Getting account information for email={}", account.getEmail());
         return this.getAccountById(account.getAccountId());
     }

@@ -13,10 +13,12 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.jrealm.data.dto.auth.AccountDto;
 import com.jrealm.data.entity.auth.AccountAuthEntity;
 import com.jrealm.data.entity.auth.AccountTokenEntity;
 import com.jrealm.data.repository.auth.AccountAuthRepository;
 import com.jrealm.data.repository.auth.AccountTokenRepository;
+import com.jrealm.data.service.AccountService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,11 +29,14 @@ import lombok.extern.slf4j.Slf4j;
 public class PlayerIdentityFilter extends OncePerRequestFilter {
     private AccountAuthRepository accountAuthRepo;
     private AccountTokenRepository accountTokenRepo;
+    private AccountService accountService;
 
     public PlayerIdentityFilter(@Autowired final AccountAuthRepository accountAuthRepo,
-            @Autowired final AccountTokenRepository accountTokenRepo) {
+            @Autowired final AccountTokenRepository accountTokenRepo,
+            @Autowired final AccountService accountService) {
         this.accountAuthRepo = accountAuthRepo;
         this.accountTokenRepo = accountTokenRepo;
+        this.accountService = accountService;
     }
 
     @Override
@@ -86,7 +91,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
         }
     }
 
-    private String extractAuthToken(HttpServletRequest request) throws ServletException {
+    public String extractAuthToken(HttpServletRequest request) throws ServletException {
         final String authHeader = request.getHeader("Authorization");
 
         if (authHeader == null || authHeader.isEmpty()) {
@@ -96,7 +101,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
         return authHeader;
     }
 
-    private String extractBearerToken(HttpServletRequest request) throws ServletException {
+    public String extractBearerToken(HttpServletRequest request) throws ServletException {
         final String authHeader = request.getHeader("Authorization").split(" ")[1];
 
         if (authHeader == null || authHeader.isEmpty()) {
@@ -104,5 +109,32 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
             throw new ServletException("Authorization is required to access this resource.");
         }
         return authHeader;
+    }
+    
+    public AccountDto getAuthedUser(HttpServletRequest request) {
+        String authToken = null;
+        AccountAuthEntity authedUser = null;
+        AccountTokenEntity systemToken = null;
+        AccountDto account =null;
+        try {
+            if (request.getHeader("Authorization").contains("Bearer")) {
+                authToken = this.extractBearerToken(request);
+                systemToken = this.accountTokenRepo.findByToken(authToken);
+                account = this.accountService.getAccountByGuid(systemToken.getAccountGuid());
+            } else {
+                authToken = this.extractAuthToken(request);
+                authedUser = this.accountAuthRepo.findBySessionToken(authToken);
+                account = this.accountService.getAccountByGuid(authedUser.getAccountGuid());
+            }
+        } catch (Exception e) {
+            log.error("Failed to authenticate user. Reason: {}", e);
+        }
+        return account;
+    }
+    
+    public boolean accountGuidMatch(String providedGuid, HttpServletRequest actualRequest) {
+       final AccountDto actualAccount = this.getAuthedUser(actualRequest);
+       final AccountDto providedAccount =  this.accountService.getAccountByGuid(providedGuid);
+       return actualAccount.getAccountGuid().equals(providedAccount);
     }
 }

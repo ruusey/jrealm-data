@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -14,6 +16,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
+import com.jrealm.data.auth.PlayerIdentityFilter;
 import com.jrealm.data.dto.CharacterDto;
 import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.GameItemRefDto;
@@ -41,16 +44,20 @@ public class PlayerDataService {
     private final transient PlayerAccountRepository playerAccountRepository;
     private final transient ChestRepository playerChestRepository;
     private final transient GameItemRefRepository gameItemRefRepository;
+    private final transient PlayerIdentityFilter authFilter;
     private final transient ModelMapper mapper;
 
     public PlayerDataService(@Autowired final AccountRepository accountRepository,
             @Autowired final PlayerAccountRepository playerAccountRepository,
             @Autowired final ChestRepository playerChestRepository,
-            @Autowired final GameItemRefRepository gameItemRefRepository, @Autowired final ModelMapper mapper) {
+            @Autowired final GameItemRefRepository gameItemRefRepository, 
+            @Autowired final PlayerIdentityFilter authFilter,
+            @Autowired final ModelMapper mapper) {
         this.accountRepository = accountRepository;
         this.playerAccountRepository = playerAccountRepository;
         this.playerChestRepository = playerChestRepository;
         this.gameItemRefRepository = gameItemRefRepository;
+        this.authFilter = authFilter;
         this.mapper = mapper;
     }
 
@@ -70,9 +77,12 @@ public class PlayerDataService {
         }
     }
 
-    public CharacterDto saveCharacterStats(final String characterUuid, final CharacterDto newData) throws Exception {
+    public CharacterDto saveCharacterStats(final HttpServletRequest request, final String characterUuid, final CharacterDto newData) throws Exception {
         final long start = Instant.now().toEpochMilli();
         PlayerAccountEntity ownerAccount = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
+        if (!this.authFilter.accountGuidMatch(ownerAccount.getAccountUuid(), request)) {
+            throw new Exception("Invalid token");
+        }
         CharacterEntity character = ownerAccount.findCharacterByUuid(characterUuid);
         if (character == null)
             throw new Exception("Character with UUID " + characterUuid + " was not found.");
@@ -134,9 +144,12 @@ public class PlayerDataService {
         return this.mapper.map(accountEntity, PlayerAccountDto.class);
     }
 
-    public void deleteCharacter(final String characterUuid) throws Exception {
+    public void deleteCharacter(final HttpServletRequest request, final String characterUuid) throws Exception {
         final long start = Instant.now().toEpochMilli();
         PlayerAccountEntity account = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
+        if (!this.authFilter.accountGuidMatch(account.getAccountUuid(), request)) {
+            throw new Exception("Invalid token");
+        }
         Optional<CharacterEntity> characterToDelete = account.getCharacters().stream()
                 .filter(character -> character.getCharacterUuid().equals(characterUuid)).findAny();
         if (characterToDelete.isEmpty())
