@@ -88,7 +88,7 @@ public class PlayerDataService {
         if (!this.authFilter.accountGuidMatch(ownerAccount.getAccountUuid(), request)) {
             throw new Exception("Invalid token");
         }
-        CharacterEntity character = ownerAccount.findCharacterByUuid(characterUuid);
+        final CharacterEntity character = ownerAccount.findCharacterByUuid(characterUuid);
         if (character == null)
             throw new Exception("Character with UUID " + characterUuid + " was not found.");
 
@@ -151,11 +151,11 @@ public class PlayerDataService {
 
     public void deleteCharacter(final HttpServletRequest request, final String characterUuid) throws Exception {
         final long start = Instant.now().toEpochMilli();
-        PlayerAccountEntity account = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
+        final PlayerAccountEntity account = this.playerAccountRepository.findByCharactersCharacterUuid(characterUuid);
         if (!this.authFilter.accountGuidMatch(account.getAccountUuid(), request)) {
             throw new Exception("Invalid token");
         }
-        Optional<CharacterEntity> characterToDelete = account.getCharacters().stream()
+        final Optional<CharacterEntity> characterToDelete = account.getCharacters().stream()
                 .filter(character -> character.getCharacterUuid().equals(characterUuid)).findAny();
         if (characterToDelete.isEmpty())
             throw new Exception("Player character with UUID " + characterUuid + " does not exist");
@@ -167,9 +167,8 @@ public class PlayerDataService {
     
     public void exportPlayerAccounts() {
         final List<PlayerAccountDto> accountsToExport = this.getAllAccounts();
-        log.info("Beginning account export for {} player accounts");
+        log.info("Beginning account export for {} player accounts", accountsToExport.size());
         final File dumpFile = new File(System.getProperty("user.dir")+"/account-dump.json");
-       
         try {
             dumpFile.createNewFile();
             GameDataManager.JSON_MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
@@ -179,14 +178,13 @@ public class PlayerDataService {
             fileOutputStream.close();
             GameDataManager.JSON_MAPPER.disable(SerializationFeature.INDENT_OUTPUT);
             log.info("Account export completed successfully");
-
         }catch(Exception e) {
             log.error("Failed to export accounts. Reason: {}", e);
         }
     }
     
     public List<PlayerAccountDto> getAllAccounts(){
-        List<PlayerAccountDto> results = new ArrayList<>();
+        final List<PlayerAccountDto> results = new ArrayList<>();
         for(PlayerAccountEntity account : this.playerAccountRepository.findAll()) {
             PlayerAccountDto playerAccount = null;
             try {
@@ -201,14 +199,14 @@ public class PlayerDataService {
     }
 
     public List<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception {
-        PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+        final PlayerAccountDto account = this.getAccountByUuid(accountUuid);
         if (account == null)
             throw new Exception("Player account with UUID " + accountUuid + " was not found");
         return account.getCharacters();
     }
 
     public PlayerAccountDto createChest(final String accountUuid) throws Exception {
-        PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+        final PlayerAccountDto account = this.getAccountByUuid(accountUuid);
         if (account == null)
             throw new Exception("Player account with UUID " + accountUuid + " was not found");
 
@@ -220,7 +218,7 @@ public class PlayerDataService {
     }
 
     public PlayerAccountDto saveChests(final String accountUuid, final List<ChestDto> chests) throws Exception {
-        PlayerAccountDto account = this.getAccountByUuid(accountUuid);
+        final PlayerAccountDto account = this.getAccountByUuid(accountUuid);
         if (account == null)
             throw new Exception("Player account with UUID " + accountUuid + " was not found");
 
@@ -290,7 +288,7 @@ public class PlayerDataService {
         if (targetItem == null)
             throw new Exception("Target item with UUID " + targetItemUuid + " does not exist");
         if (replacement == null) {
-            Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream()
+            final Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream()
                     .filter(item -> item.getItemUuid().equals(targetItemUuid)).findAny();
             if (itemInChest.isEmpty())
                 throw new Exception(
@@ -299,7 +297,7 @@ public class PlayerDataService {
             success = targetChest.removeItem(targetItem);
             this.deleteGameItem(toRemove);
         } else {
-            Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream()
+            final Optional<GameItemRefEntity> itemInChest = targetChest.getItems().stream()
                     .filter(item -> item.getItemUuid().equals(targetItemUuid)).findAny();
             if (itemInChest.isEmpty())
                 throw new Exception(
@@ -319,7 +317,7 @@ public class PlayerDataService {
 
     public PlayerAccountDto getAccountById(final String accountId) throws Exception {
         final long start = Instant.now().toEpochMilli();
-        Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findById(accountId);
+        final Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findById(accountId);
         if (entity.isPresent()) {
             PlayerDataService.log.info("Fetched account by id {} in {}ms", accountId,
                     (Instant.now().toEpochMilli() - start));
@@ -330,7 +328,7 @@ public class PlayerDataService {
 
     public PlayerAccountDto getAccountByEmail(final String email) throws Exception {
         final long start = Instant.now().toEpochMilli();
-        PlayerAccountEntity entity = this.playerAccountRepository.findByAccountEmail(email);
+        final PlayerAccountEntity entity = this.playerAccountRepository.findByAccountEmail(email);
         if (entity != null) {
             PlayerDataService.log.info("Fetched account by email {} in {}ms", email,
                     (Instant.now().toEpochMilli() - start));
@@ -341,7 +339,7 @@ public class PlayerDataService {
 
     public PlayerAccountDto getAccountByUuid(final String accountUuid) throws Exception {
         final long start = Instant.now().toEpochMilli();
-        PlayerAccountEntity entity = this.playerAccountRepository.findByAccountUuid(accountUuid);
+        final PlayerAccountEntity entity = this.playerAccountRepository.findByAccountUuid(accountUuid);
         if (entity != null) {
             PlayerDataService.log.info("Fetched account by UUID {} in {}ms", accountUuid,
                     (Instant.now().toEpochMilli() - start));
