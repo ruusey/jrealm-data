@@ -50,7 +50,7 @@ path such as rocks or walls
 		"terrainId": -1,
 		"data":{
 			"0": [...],
-      "1": [...]
+      			"1": [...]
     }
 }
 ```
