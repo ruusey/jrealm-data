@@ -1,6 +1,7 @@
 package com.jrealm.data.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -163,6 +164,21 @@ public class PlayerDataService {
         PlayerDataService.log.info("Successfully deleted character {} in {}ms", characterUuid,
                 (Instant.now().toEpochMilli() - start));
         this.playerAccountRepository.save(account);
+    }
+    
+    public void importPlayerAccounts() {
+        try {
+            final File dumpFile = new File(System.getProperty("user.dir")+"/account-dump.json");
+            final FileInputStream inputStream = new FileInputStream(dumpFile);
+            final String fileContent = new String(inputStream.readAllBytes());
+            final PlayerAccountDto[] accounts = GameDataManager.JSON_MAPPER.readValue(fileContent, PlayerAccountDto[].class);
+            for(PlayerAccountDto account : accounts) {
+                this.saveAccount(account);
+            }
+            inputStream.close();
+        }catch(Exception e) {
+            log.error("Gailed to import player accounts. Reason: {}", e);
+        }
     }
     
     public void exportPlayerAccounts() {
