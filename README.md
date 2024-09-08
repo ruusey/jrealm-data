@@ -31,3 +31,84 @@ Data Files:
 * **projectile-groups.json** - List of bullet patterns used by enemies including bullet damage, magnitude, prorjectile flags and sprite information
 * **terrains.json** - List of available procedural terrain type parameters including tile groups, spawn chances and enemy group configurations
 * **tailes.json** - List of available tile map tiles including name, sprite location and tile data flags such as slowing and damaging
+
+### Adding static data maps
+Static data maps have a predefined set of layers loaded directly from **maps.json**, useful for maps which do not require unique content on a per-generation basis. 
+To create a new static map add a new entry with a unique **mapId** to **maps.json** and populate the **data** object with two entries representing the base layerr and collision
+layer of your map. The base layer typically consists of scenery tiles such as walkways or grass while the collision layer typically consists of items that block the players
+path such as rocks or walls
+**Example: Boss_0 map:**
+```
+{
+		"mapId": 5,
+		"mapName": "Boss_0",
+		"mapKey": "overworld.boss0",
+		"tileSize" : 32,
+		"width": 32,
+		"height": 32,
+		"dungeonId": -1,
+		"terrainId": -1,
+		"data":{
+			"0": [...],
+      "1": [...]
+    }
+}
+```
+Here we have defined a tile map that is 32x32 tiles wide consisting of a base layer and collision layer. 
+The dimensions of arrays '0' and '1' in the data object **MUST** match the declared dimensions of **width** and **height**
+
+### Adding procedural terrain maps
+JRealm supports procedurally generated maps using a map template system. These terrain templates are located in **terrains.json** where each entry in the list typically consists of a list of tile ids
+to create the terrain out of, their rarities, and a list of enemy ids to place within that terrain.
+TODO:
+```
+{
+		"name": "World_0_Beach_0",
+		"terrainId": 0,
+		"width": 256,
+		"height": 256,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [
+					24,
+					26,
+					10,
+					22,
+					23,
+					36,
+					37
+				],
+				"rarities": {
+					"24": 1.0,
+					"26": 0.1,
+					"10": 0.1,
+					"22": 0.05,
+					"23": 0.05,
+					"36": 0.05,
+					"37": 0.05
+				}
+			}
+		],
+		"enemyGroups": [
+			{
+				"name": "World_0_Beach_0_Enemies",
+				"ordinal": 0,
+				"enemyIds": [
+					6,
+					7,
+					8,
+					9,
+					11,
+					14,
+					15
+				]
+			}
+		]
+	},
+```
+
+
+
+
