@@ -1,6 +1,9 @@
 package com.jrealm.data.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +19,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.jrealm.data.auth.PlayerIdentityFilter;
 import com.jrealm.data.dto.CharacterDto;
 import com.jrealm.data.dto.ChestDto;
@@ -72,6 +76,7 @@ public class PlayerDataService {
                             CharacterClass.ROGUE.classId);
                 }
             }
+            this.exportPlayerAccounts();
         } catch (Exception e) {
             PlayerDataService.log.error("Failed to seed Player Account. Reason: {}", e);
         }
@@ -158,6 +163,41 @@ public class PlayerDataService {
         PlayerDataService.log.info("Successfully deleted character {} in {}ms", characterUuid,
                 (Instant.now().toEpochMilli() - start));
         this.playerAccountRepository.save(account);
+    }
+    
+    public void exportPlayerAccounts() {
+        final List<PlayerAccountDto> accountsToExport = this.getAllAccounts();
+        log.info("Beginning account export for {} player accounts");
+        final File dumpFile = new File(System.getProperty("user.dir")+"/account-dump.json");
+       
+        try {
+            dumpFile.createNewFile();
+            GameDataManager.JSON_MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
+            final FileOutputStream fileOutputStream = new FileOutputStream(dumpFile);
+            final String charactersText = GameDataManager.JSON_MAPPER.writeValueAsString(accountsToExport);
+            fileOutputStream.write(charactersText.getBytes());
+            fileOutputStream.close();
+            GameDataManager.JSON_MAPPER.disable(SerializationFeature.INDENT_OUTPUT);
+            log.info("Account export completed successfully");
+
+        }catch(Exception e) {
+            log.error("Failed to export accounts. Reason: {}", e);
+        }
+    }
+    
+    public List<PlayerAccountDto> getAllAccounts(){
+        List<PlayerAccountDto> results = new ArrayList<>();
+        for(PlayerAccountEntity account : this.playerAccountRepository.findAll()) {
+            PlayerAccountDto playerAccount = null;
+            try {
+                playerAccount = this.getAccountByUuid(account.getAccountUuid());
+            } catch (Exception e) {
+               log.error("Failed to fetch player account. Reason: {}", e);
+            }
+            results.add(playerAccount);
+        }
+      
+        return results;
     }
 
     public List<CharacterDto> getPlayerCharacters(final String accountUuid) throws Exception {

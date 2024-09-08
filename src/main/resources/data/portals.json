@@ -52,5 +52,15 @@
 		"row": 9,
 		"col": 13,
 		"spriteKey": "rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 6,
+		"portalName": "Dunegon_0_Prtal",
+		"mapId": 6,
+		"targetRealmDepth": 2,
+		"row": 4,
+		"col": 12,
+		"spriteKey": "rotmg-tiles-2.png"
 	}
+	
 ]
