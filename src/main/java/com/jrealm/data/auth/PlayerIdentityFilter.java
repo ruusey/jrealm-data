@@ -74,7 +74,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
                 authedUser = this.accountAuthRepo.findBySessionToken(authToken);
             }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error("Failed to extract auth data from {}s request. Reason: {}",request.getRemoteAddr(), e.getMessage());
             response.sendError(401, e.getMessage());
             return;
         }
