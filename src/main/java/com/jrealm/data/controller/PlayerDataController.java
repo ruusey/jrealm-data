@@ -36,6 +36,18 @@ public class PlayerDataController {
         this.playerDataService = playerDataService;
         this.authFilter = authFilter;
     }
+    
+    @GetMapping(value = "/stats/top", produces = { "application/json" })
+    public ResponseEntity<?> getTopCharacters(final HttpServletRequest request, @RequestParam(defaultValue="10") final Integer count) {
+        ResponseEntity<?> res = null;
+        try {
+            res = ApiUtils.buildSuccess(this.playerDataService.getTopCharacters(count));
+        } catch (Exception e) {
+            e.printStackTrace();
+            res = ApiUtils.buildAndLogError("Failed to get top characters", e.getMessage());
+        }
+        return res;
+    }
 
     @GetMapping(value = "/account/{accountUuid}", produces = { "application/json" })
     public ResponseEntity<?> getPlayerAccount(final HttpServletRequest request, @PathVariable final String accountUuid) {

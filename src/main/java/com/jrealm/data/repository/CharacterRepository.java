@@ -6,4 +6,5 @@ import com.jrealm.data.entity.CharacterEntity;
 
 public interface CharacterRepository extends MongoRepository<CharacterEntity, String> {
 	public CharacterEntity findByCharacterUuid(String characterUuid);
+	
 }
