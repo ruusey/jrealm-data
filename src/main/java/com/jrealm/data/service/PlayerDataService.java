@@ -5,11 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -33,8 +35,6 @@ import com.jrealm.data.entity.ChestEntity;
 import com.jrealm.data.entity.GameItemRefEntity;
 import com.jrealm.data.entity.PlayerAccountEntity;
 import com.jrealm.data.entity.auth.AccountEntity;
-import com.jrealm.data.repository.CharacterRepository;
-import com.jrealm.data.repository.CharacterStatsRepository;
 import com.jrealm.data.repository.ChestRepository;
 import com.jrealm.data.repository.GameItemRefRepository;
 import com.jrealm.data.repository.PlayerAccountRepository;
@@ -50,9 +50,6 @@ import lombok.extern.slf4j.Slf4j;
 public class PlayerDataService {
     private final transient AccountRepository accountRepository;
     private final transient PlayerAccountRepository playerAccountRepository;
-    private final transient CharacterStatsRepository characterStatsRepository;
-    private final transient CharacterRepository characterRepository;
-
     private final transient ChestRepository playerChestRepository;
     private final transient GameItemRefRepository gameItemRefRepository;
     private final transient PlayerIdentityFilter authFilter;
@@ -60,8 +57,6 @@ public class PlayerDataService {
 
     public PlayerDataService(@Autowired final AccountRepository accountRepository,
             @Autowired final PlayerAccountRepository playerAccountRepository,
-            @Autowired final CharacterStatsRepository characterStatsRepository,
-            @Autowired final CharacterRepository characterRepository,
             @Autowired final ChestRepository playerChestRepository,
             @Autowired final GameItemRefRepository gameItemRefRepository, 
             @Autowired final PlayerIdentityFilter authFilter,
@@ -69,8 +64,6 @@ public class PlayerDataService {
         this.accountRepository = accountRepository;
         this.playerAccountRepository = playerAccountRepository;
         this.playerChestRepository = playerChestRepository;
-        this.characterStatsRepository = characterStatsRepository;
-        this.characterRepository = characterRepository;
         this.gameItemRefRepository = gameItemRefRepository;
         this.authFilter = authFilter;
         this.mapper = mapper;
@@ -129,13 +122,17 @@ public class PlayerDataService {
         return this.mapper.map(character, CharacterDto.class);
     }
     
-    public List<CharacterDto> getTopCharacters(int count){
+    public List<CharacterDto> getTopCharacters(int count) {
         final int topNCharacters = count;
         final List<CharacterDto> results = new ArrayList<>();
-        //List<CharacterEntity> characters = this.characterRepository.findAll().stream().sorted(Comparators.);
-        List<CharacterEntity> characterEntities = this.characterRepository.findAll(Sort.by(Sort.Direction.DESC, "stats.xp"));
-        characterEntities = characterEntities.subList(0, topNCharacters>characterEntities.size()? characterEntities.size() : topNCharacters);
-        for(CharacterEntity statEntry :characterEntities) {
+        List<CharacterEntity> characters = this.playerAccountRepository.findAll().stream().map(acc->acc.getCharacters()).flatMap(List::stream).collect(Collectors.toList());
+        Collections.sort(characters, new Comparator<CharacterEntity>() {
+            public int compare(CharacterEntity o1, CharacterEntity o2) {
+                return o2.getStats().getXp().compareTo(o1.getStats().getXp());
+            }
+        });
+        characters = characters.subList(0, topNCharacters > characters.size() ? characters.size() : topNCharacters);
+        for (CharacterEntity statEntry : characters) {
             results.add(this.mapper.map(statEntry, CharacterDto.class));
         }
         return results;
