@@ -31,11 +31,29 @@ public class PrivelegedAccessFilter implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+        
+        if (request.getRemoteAddr().equals("127.0.0.1") || request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
+                || request.getServletPath().equals("/admin/account/login")
+                || request.getServletPath().equals("/admin/account/register")
+                || request.getServletPath().equals("/v3/api-docs") || request.getServletPath().equals("/ping")
+                || request.getServletPath().contains("/index.html")
+                || request.getServletPath().contains("/scripts.js")
+                || request.getServletPath().contains("/style.css")
+                || request.getServletPath().contains("/swagger-ui")
+                || request.getServletPath().contains("/swagger-resources")
+                || request.getServletPath().contains("/swagger-config")
+                || request.getServletPath().matches("/.*[a-z0-9 -].png")
+                || request.getServletPath().matches("/.*[a-z0-9 -].json")
+                || request.getServletPath().matches("/game-data/[^/]+")) {
+            log.debug("Safe path detected {}", request.getServletPath());
+            return true;
+        }
+        
         final HandlerMethod handlerMethod = (HandlerMethod) handler;
         final java.lang.reflect.Method method = handlerMethod.getMethod();
         if (method.getDeclaredAnnotation(AdminRestricted.class) != null) {
             final String authedUuid = response.getHeader("Account-Uuid");
-            log.info("User {} accessing Admin-Restricted endpoint...");
+            log.info("User {} accessing Admin-Restricted endpoint...", authedUuid);
             AccountDto account = this.accountService.getAccountByGuid(authedUuid);
             if (account.isAdmin()) {
                 return true;
