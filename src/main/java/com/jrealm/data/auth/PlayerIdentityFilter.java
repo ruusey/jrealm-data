@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -23,7 +24,7 @@ import com.jrealm.data.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Order(Integer.MIN_VALUE)
+@Order(Ordered.HIGHEST_PRECEDENCE)
 @Priority(1)
 @Slf4j
 public class PlayerIdentityFilter extends OncePerRequestFilter {
