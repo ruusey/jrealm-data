@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="ISO-8859-1">
-<title>JRealm Testbed</title>
 
-<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous">
-</script>
-<link href="https://cdn.datatables.net/v/dt/dt-2.0.8/datatables.css" rel="stylesheet">
- 
-<script src="https://cdn.datatables.net/v/dt/dt-2.0.8/datatables.js"></script>
-<link href="style.css" rel="stylesheet">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>JRealm Testbed</title>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js"
+		integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+		</script>
+	<link href="https://cdn.datatables.net/v/dt/dt-2.0.8/datatables.css" rel="stylesheet">
+
+	<script src="https://cdn.datatables.net/v/dt/dt-2.0.8/datatables.js"></script>
+	<link href="style.css" rel="stylesheet">
 
 </head>
+
 <body>
 	<div>
-	<h4 style="display:inline;">JRealm Testbed</h4>
-	<hr>
-
-
+		<h4 style="display:inline;">JRealm Testbed</h4>
+		<hr>
 	</div>
 	<div class="container" id="content-pane">
 
 		<h4>User Information</h4>
-		Email: <input id="user-email" type="text" value="ru-admin@jrealm.com">
+		Email: <input id="user-email" type="text" value="ru@jrealm.com">
 		<br>
-		Password:  <input id="user-pass" type="text" value="password">
+		Password: <input id="user-pass" type="text" value="password">
 		<br>
 		<button id="login">Login</button>
 		<button id="create-account">Create Account</button>
@@ -35,16 +33,24 @@
 
 	</div>
 
+	
+	<script type="text/javascript" src="scripts.js"></script>
+	
+	<table id="example" class="compact cell-border row-border stripe" width="100%">
+		<thead>
+			<tr>
+				<th>CharacterUUID</th>
+				<th>Class</th>
+				<th>Items</th>
+				<th>Stats</th>
+				<th>Total XP</th>
+			</tr>
+		</thead>
+
+	</table>
 	<h3>Console: </h3>
-	<textarea id="gcn-events" style="width: 100%; height: 600px; color: white; background-color: black;"></textarea>
+		<textarea id="gcn-events" style="width: 100%; height: 600px; color: white; background-color: black;"></textarea>
 
-	 <script type="text/javascript" src="scripts.js"></script>
-	<div id="guac-player" style="width:1000px;height:800px">
-		<div id="display" >
-
-
-		</div>
-	</div>
-	<table id="example" class="display" width="100%"></table>
 </body>
+
 </html>
