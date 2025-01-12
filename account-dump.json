@@ -4,71 +4,70 @@
   "accountUuid" : "1043e146-e47e-4f4d-b6f6-644990eff3ae",
   "accountName" : "ruusey",
   "playerVault" : [ {
-    "chestId" : "fc3c82a7-d30a-4bc7-a3fd-08aa807b168b",
-    "chestUuid" : "fc3c82a7-d30a-4bc7-a3fd-08aa807b168b",
+    "chestId" : "a73f4fcd-19e8-48c4-adfd-18ccc36ed1d5",
+    "chestUuid" : "a73f4fcd-19e8-48c4-adfd-18ccc36ed1d5",
     "ordinal" : 0,
     "items" : [ {
+      "itemId" : 89,
+      "slotIdx" : 2,
+      "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
+    }, {
       "itemId" : 72,
-      "slotIdx" : 1,
+      "slotIdx" : 0,
       "itemUuid" : "7b0aa591-4458-43b1-be93-755307d98c13"
     }, {
       "itemId" : 103,
-      "slotIdx" : 2,
+      "slotIdx" : 1,
       "itemUuid" : "f71f3d74-097f-4c6a-b935-558beed9faa6"
-    }, {
-      "itemId" : 89,
-      "slotIdx" : 0,
-      "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
     } ]
   }, {
-    "chestId" : "cb1b8344-82a2-4397-960c-4f783710e28c",
-    "chestUuid" : "cb1b8344-82a2-4397-960c-4f783710e28c",
+    "chestId" : "54af449f-7b6c-4329-bb1b-ca09431ca717",
+    "chestUuid" : "54af449f-7b6c-4329-bb1b-ca09431ca717",
     "ordinal" : 1,
     "items" : [ ]
   }, {
-    "chestId" : "11ebe03f-479a-4feb-b0b1-da662ee8a9cc",
-    "chestUuid" : "11ebe03f-479a-4feb-b0b1-da662ee8a9cc",
+    "chestId" : "304aee1a-5598-4c9b-9cb9-2ba9a04fd385",
+    "chestUuid" : "304aee1a-5598-4c9b-9cb9-2ba9a04fd385",
     "ordinal" : 2,
     "items" : [ {
       "itemId" : 88,
-      "slotIdx" : 3,
+      "slotIdx" : 0,
       "itemUuid" : "c604b16c-8b44-4e1b-8bc1-bbc00ac4f757"
     }, {
-      "itemId" : 44,
-      "slotIdx" : 2,
-      "itemUuid" : "e4930dea-f8a2-43e2-a04a-9b6a1b779e11"
-    }, {
-      "itemId" : 73,
+      "itemId" : 72,
       "slotIdx" : 6,
-      "itemUuid" : "83d4b037-4301-4341-97e4-086a2153bcdf"
-    }, {
-      "itemId" : 45,
-      "slotIdx" : 1,
-      "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
+      "itemUuid" : "7b0aa591-4458-43b1-be93-755307d98c13"
     }, {
       "itemId" : 118,
       "slotIdx" : 4,
       "itemUuid" : "ab790cc8-2b73-428b-bba3-a68620780c68"
     }, {
       "itemId" : 73,
-      "slotIdx" : 0,
+      "slotIdx" : 5,
       "itemUuid" : "df6f4211-60ae-4b4b-a695-cf4b0c8a757f"
     }, {
-      "itemId" : 72,
-      "slotIdx" : 5,
-      "itemUuid" : "7b0aa591-4458-43b1-be93-755307d98c13"
+      "itemId" : 45,
+      "slotIdx" : 3,
+      "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
     }, {
       "itemId" : 13,
       "slotIdx" : 7,
       "itemUuid" : "62e16dfe-a28d-45c6-bede-fba38633ab8c"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 2,
+      "itemUuid" : "df6f4211-60ae-4b4b-a695-cf4b0c8a757f"
+    }, {
+      "itemId" : 44,
+      "slotIdx" : 1,
+      "itemUuid" : "e4930dea-f8a2-43e2-a04a-9b6a1b779e11"
     } ]
   } ],
   "characters" : [ {
-    "deleted" : 1736669528943,
     "characterUuid" : "146cdcbd-4266-4148-baef-4381eb22f4ad",
     "characterClass" : 0,
     "stats" : {
-      "xp" : 23501200,
+      "xp" : 32509300,
       "classId" : 0,
       "hp" : 807,
       "mp" : 279,
@@ -205,7 +204,6 @@
       "itemUuid" : "eb76fc8b-9821-4dac-93a0-854aa9547ffa"
     } ]
   }, {
-    "deleted" : 1734832937808,
     "characterUuid" : "6e51239b-9d23-42ad-b408-9c190657233b",
     "characterClass" : 1,
     "stats" : {

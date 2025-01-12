@@ -93,9 +93,9 @@
 	{
 		"tileId": 7,
 		"name": "Sand_Tile_0",
-		"spriteKey": "rotmg-tiles-2.png",
-		"row": 0,
-		"col": 4,
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 11,
+		"col": 13,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -106,9 +106,9 @@
 	{
 		"tileId": 8,
 		"name": "Sand_Tile_1",
-		"spriteKey": "rotmg-tiles-2.png",
-		"row": 0,
-		"col": 8,
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 11,
+		"col": 14,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -120,7 +120,7 @@
 		"tileId": 9,
 		"name": "Sand_Tile_2",
 		"spriteKey": "rotmg-tiles-1.png",
-		"row": 11,
+		"row": 12,
 		"col": 13,
 		"size": 32, 
 		"data": {
@@ -133,7 +133,7 @@
 		"tileId": 10,
 		"name": "Sand_Tile_3",
 		"spriteKey": "rotmg-tiles-1.png",
-		"row": 11,
+		"row": 12,
 		"col": 14,
 		"size": 32, 
 		"data": {
@@ -145,9 +145,9 @@
 	{
 		"tileId": 11,
 		"name": "Grass_Tile_0",
-		"spriteKey": "rotmg-tiles-1.png",
-		"row": 4,
-		"col": 6,
+		"spriteKey": "rotmg-tiles.png",
+		"row": 0,
+		"col": 11,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -158,9 +158,9 @@
 	{
 		"tileId": 12,
 		"name": "Grass_Tile_1",
-		"spriteKey": "rotmg-tiles-1.png",
-		"row": 4,
-		"col": 7,
+		"spriteKey": "rotmg-tiles.png",
+		"row": 0,
+		"col": 15,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -314,9 +314,9 @@
 	{
 		"tileId": 24,
 		"name": "Sand_Tile_4",
-		"spriteKey": "rotmg-tiles.png",
-		"row": 17,
-		"col": 0,
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 12,
+		"col": 13,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -327,9 +327,9 @@
 	{
 		"tileId": 25,
 		"name": "Sand_Tile_5",
-		"spriteKey": "rotmg-tiles.png",
-		"row": 17,
-		"col": 1,
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 12,
+		"col": 14,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
