@@ -15,9 +15,9 @@
 	{
 		"tileId": 1,
 		"name": "Nexus_Tile_0",
-		"spriteKey": "rotmg-tiles-all.png",
-		"row": 5,
-		"col": 7,
+		"spriteKey": "rotmg-tiles-2.png",
+		"row": 10,
+		"col": 0,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -82,7 +82,7 @@
 		"name": "Nexus_Tile_1",
 		"spriteKey": "rotmg-tiles-2.png",
 		"row": 9,
-		"col": 4,
+		"col": 0,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
