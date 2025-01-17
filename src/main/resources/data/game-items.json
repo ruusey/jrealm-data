@@ -2821,5 +2821,30 @@
 		"targetSlot": 0,
 		"targetClass": 1,
 		"fameBonus": 8
+	},
+	{
+		"itemId": 159,
+		"row": 2,
+		"col": 8,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Plane Walker Cloak",
+		"description": "A bow made of living coral",
+		"stats": {
+			"dex": 2,
+			"wis": 5,
+			"spd": 2
+		},
+		"effect": {
+			"self": true,
+			"effectId": 9,
+			"duration": 5000,
+			"cooldownDuration": 1000,
+			"mpCost": 70
+		},
+		"consumable": false,
+		"tier": -1,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 8
 	}
 ]
