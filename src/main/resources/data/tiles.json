@@ -158,9 +158,9 @@
 	{
 		"tileId": 12,
 		"name": "Grass_Tile_1",
-		"spriteKey": "rotmg-tiles.png",
-		"row": 0,
-		"col": 15,
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 3,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -173,7 +173,7 @@
 		"name": "Grass_Tile_2",
 		"spriteKey": "rotmg-tiles-1.png",
 		"row": 4,
-		"col": 8,
+		"col": 2,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -380,8 +380,8 @@
 		"tileId": 29,
 		"name": "Cave_Floor_0",
 		"spriteKey": "rotmg-tiles-1.png",
-		"row": 6,
-		"col": 0,
+		"row": 0,
+		"col": 7,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
@@ -393,8 +393,8 @@
 		"tileId": 30,
 		"name": "Cave_Floor_1",
 		"spriteKey": "rotmg-tiles-1.png",
-		"row": 6,
-		"col": 2,
+		"row": 0,
+		"col": 8,
 		"size": 32, 
 		"data": {
 			"hasCollision" : 0,
