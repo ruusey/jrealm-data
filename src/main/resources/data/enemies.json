@@ -232,15 +232,15 @@
 		"name": "The Man",
 		"spriteKey": "rotmg-bosses.png",
 		"row": 2,
-		"col": 3,
+		"col": 1,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
 		"xp": 10000,
-		"health": 5000,
+		"health": 5500,
 		"maxSpeed": 1.4,
 		"chaseRange": 350.0,
-		"attackRange": 232.0,
+		"attackRange": 150.0,
 		"stats": {
 			"def": 25,
 			"dex": 15
