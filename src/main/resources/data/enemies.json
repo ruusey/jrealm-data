@@ -14,6 +14,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 2000,
 			"def": 5,
 			"dex": 20
 		}
@@ -33,6 +34,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 2000,
 			"def": 5,
 			"dex": 16
 		}
@@ -52,6 +54,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 2000,
 			"def": 5,
 			"dex": 12
 		}
@@ -71,6 +74,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 2000,
 			"def": 5,
 			"dex": 10
 		}
@@ -90,6 +94,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 2000,
 			"def": 5,
 			"dex": 12
 		}
@@ -109,6 +114,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 500,
 			"def": 5,
 			"dex": 15
 		}
@@ -128,6 +134,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 500,
 			"def": 5,
 			"dex": 1
 		}
@@ -147,6 +154,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 1000,
 			"def": 5,
 			"dex": 15
 		}
@@ -166,6 +174,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 1000,
 			"def": 5,
 			"dex": 10
 		}
@@ -185,8 +194,10 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 1000,
 			"def": 5,
 			"dex": 10
+			
 		}
 	},
 	{
@@ -204,6 +215,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 140.0,
 		"stats": {
+			"hp": 1800,
 			"def": 20,
 			"dex": 5
 		}
@@ -223,6 +235,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 180.0,
 		"stats": {
+			"hp": 1900,
 			"def": 20,
 			"dex": 1
 		}
@@ -242,6 +255,7 @@
 		"chaseRange": 350.0,
 		"attackRange": 150.0,
 		"stats": {
+			"hp": 5500,
 			"def": 25,
 			"dex": 15
 		}
@@ -261,6 +275,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 122.0,
 		"stats": {
+			"hp": 800,
 			"def": 5,
 			"dex": 5
 		}
@@ -280,6 +295,7 @@
 		"chaseRange": 260.0,
 		"attackRange": 180.0,
 		"stats": {
+			"hp": 1400,
 			"def": 5,
 			"dex": 5
 		}
