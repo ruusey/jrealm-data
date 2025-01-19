@@ -2748,7 +2748,7 @@
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 1,
-		"targetClass": 1,
+		"targetClass": 5,
 		"fameBonus": 8
 	},
 	{
@@ -2773,7 +2773,7 @@
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 1,
-		"targetClass": 1,
+		"targetClass": 4,
 		"fameBonus": 8
 	},
 	{
