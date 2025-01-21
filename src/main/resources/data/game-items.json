@@ -959,7 +959,7 @@
 		"name": "Superior Ring of Mana",
 		"description": "A medium ring that increases mana.",
 		"stats": {
-			"spd": 100
+			"mp": 100
 		},
 		"consumable": false,
 		"tier": 3,
