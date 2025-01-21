@@ -59,6 +59,8 @@ REM Start the MongoDB service
 echo MongoDB installation complete and running as a service!
 
 start powershell -noexit -Command "Invoke-WebRequest -Uri https://github.com/ruusey/jrealm-data/releases/latest/download/jrealm-data.jar -OutFile %WORK_DIR%//jrealm-data.jar; java -jar %WORK_DIR%//jrealm-data.jar"
+echo JRealm Data running. Press any key to start JRealm....
+pause
 start powershell -noexit -Command "Invoke-WebRequest -Uri https://github.com/ruusey/jrealm/releases/latest/download/jrealm.jar -OutFile %WORK_DIR%//jrealm.jar; java -jar %WORK_DIR%//jrealm.jar -embedded 127.0.0.1"
 
 
