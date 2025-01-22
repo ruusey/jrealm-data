@@ -144,7 +144,7 @@
     "characterUuid" : "27177eea-f2ab-47fd-bca5-ecb12a50f431",
     "characterClass" : 2,
     "stats" : {
-      "xp" : 162400,
+      "xp" : 3367950,
       "classId" : 2,
       "hp" : 691,
       "mp" : 390,
@@ -225,7 +225,7 @@
     "characterUuid" : "6e51239b-9d23-42ad-b408-9c190657233b",
     "characterClass" : 1,
     "stats" : {
-      "xp" : 7764400,
+      "xp" : 17716350,
       "classId" : 1,
       "hp" : 700,
       "mp" : 252,
@@ -248,6 +248,10 @@
       "itemId" : 154,
       "slotIdx" : 1,
       "itemUuid" : "b4b4df81-2d87-4fdc-94c9-1097d7435356"
+    }, {
+      "itemId" : 5,
+      "slotIdx" : 6,
+      "itemUuid" : "00e40ba9-0629-4ece-a386-fa1916e33f5f"
     }, {
       "itemId" : 47,
       "slotIdx" : 4,
