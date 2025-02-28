@@ -108,7 +108,9 @@ TODO:
 		]
 	},
 ```
+## 2) Game Sprites
 
+TODO: How to modify game sprites/sprite structure
 
 
 
