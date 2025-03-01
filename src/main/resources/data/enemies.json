@@ -197,7 +197,6 @@
 			"hp": 1000,
 			"def": 5,
 			"dex": 10
-			
 		}
 	},
 	{
@@ -298,6 +297,25 @@
 			"hp": 1400,
 			"def": 5,
 			"dex": 5
+		}
+	},
+	{
+		"enemyId": 16,
+		"name": "LootChest",
+		"spriteKey": "rotmg-tiles.png",
+		"row": 31,
+		"col": 14,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": -1,
+		"xp": 500,
+		"health": 9999,
+		"maxSpeed": 0,
+		"chaseRange": 0.0,
+		"attackRange": 0.0,
+		"stats": {
+			"hp": 9999,
+			"def": 99
 		}
 	}
 ]
