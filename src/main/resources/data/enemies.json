@@ -308,7 +308,7 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": -1,
-		"xp": 9999,
+		"xp": 999999,
 		"health": 9999,
 		"maxSpeed": 0,
 		"chaseRange": 0.0,
