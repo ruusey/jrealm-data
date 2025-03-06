@@ -2846,5 +2846,18 @@
 		"targetSlot": 1,
 		"targetClass": 0,
 		"fameBonus": 8
+	},
+	{
+		"itemId": 160,
+		"row": 2,
+		"col": 9,
+		"spriteKey": "rotmg-items-1.png",
+		"name": "Boss Key",
+		"description": "a key that will spawn a portal to the boss realm",
+		"consumable": true,
+		"tier": -1,
+		"targetSlot": -2,
+		"targetClass": -4,
+		"fameBonus": 8
 	}
 ]

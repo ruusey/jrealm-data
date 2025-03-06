@@ -4,173 +4,107 @@
   "accountUuid" : "1043e146-e47e-4f4d-b6f6-644990eff3ae",
   "accountName" : "ruusey",
   "playerVault" : [ {
-    "chestId" : "ef066e2f-96a4-4cec-a2f9-841d67f95261",
-    "chestUuid" : "ef066e2f-96a4-4cec-a2f9-841d67f95261",
+    "chestId" : "44c31100-f537-4315-8095-702b33fa1ae7",
+    "chestUuid" : "44c31100-f537-4315-8095-702b33fa1ae7",
     "ordinal" : 0,
     "items" : [ {
-      "itemId" : 7,
-      "slotIdx" : 5,
-      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
-    }, {
-      "itemId" : 73,
-      "slotIdx" : 1,
-      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
-    }, {
-      "itemId" : 1,
-      "slotIdx" : 6,
-      "itemUuid" : "98c3bb80-b97b-48fa-a44f-5225f7f150ea"
-    }, {
-      "itemId" : 14,
-      "slotIdx" : 4,
-      "itemUuid" : "cc7cf4af-0e36-447f-a50e-91677f601363"
-    }, {
-      "itemId" : 0,
-      "slotIdx" : 3,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
-      "itemId" : 2,
-      "slotIdx" : 0,
-      "itemUuid" : "4e15232a-d3ad-4717-87cd-44ffa639fa1a"
-    }, {
-      "itemId" : 7,
-      "slotIdx" : 2,
-      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
-    } ]
-  }, {
-    "chestId" : "f5f26393-88a2-4676-a381-870c520f22ee",
-    "chestUuid" : "f5f26393-88a2-4676-a381-870c520f22ee",
-    "ordinal" : 1,
-    "items" : [ {
-      "itemId" : 6,
-      "slotIdx" : 3,
-      "itemUuid" : "098f46c8-0dd1-4582-a56b-435542665428"
-    }, {
-      "itemId" : 6,
-      "slotIdx" : 5,
-      "itemUuid" : "098f46c8-0dd1-4582-a56b-435542665428"
-    }, {
-      "itemId" : 0,
-      "slotIdx" : 6,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
-      "itemId" : 0,
-      "slotIdx" : 4,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
-      "itemId" : 159,
-      "slotIdx" : 1,
-      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
-    }, {
-      "itemId" : 48,
-      "slotIdx" : 0,
-      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
-    }, {
       "itemId" : 134,
-      "slotIdx" : 7,
+      "slotIdx" : 6,
       "itemUuid" : "147c729f-3bf2-4250-8458-97b0c5558389"
     }, {
       "itemId" : 7,
-      "slotIdx" : 2,
+      "slotIdx" : 7,
       "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
+    }, {
+      "itemId" : 6,
+      "slotIdx" : 0,
+      "itemUuid" : "098f46c8-0dd1-4582-a56b-435542665428"
+    }, {
+      "itemId" : 0,
+      "slotIdx" : 2,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 5,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 0,
+      "slotIdx" : 3,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+    }, {
+      "itemId" : 159,
+      "slotIdx" : 4,
+      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
+    }, {
+      "itemId" : 6,
+      "slotIdx" : 1,
+      "itemUuid" : "098f46c8-0dd1-4582-a56b-435542665428"
     } ]
   }, {
-    "chestId" : "2b9ef5ec-a40e-460e-b5e5-591e6db399bf",
-    "chestUuid" : "2b9ef5ec-a40e-460e-b5e5-591e6db399bf",
-    "ordinal" : 2,
+    "chestId" : "3aa33081-7bea-45a6-a25e-bb8d6fdec83c",
+    "chestUuid" : "3aa33081-7bea-45a6-a25e-bb8d6fdec83c",
+    "ordinal" : 1,
     "items" : [ {
-      "itemId" : 3,
-      "slotIdx" : 6,
-      "itemUuid" : "5110bf0c-530b-4d78-92cb-3456f24c8705"
+      "itemId" : 44,
+      "slotIdx" : 3,
+      "itemUuid" : "e4930dea-f8a2-43e2-a04a-9b6a1b779e11"
     }, {
-      "itemId" : 45,
-      "slotIdx" : 2,
-      "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
+      "itemId" : 0,
+      "slotIdx" : 6,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
     }, {
       "itemId" : 4,
-      "slotIdx" : 7,
+      "slotIdx" : 2,
       "itemUuid" : "38e565bf-9aaf-4b90-8dfa-78e05fdbabbc"
-    }, {
-      "itemId" : 44,
-      "slotIdx" : 0,
-      "itemUuid" : "e4930dea-f8a2-43e2-a04a-9b6a1b779e11"
     }, {
       "itemId" : 72,
       "slotIdx" : 4,
       "itemUuid" : "7b0aa591-4458-43b1-be93-755307d98c13"
     }, {
-      "itemId" : 0,
-      "slotIdx" : 3,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
-      "itemId" : 0,
-      "slotIdx" : 1,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
       "itemId" : 73,
-      "slotIdx" : 5,
-      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
-    } ]
-  }, {
-    "chestId" : "f6fa3cff-219e-46f6-b295-a321651c4305",
-    "chestUuid" : "f6fa3cff-219e-46f6-b295-a321651c4305",
-    "ordinal" : 3,
-    "items" : [ {
-      "itemId" : 103,
       "slotIdx" : 7,
-      "itemUuid" : "f71f3d74-097f-4c6a-b935-558beed9faa6"
-    }, {
-      "itemId" : 134,
-      "slotIdx" : 6,
-      "itemUuid" : "147c729f-3bf2-4250-8458-97b0c5558389"
-    }, {
-      "itemId" : 73,
-      "slotIdx" : 1,
       "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
     }, {
-      "itemId" : 119,
-      "slotIdx" : 3,
-      "itemUuid" : "9b98c2ce-8620-41e9-9933-adef83030fc0"
+      "itemId" : 45,
+      "slotIdx" : 1,
+      "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
     }, {
-      "itemId" : 133,
-      "slotIdx" : 0,
-      "itemUuid" : "f57f66a2-c42b-49b9-b765-b1badf72d669"
-    }, {
-      "itemId" : 105,
-      "slotIdx" : 4,
-      "itemUuid" : "f963441d-ea3a-4863-a726-eda414166b06"
-    }, {
-      "itemId" : 47,
+      "itemId" : 0,
       "slotIdx" : 5,
-      "itemUuid" : "4a4cdb32-0a46-4d46-981e-63142abfa987"
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
     }, {
-      "itemId" : 74,
-      "slotIdx" : 2,
-      "itemUuid" : "2be6c63b-0522-4edf-b6fa-0149799a66d6"
+      "itemId" : 3,
+      "slotIdx" : 0,
+      "itemUuid" : "5110bf0c-530b-4d78-92cb-3456f24c8705"
     } ]
   }, {
-    "chestId" : "6fdaf1b9-b185-4f1a-bdc5-3ad863a812c1",
-    "chestUuid" : "6fdaf1b9-b185-4f1a-bdc5-3ad863a812c1",
-    "ordinal" : 4,
+    "chestId" : "18e4f02b-ad55-441d-919f-35d5e1f93aa8",
+    "chestUuid" : "18e4f02b-ad55-441d-919f-35d5e1f93aa8",
+    "ordinal" : 2,
     "items" : [ {
       "itemId" : 45,
       "slotIdx" : 0,
       "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
     }, {
-      "itemId" : 5,
-      "slotIdx" : 7,
-      "itemUuid" : "23173410-7a99-48be-9ea7-f2d1d189c36e"
-    }, {
       "itemId" : 46,
-      "slotIdx" : 1,
-      "itemUuid" : "1147b625-57e6-47b9-897a-022bd0e9a517"
-    }, {
-      "itemId" : 50,
       "slotIdx" : 2,
-      "itemUuid" : "b374bbcf-7133-4864-a5dc-4cc75dc93006"
+      "itemUuid" : "1147b625-57e6-47b9-897a-022bd0e9a517"
     }, {
       "itemId" : 5,
       "slotIdx" : 4,
       "itemUuid" : "23173410-7a99-48be-9ea7-f2d1d189c36e"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 7,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 5,
+      "slotIdx" : 1,
+      "itemUuid" : "23173410-7a99-48be-9ea7-f2d1d189c36e"
+    }, {
+      "itemId" : 50,
+      "slotIdx" : 3,
+      "itemUuid" : "b374bbcf-7133-4864-a5dc-4cc75dc93006"
     }, {
       "itemId" : 89,
       "slotIdx" : 5,
@@ -179,9 +113,75 @@
       "itemId" : 7,
       "slotIdx" : 6,
       "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
+    } ]
+  }, {
+    "chestId" : "65181a2e-719d-49eb-bb89-6e5f7c166fd1",
+    "chestUuid" : "65181a2e-719d-49eb-bb89-6e5f7c166fd1",
+    "ordinal" : 3,
+    "items" : [ {
+      "itemId" : 1,
+      "slotIdx" : 2,
+      "itemUuid" : "98c3bb80-b97b-48fa-a44f-5225f7f150ea"
+    }, {
+      "itemId" : 2,
+      "slotIdx" : 5,
+      "itemUuid" : "4e15232a-d3ad-4717-87cd-44ffa639fa1a"
     }, {
       "itemId" : 73,
+      "slotIdx" : 1,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 0,
+      "slotIdx" : 4,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+    }, {
+      "itemId" : 7,
+      "slotIdx" : 6,
+      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
+    }, {
+      "itemId" : 7,
+      "slotIdx" : 0,
+      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
+    }, {
+      "itemId" : 14,
       "slotIdx" : 3,
+      "itemUuid" : "cc7cf4af-0e36-447f-a50e-91677f601363"
+    } ]
+  }, {
+    "chestId" : "1bad18f0-65b4-4a25-a870-1d9d87107518",
+    "chestUuid" : "1bad18f0-65b4-4a25-a870-1d9d87107518",
+    "ordinal" : 4,
+    "items" : [ {
+      "itemId" : 103,
+      "slotIdx" : 0,
+      "itemUuid" : "f71f3d74-097f-4c6a-b935-558beed9faa6"
+    }, {
+      "itemId" : 47,
+      "slotIdx" : 6,
+      "itemUuid" : "4a4cdb32-0a46-4d46-981e-63142abfa987"
+    }, {
+      "itemId" : 134,
+      "slotIdx" : 1,
+      "itemUuid" : "147c729f-3bf2-4250-8458-97b0c5558389"
+    }, {
+      "itemId" : 119,
+      "slotIdx" : 3,
+      "itemUuid" : "9b98c2ce-8620-41e9-9933-adef83030fc0"
+    }, {
+      "itemId" : 133,
+      "slotIdx" : 4,
+      "itemUuid" : "f57f66a2-c42b-49b9-b765-b1badf72d669"
+    }, {
+      "itemId" : 105,
+      "slotIdx" : 5,
+      "itemUuid" : "f963441d-ea3a-4863-a726-eda414166b06"
+    }, {
+      "itemId" : 74,
+      "slotIdx" : 7,
+      "itemUuid" : "2be6c63b-0522-4edf-b6fa-0149799a66d6"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 2,
       "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
     } ]
   } ],
@@ -189,7 +189,7 @@
     "characterUuid" : "146cdcbd-4266-4148-baef-4381eb22f4ad",
     "characterClass" : 0,
     "stats" : {
-      "xp" : 60238349,
+      "xp" : 60624449,
       "classId" : 0,
       "hp" : 720,
       "mp" : 252,
@@ -257,7 +257,7 @@
     "characterUuid" : "27177eea-f2ab-47fd-bca5-ecb12a50f431",
     "characterClass" : 2,
     "stats" : {
-      "xp" : 8256399,
+      "xp" : 8264099,
       "classId" : 2,
       "hp" : 691,
       "mp" : 390,
@@ -317,7 +317,7 @@
     "characterUuid" : "324c1432-9ac2-458d-865c-ab10b2965f24",
     "characterClass" : 5,
     "stats" : {
-      "xp" : 42328749,
+      "xp" : 42333349,
       "classId" : 5,
       "hp" : 770,
       "mp" : 252,
@@ -377,7 +377,7 @@
     "characterUuid" : "6e51239b-9d23-42ad-b408-9c190657233b",
     "characterClass" : 1,
     "stats" : {
-      "xp" : 19761599,
+      "xp" : 19771799,
       "classId" : 1,
       "hp" : 700,
       "mp" : 252,
@@ -477,7 +477,7 @@
     "characterUuid" : "a800ef6f-7fe2-4d84-8558-753d952b6077",
     "characterClass" : 4,
     "stats" : {
-      "xp" : 1010049,
+      "xp" : 1012949,
       "classId" : 4,
       "hp" : 770,
       "mp" : 252,
@@ -500,6 +500,10 @@
       "itemId" : 156,
       "slotIdx" : 1,
       "itemUuid" : "5b913efe-5f1d-4e83-b59b-a89191fa5c41"
+    }, {
+      "itemId" : 87,
+      "slotIdx" : 4,
+      "itemUuid" : "c412dac3-8310-4864-8a0a-8a5717e6605d"
     }, {
       "itemId" : 72,
       "slotIdx" : 2,
