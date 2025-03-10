@@ -111,8 +111,8 @@
 		"xp": 250,
 		"health": 500,
 		"maxSpeed": 1.4,
-		"chaseRange": 260.0,
-		"attackRange": 140.0,
+		"chaseRange": 280.0,
+		"attackRange": 160.0,
 		"stats": {
 			"hp": 500,
 			"def": 5,
@@ -248,15 +248,16 @@
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
-		"xp": 10000,
-		"health": 5500,
-		"maxSpeed": 1.4,
+		"xp": 12500,
+		"health": 10000,
+		"maxSpeed": 2.0,
 		"chaseRange": 350.0,
 		"attackRange": 150.0,
 		"stats": {
 			"hp": 5500,
-			"def": 25,
-			"dex": 15
+			"def": 30,
+			"dex": 20,
+			"spd": 10
 		}
 	},
 	{
@@ -272,7 +273,7 @@
 		"health": 800,
 		"maxSpeed": 1.4,
 		"chaseRange": 260.0,
-		"attackRange": 122.0,
+		"attackRange": 85.0,
 		"stats": {
 			"hp": 800,
 			"def": 5,
