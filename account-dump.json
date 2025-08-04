@@ -193,7 +193,7 @@
     "characterUuid" : "146cdcbd-4266-4148-baef-4381eb22f4ad",
     "characterClass" : 0,
     "stats" : {
-      "xp" : 75431249,
+      "xp" : 75434499,
       "classId" : 0,
       "hp" : 881,
       "mp" : 281,
@@ -212,6 +212,10 @@
       "itemId" : 49,
       "slotIdx" : 0,
       "itemUuid" : "ef6d0ee1-f872-4f6e-8868-fdce8f3ed78c"
+    }, {
+      "itemId" : 7,
+      "slotIdx" : 10,
+      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
     }, {
       "itemId" : 152,
       "slotIdx" : 4,
@@ -473,7 +477,7 @@
     "characterUuid" : "a800ef6f-7fe2-4d84-8558-753d952b6077",
     "characterClass" : 4,
     "stats" : {
-      "xp" : 1012949,
+      "xp" : 1013199,
       "classId" : 4,
       "hp" : 770,
       "mp" : 252,
@@ -766,7 +770,7 @@
     "characterUuid" : "e3696ccb-6864-4e87-b6ff-bf04ecd5c63d",
     "characterClass" : 0,
     "stats" : {
-      "xp" : 33950,
+      "xp" : 34450,
       "classId" : 0,
       "hp" : 881,
       "mp" : 281,
