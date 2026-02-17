@@ -26,4 +26,13 @@ public class TemporalEntity implements Serializable {
 	public boolean isDelete() {
 		return this.deleted != null;
 	}
+	
+	public void delete() {
+		this.deleted = new Date();
+	}
+	
+	public void update() {
+		this.updated = new Date();
+	}
+
 }

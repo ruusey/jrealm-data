@@ -1,14 +1,15 @@
-FROM maven:3.8.6-openjdk-11-slim as BUILD
+FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
-RUN cd ..
+
+# Install jrealm dependency into local Maven repo
+COPY ./jrealm ./jrealm
+RUN mvn -B clean install -DskipTests -f ./jrealm/pom.xml
+
+# Build jrealm-data
 COPY ./jrealm-data ./jrealm-data
-COPY ./jrealm ./jrealm-server
+RUN mvn -B clean package -DskipTests -f ./jrealm-data/pom.xml
 
-RUN mvn clean install -f ./jrealm-server/pom.xml
-RUN mvn clean package -f ./jrealm-data/pom.xml
-
-FROM openjdk:11-jre-slim-bullseye
-
-COPY --from=BUILD /app/jrealm-data/target/jrealm-data.jar /jrealm-data.jar
+FROM eclipse-temurin:17-jre
+COPY --from=build /app/jrealm-data/target/jrealm-data.jar /jrealm-data.jar
 EXPOSE 8085
-ENTRYPOINT [ "java", "-jar", "jrealm-data.jar" ]
+ENTRYPOINT ["java", "-jar", "jrealm-data.jar"]
