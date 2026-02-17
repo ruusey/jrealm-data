@@ -55,12 +55,38 @@
 	},
 	{
 		"portalId": 6,
-		"portalName": "Dunegon_0_Prtal",
+		"portalName": "Dungeon_0_Portal",
 		"mapId": 6,
 		"targetRealmDepth": 999,
 		"row": 4,
 		"col": 12,
 		"spriteKey": "rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 7,
+		"portalName": "Undead_Lair_Portal",
+		"mapId": 7,
+		"targetRealmDepth": 999,
+		"row": 4,
+		"col": 13,
+		"spriteKey": "rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 8,
+		"portalName": "Ice_Cave_Portal",
+		"mapId": 8,
+		"targetRealmDepth": 999,
+		"row": 4,
+		"col": 14,
+		"spriteKey": "rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 9,
+		"portalName": "Abyss_Portal",
+		"mapId": 9,
+		"targetRealmDepth": 999,
+		"row": 4,
+		"col": 15,
+		"spriteKey": "rotmg-tiles-2.png"
 	}
-	
 ]
