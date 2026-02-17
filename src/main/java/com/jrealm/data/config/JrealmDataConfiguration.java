@@ -25,8 +25,8 @@ public class JrealmDataConfiguration extends AbstractMongoClientConfiguration {
 	@Override
 	@Bean
 	public MongoClient mongoClient() {
-	        final ConnectionString connectionString = new ConnectionString("mongodb://127.0.0.1:27017/jrealm");
-		//final ConnectionString connectionString = new ConnectionString("mongodb://18.117.127.158:27017/jrealm");
+		final String host = System.getenv().getOrDefault("MONGO_HOST", "127.0.0.1");
+		final ConnectionString connectionString = new ConnectionString("mongodb://" + host + ":27017/jrealm");
 		final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
 				.applyConnectionString(connectionString).build();
 		return MongoClients.create(mongoClientSettings);
