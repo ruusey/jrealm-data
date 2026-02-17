@@ -272,8 +272,8 @@
 			"minRoomHeight": 6,
 			"maxRoomHeight": 12,
 			"shapeTemplates": ["RECTANGLE", "CROSS", "L_SHAPE", "DIAMOND"],
-			"floorTileIds": [55, 57],
-			"wallTileId": 56,
+			"floorTileIds": [55, 58, 57],
+			"wallTileId": 17,
 			"hallwayStyles": ["ZIGZAG", "WINDING"],
 			"bossEnemyId": 26
 		}
