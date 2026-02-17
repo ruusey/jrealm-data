@@ -38,7 +38,9 @@ jobs:
           cache: maven
 
       - name: Install jrealm dependency
-        run: mvn -B clean install -DskipTests -f jrealm/pom.xml
+        run: |
+          mvn -B versions:set -DnewVersion=${{ steps.jrealm-version.outputs.version }} -DgenerateBackupPoms=false -f jrealm/pom.xml
+          mvn -B clean install -DskipTests -f jrealm/pom.xml
 
       - name: Extract version from pom.xml
         id: version
