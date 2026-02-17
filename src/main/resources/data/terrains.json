@@ -138,5 +138,41 @@
 				]
 			}
 		]
+	},
+	{
+		"name": "Dungeon_Undead_Lair",
+		"terrainId": 3,
+		"tileGroups": [],
+		"enemyGroups": [
+			{
+				"name": "undead_lair_enemies",
+				"ordinal": 0,
+				"enemyIds": [17, 21, 24]
+			}
+		]
+	},
+	{
+		"name": "Dungeon_Ice_Cave",
+		"terrainId": 4,
+		"tileGroups": [],
+		"enemyGroups": [
+			{
+				"name": "ice_cave_enemies",
+				"ordinal": 0,
+				"enemyIds": [20, 22, 24]
+			}
+		]
+	},
+	{
+		"name": "Dungeon_Abyss",
+		"terrainId": 5,
+		"tileGroups": [],
+		"enemyGroups": [
+			{
+				"name": "abyss_enemies",
+				"ordinal": 0,
+				"enemyIds": [18, 19, 23]
+			}
+		]
 	}
 ]

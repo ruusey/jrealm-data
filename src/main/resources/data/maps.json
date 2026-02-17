@@ -208,5 +208,74 @@
 				"RECTANGLE"
 			]
 		}
+	},
+	{
+		"mapId": 7,
+		"mapName": "Undead_Lair",
+		"mapKey": "overworld.dungeon.undeadlair",
+		"tileSize": 32,
+		"width": 100,
+		"height": 100,
+		"terrainId": 3,
+		"dungeonId": 1,
+		"dungeonParams": {
+			"minRooms": 15,
+			"maxRooms": 25,
+			"minRoomWidth": 8,
+			"maxRoomWidth": 14,
+			"minRoomHeight": 8,
+			"maxRoomHeight": 14,
+			"shapeTemplates": ["RECTANGLE", "CROSS", "L_SHAPE"],
+			"floorTileIds": [50],
+			"wallTileId": 51,
+			"hallwayStyles": ["L_SHAPED", "ZIGZAG", "WINDING"],
+			"bossEnemyId": 25
+		}
+	},
+	{
+		"mapId": 8,
+		"mapName": "Ice_Cave",
+		"mapKey": "overworld.dungeon.icecave",
+		"tileSize": 32,
+		"width": 120,
+		"height": 120,
+		"terrainId": 4,
+		"dungeonId": 2,
+		"dungeonParams": {
+			"minRooms": 12,
+			"maxRooms": 20,
+			"minRoomWidth": 10,
+			"maxRoomWidth": 18,
+			"minRoomHeight": 10,
+			"maxRoomHeight": 18,
+			"shapeTemplates": ["OVAL", "DIAMOND", "RECTANGLE"],
+			"floorTileIds": [52, 53],
+			"wallTileId": 54,
+			"hallwayStyles": ["WIDE", "L_SHAPED"],
+			"bossEnemyId": 27
+		}
+	},
+	{
+		"mapId": 9,
+		"mapName": "Abyss_of_Demons",
+		"mapKey": "overworld.dungeon.abyss",
+		"tileSize": 32,
+		"width": 80,
+		"height": 80,
+		"terrainId": 5,
+		"dungeonId": 3,
+		"dungeonParams": {
+			"minRooms": 20,
+			"maxRooms": 35,
+			"minRoomWidth": 6,
+			"maxRoomWidth": 12,
+			"minRoomHeight": 6,
+			"maxRoomHeight": 12,
+			"shapeTemplates": ["RECTANGLE", "CROSS", "L_SHAPE", "DIAMOND"],
+			"floorTileIds": [55, 57],
+			"wallTileId": 56,
+			"hallwayStyles": ["ZIGZAG", "WINDING"],
+			"bossEnemyId": 26
+		}
 	}
 ]

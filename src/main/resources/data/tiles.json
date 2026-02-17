@@ -642,13 +642,116 @@
 			"spriteKey": "rotmg-tiles-1.png",
 			"row": 1,
 			"col": 14,
-			"size": 64, 
+			"size": 64,
 			"data": {
 				"hasCollision" : 1,
 				"slows": 0,
 				"damaging": 0
 			}
+		},
+	{
+		"tileId": 50,
+		"name": "Purple_Stone_Floor",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 2,
+		"col": 7,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
 		}
-	
+	},
+	{
+		"tileId": 51,
+		"name": "Purple_Stone_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 5,
+		"col": 1,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 52,
+		"name": "Ice_Floor_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 0,
+		"col": 9,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 53,
+		"name": "Ice_Floor_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 0,
+		"col": 10,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 54,
+		"name": "Ice_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 5,
+		"col": 2,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 55,
+		"name": "Fire_Brick_Floor",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 3,
+		"col": 7,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 56,
+		"name": "Fire_Brick_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 3,
+		"col": 1,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 57,
+		"name": "Lava_Crack_Floor",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 3,
+		"col": 8,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 1
+		}
+	}
 ]
 

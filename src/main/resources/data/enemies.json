@@ -318,5 +318,247 @@
 			"hp": 9999,
 			"def": 99
 		}
+	},
+	{
+		"enemyId": 17,
+		"name": "Skeleton Warrior",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 2,
+		"col": 0,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 35,
+		"xp": 150,
+		"health": 300,
+		"maxSpeed": 1.6,
+		"chaseRange": 200.0,
+		"attackRange": 100.0,
+		"stats": {
+			"hp": 300,
+			"def": 2,
+			"dex": 8
+		}
+	},
+	{
+		"enemyId": 18,
+		"name": "Fire Imp",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 0,
+		"col": 0,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 36,
+		"xp": 200,
+		"health": 250,
+		"maxSpeed": 2.0,
+		"chaseRange": 240.0,
+		"attackRange": 180.0,
+		"stats": {
+			"hp": 250,
+			"def": 1,
+			"dex": 20
+		}
+	},
+	{
+		"enemyId": 19,
+		"name": "Cave Serpent",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 3,
+		"col": 0,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 37,
+		"xp": 175,
+		"health": 350,
+		"maxSpeed": 2.2,
+		"chaseRange": 200.0,
+		"attackRange": 80.0,
+		"stats": {
+			"hp": 350,
+			"def": 3,
+			"dex": 12
+		}
+	},
+	{
+		"enemyId": 20,
+		"name": "Ice Sprite",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 1,
+		"col": 0,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 38,
+		"xp": 225,
+		"health": 200,
+		"maxSpeed": 2.4,
+		"chaseRange": 300.0,
+		"attackRange": 200.0,
+		"stats": {
+			"hp": 200,
+			"dex": 25
+		}
+	},
+	{
+		"enemyId": 21,
+		"name": "Wraith",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 1,
+		"col": 3,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 39,
+		"xp": 800,
+		"health": 1200,
+		"maxSpeed": 1.8,
+		"chaseRange": 320.0,
+		"attackRange": 200.0,
+		"stats": {
+			"hp": 1200,
+			"def": 8,
+			"dex": 18
+		}
+	},
+	{
+		"enemyId": 22,
+		"name": "Frost Golem",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 2,
+		"col": 0,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 40,
+		"xp": 900,
+		"health": 2500,
+		"maxSpeed": 0.8,
+		"chaseRange": 200.0,
+		"attackRange": 120.0,
+		"stats": {
+			"hp": 2500,
+			"def": 25,
+			"dex": 5
+		}
+	},
+	{
+		"enemyId": 23,
+		"name": "Toxic Ooze",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 3,
+		"col": 0,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 41,
+		"xp": 700,
+		"health": 1800,
+		"maxSpeed": 1.0,
+		"chaseRange": 180.0,
+		"attackRange": 160.0,
+		"stats": {
+			"hp": 1800,
+			"def": 15,
+			"dex": 8
+		}
+	},
+	{
+		"enemyId": 24,
+		"name": "Shadow Bat",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 3,
+		"col": 1,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 42,
+		"xp": 650,
+		"health": 900,
+		"maxSpeed": 2.8,
+		"chaseRange": 350.0,
+		"attackRange": 150.0,
+		"stats": {
+			"hp": 900,
+			"def": 5,
+			"dex": 22
+		}
+	},
+	{
+		"enemyId": 25,
+		"name": "Frost Knight",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 0,
+		"col": 0,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 43,
+		"xp": 3000,
+		"health": 5000,
+		"maxSpeed": 1.6,
+		"chaseRange": 400.0,
+		"attackRange": 200.0,
+		"stats": {
+			"hp": 5000,
+			"def": 30,
+			"dex": 15,
+			"spd": 8
+		}
+	},
+	{
+		"enemyId": 26,
+		"name": "Inferno Demon",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 2,
+		"col": 3,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 44,
+		"xp": 3500,
+		"health": 6000,
+		"maxSpeed": 1.4,
+		"chaseRange": 350.0,
+		"attackRange": 250.0,
+		"stats": {
+			"hp": 6000,
+			"def": 20,
+			"dex": 20,
+			"spd": 5
+		}
+	},
+	{
+		"enemyId": 27,
+		"name": "Void Entity",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 0,
+		"col": 4,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 45,
+		"xp": 5000,
+		"health": 8000,
+		"maxSpeed": 1.2,
+		"chaseRange": 400.0,
+		"attackRange": 300.0,
+		"stats": {
+			"hp": 8000,
+			"def": 35,
+			"dex": 25,
+			"spd": 3
+		}
+	},
+	{
+		"enemyId": 28,
+		"name": "Stone Guardian",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 2,
+		"col": 2,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 46,
+		"xp": 2500,
+		"health": 7000,
+		"maxSpeed": 0.6,
+		"chaseRange": 250.0,
+		"attackRange": 180.0,
+		"stats": {
+			"hp": 7000,
+			"def": 50,
+			"dex": 3
+		}
 	}
 ]
