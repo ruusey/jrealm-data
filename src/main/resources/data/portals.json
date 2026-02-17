@@ -67,8 +67,8 @@
 		"portalName": "Undead_Lair_Portal",
 		"mapId": 7,
 		"targetRealmDepth": 999,
-		"row": 4,
-		"col": 13,
+		"row": 9,
+		"col": 11,
 		"spriteKey": "rotmg-tiles-2.png"
 	},
 	{
@@ -76,8 +76,8 @@
 		"portalName": "Ice_Cave_Portal",
 		"mapId": 8,
 		"targetRealmDepth": 999,
-		"row": 4,
-		"col": 14,
+		"row": 9,
+		"col": 12,
 		"spriteKey": "rotmg-tiles-2.png"
 	},
 	{
@@ -85,8 +85,8 @@
 		"portalName": "Abyss_Portal",
 		"mapId": 9,
 		"targetRealmDepth": 999,
-		"row": 4,
-		"col": 15,
+		"row": 9,
+		"col": 14,
 		"spriteKey": "rotmg-tiles-2.png"
 	}
 ]
