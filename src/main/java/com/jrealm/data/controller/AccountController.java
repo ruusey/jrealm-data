@@ -27,6 +27,7 @@ import com.jrealm.data.entity.auth.AccountEntity;
 import com.jrealm.data.service.AccountService;
 import com.jrealm.data.service.PlayerDataService;
 import com.jrealm.data.util.ApiUtils;
+import com.jrealm.data.util.Util;
 
 @RestController
 public class AccountController {
@@ -45,7 +46,7 @@ public class AccountController {
     public ResponseEntity<?> getSysToken(final HttpServletRequest req) {
         ResponseEntity<?> res = null;
         try {
-            if (req.getRemoteAddr().equals("127.0.0.1") || req.getRemoteAddr().equals("0:0:0:0:0:0:0:1")) {
+            if (Util.isTrustedHost(req.getRemoteAddr())) {
                 res = ApiUtils.buildSuccess(this.jrealmAccounts.getSystoken());
             } else {
                 throw new Exception("Invalid SYS_TOKEN request");

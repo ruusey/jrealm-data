@@ -20,6 +20,7 @@ import com.jrealm.data.entity.auth.AccountTokenEntity;
 import com.jrealm.data.repository.auth.AccountAuthRepository;
 import com.jrealm.data.repository.auth.AccountTokenRepository;
 import com.jrealm.data.service.AccountService;
+import com.jrealm.data.util.Util;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,7 +47,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
 //		log.info("Request addr: {}", request.getRemoteAddr());
 //		log.info("My addr: {}", InetAddress.getLocalHost());
 
-        if (request.getRemoteAddr().equals("127.0.0.1") || request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
+        if (Util.isTrustedHost(request.getRemoteAddr())
                 || request.getServletPath().equals("/admin/account/login")
                 || request.getServletPath().equals("/admin/account/register")
                 || request.getServletPath().equals("/v3/api-docs") || request.getServletPath().equals("/ping")

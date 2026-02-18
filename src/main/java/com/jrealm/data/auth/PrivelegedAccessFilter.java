@@ -13,6 +13,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.jrealm.data.dto.auth.AccountDto;
 import com.jrealm.data.service.AccountService;
 import com.jrealm.data.util.AdminRestricted;
+import com.jrealm.data.util.Util;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,7 +33,7 @@ public class PrivelegedAccessFilter implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         
-        if (request.getRemoteAddr().equals("127.0.0.1") || request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")
+        if (Util.isTrustedHost(request.getRemoteAddr())
                 || request.getServletPath().equals("/admin/account/login")
                 || request.getServletPath().equals("/admin/account/register")
                 || request.getServletPath().equals("/v3/api-docs") || request.getServletPath().equals("/ping")

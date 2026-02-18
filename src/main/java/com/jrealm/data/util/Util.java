@@ -1,6 +1,7 @@
 package com.jrealm.data.util;
 
 
+import java.net.InetAddress;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
@@ -79,5 +80,26 @@ public class Util {
 
 	public static String getUserSession(HttpServletRequest req) {
 		return req != null ? req.getHeader("Authorization") : null;
+	}
+
+	public static boolean isTrustedHost(String remoteAddr) {
+		if ("127.0.0.1".equals(remoteAddr) || "0:0:0:0:0:0:0:1".equals(remoteAddr)) {
+			return true;
+		}
+		String trustedHosts = System.getenv("TRUSTED_HOSTS");
+		if (trustedHosts == null || trustedHosts.isEmpty()) {
+			return false;
+		}
+		for (String host : trustedHosts.split(",")) {
+			try {
+				for (InetAddress addr : InetAddress.getAllByName(host.trim())) {
+					if (addr.getHostAddress().equals(remoteAddr)) {
+						return true;
+					}
+				}
+			} catch (Exception ignored) {
+			}
+		}
+		return false;
 	}
 }
