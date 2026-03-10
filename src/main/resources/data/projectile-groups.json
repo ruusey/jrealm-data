@@ -2082,7 +2082,7 @@
 				"projectileId": 50,
 				"positionMode": 0,
 				"damage": 30,
-				"angle": "{{-PI/12}}",
+				"angle": "{{23PI/12}}",
 				"range": 300.0,
 				"size": 16,
 				"amplitude": 3,
