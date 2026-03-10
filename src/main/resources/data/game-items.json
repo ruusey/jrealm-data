@@ -2859,5 +2859,139 @@
 		"targetSlot": -2,
 		"targetClass": -4,
 		"fameBonus": 8
+	},
+	{
+		"itemId": 161,
+		"row": 7,
+		"col": 3,
+		"spriteKey": "rotmg-items.png",
+		"name": "Serpentine Staff",
+		"description": "A staff that fires gentle, serpentine bolts of energy.",
+		"damage": {
+			"projectileGroupId": 47,
+			"min": 30,
+			"max": 55
+		},
+		"stats": {
+			"spd": 3,
+			"wis": 2
+		},
+		"consumable": false,
+		"tier": 8,
+		"targetSlot": 0,
+		"targetClass": 2,
+		"fameBonus": 3
+	},
+	{
+		"itemId": 162,
+		"row": 7,
+		"col": 4,
+		"spriteKey": "rotmg-items.png",
+		"name": "Staff of the Helix",
+		"description": "A volatile staff whose bolts spiral in a tight double helix.",
+		"damage": {
+			"projectileGroupId": 48,
+			"min": 15,
+			"max": 40
+		},
+		"stats": {
+			"att": 4,
+			"dex": 4
+		},
+		"consumable": false,
+		"tier": 10,
+		"targetSlot": 0,
+		"targetClass": 2,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 163,
+		"row": 7,
+		"col": 5,
+		"spriteKey": "rotmg-items.png",
+		"name": "Staff of the Tidal Swoosh",
+		"description": "A heavy staff that launches wide, sweeping arcs of water magic.",
+		"damage": {
+			"projectileGroupId": 49,
+			"min": 40,
+			"max": 70
+		},
+		"stats": {
+			"att": 5,
+			"def": 3
+		},
+		"consumable": false,
+		"tier": 12,
+		"targetSlot": 0,
+		"targetClass": 2,
+		"fameBonus": 5
+	},
+	{
+		"itemId": 164,
+		"row": 2,
+		"col": 3,
+		"spriteKey": "rotmg-items.png",
+		"name": "Bow of the Spiral",
+		"description": "A mystical bow that fires three spiraling arrows in a spread pattern.",
+		"damage": {
+			"projectileGroupId": 50,
+			"min": 25,
+			"max": 50
+		},
+		"stats": {
+			"dex": 5,
+			"spd": 2
+		},
+		"consumable": false,
+		"tier": 10,
+		"targetSlot": 0,
+		"targetClass": 1,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 165,
+		"row": 7,
+		"col": 6,
+		"spriteKey": "rotmg-items.png",
+		"name": "Cosmic Staff",
+		"description": "An otherworldly staff with tight helical shots and extreme range.",
+		"damage": {
+			"projectileGroupId": 48,
+			"min": 25,
+			"max": 50
+		},
+		"stats": {
+			"att": 6,
+			"dex": 3,
+			"wis": 3
+		},
+		"consumable": false,
+		"tier": 13,
+		"targetSlot": 0,
+		"targetClass": 2,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 166,
+		"row": 2,
+		"col": 4,
+		"spriteKey": "rotmg-items.png",
+		"name": "Bow of the Swooping Gale",
+		"description": "A windswept bow whose arrows carve wide, sweeping arcs through the air.",
+		"damage": {
+			"projectileGroupId": 49,
+			"min": 35,
+			"max": 60
+		},
+		"stats": {
+			"att": 3,
+			"spd": 4,
+			"dex": 3
+		},
+		"consumable": false,
+		"tier": 11,
+		"targetSlot": 0,
+		"targetClass": 1,
+		"fameBonus": 5
 	}
 ]

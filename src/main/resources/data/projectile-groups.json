@@ -1947,6 +1947,150 @@
 			{ "projectileId": 46, "positionMode": 2, "damage": 150, "angle": "{{PI}}", "range": 160, "size": 8, "magnitude": 3.0, "flags": [0] },
 			{ "projectileId": 46, "positionMode": 2, "damage": 150, "angle": "{{3PI/2}}", "range": 160, "size": 8, "magnitude": 3.0, "flags": [0] }
 		]
+	},
+	{
+		"projectileGroupId": 47,
+		"row": 8,
+		"col": 12,
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 47,
+				"positionMode": 0,
+				"damage": 35,
+				"angle": 0,
+				"range": 280.0,
+				"size": 24,
+				"amplitude": 2,
+				"frequency": 5,
+				"magnitude": 4.0,
+				"flags": [0, 12]
+			},
+			{
+				"projectileId": 47,
+				"positionMode": 0,
+				"damage": 35,
+				"angle": 0,
+				"range": 280.0,
+				"size": 24,
+				"amplitude": -2,
+				"frequency": 5,
+				"magnitude": 4.0,
+				"flags": [0, 12]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 48,
+		"row": 8,
+		"col": 10,
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 48,
+				"positionMode": 0,
+				"damage": 20,
+				"angle": 0,
+				"range": 200.0,
+				"size": 24,
+				"amplitude": 3,
+				"frequency": 45,
+				"magnitude": 5.5,
+				"flags": [0, 12]
+			},
+			{
+				"projectileId": 48,
+				"positionMode": 0,
+				"damage": 20,
+				"angle": 0,
+				"range": 200.0,
+				"size": 24,
+				"amplitude": -3,
+				"frequency": 45,
+				"magnitude": 5.5,
+				"flags": [0, 12]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 49,
+		"row": 8,
+		"col": 14,
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 49,
+				"positionMode": 0,
+				"damage": 45,
+				"angle": 0,
+				"range": 240.0,
+				"size": 24,
+				"amplitude": 8,
+				"frequency": 4,
+				"magnitude": 4.5,
+				"flags": [0, 12]
+			},
+			{
+				"projectileId": 49,
+				"positionMode": 0,
+				"damage": 45,
+				"angle": 0,
+				"range": 240.0,
+				"size": 24,
+				"amplitude": -8,
+				"frequency": 4,
+				"magnitude": 4.5,
+				"flags": [0, 12]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 50,
+		"row": 0,
+		"col": 5,
+		"spriteKey": "rotmg-projectiles.png",
+		"angleOffset": "0",
+		"projectiles": [
+			{
+				"projectileId": 50,
+				"positionMode": 0,
+				"damage": 30,
+				"angle": 0,
+				"range": 300.0,
+				"size": 16,
+				"amplitude": 3,
+				"frequency": 15,
+				"magnitude": 5.0,
+				"flags": [0, 12]
+			},
+			{
+				"projectileId": 50,
+				"positionMode": 0,
+				"damage": 30,
+				"angle": "{{PI/12}}",
+				"range": 300.0,
+				"size": 16,
+				"amplitude": -3,
+				"frequency": 15,
+				"magnitude": 5.0,
+				"flags": [0, 12]
+			},
+			{
+				"projectileId": 50,
+				"positionMode": 0,
+				"damage": 30,
+				"angle": "{{-PI/12}}",
+				"range": 300.0,
+				"size": 16,
+				"amplitude": 3,
+				"frequency": 15,
+				"magnitude": 5.0,
+				"flags": [0, 12]
+			}
+		]
 	}
 ]
 
