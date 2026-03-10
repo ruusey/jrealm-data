@@ -1962,9 +1962,9 @@
 				"angle": 0,
 				"range": 280.0,
 				"size": 24,
-				"amplitude": 2,
-				"frequency": 5,
-				"magnitude": 4.0,
+				"amplitude": 6,
+				"frequency": 30,
+				"magnitude": 2.5,
 				"flags": [0, 12]
 			},
 			{
@@ -1974,9 +1974,9 @@
 				"angle": 0,
 				"range": 280.0,
 				"size": 24,
-				"amplitude": -2,
-				"frequency": 5,
-				"magnitude": 4.0,
+				"amplitude": -6,
+				"frequency": 30,
+				"magnitude": 2.5,
 				"flags": [0, 12]
 			}
 		]
@@ -1995,9 +1995,9 @@
 				"angle": 0,
 				"range": 200.0,
 				"size": 24,
-				"amplitude": 3,
-				"frequency": 45,
-				"magnitude": 5.5,
+				"amplitude": 8,
+				"frequency": 60,
+				"magnitude": 2.0,
 				"flags": [0, 12]
 			},
 			{
@@ -2007,9 +2007,9 @@
 				"angle": 0,
 				"range": 200.0,
 				"size": 24,
-				"amplitude": -3,
-				"frequency": 45,
-				"magnitude": 5.5,
+				"amplitude": -8,
+				"frequency": 60,
+				"magnitude": 2.0,
 				"flags": [0, 12]
 			}
 		]
@@ -2017,7 +2017,7 @@
 	{
 		"projectileGroupId": 49,
 		"row": 8,
-		"col": 14,
+		"col": 11,
 		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -2028,9 +2028,9 @@
 				"angle": 0,
 				"range": 240.0,
 				"size": 24,
-				"amplitude": 8,
-				"frequency": 4,
-				"magnitude": 4.5,
+				"amplitude": 14,
+				"frequency": 25,
+				"magnitude": 2.5,
 				"flags": [0, 12]
 			},
 			{
@@ -2040,19 +2040,19 @@
 				"angle": 0,
 				"range": 240.0,
 				"size": 24,
-				"amplitude": -8,
-				"frequency": 4,
-				"magnitude": 4.5,
+				"amplitude": -14,
+				"frequency": 25,
+				"magnitude": 2.5,
 				"flags": [0, 12]
 			}
 		]
 	},
 	{
 		"projectileGroupId": 50,
-		"row": 0,
+		"row": 6,
 		"col": 5,
-		"spriteKey": "rotmg-projectiles.png",
-		"angleOffset": "0",
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
 				"projectileId": 50,
@@ -2061,9 +2061,9 @@
 				"angle": 0,
 				"range": 300.0,
 				"size": 16,
-				"amplitude": 3,
-				"frequency": 15,
-				"magnitude": 5.0,
+				"amplitude": 7,
+				"frequency": 40,
+				"magnitude": 2.0,
 				"flags": [0, 12]
 			},
 			{
@@ -2073,9 +2073,9 @@
 				"angle": "{{PI/12}}",
 				"range": 300.0,
 				"size": 16,
-				"amplitude": -3,
-				"frequency": 15,
-				"magnitude": 5.0,
+				"amplitude": -7,
+				"frequency": 40,
+				"magnitude": 2.0,
 				"flags": [0, 12]
 			},
 			{
@@ -2085,9 +2085,9 @@
 				"angle": "{{23PI/12}}",
 				"range": 300.0,
 				"size": 16,
-				"amplitude": 3,
-				"frequency": 15,
-				"magnitude": 5.0,
+				"amplitude": 7,
+				"frequency": 40,
+				"magnitude": 2.0,
 				"flags": [0, 12]
 			}
 		]

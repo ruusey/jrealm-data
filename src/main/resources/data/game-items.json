@@ -2862,9 +2862,9 @@
 	},
 	{
 		"itemId": 161,
-		"row": 7,
-		"col": 3,
-		"spriteKey": "rotmg-items.png",
+		"row": 5,
+		"col": 13,
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Serpentine Staff",
 		"description": "A staff that fires gentle, serpentine bolts of energy.",
 		"damage": {
@@ -2884,9 +2884,9 @@
 	},
 	{
 		"itemId": 162,
-		"row": 7,
-		"col": 4,
-		"spriteKey": "rotmg-items.png",
+		"row": 5,
+		"col": 13,
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Staff of the Helix",
 		"description": "A volatile staff whose bolts spiral in a tight double helix.",
 		"damage": {
@@ -2906,9 +2906,9 @@
 	},
 	{
 		"itemId": 163,
-		"row": 7,
-		"col": 5,
-		"spriteKey": "rotmg-items.png",
+		"row": 5,
+		"col": 13,
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Staff of the Tidal Swoosh",
 		"description": "A heavy staff that launches wide, sweeping arcs of water magic.",
 		"damage": {
@@ -2928,9 +2928,9 @@
 	},
 	{
 		"itemId": 164,
-		"row": 2,
-		"col": 3,
-		"spriteKey": "rotmg-items.png",
+		"row": 6,
+		"col": 10,
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Bow of the Spiral",
 		"description": "A mystical bow that fires three spiraling arrows in a spread pattern.",
 		"damage": {
@@ -2950,9 +2950,9 @@
 	},
 	{
 		"itemId": 165,
-		"row": 7,
-		"col": 6,
-		"spriteKey": "rotmg-items.png",
+		"row": 5,
+		"col": 13,
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Cosmic Staff",
 		"description": "An otherworldly staff with tight helical shots and extreme range.",
 		"damage": {
@@ -2973,9 +2973,9 @@
 	},
 	{
 		"itemId": 166,
-		"row": 2,
-		"col": 4,
-		"spriteKey": "rotmg-items.png",
+		"row": 6,
+		"col": 10,
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Bow of the Swooping Gale",
 		"description": "A windswept bow whose arrows carve wide, sweeping arcs through the air.",
 		"damage": {
