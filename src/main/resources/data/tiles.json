@@ -862,5 +862,239 @@
         "col": 6,
         "size": 32,
         "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 96,
+        "name": "Green_Tree_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 0,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 97,
+        "name": "Green_Tree_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 1,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 98,
+        "name": "Green_Tree_C",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 2,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 99,
+        "name": "Small_Tree_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 3,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 100,
+        "name": "Small_Tree_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 4,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 101,
+        "name": "Brown_Tree_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 5,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 102,
+        "name": "Brown_Tree_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 6,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 103,
+        "name": "Dead_Tree_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 0,
+        "col": 7,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 104,
+        "name": "Tall_Tree_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 0,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 105,
+        "name": "Tall_Tree_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 1,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 106,
+        "name": "Tall_Tree_C",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 2,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 107,
+        "name": "Dense_Tree_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 3,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 108,
+        "name": "Dense_Tree_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 4,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 109,
+        "name": "Dense_Tree_C",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 5,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 110,
+        "name": "Autumn_Tree_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 6,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 111,
+        "name": "Autumn_Tree_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 1,
+        "col": 7,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 112,
+        "name": "Dark_Shrub_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 2,
+        "col": 0,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 113,
+        "name": "Dark_Shrub_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 2,
+        "col": 1,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 114,
+        "name": "Emerald_Shrub_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 2,
+        "col": 5,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 115,
+        "name": "Emerald_Shrub_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 2,
+        "col": 6,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 116,
+        "name": "Small_Bush_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 3,
+        "col": 0,
+        "size": 32,
+        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+    },
+    {
+        "tileId": 117,
+        "name": "Small_Bush_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 3,
+        "col": 1,
+        "size": 32,
+        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+    },
+    {
+        "tileId": 118,
+        "name": "Aquatic_Shrub_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 4,
+        "col": 0,
+        "size": 32,
+        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+    },
+    {
+        "tileId": 119,
+        "name": "Aquatic_Shrub_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 4,
+        "col": 1,
+        "size": 32,
+        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+    },
+    {
+        "tileId": 120,
+        "name": "Stone_A",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 5,
+        "col": 0,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+    },
+    {
+        "tileId": 121,
+        "name": "Stone_B",
+        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "row": 5,
+        "col": 1,
+        "size": 32,
+        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
     }
 ]
