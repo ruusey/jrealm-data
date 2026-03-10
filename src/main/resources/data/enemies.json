@@ -560,5 +560,247 @@
 			"def": 50,
 			"dex": 3
 		}
+	},
+	{
+		"enemyId": 29,
+		"name": "Coral Sentry",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 1,
+		"col": 2,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 51,
+		"xp": 300,
+		"health": 400,
+		"maxSpeed": 1.0,
+		"chaseRange": 220.0,
+		"attackRange": 180.0,
+		"stats": {
+			"hp": 400,
+			"def": 8,
+			"dex": 6
+		}
+	},
+	{
+		"enemyId": 30,
+		"name": "Fungal Spitter",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 3,
+		"col": 2,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 52,
+		"xp": 250,
+		"health": 300,
+		"maxSpeed": 1.6,
+		"chaseRange": 200.0,
+		"attackRange": 160.0,
+		"stats": {
+			"hp": 300,
+			"def": 5,
+			"dex": 15
+		}
+	},
+	{
+		"enemyId": 31,
+		"name": "Magma Worm",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 0,
+		"col": 2,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 53,
+		"xp": 275,
+		"health": 250,
+		"maxSpeed": 2.4,
+		"chaseRange": 240.0,
+		"attackRange": 120.0,
+		"stats": {
+			"hp": 250,
+			"def": 3,
+			"dex": 20
+		}
+	},
+	{
+		"enemyId": 32,
+		"name": "Dark Acolyte",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 2,
+		"col": 2,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 54,
+		"xp": 350,
+		"health": 350,
+		"maxSpeed": 1.4,
+		"chaseRange": 300.0,
+		"attackRange": 250.0,
+		"stats": {
+			"hp": 350,
+			"def": 10,
+			"dex": 12
+		}
+	},
+	{
+		"enemyId": 33,
+		"name": "Pit Viper",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 3,
+		"col": 4,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 55,
+		"xp": 280,
+		"health": 280,
+		"maxSpeed": 2.2,
+		"chaseRange": 220.0,
+		"attackRange": 100.0,
+		"stats": {
+			"hp": 280,
+			"def": 4,
+			"dex": 18
+		}
+	},
+	{
+		"enemyId": 34,
+		"name": "Ember Hound",
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 0,
+		"col": 4,
+		"spriteSize": 8,
+		"size": 32,
+		"attackId": 56,
+		"xp": 325,
+		"health": 450,
+		"maxSpeed": 2.0,
+		"chaseRange": 260.0,
+		"attackRange": 90.0,
+		"stats": {
+			"hp": 450,
+			"def": 6,
+			"dex": 14
+		}
+	},
+	{
+		"enemyId": 35,
+		"name": "Tide Warden",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 0,
+		"col": 3,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 57,
+		"xp": 2000,
+		"health": 3000,
+		"maxSpeed": 1.2,
+		"chaseRange": 300.0,
+		"attackRange": 200.0,
+		"stats": {
+			"hp": 3000,
+			"def": 15,
+			"dex": 12
+		}
+	},
+	{
+		"enemyId": 36,
+		"name": "Mycelium Colossus",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 1,
+		"col": 6,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 58,
+		"xp": 2500,
+		"health": 4000,
+		"maxSpeed": 0.7,
+		"chaseRange": 200.0,
+		"attackRange": 180.0,
+		"stats": {
+			"hp": 4000,
+			"def": 30,
+			"dex": 6
+		}
+	},
+	{
+		"enemyId": 37,
+		"name": "Magma Titan",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 1,
+		"col": 5,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 59,
+		"xp": 3000,
+		"health": 5000,
+		"maxSpeed": 1.0,
+		"chaseRange": 300.0,
+		"attackRange": 220.0,
+		"stats": {
+			"hp": 5000,
+			"def": 20,
+			"dex": 14
+		}
+	},
+	{
+		"enemyId": 38,
+		"name": "Shadow Warlord",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 1,
+		"col": 4,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 60,
+		"xp": 3500,
+		"health": 5500,
+		"maxSpeed": 1.8,
+		"chaseRange": 380.0,
+		"attackRange": 200.0,
+		"stats": {
+			"hp": 5500,
+			"def": 25,
+			"dex": 18,
+			"spd": 8
+		}
+	},
+	{
+		"enemyId": 39,
+		"name": "Basilisk King",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 2,
+		"col": 4,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 61,
+		"xp": 3000,
+		"health": 4500,
+		"maxSpeed": 1.4,
+		"chaseRange": 320.0,
+		"attackRange": 200.0,
+		"stats": {
+			"hp": 4500,
+			"def": 18,
+			"dex": 16
+		}
+	},
+	{
+		"enemyId": 40,
+		"name": "Eternal Monarch",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 2,
+		"col": 5,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 62,
+		"xp": 8000,
+		"health": 15000,
+		"maxSpeed": 1.6,
+		"chaseRange": 400.0,
+		"attackRange": 300.0,
+		"stats": {
+			"hp": 15000,
+			"def": 40,
+			"dex": 22,
+			"spd": 12
+		}
 	}
 ]

@@ -1,0 +1,238 @@
+[
+	{
+		"nodeId": "beach",
+		"displayName": "Sunken Shore",
+		"mapId": 2,
+		"difficulty": 1,
+		"entryPoint": true,
+		"bossNode": false,
+		"childNodes": ["grasslands", "coastal_ruins", "sunken_temple"],
+		"portalDropNodeMap": {
+			"grasslands": 1,
+			"coastal_ruins": 6,
+			"sunken_temple": 10
+		}
+	},
+	{
+		"nodeId": "grasslands",
+		"displayName": "Emerald Wilds",
+		"mapId": 11,
+		"difficulty": 2,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["dark_forest", "crystal_caverns", "enchanted_maze"],
+		"portalDropNodeMap": {
+			"dark_forest": 7,
+			"crystal_caverns": 8,
+			"enchanted_maze": 18
+		}
+	},
+	{
+		"nodeId": "coastal_ruins",
+		"displayName": "Coastal Ruins",
+		"mapId": 10,
+		"difficulty": 2,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["crystal_caverns", "undead_lair", "magma_depths"],
+		"portalDropNodeMap": {
+			"crystal_caverns": 8,
+			"undead_lair": 7,
+			"magma_depths": 12
+		}
+	},
+	{
+		"nodeId": "sunken_temple",
+		"displayName": "Sunken Temple",
+		"mapId": 15,
+		"difficulty": 2,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["serpents_den", "mushroom_grotto"],
+		"portalDropNodeMap": {
+			"serpents_den": 14,
+			"mushroom_grotto": 11
+		}
+	},
+	{
+		"nodeId": "dark_forest",
+		"displayName": "The Dark Forest",
+		"mapId": 12,
+		"difficulty": 3,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["necropolis", "shadow_keep"],
+		"portalDropNodeMap": {
+			"necropolis": 5,
+			"shadow_keep": 13
+		}
+	},
+	{
+		"nodeId": "crystal_caverns",
+		"displayName": "Crystal Caverns",
+		"mapId": 13,
+		"difficulty": 3,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["frozen_throne", "necropolis"],
+		"portalDropNodeMap": {
+			"frozen_throne": 8,
+			"necropolis": 5
+		}
+	},
+	{
+		"nodeId": "enchanted_maze",
+		"displayName": "Enchanted Maze",
+		"mapId": 23,
+		"difficulty": 3,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["mushroom_grotto"],
+		"portalDropNodeMap": {
+			"mushroom_grotto": 11
+		}
+	},
+	{
+		"nodeId": "undead_lair",
+		"displayName": "Undead Lair",
+		"mapId": 7,
+		"difficulty": 3,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["necropolis", "abyss"],
+		"portalDropNodeMap": {
+			"necropolis": 5,
+			"abyss": 9
+		}
+	},
+	{
+		"nodeId": "magma_depths",
+		"displayName": "Magma Depths",
+		"mapId": 17,
+		"difficulty": 3,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["infernal_pit"],
+		"portalDropNodeMap": {
+			"infernal_pit": 15
+		}
+	},
+	{
+		"nodeId": "serpents_den",
+		"displayName": "Serpent's Den",
+		"mapId": 19,
+		"difficulty": 3,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["infernal_pit"],
+		"portalDropNodeMap": {
+			"infernal_pit": 15
+		}
+	},
+	{
+		"nodeId": "mushroom_grotto",
+		"displayName": "Mushroom Grotto",
+		"mapId": 16,
+		"difficulty": 3,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["shadow_keep"],
+		"portalDropNodeMap": {
+			"shadow_keep": 13
+		}
+	},
+	{
+		"nodeId": "shadow_keep",
+		"displayName": "Shadow Keep",
+		"mapId": 18,
+		"difficulty": 4,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["void_sanctum"],
+		"portalDropNodeMap": {
+			"void_sanctum": 16
+		}
+	},
+	{
+		"nodeId": "infernal_pit",
+		"displayName": "Infernal Pit",
+		"mapId": 20,
+		"difficulty": 4,
+		"entryPoint": false,
+		"bossNode": false,
+		"childNodes": ["dragons_roost"],
+		"portalDropNodeMap": {
+			"dragons_roost": 17
+		}
+	},
+	{
+		"nodeId": "frozen_throne",
+		"displayName": "Frozen Throne",
+		"mapId": 8,
+		"difficulty": 4,
+		"entryPoint": false,
+		"bossNode": true,
+		"childNodes": ["void_sanctum"],
+		"portalDropNodeMap": {
+			"void_sanctum": 16
+		}
+	},
+	{
+		"nodeId": "abyss",
+		"displayName": "Abyss of Demons",
+		"mapId": 9,
+		"difficulty": 4,
+		"entryPoint": false,
+		"bossNode": true,
+		"childNodes": ["dragons_roost"],
+		"portalDropNodeMap": {
+			"dragons_roost": 17
+		}
+	},
+	{
+		"nodeId": "necropolis",
+		"displayName": "The Necropolis",
+		"mapId": 14,
+		"difficulty": 5,
+		"entryPoint": false,
+		"bossNode": true,
+		"childNodes": ["throne_of_eternity"],
+		"portalDropNodeMap": {
+			"throne_of_eternity": 19
+		}
+	},
+	{
+		"nodeId": "void_sanctum",
+		"displayName": "Void Sanctum",
+		"mapId": 21,
+		"difficulty": 5,
+		"entryPoint": false,
+		"bossNode": true,
+		"childNodes": ["throne_of_eternity"],
+		"portalDropNodeMap": {
+			"throne_of_eternity": 19
+		}
+	},
+	{
+		"nodeId": "dragons_roost",
+		"displayName": "Dragon's Roost",
+		"mapId": 22,
+		"difficulty": 5,
+		"entryPoint": false,
+		"bossNode": true,
+		"childNodes": ["throne_of_eternity"],
+		"portalDropNodeMap": {
+			"throne_of_eternity": 19
+		}
+	},
+	{
+		"nodeId": "throne_of_eternity",
+		"displayName": "Throne of Eternity",
+		"mapId": 24,
+		"difficulty": 6,
+		"entryPoint": false,
+		"bossNode": true,
+		"childNodes": [],
+		"portalDropNodeMap": {}
+	}
+]

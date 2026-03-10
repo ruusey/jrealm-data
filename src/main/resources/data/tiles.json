@@ -765,6 +765,487 @@
 			"slows": 0,
 			"damaging": 0
 		}
+	},
+	{
+		"tileId": 59,
+		"name": "Sandstone_Floor_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 1,
+		"col": 3,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 60,
+		"name": "Worn_Sandstone_Floor",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 1,
+		"col": 5,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 61,
+		"name": "Ruin_Stone_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 0,
+		"col": 2,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 62,
+		"name": "Moss_Floor_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 0,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 63,
+		"name": "Moss_Floor_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 4,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 64,
+		"name": "Thicket_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 7,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 65,
+		"name": "Shadow_Stone_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 0,
+		"col": 5,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 66,
+		"name": "Shadow_Stone_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 0,
+		"col": 6,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 67,
+		"name": "Obsidian_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 5,
+		"col": 3,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 68,
+		"name": "Crystal_Floor",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 2,
+		"col": 2,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 69,
+		"name": "Crystal_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 2,
+		"col": 1,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 70,
+		"name": "Crypt_Floor_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 9,
+		"col": 1,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 71,
+		"name": "Crypt_Floor_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 9,
+		"col": 5,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 72,
+		"name": "Crypt_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 5,
+		"col": 4,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 73,
+		"name": "Shrub_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 6,
+		"col": 10,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 74,
+		"name": "Shrub_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 6,
+		"col": 11,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 75,
+		"name": "Palm_Tree",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 11,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 76,
+		"name": "Moss_Stone",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 1,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 77,
+		"name": "Teal_Stone_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 2,
+		"col": 3,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 78,
+		"name": "Teal_Stone_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 2,
+		"col": 4,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 79,
+		"name": "Navy_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 2,
+		"col": 8,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 80,
+		"name": "Darkwood_Floor_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 1,
+		"col": 6,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 81,
+		"name": "Darkwood_Floor_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 1,
+		"col": 7,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 82,
+		"name": "Bark_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 1,
+		"col": 2,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 83,
+		"name": "Scorched_Stone_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 3,
+		"col": 4,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 84,
+		"name": "Scorched_Stone_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 3,
+		"col": 5,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 85,
+		"name": "Crimson_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 3,
+		"col": 6,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 86,
+		"name": "Fortress_Floor_0",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 9,
+		"col": 3,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 87,
+		"name": "Fortress_Floor_1",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 9,
+		"col": 4,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 88,
+		"name": "Fortress_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 9,
+		"col": 6,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 89,
+		"name": "Olive_Stone",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 5,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 90,
+		"name": "Dark_Thicket_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 6,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 91,
+		"name": "Void_Stone",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 3,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 92,
+		"name": "Dark_Forest_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 4,
+		"col": 8,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 93,
+		"name": "Warm_Stone",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 2,
+		"col": 6,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 94,
+		"name": "Royal_Wall",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 9,
+		"col": 7,
+		"size": 32,
+		"data": {
+			"hasCollision": 1,
+			"slows": 0,
+			"damaging": 0
+		}
+	},
+	{
+		"tileId": 95,
+		"name": "Golden_Brick",
+		"spriteKey": "rotmg-tiles-1.png",
+		"row": 9,
+		"col": 0,
+		"size": 32,
+		"data": {
+			"hasCollision": 0,
+			"slows": 0,
+			"damaging": 0
+		}
 	}
 ]
 
