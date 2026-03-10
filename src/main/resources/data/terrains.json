@@ -9,22 +9,8 @@
 			{
 				"ordinal": 0,
 				"tileIds": [
-					24,
-					26,
-					7,
-					8,
-					10,
-					40,
-					41,
-					42,
-					73,
-					74,
-					75,
-					22,
-					23,
-					36,
-					37,
-					33
+					24, 26, 7, 8, 10, 40, 41, 42,
+					73, 74, 75, 22, 23, 36, 37, 33
 				],
 				"rarities": {
 					"24": 1.0,
@@ -50,16 +36,7 @@
 			{
 				"name": "World_0_Beach_0_Enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					6,
-					7,
-					8,
-					9,
-					11,
-					14,
-					15,
-					41
-				]
+				"enemyIds": [6, 7, 8, 9, 11, 14, 15, 41]
 			}
 		]
 	},
@@ -72,15 +49,7 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [
-					29,
-					30,
-					27,
-					42,
-					43,
-					31,
-					32
-				],
+				"tileIds": [29, 30, 27, 42, 43, 31, 32],
 				"rarities": {
 					"29": 1.0,
 					"30": 0.2,
@@ -96,17 +65,7 @@
 			{
 				"name": "World_0_Cave_0_Enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					1,
-					2,
-					3,
-					4,
-					5,
-					9,
-					10,
-					11,
-					12
-				]
+				"enemyIds": [1, 2, 3, 4, 5, 9, 10, 11, 12]
 			}
 		]
 	},
@@ -119,19 +78,7 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [
-					11,
-					12,
-					13,
-					19,
-					20,
-					33,
-					35,
-					36,
-					49,
-					14,
-					15
-				],
+				"tileIds": [11, 12, 13, 19, 20, 33, 35, 36, 49, 14, 15],
 				"rarities": {
 					"11": 1.0,
 					"12": 0.15,
@@ -151,321 +98,491 @@
 			{
 				"name": "Grasslands_0_Enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					3,
-					4,
-					5,
-					6,
-					7,
-					8,
-					10,
-					12,
-					41,
-					43
-				]
+				"enemyIds": [3, 4, 5, 6, 7, 8, 10, 12, 41, 43]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Undead_Lair",
 		"terrainId": 3,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [45, 46, 47, 48, 50, 38],
+				"rarities": {
+					"45": 1.0,
+					"46": 0.3,
+					"47": 0.15,
+					"48": 0.15,
+					"50": 0.04,
+					"38": 0.03
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "undead_lair_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					17,
-					21,
-					24
-				]
+				"enemyIds": [17, 21, 24]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Ice_Cave",
 		"terrainId": 4,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [51, 52, 53, 54],
+				"rarities": {
+					"51": 1.0,
+					"52": 0.3,
+					"53": 0.15,
+					"54": 0.15
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "ice_cave_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					20,
-					22,
-					24
-				]
+				"enemyIds": [20, 22, 24]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Abyss",
 		"terrainId": 5,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [55, 56, 57, 58, 59],
+				"rarities": {
+					"55": 1.0,
+					"56": 0.3,
+					"57": 0.15,
+					"58": 0.15,
+					"59": 0.05
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "abyss_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					18,
-					19,
-					23
-				]
+				"enemyIds": [18, 19, 23]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Coastal_Ruins",
 		"terrainId": 6,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [60, 61, 62, 63, 42],
+				"rarities": {
+					"60": 1.0,
+					"61": 0.3,
+					"62": 0.15,
+					"63": 0.15,
+					"42": 0.08
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "coastal_ruins_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					6,
-					7,
-					14,
-					28
-				]
+				"enemyIds": [6, 7, 14, 28]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Emerald_Wilds",
 		"terrainId": 7,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [64, 65, 66, 67, 35, 21],
+				"rarities": {
+					"64": 1.0,
+					"65": 0.3,
+					"66": 0.15,
+					"67": 0.15,
+					"35": 0.05,
+					"21": 0.04
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "emerald_wilds_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					3,
-					4,
-					10,
-					12,
-					23,
-					41,
-					42
-				]
+				"enemyIds": [3, 4, 10, 12, 23, 41, 42]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Dark_Forest",
 		"terrainId": 8,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [68, 69, 70, 71, 38, 34],
+				"rarities": {
+					"68": 1.0,
+					"69": 0.3,
+					"70": 0.15,
+					"71": 0.15,
+					"38": 0.04,
+					"34": 0.03
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "dark_forest_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					5,
-					19,
-					24,
-					21,
-					44,
-					45
-				]
+				"enemyIds": [5, 19, 24, 21, 44, 45]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Crystal_Caverns",
 		"terrainId": 9,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [72, 78, 76, 77],
+				"rarities": {
+					"72": 1.0,
+					"78": 0.3,
+					"76": 0.15,
+					"77": 0.15
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "crystal_caverns_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					20,
-					22,
-					9,
-					28
-				]
+				"enemyIds": [20, 22, 9, 28]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Necropolis",
 		"terrainId": 10,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [79, 80, 81, 82, 50],
+				"rarities": {
+					"79": 1.0,
+					"80": 0.3,
+					"81": 0.15,
+					"82": 0.15,
+					"50": 0.04
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "necropolis_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					17,
-					21,
-					24,
-					2,
-					27,
-					44
-				]
+				"enemyIds": [17, 21, 24, 2, 27, 44]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Sunken_Temple",
 		"terrainId": 11,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [83, 84, 85, 42],
+				"rarities": {
+					"83": 1.0,
+					"84": 0.3,
+					"85": 0.15,
+					"42": 0.08
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "sunken_temple_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					6,
-					29,
-					9
-				]
+				"enemyIds": [6, 29, 9]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Mushroom_Grotto",
 		"terrainId": 12,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [86, 87, 88, 34],
+				"rarities": {
+					"86": 1.0,
+					"87": 0.3,
+					"88": 0.15,
+					"34": 0.05
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "mushroom_grotto_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					30,
-					23,
-					12,
-					46
-				]
+				"enemyIds": [30, 23, 12, 46]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Magma_Depths",
 		"terrainId": 13,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [89, 90, 91, 59],
+				"rarities": {
+					"89": 1.0,
+					"90": 0.3,
+					"91": 0.15,
+					"59": 0.05
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "magma_depths_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					18,
-					31,
-					5
-				]
+				"enemyIds": [18, 31, 5]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Shadow_Keep",
 		"terrainId": 14,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [92, 93, 94, 95],
+				"rarities": {
+					"92": 1.0,
+					"93": 0.3,
+					"94": 0.15,
+					"95": 0.15
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "shadow_keep_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					17,
-					32,
-					21
-				]
+				"enemyIds": [17, 32, 21]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Serpents_Den",
 		"terrainId": 15,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [64, 65, 66, 67, 34],
+				"rarities": {
+					"64": 1.0,
+					"65": 0.3,
+					"66": 0.15,
+					"67": 0.15,
+					"34": 0.04
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "serpents_den_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					19,
-					33,
-					24,
-					47
-				]
+				"enemyIds": [19, 33, 24, 47]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Infernal_Pit",
 		"terrainId": 16,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [55, 56, 57, 58, 59],
+				"rarities": {
+					"55": 1.0,
+					"56": 0.3,
+					"57": 0.15,
+					"58": 0.15,
+					"59": 0.05
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "infernal_pit_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					18,
-					31,
-					34
-				]
+				"enemyIds": [18, 31, 34]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Void_Sanctum",
 		"terrainId": 17,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [92, 93, 94, 95, 50],
+				"rarities": {
+					"92": 1.0,
+					"93": 0.3,
+					"94": 0.15,
+					"95": 0.15,
+					"50": 0.03
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "void_sanctum_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					21,
-					32,
-					24
-				]
+				"enemyIds": [21, 32, 24]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Dragons_Roost",
 		"terrainId": 18,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [55, 56, 57, 58, 59],
+				"rarities": {
+					"55": 1.0,
+					"56": 0.3,
+					"57": 0.15,
+					"58": 0.15,
+					"59": 0.05
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "dragons_roost_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					34,
-					18,
-					5,
-					47
-				]
+				"enemyIds": [34, 18, 5, 47]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Enchanted_Maze",
 		"terrainId": 19,
-		"tileGroups": [],
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [64, 65, 66, 67, 21, 35],
+				"rarities": {
+					"64": 1.0,
+					"65": 0.3,
+					"66": 0.15,
+					"67": 0.15,
+					"21": 0.04,
+					"35": 0.04
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "enchanted_maze_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					30,
-					8,
-					3
-				]
+				"enemyIds": [30, 8, 3]
 			}
 		]
 	},
 	{
 		"name": "Dungeon_Throne_of_Eternity",
 		"terrainId": 20,
-		"tileGroups": [],
+		"width": 96,
+		"height": 96,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [72, 78, 76, 77, 6],
+				"rarities": {
+					"72": 1.0,
+					"78": 0.3,
+					"76": 0.15,
+					"77": 0.15,
+					"6": 0.03
+				}
+			}
+		],
 		"enemyGroups": [
 			{
 				"name": "throne_of_eternity_enemies",
 				"ordinal": 0,
-				"enemyIds": [
-					32,
-					21,
-					27
-				]
+				"enemyIds": [32, 21, 27]
 			}
 		]
 	}
