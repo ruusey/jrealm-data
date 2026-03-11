@@ -206,7 +206,9 @@
 			"shapeTemplates":[
 				"OVAL",
 				"RECTANGLE"
-			]
+			],
+			"floorTileIds": [45, 46],
+			"wallTileId": 47
 		}
 	},
 	{
@@ -226,8 +228,8 @@
 			"minRoomHeight": 8,
 			"maxRoomHeight": 14,
 			"shapeTemplates": ["RECTANGLE", "CROSS", "L_SHAPE"],
-			"floorTileIds": [50],
-			"wallTileId": 51,
+			"floorTileIds": [45, 46],
+			"wallTileId": 47,
 			"hallwayStyles": ["L_SHAPED", "ZIGZAG", "WINDING"],
 			"bossEnemyId": 25
 		}
@@ -249,8 +251,8 @@
 			"minRoomHeight": 10,
 			"maxRoomHeight": 18,
 			"shapeTemplates": ["OVAL", "DIAMOND", "RECTANGLE"],
-			"floorTileIds": [52, 53],
-			"wallTileId": 54,
+			"floorTileIds": [51, 52],
+			"wallTileId": 53,
 			"hallwayStyles": ["WIDE", "L_SHAPED"],
 			"bossEnemyId": 27
 		}
@@ -272,8 +274,8 @@
 			"minRoomHeight": 6,
 			"maxRoomHeight": 12,
 			"shapeTemplates": ["RECTANGLE", "CROSS", "L_SHAPE", "DIAMOND"],
-			"floorTileIds": [55, 58, 57],
-			"wallTileId": 17,
+			"floorTileIds": [55, 56],
+			"wallTileId": 57,
 			"hallwayStyles": ["ZIGZAG", "WINDING"],
 			"bossEnemyId": 26
 		}
@@ -295,8 +297,8 @@
 			"minRoomHeight": 8,
 			"maxRoomHeight": 16,
 			"shapeTemplates": ["RECTANGLE", "OVAL", "L_SHAPE"],
-			"floorTileIds": [59, 60],
-			"wallTileId": 61,
+			"floorTileIds": [60, 61],
+			"wallTileId": 62,
 			"hallwayStyles": ["L_SHAPED", "WIDE"],
 			"bossEnemyId": 28
 		}
@@ -318,8 +320,8 @@
 			"minRoomHeight": 8,
 			"maxRoomHeight": 15,
 			"shapeTemplates": ["OVAL", "L_SHAPE", "DIAMOND"],
-			"floorTileIds": [62, 76],
-			"wallTileId": 64,
+			"floorTileIds": [64, 65],
+			"wallTileId": 66,
 			"hallwayStyles": ["WINDING", "ZIGZAG"],
 			"bossEnemyId": 11
 		}
@@ -341,8 +343,8 @@
 			"minRoomHeight": 6,
 			"maxRoomHeight": 12,
 			"shapeTemplates": ["CROSS", "L_SHAPE", "RECTANGLE"],
-			"floorTileIds": [65, 66],
-			"wallTileId": 67,
+			"floorTileIds": [68, 69],
+			"wallTileId": 70,
 			"hallwayStyles": ["ZIGZAG", "WINDING"],
 			"bossEnemyId": 4
 		}
@@ -364,8 +366,8 @@
 			"minRoomHeight": 10,
 			"maxRoomHeight": 18,
 			"shapeTemplates": ["DIAMOND", "OVAL", "RECTANGLE"],
-			"floorTileIds": [52, 53],
-			"wallTileId": 69,
+			"floorTileIds": [72, 78],
+			"wallTileId": 76,
 			"hallwayStyles": ["WIDE", "L_SHAPED"],
 			"bossEnemyId": 22
 		}
@@ -387,8 +389,8 @@
 			"minRoomHeight": 8,
 			"maxRoomHeight": 16,
 			"shapeTemplates": ["RECTANGLE", "CROSS", "L_SHAPE", "DIAMOND"],
-			"floorTileIds": [70, 71],
-			"wallTileId": 72,
+			"floorTileIds": [79, 80],
+			"wallTileId": 81,
 			"hallwayStyles": ["L_SHAPED", "ZIGZAG", "WINDING"],
 			"bossEnemyId": 25
 		}
@@ -410,8 +412,8 @@
 			"minRoomHeight": 9,
 			"maxRoomHeight": 16,
 			"shapeTemplates": ["OVAL", "RECTANGLE"],
-			"floorTileIds": [77, 78],
-			"wallTileId": 79,
+			"floorTileIds": [83, 84],
+			"wallTileId": 85,
 			"hallwayStyles": ["WIDE", "L_SHAPED"],
 			"bossEnemyId": 35
 		}
@@ -433,8 +435,8 @@
 			"minRoomHeight": 7,
 			"maxRoomHeight": 13,
 			"shapeTemplates": ["OVAL", "DIAMOND"],
-			"floorTileIds": [80, 81],
-			"wallTileId": 82,
+			"floorTileIds": [86, 87],
+			"wallTileId": 88,
 			"hallwayStyles": ["WINDING", "ZIGZAG"],
 			"bossEnemyId": 36
 		}
@@ -456,8 +458,8 @@
 			"minRoomHeight": 6,
 			"maxRoomHeight": 11,
 			"shapeTemplates": ["RECTANGLE", "CROSS"],
-			"floorTileIds": [83, 84],
-			"wallTileId": 85,
+			"floorTileIds": [89, 90],
+			"wallTileId": 91,
 			"hallwayStyles": ["ZIGZAG", "WINDING"],
 			"bossEnemyId": 37
 		}
@@ -479,8 +481,8 @@
 			"minRoomHeight": 8,
 			"maxRoomHeight": 14,
 			"shapeTemplates": ["RECTANGLE", "CROSS", "L_SHAPE"],
-			"floorTileIds": [86, 87],
-			"wallTileId": 88,
+			"floorTileIds": [92, 93],
+			"wallTileId": 94,
 			"hallwayStyles": ["L_SHAPED", "ZIGZAG"],
 			"bossEnemyId": 38
 		}
@@ -502,8 +504,8 @@
 			"minRoomHeight": 7,
 			"maxRoomHeight": 14,
 			"shapeTemplates": ["DIAMOND", "OVAL"],
-			"floorTileIds": [63, 89],
-			"wallTileId": 90,
+			"floorTileIds": [64, 65],
+			"wallTileId": 66,
 			"hallwayStyles": ["WINDING"],
 			"bossEnemyId": 39
 		}
@@ -525,8 +527,8 @@
 			"minRoomHeight": 5,
 			"maxRoomHeight": 10,
 			"shapeTemplates": ["CROSS", "L_SHAPE"],
-			"floorTileIds": [55, 57],
-			"wallTileId": 56,
+			"floorTileIds": [55, 56],
+			"wallTileId": 57,
 			"hallwayStyles": ["ZIGZAG", "WINDING"],
 			"bossEnemyId": 26
 		}
@@ -548,8 +550,8 @@
 			"minRoomHeight": 10,
 			"maxRoomHeight": 18,
 			"shapeTemplates": ["DIAMOND", "OVAL", "RECTANGLE"],
-			"floorTileIds": [50, 91],
-			"wallTileId": 51,
+			"floorTileIds": [92, 93],
+			"wallTileId": 94,
 			"hallwayStyles": ["WIDE", "L_SHAPED"],
 			"bossEnemyId": 27
 		}
@@ -571,8 +573,8 @@
 			"minRoomHeight": 8,
 			"maxRoomHeight": 16,
 			"shapeTemplates": ["RECTANGLE", "CROSS", "DIAMOND"],
-			"floorTileIds": [45, 93],
-			"wallTileId": 17,
+			"floorTileIds": [89, 90],
+			"wallTileId": 91,
 			"hallwayStyles": ["L_SHAPED", "ZIGZAG", "WINDING"],
 			"bossEnemyId": 37
 		}
@@ -594,8 +596,8 @@
 			"minRoomHeight": 4,
 			"maxRoomHeight": 8,
 			"shapeTemplates": ["RECTANGLE", "CROSS"],
-			"floorTileIds": [62, 76],
-			"wallTileId": 92,
+			"floorTileIds": [64, 65],
+			"wallTileId": 66,
 			"hallwayStyles": ["ZIGZAG", "L_SHAPED"],
 			"bossEnemyId": 3
 		}
@@ -617,8 +619,8 @@
 			"minRoomHeight": 10,
 			"maxRoomHeight": 20,
 			"shapeTemplates": ["RECTANGLE", "CROSS", "DIAMOND", "L_SHAPE"],
-			"floorTileIds": [95, 70],
-			"wallTileId": 94,
+			"floorTileIds": [72, 78],
+			"wallTileId": 76,
 			"hallwayStyles": ["L_SHAPED", "ZIGZAG", "WINDING", "WIDE"],
 			"bossEnemyId": 40
 		}
