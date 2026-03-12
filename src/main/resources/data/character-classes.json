@@ -208,5 +208,155 @@
 			"1": 153,
 			"2": 60
 		}
+	},
+	{
+		"spriteOffset": 28,
+		"classId": 7,
+		"className": "Assassin",
+		"baseStats": {
+			"spd": 15,
+			"att": 12,
+			"dex": 15,
+			"wis": 12,
+			"vit": 15,
+			"def": 0,
+			"hp": 150,
+			"mp": 100
+		},
+		"maxStats": {
+			"spd": 75,
+			"att": 60,
+			"dex": 75,
+			"wis": 60,
+			"vit": 40,
+			"def": 25,
+			"hp": 720,
+			"mp": 252
+		},
+		"startingEquipment": {
+			"0": 91,
+			"1": 152,
+			"2": 32
+		}
+	},
+	{
+		"spriteOffset": 31,
+		"classId": 8,
+		"className": "Necromancer",
+		"baseStats": {
+			"spd": 10,
+			"att": 12,
+			"dex": 12,
+			"wis": 15,
+			"vit": 10,
+			"def": 0,
+			"hp": 100,
+			"mp": 100
+		},
+		"maxStats": {
+			"spd": 50,
+			"att": 75,
+			"dex": 60,
+			"wis": 75,
+			"vit": 30,
+			"def": 25,
+			"hp": 670,
+			"mp": 385
+		},
+		"startingEquipment": {
+			"0": 121,
+			"1": 136,
+			"2": 106
+		}
+	},
+	{
+		"spriteOffset": 34,
+		"classId": 9,
+		"className": "Mystic",
+		"baseStats": {
+			"spd": 12,
+			"att": 12,
+			"dex": 10,
+			"wis": 15,
+			"vit": 12,
+			"def": 0,
+			"hp": 100,
+			"mp": 100
+		},
+		"maxStats": {
+			"spd": 60,
+			"att": 60,
+			"dex": 55,
+			"wis": 75,
+			"vit": 40,
+			"def": 25,
+			"hp": 670,
+			"mp": 385
+		},
+		"startingEquipment": {
+			"0": 121,
+			"1": 136,
+			"2": 106
+		}
+	},
+	{
+		"spriteOffset": 37,
+		"classId": 10,
+		"className": "Trickster",
+		"baseStats": {
+			"spd": 15,
+			"att": 12,
+			"dex": 15,
+			"wis": 12,
+			"vit": 12,
+			"def": 0,
+			"hp": 130,
+			"mp": 100
+		},
+		"maxStats": {
+			"spd": 75,
+			"att": 65,
+			"dex": 75,
+			"wis": 60,
+			"vit": 40,
+			"def": 25,
+			"hp": 720,
+			"mp": 252
+		},
+		"startingEquipment": {
+			"0": 91,
+			"1": 152,
+			"2": 32
+		}
+	},
+	{
+		"spriteOffset": 40,
+		"classId": 11,
+		"className": "Sorcerer",
+		"baseStats": {
+			"spd": 12,
+			"att": 14,
+			"dex": 12,
+			"wis": 12,
+			"vit": 15,
+			"def": 0,
+			"hp": 100,
+			"mp": 100
+		},
+		"maxStats": {
+			"spd": 60,
+			"att": 70,
+			"dex": 60,
+			"wis": 60,
+			"vit": 75,
+			"def": 25,
+			"hp": 670,
+			"mp": 385
+		},
+		"startingEquipment": {
+			"0": 137,
+			"1": 157,
+			"2": 106
+		}
 	}
 ]
