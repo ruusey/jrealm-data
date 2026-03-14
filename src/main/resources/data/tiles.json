@@ -2,1099 +2,1847 @@
     {
         "tileId": 0,
         "name": "Void_Tile",
-        "spriteKey": "lofi_environment.png",
-        "row": 0,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 15,
+        "col": 12,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 1,
         "name": "Nexus_Floor",
-        "spriteKey": "lofi_halls.png",
-        "row": 2,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 2,
         "name": "Nexus_Wall",
-        "spriteKey": "lofi_halls.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
         "col": 7,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 3,
         "name": "Wood_Table",
-        "spriteKey": "lofi_dungeon_features.png",
-        "row": 0,
-        "col": 5,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 6,
+        "col": 9,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 4,
         "name": "Wood_Chair_Right",
-        "spriteKey": "lofi_dungeon_features.png",
-        "row": 1,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 6,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 5,
         "name": "Wood_Chair_Left",
-        "spriteKey": "lofi_dungeon_features.png",
-        "row": 1,
-        "col": 5,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 9,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 6,
         "name": "Fountain",
-        "spriteKey": "lofi_dungeon_features.png",
-        "row": 3,
-        "col": 3,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 24,
+        "col": 7,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 7,
         "name": "Sand_Floor_0",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 6,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 17,
+        "col": 1,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 8,
         "name": "Sand_Floor_1",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 6,
-        "col": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 16,
+        "col": 14,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 9,
         "name": "Stone_Path",
-        "spriteKey": "lofi_halls.png",
-        "row": 36,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 10,
         "name": "Sand_Floor_2",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 6,
-        "col": 2,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 17,
+        "col": 1,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 11,
         "name": "Grass_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 14,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 19,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 12,
         "name": "Grass_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 15,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 19,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 13,
         "name": "Grass_Floor_2",
-        "spriteKey": "lofi_halls.png",
-        "row": 14,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 19,
+        "col": 5,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 14,
         "name": "Flower_0",
-        "spriteKey": "lofi_environment.png",
-        "row": 4,
-        "col": 2,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 15,
         "name": "Flower_1",
-        "spriteKey": "lofi_environment.png",
-        "row": 4,
-        "col": 3,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 16,
         "name": "Stone_Wall_Bright",
-        "spriteKey": "lofi_halls.png",
-        "row": 0,
-        "col": 10,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 8,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 17,
         "name": "Portal_Base",
-        "spriteKey": "lofi_halls.png",
-        "row": 36,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 18,
         "name": "Torch",
-        "spriteKey": "lofi_environment.png",
-        "row": 7,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 24,
+        "col": 9,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 19,
         "name": "Rock_0",
-        "spriteKey": "lofi_environment.png",
-        "row": 0,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 20,
         "name": "Rock_1",
-        "spriteKey": "lofi_environment.png",
-        "row": 0,
-        "col": 2,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 33,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 21,
         "name": "Bush_0",
-        "spriteKey": "lofi_environment.png",
-        "row": 4,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 15,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 22,
         "name": "Tree_0",
-        "spriteKey": "lofi_obj_packB.png",
+        "spriteKey": "rotmg-tiles-all.png",
         "row": 0,
         "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 23,
         "name": "Tree_1",
-        "spriteKey": "lofi_obj_packB.png",
+        "spriteKey": "rotmg-tiles-all.png",
         "row": 0,
         "col": 1,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 24,
         "name": "Sand_Base",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 6,
-        "col": 3,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 16,
+        "col": 14,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 25,
         "name": "Water_Shallow",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 7,
-        "col": 2,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 20,
+        "col": 11,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 26,
         "name": "Sand_Shore",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 6,
-        "col": 4,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 26,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 27,
         "name": "Cave_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 26,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 28,
         "name": "Cave_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 27,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 29,
         "name": "Cave_Floor_Main",
-        "spriteKey": "lofi_halls.png",
-        "row": 26,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 5,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 30,
         "name": "Cave_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 26,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 8,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 31,
         "name": "Stalagmite_0",
-        "spriteKey": "lofi_environment.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
         "col": 6,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 32,
         "name": "Stalagmite_1",
-        "spriteKey": "lofi_environment.png",
-        "row": 0,
-        "col": 7,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 12,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 33,
         "name": "Small_Shrub",
-        "spriteKey": "lofi_environment.png",
-        "row": 4,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 7,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 34,
         "name": "Mushroom",
-        "spriteKey": "lofi_environment.png",
-        "row": 5,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 9,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 35,
         "name": "Tall_Grass",
-        "spriteKey": "lofi_environment.png",
-        "row": 10,
-        "col": 5,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 8,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 36,
         "name": "Tree_2",
-        "spriteKey": "lofi_obj_packB.png",
-        "row": 1,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 2,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 37,
         "name": "Tree_3",
-        "spriteKey": "lofi_obj_packB.png",
-        "row": 1,
-        "col": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 38,
         "name": "Dead_Tree",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-all.png",
         "row": 0,
-        "col": 10,
+        "col": 6,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 39,
         "name": "Cactus",
-        "spriteKey": "lofi_environment.png",
-        "row": 4,
-        "col": 7,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 5,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 40,
         "name": "Water_Deep",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 7,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 20,
+        "col": 15,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 41,
         "name": "Water_Medium",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 7,
-        "col": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 20,
+        "col": 14,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 42,
         "name": "Water_Light",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 7,
-        "col": 2,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 20,
+        "col": 13,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 43,
         "name": "Water_Edge",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 7,
-        "col": 3,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 20,
+        "col": 12,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 44,
         "name": "Water_Lily",
-        "spriteKey": "lofi_environment.png",
-        "row": 2,
-        "col": 4,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 20,
+        "col": 11,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 45,
         "name": "Crypt_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 20,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 9,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 46,
         "name": "Crypt_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 21,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 47,
         "name": "Crypt_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 20,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 3,
+        "col": 8,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 48,
         "name": "Crypt_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 22,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
+        "col": 12,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 49,
         "name": "Bright_Stone_Floor",
-        "spriteKey": "lofi_halls.png",
-        "row": 4,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
+        "col": 13,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 50,
         "name": "Tombstone",
-        "spriteKey": "lofi_dungeon_features.png",
+        "spriteKey": "rotmg-tiles-all.png",
         "row": 3,
-        "col": 0,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 51,
         "name": "Ice_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 46,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 27,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 52,
         "name": "Ice_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 47,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 27,
+        "col": 11,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 53,
         "name": "Ice_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 46,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 57,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 54,
         "name": "Ice_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 47,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 57,
+        "col": 1,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 55,
         "name": "Lava_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 40,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 35,
+        "col": 5,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 1 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 56,
         "name": "Lava_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 41,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 35,
+        "col": 6,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 1 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 57,
         "name": "Lava_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 44,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 37,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 58,
         "name": "Lava_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 44,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 37,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 59,
         "name": "Lava_Rock",
-        "spriteKey": "lofi_halls.png",
-        "row": 45,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 35,
         "col": 8,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 60,
         "name": "Coastal_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 33,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 34,
+        "col": 5,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 61,
         "name": "Coastal_Floor_1",
-        "spriteKey": "lofi_halls.png",
+        "spriteKey": "rotmg-tiles-all.png",
         "row": 34,
-        "col": 9,
+        "col": 6,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 62,
         "name": "Coastal_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 32,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 36,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 63,
         "name": "Coastal_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 35,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 34,
+        "col": 8,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 64,
         "name": "Forest_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 16,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 36,
+        "col": 2,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 65,
         "name": "Forest_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 17,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 36,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 66,
         "name": "Forest_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 14,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 37,
         "col": 6,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 67,
         "name": "Forest_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 15,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 37,
+        "col": 8,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 68,
         "name": "Dark_Forest_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 8,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 50,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 69,
         "name": "Dark_Forest_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 9,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 50,
+        "col": 11,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 70,
         "name": "Dark_Forest_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 8,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 50,
+        "col": 14,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 71,
         "name": "Dark_Forest_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 10,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 50,
+        "col": 15,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 72,
         "name": "Crystal_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 36,
-        "col": 10,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 48,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 73,
         "name": "Palm_Tree_0",
-        "spriteKey": "lofi_obj_packB.png",
-        "row": 2,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 74,
         "name": "Palm_Tree_1",
-        "spriteKey": "lofi_obj_packB.png",
-        "row": 2,
-        "col": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 7,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 75,
         "name": "Dune_Grass",
-        "spriteKey": "lofi_environment.png",
-        "row": 10,
-        "col": 2,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 17,
+        "col": 11,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 76,
         "name": "Crystal_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 36,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 48,
+        "col": 9,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 77,
         "name": "Crystal_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 37,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 48,
+        "col": 10,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 78,
         "name": "Crystal_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 37,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 48,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 79,
         "name": "Necropolis_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 22,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 24,
+        "col": 2,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 80,
         "name": "Necropolis_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 23,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 24,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 81,
         "name": "Necropolis_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 24,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 23,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 82,
         "name": "Necropolis_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 25,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 22,
+        "col": 13,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 83,
         "name": "Sunken_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 34,
-        "col": 10,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 26,
+        "col": 1,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 84,
         "name": "Sunken_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 35,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 26,
+        "col": 2,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 85,
         "name": "Sunken_Wall",
-        "spriteKey": "lofi_halls.png",
-        "row": 33,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 26,
+        "col": 9,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 86,
         "name": "Mushroom_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 9,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 37,
+        "col": 1,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 87,
         "name": "Mushroom_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 11,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 37,
+        "col": 2,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 88,
         "name": "Mushroom_Wall",
-        "spriteKey": "lofi_halls.png",
-        "row": 12,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 38,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 89,
         "name": "Magma_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 42,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 39,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 1 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 90,
         "name": "Magma_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 43,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 40,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 1 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 91,
         "name": "Magma_Wall",
-        "spriteKey": "lofi_halls.png",
-        "row": 40,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 46,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 92,
         "name": "Shadow_Floor_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 28,
-        "col": 9,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 49,
+        "col": 8,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 93,
         "name": "Shadow_Floor_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 29,
-        "col": 8,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 49,
+        "col": 7,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 94,
         "name": "Shadow_Wall_0",
-        "spriteKey": "lofi_halls.png",
-        "row": 30,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 49,
+        "col": 1,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 95,
         "name": "Shadow_Wall_1",
-        "spriteKey": "lofi_halls.png",
-        "row": 31,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 48,
+        "col": 11,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 96,
         "name": "Green_Tree_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 97,
         "name": "Green_Tree_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 1,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 98,
         "name": "Green_Tree_C",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 2,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 99,
         "name": "Small_Tree_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 3,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 100,
         "name": "Small_Tree_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 4,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 101,
         "name": "Brown_Tree_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 5,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 102,
         "name": "Brown_Tree_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 6,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 103,
         "name": "Dead_Tree_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 1,
         "col": 7,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 104,
         "name": "Tall_Tree_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 105,
         "name": "Tall_Tree_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 1,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 106,
         "name": "Tall_Tree_C",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 2,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 107,
         "name": "Dense_Tree_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 3,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 108,
         "name": "Dense_Tree_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 4,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 109,
         "name": "Dense_Tree_C",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 5,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 110,
         "name": "Autumn_Tree_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
         "col": 6,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 111,
         "name": "Autumn_Tree_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 1,
-        "col": 7,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 3,
+        "col": 0,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 112,
         "name": "Dark_Shrub_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 2,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 3,
+        "col": 1,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 113,
         "name": "Dark_Shrub_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 2,
-        "col": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 3,
+        "col": 2,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 114,
         "name": "Emerald_Shrub_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 2,
-        "col": 5,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 3,
+        "col": 3,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 115,
         "name": "Emerald_Shrub_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 2,
-        "col": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 3,
+        "col": 4,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 116,
         "name": "Small_Bush_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "spriteKey": "rotmg-tiles-all.png",
         "row": 3,
-        "col": 0,
+        "col": 5,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 117,
         "name": "Small_Bush_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
+        "spriteKey": "rotmg-tiles-all.png",
         "row": 3,
-        "col": 1,
+        "col": 6,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 118,
         "name": "Aquatic_Shrub_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 4,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 0,
+        "col": 11,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 119,
         "name": "Aquatic_Shrub_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 4,
-        "col": 1,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 17,
+        "col": 14,
         "size": 32,
-        "data": { "hasCollision": 0, "slows": 1, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
     },
     {
         "tileId": 120,
         "name": "Stone_A",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 5,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 35,
+        "col": 12,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     },
     {
         "tileId": 121,
         "name": "Stone_B",
-        "spriteKey": "rotmg-misc-OLD-8px.png",
-        "row": 5,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 34,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 122,
+        "name": "Forest_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 36,
+        "col": 8,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 123,
+        "name": "Coastal_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 34,
+        "col": 4,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 124,
+        "name": "Crystal_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 48,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 125,
+        "name": "Necropolis_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 24,
+        "col": 3,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 126,
+        "name": "Sunken_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 26,
+        "col": 3,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 127,
+        "name": "Shadow_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 49,
+        "col": 10,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 128,
+        "name": "Dark_Forest_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 50,
+        "col": 13,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 129,
+        "name": "Crypt_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
+        "col": 11,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 130,
+        "name": "Ice_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 27,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 131,
+        "name": "Mushroom_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 38,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 132,
+        "name": "Lava_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 35,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 1
+        }
+    },
+    {
+        "tileId": 133,
+        "name": "Magma_Floor_Accent",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 40,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 1
+        }
+    },
+    {
+        "tileId": 134,
+        "name": "Flower_Red",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 135,
+        "name": "Flower_White",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
         "col": 1,
         "size": 32,
-        "data": { "hasCollision": 1, "slows": 0, "damaging": 0 }
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 136,
+        "name": "Grass_Dark",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 137,
+        "name": "Grass_Light",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 10,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 138,
+        "name": "Grass_Medium",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 11,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 139,
+        "name": "Vine_Growth",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 18,
+        "col": 6,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 140,
+        "name": "Rock_2",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 33,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 141,
+        "name": "Rock_3",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 32,
+        "col": 13,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
     }
 ]
