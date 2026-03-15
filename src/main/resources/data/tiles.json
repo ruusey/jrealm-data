@@ -171,9 +171,9 @@
     {
         "tileId": 13,
         "name": "Grass_Floor_2",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 19,
-        "col": 5,
+        "spriteKey": "lofi_environment.png",
+        "row": 4,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -262,9 +262,9 @@
     {
         "tileId": 20,
         "name": "Rock_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 33,
-        "col": 10,
+        "spriteKey": "lofi_environment.png",
+        "row": 5,
+        "col": 9,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -314,9 +314,9 @@
     {
         "tileId": 24,
         "name": "Sand_Base",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 16,
-        "col": 14,
+        "spriteKey": "lofi_environment.png",
+        "row": 11,
+        "col": 13,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -340,9 +340,9 @@
     {
         "tileId": 26,
         "name": "Sand_Shore",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 24,
-        "col": 9,
+        "spriteKey": "lofi_environment.png",
+        "row": 11,
+        "col": 14,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -353,9 +353,9 @@
     {
         "tileId": 27,
         "name": "Cave_Floor_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 3,
+        "spriteKey": "lofi_environment.png",
+        "row": 6,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -366,9 +366,9 @@
     {
         "tileId": 28,
         "name": "Cave_Floor_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 0,
+        "spriteKey": "lofi_environment.png",
+        "row": 5,
+        "col": 7,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -379,8 +379,8 @@
     {
         "tileId": 29,
         "name": "Cave_Floor_Main",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
+        "spriteKey": "lofi_environment.png",
+        "row": 0,
         "col": 5,
         "size": 32,
         "data": {
@@ -392,9 +392,9 @@
     {
         "tileId": 30,
         "name": "Cave_Wall_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 8,
+        "spriteKey": "lofi_environment.png",
+        "row": 12,
+        "col": 14,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -405,9 +405,9 @@
     {
         "tileId": 31,
         "name": "Stalagmite_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 6,
+        "spriteKey": "lofi_environment.png",
+        "row": 15,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -418,9 +418,9 @@
     {
         "tileId": 32,
         "name": "Stalagmite_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 12,
+        "spriteKey": "lofi_environment.png",
+        "row": 5,
+        "col": 15,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -431,9 +431,9 @@
     {
         "tileId": 33,
         "name": "Small_Shrub",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 7,
+        "spriteKey": "lofi_environment.png",
+        "row": 4,
+        "col": 14,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -444,9 +444,9 @@
     {
         "tileId": 34,
         "name": "Mushroom",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 9,
+        "spriteKey": "lofi_environment.png",
+        "row": 6,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -457,9 +457,9 @@
     {
         "tileId": 35,
         "name": "Tall_Grass",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 8,
+        "spriteKey": "lofi_environment.png",
+        "row": 15,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -470,9 +470,9 @@
     {
         "tileId": 36,
         "name": "Tree_2",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 2,
+        "spriteKey": "lofi_environment.png",
+        "row": 4,
+        "col": 9,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -717,9 +717,9 @@
     {
         "tileId": 55,
         "name": "Lava_Floor_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 35,
-        "col": 5,
+        "spriteKey": "lofi_environment.png",
+        "row": 7,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -730,9 +730,9 @@
     {
         "tileId": 56,
         "name": "Lava_Floor_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 35,
-        "col": 6,
+        "spriteKey": "lofi_environment.png",
+        "row": 8,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -834,9 +834,9 @@
     {
         "tileId": 64,
         "name": "Forest_Floor_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 36,
-        "col": 2,
+        "spriteKey": "lofi_environment.png",
+        "row": 7,
+        "col": 1,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -847,9 +847,9 @@
     {
         "tileId": 65,
         "name": "Forest_Floor_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 36,
-        "col": 3,
+        "spriteKey": "lofi_environment.png",
+        "row": 8,
+        "col": 1,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -861,8 +861,8 @@
         "tileId": 66,
         "name": "Forest_Wall_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 37,
-        "col": 6,
+        "row": 33,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -874,8 +874,8 @@
         "tileId": 67,
         "name": "Forest_Wall_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 37,
-        "col": 8,
+        "row": 33,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -913,7 +913,7 @@
         "tileId": 70,
         "name": "Dark_Forest_Wall_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 50,
+        "row": 55,
         "col": 14,
         "size": 32,
         "data": {
@@ -926,7 +926,7 @@
         "tileId": 71,
         "name": "Dark_Forest_Wall_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 50,
+        "row": 55,
         "col": 15,
         "size": 32,
         "data": {
@@ -939,8 +939,8 @@
         "tileId": 72,
         "name": "Crystal_Floor_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 48,
-        "col": 3,
+        "row": 54,
+        "col": 1,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -991,8 +991,8 @@
         "tileId": 76,
         "name": "Crystal_Wall_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 48,
-        "col": 9,
+        "row": 7,
+        "col": 10,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1004,8 +1004,8 @@
         "tileId": 77,
         "name": "Crystal_Wall_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 48,
-        "col": 10,
+        "row": 7,
+        "col": 11,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1017,8 +1017,8 @@
         "tileId": 78,
         "name": "Crystal_Floor_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 48,
-        "col": 4,
+        "row": 54,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
