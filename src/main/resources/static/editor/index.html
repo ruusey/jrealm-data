@@ -9,19 +9,23 @@
 <body>
 <div id="app">
   <header>
-    <h1>JRealm Tile Editor</h1>
+    <h1>JRealm Editor</h1>
+    <div class="tabs">
+      <button class="tab active" data-tab="tiles">Tiles</button>
+      <button class="tab" data-tab="terrains">Terrains</button>
+      <button class="tab" data-tab="items">Items</button>
+    </div>
     <div class="toolbar">
-      <label>Sprite Sheet:
+      <label>Sheet:
         <select id="sheetSelect"></select>
       </label>
-      <label>Grid Size:
+      <label>Grid:
         <select id="gridSize">
           <option value="8" selected>8x8</option>
           <option value="16">16x16</option>
-          <option value="32">32x32</option>
         </select>
       </label>
-      <button id="saveBtn" class="btn-save" disabled>Save tiles.json</button>
+      <button id="saveBtn" class="btn-save" disabled>Save All</button>
       <span id="saveStatus"></span>
     </div>
   </header>
@@ -39,16 +43,14 @@
       <div id="hoverInfo" class="hover-info">Row: - Col: -</div>
     </div>
 
-    <!-- Right: Tile List -->
-    <div class="panel tile-panel">
+    <!-- Right panel: Tiles tab -->
+    <div class="panel tile-panel" id="tilesTab">
       <div class="tile-header">
         <h2>Tiles (<span id="tileCount">0</span>)</h2>
         <input type="text" id="tileSearch" placeholder="Search tiles...">
-        <button id="addTileBtn" class="btn-add">+ Add Tile</button>
+        <button id="addTileBtn" class="btn-add">+ Add</button>
       </div>
       <div class="tile-list" id="tileList"></div>
-
-      <!-- Tile Detail Editor -->
       <div class="tile-detail" id="tileDetail" style="display:none">
         <h3 id="detailTitle">Tile Detail</h3>
         <div class="detail-grid">
@@ -70,12 +72,148 @@
           <span id="previewLabel"></span>
         </div>
         <div class="detail-actions">
-          <button id="applyBtn" class="btn-apply">Apply Changes</button>
+          <button id="applyBtn" class="btn-apply">Apply</button>
           <button id="pickBtn" class="btn-pick">Pick from Sheet</button>
-          <button id="deleteTileBtn" class="btn-delete">Delete Tile</button>
+          <button id="goToSheetBtn" class="btn-pick">Go to Sheet</button>
+          <button id="deleteTileBtn" class="btn-delete">Delete</button>
         </div>
       </div>
     </div>
+
+    <!-- Right panel: Terrains tab -->
+    <div class="panel tile-panel" id="terrainsTab" style="display:none">
+      <div class="tile-header">
+        <h2>Terrains (<span id="terrainCount">0</span>)</h2>
+        <input type="text" id="terrainSearch" placeholder="Search terrains...">
+      </div>
+      <div class="terrain-select-list" id="terrainSelectList"></div>
+
+      <div class="terrain-detail" id="terrainDetail" style="display:none">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <button id="terrainBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+          <h3 id="terrainTitle" style="margin:0">Terrain</h3>
+        </div>
+        <div class="terrain-info">
+          <span id="terrainDims"></span>
+        </div>
+
+        <h4>Tile Groups</h4>
+        <div id="terrainTileGroups"></div>
+
+        <div class="terrain-add-tile">
+          <label>Rarity: <input type="number" id="terrainAddRarity" min="0" max="1" step="0.01" value="0.05" style="width:60px"></label>
+          <button id="terrainAddTileBtn" class="btn-add">+ Add Tile</button>
+        </div>
+
+        <div class="detail-actions" style="margin-top:8px">
+          <button id="saveTerrainBtn" class="btn-apply">Apply Terrain Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Right panel: Items tab -->
+    <div class="panel tile-panel" id="itemsTab" style="display:none">
+      <div class="tile-header">
+        <h2>Items (<span id="itemCount">0</span>)</h2>
+        <input type="text" id="itemSearch" placeholder="Search items...">
+      </div>
+      <div class="tile-list" id="itemListView"></div>
+
+      <div class="item-detail" id="itemDetail" style="display:none">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <button id="itemBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+          <h3 id="itemTitle" style="margin:0">Item</h3>
+        </div>
+        <div class="detail-grid">
+          <label>ID: <input type="number" id="itemId" readonly></label>
+          <label>Name: <input type="text" id="itemName"></label>
+          <label>Sprite: <select id="itemSprite"></select></label>
+          <label>Row: <input type="number" id="itemRow" min="0"></label>
+          <label>Col: <input type="number" id="itemCol" min="0"></label>
+          <label>Tier: <input type="number" id="itemTier" min="0"></label>
+          <label>Slot: <input type="number" id="itemSlot" min="-1"></label>
+          <label>Class: <input type="number" id="itemClass"></label>
+          <label>Fame: <input type="number" id="itemFame" min="0"></label>
+          <label><input type="checkbox" id="itemConsumable"> Consumable</label>
+        </div>
+        <label style="font-size:12px;display:block;margin-bottom:6px">Description:<br>
+          <input type="text" id="itemDesc" style="width:100%">
+        </label>
+
+        <h4>Stats</h4>
+        <div class="stats-grid">
+          <label>HP <input type="number" id="statHp"></label>
+          <label>MP <input type="number" id="statMp"></label>
+          <label>ATT <input type="number" id="statAtt"></label>
+          <label>DEF <input type="number" id="statDef"></label>
+          <label>SPD <input type="number" id="statSpd"></label>
+          <label>DEX <input type="number" id="statDex"></label>
+          <label>VIT <input type="number" id="statVit"></label>
+          <label>WIS <input type="number" id="statWis"></label>
+        </div>
+
+        <h4>Damage</h4>
+        <div class="detail-grid">
+          <label>Min: <input type="number" id="dmgMin" min="0"></label>
+          <label>Max: <input type="number" id="dmgMax" min="0"></label>
+          <label>Proj Group: <input type="number" id="dmgProjGroup" min="-1"></label>
+          <label><button id="viewProjGroupBtn" class="btn-pick" style="padding:3px 8px">View Group</button></label>
+        </div>
+
+        <h4>Effect (Abilities)</h4>
+        <div class="detail-grid">
+          <label>Effect ID: <input type="number" id="effectId"></label>
+          <label>MP Cost: <input type="number" id="effectMp" min="0"></label>
+          <label>Duration: <input type="number" id="effectDur" min="0"></label>
+          <label>Cooldown: <input type="number" id="effectCd" min="0"></label>
+          <label><input type="checkbox" id="effectSelf"> Self-target</label>
+        </div>
+
+        <div class="detail-actions" style="margin-top:8px">
+          <button id="applyItemBtn" class="btn-apply">Apply</button>
+          <button id="pickItemSpriteBtn" class="btn-pick">Pick Sprite</button>
+          <button id="goToItemSheetBtn" class="btn-pick">Go to Sheet</button>
+        </div>
+      </div>
+
+      <!-- Inline Projectile Group Editor -->
+      <div class="tile-detail" id="projGroupDetail" style="display:none">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <button id="projGroupBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+          <h3 id="projGroupTitle" style="margin:0">Projectile Group</h3>
+        </div>
+        <div class="detail-grid">
+          <label>Group ID: <input type="number" id="pgId" readonly></label>
+          <label>Sprite: <select id="pgSprite"></select></label>
+          <label>Row: <input type="number" id="pgRow" min="0"></label>
+          <label>Col: <input type="number" id="pgCol" min="0"></label>
+          <label>Angle Offset: <input type="text" id="pgAngleOffset" placeholder="e.g. {{PI/4}}"></label>
+        </div>
+        <div class="detail-preview">
+          <span>Preview:</span>
+          <canvas id="pgPreviewCanvas" width="48" height="48"></canvas>
+        </div>
+
+        <h4>Projectiles</h4>
+        <div id="pgProjectiles" style="max-height:200px;overflow-y:auto"></div>
+
+        <div class="detail-actions" style="margin-top:8px">
+          <button id="applyProjGroupBtn" class="btn-apply">Apply Group</button>
+          <button id="addProjBtn" class="btn-add">+ Add Projectile</button>
+        </div>
+      </div>
+    </div>
+
+<!-- Tile Picker Modal -->
+<div id="tilePickerOverlay" class="picker-overlay" style="display:none">
+  <div class="picker-modal">
+    <div class="picker-header">
+      <h3>Select a Tile</h3>
+      <input type="text" id="pickerSearch" placeholder="Search tiles...">
+      <button id="pickerCloseBtn" class="tg-remove" style="font-size:20px">&times;</button>
+    </div>
+    <div class="picker-list" id="pickerList"></div>
   </div>
 </div>
 <script src="editor.js"></script>

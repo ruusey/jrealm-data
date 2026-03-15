@@ -48,34 +48,48 @@ public class GameDataController {
 	    }
 
 	 @PutMapping(value = "/tiles", consumes = { "application/json" }, produces = { "application/json" })
-	 public ResponseEntity<?> saveTiles(final HttpServletRequest request, @RequestBody final String tilesJson) {
+	 public ResponseEntity<?> saveTiles(final HttpServletRequest request, @RequestBody final String json) {
+	     return saveDataFile("tiles.json", json);
+	 }
+
+	 @PutMapping(value = "/terrains", consumes = { "application/json" }, produces = { "application/json" })
+	 public ResponseEntity<?> saveTerrains(final HttpServletRequest request, @RequestBody final String json) {
+	     return saveDataFile("terrains.json", json);
+	 }
+
+	 @PutMapping(value = "/items", consumes = { "application/json" }, produces = { "application/json" })
+	 public ResponseEntity<?> saveItems(final HttpServletRequest request, @RequestBody final String json) {
+	     return saveDataFile("game-items.json", json);
+	 }
+
+	 @PutMapping(value = "/projectiles", consumes = { "application/json" }, produces = { "application/json" })
+	 public ResponseEntity<?> saveProjectiles(final HttpServletRequest request, @RequestBody final String json) {
+	     return saveDataFile("projectile-groups.json", json);
+	 }
+
+	 private ResponseEntity<?> saveDataFile(String filename, String json) {
 	     try {
-	         // Resolve the source file by walking up from the compiled classpath resource
-	         // target/classes/data/tiles.json -> src/main/resources/data/tiles.json
-	         URL resource = getClass().getClassLoader().getResource("data/tiles.json");
+	         URL resource = getClass().getClassLoader().getResource("data/" + filename);
 	         if (resource == null) {
-	             return ApiUtils.buildAndLogError("Failed to save tiles", "tiles.json resource not found");
+	             return ApiUtils.buildAndLogError("Failed to save " + filename, filename + " resource not found");
 	         }
 	         File compiledFile = new File(resource.toURI());
-	         // Write to compiled output so it takes effect immediately
 	         try (FileWriter writer = new FileWriter(compiledFile)) {
-	             writer.write(tilesJson);
+	             writer.write(json);
 	         }
-	         log.info("Saved tiles.json to target ({} bytes): {}", tilesJson.length(), compiledFile.getAbsolutePath());
+	         log.info("Saved {} to target ({} bytes): {}", filename, json.length(), compiledFile.getAbsolutePath());
 
-	         // Also write to the source file so changes persist across rebuilds
-	         // Walk up from target/classes/data/ to find src/main/resources/data/
 	         File projectRoot = compiledFile.getParentFile();
 	         while (projectRoot != null && !new File(projectRoot, "src").isDirectory()) {
 	             projectRoot = projectRoot.getParentFile();
 	         }
 	         if (projectRoot != null) {
-	             File sourceFile = new File(projectRoot, "src/main/resources/data/tiles.json");
+	             File sourceFile = new File(projectRoot, "src/main/resources/data/" + filename);
 	             if (sourceFile.exists()) {
 	                 try (FileWriter srcWriter = new FileWriter(sourceFile)) {
-	                     srcWriter.write(tilesJson);
+	                     srcWriter.write(json);
 	                 }
-	                 log.info("Saved tiles.json to source: {}", sourceFile.getAbsolutePath());
+	                 log.info("Saved {} to source: {}", filename, sourceFile.getAbsolutePath());
 	             } else {
 	                 log.warn("Source file not found at: {}", sourceFile.getAbsolutePath());
 	             }
@@ -86,7 +100,7 @@ public class GameDataController {
 	         return ApiUtils.buildSuccess("OK");
 	     } catch (Exception e) {
 	         e.printStackTrace();
-	         return ApiUtils.buildAndLogError("Failed to save tiles", e.getMessage());
+	         return ApiUtils.buildAndLogError("Failed to save " + filename, e.getMessage());
 	     }
 	 }
 }

@@ -16,8 +16,8 @@
         "tileId": 1,
         "name": "Nexus_Floor",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 0,
+        "row": 57,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -29,8 +29,8 @@
         "tileId": 2,
         "name": "Nexus_Wall",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 7,
+        "row": 58,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -41,9 +41,9 @@
     {
         "tileId": 3,
         "name": "Wood_Table",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 6,
-        "col": 9,
+        "spriteKey": "lofi_environment.png",
+        "row": 8,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -54,9 +54,9 @@
     {
         "tileId": 4,
         "name": "Wood_Chair_Right",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 6,
-        "col": 10,
+        "spriteKey": "lofi_environment.png",
+        "row": 8,
+        "col": 9,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -67,9 +67,9 @@
     {
         "tileId": 5,
         "name": "Wood_Chair_Left",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 9,
+        "spriteKey": "lofi_environment.png",
+        "row": 8,
+        "col": 10,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -211,7 +211,7 @@
         "tileId": 16,
         "name": "Stone_Wall_Bright",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
+        "row": 10,
         "col": 8,
         "size": 32,
         "data": {
@@ -237,7 +237,7 @@
         "tileId": 18,
         "name": "Torch",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 24,
+        "row": 8,
         "col": 9,
         "size": 32,
         "data": {
@@ -276,8 +276,8 @@
         "tileId": 21,
         "name": "Bush_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 15,
+        "row": 36,
+        "col": 14,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -289,8 +289,8 @@
         "tileId": 22,
         "name": "Tree_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 15,
-        "col": 5,
+        "row": 36,
+        "col": 9,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -302,8 +302,8 @@
         "tileId": 23,
         "name": "Tree_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 15,
-        "col": 6,
+        "row": 36,
+        "col": 13,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -327,9 +327,9 @@
     {
         "tileId": 25,
         "name": "Water_Shallow",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 21,
-        "col": 0,
+        "spriteKey": "lofi_environment.png",
+        "row": 7,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -484,8 +484,8 @@
         "tileId": 37,
         "name": "Tree_3",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 3,
+        "row": 36,
+        "col": 15,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -496,9 +496,9 @@
     {
         "tileId": 38,
         "name": "Dead_Tree",
-        "spriteKey": "rotmg-tiles-all.png",
+        "spriteKey": "rotmg-misc.png",
         "row": 0,
-        "col": 6,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -522,9 +522,9 @@
     {
         "tileId": 40,
         "name": "Water_Deep",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 20,
-        "col": 15,
+        "spriteKey": "lofi_environment.png",
+        "row": 11,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -535,9 +535,9 @@
     {
         "tileId": 41,
         "name": "Water_Medium",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 20,
-        "col": 14,
+        "spriteKey": "lofi_environment.png",
+        "row": 12,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -548,9 +548,9 @@
     {
         "tileId": 42,
         "name": "Water_Light",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 20,
-        "col": 13,
+        "spriteKey": "lofi_environment.png",
+        "row": 8,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -730,9 +730,9 @@
     {
         "tileId": 56,
         "name": "Lava_Floor_1",
-        "spriteKey": "lofi_environment.png",
-        "row": 8,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 35,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -757,8 +757,8 @@
         "tileId": 58,
         "name": "Lava_Wall_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 37,
-        "col": 4,
+        "row": 35,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -771,7 +771,7 @@
         "name": "Lava_Rock",
         "spriteKey": "rotmg-tiles-all.png",
         "row": 35,
-        "col": 8,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -821,9 +821,9 @@
     {
         "tileId": 63,
         "name": "Coastal_Wall_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 34,
-        "col": 8,
+        "spriteKey": "lofi_environment.png",
+        "row": 2,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -861,8 +861,8 @@
         "tileId": 66,
         "name": "Forest_Wall_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 33,
-        "col": 8,
+        "row": 62,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -874,8 +874,8 @@
         "tileId": 67,
         "name": "Forest_Wall_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 33,
-        "col": 6,
+        "row": 62,
+        "col": 13,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1225,8 +1225,8 @@
         "tileId": 94,
         "name": "Shadow_Wall_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 49,
-        "col": 1,
+        "row": 43,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1719,8 +1719,8 @@
         "tileId": 132,
         "name": "Lava_Floor_Accent",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 35,
-        "col": 7,
+        "row": 39,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1771,8 +1771,8 @@
         "tileId": 136,
         "name": "Grass_Dark",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 5,
+        "row": 37,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1784,8 +1784,8 @@
         "tileId": 137,
         "name": "Grass_Light",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 10,
+        "row": 36,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1797,8 +1797,8 @@
         "tileId": 138,
         "name": "Grass_Medium",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 11,
+        "row": 36,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1809,9 +1809,9 @@
     {
         "tileId": 139,
         "name": "Vine_Growth",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 6,
+        "spriteKey": "rotmg-misc.png",
+        "row": 6,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
