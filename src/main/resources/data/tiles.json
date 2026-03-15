@@ -146,8 +146,8 @@
         "tileId": 11,
         "name": "Grass_Floor_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 19,
-        "col": 3,
+        "row": 0,
+        "col": 11,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -159,8 +159,8 @@
         "tileId": 12,
         "name": "Grass_Floor_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 19,
-        "col": 4,
+        "row": 0,
+        "col": 15,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -185,8 +185,8 @@
         "tileId": 14,
         "name": "Flower_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 3,
+        "row": 38,
+        "col": 14,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -198,8 +198,8 @@
         "tileId": 15,
         "name": "Flower_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 4,
+        "row": 38,
+        "col": 15,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -250,8 +250,8 @@
         "tileId": 19,
         "name": "Rock_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 10,
+        "row": 8,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -289,8 +289,8 @@
         "tileId": 22,
         "name": "Tree_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 0,
+        "row": 15,
+        "col": 5,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -302,8 +302,8 @@
         "tileId": 23,
         "name": "Tree_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 1,
+        "row": 15,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -328,8 +328,8 @@
         "tileId": 25,
         "name": "Water_Shallow",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 20,
-        "col": 11,
+        "row": 21,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -341,8 +341,8 @@
         "tileId": 26,
         "name": "Sand_Shore",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 26,
-        "col": 0,
+        "row": 24,
+        "col": 9,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -509,9 +509,9 @@
     {
         "tileId": 39,
         "name": "Cactus",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 5,
+        "spriteKey": "rotmg-misc.png",
+        "row": 2,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -640,8 +640,8 @@
         "tileId": 49,
         "name": "Bright_Stone_Floor",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 2,
-        "col": 13,
+        "row": 17,
+        "col": 4,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -951,9 +951,9 @@
     {
         "tileId": 73,
         "name": "Palm_Tree_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 4,
+        "spriteKey": "rotmg-misc.png",
+        "row": 1,
+        "col": 1,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -964,9 +964,9 @@
     {
         "tileId": 74,
         "name": "Palm_Tree_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 7,
+        "spriteKey": "rotmg-misc.png",
+        "row": 1,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -977,12 +977,12 @@
     {
         "tileId": 75,
         "name": "Dune_Grass",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 17,
-        "col": 11,
+        "spriteKey": "rotmg-misc.png",
+        "row": 6,
+        "col": 7,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 0,
             "damaging": 0
         }
@@ -1250,9 +1250,9 @@
     {
         "tileId": 96,
         "name": "Green_Tree_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
-        "col": 0,
+        "spriteKey": "rotmg-misc.png",
+        "row": 0,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1263,9 +1263,9 @@
     {
         "tileId": 97,
         "name": "Green_Tree_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
-        "col": 1,
+        "spriteKey": "rotmg-misc.png",
+        "row": 0,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1276,9 +1276,9 @@
     {
         "tileId": 98,
         "name": "Green_Tree_C",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
-        "col": 2,
+        "spriteKey": "rotmg-misc.png",
+        "row": 2,
+        "col": 7,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1289,9 +1289,9 @@
     {
         "tileId": 99,
         "name": "Small_Tree_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
-        "col": 3,
+        "spriteKey": "rotmg-misc.png",
+        "row": 3,
+        "col": 4,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1302,9 +1302,9 @@
     {
         "tileId": 100,
         "name": "Small_Tree_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
-        "col": 4,
+        "spriteKey": "rotmg-misc.png",
+        "row": 3,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1315,9 +1315,9 @@
     {
         "tileId": 101,
         "name": "Brown_Tree_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
-        "col": 5,
+        "spriteKey": "rotmg-misc.png",
+        "row": 5,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1328,8 +1328,8 @@
     {
         "tileId": 102,
         "name": "Brown_Tree_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
+        "spriteKey": "rotmg-misc.png",
+        "row": 0,
         "col": 6,
         "size": 32,
         "data": {
@@ -1341,8 +1341,8 @@
     {
         "tileId": 103,
         "name": "Dead_Tree_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 1,
+        "spriteKey": "rotmg-misc.png",
+        "row": 0,
         "col": 7,
         "size": 32,
         "data": {
@@ -1354,8 +1354,8 @@
     {
         "tileId": 104,
         "name": "Tall_Tree_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 2,
+        "spriteKey": "rotmg-misc.png",
+        "row": 3,
         "col": 0,
         "size": 32,
         "data": {
@@ -1367,9 +1367,9 @@
     {
         "tileId": 105,
         "name": "Tall_Tree_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 2,
-        "col": 1,
+        "spriteKey": "rotmg-misc.png",
+        "row": 0,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1380,9 +1380,9 @@
     {
         "tileId": 106,
         "name": "Tall_Tree_C",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 2,
-        "col": 2,
+        "spriteKey": "rotmg-misc.png",
+        "row": 1,
+        "col": 4,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1393,33 +1393,7 @@
     {
         "tileId": 107,
         "name": "Dense_Tree_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 2,
-        "col": 3,
-        "size": 32,
-        "data": {
-            "hasCollision": 1,
-            "slows": 0,
-            "damaging": 0
-        }
-    },
-    {
-        "tileId": 108,
-        "name": "Dense_Tree_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 2,
-        "col": 4,
-        "size": 32,
-        "data": {
-            "hasCollision": 1,
-            "slows": 0,
-            "damaging": 0
-        }
-    },
-    {
-        "tileId": 109,
-        "name": "Dense_Tree_C",
-        "spriteKey": "rotmg-tiles-all.png",
+        "spriteKey": "rotmg-misc.png",
         "row": 2,
         "col": 5,
         "size": 32,
@@ -1430,11 +1404,37 @@
         }
     },
     {
+        "tileId": 108,
+        "name": "Dense_Tree_B",
+        "spriteKey": "rotmg-misc.png",
+        "row": 1,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 109,
+        "name": "Dense_Tree_C",
+        "spriteKey": "rotmg-misc.png",
+        "row": 4,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
         "tileId": 110,
         "name": "Autumn_Tree_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 2,
-        "col": 6,
+        "spriteKey": "rotmg-misc.png",
+        "row": 0,
+        "col": 5,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1445,9 +1445,9 @@
     {
         "tileId": 111,
         "name": "Autumn_Tree_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 3,
-        "col": 0,
+        "spriteKey": "rotmg-misc.png",
+        "row": 2,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1458,9 +1458,9 @@
     {
         "tileId": 112,
         "name": "Dark_Shrub_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 3,
-        "col": 1,
+        "spriteKey": "rotmg-misc.png",
+        "row": 4,
+        "col": 5,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1471,9 +1471,9 @@
     {
         "tileId": 113,
         "name": "Dark_Shrub_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 3,
-        "col": 2,
+        "spriteKey": "rotmg-misc.png",
+        "row": 4,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1484,9 +1484,9 @@
     {
         "tileId": 114,
         "name": "Emerald_Shrub_A",
-        "spriteKey": "rotmg-tiles-all.png",
+        "spriteKey": "rotmg-misc.png",
         "row": 3,
-        "col": 3,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1497,9 +1497,9 @@
     {
         "tileId": 115,
         "name": "Emerald_Shrub_B",
-        "spriteKey": "rotmg-tiles-all.png",
+        "spriteKey": "rotmg-misc.png",
         "row": 3,
-        "col": 4,
+        "col": 7,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1510,8 +1510,8 @@
     {
         "tileId": 116,
         "name": "Small_Bush_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 3,
+        "spriteKey": "rotmg-misc.png",
+        "row": 5,
         "col": 5,
         "size": 32,
         "data": {
@@ -1523,9 +1523,9 @@
     {
         "tileId": 117,
         "name": "Small_Bush_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 3,
-        "col": 6,
+        "spriteKey": "rotmg-misc.png",
+        "row": 0,
+        "col": 1,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1536,9 +1536,9 @@
     {
         "tileId": 118,
         "name": "Aquatic_Shrub_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 0,
-        "col": 11,
+        "spriteKey": "rotmg-misc.png",
+        "row": 5,
+        "col": 0,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1549,9 +1549,9 @@
     {
         "tileId": 119,
         "name": "Aquatic_Shrub_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 17,
-        "col": 14,
+        "spriteKey": "rotmg-misc.png",
+        "row": 5,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1562,9 +1562,9 @@
     {
         "tileId": 120,
         "name": "Stone_A",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 35,
-        "col": 12,
+        "spriteKey": "lofi_environment.png",
+        "row": 6,
+        "col": 9,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1575,9 +1575,9 @@
     {
         "tileId": 121,
         "name": "Stone_B",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 34,
-        "col": 12,
+        "spriteKey": "lofi_environment.png",
+        "row": 6,
+        "col": 10,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1838,6 +1838,58 @@
         "spriteKey": "rotmg-tiles-all.png",
         "row": 32,
         "col": 13,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 142,
+        "name": "Ruins_Wall_0",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 23,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 143,
+        "name": "Ruins_Wall_1",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 23,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 144,
+        "name": "Dark_Bark_Wall",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 50,
+        "col": 13,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0
+        }
+    },
+    {
+        "tileId": 145,
+        "name": "Sunken_Stone_Wall",
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 26,
+        "col": 10,
         "size": 32,
         "data": {
             "hasCollision": 1,

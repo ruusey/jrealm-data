@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JRealm Tile Editor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>JRealm Tile Editor</h1>
+    <div class="toolbar">
+      <label>Sprite Sheet:
+        <select id="sheetSelect"></select>
+      </label>
+      <label>Grid Size:
+        <select id="gridSize">
+          <option value="8" selected>8x8</option>
+          <option value="16">16x16</option>
+          <option value="32">32x32</option>
+        </select>
+      </label>
+      <button id="saveBtn" class="btn-save" disabled>Save tiles.json</button>
+      <span id="saveStatus"></span>
+    </div>
+  </header>
+
+  <div class="main">
+    <!-- Left: Sprite Sheet Viewer -->
+    <div class="panel sheet-panel">
+      <h2>Sprite Sheet <span id="sheetInfo"></span></h2>
+      <div class="sheet-scroll">
+        <div class="sheet-container" id="sheetContainer">
+          <canvas id="sheetCanvas"></canvas>
+          <canvas id="sheetOverlay"></canvas>
+        </div>
+      </div>
+      <div id="hoverInfo" class="hover-info">Row: - Col: -</div>
+    </div>
+
+    <!-- Right: Tile List -->
+    <div class="panel tile-panel">
+      <div class="tile-header">
+        <h2>Tiles (<span id="tileCount">0</span>)</h2>
+        <input type="text" id="tileSearch" placeholder="Search tiles...">
+        <button id="addTileBtn" class="btn-add">+ Add Tile</button>
+      </div>
+      <div class="tile-list" id="tileList"></div>
+
+      <!-- Tile Detail Editor -->
+      <div class="tile-detail" id="tileDetail" style="display:none">
+        <h3 id="detailTitle">Tile Detail</h3>
+        <div class="detail-grid">
+          <label>ID: <input type="number" id="detailId" readonly></label>
+          <label>Name: <input type="text" id="detailName"></label>
+          <label>Sprite: <select id="detailSprite"></select></label>
+          <label>Row: <input type="number" id="detailRow" min="0"></label>
+          <label>Col: <input type="number" id="detailCol" min="0"></label>
+          <label>Size: <input type="number" id="detailSize" value="32"></label>
+        </div>
+        <div class="detail-flags">
+          <label><input type="checkbox" id="detailCollision"> Collision</label>
+          <label><input type="checkbox" id="detailSlows"> Slows</label>
+          <label><input type="checkbox" id="detailDamaging"> Damaging</label>
+        </div>
+        <div class="detail-preview">
+          <span>Preview:</span>
+          <canvas id="previewCanvas" width="64" height="64"></canvas>
+          <span id="previewLabel"></span>
+        </div>
+        <div class="detail-actions">
+          <button id="applyBtn" class="btn-apply">Apply Changes</button>
+          <button id="pickBtn" class="btn-pick">Pick from Sheet</button>
+          <button id="deleteTileBtn" class="btn-delete">Delete Tile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="editor.js"></script>
+</body>
+</html>
