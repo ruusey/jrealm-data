@@ -81,8 +81,8 @@
         "tileId": 6,
         "name": "Fountain",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 24,
-        "col": 7,
+        "row": 29,
+        "col": 9,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -717,9 +717,9 @@
     {
         "tileId": 55,
         "name": "Lava_Floor_0",
-        "spriteKey": "lofi_environment.png",
-        "row": 7,
-        "col": 0,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 2,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1744,9 +1744,9 @@
     {
         "tileId": 134,
         "name": "Flower_Red",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 0,
+        "spriteKey": "rotmg-misc.png",
+        "row": 1,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1757,9 +1757,9 @@
     {
         "tileId": 135,
         "name": "Flower_White",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 18,
-        "col": 1,
+        "spriteKey": "rotmg-misc.png",
+        "row": 1,
+        "col": 5,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1809,8 +1809,8 @@
     {
         "tileId": 139,
         "name": "Vine_Growth",
-        "spriteKey": "rotmg-misc.png",
-        "row": 6,
+        "spriteKey": "rotmg-tiles-all.png",
+        "row": 22,
         "col": 0,
         "size": 32,
         "data": {
@@ -1823,8 +1823,8 @@
         "tileId": 140,
         "name": "Rock_2",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 33,
-        "col": 12,
+        "row": 39,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1836,8 +1836,8 @@
         "tileId": 141,
         "name": "Rock_3",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 32,
-        "col": 13,
+        "row": 39,
+        "col": 10,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1849,7 +1849,7 @@
         "tileId": 142,
         "name": "Ruins_Wall_0",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 23,
+        "row": 26,
         "col": 1,
         "size": 32,
         "data": {
@@ -1862,8 +1862,8 @@
         "tileId": 143,
         "name": "Ruins_Wall_1",
         "spriteKey": "rotmg-tiles-all.png",
-        "row": 23,
-        "col": 2,
+        "row": 26,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1889,7 +1889,7 @@
         "name": "Sunken_Stone_Wall",
         "spriteKey": "rotmg-tiles-all.png",
         "row": 26,
-        "col": 10,
+        "col": 5,
         "size": 32,
         "data": {
             "hasCollision": 1,
