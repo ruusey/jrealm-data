@@ -640,7 +640,12 @@ function renderProjList(group) {
       renderProjList(group);
     });
 
+    const numBadge = document.createElement('span');
+    numBadge.className = 'proj-num';
+    numBadge.textContent = '#' + (idx + 1);
+
     row.append(
+      numBadge,
       modeLbl,
       makeField('Ang:', 'angle', p.angle, 65),
       makeField('Dmg:', 'damage', p.damage, 40),
@@ -896,6 +901,27 @@ function bindEvents() {
 
   window.addEventListener('beforeunload', (e) => {
     if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  // Resize handle drag
+  const handle = document.getElementById('resizeHandle');
+  let resizing = false;
+  handle.addEventListener('mousedown', (e) => {
+    resizing = true;
+    handle.classList.add('dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!resizing) return;
+    const panels = document.querySelectorAll('.tile-panel');
+    const newWidth = Math.max(300, window.innerWidth - e.clientX);
+    panels.forEach(p => p.style.width = newWidth + 'px');
+  });
+  document.addEventListener('mouseup', () => {
+    if (resizing) {
+      resizing = false;
+      handle.classList.remove('dragging');
+    }
   });
 }
 

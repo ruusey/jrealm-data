@@ -103,8 +103,8 @@
 		"portalName": "Mushroom_Grotto_Portal",
 		"mapId": 16,
 		"targetRealmDepth": 999,
-		"row": 4,
-		"col": 14,
+		"row": 10,
+		"col": 8,
 		"spriteKey": "rotmg-tiles-2.png"
 	},
 	{

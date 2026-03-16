@@ -13,6 +13,7 @@
     <div class="tabs">
       <button class="tab active" data-tab="tiles">Tiles</button>
       <button class="tab" data-tab="terrains">Terrains</button>
+      <button class="tab" data-tab="maps">Maps</button>
       <button class="tab" data-tab="items">Items</button>
     </div>
     <div class="toolbar">
@@ -42,6 +43,8 @@
       </div>
       <div id="hoverInfo" class="hover-info">Row: - Col: -</div>
     </div>
+
+    <div class="resize-handle" id="resizeHandle"></div>
 
     <!-- Right panel: Tiles tab -->
     <div class="panel tile-panel" id="tilesTab">
@@ -107,6 +110,93 @@
 
         <div class="detail-actions" style="margin-top:8px">
           <button id="saveTerrainBtn" class="btn-apply">Apply Terrain Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel: Maps tab -->
+    <div class="panel tile-panel" id="mapsTab" style="display:none">
+      <div class="tile-header">
+        <h2>Maps (<span id="mapCount">0</span>)</h2>
+        <input type="text" id="mapSearch" placeholder="Search maps...">
+      </div>
+      <div class="tile-list" id="mapListView"></div>
+
+      <!-- Map detail: static map layer editor -->
+      <div class="map-detail" id="mapDetail" style="display:none">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <button id="mapBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+          <h3 id="mapTitle" style="margin:0">Map</h3>
+        </div>
+        <div class="map-info" id="mapInfo"></div>
+
+        <!-- Dungeon params editor (shown for dungeon maps) -->
+        <div id="dungeonParamsEditor" style="display:none">
+          <h4>Dungeon Generation Parameters</h4>
+          <div class="detail-grid">
+            <label>Min Rooms: <input type="number" id="dpMinRooms" min="1"></label>
+            <label>Max Rooms: <input type="number" id="dpMaxRooms" min="1"></label>
+            <label>Min Room W: <input type="number" id="dpMinRoomW" min="1"></label>
+            <label>Max Room W: <input type="number" id="dpMaxRoomW" min="1"></label>
+            <label>Min Room H: <input type="number" id="dpMinRoomH" min="1"></label>
+            <label>Max Room H: <input type="number" id="dpMaxRoomH" min="1"></label>
+            <label>Wall Tile: <input type="number" id="dpWallTile" min="0"></label>
+            <label>Boss Enemy: <input type="number" id="dpBossEnemy" min="-1"></label>
+          </div>
+          <div style="margin:6px 0">
+            <label style="font-size:12px">Shapes:
+              <div class="dp-checkboxes" id="dpShapes">
+                <label><input type="checkbox" value="RECTANGLE"> RECTANGLE</label>
+                <label><input type="checkbox" value="OVAL"> OVAL</label>
+                <label><input type="checkbox" value="CROSS"> CROSS</label>
+                <label><input type="checkbox" value="L_SHAPE"> L_SHAPE</label>
+                <label><input type="checkbox" value="DIAMOND"> DIAMOND</label>
+              </div>
+            </label>
+          </div>
+          <div style="margin:6px 0">
+            <label style="font-size:12px">Hall Styles:
+              <div class="dp-checkboxes" id="dpHalls">
+                <label><input type="checkbox" value="L_SHAPED"> L_SHAPED</label>
+                <label><input type="checkbox" value="ZIGZAG"> ZIGZAG</label>
+                <label><input type="checkbox" value="WINDING"> WINDING</label>
+                <label><input type="checkbox" value="WIDE"> WIDE</label>
+              </div>
+            </label>
+          </div>
+          <h4>Floor Tiles</h4>
+          <div id="dpFloorTiles"></div>
+          <div style="margin-top:4px">
+            <button id="dpAddFloorTileBtn" class="btn-add">+ Add Floor Tile</button>
+          </div>
+          <div class="detail-actions" style="margin-top:8px">
+            <button id="applyDungeonBtn" class="btn-apply">Apply Dungeon Changes</button>
+          </div>
+        </div>
+
+        <!-- Static map layer editor (shown for static maps with data) -->
+        <div id="staticMapEditor" style="display:none">
+          <div class="map-layer-controls">
+            <label>Layer:
+              <select id="mapLayerSelect">
+                <option value="0">0 - Base (Floor)</option>
+                <option value="1">1 - Collision (Objects)</option>
+              </select>
+            </label>
+            <span id="mapBrushInfo" class="map-brush-info">Brush: (none)</span>
+            <button id="mapPickTileBtn" class="btn-add">Select Brush Tile</button>
+            <label><input type="checkbox" id="mapShowGrid" checked> Grid</label>
+          </div>
+          <div class="map-canvas-scroll" id="mapCanvasScroll">
+            <div class="map-canvas-container">
+              <canvas id="mapCanvas"></canvas>
+              <canvas id="mapOverlayCanvas"></canvas>
+            </div>
+          </div>
+          <div id="mapHoverInfo" class="hover-info">Tile: - Layer: -</div>
+          <div class="detail-actions" style="margin-top:6px">
+            <button id="applyMapBtn" class="btn-apply">Apply Map Changes</button>
+          </div>
         </div>
       </div>
     </div>
