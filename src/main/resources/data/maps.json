@@ -82,8 +82,8 @@
 		"mapName": "World_1_Beach",
 		"mapKey": "overworld.world1.beach",
 		"tileSize" : 32,
-		"width": 256,
-		"height": 256,
+		"width": 512,
+		"height": 512,
 		"dungeonId": -1,
 		"terrainId": 0
 	},
