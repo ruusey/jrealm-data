@@ -11,16 +11,21 @@ let tiles = [];
 let terrains = [];
 let items = [];
 let projGroups = [];
+let maps = [];
 let images = {};
 let selectedTile = null;
 let selectedTerrain = null;
 let selectedItem = null;
 let selectedProjGroup = null;
+let selectedMap = null;
+let mapBrushTileId = -1;
+let mapPainting = false;
 let pickMode = false;
 let dirtyTiles = false;
 let dirtyTerrains = false;
 let dirtyItems = false;
 let dirtyProjGroups = false;
+let dirtyMaps = false;
 let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
 let activeTab = 'tiles';
@@ -47,11 +52,12 @@ const goToSheetBtn = document.getElementById('goToSheetBtn');
 // ========== INIT ==========
 async function init() {
   populateSheetSelect();
-  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadImages()]);
+  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadImages()]);
   renderSheet();
   renderTileList();
   renderTerrainList();
   renderItemList();
+  renderMapList();
   bindEvents();
 }
 
@@ -86,6 +92,12 @@ async function loadItems() {
 async function loadProjGroups() {
   projGroups = await (await fetch(`${BASE}/projectile-groups.json`)).json();
   projGroups.sort((a, b) => a.projectileGroupId - b.projectileGroupId);
+}
+
+async function loadMaps() {
+  maps = await (await fetch(`${BASE}/maps.json`)).json();
+  maps.sort((a, b) => a.mapId - b.mapId);
+  document.getElementById('mapCount').textContent = maps.length;
 }
 
 function getProjGroupById(id) { return projGroups.find(g => g.projectileGroupId === id); }
@@ -686,6 +698,377 @@ function applyProjGroup() {
   drawSpritePreview(cvs, g.spriteKey, g.row, g.col);
 }
 
+// ========== MAPS EDITOR ==========
+const MAP_TILE_PX = 16; // pixel size per cell on the map canvas
+
+function getMapType(m) {
+  if (m.data) return 'static';
+  if (m.dungeonId >= 0 && m.dungeonParams) return 'dungeon';
+  if (m.terrainId >= 0) return 'terrain';
+  return 'unknown';
+}
+
+function renderMapList(filter = '') {
+  const list = document.getElementById('mapListView');
+  list.innerHTML = '';
+  const lower = (filter || '').toLowerCase();
+  maps.forEach(m => {
+    if (lower && !m.mapName.toLowerCase().includes(lower) && !String(m.mapId).includes(lower)) return;
+    const row = document.createElement('div');
+    row.className = 'tile-row' + (selectedMap && selectedMap.mapId === m.mapId ? ' selected' : '');
+    const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = m.mapId;
+    const name = document.createElement('span'); name.className = 'tile-name'; name.textContent = m.mapName;
+    const type = getMapType(m);
+    const badge = document.createElement('span');
+    badge.className = 'map-type-badge map-type-' + type;
+    badge.textContent = type;
+    const dims = document.createElement('span'); dims.style.cssText = 'color:#888;font-size:11px';
+    dims.textContent = `${m.width}x${m.height}`;
+    row.append(id, name, badge, dims);
+    row.addEventListener('click', () => selectMap(m));
+    list.appendChild(row);
+  });
+}
+
+function selectMap(m) {
+  selectedMap = m;
+  mapBrushTileId = -1;
+  document.getElementById('mapListView').style.display = 'none';
+  document.querySelector('#mapsTab .tile-header').style.display = 'none';
+  showMapDetail(m);
+}
+
+function deselectMap() {
+  selectedMap = null;
+  document.getElementById('mapDetail').style.display = 'none';
+  document.getElementById('mapListView').style.display = '';
+  document.querySelector('#mapsTab .tile-header').style.display = '';
+  renderMapList(document.getElementById('mapSearch').value);
+}
+
+function showMapDetail(m) {
+  const detail = document.getElementById('mapDetail');
+  detail.style.display = 'flex';
+  document.getElementById('mapTitle').textContent = `${m.mapName} (ID ${m.mapId})`;
+  document.getElementById('mapInfo').textContent = `${m.width}x${m.height}, tileSize: ${m.tileSize}`;
+
+  const type = getMapType(m);
+  const dungeonEditor = document.getElementById('dungeonParamsEditor');
+  const staticEditor = document.getElementById('staticMapEditor');
+
+  dungeonEditor.style.display = 'none';
+  staticEditor.style.display = 'none';
+
+  if (type === 'static') {
+    staticEditor.style.display = 'flex';
+    staticEditor.style.flexDirection = 'column';
+    staticEditor.style.flex = '1';
+    staticEditor.style.minHeight = '0';
+    updateMapBrushInfo();
+    renderMapCanvas();
+  } else if (type === 'dungeon') {
+    dungeonEditor.style.display = 'block';
+    showDungeonParams(m);
+  } else if (type === 'terrain') {
+    const terrain = terrains.find(t => t.terrainId === m.terrainId);
+    document.getElementById('mapInfo').textContent += ` | Terrain: ${terrain ? terrain.name : m.terrainId} (edit in Terrains tab)`;
+  }
+}
+
+// ---- Dungeon params editor ----
+function showDungeonParams(m) {
+  const dp = m.dungeonParams || {};
+  document.getElementById('dpMinRooms').value = dp.minRooms || 10;
+  document.getElementById('dpMaxRooms').value = dp.maxRooms || 20;
+  document.getElementById('dpMinRoomW').value = dp.minRoomWidth || 6;
+  document.getElementById('dpMaxRoomW').value = dp.maxRoomWidth || 14;
+  document.getElementById('dpMinRoomH').value = dp.minRoomHeight || 6;
+  document.getElementById('dpMaxRoomH').value = dp.maxRoomHeight || 14;
+  document.getElementById('dpWallTile').value = dp.wallTileId || 0;
+  document.getElementById('dpBossEnemy').value = dp.bossEnemyId != null ? dp.bossEnemyId : -1;
+
+  const shapes = dp.shapeTemplates || [];
+  document.querySelectorAll('#dpShapes input').forEach(cb => {
+    cb.checked = shapes.includes(cb.value);
+  });
+  const halls = dp.hallwayStyles || [];
+  document.querySelectorAll('#dpHalls input').forEach(cb => {
+    cb.checked = halls.includes(cb.value);
+  });
+
+  renderDungeonFloorTiles(dp);
+}
+
+function renderDungeonFloorTiles(dp) {
+  const container = document.getElementById('dpFloorTiles');
+  container.innerHTML = '';
+  const floorIds = dp.floorTileIds || [];
+  floorIds.forEach((tileId, idx) => {
+    const tile = getTileById(tileId);
+    const row = document.createElement('div');
+    row.className = 'tg-tile-row';
+    const cvs = document.createElement('canvas'); cvs.width = 24; cvs.height = 24;
+    if (tile) drawTilePreview(cvs, tile);
+    const idSpan = document.createElement('span'); idSpan.className = 'tile-id'; idSpan.textContent = tileId;
+    const nameSpan = document.createElement('span'); nameSpan.className = 'tg-name';
+    nameSpan.textContent = tile ? tile.name : '(unknown)';
+    const replaceBtn = document.createElement('button');
+    replaceBtn.className = 'btn-add'; replaceBtn.textContent = 'Replace';
+    replaceBtn.style.cssText = 'padding:2px 8px;font-size:11px';
+    replaceBtn.addEventListener('click', () => {
+      openTilePicker((newId) => {
+        floorIds[idx] = newId;
+        markDirty('maps');
+        renderDungeonFloorTiles(dp);
+      });
+    });
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7';
+    removeBtn.addEventListener('click', () => {
+      floorIds.splice(idx, 1);
+      markDirty('maps');
+      renderDungeonFloorTiles(dp);
+    });
+    row.append(cvs, idSpan, nameSpan, replaceBtn, removeBtn);
+    container.appendChild(row);
+  });
+}
+
+function applyDungeonParams() {
+  if (!selectedMap) return;
+  const m = maps.find(x => x.mapId === selectedMap.mapId);
+  if (!m) return;
+  if (!m.dungeonParams) m.dungeonParams = {};
+  const dp = m.dungeonParams;
+  dp.minRooms = parseInt(document.getElementById('dpMinRooms').value) || 10;
+  dp.maxRooms = parseInt(document.getElementById('dpMaxRooms').value) || 20;
+  dp.minRoomWidth = parseInt(document.getElementById('dpMinRoomW').value) || 6;
+  dp.maxRoomWidth = parseInt(document.getElementById('dpMaxRoomW').value) || 14;
+  dp.minRoomHeight = parseInt(document.getElementById('dpMinRoomH').value) || 6;
+  dp.maxRoomHeight = parseInt(document.getElementById('dpMaxRoomH').value) || 14;
+  dp.wallTileId = parseInt(document.getElementById('dpWallTile').value) || 0;
+  const boss = parseInt(document.getElementById('dpBossEnemy').value);
+  if (boss >= 0) dp.bossEnemyId = boss;
+  else delete dp.bossEnemyId;
+
+  dp.shapeTemplates = [];
+  document.querySelectorAll('#dpShapes input:checked').forEach(cb => dp.shapeTemplates.push(cb.value));
+  dp.hallwayStyles = [];
+  document.querySelectorAll('#dpHalls input:checked').forEach(cb => dp.hallwayStyles.push(cb.value));
+  if (dp.hallwayStyles.length === 0) delete dp.hallwayStyles;
+
+  markDirty('maps');
+}
+
+function addDungeonFloorTile() {
+  if (!selectedMap || !selectedMap.dungeonParams) return;
+  openTilePicker((tileId) => {
+    if (!selectedMap.dungeonParams.floorTileIds) selectedMap.dungeonParams.floorTileIds = [];
+    if (selectedMap.dungeonParams.floorTileIds.includes(tileId)) { alert('Tile already in floor list'); return; }
+    selectedMap.dungeonParams.floorTileIds.push(tileId);
+    markDirty('maps');
+    renderDungeonFloorTiles(selectedMap.dungeonParams);
+  });
+}
+
+// ---- Static map layer canvas editor ----
+function getMapLayer() {
+  return document.getElementById('mapLayerSelect').value;
+}
+
+function updateMapBrushInfo() {
+  const info = document.getElementById('mapBrushInfo');
+  if (mapBrushTileId < 0) {
+    info.innerHTML = 'Brush: (none)';
+  } else {
+    const tile = getTileById(mapBrushTileId);
+    const cvs = document.createElement('canvas'); cvs.width = 20; cvs.height = 20;
+    if (tile) drawTilePreview(cvs, tile);
+    info.innerHTML = '';
+    info.appendChild(document.createTextNode('Brush: '));
+    info.appendChild(cvs);
+    info.appendChild(document.createTextNode(` ${tile ? tile.name : mapBrushTileId}`));
+  }
+}
+
+function renderMapCanvas() {
+  if (!selectedMap || !selectedMap.data) return;
+  const m = selectedMap;
+  const layer = getMapLayer();
+  const layerData = m.data[layer];
+  if (!layerData) return;
+
+  const w = m.width * MAP_TILE_PX;
+  const h = m.height * MAP_TILE_PX;
+  const canvas = document.getElementById('mapCanvas');
+  const overlay = document.getElementById('mapOverlayCanvas');
+  canvas.width = w; canvas.height = h;
+  overlay.width = w; overlay.height = h;
+
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = '#111';
+  ctx.fillRect(0, 0, w, h);
+
+  // Draw base layer always
+  const baseData = m.data['0'];
+  if (baseData) {
+    for (let r = 0; r < m.height && r < baseData.length; r++) {
+      for (let c = 0; c < m.width && c < baseData[r].length; c++) {
+        const tileId = baseData[r][c];
+        const tile = getTileById(tileId);
+        if (tile) {
+          const img = images[tile.spriteKey];
+          if (img) {
+            const ss = tile.size || 32;
+            // Use spriteKey's native tile size for source coords
+            const srcSize = gridSize;
+            ctx.drawImage(img, tile.col * srcSize, tile.row * srcSize, srcSize, srcSize,
+              c * MAP_TILE_PX, r * MAP_TILE_PX, MAP_TILE_PX, MAP_TILE_PX);
+          }
+        }
+      }
+    }
+  }
+
+  // Draw collision layer on top if viewing layer 1 or always show both
+  if (layer === '1' || layer === '0') {
+    const colData = m.data['1'];
+    if (colData && layer === '1') {
+      // Dim the base layer
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.fillRect(0, 0, w, h);
+    }
+    if (colData) {
+      for (let r = 0; r < m.height && r < colData.length; r++) {
+        for (let c = 0; c < m.width && c < colData[r].length; c++) {
+          const tileId = colData[r][c];
+          if (tileId === 0 && layer === '1') continue; // skip empty on collision layer view
+          if (layer === '0') continue; // don't draw collision on base view
+          const tile = getTileById(tileId);
+          if (tile) {
+            const img = images[tile.spriteKey];
+            if (img) {
+              const srcSize = gridSize;
+              ctx.drawImage(img, tile.col * srcSize, tile.row * srcSize, srcSize, srcSize,
+                c * MAP_TILE_PX, r * MAP_TILE_PX, MAP_TILE_PX, MAP_TILE_PX);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  drawMapOverlay();
+}
+
+function drawMapOverlay() {
+  if (!selectedMap || !selectedMap.data) return;
+  const m = selectedMap;
+  const w = m.width * MAP_TILE_PX;
+  const h = m.height * MAP_TILE_PX;
+  const ctx = document.getElementById('mapOverlayCanvas').getContext('2d');
+  ctx.clearRect(0, 0, w, h);
+
+  if (document.getElementById('mapShowGrid').checked) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x <= w; x += MAP_TILE_PX) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    for (let y = 0; y <= h; y += MAP_TILE_PX) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+  }
+}
+
+function mapCanvasClick(e) {
+  if (!selectedMap || !selectedMap.data || mapBrushTileId < 0) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const col = Math.floor((e.clientX - rect.left) * scaleX / MAP_TILE_PX);
+  const row = Math.floor((e.clientY - rect.top) * scaleY / MAP_TILE_PX);
+  paintMapCell(row, col);
+}
+
+function mapCanvasDrag(e) {
+  if (!mapPainting) return;
+  mapCanvasClick(e);
+}
+
+function paintMapCell(row, col) {
+  if (!selectedMap || !selectedMap.data || mapBrushTileId < 0) return;
+  const m = selectedMap;
+  const layer = getMapLayer();
+  if (row < 0 || row >= m.height || col < 0 || col >= m.width) return;
+  if (!m.data[layer]) return;
+  if (m.data[layer][row][col] === mapBrushTileId) return;
+  m.data[layer][row][col] = mapBrushTileId;
+  markDirty('maps');
+  // Redraw just the affected cell
+  redrawMapCell(row, col);
+}
+
+function redrawMapCell(row, col) {
+  const m = selectedMap;
+  const canvas = document.getElementById('mapCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  const layer = getMapLayer();
+  const x = col * MAP_TILE_PX, y = row * MAP_TILE_PX;
+
+  // Clear cell
+  ctx.fillStyle = '#111';
+  ctx.fillRect(x, y, MAP_TILE_PX, MAP_TILE_PX);
+
+  // Draw base tile
+  const baseTileId = m.data['0'] ? m.data['0'][row][col] : 0;
+  const baseTile = getTileById(baseTileId);
+  if (baseTile) {
+    const img = images[baseTile.spriteKey];
+    if (img) {
+      const srcSize = gridSize;
+      ctx.drawImage(img, baseTile.col * srcSize, baseTile.row * srcSize, srcSize, srcSize, x, y, MAP_TILE_PX, MAP_TILE_PX);
+    }
+  }
+
+  // If viewing collision layer, dim base and draw collision tile
+  if (layer === '1') {
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.fillRect(x, y, MAP_TILE_PX, MAP_TILE_PX);
+    const colTileId = m.data['1'] ? m.data['1'][row][col] : 0;
+    if (colTileId !== 0) {
+      const colTile = getTileById(colTileId);
+      if (colTile) {
+        const img = images[colTile.spriteKey];
+        if (img) {
+          const srcSize = gridSize;
+          ctx.drawImage(img, colTile.col * srcSize, colTile.row * srcSize, srcSize, srcSize, x, y, MAP_TILE_PX, MAP_TILE_PX);
+        }
+      }
+    }
+  }
+}
+
+function mapCanvasHover(e) {
+  if (!selectedMap || !selectedMap.data) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const col = Math.floor((e.clientX - rect.left) * scaleX / MAP_TILE_PX);
+  const row = Math.floor((e.clientY - rect.top) * scaleY / MAP_TILE_PX);
+  const layer = getMapLayer();
+  const m = selectedMap;
+  if (row < 0 || row >= m.height || col < 0 || col >= m.width) return;
+  const tileId = m.data[layer] ? m.data[layer][row][col] : -1;
+  const tile = getTileById(tileId);
+  document.getElementById('mapHoverInfo').textContent =
+    `Row: ${row}, Col: ${col} | Layer ${layer} | Tile: ${tileId} (${tile ? tile.name : '?'})`;
+}
+
 // ========== TILE PICKER MODAL ==========
 let pickerCallback = null;
 
@@ -738,6 +1121,7 @@ function switchTab(tab) {
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   document.getElementById('tilesTab').style.display = tab === 'tiles' ? '' : 'none';
   document.getElementById('terrainsTab').style.display = tab === 'terrains' ? '' : 'none';
+  document.getElementById('mapsTab').style.display = tab === 'maps' ? '' : 'none';
   document.getElementById('itemsTab').style.display = tab === 'items' ? '' : 'none';
 }
 
@@ -747,12 +1131,14 @@ function markDirty(which) {
   if (which === 'terrains') dirtyTerrains = true;
   if (which === 'items') dirtyItems = true;
   if (which === 'projGroups') dirtyProjGroups = true;
+  if (which === 'maps') dirtyMaps = true;
   saveBtn.disabled = false;
   const parts = [];
   if (dirtyTiles) parts.push('tiles');
   if (dirtyTerrains) parts.push('terrains');
   if (dirtyItems) parts.push('items');
   if (dirtyProjGroups) parts.push('projectiles');
+  if (dirtyMaps) parts.push('maps');
   saveStatus.textContent = `(unsaved: ${parts.join(', ')})`;
   saveStatus.style.color = '#fa0';
 }
@@ -786,6 +1172,12 @@ async function saveAll() {
       if (!res.ok) throw new Error('projectiles: ' + res.statusText);
       dirtyProjGroups = false;
       results.push('projectiles');
+    }
+    if (dirtyMaps) {
+      const res = await fetch('/gamedata/maps', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(maps, null, '\t') });
+      if (!res.ok) throw new Error('maps: ' + res.statusText);
+      dirtyMaps = false;
+      results.push('maps');
     }
     saveStatus.textContent = `Saved ${results.join(', ')}!`;
     saveStatus.style.color = '#8f8';
@@ -892,6 +1284,45 @@ function bindEvents() {
   document.getElementById('applyProjGroupBtn').addEventListener('click', applyProjGroup);
   document.getElementById('addProjBtn').addEventListener('click', addProjectile);
 
+  // Maps
+  document.getElementById('mapSearch').addEventListener('input', (e) => renderMapList(e.target.value));
+  document.getElementById('mapBackBtn').addEventListener('click', deselectMap);
+  document.getElementById('mapLayerSelect').addEventListener('change', renderMapCanvas);
+  document.getElementById('mapShowGrid').addEventListener('change', drawMapOverlay);
+  document.getElementById('mapPickTileBtn').addEventListener('click', () => {
+    openTilePicker((tileId) => {
+      mapBrushTileId = tileId;
+      updateMapBrushInfo();
+    });
+  });
+  document.getElementById('applyMapBtn').addEventListener('click', () => { markDirty('maps'); });
+  document.getElementById('applyDungeonBtn').addEventListener('click', applyDungeonParams);
+  document.getElementById('dpAddFloorTileBtn').addEventListener('click', addDungeonFloorTile);
+
+  // Map canvas paint events
+  const mapOverlay = document.getElementById('mapOverlayCanvas');
+  mapOverlay.addEventListener('mousedown', (e) => { mapPainting = true; mapCanvasClick(e); });
+  mapOverlay.addEventListener('mousemove', (e) => { mapCanvasHover(e); mapCanvasDrag(e); });
+  document.addEventListener('mouseup', () => { mapPainting = false; });
+  mapOverlay.addEventListener('mouseleave', () => { mapPainting = false; });
+
+  // Right-click to erase (set to 0)
+  mapOverlay.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    if (!selectedMap || !selectedMap.data) return;
+    const rect = mapOverlay.getBoundingClientRect();
+    const scaleX = mapOverlay.width / rect.width;
+    const scaleY = mapOverlay.height / rect.height;
+    const col = Math.floor((e.clientX - rect.left) * scaleX / MAP_TILE_PX);
+    const row = Math.floor((e.clientY - rect.top) * scaleY / MAP_TILE_PX);
+    const layer = getMapLayer();
+    if (row >= 0 && row < selectedMap.height && col >= 0 && col < selectedMap.width) {
+      selectedMap.data[layer][row][col] = 0;
+      markDirty('maps');
+      redrawMapCell(row, col);
+    }
+  });
+
   // Tile picker modal
   document.getElementById('pickerCloseBtn').addEventListener('click', closeTilePicker);
   document.getElementById('pickerSearch').addEventListener('input', (e) => renderPickerList(e.target.value));
@@ -900,7 +1331,7 @@ function bindEvents() {
   });
 
   window.addEventListener('beforeunload', (e) => {
-    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups) { e.preventDefault(); e.returnValue = ''; }
+    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups || dirtyMaps) { e.preventDefault(); e.returnValue = ''; }
   });
 
   // Resize handle drag
