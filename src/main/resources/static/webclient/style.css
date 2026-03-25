@@ -199,7 +199,7 @@ button.secondary:hover { background: #4a3a48; }
 }
 .inv-slot:hover { border-color: #6a5a68; }
 .inv-slot.selected { border-color: #c8a86e; background: #3a2a40; }
-.inv-slot.loot-slot { background: #1a2018; }
+.inv-slot.loot-slot { background: #1a2018; pointer-events: auto !important; }
 .inv-slot img, .inv-slot canvas { width: 40px; height: 40px; image-rendering: pixelated; }
 .inv-slot .slot-label {
     position: absolute; bottom: 1px; right: 2px;

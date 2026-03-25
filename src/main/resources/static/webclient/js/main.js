@@ -578,7 +578,6 @@ function processInput(dt) {
     }
 
     // --- Send direction packets to server only on change ---
-    // Server moves the player authoritatively; client lerps to server position.
     if (xDir !== lastXDir || yDir !== lastYDir) {
         const wasMoving = lastXDir !== null || lastYDir !== null;
         const isMoving = xDir !== null || yDir !== null;
@@ -688,6 +687,48 @@ function processInput(dt) {
             }
         }
     }
+}
+
+// --- Collision Check (matches Java TileManager.collisionTile + isVoidTile + collidesLimit) ---
+function checkCollision(entity, dx, dy) {
+    if (!game.mapTiles || !renderer) return false;
+    const ts = renderer.tileSize || 32;
+    const size = entity.size || 32;
+    const futureX = entity.pos.x + dx;
+    const futureY = entity.pos.y + dy;
+
+    // Map bounds (matches Java collidesXLimit/collidesYLimit)
+    const mapW = game.mapWidth * ts, mapH = game.mapHeight * ts;
+    if (futureX <= 0 || futureX + size >= mapW) return true;
+    if (futureY <= 0 || futureY + size >= mapH) return true;
+
+    // Bounding box reduced by 1.5 (matches Java: size / 1.5)
+    const bboxSize = size / 1.5;
+    const bx = futureX + (size - bboxSize) / 2;
+    const by = futureY + (size - bboxSize) / 2;
+
+    // Check collision tiles in 5x5 area around player
+    const cx = Math.floor((futureX + size / 2) / ts);
+    const cy = Math.floor((futureY + size / 2) / ts);
+    for (let ty = cy - 2; ty <= cy + 2; ty++) {
+        for (let tx = cx - 2; tx <= cx + 2; tx++) {
+            if (ty < 0 || ty >= game.mapHeight || tx < 0 || tx >= game.mapWidth) continue;
+            const tile = game.mapTiles[ty]?.[tx];
+            if (!tile || tile.collision <= 0) continue;
+            const tileDef = game.tileData[tile.collision];
+            if (!tileDef?.data?.hasCollision) continue;
+            // AABB intersection
+            const tl = tx * ts, tt = ty * ts;
+            if (bx < tl + ts && bx + bboxSize > tl && by < tt + ts && by + bboxSize > tt) return true;
+        }
+    }
+
+    // Void tile check (base layer tileId=0 at center point)
+    if (cx >= 0 && cx < game.mapWidth && cy >= 0 && cy < game.mapHeight) {
+        const baseTile = game.mapTiles[cy]?.[cx];
+        if (baseTile && baseTile.base === 0) return true;
+    }
+    return false;
 }
 
 // --- HUD Update ---
@@ -849,11 +890,16 @@ function updateGroundLootUI() {
     const nearbyLoot = game.getNearbyLootContainer();
     if (!nearbyLoot || !nearbyLoot.items || nearbyLoot.items.length === 0) {
         lootPanel.style.display = 'none';
+        lastLootKey = '';
         return;
     }
 
-    // Always rebuild loot UI — it's only 8 slots, cheap to recreate,
-    // and caching was preventing updates after item pickup
+    // Rebuild when contents change (compare item IDs)
+    const lootKey = nearbyLoot.lootContainerId + ':' +
+        nearbyLoot.items.map(i => i ? i.itemId : 0).join(',');
+    if (lastLootKey === lootKey) return;
+    lastLootKey = lootKey;
+
     lootPanel.style.display = 'block';
     lootEl.innerHTML = '';
     for (let i = 0; i < Math.min(8, nearbyLoot.items.length); i++) {
@@ -906,7 +952,11 @@ function createSlot(item, label, slotIdx, isLoot = false) {
     div.appendChild(lbl);
 
     // Left click
-    div.addEventListener('click', (e) => { e.stopPropagation(); onSlotClick(slotIdx, item); });
+    div.addEventListener('click', (e) => {
+        e.stopPropagation();
+        console.log(`[CLICK] slot=${slotIdx} isLoot=${isLoot} itemId=${item?.itemId} item=`, item);
+        onSlotClick(slotIdx, item);
+    });
     // Right click
     div.addEventListener('contextmenu', (e) => { e.preventDefault(); e.stopPropagation(); onSlotRightClick(slotIdx, item); });
 

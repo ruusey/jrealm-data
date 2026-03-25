@@ -362,6 +362,16 @@ export class GameRenderer {
             spr.x = sx; spr.y = sy;
             spr.width = size; spr.height = size;
             if (flipX) { spr.anchor.set(1, 0); spr.scale.x = -Math.abs(spr.scale.x); }
+
+            // Status effect tinting (matches Java Player.updateEffectState)
+            // effectIds from UpdatePacket: local player = game.effectIds, other = player.effectIds
+            const effects = isLocal ? gameState.effectIds : (player.effectIds || []);
+            if (this._hasEffect(effects, 0))      spr.tint = 0xCCBB88;  // INVISIBLE → sepia
+            else if (this._hasEffect(effects, 1))  spr.tint = 0xFF8888;  // HEALING → red tint
+            else if (this._hasEffect(effects, 4))  spr.tint = 0xBBFF88;  // SPEEDY → green/yellow
+            else if (this._hasEffect(effects, 6))  spr.tint = 0xFFFFCC;  // INVINCIBLE → bright glow
+            else if (this._hasEffect(effects, 14)) spr.tint = 0xFFAA66;  // DAMAGING → orange
+
             this.entityLayer.addChild(spr);
         } else {
             // Fallback: colored square
@@ -590,9 +600,10 @@ export class GameRenderer {
 
     // Check if an effect ID is present in an entity's effect array
     _hasEffect(effectIds, effectId) {
-        if (!effectIds) return false;
+        if (!effectIds || !effectIds.length) return false;
         for (const id of effectIds) {
-            if (id === effectId || id === BigInt(effectId)) return true;
+            if (id < 0) continue; // -1 = empty slot
+            if (id === effectId) return true;
         }
         return false;
     }

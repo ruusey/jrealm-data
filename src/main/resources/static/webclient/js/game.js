@@ -227,6 +227,7 @@ export class GameState {
                         this.awaitingRealmTransition = false;
                         console.log(`[REALM] Transition complete, snapped to (${mov.posX}, ${mov.posY})`);
                     } else {
+                        // Set target — interpolation in updateInterpolation handles smooth movement
                         p.targetX = mov.posX; p.targetY = mov.posY;
                     }
                     p.dx = mov.velX; p.dy = mov.velY;
@@ -261,9 +262,13 @@ export class GameState {
             player.health = packet.health;
             player.maxHealth = packet.stats.hp;
             player.stats = packet.stats;
+            player.effectIds = packet.effectIds;
         }
         const enemy = this.enemies.get(packet.playerId);
-        if (enemy) { enemy.health = packet.health; }
+        if (enemy) {
+            enemy.health = packet.health;
+            enemy.effectIds = packet.effectIds;
+        }
     }
 
     handleText(packet) {
@@ -357,10 +362,10 @@ export class GameState {
             if (dist > SNAP_DISTANCE) {
                 p.pos.x = p.targetX; p.pos.y = p.targetY;
             } else if (id === this.playerId) {
-                // LOCAL PLAYER: aggressive lerp for precise dodging.
-                // At 32Hz updates (31ms apart), 0.7 lerp reaches 91% in 1 frame, 99% in 2.
-                p.pos.x += dx * 0.7;
-                p.pos.y += dy * 0.7;
+                // LOCAL PLAYER: matches Java applyMovementLerp(0.35f)
+                // Pure server-authoritative — server handles collision, client just renders.
+                p.pos.x += dx * 0.35;
+                p.pos.y += dy * 0.35;
             } else {
                 // OTHER PLAYERS: smooth lerp, no velocity prediction
                 // (player movement is unpredictable, extrapolation causes rubber-banding)
@@ -439,9 +444,11 @@ export class GameState {
         }
     }
 
-    getNearbyLootContainer(maxDist = 128) {
+    // Match Java PlayState.getClosestLootContainer: distance = player.getSize() / 2
+    getNearbyLootContainer() {
         const local = this.getLocalPlayer();
         if (!local) return null;
+        const maxDist = (local.size || 32) / 2;
         let closest = null, closestDist = Infinity;
         for (const [id, loot] of this.lootContainers) {
             const dx = loot.pos.x - local.pos.x, dy = loot.pos.y - local.pos.y;
