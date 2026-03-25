@@ -846,21 +846,15 @@ function updateGroundLootUI() {
 
     document.querySelector('#ground-loot-panel h4').textContent = 'Loot Bag';
 
-    const nearbyLoot = game.getNearbyLootContainer(64);
-    if (!nearbyLoot || !nearbyLoot.items) {
+    const nearbyLoot = game.getNearbyLootContainer();
+    if (!nearbyLoot || !nearbyLoot.items || nearbyLoot.items.length === 0) {
         lootPanel.style.display = 'none';
-        lastLootKey = '';
         return;
     }
 
-    // Server sends condensed items (no nulls/empties), so any items = show panel
-    if (nearbyLoot.items.length === 0) { lootPanel.style.display = 'none'; lastLootKey = ''; return; }
-
+    // Always rebuild loot UI — it's only 8 slots, cheap to recreate,
+    // and caching was preventing updates after item pickup
     lootPanel.style.display = 'block';
-    const lootKey = nearbyLoot.items.map(i => i ? i.itemId : -1).join(',') + ':' + selectedSlot;
-    if (lastLootKey === lootKey) return;
-    lastLootKey = lootKey;
-
     lootEl.innerHTML = '';
     for (let i = 0; i < Math.min(8, nearbyLoot.items.length); i++) {
         const item = nearbyLoot.items[i];

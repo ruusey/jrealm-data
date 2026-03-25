@@ -233,7 +233,7 @@ export class GameState {
                 }
             } else if (t === 1) {
                 const e = this.enemies.get(id);
-                if (e) { e.pos.x = mov.posX; e.pos.y = mov.posY; e.targetX = mov.posX; e.targetY = mov.posY; e.dx = mov.velX; e.dy = mov.velY; }
+                if (e) { e.targetX = mov.posX; e.targetY = mov.posY; e.dx = mov.velX; e.dy = mov.velY; }
             } else if (t === 2) {
                 const b = this.bullets.get(id);
                 if (b) { b.targetX = mov.posX; b.targetY = mov.posY; b.dx = mov.velX; b.dy = mov.velY; }
@@ -348,35 +348,77 @@ export class GameState {
     }
 
     updateInterpolation(dt) {
-        // Server sends authoritative positions via ObjectMovePacket → targetX/targetY.
-        // Local player: high lerp (0.55) for snappy feel without client-side prediction.
-        // Other players: moderate lerp (0.45) for smooth interpolation.
-        const SELF_LERP = 0.55;
-        const OTHER_LERP = 0.45;
         const SNAP_DISTANCE = 96;
 
         for (const [id, p] of this.players) {
-            const lerp = id === this.playerId ? SELF_LERP : OTHER_LERP;
             const dx = p.targetX - p.pos.x, dy = p.targetY - p.pos.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist > SNAP_DISTANCE) { p.pos.x = p.targetX; p.pos.y = p.targetY; }
-            else { p.pos.x += dx * lerp; p.pos.y += dy * lerp; }
+
+            if (dist > SNAP_DISTANCE) {
+                p.pos.x = p.targetX; p.pos.y = p.targetY;
+            } else if (id === this.playerId) {
+                // LOCAL PLAYER: aggressive lerp for precise dodging.
+                // At 32Hz updates (31ms apart), 0.7 lerp reaches 91% in 1 frame, 99% in 2.
+                p.pos.x += dx * 0.7;
+                p.pos.y += dy * 0.7;
+            } else {
+                // OTHER PLAYERS: smooth lerp, no velocity prediction
+                // (player movement is unpredictable, extrapolation causes rubber-banding)
+                p.pos.x += dx * 0.4;
+                p.pos.y += dy * 0.4;
+            }
+
             if (Math.abs(p.dx) > 0.1) p.facing = p.dx > 0 ? 'right' : 'left';
             p.animTimer = (p.animTimer || 0) + dt;
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
-        // Bullets: fully client-predicted (server no longer sends ObjectMovePacket for bullets).
-        // Trajectory is deterministic: velocity = (sin(angle)*magnitude, cos(angle)*magnitude).
-        // Remove bullets that exceed their range or lifetime (10 sec).
+
+        // Enemies: lerp toward server position.
+        // At 16-32Hz updates, use moderate lerp for smooth movement.
+        for (const [id, e] of this.enemies) {
+            const dx = e.targetX - e.pos.x, dy = e.targetY - e.pos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist > SNAP_DISTANCE) {
+                e.pos.x = e.targetX; e.pos.y = e.targetY;
+            } else if (dist > 0.5) {
+                e.pos.x += dx * 0.35;
+                e.pos.y += dy * 0.35;
+            }
+        }
+
+        // Bullets: fully client-predicted (server doesn't send ObjectMovePacket for bullets).
+        // Matches Java Bullet.update() and Bullet.updateParametric().
         const now = Date.now();
         for (const [id, b] of this.bullets) {
-            const vx = Math.sin(b.angle) * b.magnitude;
-            const vy = Math.cos(b.angle) * b.magnitude;
-            b.pos.x += vx;
-            b.pos.y += vy;
+            const amp = b.amplitude || 0;
+            const freq = b.frequency || 0;
 
-            // Track distance traveled for range check
-            b._traveled = (b._traveled || 0) + b.magnitude;
+            if (amp !== 0 && freq !== 0) {
+                // Parametric (wavy) projectile - matches Java Bullet.updateParametric()
+                if (b._timeStep === undefined) b._timeStep = 0;
+                const prevOffset = amp * Math.sin(b._timeStep * Math.PI / 180);
+                b._timeStep = (b._timeStep + freq) % 360;
+                const currOffset = amp * Math.sin(b._timeStep * Math.PI / 180);
+                const perpDelta = currOffset - prevOffset;
+
+                const forwardX = Math.sin(b.angle) * b.magnitude;
+                const forwardY = Math.cos(b.angle) * b.magnitude;
+                const perpX = Math.cos(b.angle);
+                const perpY = -Math.sin(b.angle);
+
+                const inv = b.invert ? -1 : 1;
+                b.pos.x += forwardX + perpX * perpDelta * inv;
+                b.pos.y += forwardY + perpY * perpDelta * inv;
+                b._traveled = (b._traveled || 0) + b.magnitude;
+            } else {
+                // Straight-line projectile - matches Java Bullet.update()
+                const vx = Math.sin(b.angle) * b.magnitude;
+                const vy = Math.cos(b.angle) * b.magnitude;
+                b.pos.x += vx;
+                b.pos.y += vy;
+                b._traveled = (b._traveled || 0) + Math.sqrt(vx * vx + vy * vy);
+            }
+
             const lifetime = now - Number(b.createdTime);
             if (b._traveled > b.range || lifetime > 10000) {
                 this.bullets.delete(id);
