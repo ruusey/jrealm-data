@@ -126,14 +126,19 @@ export class GameState {
             }
         }
 
+        let baseCount = 0, collCount = 0, outOfBounds = 0;
         for (const tile of packet.tiles) {
             // Server swaps x/y: new NetTile(id, layer, y, x) → xIndex=row, yIndex=col
             const r = tile.xIndex;
             const c = tile.yIndex;
             if (r >= 0 && r < this.mapHeight && c >= 0 && c < this.mapWidth) {
-                if (tile.layer === 0) this.mapTiles[r][c].base = tile.tileId;
-                else this.mapTiles[r][c].collision = tile.tileId;
-            }
+                if (tile.layer === 0) { this.mapTiles[r][c].base = tile.tileId; baseCount++; }
+                else { this.mapTiles[r][c].collision = tile.tileId; collCount++; }
+            } else { outOfBounds++; }
+        }
+        if (baseCount > 0 || collCount > 0 || outOfBounds > 0) {
+            console.log(`[MAP] mapId=${this.mapId} ${this.mapWidth}x${this.mapHeight}: ` +
+                `${baseCount} base + ${collCount} coll tiles loaded (${outOfBounds} OOB, sameMap=${sameMap})`);
         }
     }
 
@@ -339,7 +344,12 @@ export class GameState {
             p.animTimer = (p.animTimer || 0) + dt;
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
-        for (const [id, b] of this.bullets) { b.pos.x += b.dx; b.pos.y += b.dy; }
+        // Bullets: lerp toward server position (high lerp for fast-moving projectiles)
+        for (const [id, b] of this.bullets) {
+            const dx = b.targetX - b.pos.x, dy = b.targetY - b.pos.y;
+            b.pos.x += dx * 0.65;
+            b.pos.y += dy * 0.65;
+        }
 
         // Update damage texts
         for (let i = this.damageTexts.length - 1; i >= 0; i--) {
@@ -378,14 +388,64 @@ export class GameState {
         return result;
     }
 
+    // Parse exp level ranges into {level: {min, max}} on first call
+    _getParsedExpMap() {
+        if (this._parsedExpMap) return this._parsedExpMap;
+        if (!this.expLevels || !this.expLevels.levelExperienceMap) return null;
+        this._parsedExpMap = {};
+        this._maxExpLevel = 1;
+        this._maxExperience = 0;
+        for (const [lvl, range] of Object.entries(this.expLevels.levelExperienceMap)) {
+            const [min, max] = range.split('-').map(Number);
+            const l = parseInt(lvl);
+            this._parsedExpMap[l] = { min, max };
+            if (l > this._maxExpLevel) this._maxExpLevel = l;
+            if (max > this._maxExperience) this._maxExperience = max;
+        }
+        return this._parsedExpMap;
+    }
+
+    // Matches Java ExperienceModel.getLevel()
     getPlayerLevel() {
-        if (!this.expLevels || !this.expLevels.levelExperienceMap) return 1;
-        const map = this.expLevels.levelExperienceMap;
+        const map = this._getParsedExpMap();
+        if (!map) return 1;
+        const exp = Number(this.experience);
+        if (exp > this._maxExperience) return this._maxExpLevel;
         let level = 1;
         for (const [lvl, range] of Object.entries(map)) {
-            const [min] = range.split('-').map(Number);
-            if (this.experience >= min) level = parseInt(lvl);
+            if (range.min <= exp && range.max >= exp) {
+                level = parseInt(lvl);
+            }
         }
         return level;
+    }
+
+    // Matches Java ExperienceModel.getBaseFame()
+    getBaseFame() {
+        const exp = Number(this.experience);
+        if (exp > this._maxExperience) {
+            return Math.floor((exp - this._maxExperience) / 2500);
+        }
+        return 0;
+    }
+
+    // Get XP bar display info matching Java FillBars
+    getExpDisplayInfo() {
+        const map = this._getParsedExpMap();
+        if (!map) return { text: 'Lv 1', pct: 0 };
+        const exp = Number(this.experience);
+        const level = this.getPlayerLevel();
+        const fame = this.getBaseFame();
+
+        if (fame > 0) {
+            // Max level reached - show fame
+            return { text: `Fame: ${fame}`, pct: 100 };
+        }
+
+        // Show XP progress within current level
+        const range = map[level];
+        if (!range) return { text: `Lv ${level}`, pct: 0 };
+        const pct = Math.min(100, (exp / range.max) * 100);
+        return { text: `${exp} (${range.max})`, pct };
     }
 }

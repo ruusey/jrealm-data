@@ -26,17 +26,20 @@ let shootCooldown = 0;
 let projectileCounter = 0;
 
 // --- Sprite sheets to load ---
+// Must match Java GameSpriteManager.SPRITE_NAMES exactly
 const SPRITE_SHEETS = [
-    'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
-    'rotmg-bosses.png', 'rotmg-bosses-1.png',
-    'rotmg-projectiles.png',
+    'lofi_classes.png', 'rotmg-projectiles.png',
+    'rotmg-bosses-1.png', 'rotmg-bosses.png',
     'rotmg-items.png', 'rotmg-items-1.png',
     'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png',
     'rotmg-tiles-all.png', 'rotmg-tiles-1_0.png', 'rotmg-tiles-1_.png',
-    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png',
-    'lofi_obj_packA.png', 'lofi_obj_packB.png',
-    'buttons.png', 'fillbars.png', 'slots.png',
-    'rotmg-misc.png'
+    'rotmg-abilities.png', 'rotmg-misc.png',
+    'buttons.png', 'fillbars.png', 'icons.png', 'slots.png', 'ui.png',
+    'rotmg-bosses-1_.png',
+    'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
+    'lofi_char.png', 'lofi_environment.png', 'lofi_halls.png',
+    'lofi_obj.png', 'lofi_obj_packA.png', 'lofi_obj_packB.png',
+    'lofi_dungeon_features.png'
 ];
 
 // --- Screen Management ---
@@ -239,24 +242,33 @@ function showDeathScreen() {
 function doRealmTransition(portal, isVault) {
     console.log(`[REALM] Starting transition, vault=${isVault}, portal=${portal?.id}`);
 
-    // Send portal packet
+    // Send UsePortalPacket matching Java factory methods exactly:
+    // toVault(): portalId=-1, toVault=1, toNexus=-1
+    // from():    portalId=id, toVault=-1, toNexus=-1
+    // Server checks: isToVault() = toVault != -1, isToNexus() = toNexus != -1
+    // So we MUST send -1 (not 0) for "false" flags!
     if (isVault) {
-        network.sendUsePortal(0n, game.realmId || 0n, game.playerId, 1, 0);
+        // Prevent double vault entry
+        if (game.mapId === 1) return;
+        network.sendUsePortal(-1n, game.realmId || 0n, game.playerId, 1, -1);
     } else if (portal) {
-        network.sendUsePortal(portal.id, game.realmId || 0n, game.playerId, 0, 0);
+        network.sendUsePortal(portal.id, game.realmId || 0n, game.playerId, -1, -1);
     }
 
     // Clear local state (matches Java Realm.loadMap)
     game.prepareRealmTransition();
 
     // Reset renderer tile debug flag so new tiles get logged
-    if (renderer) renderer._tileDebugLogged = false;
+    if (renderer) {
+        renderer._tileDebugLogged = false;
+        renderer._debugLogged = false;
+    }
 
     // Reset movement state
     lastXDir = null; lastYDir = null;
     lastInvKey = ''; lastLootKey = '';
 
-    // Tell server we're ready for new tiles
+    // Tell server we're ready for new tiles (triggers sendImmediateLoadMap)
     network.sendLoginAck(game.playerId);
 }
 
@@ -589,7 +601,9 @@ function processInput(dt) {
         lastYDir = yDir;
     }
 
-    // Shooting
+    // Shooting - matches Java PlayState shoot cooldown exactly:
+    // dex = floor((6.5 * (DEX_stat + 17.3)) / 75)
+    // canShoot = (now - lastShot) > (1000 / dex + 10) ms
     if (shootCooldown > 0) shootCooldown -= dt;
     if (input.wantsShoot() && shootCooldown <= 0 && renderer) {
         const world = renderer.getWorldCoords(input.mouseX, input.mouseY, game);
@@ -601,9 +615,9 @@ function processInput(dt) {
                 ++projectileCounter, game.playerId, projGroupId,
                 world.x, world.y, local.pos.x, local.pos.y
             );
-            // Cooldown based on DEX stat
-            const dex = game.stats ? game.stats.dex : 10;
-            shootCooldown = 1.0 / (1.5 + 6.5 * (dex / 75.0));
+            const dexStat = game.stats ? game.stats.dex : 10;
+            const dex = Math.floor((6.5 * (dexStat + 17.3)) / 75);
+            shootCooldown = (1000 / Math.max(dex, 1) + 10) / 1000; // Convert ms to seconds
         }
     }
 
@@ -689,10 +703,11 @@ function updateHUD() {
     document.getElementById('mp-bar').style.width = `${mpPct}%`;
     document.getElementById('mp-text').textContent = `${game.mana}/${game.maxMana}`;
 
-    // XP/Level
+    // XP/Level/Fame - matches Java FillBars exactly
     const level = game.getPlayerLevel();
-    document.getElementById('xp-text').textContent = `Lv ${level} (${game.experience} XP)`;
-    document.getElementById('xp-bar').style.width = `${Math.min(100, (level / 20) * 100)}%`;
+    const expInfo = game.getExpDisplayInfo();
+    document.getElementById('xp-text').textContent = expInfo.text;
+    document.getElementById('xp-bar').style.width = `${expInfo.pct}%`;
 
     // Stats panel
     if (game.stats) {

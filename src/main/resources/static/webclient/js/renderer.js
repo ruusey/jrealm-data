@@ -327,9 +327,9 @@ export class GameRenderer {
         // Player name
         const name = player.name || CLASS_NAMES[classId] || 'Player';
         const nameText = new PIXI.Text(name, {
-            fontSize: 10, fill: isLocal ? 0x40ff40 : 0xffffff,
+            fontSize: 16, fill: isLocal ? 0x40ff40 : 0xffffff,
             fontFamily: 'monospace', fontWeight: 'bold',
-            stroke: 0x000000, strokeThickness: 2
+            stroke: 0x000000, strokeThickness: 3
         });
         nameText.anchor.set(0.5, 1);
         nameText.x = sx + size / 2;
@@ -368,7 +368,7 @@ export class GameRenderer {
         // Enemy name
         if (enemyDef) {
             const nameText = new PIXI.Text(enemyDef.name || `Enemy`, {
-                fontSize: 13, fill: 0xff8080,
+                fontSize: 16, fill: 0xff8080,
                 fontFamily: 'monospace', fontWeight: 'bold',
                 stroke: 0x000000, strokeThickness: 3
             });
@@ -518,9 +518,9 @@ export class GameRenderer {
             const alpha = Math.max(0, dt.life / 45);
             const colorStr = '#' + dt.color.toString(16).padStart(6, '0');
             const txt = new PIXI.Text(dt.text, {
-                fontSize: 14, fill: colorStr,
+                fontSize: 24, fill: colorStr,
                 fontFamily: 'monospace', fontWeight: 'bold',
-                stroke: '#000000', strokeThickness: 3
+                stroke: '#000000', strokeThickness: 4
             });
             txt.anchor.set(0.5, 0.5);
             txt.x = sx; txt.y = sy;
