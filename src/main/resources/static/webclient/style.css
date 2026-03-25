@@ -154,6 +154,7 @@ button.secondary:hover { background: #4a3a48; }
 .stat-row { display: flex; justify-content: space-between; }
 .stat-label { color: #887868; }
 .stat-value { color: #e0d8c8; font-weight: 600; }
+.stat-bonus { color: #40c040; font-size: 10px; }
 
 #inventory-panel {
     background: #1a1218cc;
@@ -162,6 +163,22 @@ button.secondary:hover { background: #4a3a48; }
     padding: 8px;
     position: relative;
     z-index: 10;
+}
+#equip-label, #inv-label {
+    font-size: 10px;
+    color: #887868;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#equip-slots {
+    border-bottom: 2px solid #4a3a50;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+}
+#equip-slots .inv-slot {
+    background: #2a2838;
+    border-color: #4a3a58;
 }
 .slot-row {
     display: grid;

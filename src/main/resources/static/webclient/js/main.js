@@ -615,7 +615,8 @@ function processInput(dt) {
                 ++projectileCounter, game.playerId, projGroupId,
                 world.x, world.y, local.pos.x, local.pos.y
             );
-            const dexStat = game.stats ? game.stats.dex : 10;
+            const computed = game.getComputedStats();
+            const dexStat = computed ? computed.dex : 10;
             const dex = Math.floor((6.5 * (dexStat + 17.3)) / 75);
             shootCooldown = (1000 / Math.max(dex, 1) + 10) / 1000; // Convert ms to seconds
         }
@@ -691,33 +692,43 @@ function processInput(dt) {
 
 // --- HUD Update ---
 function updateHUD() {
-    // HP bar
-    const hpPct = game.maxHealth > 0 ? (game.health / game.maxHealth * 100) : 100;
+    // Use computed stats (base + equipment bonuses) for display
+    const computed = game.getComputedStats();
+
+    // HP bar - max HP from computed stats
+    const maxHp = computed ? computed.hp : game.maxHealth;
+    const hpPct = maxHp > 0 ? Math.min(100, game.health / maxHp * 100) : 100;
     document.getElementById('hp-bar').style.width = `${hpPct}%`;
-    document.getElementById('hp-text').textContent = `${game.health}/${game.maxHealth}`;
+    document.getElementById('hp-text').textContent = `${game.health}/${maxHp}`;
 
-    // MP bar
-    const mpPct = game.maxMana > 0 ? (game.mana / game.maxMana * 100) : 100;
+    // MP bar - max MP from computed stats
+    const maxMp = computed ? computed.mp : game.maxMana;
+    const mpPct = maxMp > 0 ? Math.min(100, game.mana / maxMp * 100) : 100;
     document.getElementById('mp-bar').style.width = `${mpPct}%`;
-    document.getElementById('mp-text').textContent = `${game.mana}/${game.maxMana}`;
+    document.getElementById('mp-text').textContent = `${game.mana}/${maxMp}`;
 
-    // XP/Level/Fame - matches Java FillBars exactly
+    // XP/Level/Fame
     const level = game.getPlayerLevel();
     const expInfo = game.getExpDisplayInfo();
-    document.getElementById('xp-text').textContent = expInfo.text;
+    document.getElementById('xp-text').textContent = `Lv ${level}  ${expInfo.text}`;
     document.getElementById('xp-bar').style.width = `${expInfo.pct}%`;
 
-    // Stats panel
-    if (game.stats) {
-        const s = game.stats;
-        document.getElementById('stats-panel').innerHTML = `
-            <div class="stat-row"><span class="stat-label">ATT</span><span class="stat-value">${s.att}</span></div>
-            <div class="stat-row"><span class="stat-label">DEF</span><span class="stat-value">${s.def}</span></div>
-            <div class="stat-row"><span class="stat-label">SPD</span><span class="stat-value">${s.spd}</span></div>
-            <div class="stat-row"><span class="stat-label">DEX</span><span class="stat-value">${s.dex}</span></div>
-            <div class="stat-row"><span class="stat-label">VIT</span><span class="stat-value">${s.vit}</span></div>
-            <div class="stat-row"><span class="stat-label">WIS</span><span class="stat-value">${s.wis}</span></div>
-        `;
+    // Stats panel - show COMPUTED stats (base + equipment)
+    if (computed) {
+        const base = game.stats;
+        // Show computed value, highlight bonus in green if equipment adds to it
+        const statHtml = (label, baseVal, compVal) => {
+            const bonus = compVal - baseVal;
+            const bonusStr = bonus > 0 ? ` <span class="stat-bonus">+${bonus}</span>` : '';
+            return `<div class="stat-row"><span class="stat-label">${label}</span><span class="stat-value">${compVal}${bonusStr}</span></div>`;
+        };
+        document.getElementById('stats-panel').innerHTML =
+            statHtml('ATT', base.att, computed.att) +
+            statHtml('DEF', base.def, computed.def) +
+            statHtml('SPD', base.spd, computed.spd) +
+            statHtml('DEX', base.dex, computed.dex) +
+            statHtml('VIT', base.vit, computed.vit) +
+            statHtml('WIS', base.wis, computed.wis);
     }
 
     // Inventory

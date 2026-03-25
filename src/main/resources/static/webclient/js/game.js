@@ -80,6 +80,27 @@ export class GameState {
         this.awaitingRealmTransition = true;
     }
 
+    // Computed stats = base stats + equipment bonuses (slots 0-3)
+    // Matches Java Player.getComputedStats()
+    getComputedStats() {
+        if (!this.stats) return null;
+        const s = { ...this.stats };
+        for (let i = 0; i < 4; i++) {
+            const item = this.inventory[i];
+            if (item && item.itemId > 0 && item.stats) {
+                s.hp += item.stats.hp || 0;
+                s.mp += item.stats.mp || 0;
+                s.def += item.stats.def || 0;
+                s.att += item.stats.att || 0;
+                s.spd += item.stats.spd || 0;
+                s.dex += item.stats.dex || 0;
+                s.vit += item.stats.vit || 0;
+                s.wis += item.stats.wis || 0;
+            }
+        }
+        return s;
+    }
+
     // Get item definition with all sprite/stat info
     getItemDef(itemId) {
         return this.itemData[itemId] || null;
@@ -344,11 +365,22 @@ export class GameState {
             p.animTimer = (p.animTimer || 0) + dt;
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
-        // Bullets: lerp toward server position (high lerp for fast-moving projectiles)
+        // Bullets: fully client-predicted (server no longer sends ObjectMovePacket for bullets).
+        // Trajectory is deterministic: velocity = (sin(angle)*magnitude, cos(angle)*magnitude).
+        // Remove bullets that exceed their range or lifetime (10 sec).
+        const now = Date.now();
         for (const [id, b] of this.bullets) {
-            const dx = b.targetX - b.pos.x, dy = b.targetY - b.pos.y;
-            b.pos.x += dx * 0.65;
-            b.pos.y += dy * 0.65;
+            const vx = Math.sin(b.angle) * b.magnitude;
+            const vy = Math.cos(b.angle) * b.magnitude;
+            b.pos.x += vx;
+            b.pos.y += vy;
+
+            // Track distance traveled for range check
+            b._traveled = (b._traveled || 0) + b.magnitude;
+            const lifetime = now - Number(b.createdTime);
+            if (b._traveled > b.range || lifetime > 10000) {
+                this.bullets.delete(id);
+            }
         }
 
         // Update damage texts
