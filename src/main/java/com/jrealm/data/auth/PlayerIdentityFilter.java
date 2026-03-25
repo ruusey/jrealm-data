@@ -59,7 +59,8 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
                 || request.getServletPath().contains("/swagger-config")
                 || request.getServletPath().matches("/.*[a-z0-9 -].png")
                 || request.getServletPath().matches("/.*[a-z0-9 -].json")
-                || request.getServletPath().matches("/game-data/[^/]+")) {
+                || request.getServletPath().startsWith("/game-data/")
+                || request.getServletPath().startsWith("/ws/")) {
             log.debug("Safe path detected {}", request.getServletPath());
             filterChain.doFilter(request, response);
             return;

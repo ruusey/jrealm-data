@@ -189,7 +189,7 @@
         "col": 14,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 0,
             "damaging": 0
         }
@@ -202,7 +202,7 @@
         "col": 15,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 0,
             "damaging": 0
         }
@@ -436,7 +436,7 @@
         "col": 14,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }
@@ -449,7 +449,7 @@
         "col": 12,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 0,
             "damaging": 0
         }
@@ -462,7 +462,7 @@
         "col": 3,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }
@@ -579,7 +579,7 @@
         "col": 11,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }
@@ -1515,7 +1515,7 @@
         "col": 5,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }
@@ -1528,7 +1528,7 @@
         "col": 1,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }
@@ -1541,7 +1541,7 @@
         "col": 0,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }
@@ -1554,7 +1554,7 @@
         "col": 3,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }
@@ -1749,7 +1749,7 @@
         "col": 8,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 0,
             "damaging": 0
         }
@@ -1762,7 +1762,7 @@
         "col": 5,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 0,
             "damaging": 0
         }
@@ -1814,7 +1814,7 @@
         "col": 0,
         "size": 32,
         "data": {
-            "hasCollision": 0,
+            "hasCollision": 1,
             "slows": 1,
             "damaging": 0
         }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JRealm</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+        <div class="login-box">
+            <h1>JRealm</h1>
+            <p class="subtitle">Web Client</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                <div class="form-group">
+                    <label for="server-addr">Game Server</label>
+                    <input type="text" id="server-addr" value="localhost" placeholder="localhost">
+                </div>
+                <button type="submit" id="login-btn">Login</button>
+                <p id="login-error" class="error"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Character Select Screen -->
+    <div id="charselect-screen" class="screen">
+        <div class="charselect-box">
+            <h2>Select Character</h2>
+            <div id="char-list"></div>
+            <button id="play-btn" disabled>Play</button>
+            <button id="logout-btn" class="secondary">Back</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div id="game-canvas-container"></div>
+        <!-- HUD Overlay -->
+        <div id="hud">
+            <div id="hud-bars">
+                <div class="bar-container">
+                    <div id="hp-bar" class="bar hp"><span id="hp-text">0/0</span></div>
+                </div>
+                <div class="bar-container">
+                    <div id="mp-bar" class="bar mp"><span id="mp-text">0/0</span></div>
+                </div>
+                <div class="bar-container">
+                    <div id="xp-bar" class="bar xp"><span id="xp-text">Lv 0</span></div>
+                </div>
+            </div>
+            <div id="stats-panel"></div>
+            <div id="inventory-panel">
+                <div id="equip-slots" class="slot-row"></div>
+                <div id="inv-slots" class="slot-row"></div>
+            </div>
+        </div>
+        <!-- Chat -->
+        <div id="chat-panel">
+            <div id="chat-messages"></div>
+            <input type="text" id="chat-input" placeholder="Press Enter to chat..." autocomplete="off">
+        </div>
+        <!-- Connection Status -->
+        <div id="connection-status">Connecting...</div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

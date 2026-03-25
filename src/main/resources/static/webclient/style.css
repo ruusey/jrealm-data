@@ -1,0 +1,230 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #21181e;
+    color: #e0d8c8;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.screen { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+.screen.active { display: flex; align-items: center; justify-content: center; }
+
+/* Login */
+.login-box, .charselect-box {
+    background: #2a2030;
+    border: 2px solid #4a3a50;
+    border-radius: 8px;
+    padding: 40px;
+    width: 380px;
+    text-align: center;
+}
+.login-box h1 { font-size: 36px; color: #c8a86e; margin-bottom: 4px; letter-spacing: 2px; }
+.subtitle { color: #887868; margin-bottom: 24px; font-size: 14px; }
+.form-group { margin-bottom: 16px; text-align: left; }
+.form-group label { display: block; margin-bottom: 4px; font-size: 13px; color: #a89888; }
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    background: #1a1218;
+    border: 1px solid #3a2a38;
+    border-radius: 4px;
+    color: #e0d8c8;
+    font-size: 14px;
+    outline: none;
+}
+.form-group input:focus { border-color: #c8a86e; }
+button {
+    width: 100%;
+    padding: 12px;
+    background: #c8a86e;
+    color: #1a1218;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+}
+button:hover { background: #dab87e; }
+button:disabled { background: #5a4a3a; color: #887868; cursor: default; }
+button.secondary { background: #3a2a38; color: #a89888; margin-top: 8px; }
+button.secondary:hover { background: #4a3a48; }
+.error { color: #e85050; font-size: 13px; margin-top: 12px; min-height: 18px; }
+
+/* Character Select */
+.charselect-box { width: 500px; }
+.charselect-box h2 { color: #c8a86e; margin-bottom: 20px; }
+#char-list { max-height: 400px; overflow-y: auto; margin-bottom: 16px; }
+.char-card {
+    background: #1a1218;
+    border: 2px solid #3a2a38;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.15s;
+}
+.char-card:hover { border-color: #6a5a68; }
+.char-card.selected { border-color: #c8a86e; background: #2a2030; }
+.char-card .char-icon {
+    width: 48px; height: 48px;
+    background: #2a2030;
+    border-radius: 4px;
+    image-rendering: pixelated;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+}
+.char-card .char-info { text-align: left; flex: 1; }
+.char-card .char-name { font-weight: 600; font-size: 15px; }
+.char-card .char-details { font-size: 12px; color: #887868; margin-top: 2px; }
+
+/* Game */
+#game-screen { flex-direction: column; }
+#game-canvas-container {
+    width: 100%; height: 100%;
+    position: relative;
+}
+#game-canvas-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    image-rendering: pixelated;
+}
+
+/* HUD */
+#hud {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 220px;
+    pointer-events: auto;
+}
+#hud-bars { margin-bottom: 8px; }
+.bar-container {
+    background: #1a1218;
+    border: 1px solid #3a2a38;
+    border-radius: 3px;
+    height: 22px;
+    margin-bottom: 4px;
+    position: relative;
+    overflow: hidden;
+}
+.bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bar span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+.bar.hp { background: #c04040; width: 100%; }
+.bar.mp { background: #4060c0; width: 100%; }
+.bar.xp { background: #40a040; width: 0%; }
+
+#stats-panel {
+    background: #1a1218cc;
+    border: 1px solid #3a2a38;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 12px;
+}
+.stat-row { display: flex; justify-content: space-between; }
+.stat-label { color: #887868; }
+.stat-value { color: #e0d8c8; font-weight: 600; }
+
+#inventory-panel {
+    background: #1a1218cc;
+    border: 1px solid #3a2a38;
+    border-radius: 4px;
+    padding: 8px;
+}
+.slot-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+}
+.inv-slot {
+    width: 44px; height: 44px;
+    background: #2a2030;
+    border: 1px solid #3a2a38;
+    border-radius: 3px;
+    image-rendering: pixelated;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+}
+.inv-slot img { width: 32px; height: 32px; image-rendering: pixelated; }
+.inv-slot .slot-label {
+    position: absolute; bottom: 1px; right: 2px;
+    font-size: 8px; color: #887868;
+}
+
+/* Chat */
+#chat-panel {
+    position: absolute;
+    bottom: 10px; left: 10px;
+    width: 360px;
+    pointer-events: auto;
+}
+#chat-messages {
+    background: #1a1218aa;
+    border: 1px solid #3a2a38;
+    border-radius: 4px 4px 0 0;
+    height: 140px;
+    overflow-y: auto;
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+#chat-messages .msg-system { color: #c8a86e; }
+#chat-messages .msg-player { color: #e0d8c8; }
+#chat-messages .msg-name { color: #80b0e0; font-weight: 600; }
+#chat-input {
+    width: 100%;
+    padding: 8px 10px;
+    background: #1a1218;
+    border: 1px solid #3a2a38;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    color: #e0d8c8;
+    font-size: 13px;
+    outline: none;
+}
+#chat-input:focus { border-color: #c8a86e; }
+
+#connection-status {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: #1a1218cc;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #c8a86e;
+}
+#connection-status.connected { color: #40a040; }
+#connection-status.error { color: #e85050; }
+
+/* Minimap */
+#minimap {
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
