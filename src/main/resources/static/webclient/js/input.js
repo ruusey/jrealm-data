@@ -26,6 +26,8 @@ export class InputHandler {
     onKeyDown(e) {
         if (this.chatMode && e.key !== 'Enter' && e.key !== 'Escape') return;
         this.keys[e.code] = true;
+        // Prevent browser defaults for game keys
+        if (['F1', 'F2', 'F3', 'F4', 'Tab', 'Escape'].includes(e.key)) e.preventDefault();
     }
 
     onKeyUp(e) {

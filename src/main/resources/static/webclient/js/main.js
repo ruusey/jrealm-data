@@ -18,8 +18,10 @@ let currentScreen = 'login';
 let account = null;
 let selectedCharacter = null;
 let gameServerHost = 'localhost';
-let lastMoveDir = -1;
-let lastMoving = false;
+// Movement: track X and Y axes independently for diagonal support
+// Server Cardinality: NORTH=0, SOUTH=1, EAST=2, WEST=3, NONE=4
+let lastXDir = null; // null=none, 2=EAST, 3=WEST
+let lastYDir = null; // null=none, 0=NORTH, 1=SOUTH
 let shootCooldown = 0;
 let projectileCounter = 0;
 
@@ -70,6 +72,48 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     }
 });
 
+// --- Register ---
+document.getElementById('show-register').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('register-form').style.display = 'block';
+});
+document.getElementById('show-login').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('register-form').style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
+});
+
+document.getElementById('register-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('reg-name').value;
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('reg-password').value;
+    gameServerHost = document.getElementById('reg-server').value || 'localhost';
+    const errorEl = document.getElementById('register-error');
+    const btn = document.getElementById('register-btn');
+
+    errorEl.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Registering...';
+
+    try {
+        api.setDataServerUrl(gameServerHost);
+        await api.register(email, password, name);
+        // Auto-login after registration
+        const loginData = await api.login(email, password);
+        account = await api.getAccount(loginData.accountGuid);
+        document.getElementById('register-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+        showCharacterSelect();
+    } catch (err) {
+        errorEl.textContent = err.message;
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Register';
+    }
+});
+
 // --- Character Select ---
 function showCharacterSelect() {
     showScreen('charselect');
@@ -113,10 +157,144 @@ document.getElementById('play-btn').addEventListener('click', () => {
 });
 
 document.getElementById('logout-btn').addEventListener('click', () => {
+    network.disconnect();
     account = null;
     selectedCharacter = null;
     showScreen('login');
 });
+
+// --- Player Death ---
+// Matches Java: GAME_OVER flag, send DeathAck, disconnect, show death screen
+function handlePlayerDeath() {
+    console.log('[GAME] Player died!');
+
+    // Send DeathAckPacket to server
+    network.send(PacketWriters.deathAck(game.playerId));
+
+    // Disconnect from game server (matches Java shutdownClient)
+    network.disconnect();
+
+    // Show death overlay
+    showDeathScreen();
+}
+
+function showDeathScreen() {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'death-overlay';
+    overlay.innerHTML = `
+        <div class="death-content">
+            <h1 class="death-title">GAME OVER</h1>
+            <p class="death-subtitle">${game.playerName} has fallen.</p>
+            <p class="death-info">Your character has been lost to the realm.</p>
+            <button id="death-charselect-btn">Select Character</button>
+            <button id="death-quit-btn" class="secondary">Quit</button>
+        </div>
+    `;
+    document.getElementById('game-screen').appendChild(overlay);
+
+    // Button handlers
+    document.getElementById('death-charselect-btn').addEventListener('click', () => {
+        overlay.remove();
+        // Reset game state
+        game.playerId = null;
+        game.players.clear();
+        game.enemies.clear();
+        game.bullets.clear();
+        game.lootContainers.clear();
+        game.portals.clear();
+        game.mapTiles = null;
+        game.stats = null;
+        game.health = 0; game.mana = 0;
+        game.inventory = [];
+        lastXDir = null; lastYDir = null;
+        selectedSlot = -1;
+        lastInvKey = ''; lastLootKey = '';
+
+        if (renderer) { renderer.destroy(); renderer = null; }
+
+        // Refresh account (dead character will be gone due to permadeath)
+        if (account && api.sessionToken) {
+            api.getAccount(api.accountGuid).then(acc => {
+                account = acc;
+                showCharacterSelect();
+            }).catch(() => {
+                showScreen('login');
+            });
+        } else {
+            showScreen('login');
+        }
+    });
+
+    document.getElementById('death-quit-btn').addEventListener('click', () => {
+        overlay.remove();
+        if (renderer) { renderer.destroy(); renderer = null; }
+        game.playerId = null;
+        showScreen('login');
+    });
+}
+
+// Realm transition: matches Java PlayState portal handling
+// 1. Send UsePortalPacket  2. Clear local state  3. Send LoginAckPacket
+function doRealmTransition(portal, isVault) {
+    console.log(`[REALM] Starting transition, vault=${isVault}, portal=${portal?.id}`);
+
+    // Send portal packet
+    if (isVault) {
+        network.sendUsePortal(0n, game.realmId || 0n, game.playerId, 1, 0);
+    } else if (portal) {
+        network.sendUsePortal(portal.id, game.realmId || 0n, game.playerId, 0, 0);
+    }
+
+    // Clear local state (matches Java Realm.loadMap)
+    game.prepareRealmTransition();
+
+    // Reset renderer tile debug flag so new tiles get logged
+    if (renderer) renderer._tileDebugLogged = false;
+
+    // Reset movement state
+    lastXDir = null; lastYDir = null;
+    lastInvKey = ''; lastLootKey = '';
+
+    // Tell server we're ready for new tiles
+    network.sendLoginAck(game.playerId);
+}
+
+function returnToCharacterSelect() {
+    // Disconnect from game server
+    network.disconnect();
+
+    // Reset game state
+    game.playerId = null;
+    game.players.clear();
+    game.enemies.clear();
+    game.bullets.clear();
+    game.lootContainers.clear();
+    game.portals.clear();
+    game.mapTiles = null;
+    game.stats = null;
+    game.health = 0; game.mana = 0;
+    game.inventory = [];
+    lastXDir = null; lastYDir = null;
+    selectedSlot = -1;
+    lastInvKey = ''; lastLootKey = '';
+
+    // Destroy renderer
+    if (renderer) {
+        renderer.destroy();
+        renderer = null;
+    }
+
+    // Refresh account data and show character select
+    if (account && api.sessionToken) {
+        api.getAccount(api.accountGuid).then(acc => {
+            account = acc;
+            showCharacterSelect();
+        }).catch(() => showCharacterSelect());
+    } else {
+        showCharacterSelect();
+    }
+}
 
 // --- Game Start ---
 async function startGame() {
@@ -232,7 +410,7 @@ function setupNetworkHandlers() {
                         targetX: loginResp.spawnX,
                         targetY: loginResp.spawnY,
                         dx: 0, dy: 0,
-                        size: 8,
+                        size: 32,
                         animFrame: 0, animTimer: 0, facing: 'right'
                     });
 
@@ -281,18 +459,25 @@ function setupNetworkHandlers() {
         }
     });
     network.on(PacketId.LOAD, (data) => {
-        console.log(`[GAME] Load: players=${data.players.length}, enemies=${data.enemies.length}, ` +
-            `bullets=${data.bullets.length}, containers=${data.containers.length}, portals=${data.portals.length}`);
         game.handleLoad(data);
+        // Force loot UI refresh when containers change
+        if (data.containers.length > 0) {
+            lastLootKey = '';
+            for (const c of data.containers) {
+                const itemIds = c.items.map(i => i ? i.itemId : -1);
+                console.log(`[LOOT] Container ${c.lootContainerId} tier=${c.tier} changed=${c.contentsChanged} items=[${itemIds}] pos=(${c.pos.x},${c.pos.y})`);
+            }
+        }
     });
-    network.on(PacketId.UNLOAD, (data) => game.handleUnload(data));
+    network.on(PacketId.UNLOAD, (data) => {
+        game.handleUnload(data);
+        if (data.containers.length > 0) { lastLootKey = ''; }
+    });
     network.on(PacketId.OBJECT_MOVE, (data) => game.handleObjectMove(data));
     network.on(PacketId.UPDATE, (data) => {
-        if (data.playerId === game.playerId) {
-            console.log(`[GAME] Update (self): hp=${data.health}/${data.stats.hp}, ` +
-                `mp=${data.mana}/${data.stats.mp}, inv=${data.inventory.length} items`);
-        }
         game.handleUpdate(data);
+        // Force inv refresh when our inventory updates
+        if (data.playerId === game.playerId) { lastInvKey = ''; }
     });
 
     network.on(PacketId.TEXT, (data) => {
@@ -301,18 +486,44 @@ function setupNetworkHandlers() {
     });
 
     network.on(PacketId.TEXT_EFFECT, (data) => {
-        // Could render floating damage text - for now just log
+        game.handleTextEffect(data);
     });
 
     network.on(PacketId.PLAYER_DEATH, (data) => {
         if (data.playerId === game.playerId) {
-            addChatMessage('SYSTEM', 'You have died!');
-            network.send(PacketWriters.deathAck(game.playerId));
+            handlePlayerDeath();
         }
     });
 
     network.on(PacketId.CREATE_EFFECT, (data) => {
-        // Visual effects - could render particles
+        // Status effect applied to entity - tracked via UpdatePacket effectIds
+    });
+
+    // --- Trading Packet Handlers ---
+    network.on(PacketId.REQUEST_TRADE, (data) => {
+        game.handleRequestTrade(data);
+        addChatMessage('SYSTEM', `${data.requestingPlayerName} has proposed a trade. Type /accept to initiate.`);
+    });
+
+    network.on(PacketId.ACCEPT_TRADE, (data) => {
+        game.handleAcceptTrade(data);
+        if (data.accepted) {
+            addChatMessage('SYSTEM', `Trade started with ${game.tradePartnerName}`);
+            lastInvKey = ''; lastLootKey = '';
+        } else {
+            addChatMessage('SYSTEM', 'Trade ended.');
+            lastInvKey = ''; lastLootKey = '';
+        }
+    });
+
+    network.on(PacketId.UPDATE_TRADE, (data) => {
+        game.handleUpdateTrade(data);
+        lastInvKey = ''; lastLootKey = '';
+    });
+
+    network.on(PacketId.UPDATE_TRADE_SELECTION, (data) => {
+        game.handleUpdateTradeSelection(data);
+        lastInvKey = ''; lastLootKey = '';
     });
 }
 
@@ -343,13 +554,39 @@ function gameLoop(timestamp) {
 
 // --- Input Processing ---
 function processInput(dt) {
-    const movement = input.getMovementDirection();
+    // Determine current X and Y axis directions from held keys
+    let xDir = null;
+    let yDir = null;
+    if (!input.chatMode) {
+        if (input.isKeyDown('KeyD') || input.isKeyDown('ArrowRight')) xDir = 2; // EAST
+        else if (input.isKeyDown('KeyA') || input.isKeyDown('ArrowLeft')) xDir = 3; // WEST
 
-    // Send move packet only when direction changes
-    if (movement.dir !== lastMoveDir || movement.moving !== lastMoving) {
-        network.sendPlayerMove(game.playerId, movement.dir, movement.moving);
-        lastMoveDir = movement.dir;
-        lastMoving = movement.moving;
+        if (input.isKeyDown('KeyW') || input.isKeyDown('ArrowUp')) yDir = 0; // NORTH
+        else if (input.isKeyDown('KeyS') || input.isKeyDown('ArrowDown')) yDir = 1; // SOUTH
+    }
+
+    // --- Send direction packets to server only on change ---
+    // Server moves the player authoritatively; client lerps to server position.
+    if (xDir !== lastXDir || yDir !== lastYDir) {
+        const wasMoving = lastXDir !== null || lastYDir !== null;
+        const isMoving = xDir !== null || yDir !== null;
+
+        if (!isMoving) {
+            network.sendPlayerMove(game.playerId, 4, false); // NONE
+        } else if (wasMoving && (
+            (lastXDir !== null && xDir === null) ||
+            (lastYDir !== null && yDir === null)
+        )) {
+            // Axis deactivated: reset both, re-send active
+            network.sendPlayerMove(game.playerId, 4, false);
+            if (yDir !== null) network.sendPlayerMove(game.playerId, yDir, true);
+            if (xDir !== null) network.sendPlayerMove(game.playerId, xDir, true);
+        } else {
+            if (yDir !== null && yDir !== lastYDir) network.sendPlayerMove(game.playerId, yDir, true);
+            if (xDir !== null && xDir !== lastXDir) network.sendPlayerMove(game.playerId, xDir, true);
+        }
+        lastXDir = xDir;
+        lastYDir = yDir;
     }
 
     // Shooting
@@ -376,25 +613,65 @@ function processInput(dt) {
         network.sendUseAbility(game.playerId, world.x, world.y);
     }
 
-    // Portal interaction (F key)
-    if (input.isKeyDown('KeyF')) {
-        input.keys['KeyF'] = false; // Consume
-        // Find nearest portal
-        let closest = null;
-        let closestDist = Infinity;
+    // ESC = Return to character select (disconnect and switch character)
+    if (input.isKeyDown('Escape')) {
+        input.keys['Escape'] = false;
+        returnToCharacterSelect();
+        return;
+    }
+
+    // F1 = Go to vault
+    if (input.isKeyDown('F1')) {
+        input.keys['F1'] = false;
+        doRealmTransition(null, true); // vault
+    }
+
+    // F2 = Use nearest portal
+    if (input.isKeyDown('F2') || input.isKeyDown('KeyF')) {
+        input.keys['F2'] = false;
+        input.keys['KeyF'] = false;
         const local = game.getLocalPlayer();
         if (local) {
+            let closest = null, closestDist = Infinity;
             for (const [id, portal] of game.portals) {
                 const dx = portal.pos.x - local.pos.x;
                 const dy = portal.pos.y - local.pos.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < closestDist) {
-                    closestDist = dist;
-                    closest = portal;
-                }
+                if (dist < closestDist) { closestDist = dist; closest = portal; }
             }
             if (closest && closestDist < 64) {
-                network.sendUsePortal(closest.id, game.realmId, game.playerId, 0, 0);
+                doRealmTransition(closest, false);
+            }
+        }
+    }
+
+    // Number keys 1-8 = Quick use inventory items (slots 4-11)
+    for (let n = 1; n <= 8; n++) {
+        const key = `Digit${n}`;
+        if (input.isKeyDown(key) && !input.chatMode) {
+            input.keys[key] = false;
+            const slotIdx = n + 3;
+            const item = game.inventory[slotIdx];
+            if (item && item.itemId > 0 && item.consumable) {
+                network.sendMoveItem(game.playerId, slotIdx, slotIdx, false, true);
+                // Optimistic: remove consumed item
+                game.inventory[slotIdx] = { ...EMPTY_ITEM };
+                lastInvKey = '';
+            }
+        }
+    }
+
+    // E = Pick up from nearest loot container (first item to first empty slot)
+    if (input.isKeyDown('KeyE')) {
+        input.keys['KeyE'] = false;
+        const loot = game.getNearbyLootContainer(64);
+        if (loot && loot.items) {
+            for (let i = 0; i < loot.items.length; i++) {
+                if (loot.items[i] && loot.items[i].itemId > 0) {
+                    // Pick up from ground slot 20+i
+                    network.sendMoveItem(game.playerId, -1, 20 + i, false, false);
+                    break;
+                }
             }
         }
     }
@@ -432,6 +709,50 @@ function updateHUD() {
 
     // Inventory
     updateInventoryUI();
+
+    // Trade buttons
+    const tradeBtns = document.getElementById('trade-buttons');
+    if (game.isTrading) {
+        tradeBtns.style.display = 'flex';
+    } else {
+        tradeBtns.style.display = 'none';
+    }
+
+    // Nearby players list (update every ~500ms)
+    if (!updateHUD._lastNearby || Date.now() - updateHUD._lastNearby > 500) {
+        updateHUD._lastNearby = Date.now();
+        const nearbyEl = document.getElementById('nearby-players');
+        const nearby = game.getNearbyPlayers(16);
+        if (nearby.length > 0) {
+            nearbyEl.innerHTML = nearby.map(p => {
+                const cls = CLASS_NAMES[p.classId || 0] || '?';
+                const name = (p.name || cls).substring(0, 12);
+                return `<div class="nearby-player" data-name="${escapeHtml(p.name || '')}">${cls[0]} ${name}</div>`;
+            }).join('');
+        } else {
+            nearbyEl.innerHTML = '';
+        }
+    }
+}
+
+// --- Inventory System ---
+let selectedSlot = -1; // Currently selected slot for swap (-1 = none)
+let lastInvKey = '';
+let lastLootKey = '';
+// Sprite data URL cache to avoid re-extracting every frame
+const spriteCache = {};
+
+function getItemSpriteUrl(item) {
+    if (!item || item.itemId <= 0 || !renderer) return null;
+    const cacheKey = item.itemId;
+    if (spriteCache[cacheKey]) return spriteCache[cacheKey];
+    const itemDef = game.itemData[item.itemId] || item;
+    if (itemDef.spriteKey) {
+        const url = renderer.getSpriteDataUrl(itemDef.spriteKey, itemDef.col || 0,
+            itemDef.row || 0, itemDef.spriteSize || 8);
+        if (url) { spriteCache[cacheKey] = url; return url; }
+    }
+    return null;
 }
 
 function updateInventoryUI() {
@@ -439,44 +760,245 @@ function updateInventoryUI() {
     const invEl = document.getElementById('inv-slots');
 
     // Only rebuild if inventory changed
-    const invKey = game.inventory.map(i => i ? i.itemId : -1).join(',');
-    if (equipEl.dataset.key === invKey) return;
-    equipEl.dataset.key = invKey;
+    const invKey = game.inventory.map(i => i ? i.itemId : -1).join(',') + ':' + selectedSlot;
+    if (!updateInventoryUI._logged && game.inventory.length > 0) {
+        updateInventoryUI._logged = true;
+        console.log(`[INV] Inventory: ${game.inventory.length} items, ` +
+            `IDs=[${game.inventory.map(i => i ? i.itemId : 'null').join(',')}], ` +
+            `first item:`, game.inventory.find(i => i && i.itemId > 0));
+    }
+    if (lastInvKey === invKey) { updateGroundLootUI(); return; }
+    lastInvKey = invKey;
 
     equipEl.innerHTML = '';
     invEl.innerHTML = '';
 
-    const labels = ['Weapon', 'Ability', 'Armor', 'Ring'];
+    const labels = ['Wpn', 'Abl', 'Amr', 'Ring'];
     for (let i = 0; i < 4; i++) {
-        const slot = createSlot(game.inventory[i], labels[i]);
-        equipEl.appendChild(slot);
+        equipEl.appendChild(createSlot(game.inventory[i], labels[i], i));
     }
     for (let i = 4; i < 12; i++) {
-        const slot = createSlot(game.inventory[i], `${i - 3}`);
-        invEl.appendChild(slot);
+        invEl.appendChild(createSlot(game.inventory[i], `${i - 3}`, i));
+    }
+
+    updateGroundLootUI();
+}
+
+function updateGroundLootUI() {
+    const lootPanel = document.getElementById('ground-loot-panel');
+    const lootEl = document.getElementById('ground-loot-slots');
+
+    // During trading, show partner's items instead of ground loot
+    if (game.isTrading) {
+        const partnerSel = game.getPartnerTradeSelection();
+        lootPanel.style.display = 'block';
+        document.querySelector('#ground-loot-panel h4').textContent =
+            `${game.tradePartnerName}'s Offer`;
+
+        const items = partnerSel?.itemRefs || [];
+        const selected = partnerSel?.selection || [];
+        // Build key from partner items + selection
+        const tradeKey = items.map((r, i) => (selected[i] ? '*' : '') + (r ? r.itemId : -1)).join(',');
+        if (lastLootKey === tradeKey) return;
+        lastLootKey = tradeKey;
+
+        lootEl.innerHTML = '';
+        for (let i = 0; i < 8; i++) {
+            const ref = items[i];
+            let item = null;
+            if (ref && ref.itemId > 0 && selected[i]) {
+                item = { itemId: ref.itemId, name: '', tier: -1, stats: {hp:0,mp:0,def:0,att:0,spd:0,dex:0,vit:0,wis:0},
+                         damage: {projectileGroupId:0,min:0,max:0}, effect: {self:false,effectId:0,duration:0n,cooldownDuration:0n,mpCost:0},
+                         consumable: false, targetSlot: 0, targetClass: -1, fameBonus: 0,
+                         uid: ref.itemUuid || '', description: '' };
+                const def = game.getItemDef(ref.itemId);
+                if (def) { item.name = def.name; item.tier = def.tier || -1; }
+            }
+            const slot = createSlot(item, `${i + 1}`, 30 + i, true); // 30+ = trade display (non-interactive)
+            lootEl.appendChild(slot);
+        }
+        return;
+    }
+
+    document.querySelector('#ground-loot-panel h4').textContent = 'Loot Bag';
+
+    const nearbyLoot = game.getNearbyLootContainer(64);
+    if (!nearbyLoot || !nearbyLoot.items) {
+        lootPanel.style.display = 'none';
+        lastLootKey = '';
+        return;
+    }
+
+    // Server sends condensed items (no nulls/empties), so any items = show panel
+    if (nearbyLoot.items.length === 0) { lootPanel.style.display = 'none'; lastLootKey = ''; return; }
+
+    lootPanel.style.display = 'block';
+    const lootKey = nearbyLoot.items.map(i => i ? i.itemId : -1).join(',') + ':' + selectedSlot;
+    if (lastLootKey === lootKey) return;
+    lastLootKey = lootKey;
+
+    lootEl.innerHTML = '';
+    for (let i = 0; i < Math.min(8, nearbyLoot.items.length); i++) {
+        const item = nearbyLoot.items[i];
+        const slot = createSlot(item, `${i + 1}`, 20 + i, true);
+        lootEl.appendChild(slot);
     }
 }
 
-function createSlot(item, label) {
+function createSlot(item, label, slotIdx, isLoot = false) {
     const div = document.createElement('div');
-    div.className = 'inv-slot';
-    if (item && item.itemId > 0) {
-        // Try to render item sprite
-        const itemDef = game.itemData[item.itemId];
-        if (itemDef) {
-            div.title = `${item.name || itemDef.name || 'Item'}\n${item.description || ''}`;
+    div.className = 'inv-slot' + (isLoot ? ' loot-slot' : '');
+    if (slotIdx === selectedSlot) div.classList.add('selected');
+
+    // Trade selection highlight
+    if (game.isTrading && slotIdx >= 4 && slotIdx <= 11) {
+        const mySel = game.getMyTradeSelection();
+        if (mySel && mySel.selection && mySel.selection[slotIdx - 4]) {
+            div.classList.add('selected');
         }
-        // Simple colored indicator for now
-        const dot = document.createElement('div');
-        dot.style.cssText = `width:24px;height:24px;background:#c8a86e;border-radius:3px;`;
-        div.appendChild(dot);
     }
+
+    if (item && item.itemId > 0) {
+        // Rich tooltip
+        const tooltip = game.getItemTooltip(item);
+        if (tooltip) div.title = tooltip;
+
+        const spriteUrl = getItemSpriteUrl(item);
+        if (spriteUrl) {
+            const img = document.createElement('img');
+            img.src = spriteUrl;
+            div.appendChild(img);
+        } else {
+            const dot = document.createElement('div');
+            dot.style.cssText = 'width:32px;height:32px;background:#c8a86e;border-radius:3px;';
+            div.appendChild(dot);
+        }
+
+        if (item.tier >= 0) {
+            const tierEl = document.createElement('span');
+            tierEl.className = `item-tier tier-${Math.min(item.tier, 5)}`;
+            tierEl.textContent = `T${item.tier}`;
+            div.appendChild(tierEl);
+        }
+    }
+
     const lbl = document.createElement('span');
     lbl.className = 'slot-label';
     lbl.textContent = label;
     div.appendChild(lbl);
+
+    // Left click
+    div.addEventListener('click', (e) => { e.stopPropagation(); onSlotClick(slotIdx, item); });
+    // Right click
+    div.addEventListener('contextmenu', (e) => { e.preventDefault(); e.stopPropagation(); onSlotRightClick(slotIdx, item); });
+
     return div;
 }
+
+// Empty item placeholder (matches server's empty slot representation)
+const EMPTY_ITEM = { itemId: 0, uid: '', name: '', description: '',
+    stats: {hp:0,mp:0,def:0,att:0,spd:0,dex:0,vit:0,wis:0},
+    damage: {projectileGroupId:0,min:0,max:0},
+    effect: {self:false,effectId:0,duration:0n,cooldownDuration:0n,mpCost:0},
+    consumable: false, tier: -1, targetSlot: 0, targetClass: -1, fameBonus: 0 };
+
+function onSlotClick(slotIdx, item, isRightClick = false) {
+    // During trading, right-click toggles item selection
+    if (game.isTrading && isRightClick && slotIdx >= 4 && slotIdx <= 11) {
+        toggleTradeSelection(slotIdx);
+        return;
+    }
+
+    // Ground loot: single click = pick up to first empty inv slot
+    if (slotIdx >= 20 && slotIdx <= 27 && item && item.itemId > 0) {
+        console.log(`[INV] Picking up from ground slot ${slotIdx}, itemId=${item.itemId}`);
+        network.sendMoveItem(game.playerId, -1, slotIdx, false, false);
+
+        // Optimistic: move item from loot to first empty inv slot
+        const loot = game.getNearbyLootContainer();
+        if (loot && loot.items) {
+            const lootIdx = slotIdx - 20;
+            const emptySlot = game.inventory.findIndex((it, i) => i >= 4 && (!it || it.itemId <= 0));
+            if (emptySlot >= 0 && loot.items[lootIdx]) {
+                game.inventory[emptySlot] = { ...loot.items[lootIdx] };
+                loot.items[lootIdx] = null;
+                // Remove null entries (condense)
+                loot.items = loot.items.filter(i => i && i.itemId > 0);
+            }
+        }
+        lastInvKey = ''; lastLootKey = '';
+        return;
+    }
+
+    if (selectedSlot === -1) {
+        // Nothing selected - select this slot if it has an item
+        if (item && item.itemId > 0) {
+            selectedSlot = slotIdx;
+            lastInvKey = '';
+        }
+    } else {
+        if (slotIdx === selectedSlot) {
+            selectedSlot = -1; // Deselect
+        } else if (selectedSlot >= 0 && selectedSlot <= 11 && slotIdx >= 0 && slotIdx <= 11) {
+            // Swap/equip/move between slots 0-11
+            console.log(`[INV] Swap slot ${selectedSlot} <-> slot ${slotIdx}`);
+            network.sendMoveItem(game.playerId, slotIdx, selectedSlot, false, false);
+
+            // Optimistic: swap items locally
+            const temp = game.inventory[selectedSlot];
+            game.inventory[selectedSlot] = game.inventory[slotIdx] || { ...EMPTY_ITEM };
+            game.inventory[slotIdx] = temp || { ...EMPTY_ITEM };
+            selectedSlot = -1;
+        } else {
+            selectedSlot = -1;
+        }
+        lastInvKey = ''; lastLootKey = '';
+    }
+}
+
+function onSlotRightClick(slotIdx, item) {
+    if (game.isTrading) {
+        onSlotClick(slotIdx, item, true);
+        return;
+    }
+    // Right-click: drop item to ground
+    if (item && item.itemId > 0 && slotIdx >= 0 && slotIdx <= 11) {
+        console.log(`[INV] Dropping item from slot ${slotIdx}`);
+        network.sendMoveItem(game.playerId, -1, slotIdx, true, false);
+
+        // Optimistic: clear the slot locally
+        game.inventory[slotIdx] = { ...EMPTY_ITEM };
+        lastInvKey = '';
+    }
+}
+
+function toggleTradeSelection(slotIdx) {
+    // Build selection array for trade: slots 4-11 → Boolean[0-7]
+    const mySel = game.getMyTradeSelection();
+    if (!mySel) return;
+    const selIdx = slotIdx - 4;
+    if (selIdx < 0 || selIdx >= 8) return;
+    // Toggle
+    if (!mySel.selection) mySel.selection = new Array(8).fill(false);
+    mySel.selection[selIdx] = !mySel.selection[selIdx];
+    // Send UpdatePlayerTradeSelectionPacket
+    // TODO: need to build and send this packet
+    network.sendText(game.playerName, 'Player',
+        `/confirm false`); // Reset confirmation on selection change
+    lastInvKey = '';
+}
+
+// Drop selected item when clicking game canvas (outside inventory)
+document.getElementById('game-canvas-container').addEventListener('click', () => {
+    if (selectedSlot >= 0 && selectedSlot <= 11 && currentScreen === 'game') {
+        console.log(`[INV] Dropping item from slot ${selectedSlot} (canvas click)`);
+        network.sendMoveItem(game.playerId, -1, selectedSlot, true, false);
+        // Optimistic: clear the slot
+        game.inventory[selectedSlot] = { ...EMPTY_ITEM };
+        selectedSlot = -1;
+        lastInvKey = '';
+    }
+});
 
 // --- Chat ---
 function addChatMessage(from, message) {
@@ -507,7 +1029,11 @@ chatInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         const msg = chatInput.value.trim();
         if (msg) {
-            network.sendText(game.playerName || 'Player', 'Player', msg);
+            if (msg.startsWith('/')) {
+                handleChatCommand(msg);
+            } else {
+                network.sendText(game.playerName || 'Player', 'Player', msg);
+            }
             chatInput.value = '';
         }
         chatInput.blur();
@@ -518,10 +1044,53 @@ chatInput.addEventListener('keydown', (e) => {
     }
 });
 
+function handleChatCommand(msg) {
+    // ServerCommandMessage format: {"command": "cmdname", "args": ["arg1", "arg2"]}
+    // Matches Java's ServerCommandMessage.parseFromInput(): command = first word, args = rest
+    const parts = msg.substring(1).split(' '); // Remove leading /
+    const cmd = parts[0].toLowerCase();
+    const args = parts.slice(1);
+
+    // Client-only commands
+    if (cmd === 'clear') {
+        game.chatMessages = [];
+        document.getElementById('chat-messages').innerHTML = '';
+        return;
+    }
+
+    // Send as ServerCommandMessage via CommandPacket (commandId byte = 3 = SERVER_COMMAND)
+    const payload = JSON.stringify({ command: cmd, args: args });
+    network.send(PacketWriters.command(game.playerId, 3, payload));
+
+    // Local feedback for known commands
+    if (cmd === 'trade' && args.length > 0) {
+        addChatMessage('SYSTEM', `Trade request sent to ${args[0]}`);
+    } else if (cmd === 'confirm' && args[0] === 'true') {
+        game.tradeConfirmed = true;
+        addChatMessage('SYSTEM', 'Trade confirmed. Waiting for partner...');
+    }
+}
+
 // Enter key opens chat
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && document.activeElement !== chatInput && currentScreen === 'game') {
         chatInput.focus();
+    }
+});
+
+// --- Trade Buttons ---
+document.getElementById('trade-confirm-btn').addEventListener('click', () => {
+    handleChatCommand('/confirm true');
+});
+document.getElementById('trade-cancel-btn').addEventListener('click', () => {
+    handleChatCommand('/decline');
+});
+
+// --- Nearby Players Click (trade request) ---
+document.getElementById('nearby-players').addEventListener('click', (e) => {
+    const playerEl = e.target.closest('.nearby-player');
+    if (playerEl && playerEl.dataset.name) {
+        handleChatCommand(`/trade ${playerEl.dataset.name}`);
     }
 });
 

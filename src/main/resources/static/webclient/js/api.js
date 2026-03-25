@@ -50,6 +50,10 @@ export class ApiClient {
         return this.request('GET', `/data/account/${accountGuid}`);
     }
 
+    async register(email, password, accountName) {
+        return this.request('POST', '/admin/account/register', { email, password, accountName });
+    }
+
     async getGameData(fileName) {
         const res = await fetch(`${this.baseUrl}/game-data/${fileName}`);
         if (!res.ok) throw new Error(`Failed to load ${fileName}`);

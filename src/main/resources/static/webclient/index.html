@@ -29,6 +29,29 @@
                 </div>
                 <button type="submit" id="login-btn">Login</button>
                 <p id="login-error" class="error"></p>
+                <p class="register-link">No account? <a href="#" id="show-register">Register</a></p>
+            </form>
+            <!-- Register Form (hidden by default) -->
+            <form id="register-form" style="display:none">
+                <div class="form-group">
+                    <label for="reg-name">Username</label>
+                    <input type="text" id="reg-name" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" required autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="reg-server">Game Server</label>
+                    <input type="text" id="reg-server" value="localhost" placeholder="localhost">
+                </div>
+                <button type="submit" id="register-btn">Register</button>
+                <p id="register-error" class="error"></p>
+                <p class="register-link"><a href="#" id="show-login">Back to Login</a></p>
             </form>
         </div>
     </div>
@@ -64,6 +87,15 @@
                 <div id="equip-slots" class="slot-row"></div>
                 <div id="inv-slots" class="slot-row"></div>
             </div>
+            <div id="ground-loot-panel" style="display:none">
+                <h4>Loot Bag</h4>
+                <div id="ground-loot-slots" class="slot-row"></div>
+            </div>
+            <div id="trade-buttons" style="display:none">
+                <button id="trade-confirm-btn" class="trade-btn confirm">Confirm Trade</button>
+                <button id="trade-cancel-btn" class="trade-btn cancel">Cancel Trade</button>
+            </div>
+            <div id="nearby-players"></div>
         </div>
         <!-- Chat -->
         <div id="chat-panel">

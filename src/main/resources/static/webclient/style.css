@@ -53,6 +53,9 @@ button:disabled { background: #5a4a3a; color: #887868; cursor: default; }
 button.secondary { background: #3a2a38; color: #a89888; margin-top: 8px; }
 button.secondary:hover { background: #4a3a48; }
 .error { color: #e85050; font-size: 13px; margin-top: 12px; min-height: 18px; }
+.register-link { font-size: 13px; color: #887868; margin-top: 12px; }
+.register-link a { color: #c8a86e; text-decoration: none; }
+.register-link a:hover { text-decoration: underline; }
 
 /* Character Select */
 .charselect-box { width: 500px; }
@@ -88,7 +91,9 @@ button.secondary:hover { background: #4a3a48; }
 #game-screen { flex-direction: column; }
 #game-canvas-container {
     width: 100%; height: 100%;
-    position: relative;
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 0;
 }
 #game-canvas-container canvas {
     width: 100% !important;
@@ -100,15 +105,16 @@ button.secondary:hover { background: #4a3a48; }
 #hud {
     position: absolute;
     top: 10px; right: 10px;
-    width: 220px;
+    width: 300px;
     pointer-events: auto;
+    z-index: 10;
 }
 #hud-bars { margin-bottom: 8px; }
 .bar-container {
     background: #1a1218;
     border: 1px solid #3a2a38;
     border-radius: 3px;
-    height: 22px;
+    height: 26px;
     margin-bottom: 4px;
     position: relative;
     overflow: hidden;
@@ -154,6 +160,8 @@ button.secondary:hover { background: #4a3a48; }
     border: 1px solid #3a2a38;
     border-radius: 4px;
     padding: 8px;
+    position: relative;
+    z-index: 10;
 }
 .slot-row {
     display: grid;
@@ -162,19 +170,78 @@ button.secondary:hover { background: #4a3a48; }
     margin-bottom: 4px;
 }
 .inv-slot {
-    width: 44px; height: 44px;
+    width: 56px; height: 56px;
     background: #2a2030;
-    border: 1px solid #3a2a38;
+    border: 2px solid #3a2a38;
     border-radius: 3px;
     image-rendering: pixelated;
     display: flex; align-items: center; justify-content: center;
     position: relative;
+    cursor: pointer;
+    transition: border-color 0.1s;
 }
-.inv-slot img { width: 32px; height: 32px; image-rendering: pixelated; }
+.inv-slot:hover { border-color: #6a5a68; }
+.inv-slot.selected { border-color: #c8a86e; background: #3a2a40; }
+.inv-slot.loot-slot { background: #1a2018; }
+.inv-slot img, .inv-slot canvas { width: 40px; height: 40px; image-rendering: pixelated; }
 .inv-slot .slot-label {
     position: absolute; bottom: 1px; right: 2px;
     font-size: 8px; color: #887868;
 }
+.inv-slot .item-tier {
+    position: absolute; top: 1px; left: 2px;
+    font-size: 8px; font-weight: bold;
+}
+.tier-0 { color: #aaa; } .tier-1 { color: #40c040; } .tier-2 { color: #4080e0; }
+.tier-3 { color: #c040c0; } .tier-4 { color: #c8a86e; } .tier-5 { color: #ff4040; }
+
+#ground-loot-panel {
+    background: #1a1218cc;
+    border: 1px solid #3a2a38;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 4px;
+    z-index: 10;
+}
+#ground-loot-panel h4 {
+    font-size: 11px; color: #887868;
+    margin-bottom: 4px;
+}
+#ground-loot-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+#trade-buttons {
+    display: flex; gap: 6px; margin-top: 6px;
+}
+.trade-btn {
+    flex: 1; padding: 8px; font-size: 12px; font-weight: 600;
+    border: none; border-radius: 3px; cursor: pointer;
+}
+.trade-btn.confirm { background: #40a040; color: #fff; }
+.trade-btn.confirm:hover { background: #50b050; }
+.trade-btn.cancel { background: #a04040; color: #fff; }
+.trade-btn.cancel:hover { background: #b05050; }
+#nearby-players {
+    background: #1a1218cc;
+    border: 1px solid #3a2a38;
+    border-radius: 4px;
+    padding: 6px;
+    margin-top: 6px;
+    font-size: 11px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+.nearby-player {
+    display: flex; align-items: center; gap: 4px;
+    padding: 2px 4px; border-radius: 2px; cursor: pointer;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.nearby-player:hover { background: #2a2030; color: #c8a86e; }
 
 /* Chat */
 #chat-panel {
@@ -182,6 +249,7 @@ button.secondary:hover { background: #4a3a48; }
     bottom: 10px; left: 10px;
     width: 360px;
     pointer-events: auto;
+    z-index: 10;
 }
 #chat-messages {
     background: #1a1218aa;
@@ -217,9 +285,39 @@ button.secondary:hover { background: #4a3a48; }
     border-radius: 3px;
     font-size: 12px;
     color: #c8a86e;
+    z-index: 10;
 }
 #connection-status.connected { color: #40a040; }
 #connection-status.error { color: #e85050; }
+
+/* Death Screen */
+#death-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100;
+}
+.death-content { text-align: center; }
+.death-title {
+    font-size: 64px;
+    color: #c04040;
+    text-shadow: 0 0 30px #800000, 0 0 60px #400000;
+    margin-bottom: 16px;
+    letter-spacing: 8px;
+}
+.death-subtitle {
+    font-size: 20px; color: #e0d8c8;
+    margin-bottom: 8px;
+}
+.death-info {
+    font-size: 14px; color: #887868;
+    margin-bottom: 32px;
+}
+.death-content button {
+    width: 220px; margin: 6px;
+    padding: 14px; font-size: 16px;
+}
 
 /* Minimap */
 #minimap {

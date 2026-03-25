@@ -112,6 +112,7 @@ export class GameNetwork {
     }
 
     sendMoveItem(playerId, targetSlot, fromSlot, drop, consume) {
+        console.log(`[NET] Sending MoveItem: target=${targetSlot} from=${fromSlot} drop=${drop} consume=${consume}`);
         this.send(PacketWriters.moveItem(playerId, targetSlot, fromSlot, drop, consume));
     }
 
