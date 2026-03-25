@@ -22,17 +22,38 @@
 			{
 				"name": "orbit",
 				"hpThreshold": 1.0,
-				"movement": { "type": "ORBIT", "speed": 1.8, "radius": 120, "direction": "CW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 1.8,
+					"radius": 120,
+					"direction": "CW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 0, "cooldownMs": 600, "burstCount": 1 }
+					{
+						"projectileGroupId": 0,
+						"cooldownMs": 360,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "enraged",
 				"hpThreshold": 0.4,
-				"movement": { "type": "CHARGE", "speed": 3.5, "chargeDistanceMin": 40, "pauseMs": 400 },
+				"movement": {
+					"type": "CHARGE",
+					"speed": 3.5,
+					"chargeDistanceMin": 40,
+					"pauseMs": 400
+				},
 				"attacks": [
-					{ "projectileGroupId": 0, "cooldownMs": 300, "burstCount": 3, "burstDelayMs": 80, "angleOffsetPerBurst": 0.15 }
+					{
+						"projectileGroupId": 0,
+						"cooldownMs": 180,
+						"burstCount": 4,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.15
+					}
 				]
 			}
 		]
@@ -60,10 +81,24 @@
 			{
 				"name": "stationary",
 				"hpThreshold": 1.0,
-				"movement": { "type": "ANCHOR", "speed": 0.5, "anchorRadius": 30 },
+				"movement": {
+					"type": "ANCHOR",
+					"speed": 0.5,
+					"anchorRadius": 30
+				},
 				"attacks": [
-					{ "projectileGroupId": 2, "cooldownMs": 1200, "burstCount": 1 },
-					{ "projectileGroupId": 45, "cooldownMs": 3000, "burstCount": 1 }
+					{
+						"projectileGroupId": 2,
+						"cooldownMs": 720,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1800,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -91,17 +126,35 @@
 			{
 				"name": "strafe",
 				"hpThreshold": 1.0,
-				"movement": { "type": "STRAFE", "speed": 2.0, "preferredRange": 100 },
+				"movement": {
+					"type": "STRAFE",
+					"speed": 2.0,
+					"preferredRange": 100
+				},
 				"attacks": [
-					{ "projectileGroupId": 1, "cooldownMs": 800, "burstCount": 2, "burstDelayMs": 120 }
+					{
+						"projectileGroupId": 1,
+						"cooldownMs": 480,
+						"burstCount": 3,
+						"burstDelayMs": 84
+					}
 				]
 			},
 			{
 				"name": "flee",
 				"hpThreshold": 0.3,
-				"movement": { "type": "FLEE", "speed": 2.5, "fleeRange": 100 },
+				"movement": {
+					"type": "FLEE",
+					"speed": 2.5,
+					"fleeRange": 100
+				},
 				"attacks": [
-					{ "projectileGroupId": 1, "cooldownMs": 500, "burstCount": 3, "burstDelayMs": 80 }
+					{
+						"projectileGroupId": 1,
+						"cooldownMs": 300,
+						"burstCount": 4,
+						"burstDelayMs": 56
+					}
 				]
 			}
 		]
@@ -129,17 +182,36 @@
 			{
 				"name": "figure_eight",
 				"hpThreshold": 1.0,
-				"movement": { "type": "FIGURE_EIGHT", "speed": 1.6, "radius": 80 },
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 1.6,
+					"radius": 80
+				},
 				"attacks": [
-					{ "projectileGroupId": 7, "cooldownMs": 1000, "burstCount": 1 }
+					{
+						"projectileGroupId": 7,
+						"cooldownMs": 600,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "orbit_rage",
 				"hpThreshold": 0.5,
-				"movement": { "type": "ORBIT", "speed": 2.2, "radius": 60, "direction": "CCW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.2,
+					"radius": 60,
+					"direction": "CCW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 7, "cooldownMs": 600, "burstCount": 2, "burstDelayMs": 100 }
+					{
+						"projectileGroupId": 7,
+						"cooldownMs": 360,
+						"burstCount": 3,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -247,7 +319,7 @@
 	{
 		"enemyId": 10,
 		"name": "Cyclops",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses.png",
 		"row": 0,
 		"col": 2,
 		"spriteSize": 16,
@@ -567,27 +639,68 @@
 			{
 				"name": "patrol",
 				"hpThreshold": 1.0,
-				"movement": { "type": "STRAFE", "speed": 1.6, "preferredRange": 120 },
+				"movement": {
+					"type": "STRAFE",
+					"speed": 1.6,
+					"preferredRange": 120
+				},
 				"attacks": [
-					{ "projectileGroupId": 43, "cooldownMs": 1200, "burstCount": 1 }
+					{
+						"projectileGroupId": 43,
+						"cooldownMs": 720,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "blizzard",
 				"hpThreshold": 0.6,
-				"movement": { "type": "ORBIT", "speed": 2.0, "radius": 100, "direction": "CW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.0,
+					"radius": 100,
+					"direction": "CW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 43, "cooldownMs": 800, "burstCount": 2, "burstDelayMs": 150, "angleOffsetPerBurst": 0.2 },
-					{ "projectileGroupId": 46, "cooldownMs": 2500, "burstCount": 1 }
+					{
+						"projectileGroupId": 43,
+						"cooldownMs": 480,
+						"burstCount": 3,
+						"burstDelayMs": 105,
+						"angleOffsetPerBurst": 0.2
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 1500,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "frozen_fury",
 				"hpThreshold": 0.25,
-				"movement": { "type": "CHARGE", "speed": 3.5, "chargeDistanceMin": 50, "pauseMs": 300 },
+				"movement": {
+					"type": "CHARGE",
+					"speed": 3.5,
+					"chargeDistanceMin": 50,
+					"pauseMs": 300
+				},
 				"attacks": [
-					{ "projectileGroupId": 43, "cooldownMs": 400, "burstCount": 3, "burstDelayMs": 80, "angleOffsetPerBurst": 0.1 },
-					{ "projectileGroupId": 45, "cooldownMs": 1800, "burstCount": 1 }
+					{
+						"projectileGroupId": 43,
+						"cooldownMs": 240,
+						"burstCount": 4,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.1
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1080,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -616,28 +729,73 @@
 			{
 				"name": "hellfire",
 				"hpThreshold": 1.0,
-				"movement": { "type": "FIGURE_EIGHT", "speed": 1.4, "radius": 90 },
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 1.4,
+					"radius": 90
+				},
 				"attacks": [
-					{ "projectileGroupId": 44, "cooldownMs": 1000, "burstCount": 1 }
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 600,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "inferno",
 				"hpThreshold": 0.5,
-				"movement": { "type": "ORBIT", "speed": 2.2, "radius": 70, "direction": "CCW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.2,
+					"radius": 70,
+					"direction": "CCW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 44, "cooldownMs": 600, "burstCount": 2, "burstDelayMs": 120 },
-					{ "projectileGroupId": 45, "cooldownMs": 2000, "burstCount": 1 }
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 360,
+						"burstCount": 3,
+						"burstDelayMs": 84
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "apocalypse",
 				"hpThreshold": 0.2,
-				"movement": { "type": "ANCHOR", "speed": 0.5, "anchorRadius": 40 },
+				"movement": {
+					"type": "ANCHOR",
+					"speed": 0.5,
+					"anchorRadius": 40
+				},
 				"attacks": [
-					{ "projectileGroupId": 44, "cooldownMs": 300, "burstCount": 3, "burstDelayMs": 60, "angleOffsetPerBurst": 0.15 },
-					{ "projectileGroupId": 45, "cooldownMs": 1200, "burstCount": 2, "burstDelayMs": 200, "angleOffsetPerBurst": 0.4 },
-					{ "projectileGroupId": 46, "cooldownMs": 3000, "burstCount": 1 }
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 180,
+						"burstCount": 4,
+						"burstDelayMs": 42,
+						"angleOffsetPerBurst": 0.15
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 720,
+						"burstCount": 3,
+						"burstDelayMs": 140,
+						"angleOffsetPerBurst": 0.4
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 1800,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -666,29 +824,78 @@
 			{
 				"name": "void_pulse",
 				"hpThreshold": 1.0,
-				"movement": { "type": "WANDER", "speed": 0.8 },
+				"movement": {
+					"type": "WANDER",
+					"speed": 0.8
+				},
 				"attacks": [
-					{ "projectileGroupId": 45, "cooldownMs": 2000, "burstCount": 1 },
-					{ "projectileGroupId": 46, "cooldownMs": 3500, "burstCount": 1 }
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 2100,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "rift_storm",
 				"hpThreshold": 0.65,
-				"movement": { "type": "ORBIT", "speed": 1.5, "radius": 130, "direction": "CW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 1.5,
+					"radius": 130,
+					"direction": "CW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 45, "cooldownMs": 1200, "burstCount": 2, "burstDelayMs": 300, "angleOffsetPerBurst": 0.3 },
-					{ "projectileGroupId": 44, "cooldownMs": 2000, "burstCount": 1 }
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 720,
+						"burstCount": 3,
+						"burstDelayMs": 210,
+						"angleOffsetPerBurst": 0.3
+					},
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "collapse",
 				"hpThreshold": 0.3,
-				"movement": { "type": "FIGURE_EIGHT", "speed": 2.0, "radius": 60 },
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 2.0,
+					"radius": 60
+				},
 				"attacks": [
-					{ "projectileGroupId": 45, "cooldownMs": 600, "burstCount": 3, "burstDelayMs": 100, "angleOffsetPerBurst": 0.25 },
-					{ "projectileGroupId": 44, "cooldownMs": 1000, "burstCount": 2, "burstDelayMs": 150 },
-					{ "projectileGroupId": 46, "cooldownMs": 1500, "burstCount": 1 }
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 360,
+						"burstCount": 4,
+						"burstDelayMs": 70,
+						"angleOffsetPerBurst": 0.25
+					},
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 600,
+						"burstCount": 3,
+						"burstDelayMs": 105
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 900,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -716,27 +923,65 @@
 			{
 				"name": "sentinel",
 				"hpThreshold": 1.0,
-				"movement": { "type": "ANCHOR", "speed": 0.6, "anchorRadius": 60 },
+				"movement": {
+					"type": "ANCHOR",
+					"speed": 0.6,
+					"anchorRadius": 60
+				},
 				"attacks": [
-					{ "projectileGroupId": 46, "cooldownMs": 2000, "burstCount": 1 }
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "tremor",
 				"hpThreshold": 0.6,
-				"movement": { "type": "CHASE", "speed": 1.2 },
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.2
+				},
 				"attacks": [
-					{ "projectileGroupId": 46, "cooldownMs": 1200, "burstCount": 2, "burstDelayMs": 200 },
-					{ "projectileGroupId": 43, "cooldownMs": 2500, "burstCount": 1, "maxRange": 150 }
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 720,
+						"burstCount": 3,
+						"burstDelayMs": 140
+					},
+					{
+						"projectileGroupId": 43,
+						"cooldownMs": 1500,
+						"burstCount": 2,
+						"maxRange": 150,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "avalanche",
 				"hpThreshold": 0.25,
-				"movement": { "type": "CHARGE", "speed": 2.5, "chargeDistanceMin": 40, "pauseMs": 600 },
+				"movement": {
+					"type": "CHARGE",
+					"speed": 2.5,
+					"chargeDistanceMin": 40,
+					"pauseMs": 600
+				},
 				"attacks": [
-					{ "projectileGroupId": 46, "cooldownMs": 600, "burstCount": 3, "burstDelayMs": 100 },
-					{ "projectileGroupId": 45, "cooldownMs": 2000, "burstCount": 1 }
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 360,
+						"burstCount": 4,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -884,18 +1129,42 @@
 			{
 				"name": "tidal",
 				"hpThreshold": 1.0,
-				"movement": { "type": "STRAFE", "speed": 1.2, "preferredRange": 110 },
+				"movement": {
+					"type": "STRAFE",
+					"speed": 1.2,
+					"preferredRange": 110
+				},
 				"attacks": [
-					{ "projectileGroupId": 57, "cooldownMs": 1000, "burstCount": 1 }
+					{
+						"projectileGroupId": 57,
+						"cooldownMs": 600,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "riptide",
 				"hpThreshold": 0.4,
-				"movement": { "type": "ORBIT", "speed": 1.8, "radius": 80, "direction": "CCW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 1.8,
+					"radius": 80,
+					"direction": "CCW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 57, "cooldownMs": 500, "burstCount": 2, "burstDelayMs": 100 },
-					{ "projectileGroupId": 46, "cooldownMs": 2500, "burstCount": 1 }
+					{
+						"projectileGroupId": 57,
+						"cooldownMs": 300,
+						"burstCount": 3,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 1500,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -923,29 +1192,76 @@
 			{
 				"name": "spore_cloud",
 				"hpThreshold": 1.0,
-				"movement": { "type": "ANCHOR", "speed": 0.7, "anchorRadius": 80 },
+				"movement": {
+					"type": "ANCHOR",
+					"speed": 0.7,
+					"anchorRadius": 80
+				},
 				"attacks": [
-					{ "projectileGroupId": 58, "cooldownMs": 1500, "burstCount": 1 },
-					{ "projectileGroupId": 45, "cooldownMs": 4000, "burstCount": 1 }
+					{
+						"projectileGroupId": 58,
+						"cooldownMs": 900,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 2400,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "fungal_rage",
 				"hpThreshold": 0.5,
-				"movement": { "type": "CHASE", "speed": 1.4 },
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.4
+				},
 				"attacks": [
-					{ "projectileGroupId": 58, "cooldownMs": 700, "burstCount": 2, "burstDelayMs": 120 },
-					{ "projectileGroupId": 45, "cooldownMs": 2000, "burstCount": 1 }
+					{
+						"projectileGroupId": 58,
+						"cooldownMs": 420,
+						"burstCount": 3,
+						"burstDelayMs": 84
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "decompose",
 				"hpThreshold": 0.2,
-				"movement": { "type": "WANDER", "speed": 0.4 },
+				"movement": {
+					"type": "WANDER",
+					"speed": 0.4
+				},
 				"attacks": [
-					{ "projectileGroupId": 58, "cooldownMs": 300, "burstCount": 3, "burstDelayMs": 80, "angleOffsetPerBurst": 0.2 },
-					{ "projectileGroupId": 45, "cooldownMs": 1000, "burstCount": 2, "burstDelayMs": 250, "angleOffsetPerBurst": 0.5 },
-					{ "projectileGroupId": 46, "cooldownMs": 1500, "burstCount": 1 }
+					{
+						"projectileGroupId": 58,
+						"cooldownMs": 180,
+						"burstCount": 4,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.2
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 600,
+						"burstCount": 3,
+						"burstDelayMs": 175,
+						"angleOffsetPerBurst": 0.5
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 900,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -973,28 +1289,71 @@
 			{
 				"name": "eruption",
 				"hpThreshold": 1.0,
-				"movement": { "type": "CHASE", "speed": 1.0 },
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.0
+				},
 				"attacks": [
-					{ "projectileGroupId": 59, "cooldownMs": 1000, "burstCount": 1 }
+					{
+						"projectileGroupId": 59,
+						"cooldownMs": 600,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "magma_storm",
 				"hpThreshold": 0.55,
-				"movement": { "type": "FIGURE_EIGHT", "speed": 1.5, "radius": 80 },
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 1.5,
+					"radius": 80
+				},
 				"attacks": [
-					{ "projectileGroupId": 59, "cooldownMs": 600, "burstCount": 2, "burstDelayMs": 100 },
-					{ "projectileGroupId": 44, "cooldownMs": 2000, "burstCount": 1 }
+					{
+						"projectileGroupId": 59,
+						"cooldownMs": 360,
+						"burstCount": 3,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "meltdown",
 				"hpThreshold": 0.2,
-				"movement": { "type": "CHARGE", "speed": 3.0, "chargeDistanceMin": 50, "pauseMs": 400 },
+				"movement": {
+					"type": "CHARGE",
+					"speed": 3.0,
+					"chargeDistanceMin": 50,
+					"pauseMs": 400
+				},
 				"attacks": [
-					{ "projectileGroupId": 59, "cooldownMs": 300, "burstCount": 3, "burstDelayMs": 60 },
-					{ "projectileGroupId": 44, "cooldownMs": 1200, "burstCount": 2, "burstDelayMs": 150, "angleOffsetPerBurst": 0.3 },
-					{ "projectileGroupId": 45, "cooldownMs": 2500, "burstCount": 1 }
+					{
+						"projectileGroupId": 59,
+						"cooldownMs": 180,
+						"burstCount": 4,
+						"burstDelayMs": 42
+					},
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 720,
+						"burstCount": 3,
+						"burstDelayMs": 105,
+						"angleOffsetPerBurst": 0.3
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1500,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -1023,27 +1382,69 @@
 			{
 				"name": "shadow_dance",
 				"hpThreshold": 1.0,
-				"movement": { "type": "ORBIT", "speed": 2.2, "radius": 100, "direction": "CW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.2,
+					"radius": 100,
+					"direction": "CW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 60, "cooldownMs": 800, "burstCount": 1 }
+					{
+						"projectileGroupId": 60,
+						"cooldownMs": 480,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "dark_assault",
 				"hpThreshold": 0.6,
-				"movement": { "type": "CHARGE", "speed": 3.5, "chargeDistanceMin": 40, "pauseMs": 250 },
+				"movement": {
+					"type": "CHARGE",
+					"speed": 3.5,
+					"chargeDistanceMin": 40,
+					"pauseMs": 250
+				},
 				"attacks": [
-					{ "projectileGroupId": 60, "cooldownMs": 400, "burstCount": 2, "burstDelayMs": 80, "predictive": true },
-					{ "projectileGroupId": 46, "cooldownMs": 1800, "burstCount": 1 }
+					{
+						"projectileGroupId": 60,
+						"cooldownMs": 240,
+						"burstCount": 3,
+						"burstDelayMs": 56,
+						"predictive": true
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 1080,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "oblivion",
 				"hpThreshold": 0.2,
-				"movement": { "type": "FIGURE_EIGHT", "speed": 2.8, "radius": 50 },
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 2.8,
+					"radius": 50
+				},
 				"attacks": [
-					{ "projectileGroupId": 60, "cooldownMs": 250, "burstCount": 3, "burstDelayMs": 60, "angleOffsetPerBurst": 0.12 },
-					{ "projectileGroupId": 45, "cooldownMs": 1500, "burstCount": 2, "burstDelayMs": 200, "angleOffsetPerBurst": 0.3 }
+					{
+						"projectileGroupId": 60,
+						"cooldownMs": 150,
+						"burstCount": 4,
+						"burstDelayMs": 42,
+						"angleOffsetPerBurst": 0.12
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 900,
+						"burstCount": 3,
+						"burstDelayMs": 140,
+						"angleOffsetPerBurst": 0.3
+					}
 				]
 			}
 		]
@@ -1071,28 +1472,73 @@
 			{
 				"name": "serpent_gaze",
 				"hpThreshold": 1.0,
-				"movement": { "type": "STRAFE", "speed": 1.4, "preferredRange": 130 },
+				"movement": {
+					"type": "STRAFE",
+					"speed": 1.4,
+					"preferredRange": 130
+				},
 				"attacks": [
-					{ "projectileGroupId": 61, "cooldownMs": 900, "burstCount": 1 }
+					{
+						"projectileGroupId": 61,
+						"cooldownMs": 540,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "venom_frenzy",
 				"hpThreshold": 0.5,
-				"movement": { "type": "ORBIT", "speed": 2.0, "radius": 90, "direction": "CW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.0,
+					"radius": 90,
+					"direction": "CW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 61, "cooldownMs": 500, "burstCount": 2, "burstDelayMs": 100, "predictive": true },
-					{ "projectileGroupId": 43, "cooldownMs": 2500, "burstCount": 1, "maxRange": 200 }
+					{
+						"projectileGroupId": 61,
+						"cooldownMs": 300,
+						"burstCount": 3,
+						"burstDelayMs": 70,
+						"predictive": true
+					},
+					{
+						"projectileGroupId": 43,
+						"cooldownMs": 1500,
+						"burstCount": 2,
+						"maxRange": 200,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "petrify",
 				"hpThreshold": 0.2,
-				"movement": { "type": "FLEE", "speed": 2.5, "fleeRange": 120 },
+				"movement": {
+					"type": "FLEE",
+					"speed": 2.5,
+					"fleeRange": 120
+				},
 				"attacks": [
-					{ "projectileGroupId": 61, "cooldownMs": 300, "burstCount": 3, "burstDelayMs": 60 },
-					{ "projectileGroupId": 45, "cooldownMs": 1500, "burstCount": 1 },
-					{ "projectileGroupId": 46, "cooldownMs": 2000, "burstCount": 1 }
+					{
+						"projectileGroupId": 61,
+						"cooldownMs": 180,
+						"burstCount": 4,
+						"burstDelayMs": 42
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 900,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]
@@ -1121,41 +1567,126 @@
 			{
 				"name": "sovereign",
 				"hpThreshold": 1.0,
-				"movement": { "type": "ORBIT", "speed": 1.6, "radius": 140, "direction": "CW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 1.6,
+					"radius": 140,
+					"direction": "CW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 62, "cooldownMs": 1000, "burstCount": 1 },
-					{ "projectileGroupId": 45, "cooldownMs": 3000, "burstCount": 1 }
+					{
+						"projectileGroupId": 62,
+						"cooldownMs": 600,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1800,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "decree",
 				"hpThreshold": 0.7,
-				"movement": { "type": "FIGURE_EIGHT", "speed": 2.0, "radius": 100 },
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 2.0,
+					"radius": 100
+				},
 				"attacks": [
-					{ "projectileGroupId": 62, "cooldownMs": 600, "burstCount": 2, "burstDelayMs": 150, "angleOffsetPerBurst": 0.2 },
-					{ "projectileGroupId": 44, "cooldownMs": 2000, "burstCount": 1 },
-					{ "projectileGroupId": 46, "cooldownMs": 2500, "burstCount": 1 }
+					{
+						"projectileGroupId": 62,
+						"cooldownMs": 360,
+						"burstCount": 3,
+						"burstDelayMs": 105,
+						"angleOffsetPerBurst": 0.2
+					},
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 1500,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			},
 			{
 				"name": "judgement",
 				"hpThreshold": 0.4,
-				"movement": { "type": "CHARGE", "speed": 3.0, "chargeDistanceMin": 60, "pauseMs": 500 },
+				"movement": {
+					"type": "CHARGE",
+					"speed": 3.0,
+					"chargeDistanceMin": 60,
+					"pauseMs": 500
+				},
 				"attacks": [
-					{ "projectileGroupId": 62, "cooldownMs": 350, "burstCount": 3, "burstDelayMs": 80, "angleOffsetPerBurst": 0.15 },
-					{ "projectileGroupId": 44, "cooldownMs": 1200, "burstCount": 2, "burstDelayMs": 120 },
-					{ "projectileGroupId": 45, "cooldownMs": 1800, "burstCount": 2, "burstDelayMs": 250, "angleOffsetPerBurst": 0.4 }
+					{
+						"projectileGroupId": 62,
+						"cooldownMs": 210,
+						"burstCount": 4,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.15
+					},
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 720,
+						"burstCount": 3,
+						"burstDelayMs": 84
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 1080,
+						"burstCount": 3,
+						"burstDelayMs": 175,
+						"angleOffsetPerBurst": 0.4
+					}
 				]
 			},
 			{
 				"name": "eternal_wrath",
 				"hpThreshold": 0.15,
-				"movement": { "type": "ORBIT", "speed": 3.0, "radius": 50, "direction": "CCW" },
+				"movement": {
+					"type": "ORBIT",
+					"speed": 3.0,
+					"radius": 50,
+					"direction": "CCW"
+				},
 				"attacks": [
-					{ "projectileGroupId": 62, "cooldownMs": 200, "burstCount": 4, "burstDelayMs": 50, "angleOffsetPerBurst": 0.1 },
-					{ "projectileGroupId": 44, "cooldownMs": 800, "burstCount": 3, "burstDelayMs": 100, "angleOffsetPerBurst": 0.2 },
-					{ "projectileGroupId": 45, "cooldownMs": 1200, "burstCount": 2, "burstDelayMs": 200, "angleOffsetPerBurst": 0.5 },
-					{ "projectileGroupId": 46, "cooldownMs": 1500, "burstCount": 1 }
+					{
+						"projectileGroupId": 62,
+						"cooldownMs": 150,
+						"burstCount": 6,
+						"burstDelayMs": 40,
+						"angleOffsetPerBurst": 0.1
+					},
+					{
+						"projectileGroupId": 44,
+						"cooldownMs": 480,
+						"burstCount": 4,
+						"burstDelayMs": 70,
+						"angleOffsetPerBurst": 0.2
+					},
+					{
+						"projectileGroupId": 45,
+						"cooldownMs": 720,
+						"burstCount": 3,
+						"burstDelayMs": 140,
+						"angleOffsetPerBurst": 0.5
+					},
+					{
+						"projectileGroupId": 46,
+						"cooldownMs": 900,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
 				]
 			}
 		]

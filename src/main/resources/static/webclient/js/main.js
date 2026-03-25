@@ -668,8 +668,6 @@ function processInput(dt) {
             const item = game.inventory[slotIdx];
             if (item && item.itemId > 0 && item.consumable) {
                 network.sendMoveItem(game.playerId, slotIdx, slotIdx, false, true);
-                // Optimistic: remove consumed item
-                game.inventory[slotIdx] = { ...EMPTY_ITEM };
                 lastInvKey = '';
             }
         }
@@ -927,20 +925,9 @@ function onSlotClick(slotIdx, item, isRightClick = false) {
     // Ground loot: single click = pick up to first empty inv slot
     if (slotIdx >= 20 && slotIdx <= 27 && item && item.itemId > 0) {
         console.log(`[INV] Picking up from ground slot ${slotIdx}, itemId=${item.itemId}`);
-        network.sendMoveItem(game.playerId, -1, slotIdx, false, false);
-
-        // Optimistic: move item from loot to first empty inv slot
-        const loot = game.getNearbyLootContainer();
-        if (loot && loot.items) {
-            const lootIdx = slotIdx - 20;
-            const emptySlot = game.inventory.findIndex((it, i) => i >= 4 && (!it || it.itemId <= 0));
-            if (emptySlot >= 0 && loot.items[lootIdx]) {
-                game.inventory[emptySlot] = { ...loot.items[lootIdx] };
-                loot.items[lootIdx] = null;
-                // Remove null entries (condense)
-                loot.items = loot.items.filter(i => i && i.itemId > 0);
-            }
-        }
+        // Send with target=4 (first inv slot) so server's isInv1 check passes
+        // Server will use firstEmptyInvSlot() regardless
+        network.sendMoveItem(game.playerId, 4, slotIdx, false, false);
         lastInvKey = ''; lastLootKey = '';
         return;
     }
@@ -958,11 +945,6 @@ function onSlotClick(slotIdx, item, isRightClick = false) {
             // Swap/equip/move between slots 0-11
             console.log(`[INV] Swap slot ${selectedSlot} <-> slot ${slotIdx}`);
             network.sendMoveItem(game.playerId, slotIdx, selectedSlot, false, false);
-
-            // Optimistic: swap items locally
-            const temp = game.inventory[selectedSlot];
-            game.inventory[selectedSlot] = game.inventory[slotIdx] || { ...EMPTY_ITEM };
-            game.inventory[slotIdx] = temp || { ...EMPTY_ITEM };
             selectedSlot = -1;
         } else {
             selectedSlot = -1;
@@ -980,9 +962,6 @@ function onSlotRightClick(slotIdx, item) {
     if (item && item.itemId > 0 && slotIdx >= 0 && slotIdx <= 11) {
         console.log(`[INV] Dropping item from slot ${slotIdx}`);
         network.sendMoveItem(game.playerId, -1, slotIdx, true, false);
-
-        // Optimistic: clear the slot locally
-        game.inventory[slotIdx] = { ...EMPTY_ITEM };
         lastInvKey = '';
     }
 }
@@ -1008,8 +987,6 @@ document.getElementById('game-canvas-container').addEventListener('click', () =>
     if (selectedSlot >= 0 && selectedSlot <= 11 && currentScreen === 'game') {
         console.log(`[INV] Dropping item from slot ${selectedSlot} (canvas click)`);
         network.sendMoveItem(game.playerId, -1, selectedSlot, true, false);
-        // Optimistic: clear the slot
-        game.inventory[selectedSlot] = { ...EMPTY_ITEM };
         selectedSlot = -1;
         lastInvKey = '';
     }

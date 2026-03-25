@@ -202,47 +202,110 @@ export class GameRenderer {
         }
 
         const drawSize = ts * SCALE;
+        // Debug: log tile rendering stats once per map change
+        let _baseRendered = 0, _baseMissing = 0, _collRendered = 0;
         for (let r = minR; r <= maxR; r++) {
             for (let c = minC; c <= maxC; c++) {
-                const tile = gameState.mapTiles[r][c];
+                const tile = gameState.mapTiles[r]?.[c];
                 if (!tile) continue;
 
                 const sx = c * ts * SCALE + offsetX;
                 const sy = r * ts * SCALE + offsetY;
 
-                // Base tile
-                if (tile.base >= 0) {
+                // Base tile (skip void tile ID 0)
+                if (tile.base > 0) {
                     const tex = this.tileTextures[tile.base];
                     if (tex) {
                         const spr = new PIXI.Sprite(tex);
                         spr.x = sx; spr.y = sy;
                         spr.width = drawSize; spr.height = drawSize;
                         this.tileLayer.addChild(spr);
+                        _baseRendered++;
                     } else {
+                        // Bright magenta fallback so missing textures are obvious
                         const g = new PIXI.Graphics();
-                        g.beginFill(this.getTileFallbackColor(tile.base));
+                        g.beginFill(0xFF00FF);
                         g.drawRect(sx, sy, drawSize, drawSize);
                         g.endFill();
                         this.tileLayer.addChild(g);
+                        _baseMissing++;
                     }
                 }
 
-                // Collision/wall tile
-                if (tile.collision >= 0) {
+                // Collision/decoration tile (skip void ID 0)
+                if (tile.collision > 0) {
                     const tex = this.tileTextures[tile.collision];
-                    if (tex) {
+                    if (!tex) continue;
+
+                    // Check tile type from game data
+                    const tileDef = gameState.tileData[tile.collision];
+                    const hasCollision = tileDef?.data?.hasCollision;
+                    const isWall = hasCollision && (tile.base <= 0); // Collision over void = wall
+                    const isObject = hasCollision && (tile.base > 0); // Collision over floor = object
+
+                    if (isWall) {
+                        // === WALL 3D EFFECT (matches Java TileManager) ===
+                        // Sub-pass 1: Drop shadow (+3,+3) with 35% alpha
                         const shadow = new PIXI.Sprite(tex);
-                        shadow.x = sx; shadow.y = sy + 3 * SCALE;
+                        shadow.x = sx + 3 * SCALE; shadow.y = sy + 3 * SCALE;
                         shadow.width = drawSize; shadow.height = drawSize;
-                        shadow.tint = 0x222222; shadow.alpha = 0.5;
+                        shadow.tint = 0x333333; shadow.alpha = 0.35;
                         this.tileLayer.addChild(shadow);
 
+                        // Sub-pass 2: Contour lines (4 cardinal offsets ±2px)
+                        const contourOff = 2 * SCALE;
+                        for (const [ox, oy] of [[contourOff,0],[-contourOff,0],[0,contourOff],[0,-contourOff]]) {
+                            const c = new PIXI.Sprite(tex);
+                            c.x = sx + ox; c.y = sy + oy;
+                            c.width = drawSize; c.height = drawSize;
+                            c.tint = 0x333333; c.alpha = 0.6;
+                            this.tileLayer.addChild(c);
+                        }
+
+                        // Sub-pass 3: Side face (dark strip below, 1/3 tile height)
+                        const sideH = drawSize / 3;
+                        const side = new PIXI.Graphics();
+                        side.beginFill(0x404050);
+                        side.drawRect(sx, sy + drawSize, drawSize, sideH);
+                        side.endFill();
+                        this.tileLayer.addChild(side);
+
+                        // Sub-pass 4: Main tile on top
+                        const spr = new PIXI.Sprite(tex);
+                        spr.x = sx; spr.y = sy;
+                        spr.width = drawSize; spr.height = drawSize;
+                        this.tileLayer.addChild(spr);
+                    } else if (isObject) {
+                        // === OBJECT WITH ELLIPTICAL SHADOW ===
+                        const shadowG = new PIXI.Graphics();
+                        shadowG.beginFill(0x000000, 0.3);
+                        const cx = sx + drawSize / 2;
+                        const cy = sy + drawSize - drawSize * 0.1;
+                        shadowG.drawEllipse(cx, cy, drawSize * 0.35, drawSize * 0.08);
+                        shadowG.endFill();
+                        this.tileLayer.addChild(shadowG);
+
+                        // Main tile
+                        const spr = new PIXI.Sprite(tex);
+                        spr.x = sx; spr.y = sy;
+                        spr.width = drawSize; spr.height = drawSize;
+                        this.tileLayer.addChild(spr);
+                    } else {
+                        // === DECORATION (non-collision) - render normally ===
                         const spr = new PIXI.Sprite(tex);
                         spr.x = sx; spr.y = sy;
                         spr.width = drawSize; spr.height = drawSize;
                         this.tileLayer.addChild(spr);
                     }
+                    _collRendered++;
                 }
+            }
+        }
+        // Log once per map change
+        if (!this._lastTileStats || this._lastTileStats !== `${_baseRendered}:${_baseMissing}:${_collRendered}`) {
+            this._lastTileStats = `${_baseRendered}:${_baseMissing}:${_collRendered}`;
+            if (_baseRendered > 0 || _baseMissing > 0 || _collRendered > 0) {
+                console.log(`[TILES] Rendered: ${_baseRendered} base (${_baseMissing} MISSING tex), ${_collRendered} collision`);
             }
         }
     }
@@ -293,27 +356,12 @@ export class GameRenderer {
 
         const tex = this.getRegion(sheetKey, frameCol, row, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
         if (tex) {
-            // Outline/shadow
-            const shadow = new PIXI.Sprite(tex);
-            shadow.x = sx + 2;
-            shadow.y = sy + 2;
-            shadow.width = size;
-            shadow.height = size;
-            shadow.tint = 0x333333;
-            shadow.alpha = 0.6;
-            this.entityLayer.addChild(shadow);
+            const flipX = player.facing === 'left';
 
             const spr = new PIXI.Sprite(tex);
-            spr.x = sx;
-            spr.y = sy;
-            spr.width = size;
-            spr.height = size;
-            // Flip if facing left
-            if (player.facing === 'left') {
-                spr.anchor.set(1, 0);
-                spr.scale.x = -Math.abs(spr.scale.x);
-            }
-            if (isLocal) spr.tint = 0xFFFFFF;
+            spr.x = sx; spr.y = sy;
+            spr.width = size; spr.height = size;
+            if (flipX) { spr.anchor.set(1, 0); spr.scale.x = -Math.abs(spr.scale.x); }
             this.entityLayer.addChild(spr);
         } else {
             // Fallback: colored square
@@ -350,12 +398,23 @@ export class GameRenderer {
                                  enemyDef.spriteSize || BASE_SPRITE_SIZE, enemyDef.spriteSize || BASE_SPRITE_SIZE);
         }
 
+        // Circular ground shadow under enemy
+        const shadowG = new PIXI.Graphics();
+        shadowG.beginFill(0x000000, 0.3);
+        shadowG.drawEllipse(sx + size / 2, sy + size - size * 0.05, size * 0.4, size * 0.12);
+        shadowG.endFill();
+        this.entityLayer.addChild(shadowG);
+
         if (tex) {
             const spr = new PIXI.Sprite(tex);
-            spr.x = sx;
-            spr.y = sy;
-            spr.width = size;
-            spr.height = size;
+            spr.x = sx; spr.y = sy;
+            spr.width = size; spr.height = size;
+
+            // Status effect tinting (matches Java Enemy.updateEffectState)
+            if (enemy.effectIds) {
+                if (this._hasEffect(enemy.effectIds, 2)) spr.tint = 0x888888;      // PARALYZED - grayscale
+                else if (this._hasEffect(enemy.effectIds, 3)) spr.tint = 0x88AACC;  // STUNNED - blue/decay
+            }
             this.entityLayer.addChild(spr);
         } else {
             const g = new PIXI.Graphics();
@@ -527,6 +586,15 @@ export class GameRenderer {
             txt.alpha = alpha;
             this.uiLayer.addChild(txt);
         }
+    }
+
+    // Check if an effect ID is present in an entity's effect array
+    _hasEffect(effectIds, effectId) {
+        if (!effectIds) return false;
+        for (const id of effectIds) {
+            if (id === effectId || id === BigInt(effectId)) return true;
+        }
+        return false;
     }
 
     getTileFallbackColor(tileId) {

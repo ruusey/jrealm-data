@@ -9,8 +9,19 @@
 			{
 				"name": "Beach",
 				"ordinal": 0,
-				"tileIds": [7, 8, 24, 10, 26],
-				"decorationTileIds": [73, 74, 39, 75],
+				"tileIds": [
+					7,
+					8,
+					24,
+					10,
+					26
+				],
+				"decorationTileIds": [
+					73,
+					74,
+					39,
+					75
+				],
 				"rarities": {
 					"7": 1.0,
 					"8": 0.5,
@@ -26,8 +37,32 @@
 			{
 				"name": "Grasslands",
 				"ordinal": 1,
-				"tileIds": [11, 12, 13, 136, 137, 138],
-				"decorationTileIds": [134, 135, 14, 15, 35, 33, 75, 96, 97, 98, 99, 100, 104, 105, 116, 117],
+				"tileIds": [
+					11,
+					12,
+					13,
+					136,
+					137,
+					138
+				],
+				"decorationTileIds": [
+					134,
+					135,
+					14,
+					15,
+					35,
+					33,
+					75,
+					96,
+					97,
+					98,
+					99,
+					100,
+					104,
+					105,
+					116,
+					117
+				],
 				"rarities": {
 					"11": 1.0,
 					"12": 0.45,
@@ -56,8 +91,18 @@
 			{
 				"name": "Highlands",
 				"ordinal": 2,
-				"tileIds": [29, 27, 28],
-				"decorationTileIds": [30, 31, 32, 19, 20],
+				"tileIds": [
+					29,
+					27,
+					28
+				],
+				"decorationTileIds": [
+					30,
+					31,
+					32,
+					19,
+					20
+				],
 				"rarities": {
 					"29": 1.0,
 					"27": 0.4,
@@ -72,8 +117,26 @@
 			{
 				"name": "Summit",
 				"ordinal": 3,
-				"tileIds": [68, 69, 128, 136],
-				"decorationTileIds": [34, 70, 71, 38, 101, 102, 103, 110, 111, 112, 113, 144],
+				"tileIds": [
+					68,
+					69,
+					128,
+					136
+				],
+				"decorationTileIds": [
+					34,
+					70,
+					71,
+					38,
+					101,
+					102,
+					103,
+					110,
+					111,
+					112,
+					113,
+					144
+				],
 				"rarities": {
 					"68": 1.0,
 					"69": 0.45,
@@ -92,28 +155,70 @@
 					"113": 0.02,
 					"144": 0.03
 				}
-	}
+			}
 		],
 		"enemyGroups": [
 			{
-				"name": "Beach_Enemies",
+				"name": "beach",
 				"ordinal": 0,
-				"enemyIds": [6, 7, 8, 14, 15, 41]
+				"enemyIds": [
+					6,
+					7,
+					8,
+					14,
+					15,
+					41,
+					28,
+					29
+				]
 			},
 			{
-				"name": "Grasslands_Enemies",
+				"name": "grasslands",
 				"ordinal": 1,
-				"enemyIds": [3, 4, 5, 9, 10, 12, 41, 43]
+				"enemyIds": [
+					3,
+					4,
+					5,
+					9,
+					10,
+					12,
+					41,
+					43,
+					30,
+					46
+				]
 			},
 			{
-				"name": "Highlands_Enemies",
+				"name": "highlands",
 				"ordinal": 2,
-				"enemyIds": [1, 2, 3, 4, 5, 9, 11]
+				"enemyIds": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					9,
+					11,
+					42,
+					44,
+					45
+				]
 			},
 			{
-				"name": "Summit_Enemies",
+				"name": "summit",
 				"ordinal": 3,
-				"enemyIds": [1, 2, 3, 4, 5, 11, 13, 15]
+				"enemyIds": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					11,
+					13,
+					15,
+					27,
+					47
+				]
 			}
 		],
 		"zones": [
@@ -168,8 +273,18 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [29, 27, 28],
-				"decorationTileIds": [30, 31, 32, 19, 20],
+				"tileIds": [
+					29,
+					27,
+					28
+				],
+				"decorationTileIds": [
+					30,
+					31,
+					32,
+					19,
+					20
+				],
 				"rarities": {
 					"29": 1.0,
 					"27": 0.4,
@@ -186,7 +301,17 @@
 			{
 				"name": "World_0_Cave_0_Enemies",
 				"ordinal": 0,
-				"enemyIds": [1, 2, 3, 4, 5, 9, 10, 11, 12]
+				"enemyIds": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					9,
+					10,
+					11,
+					12
+				]
 			}
 		]
 	},
@@ -199,8 +324,42 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [11, 12, 13, 136, 137, 138],
-				"decorationTileIds": [134, 135, 14, 15, 35, 33, 75, 19, 20, 140, 141, 96, 97, 98, 99, 100, 104, 105, 107, 108, 112, 113, 114, 115, 116, 117],
+				"tileIds": [
+					11,
+					12,
+					13,
+					136,
+					137,
+					138
+				],
+				"decorationTileIds": [
+					134,
+					135,
+					14,
+					15,
+					35,
+					33,
+					75,
+					19,
+					20,
+					140,
+					141,
+					96,
+					97,
+					98,
+					99,
+					100,
+					104,
+					105,
+					107,
+					108,
+					112,
+					113,
+					114,
+					115,
+					116,
+					117
+				],
 				"rarities": {
 					"11": 1.0,
 					"12": 0.45,
@@ -241,7 +400,18 @@
 			{
 				"name": "Grasslands_0_Enemies",
 				"ordinal": 0,
-				"enemyIds": [3, 4, 5, 6, 7, 8, 10, 12, 41, 43]
+				"enemyIds": [
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					10,
+					12,
+					41,
+					43
+				]
 			}
 		]
 	},
@@ -254,8 +424,17 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [45, 46, 129],
-				"decorationTileIds": [47, 48, 50, 38],
+				"tileIds": [
+					45,
+					46,
+					129
+				],
+				"decorationTileIds": [
+					47,
+					48,
+					50,
+					38
+				],
 				"rarities": {
 					"45": 1.0,
 					"46": 0.45,
@@ -271,7 +450,11 @@
 			{
 				"name": "undead_lair_enemies",
 				"ordinal": 0,
-				"enemyIds": [17, 21, 24]
+				"enemyIds": [
+					17,
+					21,
+					24
+				]
 			}
 		]
 	},
@@ -284,8 +467,17 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [51, 52, 130],
-				"decorationTileIds": [53, 54, 31, 32],
+				"tileIds": [
+					51,
+					52,
+					130
+				],
+				"decorationTileIds": [
+					53,
+					54,
+					31,
+					32
+				],
 				"rarities": {
 					"51": 1.0,
 					"52": 0.45,
@@ -301,7 +493,11 @@
 			{
 				"name": "ice_cave_enemies",
 				"ordinal": 0,
-				"enemyIds": [20, 22, 24]
+				"enemyIds": [
+					20,
+					22,
+					24
+				]
 			}
 		]
 	},
@@ -314,8 +510,16 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [55, 56, 132],
-				"decorationTileIds": [57, 58, 59],
+				"tileIds": [
+					55,
+					56,
+					132
+				],
+				"decorationTileIds": [
+					57,
+					58,
+					59
+				],
 				"rarities": {
 					"55": 1.0,
 					"56": 0.45,
@@ -330,7 +534,11 @@
 			{
 				"name": "abyss_enemies",
 				"ordinal": 0,
-				"enemyIds": [18, 19, 23]
+				"enemyIds": [
+					18,
+					19,
+					23
+				]
 			}
 		]
 	},
@@ -343,8 +551,20 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [60, 61, 123, 42, 43, 26],
-				"decorationTileIds": [62, 63, 142, 143],
+				"tileIds": [
+					60,
+					61,
+					123,
+					42,
+					43,
+					26
+				],
+				"decorationTileIds": [
+					62,
+					63,
+					142,
+					143
+				],
 				"rarities": {
 					"60": 1.0,
 					"61": 0.45,
@@ -363,7 +583,12 @@
 			{
 				"name": "coastal_ruins_enemies",
 				"ordinal": 0,
-				"enemyIds": [6, 7, 14, 28]
+				"enemyIds": [
+					6,
+					7,
+					14,
+					28
+				]
 			}
 		]
 	},
@@ -376,8 +601,36 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [64, 65, 122, 11, 136, 137, 138],
-				"decorationTileIds": [134, 135, 14, 15, 66, 67, 35, 21, 96, 97, 98, 104, 105, 107, 108, 114, 115, 116, 117],
+				"tileIds": [
+					64,
+					65,
+					122,
+					11,
+					136,
+					137,
+					138
+				],
+				"decorationTileIds": [
+					134,
+					135,
+					14,
+					15,
+					66,
+					67,
+					35,
+					21,
+					96,
+					97,
+					98,
+					104,
+					105,
+					107,
+					108,
+					114,
+					115,
+					116,
+					117
+				],
 				"rarities": {
 					"64": 1.0,
 					"65": 0.45,
@@ -412,7 +665,15 @@
 			{
 				"name": "emerald_wilds_enemies",
 				"ordinal": 0,
-				"enemyIds": [3, 4, 10, 12, 23, 41, 42]
+				"enemyIds": [
+					3,
+					4,
+					10,
+					12,
+					23,
+					41,
+					42
+				]
 			}
 		]
 	},
@@ -425,8 +686,26 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [68, 69, 128, 136],
-				"decorationTileIds": [34, 70, 71, 38, 101, 102, 103, 110, 111, 112, 113, 144],
+				"tileIds": [
+					68,
+					69,
+					128,
+					136
+				],
+				"decorationTileIds": [
+					34,
+					70,
+					71,
+					38,
+					101,
+					102,
+					103,
+					110,
+					111,
+					112,
+					113,
+					144
+				],
 				"rarities": {
 					"68": 1.0,
 					"69": 0.45,
@@ -451,7 +730,14 @@
 			{
 				"name": "dark_forest_enemies",
 				"ordinal": 0,
-				"enemyIds": [5, 19, 24, 21, 44, 45]
+				"enemyIds": [
+					5,
+					19,
+					24,
+					21,
+					44,
+					45
+				]
 			}
 		]
 	},
@@ -464,8 +750,20 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [72, 78, 124, 9],
-				"decorationTileIds": [76, 77, 31, 32, 19, 20],
+				"tileIds": [
+					72,
+					78,
+					124,
+					9
+				],
+				"decorationTileIds": [
+					76,
+					77,
+					31,
+					32,
+					19,
+					20
+				],
 				"rarities": {
 					"72": 1.0,
 					"78": 0.45,
@@ -484,7 +782,12 @@
 			{
 				"name": "crystal_caverns_enemies",
 				"ordinal": 0,
-				"enemyIds": [20, 22, 9, 28]
+				"enemyIds": [
+					20,
+					22,
+					9,
+					28
+				]
 			}
 		]
 	},
@@ -497,8 +800,19 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [79, 80, 125, 45],
-				"decorationTileIds": [81, 82, 50, 38, 18],
+				"tileIds": [
+					79,
+					80,
+					125,
+					45
+				],
+				"decorationTileIds": [
+					81,
+					82,
+					50,
+					38,
+					18
+				],
 				"rarities": {
 					"79": 1.0,
 					"80": 0.45,
@@ -516,7 +830,14 @@
 			{
 				"name": "necropolis_enemies",
 				"ordinal": 0,
-				"enemyIds": [17, 21, 24, 2, 27, 44]
+				"enemyIds": [
+					17,
+					21,
+					24,
+					2,
+					27,
+					44
+				]
 			}
 		]
 	},
@@ -529,8 +850,20 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [83, 84, 126, 60, 42, 43],
-				"decorationTileIds": [85, 44, 118, 119],
+				"tileIds": [
+					83,
+					84,
+					126,
+					60,
+					42,
+					43
+				],
+				"decorationTileIds": [
+					85,
+					44,
+					118,
+					119
+				],
 				"rarities": {
 					"83": 1.0,
 					"84": 0.45,
@@ -549,7 +882,11 @@
 			{
 				"name": "sunken_temple_enemies",
 				"ordinal": 0,
-				"enemyIds": [6, 29, 9]
+				"enemyIds": [
+					6,
+					29,
+					9
+				]
 			}
 		]
 	},
@@ -562,8 +899,17 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [86, 87, 131, 136],
-				"decorationTileIds": [34, 88, 139],
+				"tileIds": [
+					86,
+					87,
+					131,
+					136
+				],
+				"decorationTileIds": [
+					34,
+					88,
+					139
+				],
 				"rarities": {
 					"86": 1.0,
 					"87": 0.45,
@@ -579,7 +925,12 @@
 			{
 				"name": "mushroom_grotto_enemies",
 				"ordinal": 0,
-				"enemyIds": [30, 23, 12, 46]
+				"enemyIds": [
+					30,
+					23,
+					12,
+					46
+				]
 			}
 		]
 	},
@@ -592,8 +943,17 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [89, 90, 133],
-				"decorationTileIds": [91, 59, 57, 58],
+				"tileIds": [
+					89,
+					90,
+					133
+				],
+				"decorationTileIds": [
+					91,
+					59,
+					57,
+					58
+				],
 				"rarities": {
 					"89": 1.0,
 					"90": 0.45,
@@ -609,7 +969,11 @@
 			{
 				"name": "magma_depths_enemies",
 				"ordinal": 0,
-				"enemyIds": [18, 31, 5]
+				"enemyIds": [
+					18,
+					31,
+					5
+				]
 			}
 		]
 	},
@@ -622,8 +986,17 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [92, 93, 127],
-				"decorationTileIds": [94, 95, 18, 50],
+				"tileIds": [
+					92,
+					93,
+					127
+				],
+				"decorationTileIds": [
+					94,
+					95,
+					18,
+					50
+				],
 				"rarities": {
 					"92": 1.0,
 					"93": 0.45,
@@ -639,7 +1012,11 @@
 			{
 				"name": "shadow_keep_enemies",
 				"ordinal": 0,
-				"enemyIds": [17, 32, 21]
+				"enemyIds": [
+					17,
+					32,
+					21
+				]
 			}
 		]
 	},
@@ -652,8 +1029,23 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [64, 65, 122, 136],
-				"decorationTileIds": [34, 139, 66, 67, 107, 108, 109, 114, 115],
+				"tileIds": [
+					64,
+					65,
+					122,
+					136
+				],
+				"decorationTileIds": [
+					34,
+					139,
+					66,
+					67,
+					107,
+					108,
+					109,
+					114,
+					115
+				],
 				"rarities": {
 					"64": 1.0,
 					"65": 0.45,
@@ -675,7 +1067,12 @@
 			{
 				"name": "serpents_den_enemies",
 				"ordinal": 0,
-				"enemyIds": [19, 33, 24, 47]
+				"enemyIds": [
+					19,
+					33,
+					24,
+					47
+				]
 			}
 		]
 	},
@@ -688,8 +1085,16 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [55, 56, 132],
-				"decorationTileIds": [57, 58, 59],
+				"tileIds": [
+					55,
+					56,
+					132
+				],
+				"decorationTileIds": [
+					57,
+					58,
+					59
+				],
 				"rarities": {
 					"55": 1.0,
 					"56": 0.45,
@@ -704,7 +1109,11 @@
 			{
 				"name": "infernal_pit_enemies",
 				"ordinal": 0,
-				"enemyIds": [18, 31, 34]
+				"enemyIds": [
+					18,
+					31,
+					34
+				]
 			}
 		]
 	},
@@ -717,8 +1126,17 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [92, 93, 127],
-				"decorationTileIds": [94, 95, 50, 18],
+				"tileIds": [
+					92,
+					93,
+					127
+				],
+				"decorationTileIds": [
+					94,
+					95,
+					50,
+					18
+				],
 				"rarities": {
 					"92": 1.0,
 					"93": 0.45,
@@ -734,7 +1152,11 @@
 			{
 				"name": "void_sanctum_enemies",
 				"ordinal": 0,
-				"enemyIds": [21, 32, 24]
+				"enemyIds": [
+					21,
+					32,
+					24
+				]
 			}
 		]
 	},
@@ -747,8 +1169,18 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [89, 90, 133, 55],
-				"decorationTileIds": [91, 59, 57, 58],
+				"tileIds": [
+					89,
+					90,
+					133,
+					55
+				],
+				"decorationTileIds": [
+					91,
+					59,
+					57,
+					58
+				],
 				"rarities": {
 					"89": 1.0,
 					"90": 0.45,
@@ -765,7 +1197,12 @@
 			{
 				"name": "dragons_roost_enemies",
 				"ordinal": 0,
-				"enemyIds": [34, 18, 5, 47]
+				"enemyIds": [
+					34,
+					18,
+					5,
+					47
+				]
 			}
 		]
 	},
@@ -778,8 +1215,30 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [64, 65, 122, 137, 138],
-				"decorationTileIds": [134, 135, 66, 67, 21, 35, 96, 97, 98, 104, 105, 112, 113, 116, 117],
+				"tileIds": [
+					64,
+					65,
+					122,
+					137,
+					138
+				],
+				"decorationTileIds": [
+					134,
+					135,
+					66,
+					67,
+					21,
+					35,
+					96,
+					97,
+					98,
+					104,
+					105,
+					112,
+					113,
+					116,
+					117
+				],
 				"rarities": {
 					"64": 1.0,
 					"65": 0.45,
@@ -808,7 +1267,11 @@
 			{
 				"name": "enchanted_maze_enemies",
 				"ordinal": 0,
-				"enemyIds": [30, 8, 3]
+				"enemyIds": [
+					30,
+					8,
+					3
+				]
 			}
 		]
 	},
@@ -821,8 +1284,19 @@
 		"tileGroups": [
 			{
 				"ordinal": 0,
-				"tileIds": [72, 78, 124, 9],
-				"decorationTileIds": [76, 77, 6, 31, 32],
+				"tileIds": [
+					72,
+					78,
+					124,
+					9
+				],
+				"decorationTileIds": [
+					76,
+					77,
+					6,
+					31,
+					32
+				],
 				"rarities": {
 					"72": 1.0,
 					"78": 0.45,
@@ -840,7 +1314,11 @@
 			{
 				"name": "throne_of_eternity_enemies",
 				"ordinal": 0,
-				"enemyIds": [32, 21, 27]
+				"enemyIds": [
+					32,
+					21,
+					27
+				]
 			}
 		]
 	}
