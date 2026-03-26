@@ -281,16 +281,15 @@ export class GameRenderer {
                         spr.width = drawSize; spr.height = drawSize;
                         this.tileLayer.addChild(spr);
                     } else if (isObject) {
-                        // === OBJECT WITH ELLIPTICAL SHADOW ===
+                        // === COLLISION OBJECT WITH GROUND SHADOW ===
+                        // Shadow at base of sprite (within tile bounds, not extending into next row)
                         const shadowG = new PIXI.Graphics();
-                        shadowG.beginFill(0x000000, 0.3);
-                        const cx = sx + drawSize / 2;
-                        const cy = sy + drawSize + drawSize * 0.08;
-                        shadowG.drawEllipse(cx, cy, drawSize * 0.35, drawSize * 0.08);
+                        shadowG.beginFill(0x000000, 0.35);
+                        shadowG.drawEllipse(sx + drawSize / 2, sy + drawSize * 0.9, drawSize * 0.4, drawSize * 0.12);
                         shadowG.endFill();
                         this.tileLayer.addChild(shadowG);
 
-                        // Main tile
+                        // Main tile on top
                         const spr = new PIXI.Sprite(tex);
                         spr.x = sx; spr.y = sy;
                         spr.width = drawSize; spr.height = drawSize;

@@ -266,17 +266,21 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 .trade-btn.confirm:hover { background: #50b050; }
 .trade-btn.cancel { background: #a04040; color: #fff; }
 .trade-btn.cancel:hover { background: #b05050; }
+#nearby-section {
+    margin-top: 6px;
+    z-index: 10;
+    position: relative;
+}
 #nearby-players {
     background: #1a1218cc;
     border: 1px solid #3a2a38;
     border-radius: 4px;
     padding: 6px;
-    margin-top: 6px;
     font-size: 11px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
-    max-height: 120px;
+    max-height: 140px;
     overflow-y: auto;
 }
 .nearby-player {
@@ -285,6 +289,65 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .nearby-player:hover { background: #2a2030; color: #c8a86e; }
+.np-icon {
+    display: inline-block; width: 16px; height: 16px;
+    background: #3a2a48; border-radius: 2px; text-align: center;
+    font-size: 10px; line-height: 16px; color: #c8a86e; font-weight: bold;
+}
+
+/* Trade Request Popup */
+#trade-request-popup {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50; pointer-events: auto;
+}
+.trade-popup-content {
+    background: #2a2030; border: 2px solid #c8a86e;
+    border-radius: 8px; padding: 20px 28px; text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+.trade-popup-content p { margin-bottom: 14px; font-size: 15px; }
+.trade-popup-buttons { display: flex; gap: 10px; }
+.trade-popup-btn {
+    flex: 1; padding: 8px 16px; border: none; border-radius: 4px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+}
+.trade-popup-btn.accept { background: #40a040; color: #fff; }
+.trade-popup-btn.accept:hover { background: #50b050; }
+.trade-popup-btn.decline { background: #a04040; color: #fff; }
+.trade-popup-btn.decline:hover { background: #b05050; }
+
+/* Player Tooltip */
+#player-tooltip {
+    position: absolute; bottom: 100%; right: 0;
+    background: #1a1218ee; border: 1px solid #4a3a58;
+    border-radius: 6px; padding: 10px 14px;
+    min-width: 160px; z-index: 20;
+    margin-bottom: 6px; pointer-events: none;
+}
+.tooltip-name { color: #c8a86e; font-weight: bold; font-size: 14px; }
+.tooltip-class { color: #887868; font-size: 11px; margin-bottom: 4px; }
+.tooltip-stat { font-size: 12px; }
+.tooltip-hp { color: #e06060; }
+.tooltip-mp { color: #6080e0; }
+
+/* Player Context Menu */
+#player-context-menu {
+    position: absolute; z-index: 25;
+    background: #2a2030; border: 1px solid #4a3a58;
+    border-radius: 6px; overflow: hidden; min-width: 130px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.ctx-header {
+    padding: 6px 12px; font-size: 12px; font-weight: bold;
+    color: #c8a86e; border-bottom: 1px solid #3a2a38;
+    background: #1a1218;
+}
+.ctx-option {
+    padding: 8px 12px; font-size: 13px; cursor: pointer;
+    color: #e0d8c8; transition: background 0.1s;
+}
+.ctx-option:hover { background: #3a2a48; }
 
 /* Chat */
 #chat-panel {

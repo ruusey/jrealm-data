@@ -6,6 +6,7 @@ import { GameState, CLASS_NAMES } from './game.js';
 import { GameRenderer } from './renderer.js';
 import { InputHandler } from './input.js';
 import { PacketId, PacketWriters } from './codec.js';
+import { initTradeUI, updateNearbyPlayers } from './trade.js';
 
 // --- App State ---
 const api = new ApiClient();
@@ -263,8 +264,11 @@ function handlePlayerDeath() {
     // Send DeathAckPacket to server
     network.send(PacketWriters.deathAck(game.playerId));
 
-    // Disconnect from game server (matches Java shutdownClient)
+    // Disconnect from game server
     network.disconnect();
+
+    // Stop game loop from processing input/rendering
+    game.playerId = null;
 
     // Show death overlay
     showDeathScreen();
@@ -285,45 +289,37 @@ function showDeathScreen() {
     `;
     document.getElementById('game-screen').appendChild(overlay);
 
-    // Button handlers
-    document.getElementById('death-charselect-btn').addEventListener('click', () => {
-        overlay.remove();
-        // Reset game state
-        game.playerId = null;
-        game.players.clear();
-        game.enemies.clear();
-        game.bullets.clear();
-        game.lootContainers.clear();
-        game.portals.clear();
-        game.mapTiles = null;
-        game.stats = null;
-        game.health = 0; game.mana = 0;
-        game.inventory = [];
+    const doCharSelect = () => {
+        const ol = document.getElementById('death-overlay');
+        if (ol) ol.remove();
+        game.fullReset();
         lastXDir = null; lastYDir = null;
         selectedSlot = -1;
         lastInvKey = ''; lastLootKey = '';
-
+        updateInventoryUI._logged = false;
         if (renderer) { renderer.destroy(); renderer = null; }
 
-        // Refresh account (dead character will be gone due to permadeath)
         if (account && api.sessionToken) {
             api.getAccount(api.accountGuid).then(acc => {
                 account = acc;
                 showCharacterSelect();
-            }).catch(() => {
-                showScreen('login');
-            });
+            }).catch(() => showScreen('login'));
         } else {
             showScreen('login');
         }
-    });
+    };
 
-    document.getElementById('death-quit-btn').addEventListener('click', () => {
-        overlay.remove();
+    const doQuit = () => {
+        const ol = document.getElementById('death-overlay');
+        if (ol) ol.remove();
+        game.fullReset();
         if (renderer) { renderer.destroy(); renderer = null; }
-        game.playerId = null;
         showScreen('login');
-    });
+    };
+
+    // Use onclick instead of addEventListener to avoid duplicate handler issues
+    document.getElementById('death-charselect-btn').onclick = doCharSelect;
+    document.getElementById('death-quit-btn').onclick = doQuit;
 }
 
 // Realm transition: matches Java PlayState portal handling
@@ -362,23 +358,12 @@ function doRealmTransition(portal, isVault) {
 }
 
 function returnToCharacterSelect() {
-    // Disconnect from game server
     network.disconnect();
-
-    // Reset game state
-    game.playerId = null;
-    game.players.clear();
-    game.enemies.clear();
-    game.bullets.clear();
-    game.lootContainers.clear();
-    game.portals.clear();
-    game.mapTiles = null;
-    game.stats = null;
-    game.health = 0; game.mana = 0;
-    game.inventory = [];
+    game.fullReset();
     lastXDir = null; lastYDir = null;
     selectedSlot = -1;
     lastInvKey = ''; lastLootKey = '';
+    updateInventoryUI._logged = false;
 
     // Destroy renderer
     if (renderer) {
@@ -622,32 +607,8 @@ function setupNetworkHandlers() {
         // Status effect applied to entity - tracked via UpdatePacket effectIds
     });
 
-    // --- Trading Packet Handlers ---
-    network.on(PacketId.REQUEST_TRADE, (data) => {
-        game.handleRequestTrade(data);
-        addChatMessage('SYSTEM', `${data.requestingPlayerName} has proposed a trade. Type /accept to initiate.`);
-    });
-
-    network.on(PacketId.ACCEPT_TRADE, (data) => {
-        game.handleAcceptTrade(data);
-        if (data.accepted) {
-            addChatMessage('SYSTEM', `Trade started with ${game.tradePartnerName}`);
-            lastInvKey = ''; lastLootKey = '';
-        } else {
-            addChatMessage('SYSTEM', 'Trade ended.');
-            lastInvKey = ''; lastLootKey = '';
-        }
-    });
-
-    network.on(PacketId.UPDATE_TRADE, (data) => {
-        game.handleUpdateTrade(data);
-        lastInvKey = ''; lastLootKey = '';
-    });
-
-    network.on(PacketId.UPDATE_TRADE_SELECTION, (data) => {
-        game.handleUpdateTradeSelection(data);
-        lastInvKey = ''; lastLootKey = '';
-    });
+    // Trading handlers managed by trade.js module
+    initTradeUI(game, network, addChatMessage);
 }
 
 // --- Game Loop ---
@@ -899,21 +860,8 @@ function updateHUD() {
         tradeBtns.style.display = 'none';
     }
 
-    // Nearby players list (update every ~500ms)
-    if (!updateHUD._lastNearby || Date.now() - updateHUD._lastNearby > 500) {
-        updateHUD._lastNearby = Date.now();
-        const nearbyEl = document.getElementById('nearby-players');
-        const nearby = game.getNearbyPlayers(16);
-        if (nearby.length > 0) {
-            nearbyEl.innerHTML = nearby.map(p => {
-                const cls = CLASS_NAMES[p.classId || 0] || '?';
-                const name = (p.name || cls).substring(0, 12);
-                return `<div class="nearby-player" data-name="${escapeHtml(p.name || '')}">${cls[0]} ${name}</div>`;
-            }).join('');
-        } else {
-            nearbyEl.innerHTML = '';
-        }
-    }
+    // Nearby players with tooltips and context menu (trade.js module)
+    updateNearbyPlayers(game, network, renderer, addChatMessage);
 }
 
 // --- Inventory System ---
@@ -1247,14 +1195,6 @@ document.getElementById('trade-confirm-btn').addEventListener('click', () => {
 });
 document.getElementById('trade-cancel-btn').addEventListener('click', () => {
     handleChatCommand('/decline');
-});
-
-// --- Nearby Players Click (trade request) ---
-document.getElementById('nearby-players').addEventListener('click', (e) => {
-    const playerEl = e.target.closest('.nearby-player');
-    if (playerEl && playerEl.dataset.name) {
-        handleChatCommand(`/trade ${playerEl.dataset.name}`);
-    }
 });
 
 // --- Init ---

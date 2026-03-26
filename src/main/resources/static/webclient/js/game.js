@@ -66,6 +66,46 @@ export class GameState {
         return this.players.get(this.playerId);
     }
 
+    // Full reset for death/disconnect/character switch
+    fullReset() {
+        this.playerId = null;
+        this.playerName = '';
+        this.classId = 0;
+        this.players.clear();
+        this.enemies.clear();
+        this.bullets.clear();
+        this.lootContainers.clear();
+        this.portals.clear();
+        this.mapTiles = null;
+        this.mapWidth = 0;
+        this.mapHeight = 0;
+        this.mapId = 0;
+        this.realmId = null;
+        this.stats = null;
+        this.health = 0;
+        this.maxHealth = 0;
+        this.mana = 0;
+        this.maxMana = 0;
+        this.experience = 0;
+        this.inventory = [];
+        this.effectIds = [];
+        this.effectTimes = [];
+        this.cameraX = 0;
+        this.cameraY = 0;
+        this.awaitingRealmTransition = false;
+        this.chatMessages = [];
+        this.isTrading = false;
+        this.tradePartnerName = '';
+        this.tradeSelection = null;
+        this.tradeConfirmed = false;
+        this.damageTexts = [];
+        // Clear internal caches
+        this._firstInvLog = false;
+        this._parsedExpMap = null;
+        this._maxExpLevel = 1;
+        this._maxExperience = 0;
+    }
+
     // Clear state for realm transition (matches Java Realm.loadMap)
     prepareRealmTransition() {
         this.bullets.clear();
