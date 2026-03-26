@@ -25,7 +25,7 @@ body {
 .subtitle { color: #887868; margin-bottom: 24px; font-size: 14px; }
 .form-group { margin-bottom: 16px; text-align: left; }
 .form-group label { display: block; margin-bottom: 4px; font-size: 13px; color: #a89888; }
-.form-group input {
+.form-group input, .form-group select {
     width: 100%;
     padding: 10px 12px;
     background: #1a1218;
@@ -35,7 +35,7 @@ body {
     font-size: 14px;
     outline: none;
 }
-.form-group input:focus { border-color: #c8a86e; }
+.form-group input:focus, .form-group select:focus { border-color: #c8a86e; }
 button {
     width: 100%;
     padding: 12px;

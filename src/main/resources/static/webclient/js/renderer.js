@@ -238,13 +238,11 @@ export class GameRenderer {
                     const tex = this.tileTextures[tile.collision];
                     if (!tex) continue;
 
-                    // Check tile type from game data
+                    // Check tile type from game data using isWall flag
                     const tileDef = gameState.tileData[tile.collision];
                     const hasCollision = tileDef?.data?.hasCollision;
-                    // All collision tiles get the 3D wall effect (shadow + contour + side face)
-                    // Non-collision tiles on the collision layer are decorations
-                    const isWall = !!hasCollision;
-                    const isObject = false; // Elliptical shadow disabled — walls look better with 3D effect
+                    const isWall = !!tileDef?.data?.isWall;
+                    const isObject = hasCollision && !isWall;
 
                     if (isWall) {
                         // === WALL 3D EFFECT (matches Java TileManager) ===
@@ -283,7 +281,7 @@ export class GameRenderer {
                         const shadowG = new PIXI.Graphics();
                         shadowG.beginFill(0x000000, 0.3);
                         const cx = sx + drawSize / 2;
-                        const cy = sy + drawSize - drawSize * 0.1;
+                        const cy = sy + drawSize + drawSize * 0.08;
                         shadowG.drawEllipse(cx, cy, drawSize * 0.35, drawSize * 0.08);
                         shadowG.endFill();
                         this.tileLayer.addChild(shadowG);
@@ -294,7 +292,13 @@ export class GameRenderer {
                         spr.width = drawSize; spr.height = drawSize;
                         this.tileLayer.addChild(spr);
                     } else {
-                        // === DECORATION (non-collision) - render normally ===
+                        // === DECORATION (non-collision) - with ground shadow ===
+                        const decShadow = new PIXI.Graphics();
+                        decShadow.beginFill(0x000000, 0.25);
+                        decShadow.drawEllipse(sx + drawSize / 2, sy + drawSize + drawSize * 0.08, drawSize * 0.3, drawSize * 0.07);
+                        decShadow.endFill();
+                        this.tileLayer.addChild(decShadow);
+
                         const spr = new PIXI.Sprite(tex);
                         spr.x = sx; spr.y = sy;
                         spr.width = drawSize; spr.height = drawSize;
@@ -357,6 +361,13 @@ export class GameRenderer {
         const frameCol = isMoving ? player.animFrame : 0;
         const row = localRow; // Side walk row
 
+        // Circular ground shadow under player
+        const pShadow = new PIXI.Graphics();
+        pShadow.beginFill(0x000000, 0.3);
+        pShadow.drawEllipse(sx + size / 2, sy + size + size * 0.08, size * 0.4, size * 0.12);
+        pShadow.endFill();
+        this.entityLayer.addChild(pShadow);
+
         const tex = this.getRegion(sheetKey, frameCol, row, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
         if (tex) {
             const flipX = player.facing === 'left';
@@ -414,7 +425,7 @@ export class GameRenderer {
         // Circular ground shadow under enemy
         const shadowG = new PIXI.Graphics();
         shadowG.beginFill(0x000000, 0.3);
-        shadowG.drawEllipse(sx + size / 2, sy + size - size * 0.05, size * 0.4, size * 0.12);
+        shadowG.drawEllipse(sx + size / 2, sy + size + size * 0.08, size * 0.4, size * 0.12);
         shadowG.endFill();
         this.entityLayer.addChild(shadowG);
 
@@ -495,15 +506,25 @@ export class GameRenderer {
     renderLootContainer(loot, offsetX, offsetY) {
         const sx = loot.pos.x * SCALE + offsetX;
         const sy = loot.pos.y * SCALE + offsetY;
-        const size = this.tileSize * SCALE;
-
-        // Loot sprite lookup matches Java GameDataManager:
-        // CHEST(-1) → rotmg-projectiles col=2, row=0
-        // GRAVE(5)  → rotmg-projectiles col=3, row=1
-        // BROWN(0)-WHITE(4) → rotmg-misc col=tier, row=9
-        let tex = null;
+        const fullSize = this.tileSize * SCALE;
         const tier = loot.tier;
-        if (loot.isChest || tier === -1) {
+        const isChest = loot.isChest || tier === -1;
+
+        // Chests render full size, loot bags render at half size (centered)
+        const size = isChest ? fullSize : fullSize / 2;
+        const ox = isChest ? 0 : fullSize / 4; // Center half-size bags
+        const oy = isChest ? 0 : fullSize / 4;
+
+        // Circular ground shadow (slightly below sprite)
+        const shadowG = new PIXI.Graphics();
+        shadowG.beginFill(0x000000, 0.3);
+        shadowG.drawEllipse(sx + ox + size / 2, sy + oy + size + size * 0.08, size * 0.35, size * 0.1);
+        shadowG.endFill();
+        this.entityLayer.addChild(shadowG);
+
+        // Loot sprite lookup
+        let tex = null;
+        if (isChest) {
             tex = this.getRegion('rotmg-projectiles', 2, 0, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
         } else if (tier === 5) {
             tex = this.getRegion('rotmg-projectiles', 3, 1, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
@@ -514,13 +535,13 @@ export class GameRenderer {
 
         if (tex) {
             const spr = new PIXI.Sprite(tex);
-            spr.x = sx; spr.y = sy;
+            spr.x = sx + ox; spr.y = sy + oy;
             spr.width = size; spr.height = size;
             this.entityLayer.addChild(spr);
         } else {
             const g = new PIXI.Graphics();
-            g.beginFill(loot.isChest ? 0xc8a86e : 0x8b6914);
-            g.drawRect(sx + 4, sy + 4, size - 8, size - 8);
+            g.beginFill(isChest ? 0xc8a86e : 0x8b6914);
+            g.drawRect(sx + ox + 2, sy + oy + 2, size - 4, size - 4);
             g.endFill();
             this.entityLayer.addChild(g);
         }
@@ -539,6 +560,13 @@ export class GameRenderer {
             tex = this.getRegion(portalDef.spriteKey, portalDef.col || 0,
                                  portalDef.row || 0, spriteSize, spriteSize);
         }
+
+        // Circular ground shadow
+        const portalShadow = new PIXI.Graphics();
+        portalShadow.beginFill(0x000000, 0.3);
+        portalShadow.drawEllipse(sx + size / 2, sy + size + size * 0.08, size * 0.4, size * 0.12);
+        portalShadow.endFill();
+        this.entityLayer.addChild(portalShadow);
 
         if (tex) {
             const spr = new PIXI.Sprite(tex);
