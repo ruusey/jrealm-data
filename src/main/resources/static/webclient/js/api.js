@@ -51,7 +51,11 @@ export class ApiClient {
     }
 
     async register(email, password, accountName) {
-        return this.request('POST', '/admin/account/register', { email, password, accountName });
+        return this.request('POST', '/admin/account/register', {
+            email, password, accountName,
+            accountProvisions: [],
+            accountSubscriptions: []
+        });
     }
 
     async getGameData(fileName) {

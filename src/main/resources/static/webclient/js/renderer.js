@@ -152,9 +152,10 @@ export class GameRenderer {
         const camX = gameState.cameraX;
         const camY = gameState.cameraY;
 
-        // Camera offset (center of screen)
-        const offsetX = screenW / 2 - camX * SCALE;
-        const offsetY = screenH / 2 - camY * SCALE;
+        // Camera offset (center of screen) — round to integers to prevent
+        // sub-pixel gaps between tiles (thin black lines at tile seams)
+        const offsetX = Math.round(screenW / 2 - camX * SCALE);
+        const offsetY = Math.round(screenH / 2 - camY * SCALE);
 
         // Clear UI layer (damage text, etc.) - keep healthbar graphics
         const keep = this.healthBarGraphics;

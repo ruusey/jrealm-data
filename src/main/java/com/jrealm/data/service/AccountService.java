@@ -124,17 +124,21 @@ public class AccountService {
         }
         AccountEntity saved = this.accountRepo.save(accountBuilder.build());
 
-        account.getAccountProvisions().forEach(provision -> {
-            AccountProvisionEntity provisionEntity = AccountProvisionEntity.builder().accountId(saved.getAccountId())
-                    .provision(provision).build();
-            this.provisionRepo.save(provisionEntity);
-        });
+        if (account.getAccountProvisions() != null) {
+            account.getAccountProvisions().forEach(provision -> {
+                AccountProvisionEntity provisionEntity = AccountProvisionEntity.builder().accountId(saved.getAccountId())
+                        .provision(provision).build();
+                this.provisionRepo.save(provisionEntity);
+            });
+        }
 
-        account.getAccountSubscriptions().forEach(subscription -> {
-            AccountAccessEntity accessEntity = AccountAccessEntity.builder().accountGuid(saved.getAccountGuid())
-                    .access(subscription).build();
-            this.accessRepo.save(accessEntity);
-        });
+        if (account.getAccountSubscriptions() != null) {
+            account.getAccountSubscriptions().forEach(subscription -> {
+                AccountAccessEntity accessEntity = AccountAccessEntity.builder().accountGuid(saved.getAccountGuid())
+                        .access(subscription).build();
+                this.accessRepo.save(accessEntity);
+            });
+        }
 
         if (account.getAccountProperties() != null) {
             account.getAccountProperties().entrySet().forEach(property -> {

@@ -489,7 +489,7 @@ function setupNetworkHandlers() {
     network.on(PacketId.UPDATE, (data) => {
         game.handleUpdate(data);
         // Force inv refresh when our inventory updates
-        if (data.playerId === game.playerId) { lastInvKey = ''; }
+        if (data.playerId === game.playerId) { lastInvKey = ''; lastLootKey = ''; }
     });
 
     network.on(PacketId.TEXT, (data) => {
@@ -616,8 +616,13 @@ function processInput(dt) {
             );
             const computed = game.getComputedStats();
             const dexStat = computed ? computed.dex : 10;
-            const dex = Math.floor((6.5 * (dexStat + 17.3)) / 75);
-            shootCooldown = (1000 / Math.max(dex, 1) + 10) / 1000; // Convert ms to seconds
+            let dex = Math.floor((6.5 * (dexStat + 17.3)) / 75);
+            // SPEEDY effect (effectId=4) multiplies dex by 1.5 (matches server)
+            const effects = game.effectIds || [];
+            if (effects.some(id => id === 4)) dex = Math.floor(dex * 1.5);
+            // DAZED effect (effectId=11) forces dex to 1
+            if (effects.some(id => id === 11)) dex = 1;
+            shootCooldown = (1000 / Math.max(dex, 1) + 10) / 1000;
         }
     }
 
