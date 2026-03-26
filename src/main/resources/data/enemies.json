@@ -246,13 +246,13 @@
 		"size": 32,
 		"attackId": 19,
 		"xp": 250,
-		"health": 500,
+		"health": 200,
 		"maxSpeed": 1.4,
 		"chaseRange": 420.0,
 		"attackRange": 240.0,
 		"stats": {
 			"hp": 500,
-			"def": 5,
+			"def": 3,
 			"dex": 15
 		}
 	},
@@ -266,13 +266,13 @@
 		"size": 32,
 		"attackId": 20,
 		"xp": 250,
-		"health": 500,
+		"health": 200,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 210.0,
 		"stats": {
 			"hp": 500,
-			"def": 5,
+			"def": 3,
 			"dex": 1
 		}
 	},
@@ -407,13 +407,13 @@
 		"size": 32,
 		"attackId": -1,
 		"xp": 500,
-		"health": 800,
+		"health": 200,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 127.5,
 		"stats": {
 			"hp": 800,
-			"def": 5,
+			"def": 3,
 			"dex": 5
 		}
 	},
@@ -996,13 +996,13 @@
 		"size": 32,
 		"attackId": 51,
 		"xp": 300,
-		"health": 400,
+		"health": 200,
 		"maxSpeed": 1.0,
 		"chaseRange": 330.0,
 		"attackRange": 270.0,
 		"stats": {
 			"hp": 400,
-			"def": 8,
+			"def": 3,
 			"dex": 6
 		}
 	},

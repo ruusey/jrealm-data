@@ -173,6 +173,10 @@ export class GameRenderer {
     }
 
     renderTiles(gameState, offsetX, offsetY, screenW, screenH) {
+        // Destroy all children to free GPU memory (prevents massive leak)
+        for (let i = this.tileLayer.children.length - 1; i >= 0; i--) {
+            this.tileLayer.children[i].destroy();
+        }
         this.tileLayer.removeChildren();
         if (!gameState.mapTiles) return;
 
@@ -318,6 +322,10 @@ export class GameRenderer {
     }
 
     renderEntities(gameState, offsetX, offsetY) {
+        // Destroy all children to free GPU memory
+        for (let i = this.entityLayer.children.length - 1; i >= 0; i--) {
+            this.entityLayer.children[i].destroy();
+        }
         this.entityLayer.removeChildren();
 
         // Render loot containers
