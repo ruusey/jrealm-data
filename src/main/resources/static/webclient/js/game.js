@@ -397,33 +397,35 @@ export class GameState {
         }
 
         // Bullets: fully client-predicted (server doesn't send ObjectMovePacket for bullets).
-        // Matches Java Bullet.update() and Bullet.updateParametric().
+        // Server applies velocity once per tick at 64 ticks/sec.
+        // Scale by dt * 64 to be frame-rate independent.
         const now = Date.now();
+        const bulletScale = dt * 64; // 1.0 at 64fps, 1.067 at 60fps, 0.444 at 144fps
         for (const [id, b] of this.bullets) {
             const amp = b.amplitude || 0;
             const freq = b.frequency || 0;
 
             if (amp !== 0 && freq !== 0) {
-                // Parametric (wavy) projectile - matches Java Bullet.updateParametric()
+                // Parametric (wavy) projectile
                 if (b._timeStep === undefined) b._timeStep = 0;
                 const prevOffset = amp * Math.sin(b._timeStep * Math.PI / 180);
-                b._timeStep = (b._timeStep + freq) % 360;
+                b._timeStep = (b._timeStep + freq * bulletScale) % 360;
                 const currOffset = amp * Math.sin(b._timeStep * Math.PI / 180);
                 const perpDelta = currOffset - prevOffset;
 
-                const forwardX = Math.sin(b.angle) * b.magnitude;
-                const forwardY = Math.cos(b.angle) * b.magnitude;
+                const forwardX = Math.sin(b.angle) * b.magnitude * bulletScale;
+                const forwardY = Math.cos(b.angle) * b.magnitude * bulletScale;
                 const perpX = Math.cos(b.angle);
                 const perpY = -Math.sin(b.angle);
 
                 const inv = b.invert ? -1 : 1;
                 b.pos.x += forwardX + perpX * perpDelta * inv;
                 b.pos.y += forwardY + perpY * perpDelta * inv;
-                b._traveled = (b._traveled || 0) + b.magnitude;
+                b._traveled = (b._traveled || 0) + b.magnitude * bulletScale;
             } else {
-                // Straight-line projectile - matches Java Bullet.update()
-                const vx = Math.sin(b.angle) * b.magnitude;
-                const vy = Math.cos(b.angle) * b.magnitude;
+                // Straight-line projectile
+                const vx = Math.sin(b.angle) * b.magnitude * bulletScale;
+                const vy = Math.cos(b.angle) * b.magnitude * bulletScale;
                 b.pos.x += vx;
                 b.pos.y += vy;
                 b._traveled = (b._traveled || 0) + Math.sqrt(vx * vx + vy * vy);
