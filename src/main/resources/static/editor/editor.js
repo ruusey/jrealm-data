@@ -1,6 +1,41 @@
 const BASE = '/game-data';
 const SCALE = 4;
 
+// --- Admin Auth ---
+let editorSessionToken = null;
+
+document.getElementById('editor-login-btn').addEventListener('click', async () => {
+  const email = document.getElementById('editor-email').value;
+  const password = document.getElementById('editor-password').value;
+  const errorEl = document.getElementById('editor-login-error');
+  errorEl.textContent = '';
+  try {
+    const res = await fetch('/admin/account/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    if (!res.ok) throw new Error('Login failed');
+    const data = await res.json();
+    editorSessionToken = data.token || data.data?.token;
+    if (!editorSessionToken) throw new Error('No token received');
+    document.getElementById('editor-login').style.display = 'none';
+    document.getElementById('app').style.display = '';
+  } catch (e) {
+    errorEl.textContent = e.message;
+  }
+});
+
+document.getElementById('editor-password').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('editor-login-btn').click();
+});
+
+function authHeaders() {
+  const h = { 'Content-Type': 'application/json' };
+  if (editorSessionToken) h['Authorization'] = editorSessionToken;
+  return h;
+}
+
 const SPRITE_SHEETS = [
   'rotmg-tiles-all.png','rotmg-misc.png','lofi_environment.png','lofi_obj.png',
   'lofi_char.png','lofi_dungeon_features.png','lofi_halls.png','rotmg-items.png','rotmg-items-1.png',
@@ -1150,31 +1185,31 @@ async function saveAll() {
   try {
     const results = [];
     if (dirtyTiles) {
-      const res = await fetch('/gamedata/tiles', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(tiles, null, 4) });
+      const res = await fetch('/gamedata/tiles', { method: 'PUT', headers: authHeaders(), body: JSON.stringify(tiles, null, 4) });
       if (!res.ok) throw new Error('tiles: ' + res.statusText);
       dirtyTiles = false;
       results.push('tiles');
     }
     if (dirtyTerrains) {
-      const res = await fetch('/gamedata/terrains', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(terrains, null, '\t') });
+      const res = await fetch('/gamedata/terrains', { method: 'PUT', headers: authHeaders(), body: JSON.stringify(terrains, null, '\t') });
       if (!res.ok) throw new Error('terrains: ' + res.statusText);
       dirtyTerrains = false;
       results.push('terrains');
     }
     if (dirtyItems) {
-      const res = await fetch('/gamedata/items', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(items, null, '\t') });
+      const res = await fetch('/gamedata/items', { method: 'PUT', headers: authHeaders(), body: JSON.stringify(items, null, '\t') });
       if (!res.ok) throw new Error('items: ' + res.statusText);
       dirtyItems = false;
       results.push('items');
     }
     if (dirtyProjGroups) {
-      const res = await fetch('/gamedata/projectiles', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(projGroups, null, '\t') });
+      const res = await fetch('/gamedata/projectiles', { method: 'PUT', headers: authHeaders(), body: JSON.stringify(projGroups, null, '\t') });
       if (!res.ok) throw new Error('projectiles: ' + res.statusText);
       dirtyProjGroups = false;
       results.push('projectiles');
     }
     if (dirtyMaps) {
-      const res = await fetch('/gamedata/maps', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(maps, null, '\t') });
+      const res = await fetch('/gamedata/maps', { method: 'PUT', headers: authHeaders(), body: JSON.stringify(maps, null, '\t') });
       if (!res.ok) throw new Error('maps: ' + res.statusText);
       dirtyMaps = false;
       results.push('maps');

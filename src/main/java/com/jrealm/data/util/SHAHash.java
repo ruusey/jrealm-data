@@ -16,7 +16,7 @@ public class SHAHash {
 
     public static String generateStrongPasswordHash(String password)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
-        int iterations = 20;
+        int iterations = 100000;
         char[] chars = password.toCharArray();
         byte[] salt = getSalt();
 

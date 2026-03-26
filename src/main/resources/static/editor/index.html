@@ -7,7 +7,18 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app">
+<!-- Admin Login Gate -->
+<div id="editor-login" style="display:flex;align-items:center;justify-content:center;height:100vh;background:#1a1218;">
+  <div style="background:#2a2030;padding:40px;border-radius:8px;border:2px solid #4a3a50;width:340px;text-align:center;">
+    <h2 style="color:#c8a86e;margin-bottom:20px;">JRealm Editor</h2>
+    <p style="color:#887868;font-size:13px;margin-bottom:16px;">Admin login required</p>
+    <input id="editor-email" type="email" placeholder="Email" style="width:100%;padding:8px;margin-bottom:8px;background:#1a1218;border:1px solid #3a2a38;color:#e0d8c8;border-radius:4px;">
+    <input id="editor-password" type="password" placeholder="Password" style="width:100%;padding:8px;margin-bottom:12px;background:#1a1218;border:1px solid #3a2a38;color:#e0d8c8;border-radius:4px;">
+    <button id="editor-login-btn" style="width:100%;padding:10px;background:#c8a86e;color:#1a1218;border:none;border-radius:4px;font-weight:600;cursor:pointer;">Login</button>
+    <p id="editor-login-error" style="color:#e85050;font-size:12px;margin-top:8px;min-height:16px;"></p>
+  </div>
+</div>
+<div id="app" style="display:none;">
   <header>
     <h1>JRealm Editor</h1>
     <div class="tabs">

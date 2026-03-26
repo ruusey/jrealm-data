@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jrealm.data.constants.AdminRestricted;
 import com.jrealm.data.util.ApiUtils;
 import com.jrealm.game.data.GameDataManager;
 
@@ -48,31 +49,37 @@ public class GameDataController {
 	    }
 
 	 @PutMapping(value = "/tiles", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
 	 public ResponseEntity<?> saveTiles(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("tiles.json", json);
 	 }
 
 	 @PutMapping(value = "/terrains", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
 	 public ResponseEntity<?> saveTerrains(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("terrains.json", json);
 	 }
 
 	 @PutMapping(value = "/items", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
 	 public ResponseEntity<?> saveItems(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("game-items.json", json);
 	 }
 
 	 @PutMapping(value = "/projectiles", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
 	 public ResponseEntity<?> saveProjectiles(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("projectile-groups.json", json);
 	 }
 
 	 @PutMapping(value = "/enemies", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
 	 public ResponseEntity<?> saveEnemies(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("enemies.json", json);
 	 }
 
 	 @PutMapping(value = "/maps", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
 	 public ResponseEntity<?> saveMaps(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("maps.json", json);
 	 }
