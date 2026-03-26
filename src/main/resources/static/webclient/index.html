@@ -61,8 +61,21 @@
         <div class="charselect-box">
             <h2>Select Character</h2>
             <div id="char-list"></div>
-            <button id="play-btn" disabled>Play</button>
+            <div class="char-actions">
+                <button id="play-btn" disabled>Play</button>
+                <button id="delete-char-btn" class="danger" disabled>Delete</button>
+            </div>
+            <div class="char-create">
+                <h3>Create Character</h3>
+                <div id="class-picker"></div>
+                <button id="create-char-btn" disabled>Create</button>
+            </div>
+            <div class="chest-section">
+                <span id="chest-count">Vault Chests: 0</span>
+                <button id="add-chest-btn" class="small">+ Add Chest</button>
+            </div>
             <button id="logout-btn" class="secondary">Back</button>
+            <p id="char-error" class="error"></p>
         </div>
     </div>
 

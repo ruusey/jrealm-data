@@ -117,46 +117,135 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     }
 });
 
-// --- Character Select ---
+// --- Character Select & Management ---
+const ALL_CLASSES = [
+    'Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'Knight',
+    'Paladin', 'Assassin', 'Necromancer', 'Mystic', 'Trickster', 'Sorcerer'
+];
+let selectedClassId = null;
+
 function showCharacterSelect() {
     showScreen('charselect');
+    selectedCharacter = null;
+    selectedClassId = null;
+    document.getElementById('play-btn').disabled = true;
+    document.getElementById('delete-char-btn').disabled = true;
+    document.getElementById('create-char-btn').disabled = true;
+    document.getElementById('char-error').textContent = '';
+
+    // Character list
     const listEl = document.getElementById('char-list');
     listEl.innerHTML = '';
-
     if (!account.characters || account.characters.length === 0) {
-        listEl.innerHTML = '<p style="color:#887868">No characters found on this account.</p>';
-        return;
+        listEl.innerHTML = '<p style="color:#887868">No characters yet. Create one below!</p>';
+    } else {
+        for (const char of account.characters) {
+            const card = document.createElement('div');
+            card.className = 'char-card';
+            const className = ALL_CLASSES[char.characterClass] || `Class ${char.characterClass}`;
+            const stats = char.stats || {};
+            card.innerHTML = `
+                <div class="char-icon">${className.charAt(0)}</div>
+                <div class="char-info">
+                    <div class="char-name">${className}</div>
+                    <div class="char-details">
+                        HP: ${stats.hp || '?'} | MP: ${stats.mp || '?'} |
+                        ATT: ${stats.att || '?'} | DEF: ${stats.def || '?'} |
+                        SPD: ${stats.spd || '?'} | DEX: ${stats.dex || '?'}
+                    </div>
+                    <div class="char-details" style="font-size:10px;color:#665848">${char.characterUuid}</div>
+                </div>
+            `;
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedCharacter = char;
+                document.getElementById('play-btn').disabled = false;
+                document.getElementById('delete-char-btn').disabled = false;
+            });
+            listEl.appendChild(card);
+        }
     }
 
-    for (const char of account.characters) {
-        const card = document.createElement('div');
-        card.className = 'char-card';
-        const className = CLASS_NAMES[char.characterClass] || `Class ${char.characterClass}`;
-        const stats = char.stats || {};
-        card.innerHTML = `
-            <div class="char-icon">${className.charAt(0)}</div>
-            <div class="char-info">
-                <div class="char-name">${className}</div>
-                <div class="char-details">
-                    HP: ${stats.hp || '?'} | MP: ${stats.mp || '?'} |
-                    ATT: ${stats.att || '?'} | DEF: ${stats.def || '?'} |
-                    SPD: ${stats.spd || '?'} | DEX: ${stats.dex || '?'}
-                </div>
-                <div class="char-details">${char.characterUuid}</div>
-            </div>
-        `;
-        card.addEventListener('click', () => {
-            document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
-            card.classList.add('selected');
-            selectedCharacter = char;
-            document.getElementById('play-btn').disabled = false;
+    // Class picker for creating new characters
+    const pickerEl = document.getElementById('class-picker');
+    pickerEl.innerHTML = '';
+    for (let i = 0; i < ALL_CLASSES.length; i++) {
+        const opt = document.createElement('div');
+        opt.className = 'class-option';
+        opt.textContent = ALL_CLASSES[i];
+        opt.addEventListener('click', () => {
+            document.querySelectorAll('.class-option').forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            selectedClassId = i;
+            document.getElementById('create-char-btn').disabled = false;
         });
-        listEl.appendChild(card);
+        pickerEl.appendChild(opt);
     }
+
+    // Vault chest count
+    const chestCount = account.playerVault ? account.playerVault.length : 0;
+    document.getElementById('chest-count').textContent = `Vault Chests: ${chestCount}/10`;
 }
 
 document.getElementById('play-btn').addEventListener('click', () => {
     if (selectedCharacter) startGame();
+});
+
+document.getElementById('delete-char-btn').addEventListener('click', async () => {
+    if (!selectedCharacter) return;
+    const className = ALL_CLASSES[selectedCharacter.characterClass] || 'Character';
+    if (!confirm(`Delete ${className}? This is permanent!`)) return;
+
+    const errorEl = document.getElementById('char-error');
+    try {
+        await api.deleteCharacter(selectedCharacter.characterUuid);
+        account = await api.getAccount(api.accountGuid);
+        selectedCharacter = null;
+        showCharacterSelect();
+    } catch (err) {
+        errorEl.textContent = err.message;
+    }
+});
+
+document.getElementById('create-char-btn').addEventListener('click', async () => {
+    if (selectedClassId === null) return;
+    const errorEl = document.getElementById('char-error');
+    const charCount = account.characters ? account.characters.length : 0;
+    if (charCount >= 20) {
+        errorEl.textContent = 'Character limit reached (20 max).';
+        return;
+    }
+    const btn = document.getElementById('create-char-btn');
+    btn.disabled = true;
+    btn.textContent = 'Creating...';
+    try {
+        await api.createCharacter(api.accountGuid, selectedClassId);
+        account = await api.getAccount(api.accountGuid);
+        showCharacterSelect();
+    } catch (err) {
+        errorEl.textContent = err.message;
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Create';
+    }
+});
+
+document.getElementById('add-chest-btn').addEventListener('click', async () => {
+    const errorEl = document.getElementById('char-error');
+    const chestCount = account.playerVault ? account.playerVault.length : 0;
+    if (chestCount >= 10) {
+        errorEl.textContent = 'Vault chest limit reached (10 max).';
+        return;
+    }
+    try {
+        await api.createChest(api.accountGuid);
+        account = await api.getAccount(api.accountGuid);
+        const newCount = account.playerVault ? account.playerVault.length : 0;
+        document.getElementById('chest-count').textContent = `Vault Chests: ${newCount}/10`;
+    } catch (err) {
+        errorEl.textContent = err.message;
+    }
 });
 
 document.getElementById('logout-btn').addEventListener('click', () => {

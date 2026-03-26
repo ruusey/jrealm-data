@@ -58,6 +58,18 @@ export class ApiClient {
         });
     }
 
+    async createCharacter(accountUuid, classId) {
+        return this.request('POST', `/data/account/${accountUuid}/character?classId=${classId}`);
+    }
+
+    async deleteCharacter(characterUuid) {
+        return this.request('DELETE', `/data/account/character/${characterUuid}`);
+    }
+
+    async createChest(accountUuid) {
+        return this.request('POST', `/data/account/${accountUuid}/chest/new`);
+    }
+
     async getGameData(fileName) {
         const res = await fetch(`${this.baseUrl}/game-data/${fileName}`);
         if (!res.ok) throw new Error(`Failed to load ${fileName}`);

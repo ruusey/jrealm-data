@@ -138,6 +138,9 @@ public class PlayerDataService {
         return results;
     }
 
+    private static final int MAX_CHARACTERS = 20;
+    private static final int MAX_CHESTS = 10;
+
     public PlayerAccountDto createCharacter(final String accountUuid, final Integer classId) throws Exception {
         final long start = Instant.now().toEpochMilli();
         final CharacterClass clazz = CharacterClass.valueOf(classId);
@@ -146,6 +149,8 @@ public class PlayerDataService {
         PlayerAccountEntity accountEntity = this.playerAccountRepository.findByAccountUuid(accountUuid);
         if (accountEntity == null)
             throw new Exception("Account with with UUID " + accountUuid + " does not exist");
+        if (accountEntity.getCharacters() != null && accountEntity.getCharacters().size() >= MAX_CHARACTERS)
+            throw new Exception("Character limit reached (" + MAX_CHARACTERS + " max)");
         final CharacterEntity character = CharacterEntity.builder().characterUuid(PlayerDataService.randomUuid())
                 .characterClass(classId).build();
 
@@ -244,9 +249,11 @@ public class PlayerDataService {
         final PlayerAccountDto account = this.getAccountByUuid(accountUuid);
         if (account == null)
             throw new Exception("Player account with UUID " + accountUuid + " was not found");
+        if (account.getPlayerVault() != null && account.getPlayerVault().size() >= MAX_CHESTS)
+            throw new Exception("Vault chest limit reached (" + MAX_CHESTS + " max)");
 
         final ChestDto initialChest = ChestDto.builder().chestUuid(PlayerDataService.randomUuid())
-                .ordinal(account.getPlayerVault().size()).build();
+                .ordinal(account.getPlayerVault() != null ? account.getPlayerVault().size() : 0).build();
 
         account.getPlayerVault().add(initialChest);
         return this.saveAccount(account);

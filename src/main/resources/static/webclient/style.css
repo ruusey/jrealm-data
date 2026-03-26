@@ -58,9 +58,35 @@ button.secondary:hover { background: #4a3a48; }
 .register-link a:hover { text-decoration: underline; }
 
 /* Character Select */
-.charselect-box { width: 500px; }
+.charselect-box { width: 560px; }
 .charselect-box h2 { color: #c8a86e; margin-bottom: 20px; }
-#char-list { max-height: 400px; overflow-y: auto; margin-bottom: 16px; }
+.charselect-box h3 { color: #a89888; font-size: 14px; margin: 12px 0 8px; }
+#char-list { max-height: 280px; overflow-y: auto; margin-bottom: 12px; }
+.char-actions { display: flex; gap: 8px; margin-bottom: 8px; }
+.char-actions button { flex: 1; }
+button.danger { background: #a04040; color: #fff; }
+button.danger:hover { background: #b05050; }
+button.danger:disabled { background: #5a3a3a; color: #887868; }
+button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
+.char-create { border-top: 1px solid #3a2a38; padding-top: 8px; }
+#class-picker {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 4px; margin-bottom: 8px;
+}
+.class-option {
+    padding: 6px 4px; text-align: center;
+    background: #1a1218; border: 2px solid #3a2a38;
+    border-radius: 4px; cursor: pointer;
+    font-size: 11px; color: #a89888;
+    transition: border-color 0.15s;
+}
+.class-option:hover { border-color: #6a5a68; }
+.class-option.selected { border-color: #c8a86e; color: #e0d8c8; background: #2a2030; }
+.chest-section {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #3a2a38; padding-top: 10px; margin-top: 10px;
+    font-size: 13px; color: #887868;
+}
 .char-card {
     background: #1a1218;
     border: 2px solid #3a2a38;

@@ -75,6 +75,9 @@ public class AccountController {
     public ResponseEntity<?> updateAccount(final HttpServletRequest req, @RequestBody final AccountDto account) {
         ResponseEntity<?> res = null;
         try {
+            if (!this.authFilter.accountGuidMatch(account.getAccountGuid(), req)) {
+                throw new Exception("Invalid token");
+            }
             final AccountEntity updatedAccount = this.jrealmAccounts.updateAccountAndAuth(account);
             res = ApiUtils.buildSuccess(updatedAccount);
         } catch (final Exception e) {
@@ -88,6 +91,10 @@ public class AccountController {
     public ResponseEntity<?> getAccountByEmail(final HttpServletRequest req, @PathVariable final String email) {
         ResponseEntity<?> res = null;
         try {
+            final AccountDto callerAccount = this.authFilter.getAuthedUser(req);
+            if (callerAccount == null || (!callerAccount.isAdmin() && !callerAccount.getEmail().equals(email))) {
+                throw new Exception("Invalid token");
+            }
             final AccountDto account = this.jrealmAccounts.getAccountByEmail(email);
             res = ApiUtils.buildSuccess(account);
         } catch (final Exception e) {
@@ -101,6 +108,9 @@ public class AccountController {
     public ResponseEntity<?> getAccount(final HttpServletRequest req, @PathVariable final String accountGuid) {
         ResponseEntity<?> res = null;
         try {
+            if (!this.authFilter.accountGuidMatch(accountGuid, req)) {
+                throw new Exception("Invalid token");
+            }
             final AccountDto account = this.jrealmAccounts.getAccountByGuid(accountGuid);
             res = ApiUtils.buildSuccess(account);
         } catch (final Exception e) {
