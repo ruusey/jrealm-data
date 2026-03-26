@@ -251,7 +251,10 @@ export class GameState {
             this.mana = packet.mana;
             this.maxMana = packet.stats.mp;
             this.experience = packet.experience;
-            this.inventory = packet.inventory;
+            // Empty inventory = server optimization (no change), skip update
+            if (packet.inventory && packet.inventory.length > 0) {
+                this.inventory = packet.inventory;
+            }
             this.effectIds = packet.effectIds;
             this.effectTimes = packet.effectTimes;
             this.playerName = packet.playerName;
