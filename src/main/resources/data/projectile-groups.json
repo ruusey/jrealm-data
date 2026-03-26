@@ -668,6 +668,21 @@
 					0,
 					12
 				]
+			},
+			{
+				"projectileId": 10,
+				"positionMode": 0,
+				"damage": 25,
+				"angle": 0,
+				"range": 216.0,
+				"size": 24,
+				"amplitude": -4,
+				"frequency": 25,
+				"magnitude": 5.0,
+				"flags": [
+					0,
+					12
+				]
 			}
 		]
 	},
@@ -766,49 +781,169 @@
 				"projectileId": 15,
 				"positionMode": 2,
 				"damage": 50,
-				"angle": "{{PI/6}}",
 				"range": 250.0,
 				"size": 16,
 				"magnitude": 3.0,
 				"flags": [
 					0
-				]
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 0.0
 			},
 			{
 				"projectileId": 15,
 				"positionMode": 2,
 				"damage": 50,
-				"angle": "{{2PI/3}}",
 				"range": 250.0,
 				"size": 16,
 				"magnitude": 3.0,
 				"flags": [
 					0
-				]
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 0.5236
 			},
 			{
 				"projectileId": 15,
 				"positionMode": 2,
 				"damage": 50,
-				"angle": "{{7PI/6}}",
 				"range": 250.0,
 				"size": 16,
 				"magnitude": 3.0,
 				"flags": [
 					0
-				]
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 1.0472
 			},
 			{
 				"projectileId": 15,
 				"positionMode": 2,
 				"damage": 50,
-				"angle": "{{5PI/3}}",
 				"range": 250.0,
 				"size": 16,
 				"magnitude": 3.0,
 				"flags": [
 					0
-				]
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 1.5708
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 2.0944
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 2.618
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 3.1416
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 3.6652
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 4.1888
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 4.7124
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 5.236
+			},
+			{
+				"projectileId": 15,
+				"positionMode": 2,
+				"damage": 50,
+				"range": 250.0,
+				"size": 16,
+				"magnitude": 3.0,
+				"flags": [
+					0
+				],
+				"amplitude": 0,
+				"frequency": 0,
+				"angle": 5.7596
 			}
 		]
 	},
@@ -1479,6 +1614,21 @@
 				"range": 216.0,
 				"size": 24,
 				"amplitude": 4,
+				"frequency": 25,
+				"magnitude": 5.0,
+				"flags": [
+					0,
+					12
+				]
+			},
+			{
+				"projectileId": 28,
+				"positionMode": 0,
+				"damage": 25,
+				"angle": 0,
+				"range": 216.0,
+				"size": 24,
+				"amplitude": -4,
 				"frequency": 25,
 				"magnitude": 5.0,
 				"flags": [
@@ -2992,6 +3142,21 @@
 					0,
 					12
 				]
+			},
+			{
+				"projectileId": 47,
+				"positionMode": 0,
+				"damage": 35,
+				"angle": 0,
+				"range": 280.0,
+				"size": 24,
+				"amplitude": -6,
+				"frequency": 30,
+				"magnitude": 2.5,
+				"flags": [
+					0,
+					12
+				]
 			}
 		]
 	},
@@ -3016,6 +3181,21 @@
 					0,
 					12
 				]
+			},
+			{
+				"projectileId": 48,
+				"positionMode": 0,
+				"damage": 20,
+				"angle": 0,
+				"range": 200.0,
+				"size": 24,
+				"amplitude": -8,
+				"frequency": 60,
+				"magnitude": 2.0,
+				"flags": [
+					0,
+					12
+				]
 			}
 		]
 	},
@@ -3034,6 +3214,21 @@
 				"range": 240.0,
 				"size": 24,
 				"amplitude": 14,
+				"frequency": 25,
+				"magnitude": 2.5,
+				"flags": [
+					0,
+					12
+				]
+			},
+			{
+				"projectileId": 49,
+				"positionMode": 0,
+				"damage": 45,
+				"angle": 0,
+				"range": 240.0,
+				"size": 24,
+				"amplitude": -14,
 				"frequency": 25,
 				"magnitude": 2.5,
 				"flags": [

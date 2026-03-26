@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jrealm.data.constants.AdminRestricted;
+import com.jrealm.data.util.AdminRestricted;
 import com.jrealm.data.util.ApiUtils;
 import com.jrealm.game.data.GameDataManager;
 
