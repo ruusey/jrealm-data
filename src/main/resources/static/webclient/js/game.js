@@ -251,10 +251,12 @@ export class GameState {
             this.mana = packet.mana;
             this.maxMana = packet.stats.mp;
             this.experience = packet.experience;
-            // Empty inventory = server optimization (no change), skip update
-            if (packet.inventory && packet.inventory.length > 0) {
-                this.inventory = packet.inventory;
+            if (!this._firstInvLog) {
+                this._firstInvLog = true;
+                const ids = packet.inventory ? packet.inventory.map(i => i ? i.itemId : 'null') : [];
+                console.log(`[INV] First UpdatePacket inventory: len=${packet.inventory?.length}, ids=[${ids.join(',')}]`);
             }
+            this.inventory = packet.inventory;
             this.effectIds = packet.effectIds;
             this.effectTimes = packet.effectTimes;
             this.playerName = packet.playerName;

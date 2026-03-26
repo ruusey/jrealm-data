@@ -241,8 +241,10 @@ export class GameRenderer {
                     // Check tile type from game data
                     const tileDef = gameState.tileData[tile.collision];
                     const hasCollision = tileDef?.data?.hasCollision;
-                    const isWall = hasCollision && (tile.base <= 0); // Collision over void = wall
-                    const isObject = hasCollision && (tile.base > 0); // Collision over floor = object
+                    // All collision tiles get the 3D wall effect (shadow + contour + side face)
+                    // Non-collision tiles on the collision layer are decorations
+                    const isWall = !!hasCollision;
+                    const isObject = false; // Elliptical shadow disabled — walls look better with 3D effect
 
                     if (isWall) {
                         // === WALL 3D EFFECT (matches Java TileManager) ===

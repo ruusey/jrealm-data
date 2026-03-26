@@ -515,6 +515,28 @@ function setupNetworkHandlers() {
                         animFrame: 0, animTimer: 0, facing: 'right'
                     });
 
+                    // Initialize inventory from login account data
+                    // (don't wait for first UpdatePacket which may be delayed)
+                    if (loginResp.account && loginResp.account.characters) {
+                        const myChar = loginResp.account.characters.find(
+                            c => c.characterUuid === selectedCharacter.characterUuid
+                        );
+                        if (myChar && myChar.items) {
+                            // Build inventory array from GameItemRefDto set
+                            const inv = new Array(20).fill(null);
+                            for (const ref of myChar.items) {
+                                if (ref.slotIdx >= 0 && ref.slotIdx < 20) {
+                                    const itemDef = game.itemData[ref.itemId];
+                                    if (itemDef) {
+                                        inv[ref.slotIdx] = { ...itemDef, uid: ref.itemUuid || '' };
+                                    }
+                                }
+                            }
+                            game.inventory = inv;
+                            lastInvKey = '';
+                        }
+                    }
+
                     // Send login ack and start heartbeat
                     network.sendLoginAck(game.playerId);
                     network.startHeartbeat(game.playerId);
