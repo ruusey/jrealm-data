@@ -219,6 +219,17 @@ public class AccountService {
         }
     }
 
+    public void changePassword(String accountGuid, String currentPassword, String newPassword) throws Exception {
+        AccountAuthEntity auth = this.authRepo.findByAccountGuid(accountGuid);
+        if (auth == null) throw new Exception("Account not found");
+        if (!com.jrealm.data.util.SHAValidate.validatePassword(currentPassword, auth.getPassword())) {
+            throw new Exception("Current password is incorrect");
+        }
+        String newHash = com.jrealm.data.util.SHAHash.generateStrongPasswordHash(newPassword);
+        auth.setPassword(newHash);
+        this.authRepo.save(auth);
+    }
+
     public CreateTokenResponseDto createApiToken(CreateTokenRequestDto req) {
         AccountTokenEntity token = AccountTokenEntity.builder().accountGuid(req.getAccountGuid())
                 .tokenName(req.getTokenName()).token(Util.randomAlphaString(64)).build();

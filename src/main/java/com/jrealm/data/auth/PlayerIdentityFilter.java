@@ -54,6 +54,7 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
                 || request.getServletPath().contains("/index.html")
                 || request.getServletPath().contains("/scripts.js")
                 || request.getServletPath().contains("/style.css")
+                || request.getServletPath().contains("favicon")
                 || request.getServletPath().matches("/.*[a-z0-9 -].png")
                 || request.getServletPath().matches("/.*[a-z0-9 -].json")
                 || request.getServletPath().startsWith("/game-data/")

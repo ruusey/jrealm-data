@@ -81,6 +81,22 @@
                 <span id="chest-count">Vault Chests: 0</span>
                 <button id="add-chest-btn" class="small">+ Add Chest</button>
             </div>
+            <div class="password-section">
+                <details>
+                    <summary>Change Password</summary>
+                    <div class="form-group">
+                        <input type="password" id="current-pw" placeholder="Current password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="new-pw" placeholder="New password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="confirm-pw" placeholder="Confirm new password">
+                    </div>
+                    <button id="change-pw-btn" class="small">Update Password</button>
+                    <p id="pw-status" class="error"></p>
+                </details>
+            </div>
             <button id="logout-btn" class="secondary">Back</button>
             <p id="char-error" class="error"></p>
         </div>

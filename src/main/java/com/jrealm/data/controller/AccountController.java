@@ -178,6 +178,20 @@ public class AccountController {
         return res;
     }
 
+    @RequestMapping(value = "/admin/account/password", method = RequestMethod.POST, produces = { "application/json" })
+    public ResponseEntity<?> changePassword(final HttpServletRequest request, @RequestBody final java.util.Map<String, String> body) {
+        ResponseEntity<?> res = null;
+        try {
+            final com.jrealm.data.dto.auth.AccountDto caller = this.authFilter.getAuthedUser(request);
+            if (caller == null) throw new Exception("Not authenticated");
+            this.jrealmAccounts.changePassword(caller.getAccountGuid(), body.get("currentPassword"), body.get("newPassword"));
+            res = ApiUtils.buildSuccess("Password changed successfully");
+        } catch (final Exception e) {
+            res = ApiUtils.buildAndLogError("Failed to change password", e.getMessage());
+        }
+        return res;
+    }
+
     @RequestMapping(value = "/admin/account/token", method = RequestMethod.POST, produces = { "application/json" })
     public ResponseEntity<?> createAccountToken(final HttpServletRequest req, @RequestBody final CreateTokenRequestDto token) {
         ResponseEntity<?> res = null;

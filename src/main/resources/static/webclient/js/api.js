@@ -70,6 +70,10 @@ export class ApiClient {
         return this.request('POST', `/data/account/${accountUuid}/chest/new`);
     }
 
+    async changePassword(currentPassword, newPassword) {
+        return this.request('POST', '/admin/account/password', { currentPassword, newPassword });
+    }
+
     async getGameData(fileName) {
         const res = await fetch(`${this.baseUrl}/game-data/${fileName}`);
         if (!res.ok) throw new Error(`Failed to load ${fileName}`);
