@@ -249,6 +249,27 @@ document.getElementById('add-chest-btn').addEventListener('click', async () => {
     }
 });
 
+document.getElementById('change-pw-btn').addEventListener('click', async () => {
+    const curr = document.getElementById('current-pw').value;
+    const newPw = document.getElementById('new-pw').value;
+    const confirm = document.getElementById('confirm-pw').value;
+    const status = document.getElementById('pw-status');
+    status.className = 'error';
+    if (!curr || !newPw) { status.textContent = 'Fill in all fields'; return; }
+    if (newPw !== confirm) { status.textContent = 'Passwords do not match'; return; }
+    if (newPw.length < 4) { status.textContent = 'Password too short'; return; }
+    try {
+        await api.changePassword(curr, newPw);
+        status.textContent = 'Password changed!';
+        status.className = 'error success';
+        document.getElementById('current-pw').value = '';
+        document.getElementById('new-pw').value = '';
+        document.getElementById('confirm-pw').value = '';
+    } catch (e) {
+        status.textContent = e.message;
+    }
+});
+
 document.getElementById('logout-btn').addEventListener('click', () => {
     network.disconnect();
     account = null;

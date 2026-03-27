@@ -82,6 +82,17 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 }
 .class-option:hover { border-color: #6a5a68; }
 .class-option.selected { border-color: #c8a86e; color: #e0d8c8; background: #2a2030; }
+.password-section {
+    border-top: 1px solid #3a2a38; padding-top: 8px; margin-top: 8px;
+}
+.password-section summary {
+    color: #887868; font-size: 13px; cursor: pointer; margin-bottom: 8px;
+}
+.password-section summary:hover { color: #c8a86e; }
+.password-section .form-group { margin-bottom: 6px; }
+.password-section input { padding: 7px 10px; font-size: 13px; }
+#pw-status { font-size: 12px; min-height: 14px; }
+#pw-status.success { color: #40a040; }
 .chest-section {
     display: flex; align-items: center; justify-content: space-between;
     border-top: 1px solid #3a2a38; padding-top: 10px; margin-top: 10px;
