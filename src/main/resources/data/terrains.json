@@ -166,7 +166,9 @@
 					7,
 					14,
 					29,
-					41
+					41,
+					51,
+					52
 				]
 			},
 			{
@@ -185,7 +187,9 @@
 					46,
 					28,
 					15,
-					8
+					8,
+					53,
+					54
 				]
 			},
 			{
@@ -201,7 +205,11 @@
 					11,
 					42,
 					44,
-					45
+					45,
+					55,
+					56,
+					57,
+					58
 				]
 			},
 			{
@@ -217,7 +225,9 @@
 					13,
 					15,
 					27,
-					47
+					47,
+					59,
+					60
 				]
 			}
 		],
@@ -261,6 +271,350 @@
 				"enemyGroupOrdinal": 0,
 				"difficulty": 1,
 				"portalDrops": {}
+			}
+		],
+		"setPieces": [
+			{
+				"name": "Stone Ruins",
+				"minCount": 3,
+				"maxCount": 6,
+				"allowedZones": [
+					"beach",
+					"grasslands",
+					"highlands"
+				],
+				"width": 5,
+				"height": 5,
+				"baseTileId": 49,
+				"collisionLayout": [
+					[
+						16,
+						16,
+						16,
+						16,
+						16
+					],
+					[
+						16,
+						0,
+						0,
+						0,
+						16
+					],
+					[
+						16,
+						0,
+						50,
+						0,
+						0
+					],
+					[
+						16,
+						0,
+						0,
+						0,
+						16
+					],
+					[
+						16,
+						16,
+						0,
+						16,
+						16
+					]
+				]
+			},
+			{
+				"name": "Graveyard",
+				"minCount": 2,
+				"maxCount": 4,
+				"allowedZones": [
+					"grasslands",
+					"highlands"
+				],
+				"width": 7,
+				"height": 5,
+				"baseTileId": 9,
+				"collisionLayout": [
+					[
+						0,
+						0,
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						50,
+						0,
+						50,
+						0,
+						50,
+						0
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						50,
+						0,
+						50,
+						0,
+						50,
+						0
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0,
+						0,
+						0
+					]
+				]
+			},
+			{
+				"name": "Campfire",
+				"minCount": 4,
+				"maxCount": 8,
+				"allowedZones": [
+					"beach",
+					"grasslands"
+				],
+				"width": 3,
+				"height": 3,
+				"baseTileId": 9,
+				"collisionLayout": [
+					[
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						18,
+						0
+					],
+					[
+						0,
+						0,
+						0
+					]
+				]
+			},
+			{
+				"name": "Stone Circle",
+				"minCount": 1,
+				"maxCount": 3,
+				"allowedZones": [
+					"highlands",
+					"summit"
+				],
+				"width": 7,
+				"height": 7,
+				"baseTileId": 49,
+				"collisionLayout": [
+					[
+						0,
+						0,
+						16,
+						0,
+						16,
+						0,
+						0
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						16,
+						0,
+						0,
+						0,
+						0,
+						0,
+						16
+					],
+					[
+						0,
+						0,
+						0,
+						18,
+						0,
+						0,
+						0
+					],
+					[
+						16,
+						0,
+						0,
+						0,
+						0,
+						0,
+						16
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						0,
+						16,
+						0,
+						16,
+						0,
+						0
+					]
+				]
+			},
+			{
+				"name": "Watchtower",
+				"minCount": 2,
+				"maxCount": 5,
+				"allowedZones": [
+					"grasslands",
+					"highlands",
+					"summit"
+				],
+				"width": 3,
+				"height": 3,
+				"baseTileId": 49,
+				"collisionLayout": [
+					[
+						16,
+						16,
+						16
+					],
+					[
+						16,
+						0,
+						16
+					],
+					[
+						16,
+						0,
+						16
+					]
+				]
+			},
+			{
+				"name": "Oasis",
+				"minCount": 1,
+				"maxCount": 3,
+				"allowedZones": [
+					"beach"
+				],
+				"width": 5,
+				"height": 5,
+				"baseTileId": 45,
+				"collisionLayout": [
+					[
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0
+					],
+					[
+						0,
+						0,
+						0,
+						0,
+						0
+					]
+				]
+			},
+			{
+				"name": "Crypt Entrance",
+				"minCount": 1,
+				"maxCount": 2,
+				"allowedZones": [
+					"highlands",
+					"summit"
+				],
+				"width": 5,
+				"height": 5,
+				"baseTileId": 49,
+				"collisionLayout": [
+					[
+						47,
+						47,
+						47,
+						47,
+						47
+					],
+					[
+						47,
+						0,
+						0,
+						0,
+						47
+					],
+					[
+						47,
+						0,
+						50,
+						0,
+						47
+					],
+					[
+						47,
+						0,
+						0,
+						0,
+						47
+					],
+					[
+						47,
+						47,
+						0,
+						47,
+						47
+					]
+				]
 			}
 		]
 	},
