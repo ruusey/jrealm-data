@@ -260,11 +260,18 @@ document.getElementById('change-pw-btn').addEventListener('click', async () => {
     if (newPw.length < 4) { status.textContent = 'Password too short'; return; }
     try {
         await api.changePassword(curr, newPw);
-        status.textContent = 'Password changed!';
+        status.textContent = 'Password changed! Signing you back in...';
         status.className = 'error success';
+        // Re-login with new password to get fresh session token
+        const email = document.getElementById('email').value;
+        const loginData = await api.login(email, newPw);
+        account = await api.getAccount(loginData.accountGuid);
+        status.textContent = 'Password changed successfully!';
         document.getElementById('current-pw').value = '';
         document.getElementById('new-pw').value = '';
         document.getElementById('confirm-pw').value = '';
+        // Update the login form password field so next login works
+        document.getElementById('password').value = newPw;
     } catch (e) {
         status.textContent = e.message;
     }
