@@ -8,4 +8,5 @@ public interface AccountRepository extends MongoRepository<AccountEntity, String
 	AccountEntity findByAccountGuid(String accountGuid);
 	AccountEntity findByEmail(String email);
 	AccountEntity findByExternalId(Integer externalId);
+	AccountEntity findByAccountName(String accountName);
 }

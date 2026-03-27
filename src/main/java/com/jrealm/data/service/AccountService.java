@@ -198,6 +198,10 @@ public class AccountService {
                 AccountService.log.info("JRealm user {} already Exists", account.getEmail());
                 throw new Exception(MessageFormat.format("JRealm user {0} already Exists", account.getEmail()));
             }
+            AccountEntity existingName = this.accountRepo.findByAccountName(account.getAccountName());
+            if (existingName != null) {
+                throw new Exception("Account name '" + account.getAccountName() + "' is already taken");
+            }
 
             AccountEntity accountEntity = this.saveAccountDetails(account);
 

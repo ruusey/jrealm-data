@@ -418,10 +418,10 @@ export class GameState {
             if (dist > SNAP_DISTANCE) {
                 p.pos.x = p.targetX; p.pos.y = p.targetY;
             } else if (id === this.playerId) {
-                // LOCAL PLAYER: slightly tighter than Java's 0.35 for crisper web feel.
-                // Reaches 90% in ~2 frames at 64Hz = 31ms response time.
-                p.pos.x += dx * 0.45;
-                p.pos.y += dy * 0.45;
+                // LOCAL PLAYER: tight lerp for responsive dodging.
+                // 0.55 reaches 90% in <2 frames at 64Hz.
+                p.pos.x += dx * 0.55;
+                p.pos.y += dy * 0.55;
             } else {
                 // OTHER PLAYERS: smooth lerp, no velocity prediction
                 // (player movement is unpredictable, extrapolation causes rubber-banding)

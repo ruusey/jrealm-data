@@ -249,33 +249,23 @@ export class GameRenderer {
                     const isObject = hasCollision && !isWall;
 
                     if (isWall) {
-                        // === WALL 3D EFFECT (matches Java TileManager) ===
-                        // Sub-pass 1: Drop shadow (+3,+3) with 35% alpha
-                        const shadow = new PIXI.Sprite(tex);
-                        shadow.x = sx + 3 * SCALE; shadow.y = sy + 3 * SCALE;
-                        shadow.width = drawSize; shadow.height = drawSize;
-                        shadow.tint = 0x333333; shadow.alpha = 0.35;
-                        this.tileLayer.addChild(shadow);
-
-                        // Sub-pass 2: Contour lines (4 cardinal offsets ±2px)
-                        const contourOff = 2 * SCALE;
-                        for (const [ox, oy] of [[contourOff,0],[-contourOff,0],[0,contourOff],[0,-contourOff]]) {
-                            const c = new PIXI.Sprite(tex);
-                            c.x = sx + ox; c.y = sy + oy;
-                            c.width = drawSize; c.height = drawSize;
-                            c.tint = 0x333333; c.alpha = 0.6;
-                            this.tileLayer.addChild(c);
-                        }
-
-                        // Sub-pass 3: Side face (dark strip below, 1/3 tile height)
-                        const sideH = drawSize / 3;
+                        // === WALL 3D EFFECT ===
+                        // Side face: dark strip below wall (renders first, wall tile overlaps top)
+                        const sideH = Math.max(drawSize * 0.35, 8);
                         const side = new PIXI.Graphics();
-                        side.beginFill(0x404050);
-                        side.drawRect(sx, sy + drawSize, drawSize, sideH);
+                        side.beginFill(0x252530);
+                        side.drawRect(sx, sy + drawSize - 2, drawSize, sideH);
                         side.endFill();
                         this.tileLayer.addChild(side);
 
-                        // Sub-pass 4: Main tile on top
+                        // Drop shadow behind and below
+                        const shadow = new PIXI.Sprite(tex);
+                        shadow.x = sx + 4; shadow.y = sy + 5;
+                        shadow.width = drawSize; shadow.height = drawSize;
+                        shadow.tint = 0x000000; shadow.alpha = 0.4;
+                        this.tileLayer.addChild(shadow);
+
+                        // Main wall tile on top
                         const spr = new PIXI.Sprite(tex);
                         spr.x = sx; spr.y = sy;
                         spr.width = drawSize; spr.height = drawSize;
