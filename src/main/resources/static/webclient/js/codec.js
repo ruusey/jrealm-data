@@ -414,6 +414,19 @@ export const PacketWriters = {
         });
     },
 
+    tradeSelection(playerId, selected) {
+        // UpdatePlayerTradeSelectionPacket (id=18)
+        // Contains NetInventorySelection: playerId + Boolean[] selection + NetGameItemRef[]
+        return buildPacket(PacketId.UPDATE_TRADE_SELECTION, w => {
+            w.writeLong(playerId);
+            // Boolean[] selection (8 elements for slots 4-11)
+            w.writeInt(selected.length);
+            for (const s of selected) w.writeBoolean(!!s);
+            // NetGameItemRef[] itemRefs — send empty array (server has authoritative items)
+            w.writeInt(0);
+        });
+    },
+
     deathAck(playerId) {
         return buildPacket(PacketId.DEATH_ACK, w => { w.writeLong(playerId); });
     }

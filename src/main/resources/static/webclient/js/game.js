@@ -46,7 +46,9 @@ export class GameState {
         // Trading
         this.isTrading = false;
         this.tradePartnerName = '';
-        this.tradeSelection = null; // NetTradeSelection {player0Selection, player1Selection}
+        this.tradePartnerInv = null; // Partner's full inventory from AcceptTradePacket
+        this.myTradeSelected = null; // Boolean[8] for our inventory slots 4-11
+        this.tradeSelection = null;  // NetTradeSelection from server
         this.tradeConfirmed = false;
 
         // Floating damage text
@@ -96,6 +98,8 @@ export class GameState {
         this.chatMessages = [];
         this.isTrading = false;
         this.tradePartnerName = '';
+        this.tradePartnerInv = null;
+        this.myTradeSelected = null;
         this.tradeSelection = null;
         this.tradeConfirmed = false;
         this.damageTexts = [];
@@ -353,17 +357,24 @@ export class GameState {
     handleAcceptTrade(packet) {
         if (packet.accepted) {
             this.isTrading = true;
-            // Determine partner name
             const p0 = packet.player0;
             const p1 = packet.player1;
             if (p0 && p1) {
-                this.tradePartnerName = (p0.id === this.playerId) ? p1.name : p0.name;
+                const iAmPlayer0 = (p0.id === this.playerId);
+                this.tradePartnerName = iAmPlayer0 ? p1.name : p0.name;
+                // Store partner's full inventory for display
+                this.tradePartnerInv = iAmPlayer0 ? packet.player1Inv : packet.player0Inv;
             }
+            // Initialize our selection as all false (nothing selected)
+            this.myTradeSelected = new Array(8).fill(false); // slots 4-11
+            this.tradeConfirmed = false;
         } else {
             this.isTrading = false;
             this.tradePartnerName = '';
+            this.tradePartnerInv = null;
             this.tradeSelection = null;
             this.tradeConfirmed = false;
+            this.myTradeSelected = null;
         }
     }
 

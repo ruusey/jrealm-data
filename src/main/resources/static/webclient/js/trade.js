@@ -4,8 +4,7 @@ import { PacketWriters, PacketId } from './codec.js';
 // Track trade-related UI state
 let tradeRequestFrom = null; // Name of player who sent us a trade request
 
-export function initTradeUI(game, network, addChatMessage) {
-    // Trade request notification popup
+export function initTradeUI(game, network, addChatMessage, invalidateUI) {
     network.on(PacketId.REQUEST_TRADE, (data) => {
         game.handleRequestTrade(data);
         tradeRequestFrom = data.requestingPlayerName;
@@ -16,6 +15,7 @@ export function initTradeUI(game, network, addChatMessage) {
         game.handleAcceptTrade(data);
         tradeRequestFrom = null;
         hideTradeRequestPopup();
+        invalidateUI();
         if (data.accepted) {
             addChatMessage('SYSTEM', `Trade started with ${game.tradePartnerName}`);
         } else {
@@ -25,10 +25,12 @@ export function initTradeUI(game, network, addChatMessage) {
 
     network.on(PacketId.UPDATE_TRADE, (data) => {
         game.handleUpdateTrade(data);
+        invalidateUI();
     });
 
     network.on(PacketId.UPDATE_TRADE_SELECTION, (data) => {
         game.handleUpdateTradeSelection(data);
+        invalidateUI();
     });
 }
 

@@ -608,7 +608,9 @@ function setupNetworkHandlers() {
     });
 
     // Trading handlers managed by trade.js module
-    initTradeUI(game, network, addChatMessage);
+    initTradeUI(game, network, addChatMessage, () => {
+        lastInvKey = ''; lastLootKey = '';
+    });
 }
 
 // --- Game Loop ---
@@ -896,8 +898,16 @@ function updateInventoryUI() {
             `IDs=[${game.inventory.map(i => i ? i.itemId : 'null').join(',')}], ` +
             `first item:`, game.inventory.find(i => i && i.itemId > 0));
     }
-    if (lastInvKey === invKey) { updateGroundLootUI(); return; }
-    lastInvKey = invKey;
+    // Include trade selection state in cache key during trading
+    const tradeKey = game.isTrading && game.myTradeSelected
+        ? ':t:' + game.myTradeSelected.join(',') : '';
+    const fullKey = invKey + tradeKey;
+    if (lastInvKey === fullKey) { updateGroundLootUI(); return; }
+    lastInvKey = fullKey;
+
+    // Update labels for trade mode
+    document.getElementById('inv-label').textContent =
+        game.isTrading ? 'YOUR OFFER (click to select)' : 'INVENTORY';
 
     equipEl.innerHTML = '';
     invEl.innerHTML = '';
@@ -917,34 +927,53 @@ function updateGroundLootUI() {
     const lootPanel = document.getElementById('ground-loot-panel');
     const lootEl = document.getElementById('ground-loot-slots');
 
-    // During trading, show partner's items instead of ground loot
+    // During trading, show partner's full inventory with selection highlights
     if (game.isTrading) {
-        const partnerSel = game.getPartnerTradeSelection();
         lootPanel.style.display = 'block';
         document.querySelector('#ground-loot-panel h4').textContent =
-            `${game.tradePartnerName}'s Offer`;
+            `${game.tradePartnerName}'s Items`;
 
-        const items = partnerSel?.itemRefs || [];
-        const selected = partnerSel?.selection || [];
-        // Build key from partner items + selection
-        const tradeKey = items.map((r, i) => (selected[i] ? '*' : '') + (r ? r.itemId : -1)).join(',');
+        // Get partner's selection state from server
+        const partnerSel = game.getPartnerTradeSelection();
+        const partnerSelected = partnerSel?.selection || [];
+        // Use partner inventory from AcceptTradePacket
+        const partnerInv = game.tradePartnerInv || [];
+
+        const tradeKey = 'trade:' + partnerInv.map((it, i) =>
+            (partnerSelected[i] ? '*' : '') + (it ? it.itemId : 0)).join(',');
         if (lastLootKey === tradeKey) return;
         lastLootKey = tradeKey;
 
         lootEl.innerHTML = '';
+        // Show partner's inventory slots 4-11 (their backpack, not equipment)
         for (let i = 0; i < 8; i++) {
-            const ref = items[i];
-            let item = null;
-            if (ref && ref.itemId > 0 && selected[i]) {
-                item = { itemId: ref.itemId, name: '', tier: -1, stats: {hp:0,mp:0,def:0,att:0,spd:0,dex:0,vit:0,wis:0},
-                         damage: {projectileGroupId:0,min:0,max:0}, effect: {self:false,effectId:0,duration:0n,cooldownDuration:0n,mpCost:0},
-                         consumable: false, targetSlot: 0, targetClass: -1, fameBonus: 0,
-                         uid: ref.itemUuid || '', description: '' };
-                const def = game.getItemDef(ref.itemId);
-                if (def) { item.name = def.name; item.tier = def.tier || -1; }
+            const item = partnerInv[i + 4]; // Slots 4-11 of partner's inventory
+            const div = document.createElement('div');
+            div.className = 'inv-slot loot-slot';
+            // Highlight items the partner has SELECTED for trade
+            if (partnerSelected[i]) div.classList.add('trade-selected');
+
+            if (item && item.itemId > 0) {
+                const tooltip = game.getItemTooltip(item);
+                if (tooltip) div.title = tooltip;
+                const spriteUrl = getItemSpriteUrl(item);
+                if (spriteUrl) {
+                    const img = document.createElement('img');
+                    img.src = spriteUrl;
+                    div.appendChild(img);
+                }
+                if (item.tier >= 0) {
+                    const tierEl = document.createElement('span');
+                    tierEl.className = `item-tier tier-${Math.min(item.tier, 5)}`;
+                    tierEl.textContent = `T${item.tier}`;
+                    div.appendChild(tierEl);
+                }
             }
-            const slot = createSlot(item, `${i + 1}`, 30 + i, true); // 30+ = trade display (non-interactive)
-            lootEl.appendChild(slot);
+            const lbl = document.createElement('span');
+            lbl.className = 'slot-label';
+            lbl.textContent = `${i + 1}`;
+            div.appendChild(lbl);
+            lootEl.appendChild(div);
         }
         return;
     }
@@ -978,11 +1007,10 @@ function createSlot(item, label, slotIdx, isLoot = false) {
     div.className = 'inv-slot' + (isLoot ? ' loot-slot' : '');
     if (slotIdx === selectedSlot) div.classList.add('selected');
 
-    // Trade selection highlight
-    if (game.isTrading && slotIdx >= 4 && slotIdx <= 11) {
-        const mySel = game.getMyTradeSelection();
-        if (mySel && mySel.selection && mySel.selection[slotIdx - 4]) {
-            div.classList.add('selected');
+    // Trade selection highlight — use local tracking
+    if (game.isTrading && slotIdx >= 4 && slotIdx <= 11 && game.myTradeSelected) {
+        if (game.myTradeSelected[slotIdx - 4]) {
+            div.classList.add('trade-selected');
         }
     }
 
@@ -1035,8 +1063,8 @@ const EMPTY_ITEM = { itemId: 0, uid: '', name: '', description: '',
     consumable: false, tier: -1, targetSlot: 0, targetClass: -1, fameBonus: 0 };
 
 function onSlotClick(slotIdx, item, isRightClick = false) {
-    // During trading, right-click toggles item selection
-    if (game.isTrading && isRightClick && slotIdx >= 4 && slotIdx <= 11) {
+    // During trading, clicking inventory slots 4-11 toggles trade selection
+    if (game.isTrading && slotIdx >= 4 && slotIdx <= 11) {
         toggleTradeSelection(slotIdx);
         return;
     }
@@ -1086,19 +1114,17 @@ function onSlotRightClick(slotIdx, item) {
 }
 
 function toggleTradeSelection(slotIdx) {
-    // Build selection array for trade: slots 4-11 → Boolean[0-7]
-    const mySel = game.getMyTradeSelection();
-    if (!mySel) return;
+    if (!game.myTradeSelected) game.myTradeSelected = new Array(8).fill(false);
     const selIdx = slotIdx - 4;
     if (selIdx < 0 || selIdx >= 8) return;
-    // Toggle
-    if (!mySel.selection) mySel.selection = new Array(8).fill(false);
-    mySel.selection[selIdx] = !mySel.selection[selIdx];
-    // Send UpdatePlayerTradeSelectionPacket
-    // TODO: need to build and send this packet
-    network.sendText(game.playerName, 'Player',
-        `/confirm false`); // Reset confirmation on selection change
-    lastInvKey = '';
+
+    // Toggle selection
+    game.myTradeSelected[selIdx] = !game.myTradeSelected[selIdx];
+    game.tradeConfirmed = false;
+
+    // Send UpdatePlayerTradeSelectionPacket to server
+    network.send(PacketWriters.tradeSelection(game.playerId, game.myTradeSelected));
+    lastInvKey = ''; lastLootKey = '';
 }
 
 // Drop selected item when clicking game canvas (outside inventory)
