@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="landscape">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>OpenRealm</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -10,6 +13,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
 </head>
 <body>
+    <!-- Rotate prompt for portrait mobile -->
+    <div id="rotate-prompt">
+        <span>&#x1F504;</span>
+        <p>Please rotate your device to landscape mode</p>
+    </div>
+
     <!-- Login Screen -->
     <div id="login-screen" class="screen active">
         <div class="login-box">
@@ -147,6 +156,10 @@
         <div id="connection-status">Connecting...</div>
     </div>
 
+    <!-- Mobile touch controls -->
+    <div id="touch-joystick" style="display:none">
+        <div id="joystick-base"><div id="joystick-thumb"></div></div>
+    </div>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -4,8 +4,10 @@ import { CLASS_NAMES } from './game.js';
 
 const BASE_SPRITE_SIZE = 8;  // Sprite sheet cell size (pixels in sheet)
 const PLAYER_SIZE = 32;      // World render size for entities (matches tile size)
-const SCALE = 2;  // Scale up pixel art (2x for wider viewport)
-const VIEWPORT_TILES = 24; // Tiles visible in each direction
+// Auto-scale for mobile: smaller screens get less zoom so more tiles are visible
+const IS_MOBILE = window.innerWidth < 900 || ('ontouchstart' in window);
+const SCALE = IS_MOBILE ? 1.5 : 2;  // 1.5x on mobile, 2x on desktop
+const VIEWPORT_TILES = IS_MOBILE ? 20 : 24;
 
 // Parse template angle expressions like "{{PI/4}}", "{{1.5PI/6}}"
 function parseAngleTemplate(str) {

@@ -7,6 +7,7 @@ import { GameRenderer } from './renderer.js';
 import { InputHandler } from './input.js';
 import { PacketId, PacketWriters } from './codec.js';
 import { initTradeUI, updateNearbyPlayers } from './trade.js';
+import { initTouchControls, isTouchDevice, getJoystickDir } from './touch.js';
 
 // --- App State ---
 const api = new ApiClient();
@@ -494,6 +495,9 @@ async function startGame() {
 
     network.connect(gameServerHost);
 
+    // Init mobile touch controls
+    initTouchControls(input);
+
     // Start game loop
     requestAnimationFrame(gameLoop);
 }
@@ -668,15 +672,20 @@ function gameLoop(timestamp) {
 
 // --- Input Processing ---
 function processInput(dt) {
-    // Determine current X and Y axis directions from held keys
+    // Determine current X and Y axis directions from keyboard or touch joystick
     let xDir = null;
     let yDir = null;
     if (!input.chatMode) {
-        if (input.isKeyDown('KeyD') || input.isKeyDown('ArrowRight')) xDir = 2; // EAST
-        else if (input.isKeyDown('KeyA') || input.isKeyDown('ArrowLeft')) xDir = 3; // WEST
-
-        if (input.isKeyDown('KeyW') || input.isKeyDown('ArrowUp')) yDir = 0; // NORTH
-        else if (input.isKeyDown('KeyS') || input.isKeyDown('ArrowDown')) yDir = 1; // SOUTH
+        if (isTouchDevice()) {
+            const joy = getJoystickDir();
+            xDir = joy.xDir;
+            yDir = joy.yDir;
+        } else {
+            if (input.isKeyDown('KeyD') || input.isKeyDown('ArrowRight')) xDir = 2;
+            else if (input.isKeyDown('KeyA') || input.isKeyDown('ArrowLeft')) xDir = 3;
+            if (input.isKeyDown('KeyW') || input.isKeyDown('ArrowUp')) yDir = 0;
+            else if (input.isKeyDown('KeyS') || input.isKeyDown('ArrowDown')) yDir = 1;
+        }
     }
 
     // --- Send direction packets to server only on change ---
@@ -706,8 +715,11 @@ function processInput(dt) {
     // dex = floor((6.5 * (DEX_stat + 17.3)) / 75)
     // canShoot = (now - lastShot) > (1000 / dex + 10) ms
     if (shootCooldown > 0) shootCooldown -= dt;
-    if (input.wantsShoot() && shootCooldown <= 0 && renderer) {
-        const world = renderer.getWorldCoords(input.mouseX, input.mouseY, game);
+    const wantsShoot = isTouchDevice() ? input._touchShooting : input.wantsShoot();
+    const shootX = isTouchDevice() ? (input._touchShootX || 0) : input.mouseX;
+    const shootY = isTouchDevice() ? (input._touchShootY || 0) : input.mouseY;
+    if (wantsShoot && shootCooldown <= 0 && renderer) {
+        const world = renderer.getWorldCoords(shootX, shootY, game);
         const local = game.getLocalPlayer();
         if (local) {
             const weapon = game.inventory.length > 0 ? game.inventory[0] : null;
