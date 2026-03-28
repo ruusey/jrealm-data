@@ -18,6 +18,21 @@ export class GameNetwork {
         this.handlers[packetId].push(handler);
     }
 
+    // Clear all handlers and state for clean reconnect
+    reset() {
+        this.handlers = {};
+        this.onConnect = null;
+        this.onDisconnect = null;
+        this.stopHeartbeat();
+        this.playerId = null;
+        this.connected = false;
+        if (this.ws) {
+            this.ws.onclose = null; // Prevent disconnect callback
+            this.ws.close();
+            this.ws = null;
+        }
+    }
+
     connect(gameServerHost) {
         const wsPort = 2223;
         // Use wss:// if page is served over HTTPS, ws:// otherwise

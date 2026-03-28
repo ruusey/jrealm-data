@@ -1,4 +1,4 @@
-// JRealm Web Client - Main Entry Point
+// OpenRealm Web Client - Main Entry Point
 
 import { ApiClient } from './api.js';
 import { GameNetwork } from './network.js';
@@ -414,6 +414,15 @@ function returnToCharacterSelect() {
 // --- Game Start ---
 async function startGame() {
     showScreen('game');
+
+    // Clean reset for reconnection — clear old handlers, state, renderer
+    network.reset();
+    game.fullReset();
+    lastXDir = null; lastYDir = null;
+    selectedSlot = -1;
+    lastInvKey = ''; lastLootKey = '';
+    if (renderer) { renderer.destroy(); renderer = null; }
+
     const statusEl = document.getElementById('connection-status');
     statusEl.textContent = 'Loading assets...';
     statusEl.className = '';
@@ -562,7 +571,7 @@ function setupNetworkHandlers() {
                     statusEl.textContent = 'Connected';
                     statusEl.className = 'connected';
 
-                    addChatMessage('SYSTEM', `Welcome to JRealm! Playing as ${CLASS_NAMES[loginResp.classId]}`);
+                    addChatMessage('SYSTEM', `Welcome to OpenRealm! Playing as ${CLASS_NAMES[loginResp.classId]}`);
                 } else {
                     const statusEl = document.getElementById('connection-status');
                     statusEl.textContent = 'Login failed';

@@ -271,8 +271,16 @@ export class GameState {
                         this.awaitingRealmTransition = false;
                         console.log(`[REALM] Transition complete, snapped to (${mov.posX}, ${mov.posY})`);
                     } else {
-                        // Set target — interpolation in updateInterpolation handles smooth movement
                         p.targetX = mov.posX; p.targetY = mov.posY;
+                        // Store snapshot for Hermite interpolation
+                        if (!p._snapshots) p._snapshots = [];
+                        p._snapshots.push({
+                            x: mov.posX, y: mov.posY,
+                            vx: mov.velX, vy: mov.velY,
+                            t: Date.now()
+                        });
+                        // Keep only last 4 snapshots
+                        if (p._snapshots.length > 4) p._snapshots.shift();
                     }
                     p.dx = mov.velX; p.dy = mov.velY;
                 }
@@ -418,10 +426,57 @@ export class GameState {
             if (dist > SNAP_DISTANCE) {
                 p.pos.x = p.targetX; p.pos.y = p.targetY;
             } else if (id === this.playerId) {
-                // LOCAL PLAYER: tight lerp for responsive dodging.
-                // 0.55 reaches 90% in <2 frames at 64Hz.
-                p.pos.x += dx * 0.55;
-                p.pos.y += dy * 0.55;
+                // LOCAL PLAYER: Snapshot interpolation with velocity prediction.
+                //
+                // Buffer the last 2 server positions. Render at a slight delay
+                // (1 frame behind) and interpolate smoothly between snapshots.
+                // This gives silky smooth motion without fighting prediction vs correction.
+                //
+                // When velocity is zero (stopped): snap immediately for crisp stops.
+                // When velocity is non-zero (moving): Hermite-style smooth interpolation.
+
+                if (!p._snapshots) p._snapshots = [];
+                const hasVel = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
+
+                if (!hasVel) {
+                    // STOPPED: snap to server position immediately — crisp stops
+                    if (dist > 0.5) {
+                        p.pos.x += dx * 0.8;
+                        p.pos.y += dy * 0.8;
+                    }
+                } else if (p._snapshots.length >= 2) {
+                    // MOVING: interpolate between last two snapshots using Hermite
+                    const s0 = p._snapshots[p._snapshots.length - 2];
+                    const s1 = p._snapshots[p._snapshots.length - 1];
+                    const duration = s1.t - s0.t;
+                    if (duration > 0) {
+                        // Render ~16ms behind latest snapshot for smooth interpolation
+                        const renderTime = Date.now() - 16;
+                        let t = (renderTime - s0.t) / duration;
+                        t = Math.max(0, Math.min(1.5, t)); // Allow slight extrapolation
+
+                        // Hermite basis functions for smooth curve
+                        const t2 = t * t, t3 = t2 * t;
+                        const h00 = 2*t3 - 3*t2 + 1;
+                        const h10 = t3 - 2*t2 + t;
+                        const h01 = -2*t3 + 3*t2;
+                        const h11 = t3 - t2;
+
+                        // Tangents from velocity * duration
+                        const scale = duration / 16; // normalize to tick duration
+                        const m0x = s0.vx * 0.45 * scale;
+                        const m0y = s0.vy * 0.45 * scale;
+                        const m1x = s1.vx * 0.45 * scale;
+                        const m1y = s1.vy * 0.45 * scale;
+
+                        p.pos.x = h00 * s0.x + h10 * m0x + h01 * s1.x + h11 * m1x;
+                        p.pos.y = h00 * s0.y + h10 * m0y + h01 * s1.y + h11 * m1y;
+                    }
+                } else {
+                    // Not enough snapshots yet — simple lerp
+                    p.pos.x += dx * 0.6;
+                    p.pos.y += dy * 0.6;
+                }
             } else {
                 // OTHER PLAYERS: smooth lerp, no velocity prediction
                 // (player movement is unpredictable, extrapolation causes rubber-banding)
@@ -502,11 +557,11 @@ export class GameState {
         }
     }
 
-    // Match Java PlayState.getClosestLootContainer: distance = player.getSize() / 2
+    // Loot container interaction range: player.getSize() * 0.75 (50% larger than original size/2)
     getNearbyLootContainer() {
         const local = this.getLocalPlayer();
         if (!local) return null;
-        const maxDist = (local.size || 32) / 2;
+        const maxDist = (local.size || 32) * 0.75;
         let closest = null, closestDist = Infinity;
         for (const [id, loot] of this.lootContainers) {
             const dx = loot.pos.x - local.pos.x, dy = loot.pos.y - local.pos.y;

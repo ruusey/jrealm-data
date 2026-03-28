@@ -10,7 +10,7 @@ body {
 }
 
 .screen { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
-.screen.active { display: flex; align-items: center; justify-content: center; }
+.screen.active { display: flex; align-items: center; justify-content: center; overflow-y: auto; }
 
 /* Login */
 .login-box, .charselect-box {
@@ -462,8 +462,25 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     #nearby-players { max-height: 60px; font-size: 9px; }
     #ground-loot-panel { padding: 4px; }
     #ground-loot-panel h4 { font-size: 9px; }
-    .login-box, .charselect-box { width: 90vw; max-width: 400px; padding: 20px; }
-    .charselect-box { max-height: 90vh; overflow-y: auto; }
+    .login-box, .charselect-box { width: 90vw; max-width: 400px; padding: 16px; }
+    .charselect-box { max-height: 85vh; overflow-y: auto; }
+    .charselect-box h2 { font-size: 18px; margin-bottom: 10px; }
+    #char-list { max-height: 120px; }
+    .char-card { padding: 8px 10px; gap: 8px; }
+    .char-card .char-icon { width: 32px; height: 32px; font-size: 16px; }
+    .char-card .char-name { font-size: 13px; }
+    .char-card .char-details { font-size: 10px; }
+    .char-create { padding-top: 6px; }
+    .char-create h3 { font-size: 12px; margin: 6px 0 4px; }
+    #class-picker { grid-template-columns: repeat(4, 1fr); gap: 3px; }
+    .class-option { padding: 4px 2px; font-size: 9px; }
+    .char-actions { gap: 4px; }
+    .char-actions button { padding: 8px; font-size: 12px; }
+    .chest-section { font-size: 11px; padding-top: 6px; margin-top: 6px; }
+    .password-section summary { font-size: 11px; }
+    .password-section input { padding: 5px 8px; font-size: 11px; }
+    button.small { padding: 5px 8px; font-size: 10px; }
+    #logout-btn { padding: 8px; font-size: 12px; }
 }
 
 @media (orientation: portrait) and (max-width: 768px) {
