@@ -55,6 +55,9 @@ export class GameNetwork {
                 if (!packet) return;
                 if (packet.data === null) return;
 
+                // Notify perf metrics of incoming server packet (for ping measurement)
+                if (this.onServerPacket) this.onServerPacket();
+
                 const handlers = this.handlers[packet.id];
                 if (handlers) {
                     for (const h of handlers) {
@@ -104,6 +107,7 @@ export class GameNetwork {
     sendHeartbeat() {
         if (this.playerId !== null) {
             this.send(PacketWriters.heartbeat(this.playerId, Date.now()));
+            if (this.onHeartbeatSend) this.onHeartbeatSend();
         }
     }
 

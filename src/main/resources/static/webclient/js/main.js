@@ -572,6 +572,8 @@ function setupNetworkHandlers() {
 
                     // Send login ack and start heartbeat
                     network.sendLoginAck(game.playerId);
+                    network.onHeartbeatSend = () => perfMetrics.recordHeartbeatSend();
+                    network.onServerPacket = () => perfMetrics.recordServerPacket();
                     network.startHeartbeat(game.playerId);
 
                     const statusEl = document.getElementById('connection-status');
@@ -621,7 +623,7 @@ function setupNetworkHandlers() {
             lastLootKey = '';
             for (const c of data.containers) {
                 const itemIds = c.items.map(i => i ? i.itemId : -1);
-                console.log(`[LOOT] Container ${c.lootContainerId} tier=${c.tier} changed=${c.contentsChanged} items=[${itemIds}] pos=(${c.pos.x},${c.pos.y})`);
+                // Loot container log removed for performance
             }
         }
     });
@@ -669,11 +671,54 @@ function setupNetworkHandlers() {
     });
 }
 
+// --- Performance Metrics ---
+const perfMetrics = {
+    fps: 0, _frameCount: 0, _lastFpsSample: 0,
+    ping: 0, jitter: 0,
+    _pingSamples: [], _lastHeartbeatSend: 0,
+    _lastServerPacketTime: 0,
+    memoryMB: 0,
+    update(timestamp) {
+        // FPS counter (sampled every 500ms)
+        this._frameCount++;
+        if (timestamp - this._lastFpsSample >= 500) {
+            this.fps = Math.round(this._frameCount / ((timestamp - this._lastFpsSample) / 1000));
+            this._frameCount = 0;
+            this._lastFpsSample = timestamp;
+        }
+        // Memory (if available)
+        if (performance.memory) {
+            this.memoryMB = (performance.memory.usedJSHeapSize / 1048576).toFixed(1);
+        }
+    },
+    recordHeartbeatSend() {
+        this._lastHeartbeatSend = Date.now();
+    },
+    recordServerPacket() {
+        if (this._lastHeartbeatSend > 0) {
+            const rtt = Date.now() - this._lastHeartbeatSend;
+            // Only count reasonable RTTs (< 2s) as ping samples
+            if (rtt > 0 && rtt < 2000) {
+                this._pingSamples.push(rtt);
+                if (this._pingSamples.length > 10) this._pingSamples.shift();
+                // Ping = average RTT / 2
+                const avg = this._pingSamples.reduce((a, b) => a + b, 0) / this._pingSamples.length;
+                this.ping = Math.round(avg / 2);
+                // Jitter = stddev of samples
+                const variance = this._pingSamples.reduce((sum, s) => sum + (s - avg) ** 2, 0) / this._pingSamples.length;
+                this.jitter = Math.round(Math.sqrt(variance));
+            }
+            this._lastHeartbeatSend = 0;
+        }
+    }
+};
+
 // --- Game Loop ---
 let lastTime = 0;
 function gameLoop(timestamp) {
     const dt = Math.min((timestamp - lastTime) / 1000, 0.1); // Cap delta at 100ms
     lastTime = timestamp;
+    perfMetrics.update(timestamp);
 
     if (currentScreen === 'game' && game.playerId !== null) {
         // Process input
@@ -687,8 +732,9 @@ function gameLoop(timestamp) {
             renderer.render(game);
         }
 
-        // Update HUD
+        // Update HUD + perf overlay
         updateHUD();
+        updatePerfOverlay();
     }
 
     requestAnimationFrame(gameLoop);
@@ -886,6 +932,27 @@ function checkCollision(entity, dx, dy) {
     return false;
 }
 
+// --- Performance Overlay ---
+let _perfEl = null;
+function updatePerfOverlay() {
+    if (!_perfEl) {
+        _perfEl = document.createElement('div');
+        _perfEl.id = 'perf-overlay';
+        _perfEl.style.cssText = 'position:fixed;top:28px;left:8px;color:#aaa;font:11px monospace;' +
+            'z-index:100;pointer-events:none;text-shadow:1px 1px 2px #000;line-height:1.4;';
+        document.body.appendChild(_perfEl);
+    }
+    const m = perfMetrics;
+    const fpsColor = m.fps >= 55 ? '#6f6' : m.fps >= 30 ? '#ff6' : '#f66';
+    const pingColor = m.ping < 50 ? '#6f6' : m.ping < 120 ? '#ff6' : '#f66';
+    const memStr = m.memoryMB > 0 ? `MEM: ${m.memoryMB}MB<br>` : '';
+    _perfEl.innerHTML =
+        `FPS: <span style="color:${fpsColor}">${m.fps}</span><br>` +
+        `${memStr}` +
+        `PING: <span style="color:${pingColor}">${m.ping}ms</span><br>` +
+        `JITTER: ${m.jitter}ms`;
+}
+
 // --- HUD Update ---
 function updateHUD() {
     // Use computed stats (base + equipment bonuses) for display
@@ -1003,7 +1070,7 @@ function updateInventoryUI() {
     const invKey = game.inventory.map(i => i ? i.itemId : -1).join(',') + ':' + selectedSlot;
     if (!updateInventoryUI._logged && game.inventory.length > 0) {
         updateInventoryUI._logged = true;
-        console.log(`[INV] Inventory: ${game.inventory.length} items, ` +
+        // console.log(`[INV] Inventory: ${game.inventory.length} items, ` +
             `IDs=[${game.inventory.map(i => i ? i.itemId : 'null').join(',')}], ` +
             `first item:`, game.inventory.find(i => i && i.itemId > 0));
     }
@@ -1190,7 +1257,7 @@ function onSlotClick(slotIdx, item, isRightClick = false) {
 
     // Ground loot: single click = pick up to first empty inv slot
     if (slotIdx >= 20 && slotIdx <= 27 && item && item.itemId > 0) {
-        console.log(`[INV] Picking up from ground slot ${slotIdx}, itemId=${item.itemId}`);
+        // console.log(`[INV] Picking up from ground slot ${slotIdx}, itemId=${item.itemId}`);
         // Send with target=4 (first inv slot) so server's isInv1 check passes
         // Server will use firstEmptyInvSlot() regardless
         network.sendMoveItem(game.playerId, 4, slotIdx, false, false);
@@ -1209,7 +1276,7 @@ function onSlotClick(slotIdx, item, isRightClick = false) {
             selectedSlot = -1; // Deselect
         } else if (selectedSlot >= 0 && selectedSlot <= 11 && slotIdx >= 0 && slotIdx <= 11) {
             // Swap/equip/move between slots 0-11
-            console.log(`[INV] Swap slot ${selectedSlot} <-> slot ${slotIdx}`);
+            // console.log(`[INV] Swap slot ${selectedSlot} <-> slot ${slotIdx}`);
             network.sendMoveItem(game.playerId, slotIdx, selectedSlot, false, false);
             selectedSlot = -1;
         } else {
@@ -1226,7 +1293,7 @@ function onSlotRightClick(slotIdx, item) {
     }
     // Right-click: drop item to ground
     if (item && item.itemId > 0 && slotIdx >= 0 && slotIdx <= 11) {
-        console.log(`[INV] Dropping item from slot ${slotIdx}`);
+        // console.log(`[INV] Dropping item from slot ${slotIdx}`);
         network.sendMoveItem(game.playerId, -1, slotIdx, true, false);
         lastInvKey = '';
     }
@@ -1249,7 +1316,7 @@ function toggleTradeSelection(slotIdx) {
 // Drop selected item when clicking game canvas (outside inventory)
 document.getElementById('game-canvas-container').addEventListener('click', () => {
     if (selectedSlot >= 0 && selectedSlot <= 11 && currentScreen === 'game') {
-        console.log(`[INV] Dropping item from slot ${selectedSlot} (canvas click)`);
+        // console.log(`[INV] Dropping item from slot ${selectedSlot} (canvas click)`);
         network.sendMoveItem(game.playerId, -1, selectedSlot, true, false);
         selectedSlot = -1;
         lastInvKey = '';

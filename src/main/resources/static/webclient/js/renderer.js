@@ -112,7 +112,7 @@ export class GameRenderer {
                 loaded++;
             }
         }
-        console.log(`[RENDER] Built ${loaded} tile textures from ${Object.keys(tileData).length} definitions`);
+        if (loaded > 0) console.log(`[RENDER] Built ${loaded} tile textures`);
     }
 
     // Set tile size from map data
@@ -141,6 +141,7 @@ export class GameRenderer {
         if (!this._debugLogged && gameState.getLocalPlayer()) {
             this._debugLogged = true;
             const lp = gameState.getLocalPlayer();
+            // One-time screen info log
             console.log(`[RENDER] Screen: ${screenW}x${screenH}, ` +
                 `Player pos: (${lp.pos.x}, ${lp.pos.y}), ` +
                 `Camera: (${gameState.cameraX}, ${gameState.cameraY}), ` +
@@ -195,24 +196,10 @@ export class GameRenderer {
         const minC = Math.max(0, playerTileX - VIEWPORT_TILES);
         const maxC = Math.min(gameState.mapWidth - 1, playerTileX + VIEWPORT_TILES);
 
-        if (!this._tileDebugLogged && gameState.mapTiles) {
-            this._tileDebugLogged = true;
-            let tilesInView = 0;
-            for (let r = minR; r <= maxR; r++) {
-                for (let c = minC; c <= maxC; c++) {
-                    const t = gameState.mapTiles[r]?.[c];
-                    if (t && (t.base >= 0 || t.collision >= 0)) tilesInView++;
-                }
-            }
-            console.log(`[TILES] tileSize=${ts}, playerTile=(${playerTileX},${playerTileY}), ` +
-                `viewport: rows ${minR}-${maxR}, cols ${minC}-${maxC}, ` +
-                `tilesInView=${tilesInView}, tileTextures=${Object.keys(this.tileTextures).length}`);
-        }
 
         const drawSize = ts * SCALE;
         // Two-pass rendering: base tiles first, then collision layer on top.
         // This ensures wall side faces and shadows are never covered by base tiles.
-        let _baseRendered = 0, _baseMissing = 0, _collRendered = 0;
 
         // === PASS 1: All base tiles ===
         for (let r = minR; r <= maxR; r++) {
@@ -228,14 +215,12 @@ export class GameRenderer {
                     spr.x = sx; spr.y = sy;
                     spr.width = drawSize; spr.height = drawSize;
                     this.tileLayer.addChild(spr);
-                    _baseRendered++;
                 } else {
                     const g = new PIXI.Graphics();
                     g.beginFill(0xFF00FF);
                     g.drawRect(sx, sy, drawSize, drawSize);
                     g.endFill();
                     this.tileLayer.addChild(g);
-                    _baseMissing++;
                 }
             }
         }
@@ -261,15 +246,15 @@ export class GameRenderer {
                     // === WALL 3D EFFECT (matches Java TileManager multi-pass) ===
                     const sideH = Math.max(drawSize * 0.35, 8);
 
-                    // 1) Side face: dark strip below wall gives depth/height
+                    // 1) Side face: dark strip directly below wall sprite (no gap)
                     const side = new PIXI.Graphics();
-                    side.beginFill(0x1a1a22);
-                    side.drawRect(sx, sy + drawSize - 2, drawSize, sideH);
+                    side.beginFill(0x2a2a35);
+                    side.drawRect(sx, sy + drawSize, drawSize, sideH);
                     side.endFill();
                     // Subtle gradient overlay on side face (lighter at top)
                     const sideHighlight = new PIXI.Graphics();
-                    sideHighlight.beginFill(0x3a3a48, 0.4);
-                    sideHighlight.drawRect(sx, sy + drawSize - 2, drawSize, Math.max(sideH * 0.3, 2));
+                    sideHighlight.beginFill(0x454555, 0.4);
+                    sideHighlight.drawRect(sx, sy + drawSize, drawSize, Math.max(sideH * 0.3, 2));
                     sideHighlight.endFill();
                     this.tileLayer.addChild(side);
                     this.tileLayer.addChild(sideHighlight);
@@ -329,14 +314,6 @@ export class GameRenderer {
                     spr.width = drawSize; spr.height = drawSize;
                     this.tileLayer.addChild(spr);
                 }
-                _collRendered++;
-            }
-        }
-        // Log once per map change
-        if (!this._lastTileStats || this._lastTileStats !== `${_baseRendered}:${_baseMissing}:${_collRendered}`) {
-            this._lastTileStats = `${_baseRendered}:${_baseMissing}:${_collRendered}`;
-            if (_baseRendered > 0 || _baseMissing > 0 || _collRendered > 0) {
-                console.log(`[TILES] Rendered: ${_baseRendered} base (${_baseMissing} MISSING tex), ${_collRendered} collision`);
             }
         }
     }
