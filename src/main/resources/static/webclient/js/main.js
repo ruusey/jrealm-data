@@ -7,7 +7,7 @@ import { GameRenderer } from './renderer.js';
 import { InputHandler } from './input.js';
 import { PacketId, PacketWriters } from './codec.js';
 import { initTradeUI, updateNearbyPlayers } from './trade.js';
-import { initTouchControls, isTouchDevice, getJoystickDir } from './touch.js';
+import { initTouchControls, isTouchDevice, getJoystickDir, getAimDir, setDoubleTapHandler } from './touch.js';
 
 // --- App State ---
 const api = new ApiClient();
@@ -507,6 +507,13 @@ async function startGame() {
     // Init mobile touch controls
     initTouchControls(input);
 
+    // Double-tap = use ability at tap location
+    setDoubleTapHandler((screenX, screenY) => {
+        if (!game.playerId || !renderer) return;
+        const world = renderer.getWorldCoords(screenX, screenY, game);
+        network.sendUseAbility(game.playerId, world.x, world.y);
+    });
+
     // Start game loop
     requestAnimationFrame(gameLoop);
 }
@@ -724,11 +731,21 @@ function processInput(dt) {
     // dex = floor((6.5 * (DEX_stat + 17.3)) / 75)
     // canShoot = (now - lastShot) > (1000 / dex + 10) ms
     if (shootCooldown > 0) shootCooldown -= dt;
-    const wantsShoot = isTouchDevice() ? input._touchShooting : input.wantsShoot();
-    const shootX = isTouchDevice() ? (input._touchShootX || 0) : input.mouseX;
-    const shootY = isTouchDevice() ? (input._touchShootY || 0) : input.mouseY;
+    const aim = isTouchDevice() ? getAimDir() : null;
+    const wantsShoot = aim ? aim.shooting : input.wantsShoot();
     if (wantsShoot && shootCooldown <= 0 && renderer) {
-        const world = renderer.getWorldCoords(shootX, shootY, game);
+        let world;
+        if (aim && aim.shooting) {
+            // Aim joystick: project direction from player position
+            const local = game.getLocalPlayer();
+            if (local) {
+                world = { x: local.pos.x + aim.dx * 300, y: local.pos.y + aim.dy * 300 };
+            } else {
+                world = { x: 0, y: 0 };
+            }
+        } else {
+            world = renderer.getWorldCoords(input.mouseX, input.mouseY, game);
+        }
         const local = game.getLocalPlayer();
         if (local) {
             const weapon = game.inventory.length > 0 ? game.inventory[0] : null;

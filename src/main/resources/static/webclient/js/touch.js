@@ -1,140 +1,155 @@
-// Mobile touch controls — virtual joystick + tap-to-shoot
+// Mobile touch controls — move joystick (left) + aim joystick (right)
 
 let joystickActive = false;
 let joystickTouchId = null;
 let joystickDir = { dx: 0, dy: 0, xDir: null, yDir: null };
-let shootTouchId = null;
+
+let aimActive = false;
+let aimTouchId = null;
+let aimDir = { dx: 0, dy: 0, shooting: false };
+
 let isMobile = false;
+let lastTapTime = 0;
+let lastTapX = 0;
+let lastTapY = 0;
+let doubleTapCallback = null;
 
-export function isTouchDevice() {
-    return isMobile;
-}
-
-export function getJoystickDir() {
-    return joystickDir;
-}
+export function isTouchDevice() { return isMobile; }
+export function getJoystickDir() { return joystickDir; }
+export function getAimDir() { return aimDir; }
+export function setDoubleTapHandler(fn) { doubleTapCallback = fn; }
 
 export function initTouchControls(input) {
     isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     if (!isMobile) return;
 
-    const joystickEl = document.getElementById('touch-joystick');
-    joystickEl.style.display = 'block';
-
-    // Show mobile action buttons
+    document.getElementById('touch-joystick').style.display = 'block';
+    document.getElementById('touch-aim').style.display = 'block';
     document.getElementById('mobile-buttons').style.display = 'flex';
 
-    const base = document.getElementById('joystick-base');
-    const thumb = document.getElementById('joystick-thumb');
-    const baseRect = () => base.getBoundingClientRect();
+    // === MOVE JOYSTICK (left) ===
+    const moveBase = document.getElementById('joystick-base');
+    const moveThumb = document.getElementById('joystick-thumb');
 
-    // Joystick touch handling
-    base.addEventListener('touchstart', (e) => {
+    moveBase.addEventListener('touchstart', (e) => {
         e.preventDefault();
-        const touch = e.changedTouches[0];
-        joystickTouchId = touch.identifier;
+        joystickTouchId = e.changedTouches[0].identifier;
         joystickActive = true;
-        updateJoystick(touch, baseRect(), thumb);
+        updateMoveJoystick(e.changedTouches[0], moveBase.getBoundingClientRect(), moveThumb);
     }, { passive: false });
 
+    // === AIM JOYSTICK (right) ===
+    const aimBase = document.getElementById('aim-base');
+    const aimThumbEl = document.getElementById('aim-thumb');
+
+    aimBase.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        aimTouchId = e.changedTouches[0].identifier;
+        aimActive = true;
+        updateAimJoystick(e.changedTouches[0], aimBase.getBoundingClientRect(), aimThumbEl);
+    }, { passive: false });
+
+    // === SHARED TOUCH MOVE/END ===
     document.addEventListener('touchmove', (e) => {
-        for (const touch of e.changedTouches) {
-            if (touch.identifier === joystickTouchId && joystickActive) {
+        for (const t of e.changedTouches) {
+            if (t.identifier === joystickTouchId && joystickActive) {
                 e.preventDefault();
-                updateJoystick(touch, baseRect(), thumb);
+                updateMoveJoystick(t, moveBase.getBoundingClientRect(), moveThumb);
+            }
+            if (t.identifier === aimTouchId && aimActive) {
+                e.preventDefault();
+                updateAimJoystick(t, aimBase.getBoundingClientRect(), aimThumbEl);
             }
         }
     }, { passive: false });
 
     document.addEventListener('touchend', (e) => {
-        for (const touch of e.changedTouches) {
-            if (touch.identifier === joystickTouchId) {
+        for (const t of e.changedTouches) {
+            if (t.identifier === joystickTouchId) {
                 joystickActive = false;
                 joystickTouchId = null;
                 joystickDir = { dx: 0, dy: 0, xDir: null, yDir: null };
-                thumb.style.transform = 'translate(-50%, -50%)';
-                thumb.style.left = '50%';
-                thumb.style.top = '50%';
+                moveThumb.style.transform = 'translate(-50%, -50%)';
+                moveThumb.style.left = '50%';
+                moveThumb.style.top = '50%';
             }
-            if (touch.identifier === shootTouchId) {
-                shootTouchId = null;
+            if (t.identifier === aimTouchId) {
+                aimActive = false;
+                aimTouchId = null;
+                aimDir = { dx: 0, dy: 0, shooting: false };
+                aimThumbEl.style.transform = 'translate(-50%, -50%)';
+                aimThumbEl.style.left = '50%';
+                aimThumbEl.style.top = '50%';
             }
         }
     });
 
-    // Tap to shoot — any touch NOT on the joystick area (bottom-left 150px)
-    const canvas = document.getElementById('game-canvas-container');
-    canvas.addEventListener('touchstart', (e) => {
+    // Double-tap on game canvas = use ability at tap location
+    const gameScreen = document.getElementById('game-canvas-container');
+    gameScreen.addEventListener('touchstart', (e) => {
         const touch = e.changedTouches[0];
-        const isJoystickArea = touch.clientX < 150 && touch.clientY > window.innerHeight - 150;
-        if (!isJoystickArea) {
-            shootTouchId = touch.identifier;
-            input._touchShootX = touch.clientX;
-            input._touchShootY = touch.clientY;
-            input._touchShooting = true;
+        // Ignore touches on joystick areas
+        const isJoystick = touch.clientX < 150 && touch.clientY > window.innerHeight - 150;
+        const isAim = touch.clientX > window.innerWidth - 320 && touch.clientY > window.innerHeight - 150;
+        if (isJoystick || isAim) return;
+
+        const now = Date.now();
+        if (now - lastTapTime < 300) {
+            // Double tap detected
+            if (doubleTapCallback) {
+                doubleTapCallback(touch.clientX, touch.clientY);
+            }
+            lastTapTime = 0; // Reset to prevent triple-tap
+        } else {
+            lastTapTime = now;
+            lastTapX = touch.clientX;
+            lastTapY = touch.clientY;
         }
     }, { passive: true });
 
-    canvas.addEventListener('touchmove', (e) => {
-        for (const touch of e.changedTouches) {
-            if (touch.identifier === shootTouchId) {
-                input._touchShootX = touch.clientX;
-                input._touchShootY = touch.clientY;
-            }
-        }
-    }, { passive: true });
-
-    canvas.addEventListener('touchend', (e) => {
-        for (const touch of e.changedTouches) {
-            if (touch.identifier === shootTouchId) {
-                input._touchShooting = false;
-                shootTouchId = null;
-            }
-        }
-    });
-
-    // Prevent default touch behaviors on game screen
+    // Prevent scrolling on game screen
     document.getElementById('game-screen').addEventListener('touchmove', (e) => {
         if (e.target.closest('#hud') || e.target.closest('#chat-panel')) return;
         e.preventDefault();
     }, { passive: false });
 }
 
-function updateJoystick(touch, rect, thumb) {
+function updateMoveJoystick(touch, rect, thumb) {
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    let dx = touch.clientX - cx;
-    let dy = touch.clientY - cy;
+    let dx = touch.clientX - cx, dy = touch.clientY - cy;
     const dist = Math.sqrt(dx * dx + dy * dy);
     const maxDist = rect.width / 2 - 10;
+    if (dist > maxDist) { dx = (dx / dist) * maxDist; dy = (dy / dist) * maxDist; }
 
-    // Clamp to circle
-    if (dist > maxDist) {
-        dx = (dx / dist) * maxDist;
-        dy = (dy / dist) * maxDist;
-    }
-
-    // Move thumb
     thumb.style.left = `${50 + (dx / rect.width) * 100}%`;
     thumb.style.top = `${50 + (dy / rect.height) * 100}%`;
     thumb.style.transform = 'translate(-50%, -50%)';
 
-    // Convert to direction — deadzone of 15%
     const norm = dist / maxDist;
-    if (norm < 0.15) {
-        joystickDir = { dx: 0, dy: 0, xDir: null, yDir: null };
-        return;
-    }
+    if (norm < 0.15) { joystickDir = { dx: 0, dy: 0, xDir: null, yDir: null }; return; }
 
-    // Map to NSEW cardinality matching the keyboard input system
-    const ndx = dx / maxDist;
-    const ndy = dy / maxDist;
-
+    const ndx = dx / maxDist, ndy = dy / maxDist;
     let xDir = null, yDir = null;
-    if (ndx > 0.3) xDir = 2;       // EAST
-    else if (ndx < -0.3) xDir = 3; // WEST
-    if (ndy > 0.3) yDir = 1;       // SOUTH
-    else if (ndy < -0.3) yDir = 0; // NORTH
-
+    if (ndx > 0.3) xDir = 2; else if (ndx < -0.3) xDir = 3;
+    if (ndy > 0.3) yDir = 1; else if (ndy < -0.3) yDir = 0;
     joystickDir = { dx: ndx, dy: ndy, xDir, yDir };
+}
+
+function updateAimJoystick(touch, rect, thumb) {
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    let dx = touch.clientX - cx, dy = touch.clientY - cy;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const maxDist = rect.width / 2 - 8;
+    if (dist > maxDist) { dx = (dx / dist) * maxDist; dy = (dy / dist) * maxDist; }
+
+    thumb.style.left = `${50 + (dx / rect.width) * 100}%`;
+    thumb.style.top = `${50 + (dy / rect.height) * 100}%`;
+    thumb.style.transform = 'translate(-50%, -50%)';
+
+    const norm = dist / maxDist;
+    if (norm < 0.2) { aimDir = { dx: 0, dy: 0, shooting: false }; return; }
+
+    aimDir = { dx: dx / maxDist, dy: dy / maxDist, shooting: true };
 }
