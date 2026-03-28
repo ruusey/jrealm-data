@@ -867,37 +867,48 @@ function updateHUD() {
     // HP bar - max HP from computed stats
     const maxHp = computed ? computed.hp : game.maxHealth;
     const hpPct = maxHp > 0 ? Math.min(100, game.health / maxHp * 100) : 100;
-    document.getElementById('hp-bar').style.width = `${hpPct}%`;
-    document.getElementById('hp-text').textContent = `${game.health}/${maxHp}`;
+    // Check max stats for gold highlighting
+    const maxStats = game.getMaxStats();
+    const isMaxed = (stat, val) => maxStats && val >= maxStats[stat];
 
-    // MP bar - max MP from computed stats
+    const hpSpan = document.getElementById('hp-text');
+    hpSpan.textContent = `${game.health}/${maxHp}`;
+    hpSpan.style.color = isMaxed('hp', game.stats?.hp) ? '#c8a86e' : '#fff';
+    document.getElementById('hp-bar').style.width = `${hpPct}%`;
+
+    // MP bar
     const maxMp = computed ? computed.mp : game.maxMana;
     const mpPct = maxMp > 0 ? Math.min(100, game.mana / maxMp * 100) : 100;
+    const mpSpan = document.getElementById('mp-text');
+    mpSpan.textContent = `${game.mana}/${maxMp}`;
+    mpSpan.style.color = isMaxed('mp', game.stats?.mp) ? '#c8a86e' : '#fff';
     document.getElementById('mp-bar').style.width = `${mpPct}%`;
-    document.getElementById('mp-text').textContent = `${game.mana}/${maxMp}`;
 
-    // XP/Level/Fame
+    // XP/Level/Fame bar
     const level = game.getPlayerLevel();
     const expInfo = game.getExpDisplayInfo();
-    document.getElementById('xp-text').textContent = `Lv ${level}  ${expInfo.text}`;
+    document.getElementById('xp-text').textContent = expInfo.text;
     document.getElementById('xp-bar').style.width = `${expInfo.pct}%`;
+    // Gold bar for fame, green for XP
+    document.getElementById('xp-bar').style.background = expInfo.isFame ? '#c8a86e' : '#40a040';
 
-    // Stats panel - show COMPUTED stats (base + equipment)
+    // Stats panel — gold text when stat is maxed for class
     if (computed) {
         const base = game.stats;
-        // Show computed value, highlight bonus in green if equipment adds to it
-        const statHtml = (label, baseVal, compVal) => {
+        const statHtml = (label, statKey, baseVal, compVal) => {
             const bonus = compVal - baseVal;
             const bonusStr = bonus > 0 ? ` <span class="stat-bonus">+${bonus}</span>` : '';
-            return `<div class="stat-row"><span class="stat-label">${label}</span><span class="stat-value">${compVal}${bonusStr}</span></div>`;
+            const maxed = isMaxed(statKey, baseVal);
+            const color = maxed ? 'color:#c8a86e' : '';
+            return `<div class="stat-row"><span class="stat-label">${label}</span><span class="stat-value" style="${color}">${compVal}${bonusStr}${maxed ? ' ★' : ''}</span></div>`;
         };
         document.getElementById('stats-panel').innerHTML =
-            statHtml('ATT', base.att, computed.att) +
-            statHtml('DEF', base.def, computed.def) +
-            statHtml('SPD', base.spd, computed.spd) +
-            statHtml('DEX', base.dex, computed.dex) +
-            statHtml('VIT', base.vit, computed.vit) +
-            statHtml('WIS', base.wis, computed.wis);
+            statHtml('ATT', 'att', base.att, computed.att) +
+            statHtml('DEF', 'def', base.def, computed.def) +
+            statHtml('SPD', 'spd', base.spd, computed.spd) +
+            statHtml('DEX', 'dex', base.dex, computed.dex) +
+            statHtml('VIT', 'vit', base.vit, computed.vit) +
+            statHtml('WIS', 'wis', base.wis, computed.wis);
     }
 
     // Inventory
@@ -1114,13 +1125,23 @@ function createSlot(item, label, slotIdx, isLoot = false) {
     lbl.textContent = label;
     div.appendChild(lbl);
 
-    // Left click
+    // Click / double-tap: single click = select/swap, double click/tap = consume
+    let lastClickTime = 0;
     div.addEventListener('click', (e) => {
         e.stopPropagation();
-        console.log(`[CLICK] slot=${slotIdx} isLoot=${isLoot} itemId=${item?.itemId} item=`, item);
+        const now = Date.now();
+        if (now - lastClickTime < 350 && item && item.itemId > 0 && item.consumable
+            && slotIdx >= 4 && slotIdx <= 11) {
+            // Double click/tap — consume the item
+            network.sendMoveItem(game.playerId, slotIdx, slotIdx, false, true);
+            lastInvKey = '';
+            lastClickTime = 0;
+            return;
+        }
+        lastClickTime = now;
         onSlotClick(slotIdx, item);
     });
-    // Right click
+    // Right click (desktop) = drop
     div.addEventListener('contextmenu', (e) => { e.preventDefault(); e.stopPropagation(); onSlotRightClick(slotIdx, item); });
 
     return div;

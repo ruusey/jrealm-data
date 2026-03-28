@@ -626,20 +626,26 @@ export class GameState {
     // Get XP bar display info matching Java FillBars
     getExpDisplayInfo() {
         const map = this._getParsedExpMap();
-        if (!map) return { text: 'Lv 1', pct: 0 };
+        if (!map) return { text: 'Lv 1', pct: 0, isFame: false };
         const exp = Number(this.experience);
         const level = this.getPlayerLevel();
         const fame = this.getBaseFame();
 
         if (fame > 0) {
-            // Max level reached - show fame
-            return { text: `Fame: ${fame}`, pct: 100 };
+            // Max level reached (Lv 20) — show fame with gold bar
+            return { text: `Lv 20  Fame: ${fame}`, pct: 100, isFame: true };
         }
 
         // Show XP progress within current level
         const range = map[level];
-        if (!range) return { text: `Lv ${level}`, pct: 0 };
+        if (!range) return { text: `Lv ${level}`, pct: 0, isFame: false };
         const pct = Math.min(100, (exp / range.max) * 100);
-        return { text: `${exp} (${range.max})`, pct };
+        return { text: `Lv ${level}  ${exp} / ${range.max}`, pct, isFame: false };
+    }
+
+    // Get max stats for the current class
+    getMaxStats() {
+        const classDef = this.characterClasses[this.classId];
+        return classDef ? classDef.maxStats : null;
     }
 }

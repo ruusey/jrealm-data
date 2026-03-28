@@ -188,10 +188,10 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     grid-template-columns: 1fr 1fr;
     gap: 2px 12px;
 }
-.stat-row { display: flex; justify-content: space-between; }
+.stat-row { display: flex; justify-content: space-between; font-size: 13px; }
 .stat-label { color: #887868; }
 .stat-value { color: #e0d8c8; font-weight: 600; }
-.stat-bonus { color: #40c040; font-size: 10px; }
+.stat-bonus { color: #40c040; font-size: 11px; }
 
 #inventory-panel {
     background: #1a1218cc;
@@ -433,9 +433,9 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 }
 
 #mobile-buttons {
-    position: absolute; bottom: 15px; right: 15px;
+    position: absolute; top: 10px; right: 210px;
     z-index: 15; pointer-events: auto;
-    display: flex; flex-direction: column; gap: 8px;
+    display: flex; flex-direction: column; gap: 6px;
 }
 #mobile-buttons button {
     width: 70px; height: 44px;
