@@ -1070,9 +1070,7 @@ function updateInventoryUI() {
     const invKey = game.inventory.map(i => i ? i.itemId : -1).join(',') + ':' + selectedSlot;
     if (!updateInventoryUI._logged && game.inventory.length > 0) {
         updateInventoryUI._logged = true;
-        // console.log(`[INV] Inventory: ${game.inventory.length} items, ` +
-            `IDs=[${game.inventory.map(i => i ? i.itemId : 'null').join(',')}], ` +
-            `first item:`, game.inventory.find(i => i && i.itemId > 0));
+        // Inventory log removed for performance
     }
     // Include trade selection state in cache key during trading
     const tradeKey = game.isTrading && game.myTradeSelected
