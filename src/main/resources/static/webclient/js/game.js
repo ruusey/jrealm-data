@@ -54,6 +54,9 @@ export class GameState {
         // Floating damage text
         this.damageTexts = []; // {text, x, y, color, life}
 
+        // Visual particle effects from CreateEffectPacket
+        this.visualEffects = []; // {type, x, y, radius, duration, targetX, targetY, startTime}
+
         // Game data definitions (loaded from HTTP)
         this.tileData = {};
         this.enemyData = {};
@@ -103,6 +106,7 @@ export class GameState {
         this.tradeSelection = null;
         this.tradeConfirmed = false;
         this.damageTexts = [];
+        this.visualEffects = [];
         // Clear internal caches
         this._firstInvLog = false;
         this._parsedExpMap = null;
@@ -354,6 +358,19 @@ export class GameState {
         this.damageTexts.push({ text: packet.text, x, y, color, life: 45 });
     }
 
+    addVisualEffect(effect) {
+        this.visualEffects.push(effect);
+    }
+
+    updateVisualEffects() {
+        const now = Date.now();
+        for (let i = this.visualEffects.length - 1; i >= 0; i--) {
+            if (now - this.visualEffects[i].startTime > this.visualEffects[i].duration) {
+                this.visualEffects.splice(i, 1);
+            }
+        }
+    }
+
     // Trading
     handleRequestTrade(packet) {
         this.chatMessages.push({
@@ -549,6 +566,9 @@ export class GameState {
             this.damageTexts[i].life--;
             if (this.damageTexts[i].life <= 0) this.damageTexts.splice(i, 1);
         }
+
+        // Expire finished visual effects
+        this.updateVisualEffects();
 
         const local = this.getLocalPlayer();
         if (local) {

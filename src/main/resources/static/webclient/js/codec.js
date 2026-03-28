@@ -309,7 +309,13 @@ export const PacketReaders = {
     [PacketId.PLAYER_DEATH](r) { return { playerId: r.readLong() }; },
     [PacketId.HEARTBEAT](r) { return { playerId: r.readLong(), timestamp: r.readLong() }; },
     [PacketId.CREATE_EFFECT](r) {
-        return { targetEntityId: r.readLong(), effectId: r.readShort(), duration: r.readShort() };
+        return {
+            effectType: r.readShort(),
+            posX: r.readFloat(), posY: r.readFloat(),
+            radius: r.readFloat(),
+            duration: r.readShort(),
+            targetPosX: r.readFloat(), targetPosY: r.readFloat()
+        };
     },
     [PacketId.PLAYER_SHOOT](r) {
         return {

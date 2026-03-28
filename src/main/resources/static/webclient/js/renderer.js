@@ -170,6 +170,7 @@ export class GameRenderer {
 
         this.renderTiles(gameState, offsetX, offsetY, screenW, screenH);
         this.renderEntities(gameState, offsetX, offsetY);
+        this.renderVisualEffects(gameState, offsetX, offsetY);
         this.renderHealthBars(gameState, offsetX, offsetY);
         this.renderDamageTexts(gameState, offsetX, offsetY);
     }
@@ -636,6 +637,115 @@ export class GameRenderer {
             this.healthBarGraphics.drawRect(sx, barY, barW * pct, barH);
             this.healthBarGraphics.endFill();
         }
+    }
+
+    renderVisualEffects(gameState, offsetX, offsetY) {
+        if (!gameState.visualEffects || gameState.visualEffects.length === 0) return;
+        const now = Date.now();
+        const g = new PIXI.Graphics();
+
+        for (const fx of gameState.visualEffects) {
+            const elapsed = now - fx.startTime;
+            const progress = Math.min(elapsed / fx.duration, 1.0);
+            const alpha = 1.0 - progress; // fade out over duration
+            const sx = fx.x * SCALE + offsetX;
+            const sy = fx.y * SCALE + offsetY;
+            const r = fx.radius * SCALE;
+
+            switch (fx.type) {
+                case 0: // HEAL_RADIUS — expanding green ring with shimmer
+                    g.lineStyle(2, 0x40ff40, alpha * 0.7);
+                    g.drawCircle(sx, sy, r * (0.5 + progress * 0.5));
+                    g.lineStyle(0);
+                    // Shimmer particles along ring
+                    for (let i = 0; i < 8; i++) {
+                        const a = (i / 8) * Math.PI * 2 + elapsed * 0.005;
+                        const pr = r * (0.5 + progress * 0.5);
+                        g.beginFill(0x80ff80, alpha * 0.5);
+                        g.drawCircle(sx + Math.cos(a) * pr, sy + Math.sin(a) * pr, 3);
+                        g.endFill();
+                    }
+                    break;
+
+                case 1: // VAMPIRISM — inward-sucking purple/red particles
+                    for (let i = 0; i < 12; i++) {
+                        const a = (i / 12) * Math.PI * 2 + elapsed * 0.003;
+                        const dist = r * (1.0 - progress); // particles move inward
+                        const px = sx + Math.cos(a) * dist;
+                        const py = sy + Math.sin(a) * dist;
+                        g.beginFill(0xcc40cc, alpha * 0.6);
+                        g.drawCircle(px, py, 2 + (1 - progress) * 2);
+                        g.endFill();
+                    }
+                    // Inner glow
+                    g.beginFill(0xff4040, alpha * 0.15);
+                    g.drawCircle(sx, sy, r * 0.3 * (1 - progress));
+                    g.endFill();
+                    break;
+
+                case 2: // STASIS_FIELD — frozen blue/white ring
+                    g.lineStyle(3, 0x80c0ff, alpha * 0.8);
+                    g.drawCircle(sx, sy, r);
+                    g.lineStyle(1, 0xffffff, alpha * 0.4);
+                    g.drawCircle(sx, sy, r * 0.85);
+                    g.lineStyle(0);
+                    // Ice crystal particles
+                    for (let i = 0; i < 6; i++) {
+                        const a = (i / 6) * Math.PI * 2 + elapsed * 0.002;
+                        g.beginFill(0xc0e0ff, alpha * 0.5);
+                        g.drawRect(sx + Math.cos(a) * r * 0.7 - 2, sy + Math.sin(a) * r * 0.7 - 2, 4, 4);
+                        g.endFill();
+                    }
+                    break;
+
+                case 3: { // CHAIN_LIGHTNING — electric arc between two points
+                    const tx = fx.targetX * SCALE + offsetX;
+                    const ty = fx.targetY * SCALE + offsetY;
+                    const dx = tx - sx, dy = ty - sy;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const segments = Math.max(4, Math.floor(dist / 12));
+                    const perpX = -dy / dist, perpY = dx / dist;
+
+                    // Draw jagged lightning bolt
+                    g.lineStyle(2, 0x80c0ff, alpha * 0.9);
+                    g.moveTo(sx, sy);
+                    for (let i = 1; i < segments; i++) {
+                        const t = i / segments;
+                        const jitter = (Math.random() - 0.5) * 16 * alpha;
+                        const lx = sx + dx * t + perpX * jitter;
+                        const ly = sy + dy * t + perpY * jitter;
+                        g.lineTo(lx, ly);
+                    }
+                    g.lineTo(tx, ty);
+                    // Bright core
+                    g.lineStyle(1, 0xffffff, alpha * 0.6);
+                    g.moveTo(sx, sy);
+                    for (let i = 1; i < segments; i++) {
+                        const t = i / segments;
+                        const jitter = (Math.random() - 0.5) * 8 * alpha;
+                        g.lineTo(sx + dx * t + perpX * jitter, sy + dy * t + perpY * jitter);
+                    }
+                    g.lineTo(tx, ty);
+                    g.lineStyle(0);
+                    break;
+                }
+
+                case 4: // CURSE_RADIUS — dark swirling particles
+                    g.lineStyle(2, 0x8040a0, alpha * 0.5);
+                    g.drawCircle(sx, sy, r);
+                    g.lineStyle(0);
+                    for (let i = 0; i < 10; i++) {
+                        const a = (i / 10) * Math.PI * 2 + elapsed * 0.004;
+                        const dr = r * (0.4 + 0.5 * Math.sin(elapsed * 0.006 + i));
+                        g.beginFill(0x6020a0, alpha * 0.4);
+                        g.drawCircle(sx + Math.cos(a) * dr, sy + Math.sin(a) * dr, 2);
+                        g.endFill();
+                    }
+                    break;
+            }
+        }
+
+        this.uiLayer.addChild(g);
     }
 
     renderDamageTexts(gameState, offsetX, offsetY) {

@@ -652,7 +652,15 @@ function setupNetworkHandlers() {
     });
 
     network.on(PacketId.CREATE_EFFECT, (data) => {
-        // Status effect applied to entity - tracked via UpdatePacket effectIds
+        // Visual particle effect — add to game's effect queue for rendering
+        game.addVisualEffect({
+            type: data.effectType,
+            x: data.posX, y: data.posY,
+            radius: data.radius,
+            duration: data.duration,
+            targetX: data.targetPosX, targetY: data.targetPosY,
+            startTime: Date.now()
+        });
     });
 
     // Trading handlers managed by trade.js module

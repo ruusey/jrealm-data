@@ -37,9 +37,14 @@ function authHeaders() {
 }
 
 const SPRITE_SHEETS = [
-  'rotmg-tiles-all.png','rotmg-misc.png','lofi_environment.png','lofi_obj.png',
-  'lofi_char.png','lofi_dungeon_features.png','lofi_halls.png','rotmg-items.png','rotmg-items-1.png',
+  'rotmg-tiles-all.png','rotmg-tiles.png','rotmg-tiles-1.png','rotmg-tiles-2.png',
+  'rotmg-tiles-1_0.png','rotmg-tiles-1_.png',
+  'rotmg-misc.png','lofi_environment.png','lofi_obj.png',
+  'lofi_char.png','lofi_dungeon_features.png','lofi_halls.png',
+  'lofi_obj_packA.png','lofi_obj_packB.png',
+  'rotmg-items.png','rotmg-items-1.png',
   'rotmg-projectiles.png','rotmg-abilities.png',
+  'rotmg-bosses.png','rotmg-bosses-1.png','rotmg-bosses-1_.png',
 ];
 
 let tiles = [];
