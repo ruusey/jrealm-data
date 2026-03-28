@@ -107,11 +107,16 @@ export function initTouchControls(input) {
         }
     }, { passive: true });
 
-    // Prevent scrolling on game screen
-    document.getElementById('game-screen').addEventListener('touchmove', (e) => {
-        if (e.target.closest('#hud') || e.target.closest('#chat-panel')) return;
+    // Prevent ALL scrolling/bouncing on mobile
+    document.addEventListener('touchmove', (e) => {
+        // Allow scrolling only inside specific scrollable elements
+        if (e.target.closest('#chat-messages') || e.target.closest('#char-list') ||
+            e.target.closest('#nearby-players')) return;
         e.preventDefault();
     }, { passive: false });
+
+    // Prevent pull-to-refresh and overscroll bounce
+    document.body.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
 }
 
 function updateMoveJoystick(touch, rect, thumb) {
@@ -127,12 +132,12 @@ function updateMoveJoystick(touch, rect, thumb) {
     thumb.style.transform = 'translate(-50%, -50%)';
 
     const norm = dist / maxDist;
-    if (norm < 0.15) { joystickDir = { dx: 0, dy: 0, xDir: null, yDir: null }; return; }
+    if (norm < 0.25) { joystickDir = { dx: 0, dy: 0, xDir: null, yDir: null }; return; }
 
     const ndx = dx / maxDist, ndy = dy / maxDist;
     let xDir = null, yDir = null;
-    if (ndx > 0.3) xDir = 2; else if (ndx < -0.3) xDir = 3;
-    if (ndy > 0.3) yDir = 1; else if (ndy < -0.3) yDir = 0;
+    if (ndx > 0.4) xDir = 2; else if (ndx < -0.4) xDir = 3;
+    if (ndy > 0.4) yDir = 1; else if (ndy < -0.4) yDir = 0;
     joystickDir = { dx: ndx, dy: ndy, xDir, yDir };
 }
 
