@@ -21,6 +21,9 @@ export function initTouchControls(input) {
     const joystickEl = document.getElementById('touch-joystick');
     joystickEl.style.display = 'block';
 
+    // Show mobile action buttons
+    document.getElementById('mobile-buttons').style.display = 'flex';
+
     const base = document.getElementById('joystick-base');
     const thumb = document.getElementById('joystick-thumb');
     const baseRect = () => base.getBoundingClientRect();
@@ -59,12 +62,12 @@ export function initTouchControls(input) {
         }
     });
 
-    // Tap to shoot — any touch on the right 2/3 of screen
+    // Tap to shoot — any touch NOT on the joystick area (bottom-left 150px)
     const canvas = document.getElementById('game-canvas-container');
     canvas.addEventListener('touchstart', (e) => {
         const touch = e.changedTouches[0];
-        // Only register as shoot if touch is on right side (not on joystick)
-        if (touch.clientX > window.innerWidth * 0.33) {
+        const isJoystickArea = touch.clientX < 150 && touch.clientY > window.innerHeight - 150;
+        if (!isJoystickArea) {
             shootTouchId = touch.identifier;
             input._touchShootX = touch.clientX;
             input._touchShootY = touch.clientY;

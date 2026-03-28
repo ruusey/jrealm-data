@@ -432,6 +432,37 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     transition: none;
 }
 
+#mobile-buttons {
+    position: absolute; bottom: 15px; right: 15px;
+    z-index: 15; pointer-events: auto;
+    display: flex; flex-direction: column; gap: 8px;
+}
+#mobile-buttons button {
+    width: 70px; height: 44px;
+    background: rgba(200,168,110,0.3); border: 2px solid rgba(200,168,110,0.6);
+    border-radius: 8px; color: #e0d8c8; font-size: 11px; font-weight: bold;
+    cursor: pointer; touch-action: manipulation;
+}
+#mobile-buttons button:active { background: rgba(200,168,110,0.6); }
+
+#portal-prompt {
+    position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
+    z-index: 15; pointer-events: auto;
+    background: #2a2030ee; border: 2px solid #8040c0;
+    border-radius: 8px; padding: 8px 16px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 2px 12px rgba(128,64,192,0.4);
+}
+#portal-name {
+    color: #c080ff; font-size: 14px; font-weight: bold;
+}
+#portal-enter-btn {
+    padding: 6px 16px; background: #8040c0; color: #fff;
+    border: none; border-radius: 4px; font-size: 13px; font-weight: 600;
+    cursor: pointer;
+}
+#portal-enter-btn:hover { background: #9050d0; }
+
 /* Force landscape prompt */
 #rotate-prompt {
     display: none; position: fixed; top: 0; left: 0;

@@ -913,6 +913,28 @@ function updateHUD() {
 
     // Nearby players with tooltips and context menu (trade.js module)
     updateNearbyPlayers(game, network, renderer, addChatMessage);
+
+    // Portal proximity prompt — show "Enter [Dungeon Name]" when near a portal
+    const portalPrompt = document.getElementById('portal-prompt');
+    const local = game.getLocalPlayer();
+    if (local && game.portals.size > 0) {
+        let nearPortal = null, nearDist = Infinity;
+        for (const [id, portal] of game.portals) {
+            const pdx = portal.pos.x - local.pos.x, pdy = portal.pos.y - local.pos.y;
+            const d = Math.sqrt(pdx * pdx + pdy * pdy);
+            if (d < nearDist) { nearDist = d; nearPortal = portal; }
+        }
+        if (nearPortal && nearDist < 64) {
+            const portalDef = game.portalData[nearPortal.portalId];
+            const name = portalDef ? portalDef.portalName || 'Portal' : 'Portal';
+            document.getElementById('portal-name').textContent = name.replace(/_/g, ' ');
+            portalPrompt.style.display = 'flex';
+        } else {
+            portalPrompt.style.display = 'none';
+        }
+    } else {
+        portalPrompt.style.display = 'none';
+    }
 }
 
 // --- Inventory System ---
@@ -1270,6 +1292,36 @@ document.getElementById('trade-confirm-btn').addEventListener('click', () => {
 });
 document.getElementById('trade-cancel-btn').addEventListener('click', () => {
     handleChatCommand('/decline');
+});
+
+// --- Mobile Action Buttons ---
+document.getElementById('mobile-ability-btn')?.addEventListener('click', () => {
+    if (!game.playerId || !renderer) return;
+    const local = game.getLocalPlayer();
+    if (!local) return;
+    // Use ability toward the center of screen (default target)
+    const world = renderer.getWorldCoords(window.innerWidth / 2, window.innerHeight / 2, game);
+    network.sendUseAbility(game.playerId, world.x, world.y);
+});
+
+document.getElementById('mobile-vault-btn')?.addEventListener('click', () => {
+    if (!game.playerId) return;
+    doRealmTransition(null, true);
+});
+
+document.getElementById('portal-enter-btn')?.addEventListener('click', () => {
+    if (!game.playerId) return;
+    const local = game.getLocalPlayer();
+    if (!local) return;
+    let closest = null, closestDist = Infinity;
+    for (const [id, portal] of game.portals) {
+        const pdx = portal.pos.x - local.pos.x, pdy = portal.pos.y - local.pos.y;
+        const d = Math.sqrt(pdx * pdx + pdy * pdy);
+        if (d < closestDist) { closestDist = d; closest = portal; }
+    }
+    if (closest && closestDist < 64) {
+        doRealmTransition(closest, false);
+    }
 });
 
 // --- Init ---
