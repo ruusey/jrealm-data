@@ -938,9 +938,15 @@ function updatePerfOverlay() {
     if (!_perfEl) {
         _perfEl = document.createElement('div');
         _perfEl.id = 'perf-overlay';
-        _perfEl.style.cssText = 'position:fixed;top:28px;left:8px;color:#aaa;font:11px monospace;' +
-            'z-index:100;pointer-events:none;text-shadow:1px 1px 2px #000;line-height:1.4;';
-        document.body.appendChild(_perfEl);
+        _perfEl.style.cssText = 'color:#aaa;font:11px monospace;margin-top:6px;line-height:1.4;';
+        // Append inside connection-status so it sits directly below it
+        const statusEl = document.getElementById('connection-status');
+        if (statusEl) {
+            statusEl.appendChild(_perfEl);
+        } else {
+            _perfEl.style.cssText = 'position:fixed;top:10px;left:10px;color:#aaa;font:11px monospace;z-index:100;pointer-events:none;text-shadow:1px 1px 2px #000;line-height:1.4;';
+            document.body.appendChild(_perfEl);
+        }
     }
     const m = perfMetrics;
     const fpsColor = m.fps >= 55 ? '#6f6' : m.fps >= 30 ? '#ff6' : '#f66';

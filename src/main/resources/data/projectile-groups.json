@@ -407,9 +407,9 @@
 	},
 	{
 		"projectileGroupId": 6,
-		"row": 4,
-		"col": 13,
-		"spriteKey": "rotmg-tiles.png",
+		"row": 7,
+		"col": 3,
+		"spriteKey": "rotmg-items-1.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -5763,7 +5763,7 @@
 	{
 		"projectileGroupId": 79,
 		"row": 13,
-		"col": 10,
+		"col": 13,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -5774,7 +5774,7 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": 5,
+				"amplitude": 14,
 				"frequency": 25,
 				"magnitude": 7,
 				"flags": [
@@ -5789,7 +5789,7 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": -5,
+				"amplitude": -14,
 				"frequency": 25,
 				"magnitude": 7,
 				"flags": [
@@ -5802,7 +5802,7 @@
 	{
 		"projectileGroupId": 80,
 		"row": 13,
-		"col": 12,
+		"col": 5,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -5880,7 +5880,7 @@
 	{
 		"projectileGroupId": 82,
 		"row": 14,
-		"col": 12,
+		"col": 13,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -5891,8 +5891,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": 5,
-				"frequency": 25,
+				"amplitude": 10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					0,
@@ -5906,8 +5906,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": -5,
-				"frequency": 25,
+				"amplitude": -10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					0,
@@ -6142,8 +6142,8 @@
 	},
 	{
 		"projectileGroupId": 90,
-		"row": 5,
-		"col": 10,
+		"row": 13,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -6163,8 +6163,8 @@
 	},
 	{
 		"projectileGroupId": 91,
-		"row": 6,
-		"col": 10,
+		"row": 14,
+		"col": 6,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -6199,6 +6199,26 @@
 				"flags": [
 					0,
 					10
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 93,
+		"row": 10,
+		"col": 5,
+		"spriteKey": "rotmg-items-1.png",
+		"projectiles": [
+			{
+				"projectileId": 93,
+				"positionMode": 0,
+				"damage": 125,
+				"angle": 0,
+				"range": 150,
+				"size": 24,
+				"magnitude": 5,
+				"flags": [
+					0
 				]
 			}
 		]

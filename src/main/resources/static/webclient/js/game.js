@@ -352,6 +352,48 @@ export class GameState {
         this.visualEffects.push(effect);
     }
 
+    // Client-side collision check for prediction — prevents rubberbanding through walls.
+    // Matches the server's TileManager collision logic.
+    _checkCollision(entity, dx, dy) {
+        if (!this.mapTiles || !this.tileData) return false;
+        const ts = 32; // tile size in world units
+        const size = entity.size || 32;
+        const futureX = entity.pos.x + dx;
+        const futureY = entity.pos.y + dy;
+
+        // Map bounds
+        const mapW = this.mapWidth * ts, mapH = this.mapHeight * ts;
+        if (futureX <= 0 || futureX + size >= mapW) return true;
+        if (futureY <= 0 || futureY + size >= mapH) return true;
+
+        // Bounding box reduced by 1.5 (matches Java: size / 1.5)
+        const bboxSize = size / 1.5;
+        const bx = futureX + (size - bboxSize) / 2;
+        const by = futureY + (size - bboxSize) / 2;
+
+        // Check collision tiles around future position
+        const cx = Math.floor((futureX + size / 2) / ts);
+        const cy = Math.floor((futureY + size / 2) / ts);
+        for (let ty = cy - 1; ty <= cy + 1; ty++) {
+            for (let tx = cx - 1; tx <= cx + 1; tx++) {
+                if (ty < 0 || ty >= this.mapHeight || tx < 0 || tx >= this.mapWidth) continue;
+                const tile = this.mapTiles[ty]?.[tx];
+                if (!tile || tile.collision <= 0) continue;
+                const tileDef = this.tileData[tile.collision];
+                if (!tileDef?.data?.hasCollision) continue;
+                const tl = tx * ts, tt = ty * ts;
+                if (bx < tl + ts && bx + bboxSize > tl && by < tt + ts && by + bboxSize > tt) return true;
+            }
+        }
+
+        // Void tile check
+        if (cx >= 0 && cx < this.mapWidth && cy >= 0 && cy < this.mapHeight) {
+            const baseTile = this.mapTiles[cy]?.[cx];
+            if (baseTile && baseTile.base === 0) return true;
+        }
+        return false;
+    }
+
     updateVisualEffects() {
         const now = Date.now();
         for (let i = this.visualEffects.length - 1; i >= 0; i--) {
@@ -450,20 +492,28 @@ export class GameState {
                     // MOVING: predict forward using velocity, then correct toward server pos.
                     // dt * 64 matches the server's 64-tick/sec rate.
                     const moveScale = dt * 64;
-                    p.pos.x += p.dx * moveScale;
-                    p.pos.y += p.dy * moveScale;
+                    const predDx = p.dx * moveScale;
+                    const predDy = p.dy * moveScale;
+
+                    // Check collision BEFORE applying prediction to prevent rubberbanding through walls.
+                    // Test X and Y axes independently so sliding along walls works.
+                    if (!this._checkCollision(p, predDx, 0)) {
+                        p.pos.x += predDx;
+                    }
+                    if (!this._checkCollision(p, 0, predDy)) {
+                        p.pos.y += predDy;
+                    }
 
                     // Blend toward server position to prevent drift.
-                    // Higher factor = snappier correction but more jitter.
-                    // Lower factor = smoother but more drift tolerance.
                     const corrDx = p.targetX - p.pos.x;
                     const corrDy = p.targetY - p.pos.y;
                     const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
-                    // Scale correction strength by error magnitude:
-                    // small errors (<2px): very gentle; large errors: aggressive
                     const corrFactor = Math.min(0.3, 0.05 + corrDist * 0.01);
-                    p.pos.x += corrDx * corrFactor;
-                    p.pos.y += corrDy * corrFactor;
+                    // Only correct if it doesn't push us into a wall
+                    const cx = corrDx * corrFactor;
+                    const cy = corrDy * corrFactor;
+                    if (!this._checkCollision(p, cx, 0)) p.pos.x += cx;
+                    if (!this._checkCollision(p, 0, cy)) p.pos.y += cy;
                 }
             } else {
                 // OTHER PLAYERS: smooth lerp, no velocity prediction

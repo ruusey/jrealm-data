@@ -829,9 +829,9 @@
 			"wis": 5
 		},
 		"damage": {
-			"projectileGroupId": 6,
-			"min": 300,
-			"max": 400
+			"projectileGroupId": 93,
+			"min": 270,
+			"max": 320
 		},
 		"consumable": false,
 		"tier": -1,
@@ -2339,7 +2339,7 @@
 		"name": "Staff of the Fundamental Core",
 		"description": "An otherworldly staff of omnipresent elation, embodied of cardinal essence and the power of deathless peace.",
 		"damage": {
-			"projectileGroupId": 28,
+			"projectileGroupId": 82,
 			"min": 75,
 			"max": 115
 		},
