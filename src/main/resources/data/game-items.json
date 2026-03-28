@@ -2997,5 +2997,1963 @@
 		"targetSlot": 0,
 		"targetClass": 1,
 		"fameBonus": 5
+	},
+
+	{
+		"itemId": 200,
+		"row": 0,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Necrotic Skull",
+		"description": "A crude skull that drains a sliver of life from nearby enemies.",
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 40
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 55,
+			"max": 65
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 8,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 201,
+		"row": 0,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Breathtaker Skull",
+		"description": "A skull that siphons the breath from foes, restoring its wielder.",
+		"stats": {
+			"hp": 5
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 55
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 85,
+			"max": 105
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 8,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 202,
+		"row": 0,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Heartstealer Skull",
+		"description": "A skull that rips the life force from enemies and feeds it to its master.",
+		"stats": {
+			"hp": 15
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 65
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 125,
+			"max": 155
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 8,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 203,
+		"row": 0,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Soul Siphon Skull",
+		"description": "A skull infused with dark energy that tears the soul from the living.",
+		"stats": {
+			"hp": 30
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 75
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 165,
+			"max": 195
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 8,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 204,
+		"row": 0,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Essence Tap Skull",
+		"description": "A skull that taps into the very essence of life, draining enemies dry.",
+		"stats": {
+			"hp": 45
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 85
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 210,
+			"max": 250
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 8,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 205,
+		"row": 0,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Lifedrinker Skull",
+		"description": "A skull of tremendous power that drinks deeply from the well of life.",
+		"stats": {
+			"hp": 60
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 95
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 250,
+			"max": 290
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 8,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 206,
+		"row": 0,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Bloodsucker Skull",
+		"description": "An ancient skull that exsanguinates all nearby foes, healing its master immensely.",
+		"stats": {
+			"hp": 90,
+			"mp": 20
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 105
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 280,
+			"max": 320
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 8,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 207,
+		"row": 2,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloak of Shadows",
+		"description": "A thin cloak that bends light around its wearer for a brief moment.",
+		"effect": {
+			"self": true,
+			"effectId": 0,
+			"duration": 5000,
+			"cooldownDuration": 6500,
+			"mpCost": 70
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 208,
+		"row": 2,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloak of Darkness",
+		"description": "A dark cloak that renders its wearer nearly invisible.",
+		"effect": {
+			"self": true,
+			"effectId": 0,
+			"duration": 5000,
+			"cooldownDuration": 6500,
+			"mpCost": 75
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 209,
+		"row": 2,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloak of Speed",
+		"description": "A magically enhanced cloak that grants swiftness while invisible.",
+		"stats": {
+			"spd": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 0,
+			"duration": 5000,
+			"cooldownDuration": 6500,
+			"mpCost": 75
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 210,
+		"row": 2,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloak of the Night Thief",
+		"description": "A cloak woven from moonlight, favored by master thieves.",
+		"stats": {
+			"spd": 5
+		},
+		"effect": {
+			"self": true,
+			"effectId": 0,
+			"duration": 5000,
+			"cooldownDuration": 6500,
+			"mpCost": 80
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 211,
+		"row": 2,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloak of the Red Agent",
+		"description": "A crimson cloak that allows its wearer to vanish without a trace.",
+		"stats": {
+			"spd": 5,
+			"dex": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 0,
+			"duration": 5000,
+			"cooldownDuration": 6000,
+			"mpCost": 80
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 212,
+		"row": 2,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloak of Endless Twilight",
+		"description": "A cloak imbued with the power of eternal dusk.",
+		"stats": {
+			"spd": 5,
+			"dex": 4
+		},
+		"effect": {
+			"self": true,
+			"effectId": 0,
+			"duration": 5000,
+			"cooldownDuration": 6000,
+			"mpCost": 85
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 213,
+		"row": 2,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloak of Ghostly Concealment",
+		"description": "An ethereal cloak that phases its wearer partially out of existence.",
+		"stats": {
+			"spd": 5,
+			"dex": 5,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": true,
+			"effectId": 0,
+			"duration": 5000,
+			"cooldownDuration": 6000,
+			"mpCost": 90
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 0,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 214,
+		"row": 3,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Magic Quiver",
+		"description": "A basic quiver enchanted with a minor paralysis hex.",
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 45
+		},
+		"damage": {
+			"projectileGroupId": 23,
+			"min": 35,
+			"max": 50
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 215,
+		"row": 3,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Reinforced Quiver",
+		"description": "An iron-reinforced quiver with improved paralysis arrows.",
+		"stats": {
+			"dex": 1
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 50
+		},
+		"damage": {
+			"projectileGroupId": 23,
+			"min": 60,
+			"max": 80
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 216,
+		"row": 3,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Iron Quiver",
+		"description": "A quiver fitted with cold iron arrowheads that lock muscles on contact.",
+		"stats": {
+			"dex": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 55
+		},
+		"damage": {
+			"projectileGroupId": 23,
+			"min": 95,
+			"max": 115
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 217,
+		"row": 3,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Elvencraft Quiver",
+		"description": "An elven quiver with arrows that paralyze on impact.",
+		"stats": {
+			"dex": 3
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 60
+		},
+		"damage": {
+			"projectileGroupId": 23,
+			"min": 150,
+			"max": 175
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 218,
+		"row": 3,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Magesteel Quiver",
+		"description": "A quiver forged from magesteel, its arrows crackle with binding energy.",
+		"stats": {
+			"dex": 4
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 65
+		},
+		"damage": {
+			"projectileGroupId": 23,
+			"min": 190,
+			"max": 235
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 219,
+		"row": 3,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Golden Quiver",
+		"description": "A golden quiver that fires arrows of pure paralyzing light.",
+		"stats": {
+			"dex": 5
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 70
+		},
+		"damage": {
+			"projectileGroupId": 23,
+			"min": 245,
+			"max": 285
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 220,
+		"row": 3,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Quiver of Elvish Mastery",
+		"description": "A legendary quiver that fires volleys of paralyzing arrows with devastating precision.",
+		"stats": {
+			"dex": 6,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 75
+		},
+		"damage": {
+			"projectileGroupId": 23,
+			"min": 295,
+			"max": 335
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 1,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 221,
+		"row": 4,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Fire Spray Spell",
+		"description": "A simple spell that releases a burst of fire.",
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 0,
+			"cooldownDuration": 500,
+			"mpCost": 20
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 20,
+			"max": 25
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 2,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 222,
+		"row": 4,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Flame Burst Spell",
+		"description": "A spell that conjures an explosive burst of flame.",
+		"stats": {
+			"wis": 1
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 0,
+			"cooldownDuration": 500,
+			"mpCost": 30
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 35,
+			"max": 50
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 2,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 223,
+		"row": 4,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Fire Nova Spell",
+		"description": "A spell that detonates in a nova of searing fire.",
+		"stats": {
+			"wis": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 0,
+			"cooldownDuration": 500,
+			"mpCost": 40
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 50,
+			"max": 80
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 2,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 224,
+		"row": 4,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Scorching Blast Spell",
+		"description": "A powerful spell that scorches everything in its blast radius.",
+		"stats": {
+			"wis": 3
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 0,
+			"cooldownDuration": 500,
+			"mpCost": 50
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 60,
+			"max": 110
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 2,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 225,
+		"row": 4,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Destruction Sphere Spell",
+		"description": "A devastating spell that creates a sphere of pure destruction.",
+		"stats": {
+			"wis": 4
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 0,
+			"cooldownDuration": 500,
+			"mpCost": 60
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 70,
+			"max": 140
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 2,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 226,
+		"row": 4,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Magic Nova Spell",
+		"description": "A spell of immense arcane power that devastates all nearby enemies.",
+		"stats": {
+			"wis": 5
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 0,
+			"cooldownDuration": 500,
+			"mpCost": 70
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 85,
+			"max": 170
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 2,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 227,
+		"row": 4,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Elemental Detonation Spell",
+		"description": "A cataclysmic spell that unleashes the raw fury of the elements.",
+		"stats": {
+			"wis": 6,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 0,
+			"cooldownDuration": 500,
+			"mpCost": 80
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 95,
+			"max": 200
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 2,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 228,
+		"row": 5,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Healing Tome",
+		"description": "A simple tome of basic healing prayers.",
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 60
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 229,
+		"row": 5,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Remedy Tome",
+		"description": "A tome containing remedies for common ailments.",
+		"stats": {
+			"vit": 1
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 70
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 230,
+		"row": 5,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Spirit Salve Tome",
+		"description": "A tome of spiritual healing that mends both body and soul.",
+		"stats": {
+			"vit": 2
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 4500,
+			"cooldownDuration": 1000,
+			"mpCost": 80
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 231,
+		"row": 5,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Tome of Rejuvenation",
+		"description": "A powerful tome that rejuvenates wounded allies.",
+		"stats": {
+			"vit": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 4500,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 232,
+		"row": 5,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Tome of Renewing",
+		"description": "A sacred tome of renewal that restores vitality to the weary.",
+		"stats": {
+			"vit": 4
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 5000,
+			"cooldownDuration": 1000,
+			"mpCost": 100
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 233,
+		"row": 5,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Tome of Divine Favor",
+		"description": "A tome blessed by the gods themselves with restorative power.",
+		"stats": {
+			"vit": 5
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 5000,
+			"cooldownDuration": 1000,
+			"mpCost": 110
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 234,
+		"row": 5,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Tome of Holy Guidance",
+		"description": "An ancient tome radiating divine light that heals all wounds.",
+		"stats": {
+			"vit": 6,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 5000,
+			"cooldownDuration": 1000,
+			"mpCost": 120
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 235,
+		"row": 6,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Combat Helm",
+		"description": "A simple helm that invigorates the wearer with a burst of speed.",
+		"stats": {
+			"def": 2
+		},
+		"effect": {
+			"self": true,
+			"effectId": 4,
+			"duration": 2500,
+			"cooldownDuration": 1000,
+			"mpCost": 60
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 236,
+		"row": 6,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Bronze Helm",
+		"description": "A sturdy bronze helm that fills the wearer with battle fury.",
+		"stats": {
+			"def": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 4,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 65
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 237,
+		"row": 6,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Black Iron Helm",
+		"description": "A helm forged from black iron that grants tremendous speed in combat.",
+		"stats": {
+			"def": 4
+		},
+		"effect": {
+			"self": true,
+			"effectId": 4,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 70
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 238,
+		"row": 6,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Red Iron Helm",
+		"description": "A crimson helm that drives its wearer into a swift frenzy.",
+		"stats": {
+			"def": 5
+		},
+		"effect": {
+			"self": true,
+			"effectId": 4,
+			"duration": 3500,
+			"cooldownDuration": 1000,
+			"mpCost": 75
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 239,
+		"row": 6,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Steel Helm",
+		"description": "A polished steel helm that channels the spirit of war.",
+		"stats": {
+			"def": 6
+		},
+		"effect": {
+			"self": true,
+			"effectId": 4,
+			"duration": 3500,
+			"cooldownDuration": 1000,
+			"mpCost": 80
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 240,
+		"row": 6,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Golden Helm",
+		"description": "A golden helm worthy of a general, granting immense speed.",
+		"stats": {
+			"def": 8
+		},
+		"effect": {
+			"self": true,
+			"effectId": 4,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 85
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 241,
+		"row": 6,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Helm of the Great General",
+		"description": "A legendary helm worn by the greatest general to ever live.",
+		"stats": {
+			"def": 10,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": true,
+			"effectId": 4,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 242,
+		"row": 7,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Wooden Shield",
+		"description": "A crude wooden shield that can stagger foes on impact.",
+		"stats": {
+			"def": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 3,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 85
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 55,
+			"max": 90
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 5,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 243,
+		"row": 7,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Iron Shield",
+		"description": "A sturdy iron shield that stuns enemies on a solid bash.",
+		"stats": {
+			"def": 3
+		},
+		"effect": {
+			"self": false,
+			"effectId": 3,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 85
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 100,
+			"max": 140
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 5,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 244,
+		"row": 7,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Steel Shield",
+		"description": "A well-forged steel shield capable of stunning multiple foes.",
+		"stats": {
+			"def": 4
+		},
+		"effect": {
+			"self": false,
+			"effectId": 3,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 150,
+			"max": 190
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 5,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 245,
+		"row": 7,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Reinforced Shield",
+		"description": "A reinforced shield that delivers devastating stun blows.",
+		"stats": {
+			"def": 6
+		},
+		"effect": {
+			"self": false,
+			"effectId": 3,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 190,
+			"max": 240
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 5,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 246,
+		"row": 7,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Golden Shield",
+		"description": "A magnificent golden shield that stuns with blinding force.",
+		"stats": {
+			"def": 8
+		},
+		"effect": {
+			"self": false,
+			"effectId": 3,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 95
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 230,
+			"max": 280
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 5,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 247,
+		"row": 7,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Mithril Shield",
+		"description": "A shield of rare mithril that sends shockwaves through enemies.",
+		"stats": {
+			"def": 10
+		},
+		"effect": {
+			"self": false,
+			"effectId": 3,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 95
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 270,
+			"max": 330
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 5,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 248,
+		"row": 7,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Colossus Shield",
+		"description": "An immense shield of legendary power that stuns all in its path.",
+		"stats": {
+			"def": 12,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": false,
+			"effectId": 3,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 100
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 300,
+			"max": 360
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 5,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 249,
+		"row": 8,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Centipede Poison",
+		"description": "A weak poison extracted from giant centipedes.",
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 25
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 40,
+			"max": 60
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 7,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 250,
+		"row": 8,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Spider Venom",
+		"description": "A potent venom harvested from deadly spiders.",
+		"stats": {
+			"wis": 1
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 3200,
+			"cooldownDuration": 1000,
+			"mpCost": 40
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 80,
+			"max": 120
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 7,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 251,
+		"row": 8,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Pit Viper Poison",
+		"description": "A lethal toxin from the fangs of a pit viper.",
+		"stats": {
+			"wis": 1
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 3500,
+			"cooldownDuration": 1000,
+			"mpCost": 55
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 120,
+			"max": 180
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 7,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 252,
+		"row": 8,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Stingray Poison",
+		"description": "A paralyzing toxin derived from deep-sea stingrays.",
+		"stats": {
+			"wis": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 3700,
+			"cooldownDuration": 1000,
+			"mpCost": 70
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 170,
+			"max": 230
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 7,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 253,
+		"row": 8,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Felwasp Toxin",
+		"description": "A corrosive toxin from felwasps that eats through armor.",
+		"stats": {
+			"wis": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 80
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 220,
+			"max": 280
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 7,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 254,
+		"row": 8,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Nightwing Venom",
+		"description": "A deadly venom collected from nightwing bats under a blood moon.",
+		"stats": {
+			"wis": 3
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 4300,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 270,
+			"max": 330
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 7,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 255,
+		"row": 8,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Baneserpent Poison",
+		"description": "An ancient poison so potent it can fell a dragon.",
+		"stats": {
+			"wis": 3,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 4500,
+			"cooldownDuration": 1000,
+			"mpCost": 100
+		},
+		"damage": {
+			"projectileGroupId": 15,
+			"min": 320,
+			"max": 380
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 7,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 256,
+		"row": 9,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Stasis Orb",
+		"description": "A crystal orb that freezes enemies in place.",
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1500,
+			"mpCost": 60
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 257,
+		"row": 9,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Suspension Orb",
+		"description": "An orb that suspends enemies in a field of paralyzing energy.",
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3500,
+			"cooldownDuration": 1500,
+			"mpCost": 65
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 258,
+		"row": 9,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Imprisonment Orb",
+		"description": "An orb that traps enemies in a prison of frozen time.",
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 4000,
+			"cooldownDuration": 1500,
+			"mpCost": 70
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 259,
+		"row": 9,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Neutralization Orb",
+		"description": "A powerful orb that neutralizes enemy movement entirely.",
+		"stats": {
+			"dex": 1
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 4500,
+			"cooldownDuration": 1500,
+			"mpCost": 75
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 260,
+		"row": 9,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Timelock Orb",
+		"description": "An orb that locks enemies outside of the flow of time.",
+		"stats": {
+			"dex": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 5000,
+			"cooldownDuration": 1500,
+			"mpCost": 80
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 261,
+		"row": 9,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Banishment Orb",
+		"description": "A mystical orb that banishes enemies from reality itself.",
+		"stats": {
+			"dex": 3
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 5500,
+			"cooldownDuration": 1500,
+			"mpCost": 85
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 262,
+		"row": 9,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Planefetter Orb",
+		"description": "An orb of immense power that shackles enemies across dimensional planes.",
+		"stats": {
+			"dex": 4,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 6000,
+			"cooldownDuration": 1500,
+			"mpCost": 90
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 263,
+		"row": 10,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Seal of the Initiate",
+		"description": "A basic holy seal that grants minor healing to nearby allies.",
+		"effect": {
+			"self": true,
+			"effectId": 1,
+			"duration": 2500,
+			"cooldownDuration": 1000,
+			"mpCost": 60
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 264,
+		"row": 10,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Seal of the Pilgrim",
+		"description": "A blessed seal carried by holy pilgrims.",
+		"effect": {
+			"self": true,
+			"effectId": 1,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 65
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 265,
+		"row": 10,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Seal of the Seeker",
+		"description": "A seal of divine seeking that heals those who fight for justice.",
+		"stats": {
+			"dex": 2
+		},
+		"effect": {
+			"self": true,
+			"effectId": 1,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 70
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 266,
+		"row": 10,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Seal of the Aspirant",
+		"description": "A radiant seal that inspires allies with healing light.",
+		"stats": {
+			"dex": 2
+		},
+		"effect": {
+			"self": true,
+			"effectId": 1,
+			"duration": 3500,
+			"cooldownDuration": 1000,
+			"mpCost": 75
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 267,
+		"row": 10,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Seal of the Divine",
+		"description": "A seal imbued with divine power that heals and empowers.",
+		"stats": {
+			"dex": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 1,
+			"duration": 3500,
+			"cooldownDuration": 1000,
+			"mpCost": 80
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 268,
+		"row": 10,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Seal of the Holy Warrior",
+		"description": "A sacred seal that channels the power of holy warriors.",
+		"stats": {
+			"dex": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 1,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 85
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 269,
+		"row": 10,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Seal of the Blessed Champion",
+		"description": "A legendary seal radiating with the blessing of the gods.",
+		"stats": {
+			"dex": 4,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": true,
+			"effectId": 1,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 6
+	},
+	{
+		"itemId": 270,
+		"row": 12,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Lightning Scepter",
+		"description": "A crude scepter that hurls a bolt of lightning.",
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 1000,
+			"cooldownDuration": 500,
+			"mpCost": 30
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 60,
+			"max": 100
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 11,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 271,
+		"row": 12,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Discharge Scepter",
+		"description": "A scepter that discharges arcs of electricity.",
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 1000,
+			"cooldownDuration": 500,
+			"mpCost": 40
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 100,
+			"max": 140
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 11,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 272,
+		"row": 12,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Thunderclap Scepter",
+		"description": "A scepter that creates thunderous blasts of energy.",
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 1000,
+			"cooldownDuration": 500,
+			"mpCost": 50
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 140,
+			"max": 180
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 11,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 273,
+		"row": 12,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Arcblast Scepter",
+		"description": "A scepter that fires concentrated arcs of destructive energy.",
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 1000,
+			"cooldownDuration": 500,
+			"mpCost": 60
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 180,
+			"max": 220
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 11,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 274,
+		"row": 12,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Cloudflash Scepter",
+		"description": "A scepter that summons bolts from storm clouds overhead.",
+		"stats": {
+			"spd": 1
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 1000,
+			"cooldownDuration": 500,
+			"mpCost": 70
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 220,
+			"max": 260
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 11,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 275,
+		"row": 12,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Scepter of Skybolts",
+		"description": "A powerful scepter that calls down bolts from the heavens.",
+		"stats": {
+			"spd": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 1000,
+			"cooldownDuration": 500,
+			"mpCost": 80
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 260,
+			"max": 300
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 11,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 276,
+		"row": 12,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Scepter of Storms",
+		"description": "A legendary scepter that commands the fury of the storm itself.",
+		"stats": {
+			"spd": 3,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": false,
+			"effectId": 14,
+			"duration": 1000,
+			"cooldownDuration": 500,
+			"mpCost": 90
+		},
+		"damage": {
+			"projectileGroupId": 18,
+			"min": 280,
+			"max": 320
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 11,
+		"fameBonus": 6
 	}
 ]

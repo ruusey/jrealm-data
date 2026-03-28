@@ -705,23 +705,25 @@ function processInput(dt) {
     }
 
     // --- Send direction packets to server only on change ---
+    // Each axis is handled independently to avoid intermediate NONE stops
+    // that cause choppy diagonal movement transitions.
     if (xDir !== lastXDir || yDir !== lastYDir) {
-        const wasMoving = lastXDir !== null || lastYDir !== null;
         const isMoving = xDir !== null || yDir !== null;
 
         if (!isMoving) {
-            network.sendPlayerMove(game.playerId, 4, false); // NONE
-        } else if (wasMoving && (
-            (lastXDir !== null && xDir === null) ||
-            (lastYDir !== null && yDir === null)
-        )) {
-            // Axis deactivated: reset both, re-send active
+            // Fully stopped: send NONE to clear all server-side direction flags
             network.sendPlayerMove(game.playerId, 4, false);
-            if (yDir !== null) network.sendPlayerMove(game.playerId, yDir, true);
-            if (xDir !== null) network.sendPlayerMove(game.playerId, xDir, true);
         } else {
-            if (yDir !== null && yDir !== lastYDir) network.sendPlayerMove(game.playerId, yDir, true);
-            if (xDir !== null && xDir !== lastXDir) network.sendPlayerMove(game.playerId, xDir, true);
+            // Handle Y axis change
+            if (yDir !== lastYDir) {
+                if (lastYDir !== null) network.sendPlayerMove(game.playerId, lastYDir, false);
+                if (yDir !== null) network.sendPlayerMove(game.playerId, yDir, true);
+            }
+            // Handle X axis change
+            if (xDir !== lastXDir) {
+                if (lastXDir !== null) network.sendPlayerMove(game.playerId, lastXDir, false);
+                if (xDir !== null) network.sendPlayerMove(game.playerId, xDir, true);
+            }
         }
         lastXDir = xDir;
         lastYDir = yDir;

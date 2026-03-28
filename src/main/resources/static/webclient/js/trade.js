@@ -48,7 +48,14 @@ function showTradeRequestPopup(fromName, network, game, addChatMessage) {
             </div>
         </div>
     `;
-    document.getElementById('game-screen').appendChild(popup);
+    // Append to HUD sidebar (below inventory/player list) instead of
+    // game-screen center, so it doesn't block the character view.
+    const hud = document.getElementById('hud');
+    if (hud) {
+        hud.appendChild(popup);
+    } else {
+        document.getElementById('game-screen').appendChild(popup);
+    }
 
     popup.querySelector('.accept').onclick = () => {
         network.send(PacketWriters.command(game.playerId, 3,

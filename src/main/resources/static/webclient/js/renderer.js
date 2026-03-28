@@ -209,98 +209,126 @@ export class GameRenderer {
         }
 
         const drawSize = ts * SCALE;
-        // Debug: log tile rendering stats once per map change
+        // Two-pass rendering: base tiles first, then collision layer on top.
+        // This ensures wall side faces and shadows are never covered by base tiles.
         let _baseRendered = 0, _baseMissing = 0, _collRendered = 0;
+
+        // === PASS 1: All base tiles ===
         for (let r = minR; r <= maxR; r++) {
             for (let c = minC; c <= maxC; c++) {
                 const tile = gameState.mapTiles[r]?.[c];
-                if (!tile) continue;
+                if (!tile || tile.base <= 0) continue;
 
                 const sx = c * ts * SCALE + offsetX;
                 const sy = r * ts * SCALE + offsetY;
-
-                // Base tile (skip void tile ID 0)
-                if (tile.base > 0) {
-                    const tex = this.tileTextures[tile.base];
-                    if (tex) {
-                        const spr = new PIXI.Sprite(tex);
-                        spr.x = sx; spr.y = sy;
-                        spr.width = drawSize; spr.height = drawSize;
-                        this.tileLayer.addChild(spr);
-                        _baseRendered++;
-                    } else {
-                        // Bright magenta fallback so missing textures are obvious
-                        const g = new PIXI.Graphics();
-                        g.beginFill(0xFF00FF);
-                        g.drawRect(sx, sy, drawSize, drawSize);
-                        g.endFill();
-                        this.tileLayer.addChild(g);
-                        _baseMissing++;
-                    }
+                const tex = this.tileTextures[tile.base];
+                if (tex) {
+                    const spr = new PIXI.Sprite(tex);
+                    spr.x = sx; spr.y = sy;
+                    spr.width = drawSize; spr.height = drawSize;
+                    this.tileLayer.addChild(spr);
+                    _baseRendered++;
+                } else {
+                    const g = new PIXI.Graphics();
+                    g.beginFill(0xFF00FF);
+                    g.drawRect(sx, sy, drawSize, drawSize);
+                    g.endFill();
+                    this.tileLayer.addChild(g);
+                    _baseMissing++;
                 }
+            }
+        }
 
-                // Collision/decoration tile (skip void ID 0)
-                if (tile.collision > 0) {
-                    const tex = this.tileTextures[tile.collision];
-                    if (!tex) continue;
+        // === PASS 2: All collision/wall/decoration tiles ===
+        for (let r = minR; r <= maxR; r++) {
+            for (let c = minC; c <= maxC; c++) {
+                const tile = gameState.mapTiles[r]?.[c];
+                if (!tile || tile.collision <= 0) continue;
 
-                    // Check tile type from game data using isWall flag
-                    const tileDef = gameState.tileData[tile.collision];
-                    const hasCollision = tileDef?.data?.hasCollision;
-                    const isWall = !!tileDef?.data?.isWall;
-                    const isObject = hasCollision && !isWall;
+                const sx = c * ts * SCALE + offsetX;
+                const sy = r * ts * SCALE + offsetY;
+                const tex = this.tileTextures[tile.collision];
+                if (!tex) continue;
 
-                    if (isWall) {
-                        // === WALL 3D EFFECT ===
-                        // Side face: dark strip below wall (renders first, wall tile overlaps top)
-                        const sideH = Math.max(drawSize * 0.35, 8);
-                        const side = new PIXI.Graphics();
-                        side.beginFill(0x252530);
-                        side.drawRect(sx, sy + drawSize - 2, drawSize, sideH);
-                        side.endFill();
-                        this.tileLayer.addChild(side);
+                // Check tile type from game data using isWall flag
+                const tileDef = gameState.tileData[tile.collision];
+                const hasCollision = tileDef?.data?.hasCollision;
+                const isWall = !!tileDef?.data?.isWall;
+                const isObject = hasCollision && !isWall;
 
-                        // Drop shadow behind and below
-                        const shadow = new PIXI.Sprite(tex);
-                        shadow.x = sx + 4; shadow.y = sy + 5;
-                        shadow.width = drawSize; shadow.height = drawSize;
-                        shadow.tint = 0x000000; shadow.alpha = 0.4;
-                        this.tileLayer.addChild(shadow);
+                if (isWall) {
+                    // === WALL 3D EFFECT (matches Java TileManager multi-pass) ===
+                    const sideH = Math.max(drawSize * 0.35, 8);
 
-                        // Main wall tile on top
-                        const spr = new PIXI.Sprite(tex);
-                        spr.x = sx; spr.y = sy;
-                        spr.width = drawSize; spr.height = drawSize;
-                        this.tileLayer.addChild(spr);
-                    } else if (isObject) {
-                        // === COLLISION OBJECT WITH GROUND SHADOW ===
-                        // Shadow at base of sprite (within tile bounds, not extending into next row)
-                        const shadowG = new PIXI.Graphics();
-                        shadowG.beginFill(0x000000, 0.35);
-                        shadowG.drawEllipse(sx + drawSize / 2, sy + drawSize * 0.9, drawSize * 0.4, drawSize * 0.12);
-                        shadowG.endFill();
-                        this.tileLayer.addChild(shadowG);
+                    // 1) Side face: dark strip below wall gives depth/height
+                    const side = new PIXI.Graphics();
+                    side.beginFill(0x1a1a22);
+                    side.drawRect(sx, sy + drawSize - 2, drawSize, sideH);
+                    side.endFill();
+                    // Subtle gradient overlay on side face (lighter at top)
+                    const sideHighlight = new PIXI.Graphics();
+                    sideHighlight.beginFill(0x3a3a48, 0.4);
+                    sideHighlight.drawRect(sx, sy + drawSize - 2, drawSize, Math.max(sideH * 0.3, 2));
+                    sideHighlight.endFill();
+                    this.tileLayer.addChild(side);
+                    this.tileLayer.addChild(sideHighlight);
 
-                        // Main tile on top
-                        const spr = new PIXI.Sprite(tex);
-                        spr.x = sx; spr.y = sy;
-                        spr.width = drawSize; spr.height = drawSize;
-                        this.tileLayer.addChild(spr);
-                    } else {
-                        // === DECORATION (non-collision) - with ground shadow ===
-                        const decShadow = new PIXI.Graphics();
-                        decShadow.beginFill(0x000000, 0.25);
-                        decShadow.drawEllipse(sx + drawSize / 2, sy + drawSize + drawSize * 0.08, drawSize * 0.3, drawSize * 0.07);
-                        decShadow.endFill();
-                        this.tileLayer.addChild(decShadow);
+                    // 2) Drop shadow offset behind and below (silhouette pass)
+                    const shadow = new PIXI.Sprite(tex);
+                    shadow.x = sx + 3; shadow.y = sy + 3;
+                    shadow.width = drawSize; shadow.height = drawSize;
+                    shadow.tint = 0x000000; shadow.alpha = 0.35;
+                    this.tileLayer.addChild(shadow);
 
-                        const spr = new PIXI.Sprite(tex);
-                        spr.x = sx; spr.y = sy;
-                        spr.width = drawSize; spr.height = drawSize;
-                        this.tileLayer.addChild(spr);
+                    // 3) Contour outline: draw wall sprite in 4 cardinal
+                    //    directions for a dark border that pops walls from floors
+                    const outlineOff = Math.max(Math.round(SCALE), 1);
+                    for (const [ox, oy] of [[outlineOff,0],[-outlineOff,0],[0,outlineOff],[0,-outlineOff]]) {
+                        const ol = new PIXI.Sprite(tex);
+                        ol.x = sx + ox; ol.y = sy + oy;
+                        ol.width = drawSize; ol.height = drawSize;
+                        ol.tint = 0x111118; ol.alpha = 0.7;
+                        this.tileLayer.addChild(ol);
                     }
-                    _collRendered++;
+
+                    // 4) Main wall tile on top
+                    const spr = new PIXI.Sprite(tex);
+                    spr.x = sx; spr.y = sy;
+                    spr.width = drawSize; spr.height = drawSize;
+                    this.tileLayer.addChild(spr);
+
+                    // 5) Top edge highlight for bevel effect
+                    const topEdge = new PIXI.Graphics();
+                    topEdge.beginFill(0xffffff, 0.12);
+                    topEdge.drawRect(sx + 1, sy, drawSize - 2, Math.max(SCALE, 1));
+                    topEdge.endFill();
+                    this.tileLayer.addChild(topEdge);
+                } else if (isObject) {
+                    // === COLLISION OBJECT WITH GROUND SHADOW ===
+                    const shadowG = new PIXI.Graphics();
+                    shadowG.beginFill(0x000000, 0.35);
+                    shadowG.drawEllipse(sx + drawSize / 2, sy + drawSize * 0.9, drawSize * 0.4, drawSize * 0.12);
+                    shadowG.endFill();
+                    this.tileLayer.addChild(shadowG);
+
+                    const spr = new PIXI.Sprite(tex);
+                    spr.x = sx; spr.y = sy;
+                    spr.width = drawSize; spr.height = drawSize;
+                    this.tileLayer.addChild(spr);
+                } else {
+                    // === DECORATION (non-collision) - with ground shadow ===
+                    const decShadow = new PIXI.Graphics();
+                    decShadow.beginFill(0x000000, 0.25);
+                    decShadow.drawEllipse(sx + drawSize / 2, sy + drawSize + drawSize * 0.08, drawSize * 0.3, drawSize * 0.07);
+                    decShadow.endFill();
+                    this.tileLayer.addChild(decShadow);
+
+                    const spr = new PIXI.Sprite(tex);
+                    spr.x = sx; spr.y = sy;
+                    spr.width = drawSize; spr.height = drawSize;
+                    this.tileLayer.addChild(spr);
                 }
+                _collRendered++;
             }
         }
         // Log once per map change

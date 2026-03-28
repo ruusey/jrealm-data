@@ -312,18 +312,18 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     font-size: 10px; line-height: 16px; color: #c8a86e; font-weight: bold;
 }
 
-/* Trade Request Popup */
+/* Trade Request Popup — sits inside HUD sidebar below inventory/player list */
 #trade-request-popup {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin-top: 8px;
     z-index: 50; pointer-events: auto;
 }
 .trade-popup-content {
     background: #2a2030; border: 2px solid #c8a86e;
-    border-radius: 8px; padding: 20px 28px; text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    border-radius: 6px; padding: 12px 14px; text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
-.trade-popup-content p { margin-bottom: 14px; font-size: 15px; }
+.trade-popup-content p { margin-bottom: 10px; font-size: 13px; }
 .trade-popup-buttons { display: flex; gap: 10px; }
 .trade-popup-btn {
     flex: 1; padding: 8px 16px; border: none; border-radius: 4px;

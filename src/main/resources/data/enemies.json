@@ -245,13 +245,13 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 19,
-		"xp": 250,
+		"xp": 50,
 		"health": 200,
 		"maxSpeed": 1.4,
 		"chaseRange": 420.0,
 		"attackRange": 240.0,
 		"stats": {
-			"hp": 500,
+			"hp": 200,
 			"def": 3,
 			"dex": 15
 		}
@@ -265,13 +265,13 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 20,
-		"xp": 250,
+		"xp": 45,
 		"health": 200,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 210.0,
 		"stats": {
-			"hp": 500,
+			"hp": 200,
 			"def": 3,
 			"dex": 1
 		}
@@ -285,13 +285,13 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 21,
-		"xp": 250,
-		"health": 1000,
+		"xp": 200,
+		"health": 600,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 210.0,
 		"stats": {
-			"hp": 1000,
+			"hp": 600,
 			"def": 5,
 			"dex": 15
 		}
@@ -305,13 +305,13 @@
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 24,
-		"xp": 600,
-		"health": 1000,
+		"xp": 300,
+		"health": 700,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 210.0,
 		"stats": {
-			"hp": 1000,
+			"hp": 700,
 			"def": 5,
 			"dex": 10
 		}
@@ -325,13 +325,13 @@
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
-		"xp": 600,
-		"health": 1000,
+		"xp": 300,
+		"health": 700,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 210.0,
 		"stats": {
-			"hp": 1000,
+			"hp": 700,
 			"def": 5,
 			"dex": 10
 		}
@@ -365,13 +365,13 @@
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
-		"xp": 850,
-		"health": 1900,
+		"xp": 350,
+		"health": 800,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 270.0,
 		"stats": {
-			"hp": 1900,
+			"hp": 800,
 			"def": 20,
 			"dex": 1
 		}
@@ -406,13 +406,13 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": -1,
-		"xp": 500,
+		"xp": 60,
 		"health": 200,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 127.5,
 		"stats": {
-			"hp": 800,
+			"hp": 200,
 			"def": 3,
 			"dex": 5
 		}
@@ -426,13 +426,13 @@
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
-		"xp": 1200,
-		"health": 1400,
+		"xp": 400,
+		"health": 900,
 		"maxSpeed": 1.4,
 		"chaseRange": 390.0,
 		"attackRange": 270.0,
 		"stats": {
-			"hp": 1400,
+			"hp": 900,
 			"def": 5,
 			"dex": 5
 		}
@@ -995,13 +995,13 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 51,
-		"xp": 300,
+		"xp": 40,
 		"health": 200,
 		"maxSpeed": 1.0,
 		"chaseRange": 330.0,
 		"attackRange": 270.0,
 		"stats": {
-			"hp": 400,
+			"hp": 200,
 			"def": 3,
 			"dex": 6
 		}
@@ -1700,13 +1700,13 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 51,
-		"xp": 150,
-		"health": 200,
+		"xp": 25,
+		"health": 120,
 		"maxSpeed": 2.0,
 		"chaseRange": 270.0,
 		"attackRange": 150.0,
 		"stats": {
-			"hp": 200,
+			"hp": 120,
 			"def": 2,
 			"dex": 14
 		}
@@ -1961,14 +1961,14 @@
 		"col": 4,
 		"spriteSize": 16,
 		"size": 40,
-		"health": 400,
+		"health": 250,
 		"maxSpeed": 1.2,
 		"chaseRange": 300,
 		"attackRange": 250,
 		"attackId": 0,
-		"xp": 40,
+		"xp": 55,
 		"stats": {
-			"hp": 400,
+			"hp": 250,
 			"mp": 0,
 			"def": 5,
 			"att": 0,

@@ -663,7 +663,7 @@
 				"size": 24,
 				"amplitude": 5,
 				"frequency": 25,
-				"magnitude": 5.75,
+				"magnitude": 7.0,
 				"flags": [
 					0,
 					12
@@ -678,7 +678,7 @@
 				"size": 24,
 				"amplitude": -5,
 				"frequency": 25,
-				"magnitude": 5.75,
+				"magnitude": 7.0,
 				"flags": [
 					0,
 					12
