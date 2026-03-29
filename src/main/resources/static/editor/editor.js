@@ -649,78 +649,73 @@ function showProjGroupDetail(group) {
   renderProjList(group);
 }
 
+function makeLabeledField(labelText, key, val, obj, dirtyKey) {
+  const lbl = document.createElement('label');
+  const span = document.createElement('span');
+  span.textContent = labelText;
+  lbl.appendChild(span);
+  const inp = document.createElement('input');
+  inp.type = key === 'angle' ? 'text' : 'number';
+  inp.value = val != null ? val : '';
+  if (key !== 'angle' && key !== 'flags') inp.step = 'any';
+  inp.addEventListener('change', () => {
+    if (key === 'angle') { obj[key] = inp.value; }
+    else if (key === 'flags') { obj[key] = inp.value.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n)); }
+    else { obj[key] = parseFloat(inp.value) || 0; }
+    markDirty(dirtyKey);
+  });
+  lbl.appendChild(inp);
+  return lbl;
+}
+
 function renderProjList(group) {
   const container = document.getElementById('pgProjectiles');
   container.innerHTML = '';
   if (!group.projectiles) return;
 
   group.projectiles.forEach((p, idx) => {
-    const row = document.createElement('div');
-    row.className = 'proj-row';
-
-    const makeField = (label, key, val, width) => {
-      const lbl = document.createElement('label');
-      lbl.textContent = label;
-      const inp = document.createElement('input');
-      inp.type = key === 'angle' ? 'text' : 'number';
-      inp.value = val != null ? val : '';
-      inp.style.width = (width || 55) + 'px';
-      inp.addEventListener('change', () => {
-        if (key === 'angle') {
-          p[key] = inp.value;
-        } else if (key === 'flags') {
-          p[key] = inp.value.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
-        } else {
-          p[key] = parseFloat(inp.value) || 0;
-        }
-        markDirty('projGroups');
-      });
-      lbl.appendChild(inp);
-      return lbl;
-    };
-
-    const modeSelect = document.createElement('select');
-    modeSelect.style.width = '60px';
-    modeSelect.style.fontSize = '11px';
-    [0, 2].forEach(m => {
-      const opt = new Option(POS_MODES[m] || m, m);
-      opt.selected = p.positionMode === m;
-      modeSelect.appendChild(opt);
-    });
-    modeSelect.addEventListener('change', () => { p.positionMode = parseInt(modeSelect.value); markDirty('projGroups'); });
-
-    const modeLbl = document.createElement('label');
-    modeLbl.textContent = 'Mode:';
-    modeLbl.appendChild(modeSelect);
-
-    const flagsStr = (p.flags || []).join(',');
-
-    const removeBtn = document.createElement('button');
-    removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7';
-    removeBtn.addEventListener('click', () => {
-      group.projectiles.splice(idx, 1);
-      markDirty('projGroups');
-      renderProjList(group);
-    });
+    // Row 1: Mode, Angle, Damage, Range, Speed, remove
+    const row1 = document.createElement('div');
+    row1.className = 'proj-row';
 
     const numBadge = document.createElement('span');
     numBadge.className = 'proj-num';
     numBadge.textContent = '#' + (idx + 1);
 
-    row.append(
-      numBadge,
-      modeLbl,
-      makeField('Ang:', 'angle', p.angle, 65),
-      makeField('Dmg:', 'damage', p.damage, 40),
-      makeField('Rng:', 'range', p.range, 40),
-      makeField('Spd:', 'magnitude', p.magnitude, 40),
-      makeField('Sz:', 'size', p.size, 35),
-      makeField('Amp:', 'amplitude', p.amplitude, 40),
-      makeField('Frq:', 'frequency', p.frequency, 40),
-      makeField('Flags:', 'flags', flagsStr, 70),
-      removeBtn
-    );
-    container.appendChild(row);
+    const modeLbl = document.createElement('label');
+    const modeSpan = document.createElement('span'); modeSpan.textContent = 'Mode';
+    modeLbl.appendChild(modeSpan);
+    const modeSelect = document.createElement('select');
+    [0, 2].forEach(m => { const opt = new Option(POS_MODES[m] || m, m); opt.selected = p.positionMode === m; modeSelect.appendChild(opt); });
+    modeSelect.addEventListener('change', () => { p.positionMode = parseInt(modeSelect.value); markDirty('projGroups'); });
+    modeLbl.appendChild(modeSelect);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7';
+    removeBtn.addEventListener('click', () => { group.projectiles.splice(idx, 1); markDirty('projGroups'); renderProjList(group); });
+
+    row1.append(numBadge, modeLbl,
+      makeLabeledField('Angle', 'angle', p.angle, p, 'projGroups'),
+      makeLabeledField('Damage', 'damage', p.damage, p, 'projGroups'),
+      makeLabeledField('Range', 'range', p.range, p, 'projGroups'),
+      makeLabeledField('Speed', 'magnitude', p.magnitude, p, 'projGroups'),
+      removeBtn);
+    container.appendChild(row1);
+
+    // Row 2: Size, Amplitude, Frequency, Flags
+    const row2 = document.createElement('div');
+    row2.className = 'proj-row row2';
+    row2.style.borderTop = 'none';
+    row2.style.marginTop = '-4px';
+    row2.style.paddingTop = '0';
+    const spacer = document.createElement('span'); spacer.textContent = '';
+    row2.append(spacer,
+      makeLabeledField('Size', 'size', p.size, p, 'projGroups'),
+      makeLabeledField('Amplitude', 'amplitude', p.amplitude, p, 'projGroups'),
+      makeLabeledField('Frequency', 'frequency', p.frequency, p, 'projGroups'),
+      makeLabeledField('Flags', 'flags', (p.flags || []).join(', '), p, 'projGroups'),
+      document.createElement('span'), document.createElement('span'));
+    container.appendChild(row2);
   });
 }
 
@@ -1029,6 +1024,14 @@ function renderMovementEditor(body, phase) {
     body.appendChild(wrap);
 }
 
+// Navigate to the Projectiles tab and open a specific group by ID
+function navigateToProjGroup(pgId) {
+    const group = getProjGroupById(pgId);
+    if (!group) { alert('Projectile group ' + pgId + ' not found'); return; }
+    switchTab('projgroups');
+    selectPgTab(group);
+}
+
 function renderAttackPatternsEditor(body, phase, enemy) {
     const h = document.createElement('h5'); h.textContent = 'Attacks';
     body.appendChild(h);
@@ -1060,14 +1063,25 @@ function renderAttackPatternsEditor(body, phase, enemy) {
         const rmBtn = document.createElement('button'); rmBtn.className = 'tg-remove'; rmBtn.textContent = '\u00D7';
         rmBtn.addEventListener('click', () => { phase.attacks.splice(atkIdx, 1); markDirty('enemies'); renderPhases(enemy); });
 
+        // PG field with "Edit" link to jump to that projectile group
+        const pgWrapper = document.createElement('div');
+        pgWrapper.style.cssText = 'display:flex;align-items:flex-end;gap:4px';
+        pgWrapper.appendChild(mkField('PG:', 'projectileGroupId', 40));
+        const editPgBtn = document.createElement('button');
+        editPgBtn.className = 'btn-pick';
+        editPgBtn.textContent = 'Edit';
+        editPgBtn.style.cssText = 'font-size:10px;padding:2px 6px;height:22px';
+        editPgBtn.addEventListener('click', () => navigateToProjGroup(atk.projectileGroupId));
+        pgWrapper.appendChild(editPgBtn);
+
         row.append(badge,
-            mkField('PG:', 'projectileGroupId', 40),
-            mkField('CD:', 'cooldownMs', 50),
+            pgWrapper,
+            mkField('Cooldown:', 'cooldownMs', 50),
             mkField('Burst:', 'burstCount', 35),
-            mkField('BDly:', 'burstDelayMs', 42),
-            mkField('AngOff:', 'angleOffsetPerBurst', 42),
-            mkField('MinR:', 'minRange', 42),
-            mkField('MaxR:', 'maxRange', 45),
+            mkField('Burst Delay:', 'burstDelayMs', 42),
+            mkField('Angle Offset:', 'angleOffsetPerBurst', 42),
+            mkField('Min Range:', 'minRange', 42),
+            mkField('Max Range:', 'maxRange', 45),
             predLbl, rmBtn
         );
         container.appendChild(row);
@@ -1170,54 +1184,43 @@ function renderPgTabProjList(group) {
   if (!group.projectiles) return;
 
   group.projectiles.forEach((p, idx) => {
-    const row = document.createElement('div');
-    row.className = 'proj-row';
+    const numBadge = document.createElement('span');
+    numBadge.className = 'proj-num';
+    numBadge.textContent = '#' + (idx + 1);
 
-    const makeField = (label, key, val, width) => {
-      const lbl = document.createElement('label');
-      lbl.textContent = label;
-      const inp = document.createElement('input');
-      inp.type = key === 'angle' ? 'text' : 'number';
-      inp.value = val != null ? val : '';
-      inp.style.width = (width || 55) + 'px';
-      inp.addEventListener('change', () => {
-        if (key === 'angle') { p[key] = inp.value; }
-        else if (key === 'flags') { p[key] = inp.value.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n)); }
-        else { p[key] = parseFloat(inp.value) || 0; }
-        markDirty('projGroups');
-      });
-      lbl.appendChild(inp);
-      return lbl;
-    };
-
+    const modeLbl = document.createElement('label');
+    const modeSpan = document.createElement('span'); modeSpan.textContent = 'Mode';
+    modeLbl.appendChild(modeSpan);
     const modeSelect = document.createElement('select');
-    modeSelect.style.cssText = 'width:60px;font-size:11px';
-    [0, 2].forEach(m => {
-      const opt = new Option(POS_MODES[m] || m, m);
-      opt.selected = p.positionMode === m;
-      modeSelect.appendChild(opt);
-    });
+    [0, 2].forEach(m => { const opt = new Option(POS_MODES[m] || m, m); opt.selected = p.positionMode === m; modeSelect.appendChild(opt); });
     modeSelect.addEventListener('change', () => { p.positionMode = parseInt(modeSelect.value); markDirty('projGroups'); });
-    const modeLbl = document.createElement('label'); modeLbl.textContent = 'Mode:'; modeLbl.appendChild(modeSelect);
+    modeLbl.appendChild(modeSelect);
 
     const removeBtn = document.createElement('button');
     removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7';
     removeBtn.addEventListener('click', () => { group.projectiles.splice(idx, 1); markDirty('projGroups'); renderPgTabProjList(group); });
 
-    const numBadge = document.createElement('span'); numBadge.className = 'proj-num'; numBadge.textContent = '#' + (idx + 1);
+    const row1 = document.createElement('div');
+    row1.className = 'proj-row';
+    row1.append(numBadge, modeLbl,
+      makeLabeledField('Angle', 'angle', p.angle, p, 'projGroups'),
+      makeLabeledField('Damage', 'damage', p.damage, p, 'projGroups'),
+      makeLabeledField('Range', 'range', p.range, p, 'projGroups'),
+      makeLabeledField('Speed', 'magnitude', p.magnitude, p, 'projGroups'),
+      removeBtn);
+    container.appendChild(row1);
 
-    row.append(numBadge, modeLbl,
-      makeField('Ang:', 'angle', p.angle, 65),
-      makeField('Dmg:', 'damage', p.damage, 40),
-      makeField('Rng:', 'range', p.range, 40),
-      makeField('Spd:', 'magnitude', p.magnitude, 40),
-      makeField('Sz:', 'size', p.size, 35),
-      makeField('Amp:', 'amplitude', p.amplitude, 40),
-      makeField('Frq:', 'frequency', p.frequency, 40),
-      makeField('Flags:', 'flags', (p.flags || []).join(','), 70),
-      removeBtn
-    );
-    container.appendChild(row);
+    const row2 = document.createElement('div');
+    row2.className = 'proj-row row2';
+    row2.style.borderTop = 'none'; row2.style.marginTop = '-4px'; row2.style.paddingTop = '0';
+    const spacer = document.createElement('span');
+    row2.append(spacer,
+      makeLabeledField('Size', 'size', p.size, p, 'projGroups'),
+      makeLabeledField('Amplitude', 'amplitude', p.amplitude, p, 'projGroups'),
+      makeLabeledField('Frequency', 'frequency', p.frequency, p, 'projGroups'),
+      makeLabeledField('Flags', 'flags', (p.flags || []).join(', '), p, 'projGroups'),
+      document.createElement('span'), document.createElement('span'));
+    container.appendChild(row2);
   });
 }
 
@@ -1863,6 +1866,10 @@ function bindEvents() {
   document.getElementById('itemBackBtn').addEventListener('click', deselectItem);
   document.getElementById('applyItemBtn').addEventListener('click', applyItemDetail);
   document.getElementById('viewProjGroupBtn').addEventListener('click', viewProjGroup);
+  document.getElementById('editProjGroupTabBtn').addEventListener('click', () => {
+    const pgId = parseInt(document.getElementById('dmgProjGroup').value);
+    if (pgId >= 0) navigateToProjGroup(pgId);
+  });
   document.getElementById('pickItemSpriteBtn').addEventListener('click', () => {
     pickMode = !pickMode;
     const btn = document.getElementById('pickItemSpriteBtn');

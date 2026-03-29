@@ -379,9 +379,9 @@
 	{
 		"enemyId": 13,
 		"name": "The Man",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 2,
-		"col": 4,
+		"spriteKey": "lofi_char.png",
+		"row": 13,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
@@ -394,8 +394,13 @@
 			"hp": 5500,
 			"def": 30,
 			"dex": 20,
-			"spd": 10
-		}
+			"spd": 10,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 14,
@@ -474,7 +479,8 @@
 			"hp": 300,
 			"def": 2,
 			"dex": 8
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 18,
@@ -494,7 +500,8 @@
 			"hp": 250,
 			"def": 1,
 			"dex": 20
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 19,
@@ -559,8 +566,8 @@
 		"enemyId": 22,
 		"name": "Frost Golem",
 		"spriteKey": "lofi_char.png",
-		"row": 9,
-		"col": 4,
+		"row": 13,
+		"col": 2,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 40,
@@ -572,8 +579,14 @@
 		"stats": {
 			"hp": 2500,
 			"def": 25,
-			"dex": 5
-		}
+			"dex": 5,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 23,
@@ -1004,7 +1017,8 @@
 			"hp": 80,
 			"def": 1,
 			"dex": 6
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 30,
@@ -1104,7 +1118,8 @@
 			"hp": 450,
 			"def": 6,
 			"dex": 14
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 35,
@@ -1709,14 +1724,15 @@
 			"hp": 70,
 			"def": 0,
 			"dex": 14
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 42,
 		"name": "Elven Archer",
 		"spriteKey": "lofi_char.png",
-		"row": 3,
-		"col": 0,
+		"row": 7,
+		"col": 10,
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 54,
@@ -1728,8 +1744,14 @@
 		"stats": {
 			"hp": 350,
 			"def": 3,
-			"dex": 18
-		}
+			"dex": 7,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 43,
@@ -1749,7 +1771,8 @@
 			"hp": 500,
 			"def": 8,
 			"dex": 10
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 44,
@@ -1803,13 +1826,19 @@
 		"xp": 280,
 		"health": 350,
 		"maxSpeed": 2.2,
-		"chaseRange": 240,
-		"attackRange": 135,
+		"chaseRange": 280,
+		"attackRange": 180,
 		"stats": {
 			"hp": 350,
 			"def": 3,
-			"dex": 20
-		}
+			"dex": 5,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 47,
@@ -1893,16 +1922,16 @@
 	},
 	{
 		"enemyId": 51,
-		"name": "Sand Crab",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 2,
-		"col": 8,
+		"name": "Goblin Mage",
+		"spriteKey": "lofi_char.png",
+		"row": 5,
+		"col": 3,
 		"spriteSize": 8,
 		"size": 24,
-		"health": 60,
+		"health": 120,
 		"maxSpeed": 2.5,
 		"chaseRange": 200,
-		"attackRange": 100,
+		"attackRange": 150,
 		"attackId": 0,
 		"xp": 15,
 		"stats": {
@@ -1921,7 +1950,7 @@
 				"hpThreshold": 1,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 2.5,
+					"speed": 1.75,
 					"chargeDistanceMin": 40,
 					"pauseMs": 300
 				},
@@ -1929,7 +1958,7 @@
 					{
 						"projectileGroupId": 72,
 						"cooldownMs": 600,
-						"burstCount": 2,
+						"burstCount": 1,
 						"burstDelayMs": 100
 					}
 				]
@@ -1939,14 +1968,14 @@
 				"hpThreshold": 0.3,
 				"movement": {
 					"type": "FLEE",
-					"speed": 3,
+					"speed": 1.75,
 					"fleeRange": 120
 				},
 				"attacks": [
 					{
 						"projectileGroupId": 72,
 						"cooldownMs": 400,
-						"burstCount": 3,
+						"burstCount": 2,
 						"burstDelayMs": 80
 					}
 				]
@@ -2130,7 +2159,7 @@
 				"hpThreshold": 1,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 2.8,
+					"speed": 1.6,
 					"chargeDistanceMin": 30,
 					"pauseMs": 200
 				},
@@ -2149,7 +2178,7 @@
 				"hpThreshold": 0.4,
 				"movement": {
 					"type": "FLEE",
-					"speed": 3.5,
+					"speed": 2,
 					"fleeRange": 150
 				},
 				"attacks": [
@@ -2679,9 +2708,9 @@
 	{
 		"enemyId": 61,
 		"name": "Oryx Guardian",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 5,
-		"col": 1,
+		"spriteKey": "lofi_char.png",
+		"row": 10,
+		"col": 3,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
@@ -2694,7 +2723,11 @@
 			"hp": 12000,
 			"def": 35,
 			"dex": 18,
-			"spd": 8
+			"spd": 8,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
@@ -3046,9 +3079,9 @@
 	{
 		"enemyId": 65,
 		"name": "Oryx the Mad God",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 3,
-		"col": 5,
+		"spriteKey": "lofi_char.png",
+		"row": 10,
+		"col": 4,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
@@ -3061,7 +3094,11 @@
 			"hp": 50000,
 			"def": 45,
 			"dex": 20,
-			"spd": 10
+			"spd": 10,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
