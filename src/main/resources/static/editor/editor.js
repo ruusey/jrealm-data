@@ -1352,6 +1352,8 @@ function showMapDetail(m) {
     staticEditor.style.minHeight = '0';
     updateMapBrushInfo();
     renderMapCanvas();
+    renderStaticSpawnList();
+    cancelPlaceEnemy();
   } else if (type === 'dungeon') {
     dungeonEditor.style.display = 'block';
     showDungeonParams(m);
@@ -1566,9 +1568,173 @@ function drawMapOverlay() {
       ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
     }
   }
+  drawEnemySpawnsOnOverlay();
+}
+
+// ========== STATIC ENEMY SPAWNS ==========
+let placingEnemy = false;
+let placingEnemyId = -1;
+let enemyPickerCb = null;
+
+function openEnemyPicker(onSelect) {
+  enemyPickerCb = onSelect;
+  document.getElementById('enemyPickerOverlay').style.display = 'flex';
+  const search = document.getElementById('enemyPickerSearch');
+  search.value = '';
+  renderEnemyPickerList('');
+  search.focus();
+}
+
+function closeEnemyPicker() {
+  document.getElementById('enemyPickerOverlay').style.display = 'none';
+  enemyPickerCb = null;
+}
+
+function renderEnemyPickerList(filter) {
+  const list = document.getElementById('enemyPickerList');
+  list.innerHTML = '';
+  const lower = filter.toLowerCase();
+  enemies.forEach(en => {
+    if (lower && !en.name.toLowerCase().includes(lower) && !String(en.enemyId).includes(lower)) return;
+    const row = document.createElement('div');
+    row.className = 'picker-row';
+    const cvs = document.createElement('canvas'); cvs.width = 28; cvs.height = 28;
+    const img = images[en.spriteKey];
+    if (img) {
+      const ss = en.spriteSize || 8;
+      const ctx = cvs.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, en.col * ss, en.row * ss, ss, ss, 0, 0, 28, 28);
+    }
+    const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = en.enemyId;
+    const name = document.createElement('span'); name.className = 'tile-name'; name.textContent = en.name;
+    const hp = document.createElement('span'); hp.style.cssText = 'color:#e44;font-size:11px';
+    hp.textContent = `HP:${en.health}`;
+    row.append(cvs, id, name, hp);
+    row.addEventListener('click', () => { if (enemyPickerCb) enemyPickerCb(en); closeEnemyPicker(); });
+    list.appendChild(row);
+  });
+}
+
+function startPlaceEnemy() {
+  openEnemyPicker((en) => {
+    placingEnemy = true;
+    placingEnemyId = en.enemyId;
+    document.getElementById('mapPlaceEnemyBtn').style.display = 'none';
+    document.getElementById('mapCancelPlaceBtn').style.display = '';
+    document.getElementById('mapEnemyPlaceInfo').textContent = `Click map to place: ${en.name} (ID ${en.enemyId})`;
+    document.getElementById('mapOverlayCanvas').style.cursor = 'crosshair';
+  });
+}
+
+function cancelPlaceEnemy() {
+  placingEnemy = false;
+  placingEnemyId = -1;
+  document.getElementById('mapPlaceEnemyBtn').style.display = '';
+  document.getElementById('mapCancelPlaceBtn').style.display = 'none';
+  document.getElementById('mapEnemyPlaceInfo').textContent = '';
+  document.getElementById('mapOverlayCanvas').style.cursor = '';
+}
+
+function placeEnemyOnMap(e) {
+  if (!placingEnemy || !selectedMap) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const col = Math.floor((e.clientX - rect.left) * scaleX / MAP_TILE_PX);
+  const row = Math.floor((e.clientY - rect.top) * scaleY / MAP_TILE_PX);
+  if (row < 0 || row >= selectedMap.height || col < 0 || col >= selectedMap.width) return;
+
+  if (!selectedMap.staticSpawns) selectedMap.staticSpawns = [];
+  const pixelX = col * selectedMap.tileSize;
+  const pixelY = row * selectedMap.tileSize;
+  selectedMap.staticSpawns.push({ enemyId: placingEnemyId, x: pixelX, y: pixelY });
+  markDirty('maps');
+  cancelPlaceEnemy();
+  renderStaticSpawnList();
+  drawMapOverlay();
+}
+
+function removeStaticSpawn(idx) {
+  if (!selectedMap || !selectedMap.staticSpawns) return;
+  selectedMap.staticSpawns.splice(idx, 1);
+  markDirty('maps');
+  renderStaticSpawnList();
+  drawMapOverlay();
+}
+
+function renderStaticSpawnList() {
+  const container = document.getElementById('staticSpawnList');
+  container.innerHTML = '';
+  if (!selectedMap) return;
+  const spawns = selectedMap.staticSpawns || [];
+  if (spawns.length === 0) {
+    container.innerHTML = '<span style="color:#666;font-size:12px">No enemy spawns. Click "+ Place Enemy" to add.</span>';
+    return;
+  }
+  spawns.forEach((ss, idx) => {
+    const en = enemies.find(e => e.enemyId === ss.enemyId);
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:6px;padding:3px 4px;border-bottom:1px solid #222';
+
+    const cvs = document.createElement('canvas'); cvs.width = 20; cvs.height = 20;
+    if (en) {
+      const img = images[en.spriteKey];
+      if (img) {
+        const ess = en.spriteSize || 8;
+        const ctx = cvs.getContext('2d'); ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, en.col * ess, en.row * ess, ess, ess, 0, 0, 20, 20);
+      }
+    }
+    const name = document.createElement('span');
+    name.style.cssText = 'flex:1;font-size:12px;color:#ccc';
+    name.textContent = en ? `${en.name} (${ss.enemyId})` : `Enemy ${ss.enemyId}`;
+    const pos = document.createElement('span');
+    pos.style.cssText = 'font-size:11px;color:#888';
+    const tileCol = Math.round(ss.x / selectedMap.tileSize);
+    const tileRow = Math.round(ss.y / selectedMap.tileSize);
+    pos.textContent = `[${tileCol},${tileRow}]`;
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '×';
+    removeBtn.addEventListener('click', () => removeStaticSpawn(idx));
+    row.append(cvs, name, pos, removeBtn);
+    container.appendChild(row);
+  });
+}
+
+function drawEnemySpawnsOnOverlay() {
+  if (!selectedMap || !selectedMap.staticSpawns || selectedMap.staticSpawns.length === 0) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const ctx = canvas.getContext('2d');
+  const tileSize = selectedMap.tileSize || 32;
+
+  selectedMap.staticSpawns.forEach(ss => {
+    const en = enemies.find(e => e.enemyId === ss.enemyId);
+    const px = (ss.x / tileSize) * MAP_TILE_PX;
+    const py = (ss.y / tileSize) * MAP_TILE_PX;
+
+    // Draw enemy sprite if available
+    if (en) {
+      const img = images[en.spriteKey];
+      if (img) {
+        const ess = en.spriteSize || 8;
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, en.col * ess, en.row * ess, ess, ess, px, py, MAP_TILE_PX, MAP_TILE_PX);
+      }
+    }
+    // Red diamond marker
+    ctx.strokeStyle = '#f44';
+    ctx.lineWidth = 1.5;
+    const cx = px + MAP_TILE_PX / 2, cy = py + MAP_TILE_PX / 2, r = MAP_TILE_PX / 2 + 1;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy); ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy);
+    ctx.closePath(); ctx.stroke();
+  });
 }
 
 function mapCanvasClick(e) {
+  if (placingEnemy) { placeEnemyOnMap(e); return; }
   if (!selectedMap || !selectedMap.data || mapBrushTileId < 0) return;
   const canvas = document.getElementById('mapOverlayCanvas');
   const rect = canvas.getBoundingClientRect();
@@ -1918,6 +2084,8 @@ function bindEvents() {
     });
   });
   document.getElementById('applyMapBtn').addEventListener('click', () => { markDirty('maps'); });
+  document.getElementById('mapPlaceEnemyBtn').addEventListener('click', startPlaceEnemy);
+  document.getElementById('mapCancelPlaceBtn').addEventListener('click', cancelPlaceEnemy);
   document.getElementById('applyDungeonBtn').addEventListener('click', applyDungeonParams);
   document.getElementById('dpAddFloorTileBtn').addEventListener('click', addDungeonFloorTile);
 
@@ -2018,6 +2186,13 @@ function bindEvents() {
   document.getElementById('pickerSearch').addEventListener('input', (e) => renderPickerList(e.target.value));
   document.getElementById('tilePickerOverlay').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) closeTilePicker();
+  });
+
+  // Enemy picker modal
+  document.getElementById('enemyPickerCloseBtn').addEventListener('click', closeEnemyPicker);
+  document.getElementById('enemyPickerSearch').addEventListener('input', (e) => renderEnemyPickerList(e.target.value));
+  document.getElementById('enemyPickerOverlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeEnemyPicker();
   });
 
   window.addEventListener('beforeunload', (e) => {

@@ -207,6 +207,18 @@
             </div>
           </div>
           <div id="mapHoverInfo" class="hover-info">Tile: - Layer: -</div>
+
+          <!-- Static Enemy Spawns -->
+          <div style="margin-top:8px;border-top:1px solid #333;padding-top:8px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+              <h4 style="margin:0">Enemy Spawns</h4>
+              <button id="mapPlaceEnemyBtn" class="btn-add" style="padding:2px 10px;font-size:11px">+ Place Enemy</button>
+              <button id="mapCancelPlaceBtn" class="btn-pick" style="padding:2px 10px;font-size:11px;display:none">Cancel</button>
+              <span id="mapEnemyPlaceInfo" style="color:#c8a86e;font-size:11px"></span>
+            </div>
+            <div id="staticSpawnList" style="max-height:160px;overflow-y:auto"></div>
+          </div>
+
           <div class="detail-actions" style="margin-top:6px">
             <button id="applyMapBtn" class="btn-apply">Apply Map Changes</button>
           </div>
@@ -427,6 +439,17 @@
       <button id="pickerCloseBtn" class="tg-remove" style="font-size:20px">&times;</button>
     </div>
     <div class="picker-list" id="pickerList"></div>
+  </div>
+</div>
+<!-- Enemy Picker Modal -->
+<div id="enemyPickerOverlay" class="picker-overlay" style="display:none">
+  <div class="picker-modal">
+    <div class="picker-header">
+      <h3>Select an Enemy</h3>
+      <input type="text" id="enemyPickerSearch" placeholder="Search enemies...">
+      <button id="enemyPickerCloseBtn" class="tg-remove" style="font-size:20px">&times;</button>
+    </div>
+    <div class="picker-list" id="enemyPickerList"></div>
   </div>
 </div>
 <script src="editor.js"></script>
