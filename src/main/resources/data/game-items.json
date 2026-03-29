@@ -4743,15 +4743,10 @@
 		"description": "A crude scepter that hurls a bolt of lightning.",
 		"effect": {
 			"self": false,
-			"effectId": 14,
-			"duration": 1000,
+			"effectId": 8,
+			"duration": 0,
 			"cooldownDuration": 500,
 			"mpCost": 30
-		},
-		"damage": {
-			"projectileGroupId": 18,
-			"min": 60,
-			"max": 100
 		},
 		"consumable": false,
 		"tier": 0,
@@ -4768,15 +4763,10 @@
 		"description": "A scepter that discharges arcs of electricity.",
 		"effect": {
 			"self": false,
-			"effectId": 14,
-			"duration": 1000,
+			"effectId": 8,
+			"duration": 0,
 			"cooldownDuration": 500,
 			"mpCost": 40
-		},
-		"damage": {
-			"projectileGroupId": 18,
-			"min": 100,
-			"max": 140
 		},
 		"consumable": false,
 		"tier": 1,
@@ -4793,15 +4783,10 @@
 		"description": "A scepter that creates thunderous blasts of energy.",
 		"effect": {
 			"self": false,
-			"effectId": 14,
-			"duration": 1000,
+			"effectId": 8,
+			"duration": 0,
 			"cooldownDuration": 500,
 			"mpCost": 50
-		},
-		"damage": {
-			"projectileGroupId": 18,
-			"min": 140,
-			"max": 180
 		},
 		"consumable": false,
 		"tier": 2,
@@ -4818,15 +4803,10 @@
 		"description": "A scepter that fires concentrated arcs of destructive energy.",
 		"effect": {
 			"self": false,
-			"effectId": 14,
-			"duration": 1000,
+			"effectId": 8,
+			"duration": 0,
 			"cooldownDuration": 500,
 			"mpCost": 60
-		},
-		"damage": {
-			"projectileGroupId": 18,
-			"min": 180,
-			"max": 220
 		},
 		"consumable": false,
 		"tier": 3,
@@ -4846,15 +4826,10 @@
 		},
 		"effect": {
 			"self": false,
-			"effectId": 14,
-			"duration": 1000,
+			"effectId": 8,
+			"duration": 0,
 			"cooldownDuration": 500,
 			"mpCost": 70
-		},
-		"damage": {
-			"projectileGroupId": 18,
-			"min": 220,
-			"max": 260
 		},
 		"consumable": false,
 		"tier": 4,
@@ -4874,15 +4849,10 @@
 		},
 		"effect": {
 			"self": false,
-			"effectId": 14,
-			"duration": 1000,
+			"effectId": 8,
+			"duration": 0,
 			"cooldownDuration": 500,
 			"mpCost": 80
-		},
-		"damage": {
-			"projectileGroupId": 18,
-			"min": 260,
-			"max": 300
 		},
 		"consumable": false,
 		"tier": 5,
@@ -4904,15 +4874,10 @@
 		},
 		"effect": {
 			"self": false,
-			"effectId": 14,
-			"duration": 1000,
+			"effectId": 8,
+			"duration": 0,
 			"cooldownDuration": 500,
 			"mpCost": 90
-		},
-		"damage": {
-			"projectileGroupId": 18,
-			"min": 280,
-			"max": 320
 		},
 		"consumable": false,
 		"tier": 6,

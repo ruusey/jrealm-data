@@ -162,51 +162,40 @@
 				"name": "beach",
 				"ordinal": 0,
 				"enemyIds": [
-					6,
-					7,
-					14,
-					29,
-					41,
 					51,
-					52
+					51,
+					41,
+					41,
+					29,
+					14,
+					7
 				]
 			},
 			{
 				"name": "grasslands",
 				"ordinal": 1,
 				"enemyIds": [
-					8,
-					9,
-					10,
-					12,
-					15,
+					6,
+					52,
+					54,
 					30,
-					41,
-					43,
-					46,
-					53,
-					54
+					42,
+					46
 				]
 			},
 			{
 				"name": "highlands",
 				"ordinal": 2,
 				"enemyIds": [
-					1,
-					2,
-					3,
-					4,
-					5,
+					8,
 					9,
-					11,
-					42,
+					10,
+					43,
 					44,
 					45,
 					48,
-					55,
-					56,
-					57,
-					58
+					53,
+					57
 				]
 			},
 			{
@@ -219,12 +208,9 @@
 					4,
 					5,
 					11,
-					13,
-					15,
-					27,
-					47,
-					49,
-					50,
+					55,
+					56,
+					58,
 					59,
 					60
 				]
@@ -2103,6 +2089,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"enemyDensity": 0.008,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -2119,25 +2106,64 @@
 		],
 		"enemyGroups": [
 			{
-				"name": "oryx_castle_enemies",
+				"name": "oryx_castle_minions",
 				"ordinal": 0,
+				"enemyIds": [
+					17,
+					32,
+					44,
+					45,
+					17,
+					32
+				]
+			},
+			{
+				"name": "oryx_castle_elites",
+				"ordinal": 1,
+				"enemyIds": [
+					21,
+					48,
+					55,
+					58
+				]
+			},
+			{
+				"name": "oryx_castle_bosses",
+				"ordinal": 2,
 				"enemyIds": [
 					61,
 					62,
 					63,
-					64,
-					65
+					64
 				]
 			}
 		],
 		"zones": [
 			{
-				"zoneId": "castle",
-				"displayName": "Oryx Castle",
-				"minRadius": 0.0,
+				"zoneId": "castle_outer",
+				"displayName": "Castle Courtyard",
+				"minRadius": 0.55,
 				"maxRadius": 1.01,
 				"tileGroupOrdinal": 0,
 				"enemyGroupOrdinal": 0,
+				"difficulty": 5
+			},
+			{
+				"zoneId": "castle_inner",
+				"displayName": "Castle Halls",
+				"minRadius": 0.25,
+				"maxRadius": 0.55,
+				"tileGroupOrdinal": 0,
+				"enemyGroupOrdinal": 1,
+				"difficulty": 6
+			},
+			{
+				"zoneId": "castle_throne",
+				"displayName": "Throne Room",
+				"minRadius": 0.0,
+				"maxRadius": 0.25,
+				"tileGroupOrdinal": 0,
+				"enemyGroupOrdinal": 2,
 				"difficulty": 7
 			}
 		]
