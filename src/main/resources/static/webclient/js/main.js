@@ -931,7 +931,8 @@ function processInput(dt) {
     }
 }
 
-// --- Collision Check (matches Java TileManager.collisionTile + isVoidTile + collidesLimit) ---
+// --- Collision Check (matches Java TileManager.collisionTile exactly) ---
+// Server uses: Rectangle(futurePos, size*0.85, size*0.85) at top-left corner
 function checkCollision(entity, dx, dy) {
     if (!game.mapTiles || !renderer) return false;
     const ts = renderer.tileSize || 32;
@@ -944,12 +945,12 @@ function checkCollision(entity, dx, dy) {
     if (futureX <= 0 || futureX + size >= mapW) return true;
     if (futureY <= 0 || futureY + size >= mapH) return true;
 
-    // Bounding box reduced by 1.5 (matches Java: size / 1.5)
-    const bboxSize = size / 1.5;
-    const bx = futureX + (size - bboxSize) / 2;
-    const by = futureY + (size - bboxSize) / 2;
+    // Hitbox: same as server (size * 0.85) at top-left of future position
+    const hitSize = Math.floor(size * 0.85);
+    const bx = futureX;
+    const by = futureY;
 
-    // Check collision tiles in 5x5 area around player
+    // Check collision tiles in 5x5 area around player center
     const cx = Math.floor((futureX + size / 2) / ts);
     const cy = Math.floor((futureY + size / 2) / ts);
     for (let ty = cy - 2; ty <= cy + 2; ty++) {
@@ -959,13 +960,13 @@ function checkCollision(entity, dx, dy) {
             if (!tile || tile.collision <= 0) continue;
             const tileDef = game.tileData[tile.collision];
             if (!tileDef?.data?.hasCollision) continue;
-            // AABB intersection
+            // AABB intersection (same as server Rectangle.intersect)
             const tl = tx * ts, tt = ty * ts;
-            if (bx < tl + ts && bx + bboxSize > tl && by < tt + ts && by + bboxSize > tt) return true;
+            if (bx < tl + ts && bx + hitSize > tl && by < tt + ts && by + hitSize > tt) return true;
         }
     }
 
-    // Void tile check (base layer tileId=0 at center point)
+    // Void tile check
     if (cx >= 0 && cx < game.mapWidth && cy >= 0 && cy < game.mapHeight) {
         const baseTile = game.mapTiles[cy]?.[cx];
         if (baseTile && baseTile.base === 0) return true;

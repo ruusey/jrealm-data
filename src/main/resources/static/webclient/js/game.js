@@ -352,44 +352,37 @@ export class GameState {
         this.visualEffects.push(effect);
     }
 
-    // Client-side collision check for prediction — prevents rubberbanding through walls.
-    // Matches the server's TileManager collision logic.
+    // Client-side collision check — matches server's TileManager.collisionTile exactly.
+    // Server uses: Rectangle(futurePos, size*0.85, size*0.85) at top-left corner.
     _checkCollision(entity, dx, dy) {
         if (!this.mapTiles || !this.tileData) return false;
-        const ts = 32; // tile size in world units
+        const ts = 32;
         const size = entity.size || 32;
         const futureX = entity.pos.x + dx;
         const futureY = entity.pos.y + dy;
 
-        // Map bounds
         const mapW = this.mapWidth * ts, mapH = this.mapHeight * ts;
         if (futureX <= 0 || futureX + size >= mapW) return true;
         if (futureY <= 0 || futureY + size >= mapH) return true;
 
-        // Bounding box slightly smaller than server's (size/1.5) to avoid false positives.
-        // Server uses Rectangle(futurePos, size/1.5, size/1.5) at top-left corner.
-        // Client uses slightly smaller (size/1.4) so it never blocks movement the server allows.
-        // This prevents the "client stops, server teleports you through" desync.
-        const bboxSize = Math.floor(size / 1.4);
+        const hitSize = Math.floor(size * 0.85);
         const bx = futureX;
         const by = futureY;
 
-        // Check collision tiles around future position
         const cx = Math.floor((futureX + size / 2) / ts);
         const cy = Math.floor((futureY + size / 2) / ts);
-        for (let ty = cy - 1; ty <= cy + 1; ty++) {
-            for (let tx = cx - 1; tx <= cx + 1; tx++) {
+        for (let ty = cy - 2; ty <= cy + 2; ty++) {
+            for (let tx = cx - 2; tx <= cx + 2; tx++) {
                 if (ty < 0 || ty >= this.mapHeight || tx < 0 || tx >= this.mapWidth) continue;
                 const tile = this.mapTiles[ty]?.[tx];
                 if (!tile || tile.collision <= 0) continue;
                 const tileDef = this.tileData[tile.collision];
                 if (!tileDef?.data?.hasCollision) continue;
                 const tl = tx * ts, tt = ty * ts;
-                if (bx < tl + ts && bx + bboxSize > tl && by < tt + ts && by + bboxSize > tt) return true;
+                if (bx < tl + ts && bx + hitSize > tl && by < tt + ts && by + hitSize > tt) return true;
             }
         }
 
-        // Void tile check
         if (cx >= 0 && cx < this.mapWidth && cy >= 0 && cy < this.mapHeight) {
             const baseTile = this.mapTiles[cy]?.[cx];
             if (baseTile && baseTile.base === 0) return true;

@@ -243,37 +243,28 @@ export class GameRenderer {
                 const isObject = hasCollision && !isWall;
 
                 if (isWall) {
-                    // === WALL 3D EFFECT (matches Java TileManager multi-pass) ===
-                    const sideH = Math.max(drawSize * 0.35, 8);
-
-                    // 1) Side face: dark strip directly below wall sprite (no gap)
+                    // === WALL 3D EFFECT ===
+                    // 1) Thin side face flush below wall
+                    const sideH = Math.max(Math.round(drawSize * 0.1), 2);
                     const side = new PIXI.Graphics();
-                    side.beginFill(0x2a2a35);
+                    side.beginFill(0x222228);
                     side.drawRect(sx, sy + drawSize, drawSize, sideH);
                     side.endFill();
-                    // Subtle gradient overlay on side face (lighter at top)
-                    const sideHighlight = new PIXI.Graphics();
-                    sideHighlight.beginFill(0x454555, 0.4);
-                    sideHighlight.drawRect(sx, sy + drawSize, drawSize, Math.max(sideH * 0.3, 2));
-                    sideHighlight.endFill();
                     this.tileLayer.addChild(side);
-                    this.tileLayer.addChild(sideHighlight);
 
-                    // 2) Drop shadow offset behind and below (silhouette pass)
+                    // 2) Small drop shadow (1px offset)
                     const shadow = new PIXI.Sprite(tex);
-                    shadow.x = sx + 3; shadow.y = sy + 3;
+                    shadow.x = sx + 1; shadow.y = sy + 1;
                     shadow.width = drawSize; shadow.height = drawSize;
-                    shadow.tint = 0x000000; shadow.alpha = 0.35;
+                    shadow.tint = 0x000000; shadow.alpha = 0.2;
                     this.tileLayer.addChild(shadow);
 
-                    // 3) Contour outline: draw wall sprite in 4 cardinal
-                    //    directions for a dark border that pops walls from floors
-                    const outlineOff = Math.max(Math.round(SCALE), 1);
-                    for (const [ox, oy] of [[outlineOff,0],[-outlineOff,0],[0,outlineOff],[0,-outlineOff]]) {
+                    // 3) Thin contour outline (1px)
+                    for (const [ox, oy] of [[1,0],[-1,0],[0,1],[0,-1]]) {
                         const ol = new PIXI.Sprite(tex);
                         ol.x = sx + ox; ol.y = sy + oy;
                         ol.width = drawSize; ol.height = drawSize;
-                        ol.tint = 0x111118; ol.alpha = 0.7;
+                        ol.tint = 0x111118; ol.alpha = 0.5;
                         this.tileLayer.addChild(ol);
                     }
 
@@ -282,13 +273,6 @@ export class GameRenderer {
                     spr.x = sx; spr.y = sy;
                     spr.width = drawSize; spr.height = drawSize;
                     this.tileLayer.addChild(spr);
-
-                    // 5) Top edge highlight for bevel effect
-                    const topEdge = new PIXI.Graphics();
-                    topEdge.beginFill(0xffffff, 0.12);
-                    topEdge.drawRect(sx + 1, sy, drawSize - 2, Math.max(SCALE, 1));
-                    topEdge.endFill();
-                    this.tileLayer.addChild(topEdge);
                 } else if (isObject) {
                     // === COLLISION OBJECT WITH GROUND SHADOW ===
                     const shadowG = new PIXI.Graphics();
@@ -484,7 +468,8 @@ export class GameRenderer {
 
             // Status effect tinting (matches Java Enemy.updateEffectState)
             if (enemy.effectIds) {
-                if (this._hasEffect(enemy.effectIds, 2)) spr.tint = 0x888888;      // PARALYZED - grayscale
+                if (this._hasEffect(enemy.effectIds, 15))     spr.tint = 0x333338;  // STASIS - dark grey stone
+                else if (this._hasEffect(enemy.effectIds, 2)) spr.tint = 0x888888;  // PARALYZED - grayscale
                 else if (this._hasEffect(enemy.effectIds, 3)) spr.tint = 0x88AACC;  // STUNNED - blue/decay
             }
             this.entityLayer.addChild(spr);
