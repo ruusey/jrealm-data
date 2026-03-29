@@ -483,37 +483,53 @@ export class GameState {
                 const hasVel = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
 
                 if (!hasVel) {
-                    // STOPPED: converge quickly to server position for crisp stops
+                    // STOPPED: converge to server position with collision check
                     if (dist > 0.5) {
-                        p.pos.x += dx * 0.8;
-                        p.pos.y += dy * 0.8;
+                        const sx = dx * 0.8, sy = dy * 0.8;
+                        if (!this._checkCollision(p, sx, 0)) p.pos.x += sx;
+                        if (!this._checkCollision(p, 0, sy)) p.pos.y += sy;
                     }
                 } else {
                     // MOVING: predict forward using velocity, then correct toward server pos.
-                    // dt * 64 matches the server's 64-tick/sec rate.
                     const moveScale = dt * 64;
                     const predDx = p.dx * moveScale;
                     const predDy = p.dy * moveScale;
 
-                    // Check collision BEFORE applying prediction to prevent rubberbanding through walls.
-                    // Test X and Y axes independently so sliding along walls works.
-                    if (!this._checkCollision(p, predDx, 0)) {
+                    // Test X, Y, and diagonal independently.
+                    // This prevents corner-cutting through diagonal wall pairs.
+                    const xOk = !this._checkCollision(p, predDx, 0);
+                    const yOk = !this._checkCollision(p, 0, predDy);
+                    if (xOk && yOk) {
+                        // Diagonal safe — also verify the combined move
+                        if (!this._checkCollision(p, predDx, predDy)) {
+                            p.pos.x += predDx;
+                            p.pos.y += predDy;
+                        } else {
+                            // Diagonal blocked — slide along whichever axis is free
+                            p.pos.x += predDx;
+                        }
+                    } else if (xOk) {
                         p.pos.x += predDx;
-                    }
-                    if (!this._checkCollision(p, 0, predDy)) {
+                    } else if (yOk) {
                         p.pos.y += predDy;
                     }
 
                     // Blend toward server position to prevent drift.
+                    // Only correct if it doesn't push us into a wall.
                     const corrDx = p.targetX - p.pos.x;
                     const corrDy = p.targetY - p.pos.y;
                     const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
-                    const corrFactor = Math.min(0.3, 0.05 + corrDist * 0.01);
-                    // Only correct if it doesn't push us into a wall
+                    const corrFactor = Math.min(0.25, 0.04 + corrDist * 0.008);
                     const cx = corrDx * corrFactor;
                     const cy = corrDy * corrFactor;
-                    if (!this._checkCollision(p, cx, 0)) p.pos.x += cx;
-                    if (!this._checkCollision(p, 0, cy)) p.pos.y += cy;
+                    // Test correction against collision too
+                    if (!this._checkCollision(p, cx, cy)) {
+                        p.pos.x += cx;
+                        p.pos.y += cy;
+                    } else {
+                        if (!this._checkCollision(p, cx, 0)) p.pos.x += cx;
+                        if (!this._checkCollision(p, 0, cy)) p.pos.y += cy;
+                    }
                 }
             } else {
                 // OTHER PLAYERS: smooth lerp, no velocity prediction

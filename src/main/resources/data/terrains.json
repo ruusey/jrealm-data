@@ -2096,5 +2096,50 @@
 				]
 			}
 		]
+	},
+	{
+		"name": "Dungeon_Oryx_Castle",
+		"terrainId": 21,
+		"width": 64,
+		"height": 64,
+		"tileSize": 32,
+		"tileGroups": [
+			{
+				"ordinal": 0,
+				"tileIds": [
+					49,
+					45
+				],
+				"decorationTileIds": [],
+				"rarities": {
+					"49": 1.0,
+					"45": 0.3
+				}
+			}
+		],
+		"enemyGroups": [
+			{
+				"name": "oryx_castle_enemies",
+				"ordinal": 0,
+				"enemyIds": [
+					61,
+					62,
+					63,
+					64,
+					65
+				]
+			}
+		],
+		"zones": [
+			{
+				"zoneId": "castle",
+				"displayName": "Oryx Castle",
+				"minRadius": 0.0,
+				"maxRadius": 1.01,
+				"tileGroupOrdinal": 0,
+				"enemyGroupOrdinal": 0,
+				"difficulty": 7
+			}
+		]
 	}
 ]

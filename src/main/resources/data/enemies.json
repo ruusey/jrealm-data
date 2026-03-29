@@ -11,8 +11,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.8,
-		"chaseRange": 390.0,
-		"attackRange": 300.0,
+		"chaseRange": 390,
+		"attackRange": 300,
 		"stats": {
 			"hp": 2000,
 			"def": 5,
@@ -21,7 +21,7 @@
 		"phases": [
 			{
 				"name": "orbit",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.8,
@@ -70,8 +70,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 0.5,
-		"chaseRange": 390.0,
-		"attackRange": 300.0,
+		"chaseRange": 390,
+		"attackRange": 300,
 		"stats": {
 			"hp": 2000,
 			"def": 5,
@@ -80,7 +80,7 @@
 		"phases": [
 			{
 				"name": "stationary",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 0.5,
@@ -114,9 +114,9 @@
 		"attackId": 1,
 		"xp": 1250,
 		"health": 2000,
-		"maxSpeed": 2.0,
-		"chaseRange": 390.0,
-		"attackRange": 240.0,
+		"maxSpeed": 2,
+		"chaseRange": 390,
+		"attackRange": 240,
 		"stats": {
 			"hp": 2000,
 			"def": 5,
@@ -125,10 +125,10 @@
 		"phases": [
 			{
 				"name": "strafe",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
-					"speed": 2.0,
+					"speed": 2,
 					"preferredRange": 100
 				},
 				"attacks": [
@@ -171,8 +171,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.6,
-		"chaseRange": 390.0,
-		"attackRange": 240.0,
+		"chaseRange": 390,
+		"attackRange": 240,
 		"stats": {
 			"hp": 2000,
 			"def": 5,
@@ -181,7 +181,7 @@
 		"phases": [
 			{
 				"name": "figure_eight",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.6,
@@ -228,8 +228,8 @@
 		"xp": 1250,
 		"health": 2000,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 210.0,
+		"chaseRange": 390,
+		"attackRange": 210,
 		"stats": {
 			"hp": 2000,
 			"def": 5,
@@ -248,8 +248,8 @@
 		"xp": 50,
 		"health": 200,
 		"maxSpeed": 1.4,
-		"chaseRange": 420.0,
-		"attackRange": 240.0,
+		"chaseRange": 420,
+		"attackRange": 240,
 		"stats": {
 			"hp": 200,
 			"def": 3,
@@ -268,8 +268,8 @@
 		"xp": 45,
 		"health": 200,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 210.0,
+		"chaseRange": 390,
+		"attackRange": 210,
 		"stats": {
 			"hp": 200,
 			"def": 3,
@@ -288,8 +288,8 @@
 		"xp": 200,
 		"health": 600,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 210.0,
+		"chaseRange": 390,
+		"attackRange": 210,
 		"stats": {
 			"hp": 600,
 			"def": 5,
@@ -308,8 +308,8 @@
 		"xp": 300,
 		"health": 700,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 210.0,
+		"chaseRange": 390,
+		"attackRange": 210,
 		"stats": {
 			"hp": 700,
 			"def": 5,
@@ -328,8 +328,8 @@
 		"xp": 300,
 		"health": 700,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 210.0,
+		"chaseRange": 390,
+		"attackRange": 210,
 		"stats": {
 			"hp": 700,
 			"def": 5,
@@ -348,8 +348,8 @@
 		"xp": 750,
 		"health": 1800,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 210.0,
+		"chaseRange": 390,
+		"attackRange": 210,
 		"stats": {
 			"hp": 1800,
 			"def": 20,
@@ -368,8 +368,8 @@
 		"xp": 350,
 		"health": 800,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 270.0,
+		"chaseRange": 390,
+		"attackRange": 270,
 		"stats": {
 			"hp": 800,
 			"def": 20,
@@ -387,9 +387,9 @@
 		"attackId": -1,
 		"xp": 12500,
 		"health": 10000,
-		"maxSpeed": 2.0,
-		"chaseRange": 525.0,
-		"attackRange": 225.0,
+		"maxSpeed": 2,
+		"chaseRange": 525,
+		"attackRange": 225,
 		"stats": {
 			"hp": 5500,
 			"def": 30,
@@ -409,7 +409,7 @@
 		"xp": 60,
 		"health": 200,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
+		"chaseRange": 390,
 		"attackRange": 127.5,
 		"stats": {
 			"hp": 200,
@@ -429,8 +429,8 @@
 		"xp": 400,
 		"health": 900,
 		"maxSpeed": 1.4,
-		"chaseRange": 390.0,
-		"attackRange": 270.0,
+		"chaseRange": 390,
+		"attackRange": 270,
 		"stats": {
 			"hp": 900,
 			"def": 5,
@@ -449,8 +449,8 @@
 		"xp": 999999,
 		"health": 9999,
 		"maxSpeed": 0,
-		"chaseRange": 0.0,
-		"attackRange": 0.0,
+		"chaseRange": 0,
+		"attackRange": 0,
 		"stats": {
 			"hp": 9999,
 			"def": 99
@@ -468,8 +468,8 @@
 		"xp": 150,
 		"health": 300,
 		"maxSpeed": 1.6,
-		"chaseRange": 300.0,
-		"attackRange": 150.0,
+		"chaseRange": 300,
+		"attackRange": 150,
 		"stats": {
 			"hp": 300,
 			"def": 2,
@@ -487,9 +487,9 @@
 		"attackId": 36,
 		"xp": 200,
 		"health": 250,
-		"maxSpeed": 2.0,
-		"chaseRange": 360.0,
-		"attackRange": 270.0,
+		"maxSpeed": 2,
+		"chaseRange": 360,
+		"attackRange": 270,
 		"stats": {
 			"hp": 250,
 			"def": 1,
@@ -508,8 +508,8 @@
 		"xp": 175,
 		"health": 350,
 		"maxSpeed": 2.2,
-		"chaseRange": 300.0,
-		"attackRange": 120.0,
+		"chaseRange": 300,
+		"attackRange": 120,
 		"stats": {
 			"hp": 350,
 			"def": 3,
@@ -528,8 +528,8 @@
 		"xp": 225,
 		"health": 200,
 		"maxSpeed": 2.4,
-		"chaseRange": 450.0,
-		"attackRange": 300.0,
+		"chaseRange": 450,
+		"attackRange": 300,
 		"stats": {
 			"hp": 200,
 			"dex": 25
@@ -547,8 +547,8 @@
 		"xp": 800,
 		"health": 1200,
 		"maxSpeed": 1.8,
-		"chaseRange": 480.0,
-		"attackRange": 300.0,
+		"chaseRange": 480,
+		"attackRange": 300,
 		"stats": {
 			"hp": 1200,
 			"def": 8,
@@ -567,8 +567,8 @@
 		"xp": 900,
 		"health": 2500,
 		"maxSpeed": 0.8,
-		"chaseRange": 300.0,
-		"attackRange": 180.0,
+		"chaseRange": 300,
+		"attackRange": 180,
 		"stats": {
 			"hp": 2500,
 			"def": 25,
@@ -586,9 +586,9 @@
 		"attackId": 41,
 		"xp": 700,
 		"health": 1800,
-		"maxSpeed": 1.0,
-		"chaseRange": 270.0,
-		"attackRange": 240.0,
+		"maxSpeed": 1,
+		"chaseRange": 270,
+		"attackRange": 240,
 		"stats": {
 			"hp": 1800,
 			"def": 15,
@@ -607,8 +607,8 @@
 		"xp": 650,
 		"health": 900,
 		"maxSpeed": 2.8,
-		"chaseRange": 525.0,
-		"attackRange": 225.0,
+		"chaseRange": 525,
+		"attackRange": 225,
 		"stats": {
 			"hp": 900,
 			"def": 5,
@@ -627,8 +627,8 @@
 		"xp": 3000,
 		"health": 5000,
 		"maxSpeed": 1.6,
-		"chaseRange": 600.0,
-		"attackRange": 375.0,
+		"chaseRange": 600,
+		"attackRange": 375,
 		"stats": {
 			"hp": 5000,
 			"def": 30,
@@ -638,7 +638,7 @@
 		"phases": [
 			{
 				"name": "patrol",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.6,
@@ -658,7 +658,7 @@
 				"hpThreshold": 0.6,
 				"movement": {
 					"type": "ORBIT",
-					"speed": 2.0,
+					"speed": 2,
 					"radius": 100,
 					"direction": "CW"
 				},
@@ -717,8 +717,8 @@
 		"xp": 3500,
 		"health": 6000,
 		"maxSpeed": 1.4,
-		"chaseRange": 525.0,
-		"attackRange": 420.0,
+		"chaseRange": 525,
+		"attackRange": 420,
 		"stats": {
 			"hp": 6000,
 			"def": 20,
@@ -728,7 +728,7 @@
 		"phases": [
 			{
 				"name": "hellfire",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.4,
@@ -812,8 +812,8 @@
 		"xp": 5000,
 		"health": 8000,
 		"maxSpeed": 1.2,
-		"chaseRange": 600.0,
-		"attackRange": 525.0,
+		"chaseRange": 600,
+		"attackRange": 525,
 		"stats": {
 			"hp": 8000,
 			"def": 35,
@@ -823,7 +823,7 @@
 		"phases": [
 			{
 				"name": "void_pulse",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "WANDER",
 					"speed": 0.8
@@ -873,7 +873,7 @@
 				"hpThreshold": 0.3,
 				"movement": {
 					"type": "FIGURE_EIGHT",
-					"speed": 2.0,
+					"speed": 2,
 					"radius": 60
 				},
 				"attacks": [
@@ -912,8 +912,8 @@
 		"xp": 2500,
 		"health": 7000,
 		"maxSpeed": 0.6,
-		"chaseRange": 375.0,
-		"attackRange": 300.0,
+		"chaseRange": 375,
+		"attackRange": 300,
 		"stats": {
 			"hp": 7000,
 			"def": 50,
@@ -922,7 +922,7 @@
 		"phases": [
 			{
 				"name": "sentinel",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 0.6,
@@ -997,9 +997,9 @@
 		"attackId": 51,
 		"xp": 40,
 		"health": 200,
-		"maxSpeed": 1.0,
-		"chaseRange": 330.0,
-		"attackRange": 270.0,
+		"maxSpeed": 1,
+		"chaseRange": 330,
+		"attackRange": 270,
 		"stats": {
 			"hp": 200,
 			"def": 3,
@@ -1018,8 +1018,8 @@
 		"xp": 250,
 		"health": 300,
 		"maxSpeed": 1.6,
-		"chaseRange": 300.0,
-		"attackRange": 240.0,
+		"chaseRange": 300,
+		"attackRange": 240,
 		"stats": {
 			"hp": 300,
 			"def": 5,
@@ -1038,8 +1038,8 @@
 		"xp": 275,
 		"health": 250,
 		"maxSpeed": 2.4,
-		"chaseRange": 360.0,
-		"attackRange": 180.0,
+		"chaseRange": 360,
+		"attackRange": 180,
 		"stats": {
 			"hp": 250,
 			"def": 3,
@@ -1058,8 +1058,8 @@
 		"xp": 350,
 		"health": 350,
 		"maxSpeed": 1.4,
-		"chaseRange": 450.0,
-		"attackRange": 375.0,
+		"chaseRange": 450,
+		"attackRange": 375,
 		"stats": {
 			"hp": 350,
 			"def": 10,
@@ -1078,8 +1078,8 @@
 		"xp": 280,
 		"health": 280,
 		"maxSpeed": 2.2,
-		"chaseRange": 330.0,
-		"attackRange": 150.0,
+		"chaseRange": 330,
+		"attackRange": 150,
 		"stats": {
 			"hp": 280,
 			"def": 4,
@@ -1097,9 +1097,9 @@
 		"attackId": 56,
 		"xp": 325,
 		"health": 450,
-		"maxSpeed": 2.0,
-		"chaseRange": 390.0,
-		"attackRange": 135.0,
+		"maxSpeed": 2,
+		"chaseRange": 390,
+		"attackRange": 135,
 		"stats": {
 			"hp": 450,
 			"def": 6,
@@ -1118,8 +1118,8 @@
 		"xp": 2000,
 		"health": 3000,
 		"maxSpeed": 1.2,
-		"chaseRange": 450.0,
-		"attackRange": 330.0,
+		"chaseRange": 450,
+		"attackRange": 330,
 		"stats": {
 			"hp": 3000,
 			"def": 15,
@@ -1128,7 +1128,7 @@
 		"phases": [
 			{
 				"name": "tidal",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.2,
@@ -1181,8 +1181,8 @@
 		"xp": 2500,
 		"health": 4000,
 		"maxSpeed": 0.7,
-		"chaseRange": 300.0,
-		"attackRange": 300.0,
+		"chaseRange": 300,
+		"attackRange": 300,
 		"stats": {
 			"hp": 4000,
 			"def": 30,
@@ -1191,7 +1191,7 @@
 		"phases": [
 			{
 				"name": "spore_cloud",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 0.7,
@@ -1277,9 +1277,9 @@
 		"attackId": 59,
 		"xp": 3000,
 		"health": 5000,
-		"maxSpeed": 1.0,
-		"chaseRange": 450.0,
-		"attackRange": 375.0,
+		"maxSpeed": 1,
+		"chaseRange": 450,
+		"attackRange": 375,
 		"stats": {
 			"hp": 5000,
 			"def": 20,
@@ -1288,10 +1288,10 @@
 		"phases": [
 			{
 				"name": "eruption",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
-					"speed": 1.0
+					"speed": 1
 				},
 				"attacks": [
 					{
@@ -1330,7 +1330,7 @@
 				"hpThreshold": 0.2,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 3.0,
+					"speed": 3,
 					"chargeDistanceMin": 50,
 					"pauseMs": 400
 				},
@@ -1370,8 +1370,8 @@
 		"xp": 3500,
 		"health": 5500,
 		"maxSpeed": 1.8,
-		"chaseRange": 570.0,
-		"attackRange": 375.0,
+		"chaseRange": 570,
+		"attackRange": 375,
 		"stats": {
 			"hp": 5500,
 			"def": 25,
@@ -1381,7 +1381,7 @@
 		"phases": [
 			{
 				"name": "shadow_dance",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 2.2,
@@ -1461,8 +1461,8 @@
 		"xp": 3000,
 		"health": 4500,
 		"maxSpeed": 1.4,
-		"chaseRange": 480.0,
-		"attackRange": 330.0,
+		"chaseRange": 480,
+		"attackRange": 330,
 		"stats": {
 			"hp": 4500,
 			"def": 18,
@@ -1471,7 +1471,7 @@
 		"phases": [
 			{
 				"name": "serpent_gaze",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.4,
@@ -1491,7 +1491,7 @@
 				"hpThreshold": 0.5,
 				"movement": {
 					"type": "ORBIT",
-					"speed": 2.0,
+					"speed": 2,
 					"radius": 90,
 					"direction": "CW"
 				},
@@ -1555,8 +1555,8 @@
 		"xp": 8000,
 		"health": 15000,
 		"maxSpeed": 1.6,
-		"chaseRange": 600.0,
-		"attackRange": 525.0,
+		"chaseRange": 600,
+		"attackRange": 525,
 		"stats": {
 			"hp": 15000,
 			"def": 40,
@@ -1566,7 +1566,7 @@
 		"phases": [
 			{
 				"name": "sovereign",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.6,
@@ -1593,7 +1593,7 @@
 				"hpThreshold": 0.7,
 				"movement": {
 					"type": "FIGURE_EIGHT",
-					"speed": 2.0,
+					"speed": 2,
 					"radius": 100
 				},
 				"attacks": [
@@ -1623,7 +1623,7 @@
 				"hpThreshold": 0.4,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 3.0,
+					"speed": 3,
 					"chargeDistanceMin": 60,
 					"pauseMs": 500
 				},
@@ -1655,7 +1655,7 @@
 				"hpThreshold": 0.15,
 				"movement": {
 					"type": "ORBIT",
-					"speed": 3.0,
+					"speed": 3,
 					"radius": 50,
 					"direction": "CCW"
 				},
@@ -1702,9 +1702,9 @@
 		"attackId": 51,
 		"xp": 25,
 		"health": 120,
-		"maxSpeed": 2.0,
-		"chaseRange": 270.0,
-		"attackRange": 150.0,
+		"maxSpeed": 2,
+		"chaseRange": 270,
+		"attackRange": 150,
 		"stats": {
 			"hp": 120,
 			"def": 2,
@@ -1723,8 +1723,8 @@
 		"xp": 250,
 		"health": 350,
 		"maxSpeed": 1.8,
-		"chaseRange": 375.0,
-		"attackRange": 300.0,
+		"chaseRange": 375,
+		"attackRange": 300,
 		"stats": {
 			"hp": 350,
 			"def": 3,
@@ -1743,8 +1743,8 @@
 		"xp": 300,
 		"health": 500,
 		"maxSpeed": 1.2,
-		"chaseRange": 225.0,
-		"attackRange": 120.0,
+		"chaseRange": 225,
+		"attackRange": 120,
 		"stats": {
 			"hp": 500,
 			"def": 8,
@@ -1763,8 +1763,8 @@
 		"xp": 350,
 		"health": 400,
 		"maxSpeed": 1.4,
-		"chaseRange": 330.0,
-		"attackRange": 270.0,
+		"chaseRange": 330,
+		"attackRange": 270,
 		"stats": {
 			"hp": 400,
 			"def": 4,
@@ -1783,8 +1783,8 @@
 		"xp": 400,
 		"health": 300,
 		"maxSpeed": 2.5,
-		"chaseRange": 300.0,
-		"attackRange": 225.0,
+		"chaseRange": 300,
+		"attackRange": 225,
 		"stats": {
 			"hp": 300,
 			"def": 1,
@@ -1803,8 +1803,8 @@
 		"xp": 280,
 		"health": 350,
 		"maxSpeed": 2.2,
-		"chaseRange": 240.0,
-		"attackRange": 135.0,
+		"chaseRange": 240,
+		"attackRange": 135,
 		"stats": {
 			"hp": 350,
 			"def": 3,
@@ -1823,8 +1823,8 @@
 		"xp": 450,
 		"health": 600,
 		"maxSpeed": 1.6,
-		"chaseRange": 300.0,
-		"attackRange": 180.0,
+		"chaseRange": 300,
+		"attackRange": 180,
 		"stats": {
 			"hp": 600,
 			"def": 6,
@@ -1842,9 +1842,9 @@
 		"attackId": 56,
 		"xp": 500,
 		"health": 800,
-		"maxSpeed": 1.0,
-		"chaseRange": 270.0,
-		"attackRange": 150.0,
+		"maxSpeed": 1,
+		"chaseRange": 270,
+		"attackRange": 150,
 		"stats": {
 			"hp": 800,
 			"def": 10,
@@ -1863,8 +1863,8 @@
 		"xp": 2000,
 		"health": 4000,
 		"maxSpeed": 0.8,
-		"chaseRange": 300.0,
-		"attackRange": 225.0,
+		"chaseRange": 300,
+		"attackRange": 225,
 		"stats": {
 			"hp": 4000,
 			"def": 25,
@@ -1883,8 +1883,8 @@
 		"xp": 5000,
 		"health": 8000,
 		"maxSpeed": 1.2,
-		"chaseRange": 450.0,
-		"attackRange": 300.0,
+		"chaseRange": 450,
+		"attackRange": 300,
 		"stats": {
 			"hp": 8000,
 			"def": 20,
@@ -1918,7 +1918,7 @@
 		"phases": [
 			{
 				"name": "charge",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHARGE",
 					"speed": 2.5,
@@ -1939,7 +1939,7 @@
 				"hpThreshold": 0.3,
 				"movement": {
 					"type": "FLEE",
-					"speed": 3.0,
+					"speed": 3,
 					"fleeRange": 120
 				},
 				"attacks": [
@@ -1980,7 +1980,7 @@
 		"phases": [
 			{
 				"name": "orbit",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.2,
@@ -2035,7 +2035,7 @@
 		"spriteSize": 8,
 		"size": 32,
 		"health": 600,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 350,
 		"attackRange": 300,
 		"attackId": 0,
@@ -2053,10 +2053,10 @@
 		"phases": [
 			{
 				"name": "support",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
-					"speed": 1.0,
+					"speed": 1,
 					"preferredRange": 150
 				},
 				"attacks": [
@@ -2127,7 +2127,7 @@
 		"phases": [
 			{
 				"name": "hunt",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHARGE",
 					"speed": 2.8,
@@ -2172,7 +2172,7 @@
 		"spriteSize": 8,
 		"size": 32,
 		"health": 1200,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 450,
 		"attackRange": 400,
 		"attackId": 0,
@@ -2190,7 +2190,7 @@
 		"phases": [
 			{
 				"name": "barrage",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 0.8,
@@ -2242,7 +2242,7 @@
 				"hpThreshold": 0.2,
 				"movement": {
 					"type": "FLEE",
-					"speed": 2.0,
+					"speed": 2,
 					"fleeRange": 200
 				},
 				"attacks": [
@@ -2285,7 +2285,7 @@
 		"phases": [
 			{
 				"name": "guard",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 0.6,
@@ -2311,7 +2311,7 @@
 				"hpThreshold": 0.5,
 				"movement": {
 					"type": "CHASE",
-					"speed": 1.0
+					"speed": 1
 				},
 				"attacks": [
 					{
@@ -2364,7 +2364,7 @@
 		"phases": [
 			{
 				"name": "burn",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.8,
@@ -2416,8 +2416,8 @@
 	{
 		"enemyId": 58,
 		"name": "Crystal Sentinel",
-		"spriteKey": "rotmg-bosses-1_.png",
-		"row": 2,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 11,
 		"col": 4,
 		"spriteSize": 8,
 		"size": 36,
@@ -2440,7 +2440,7 @@
 		"phases": [
 			{
 				"name": "passive",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 0.5,
@@ -2516,7 +2516,7 @@
 		"phases": [
 			{
 				"name": "stalk",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHARGE",
 					"speed": 3.5,
@@ -2544,7 +2544,7 @@
 				"hpThreshold": 0.3,
 				"movement": {
 					"type": "FIGURE_EIGHT",
-					"speed": 4.0
+					"speed": 4
 				},
 				"attacks": [
 					{
@@ -2585,7 +2585,7 @@
 		"phases": [
 			{
 				"name": "arcane_barrage",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 0.8,
@@ -2619,7 +2619,7 @@
 				"hpThreshold": 0.6,
 				"movement": {
 					"type": "ANCHOR",
-					"speed": 1.0,
+					"speed": 1,
 					"anchorRadius": 80
 				},
 				"attacks": [
@@ -2671,6 +2671,507 @@
 						"cooldownMs": 400,
 						"burstCount": 3,
 						"burstDelayMs": 60
+					}
+				]
+			}
+		]
+	},
+	{
+		"enemyId": 61,
+		"name": "Oryx Guardian",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 5,
+		"col": 1,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 4000,
+		"health": 12000,
+		"maxSpeed": 1.8,
+		"chaseRange": 525,
+		"attackRange": 375,
+		"stats": {
+			"hp": 12000,
+			"def": 35,
+			"dex": 18,
+			"spd": 8
+		},
+		"phases": [
+			{
+				"name": "sentinel",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "STRAFE",
+					"speed": 1.8,
+					"preferredRange": 120
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 94,
+						"cooldownMs": 600,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "fury",
+				"hpThreshold": 0.5,
+				"movement": {
+					"type": "CHARGE",
+					"speed": 3.5,
+					"chargeDistanceMin": 50,
+					"pauseMs": 400
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 94,
+						"cooldownMs": 360,
+						"burstCount": 3,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.2
+					},
+					{
+						"projectileGroupId": 95,
+						"cooldownMs": 1200,
+						"burstCount": 1,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "last_stand",
+				"hpThreshold": 0.2,
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.5,
+					"radius": 60,
+					"direction": "CW"
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 94,
+						"cooldownMs": 240,
+						"burstCount": 4,
+						"burstDelayMs": 42,
+						"angleOffsetPerBurst": 0.15
+					},
+					{
+						"projectileGroupId": 95,
+						"cooldownMs": 720,
+						"burstCount": 2,
+						"burstDelayMs": 100
+					}
+				]
+			}
+		]
+	},
+	{
+		"enemyId": 62,
+		"name": "Stone Warden",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 5,
+		"col": 2,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 4500,
+		"health": 15000,
+		"maxSpeed": 0.8,
+		"chaseRange": 450,
+		"attackRange": 350,
+		"stats": {
+			"hp": 15000,
+			"def": 50,
+			"dex": 8,
+			"spd": 3,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": [
+			{
+				"name": "dormant",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "ANCHOR",
+					"speed": 0.6,
+					"anchorRadius": 40
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 96,
+						"cooldownMs": 900,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "awakened",
+				"hpThreshold": 0.6,
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.2
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 96,
+						"cooldownMs": 480,
+						"burstCount": 3,
+						"burstDelayMs": 84
+					},
+					{
+						"projectileGroupId": 97,
+						"cooldownMs": 1500,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "crumbling",
+				"hpThreshold": 0.2,
+				"movement": {
+					"type": "WANDER",
+					"speed": 0.4
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 97,
+						"cooldownMs": 360,
+						"burstCount": 4,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.25
+					},
+					{
+						"projectileGroupId": 96,
+						"cooldownMs": 600,
+						"burstCount": 3,
+						"burstDelayMs": 105
+					}
+				]
+			}
+		]
+	},
+	{
+		"enemyId": 63,
+		"name": "Crimson Archon",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 5,
+		"col": 3,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 5000,
+		"health": 14000,
+		"maxSpeed": 2,
+		"chaseRange": 570,
+		"attackRange": 420,
+		"stats": {
+			"hp": 14000,
+			"def": 30,
+			"dex": 22,
+			"spd": 10,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": [
+			{
+				"name": "arcane_barrage",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 2,
+					"radius": 100
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 98,
+						"cooldownMs": 480,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "binding_storm",
+				"hpThreshold": 0.5,
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.5,
+					"radius": 80,
+					"direction": "CCW"
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 98,
+						"cooldownMs": 300,
+						"burstCount": 3,
+						"burstDelayMs": 56
+					},
+					{
+						"projectileGroupId": 99,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "inferno",
+				"hpThreshold": 0.15,
+				"movement": {
+					"type": "ANCHOR",
+					"speed": 0.5,
+					"anchorRadius": 30
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 98,
+						"cooldownMs": 180,
+						"burstCount": 4,
+						"burstDelayMs": 42,
+						"angleOffsetPerBurst": 0.12
+					},
+					{
+						"projectileGroupId": 99,
+						"cooldownMs": 600,
+						"burstCount": 3,
+						"burstDelayMs": 84,
+						"predictive": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"enemyId": 64,
+		"name": "Spectral Knight",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 5,
+		"col": 4,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 5500,
+		"health": 16000,
+		"maxSpeed": 2.4,
+		"chaseRange": 600,
+		"attackRange": 400,
+		"stats": {
+			"hp": 16000,
+			"def": 28,
+			"dex": 25,
+			"spd": 12,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": [
+			{
+				"name": "phantom_dance",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "ORBIT",
+					"speed": 2.4,
+					"radius": 120,
+					"direction": "CW"
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 100,
+						"cooldownMs": 540,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "death_charge",
+				"hpThreshold": 0.6,
+				"movement": {
+					"type": "CHARGE",
+					"speed": 4,
+					"chargeDistanceMin": 60,
+					"pauseMs": 300
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 100,
+						"cooldownMs": 300,
+						"burstCount": 3,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.15
+					},
+					{
+						"projectileGroupId": 101,
+						"cooldownMs": 900,
+						"burstCount": 1,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "ethereal_wrath",
+				"hpThreshold": 0.2,
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 3,
+					"radius": 50
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 100,
+						"cooldownMs": 180,
+						"burstCount": 4,
+						"burstDelayMs": 42,
+						"angleOffsetPerBurst": 0.1
+					},
+					{
+						"projectileGroupId": 101,
+						"cooldownMs": 480,
+						"burstCount": 2,
+						"burstDelayMs": 100,
+						"predictive": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"enemyId": 65,
+		"name": "Oryx the Mad God",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 3,
+		"col": 5,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 15000,
+		"health": 50000,
+		"maxSpeed": 1.6,
+		"chaseRange": 700,
+		"attackRange": 525,
+		"stats": {
+			"hp": 50000,
+			"def": 45,
+			"dex": 20,
+			"spd": 10
+		},
+		"phases": [
+			{
+				"name": "sovereign",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "ORBIT",
+					"speed": 1.6,
+					"radius": 140,
+					"direction": "CW"
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 102,
+						"cooldownMs": 600,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					},
+					{
+						"projectileGroupId": 103,
+						"cooldownMs": 2400,
+						"burstCount": 1,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "wrath",
+				"hpThreshold": 0.7,
+				"movement": {
+					"type": "FIGURE_EIGHT",
+					"speed": 2,
+					"radius": 100
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 102,
+						"cooldownMs": 360,
+						"burstCount": 3,
+						"burstDelayMs": 84,
+						"angleOffsetPerBurst": 0.15
+					},
+					{
+						"projectileGroupId": 103,
+						"cooldownMs": 1200,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "judgement",
+				"hpThreshold": 0.4,
+				"movement": {
+					"type": "CHARGE",
+					"speed": 3.5,
+					"chargeDistanceMin": 60,
+					"pauseMs": 500
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 102,
+						"cooldownMs": 240,
+						"burstCount": 4,
+						"burstDelayMs": 56,
+						"angleOffsetPerBurst": 0.12
+					},
+					{
+						"projectileGroupId": 103,
+						"cooldownMs": 720,
+						"burstCount": 3,
+						"burstDelayMs": 84
+					},
+					{
+						"projectileGroupId": 104,
+						"cooldownMs": 1800,
+						"burstCount": 2,
+						"burstDelayMs": 70
+					}
+				]
+			},
+			{
+				"name": "madness",
+				"hpThreshold": 0.15,
+				"movement": {
+					"type": "ORBIT",
+					"speed": 3,
+					"radius": 50,
+					"direction": "CCW"
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 102,
+						"cooldownMs": 150,
+						"burstCount": 6,
+						"burstDelayMs": 40,
+						"angleOffsetPerBurst": 0.1
+					},
+					{
+						"projectileGroupId": 103,
+						"cooldownMs": 480,
+						"burstCount": 4,
+						"burstDelayMs": 70,
+						"angleOffsetPerBurst": 0.2
+					},
+					{
+						"projectileGroupId": 104,
+						"cooldownMs": 900,
+						"burstCount": 3,
+						"burstDelayMs": 105
 					}
 				]
 			}

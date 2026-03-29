@@ -119,6 +119,17 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     }
 });
 
+// --- Character sprite sheets (preloaded for character select) ---
+const _charSpriteSheets = {};
+(function preloadClassSprites() {
+    for (let i = 0; i < 4; i++) {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.src = api.getSpriteUrl(`rotmg-classes-${i}.png`);
+        img.onload = () => { _charSpriteSheets[`rotmg-classes-${i}`] = img; };
+    }
+})();
+
 // --- Character Select & Management ---
 const ALL_CLASSES = [
     'Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'Knight',
@@ -146,18 +157,33 @@ function showCharacterSelect() {
             card.className = 'char-card';
             const className = ALL_CLASSES[char.characterClass] || `Class ${char.characterClass}`;
             const stats = char.stats || {};
-            card.innerHTML = `
-                <div class="char-icon">${className.charAt(0)}</div>
-                <div class="char-info">
-                    <div class="char-name">${className}</div>
-                    <div class="char-details">
-                        HP: ${stats.hp || '?'} | MP: ${stats.mp || '?'} |
-                        ATT: ${stats.att || '?'} | DEF: ${stats.def || '?'} |
-                        SPD: ${stats.spd || '?'} | DEX: ${stats.dex || '?'}
-                    </div>
-                    <div class="char-details" style="font-size:10px;color:#665848">${char.characterUuid}</div>
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'char-icon';
+            const classId = char.characterClass || 0;
+            const sheetIdx = Math.floor(classId / 3);
+            const localRow = (classId % 3) * 4;
+            const sheetName = `rotmg-classes-${sheetIdx}`;
+            const cvs = document.createElement('canvas');
+            cvs.width = 40; cvs.height = 40;
+            const ctx = cvs.getContext('2d');
+            ctx.imageSmoothingEnabled = false;
+            const img = _charSpriteSheets[sheetName];
+            if (img) ctx.drawImage(img, 0, localRow * 8, 8, 8, 0, 0, 40, 40);
+            iconDiv.appendChild(cvs);
+
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'char-info';
+            infoDiv.innerHTML = `
+                <div class="char-name">${className}</div>
+                <div class="char-details">
+                    HP: ${stats.hp || '?'} | MP: ${stats.mp || '?'} |
+                    ATT: ${stats.att || '?'} | DEF: ${stats.def || '?'} |
+                    SPD: ${stats.spd || '?'} | DEX: ${stats.dex || '?'}
                 </div>
+                <div class="char-details" style="font-size:10px;color:#665848">${char.characterUuid}</div>
             `;
+            card.appendChild(iconDiv);
+            card.appendChild(infoDiv);
             card.addEventListener('click', () => {
                 document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
                 card.classList.add('selected');
@@ -175,7 +201,17 @@ function showCharacterSelect() {
     for (let i = 0; i < ALL_CLASSES.length; i++) {
         const opt = document.createElement('div');
         opt.className = 'class-option';
-        opt.textContent = ALL_CLASSES[i];
+        const si = Math.floor(i / 3);
+        const lr = (i % 3) * 4;
+        const cCvs = document.createElement('canvas');
+        cCvs.width = 28; cCvs.height = 28;
+        cCvs.style.cssText = 'vertical-align:middle;margin-right:6px;';
+        const cCtx = cCvs.getContext('2d');
+        cCtx.imageSmoothingEnabled = false;
+        const cImg = _charSpriteSheets[`rotmg-classes-${si}`];
+        if (cImg) cCtx.drawImage(cImg, 0, lr * 8, 8, 8, 0, 0, 28, 28);
+        opt.appendChild(cCvs);
+        opt.appendChild(document.createTextNode(ALL_CLASSES[i]));
         opt.addEventListener('click', () => {
             document.querySelectorAll('.class-option').forEach(o => o.classList.remove('selected'));
             opt.classList.add('selected');
@@ -935,18 +971,13 @@ function checkCollision(entity, dx, dy) {
 // --- Performance Overlay ---
 let _perfEl = null;
 function updatePerfOverlay() {
-    if (!_perfEl) {
+    if (!_perfEl || !_perfEl.parentNode) {
         _perfEl = document.createElement('div');
         _perfEl.id = 'perf-overlay';
-        _perfEl.style.cssText = 'color:#aaa;font:11px monospace;margin-top:6px;line-height:1.4;';
-        // Append inside connection-status so it sits directly below it
-        const statusEl = document.getElementById('connection-status');
-        if (statusEl) {
-            statusEl.appendChild(_perfEl);
-        } else {
-            _perfEl.style.cssText = 'position:fixed;top:10px;left:10px;color:#aaa;font:11px monospace;z-index:100;pointer-events:none;text-shadow:1px 1px 2px #000;line-height:1.4;';
-            document.body.appendChild(_perfEl);
-        }
+        _perfEl.style.cssText = 'position:absolute;top:10px;left:10px;margin-top:28px;color:#aaa;font:11px monospace;z-index:11;pointer-events:none;text-shadow:1px 1px 2px #000;line-height:1.4;background:#1a1218cc;padding:4px 10px;border-radius:3px;';
+        const gameScreen = document.getElementById('game-screen');
+        if (gameScreen) gameScreen.appendChild(_perfEl);
+        else document.body.appendChild(_perfEl);
     }
     const m = perfMetrics;
     const fpsColor = m.fps >= 55 ? '#6f6' : m.fps >= 30 ? '#ff6' : '#f66';

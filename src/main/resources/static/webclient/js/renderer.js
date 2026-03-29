@@ -345,9 +345,52 @@ export class GameRenderer {
             this.renderPlayer(player, offsetX, offsetY, id === gameState.playerId, gameState);
         }
 
-        // Render bullets
+        // Render bullets — viewport-culled + capped for performance.
+        const bulletGfx = new PIXI.Graphics();
+        if (!this._bulletTexCache) this._bulletTexCache = {};
+        const screenW = this.app.screen.width, screenH = this.app.screen.height;
+        const MAX_RENDERED_BULLETS = 200;
+        let bulletCount = 0;
+
         for (const [id, bullet] of gameState.bullets) {
-            this.renderBullet(bullet, offsetX, offsetY, gameState);
+            const sx = bullet.pos.x * SCALE + offsetX;
+            const sy = bullet.pos.y * SCALE + offsetY;
+
+            // Viewport culling — skip bullets outside screen bounds
+            if (sx < -64 || sx > screenW + 64 || sy < -64 || sy > screenH + 64) continue;
+            if (++bulletCount > MAX_RENDERED_BULLETS) break;
+
+            const size = (bullet.size || 4) * SCALE;
+            const projGroup = gameState.projectileGroups[bullet.projectileId];
+            let tex = null;
+            if (projGroup && projGroup.spriteKey) {
+                const cacheKey = projGroup.spriteKey + ':' + (projGroup.row||0) + ':' + (projGroup.col||0);
+                if (!(cacheKey in this._bulletTexCache)) {
+                    this._bulletTexCache[cacheKey] = this.getRegion(
+                        projGroup.spriteKey, projGroup.col || 0, projGroup.row || 0,
+                        projGroup.spriteSize || BASE_SPRITE_SIZE, projGroup.spriteSize || BASE_SPRITE_SIZE);
+                }
+                tex = this._bulletTexCache[cacheKey];
+            }
+
+            if (tex) {
+                const spr = new PIXI.Sprite(tex);
+                spr.anchor.set(0.5, 0.5);
+                spr.x = sx + size / 2;
+                spr.y = sy + size / 2;
+                spr.width = size; spr.height = size;
+                const tfAngle = Math.PI / 2;
+                const angleOffset = projGroup ? parseAngleTemplate(projGroup.angleOffset) : 0;
+                spr.rotation = -bullet.angle + tfAngle + (angleOffset > 0 ? angleOffset : 0);
+                this.entityLayer.addChild(spr);
+            } else {
+                bulletGfx.beginFill(0xffff80);
+                bulletGfx.drawCircle(sx + size / 2, sy + size / 2, size / 3);
+                bulletGfx.endFill();
+            }
+        }
+        if (bulletGfx.geometry.graphicsData.length > 0) {
+            this.entityLayer.addChild(bulletGfx);
         }
     }
 
@@ -467,46 +510,7 @@ export class GameRenderer {
         }
     }
 
-    renderBullet(bullet, offsetX, offsetY, gameState) {
-        const sx = bullet.pos.x * SCALE + offsetX;
-        const sy = bullet.pos.y * SCALE + offsetY;
-        const size = (bullet.size || 4) * SCALE;
-
-        // Try projectile sprite from data
-        const projGroup = gameState ? gameState.projectileGroups[bullet.projectileId] : null;
-        let tex = null;
-        if (projGroup && projGroup.spriteKey) {
-            tex = this.getRegion(projGroup.spriteKey, projGroup.col || 0, projGroup.row || 0,
-                                 projGroup.spriteSize || BASE_SPRITE_SIZE, projGroup.spriteSize || BASE_SPRITE_SIZE);
-        }
-
-        if (tex) {
-            const spr = new PIXI.Sprite(tex);
-            spr.anchor.set(0.5, 0.5);
-            spr.x = sx + size / 2;
-            spr.y = sy + size / 2;
-            spr.width = size; spr.height = size;
-
-            // Rotation matching Java Bullet.render():
-            // tfAngle = PI/2 (base rotation for sprite sheet orientation)
-            // rotation = -angle + tfAngle [+ angleOffset from sprite model]
-            const tfAngle = Math.PI / 2;
-            const angleOffset = projGroup ? parseAngleTemplate(projGroup.angleOffset) : 0;
-            if (angleOffset > 0) {
-                spr.rotation = -bullet.angle + tfAngle + angleOffset;
-            } else {
-                spr.rotation = -bullet.angle + tfAngle;
-            }
-
-            this.entityLayer.addChild(spr);
-        } else {
-            const g = new PIXI.Graphics();
-            g.beginFill(0xffff80);
-            g.drawCircle(sx + size / 2, sy + size / 2, size / 3);
-            g.endFill();
-            this.entityLayer.addChild(g);
-        }
-    }
+    // renderBullet removed — bullets are now batched inline in renderEntities()
 
     renderLootContainer(loot, offsetX, offsetY) {
         const sx = loot.pos.x * SCALE + offsetX;

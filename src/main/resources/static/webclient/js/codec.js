@@ -122,11 +122,11 @@ export class BinaryWriter {
 
 export const NetStats = {
     read(r) {
-        return { hp: r.readShort(), mp: r.readShort(), def: r.readShort(), att: r.readShort(),
+        return { hp: r.readInt(), mp: r.readShort(), def: r.readShort(), att: r.readShort(),
                  spd: r.readShort(), dex: r.readShort(), vit: r.readShort(), wis: r.readShort() };
     },
     write(w, s) {
-        w.writeShort(s.hp); w.writeShort(s.mp); w.writeShort(s.def); w.writeShort(s.att);
+        w.writeInt(s.hp); w.writeShort(s.mp); w.writeShort(s.def); w.writeShort(s.att);
         w.writeShort(s.spd); w.writeShort(s.dex); w.writeShort(s.vit); w.writeShort(s.wis);
     }
 };

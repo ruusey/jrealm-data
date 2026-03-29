@@ -123,6 +123,7 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     border-radius: 4px;
     image-rendering: pixelated;
     display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
     font-size: 24px;
 }
 .char-card .char-info { text-align: left; flex: 1; }
