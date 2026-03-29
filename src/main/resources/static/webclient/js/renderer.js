@@ -468,9 +468,10 @@ export class GameRenderer {
 
             // Status effect tinting (matches Java Enemy.updateEffectState)
             if (enemy.effectIds) {
-                if (this._hasEffect(enemy.effectIds, 15))     spr.tint = 0x333338;  // STASIS - dark grey stone
-                else if (this._hasEffect(enemy.effectIds, 2)) spr.tint = 0x888888;  // PARALYZED - grayscale
-                else if (this._hasEffect(enemy.effectIds, 3)) spr.tint = 0x88AACC;  // STUNNED - blue/decay
+                if (this._hasEffect(enemy.effectIds, 15))      spr.tint = 0x333338;  // STASIS - dark grey stone
+                else if (this._hasEffect(enemy.effectIds, 2))  spr.tint = 0x888888;  // PARALYZED - grayscale
+                else if (this._hasEffect(enemy.effectIds, 3))  spr.tint = 0x88AACC;  // STUNNED - blue/decay
+                else if (this._hasEffect(enemy.effectIds, 16)) spr.tint = 0x992255;  // CURSED - dark red-purple
             }
             this.entityLayer.addChild(spr);
         } else {
