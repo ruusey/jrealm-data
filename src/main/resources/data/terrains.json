@@ -5,6 +5,7 @@
 		"width": 512,
 		"height": 512,
 		"tileSize": 32,
+		"enemyDensity": 0.003,
 		"tileGroups": [
 			{
 				"name": "Beach",
