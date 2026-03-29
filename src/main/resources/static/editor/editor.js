@@ -804,6 +804,20 @@ function showEnemyDetail(enemy) {
     document.getElementById('enemySpriteSize').value = enemy.spriteSize || 8;
     document.getElementById('enemySize').value = enemy.size || 32;
     document.getElementById('enemyAttackId').value = enemy.attackId != null ? enemy.attackId : -1;
+    // Show context for attackId: -1 = scripted, >= 0 = projectile group
+    const atkId = enemy.attackId != null ? enemy.attackId : -1;
+    const atkInfo = document.getElementById('attackIdInfo');
+    const atkBtn = document.getElementById('editAttackIdBtn');
+    if (atkId === -1) {
+        atkInfo.textContent = '(Server-scripted attack)';
+        atkInfo.style.color = '#c8a86e';
+        atkBtn.style.display = 'none';
+    } else {
+        const pg = getProjGroupById(atkId);
+        atkInfo.textContent = pg ? '(Proj Group exists)' : '(Group not found!)';
+        atkInfo.style.color = pg ? '#4a4' : '#e44';
+        atkBtn.style.display = 'inline-block';
+    }
     document.getElementById('enemyXp').value = enemy.xp || 0;
     document.getElementById('enemyHealth').value = enemy.health || 0;
     document.getElementById('enemyMaxSpeed').value = enemy.maxSpeed || 0;
@@ -1938,6 +1952,18 @@ function bindEvents() {
   document.getElementById('addEnemyBtn').addEventListener('click', addEnemy);
   document.getElementById('deleteEnemyBtn').addEventListener('click', deleteEnemy);
   document.getElementById('addPhaseBtn').addEventListener('click', addPhase);
+  document.getElementById('editAttackIdBtn').addEventListener('click', () => {
+    const atkId = parseInt(document.getElementById('enemyAttackId').value);
+    if (atkId >= 0) navigateToProjGroup(atkId);
+  });
+  document.getElementById('enemyAttackId').addEventListener('change', () => {
+    if (!selectedEnemy) return;
+    const atkId = parseInt(document.getElementById('enemyAttackId').value);
+    const info = document.getElementById('attackIdInfo');
+    const btn = document.getElementById('editAttackIdBtn');
+    if (atkId === -1) { info.textContent = '(Server-scripted attack)'; info.style.color = '#c8a86e'; btn.style.display = 'none'; }
+    else { const pg = getProjGroupById(atkId); info.textContent = pg ? '(Proj Group exists)' : '(Group not found!)'; info.style.color = pg ? '#4a4' : '#e44'; btn.style.display = 'inline-block'; }
+  });
   document.getElementById('pickEnemySpriteBtn').addEventListener('click', () => {
     pickMode = !pickMode;
     const btn = document.getElementById('pickEnemySpriteBtn');

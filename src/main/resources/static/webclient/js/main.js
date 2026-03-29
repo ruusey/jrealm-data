@@ -1,5 +1,10 @@
 // OpenRealm Web Client - Main Entry Point
 
+// Strip credentials from URL immediately on load (prevents login data leaking via GET params)
+if (window.location.search) {
+    window.history.replaceState({}, '', window.location.pathname);
+}
+
 import { ApiClient } from './api.js';
 import { GameNetwork } from './network.js';
 import { GameState, CLASS_NAMES } from './game.js';

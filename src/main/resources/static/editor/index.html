@@ -333,7 +333,10 @@
                 <label>Col: <input type="number" id="enemyCol" min="0"></label>
                 <label>Sprite Size: <select id="enemySpriteSize"><option value="8">8</option><option value="16">16</option></select></label>
                 <label>Render Size: <input type="number" id="enemySize" min="8"></label>
-                <label>Attack ID: <input type="number" id="enemyAttackId"></label>
+                <label>Attack ID: <input type="number" id="enemyAttackId">
+                    <span id="attackIdInfo" style="font-size:10px;color:#888"></span>
+                    <button id="editAttackIdBtn" class="btn-pick" style="padding:2px 6px;font-size:10px;display:none">Edit Group</button>
+                </label>
                 <label>XP: <input type="number" id="enemyXp" min="0"></label>
                 <label>Health: <input type="number" id="enemyHealth" min="1"></label>
                 <label>Max Speed: <input type="number" id="enemyMaxSpeed" min="0" step="0.1"></label>

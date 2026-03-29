@@ -461,5 +461,41 @@
 			269,
 			276
 		]
+	},
+	{
+		"lootGroupId": 37,
+		"lootGroupName": "T0-T1 Rings",
+		"potentialDrops": [
+			40,
+			41,
+			42,
+			43,
+			44,
+			45,
+			46,
+			47
+		]
+	},
+	{
+		"lootGroupId": 38,
+		"lootGroupName": "T2-T3 Rings",
+		"potentialDrops": [
+			48,
+			49,
+			50,
+			51,
+			52,
+			53,
+			54,
+			55
+		]
+	},
+	{
+		"lootGroupId": 39,
+		"lootGroupName": "T4+ Rings",
+		"potentialDrops": [
+			56,
+			57
+		]
 	}
 ]

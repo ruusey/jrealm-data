@@ -103,9 +103,10 @@ select:focus, input:focus { outline: none; border-color: #e94560; }
   background: #16213e; border-radius: 4px; padding: 10px; margin-top: 8px; flex-shrink: 0;
 }
 .tile-detail h3, .terrain-detail h3 { font-size: 13px; color: #e94560; margin-bottom: 8px; }
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; margin-bottom: 8px; }
-.detail-grid label { font-size: 12px; display: flex; align-items: center; gap: 4px; }
-.detail-grid input, .detail-grid select { width: 100%; min-width: 0; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; margin-bottom: 10px; }
+.detail-grid label { font-size: 13px; display: flex; flex-direction: column; gap: 3px; }
+.detail-grid input, .detail-grid select { width: 100%; min-width: 0; padding: 5px 8px; font-size: 13px; background: #1a1a2a; border: 1px solid #333; color: #ccc; border-radius: 3px; }
+.detail-grid input:focus, .detail-grid select:focus { border-color: #e94560; outline: none; }
 .detail-flags { display: flex; gap: 12px; margin-bottom: 8px; font-size: 12px; }
 .detail-flags label { display: flex; align-items: center; gap: 4px; }
 .detail-preview { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 12px; }
@@ -213,10 +214,11 @@ select:focus, input:focus { outline: none; border-color: #e94560; }
 .item-detail h3 { font-size: 13px; color: #e94560; }
 .item-detail h4, .tile-detail h4 { font-size: 12px; color: #8cf; margin: 8px 0 4px; }
 .stats-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 8px; font-size: 12px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px; font-size: 13px;
 }
-.stats-grid label { display: flex; align-items: center; gap: 2px; }
-.stats-grid input { width: 100%; min-width: 0; }
+.stats-grid label { display: flex; flex-direction: column; gap: 3px; }
+.stats-grid input { width: 100%; min-width: 0; padding: 5px 8px; font-size: 13px; background: #1a1a2a; border: 1px solid #333; color: #ccc; border-radius: 3px; }
+.stats-grid input:focus { border-color: #e94560; outline: none; }
 
 .proj-row {
   display: grid; grid-template-columns: 28px 1fr 1fr 1fr 1fr 1fr 24px;
