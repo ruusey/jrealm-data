@@ -3,10 +3,13 @@
 		"enemyId": 1,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.25,
@@ -20,10 +23,13 @@
 		"enemyId": 2,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.25,
@@ -37,10 +43,13 @@
 		"enemyId": 3,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.25,
@@ -54,10 +63,13 @@
 		"enemyId": 4,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.25,
@@ -71,10 +83,13 @@
 		"enemyId": 5,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.25,
@@ -88,9 +103,11 @@
 		"enemyId": 6,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		},
 		"portalDrops": {
 			"1": 0.15,
@@ -101,19 +118,24 @@
 		"enemyId": 7,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		}
 	},
 	{
 		"enemyId": 8,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		},
 		"portalDrops": {
 			"7": 0.2,
@@ -124,10 +146,13 @@
 		"enemyId": 9,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"7": 0.2,
@@ -138,10 +163,13 @@
 		"enemyId": 10,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		},
 		"portalDrops": {
 			"7": 0.2,
@@ -152,10 +180,13 @@
 		"enemyId": 11,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.2,
@@ -167,20 +198,24 @@
 		"enemyId": 13,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		}
 	},
 	{
 		"enemyId": 14,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		}
 	},
 	{
@@ -205,111 +240,139 @@
 		"enemyId": 17,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		}
 	},
 	{
 		"enemyId": 18,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		}
 	},
 	{
 		"enemyId": 19,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
 		"enemyId": 20,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
 		"enemyId": 21,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		}
 	},
 	{
 		"enemyId": 22,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		}
 	},
 	{
 		"enemyId": 23,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		}
 	},
 	{
 		"enemyId": 24,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
 		"enemyId": 25,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		}
 	},
 	{
 		"enemyId": 26,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		}
 	},
 	{
 		"enemyId": 27,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		}
 	},
 	{
@@ -336,19 +399,24 @@
 		"enemyId": 29,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		}
 	},
 	{
 		"enemyId": 30,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
@@ -519,19 +587,24 @@
 		"enemyId": 41,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		}
 	},
 	{
 		"enemyId": 42,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"1": 0.15,
@@ -542,10 +615,13 @@
 		"enemyId": 43,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		},
 		"portalDrops": {
 			"7": 0.2,
@@ -556,10 +632,13 @@
 		"enemyId": 44,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"5": 0.2,
@@ -570,10 +649,13 @@
 		"enemyId": 45,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"5": 0.2,
@@ -584,10 +666,13 @@
 		"enemyId": 46,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		},
 		"portalDrops": {
 			"11": 0.15,
@@ -598,10 +683,13 @@
 		"enemyId": 48,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"7": 0.2,
@@ -613,29 +701,37 @@
 		"enemyId": 51,
 		"drops": {
 			"group:0": 1.0,
-			"group:3": 0.18,
-			"group:18": 0.12,
-			"group:33": 0.08
+			"group:3": 0.12,
+			"group:4": 0.08,
+			"group:18": 0.08,
+			"group:37": 0.05,
+			"group:33": 0.06
 		}
 	},
 	{
 		"enemyId": 52,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
 		"enemyId": 53,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		},
 		"portalDrops": {
 			"7": 0.15,
@@ -646,20 +742,26 @@
 		"enemyId": 54,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
 		"enemyId": 55,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.15,
@@ -671,10 +773,13 @@
 		"enemyId": 56,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.15,
@@ -686,10 +791,13 @@
 		"enemyId": 57,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"7": 0.15,
@@ -700,10 +808,13 @@
 		"enemyId": 58,
 		"drops": {
 			"group:0": 1.0,
-			"group:8": 0.15,
-			"group:9": 0.1,
-			"group:22": 0.1,
-			"group:35": 0.08
+			"group:8": 0.1,
+			"group:9": 0.08,
+			"group:10": 0.05,
+			"group:22": 0.06,
+			"group:23": 0.05,
+			"group:38": 0.04,
+			"group:35": 0.06
 		},
 		"portalDrops": {
 			"4": 0.15,
@@ -715,11 +826,13 @@
 		"enemyId": 59,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		},
 		"portalDrops": {
 			"4": 0.15,
@@ -730,11 +843,13 @@
 		"enemyId": 60,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		},
 		"portalDrops": {
 			"4": 0.2,
@@ -824,53 +939,65 @@
 		"enemyId": 12,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
 		"enemyId": 15,
 		"drops": {
 			"group:0": 1.0,
-			"group:5": 0.15,
-			"group:6": 0.1,
-			"group:19": 0.1,
-			"group:34": 0.08
+			"group:5": 0.1,
+			"group:6": 0.08,
+			"group:7": 0.05,
+			"group:19": 0.06,
+			"group:20": 0.05,
+			"group:37": 0.04,
+			"group:34": 0.06
 		}
 	},
 	{
 		"enemyId": 47,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		}
 	},
 	{
 		"enemyId": 49,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		}
 	},
 	{
 		"enemyId": 50,
 		"drops": {
 			"group:0": 1.0,
-			"group:11": 0.15,
-			"group:12": 0.12,
-			"group:24": 0.1,
-			"group:35": 0.08,
-			"group:36": 0.04
+			"group:11": 0.1,
+			"group:12": 0.08,
+			"group:13": 0.06,
+			"group:24": 0.06,
+			"group:25": 0.05,
+			"group:39": 0.04,
+			"group:36": 0.06
 		}
 	}
 ]
