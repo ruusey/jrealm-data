@@ -169,12 +169,12 @@
 		"size": 64,
 		"attackId": 7,
 		"xp": 1250,
-		"health": 2000,
+		"health": 3200,
 		"maxSpeed": 1.6,
 		"chaseRange": 390,
 		"attackRange": 240,
 		"stats": {
-			"hp": 2000,
+			"hp": 3200,
 			"def": 5,
 			"dex": 10
 		},

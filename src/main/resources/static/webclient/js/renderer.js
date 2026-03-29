@@ -325,24 +325,24 @@ export class GameRenderer {
         }
         this.entityLayer.removeChildren();
 
-        // Render loot containers
-        for (const [id, loot] of gameState.lootContainers) {
-            this.renderLootContainer(loot, offsetX, offsetY);
-        }
+        // Y-sort all entities so things further north render behind things further south.
+        // This creates proper depth: entities behind walls appear behind them.
+        const sortable = [];
+        for (const [id, loot] of gameState.lootContainers)
+            sortable.push({ type: 'loot', data: loot, y: loot.pos.y + (loot.size || 32) });
+        for (const [id, portal] of gameState.portals)
+            sortable.push({ type: 'portal', data: portal, y: portal.pos.y + (portal.size || 32) });
+        for (const [id, enemy] of gameState.enemies)
+            sortable.push({ type: 'enemy', data: enemy, y: enemy.pos.y + (enemy.size || 32) });
+        for (const [id, player] of gameState.players)
+            sortable.push({ type: 'player', data: player, id: id, y: player.pos.y + (player.size || 32) });
+        sortable.sort((a, b) => a.y - b.y);
 
-        // Render portals
-        for (const [id, portal] of gameState.portals) {
-            this.renderPortal(portal, offsetX, offsetY, gameState);
-        }
-
-        // Render enemies
-        for (const [id, enemy] of gameState.enemies) {
-            this.renderEnemy(enemy, offsetX, offsetY, gameState);
-        }
-
-        // Render other players
-        for (const [id, player] of gameState.players) {
-            this.renderPlayer(player, offsetX, offsetY, id === gameState.playerId, gameState);
+        for (const ent of sortable) {
+            if (ent.type === 'loot') this.renderLootContainer(ent.data, offsetX, offsetY);
+            else if (ent.type === 'portal') this.renderPortal(ent.data, offsetX, offsetY, gameState);
+            else if (ent.type === 'enemy') this.renderEnemy(ent.data, offsetX, offsetY, gameState);
+            else if (ent.type === 'player') this.renderPlayer(ent.data, offsetX, offsetY, ent.id === gameState.playerId, gameState);
         }
 
         // Render bullets — viewport-culled + capped for performance.
