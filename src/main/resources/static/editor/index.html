@@ -26,6 +26,8 @@
       <button class="tab" data-tab="terrains">Terrains</button>
       <button class="tab" data-tab="maps">Maps</button>
       <button class="tab" data-tab="items">Items</button>
+      <button class="tab" data-tab="enemies">Enemies</button>
+      <button class="tab" data-tab="projgroups">Projectiles</button>
     </div>
     <div class="toolbar">
       <label>Sheet:
@@ -304,7 +306,109 @@
         </div>
       </div>
     </div>
+
+    <!-- Right panel: Enemies tab -->
+    <div class="panel tile-panel" id="enemiesTab" style="display:none">
+        <div class="tile-header">
+            <h2>Enemies (<span id="enemyCount">0</span>)</h2>
+            <input type="text" id="enemySearch" placeholder="Search enemies...">
+            <button id="addEnemyBtn" class="btn-add">+ Add</button>
+        </div>
+        <div class="tile-list" id="enemyListView"></div>
+
+        <div class="item-detail" id="enemyDetail" style="display:none">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                <button id="enemyBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+                <h3 id="enemyTitle" style="margin:0">Enemy</h3>
+            </div>
+
+            <div class="detail-grid">
+                <label>ID: <input type="number" id="enemyId" readonly></label>
+                <label>Name: <input type="text" id="enemyName"></label>
+                <label>Sprite: <select id="enemySprite"></select></label>
+                <label>Row: <input type="number" id="enemyRow" min="0"></label>
+                <label>Col: <input type="number" id="enemyCol" min="0"></label>
+                <label>Sprite Size: <select id="enemySpriteSize"><option value="8">8</option><option value="16">16</option></select></label>
+                <label>Render Size: <input type="number" id="enemySize" min="8"></label>
+                <label>Attack ID: <input type="number" id="enemyAttackId"></label>
+                <label>XP: <input type="number" id="enemyXp" min="0"></label>
+                <label>Health: <input type="number" id="enemyHealth" min="1"></label>
+                <label>Max Speed: <input type="number" id="enemyMaxSpeed" min="0" step="0.1"></label>
+                <label>Chase Range: <input type="number" id="enemyChaseRange" min="0" step="0.5"></label>
+                <label>Attack Range: <input type="number" id="enemyAttackRange" min="0" step="0.5"></label>
+            </div>
+
+            <div class="detail-preview">
+                <span>Preview:</span>
+                <canvas id="enemyPreviewCanvas" width="64" height="64"></canvas>
+                <span id="enemyPreviewLabel"></span>
+            </div>
+
+            <h4>Stats</h4>
+            <div class="stats-grid">
+                <label>HP <input type="number" id="eStatHp"></label>
+                <label>MP <input type="number" id="eStatMp"></label>
+                <label>ATT <input type="number" id="eStatAtt"></label>
+                <label>DEF <input type="number" id="eStatDef"></label>
+                <label>SPD <input type="number" id="eStatSpd"></label>
+                <label>DEX <input type="number" id="eStatDex"></label>
+                <label>VIT <input type="number" id="eStatVit"></label>
+                <label>WIS <input type="number" id="eStatWis"></label>
+            </div>
+
+            <h4>Phases</h4>
+            <div id="enemyPhases"></div>
+            <button id="addPhaseBtn" class="btn-add" style="margin-top:4px">+ Add Phase</button>
+
+            <div class="detail-actions" style="margin-top:8px">
+                <button id="applyEnemyBtn" class="btn-apply">Apply</button>
+                <button id="pickEnemySpriteBtn" class="btn-pick">Pick Sprite</button>
+                <button id="goToEnemySheetBtn" class="btn-pick">Go to Sheet</button>
+                <button id="deleteEnemyBtn" class="btn-delete">Delete</button>
+            </div>
+        </div>
+    </div>
   </div>
+</div>
+
+<!-- Right panel: Projectile Groups tab -->
+<div class="panel tile-panel" id="projgroupsTab" style="display:none">
+    <div class="tile-header">
+        <h2>Projectile Groups (<span id="pgCount">0</span>)</h2>
+        <input type="text" id="pgSearch" placeholder="Search groups...">
+        <button id="addPgBtn" class="btn-add">+ Add</button>
+    </div>
+    <div class="tile-list" id="pgListView"></div>
+
+    <div class="item-detail" id="pgDetail" style="display:none">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <button id="pgBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+            <h3 id="pgDetailTitle" style="margin:0">Projectile Group</h3>
+        </div>
+        <div class="detail-grid">
+            <label>Group ID: <input type="number" id="pgDetailId" readonly></label>
+            <label>Sprite: <select id="pgDetailSprite"></select></label>
+            <label>Row: <input type="number" id="pgDetailRow" min="0"></label>
+            <label>Col: <input type="number" id="pgDetailCol" min="0"></label>
+            <label>Angle Offset: <input type="text" id="pgDetailAngleOffset" placeholder="e.g. {{PI/4}}"></label>
+        </div>
+        <div class="detail-preview">
+            <span>Preview:</span>
+            <canvas id="pgDetailPreview" width="64" height="64"></canvas>
+            <span id="pgDetailPreviewLabel"></span>
+        </div>
+
+        <h4>Projectiles</h4>
+        <div id="pgDetailProjectiles" style="max-height:300px;overflow-y:auto"></div>
+
+        <div class="detail-actions" style="margin-top:8px">
+            <button id="applyPgDetailBtn" class="btn-apply">Apply</button>
+            <button id="addPgProjBtn" class="btn-add">+ Add Projectile</button>
+            <button id="pickPgSpriteBtn" class="btn-pick">Pick Sprite</button>
+            <button id="goToPgSheetBtn" class="btn-pick">Go to Sheet</button>
+            <button id="deletePgBtn" class="btn-delete">Delete</button>
+        </div>
+    </div>
 </div>
 
 <!-- Tile Picker Modal -->

@@ -232,6 +232,18 @@
 		"difficulty": 6,
 		"entryPoint": false,
 		"bossNode": true,
+		"childNodes": ["oryx_castle"],
+		"portalDropNodeMap": {
+			"oryx_castle": 20
+		}
+	},
+	{
+		"nodeId": "oryx_castle",
+		"displayName": "Oryx's Castle",
+		"mapId": 25,
+		"difficulty": 7,
+		"entryPoint": false,
+		"bossNode": true,
 		"childNodes": [],
 		"portalDropNodeMap": {}
 	}

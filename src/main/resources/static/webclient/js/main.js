@@ -789,7 +789,7 @@ function processInput(dt) {
     if (shootCooldown > 0) shootCooldown -= dt;
     const aim = isTouchDevice() ? getAimDir() : null;
     const wantsShoot = aim ? aim.shooting : input.wantsShoot();
-    if (wantsShoot && shootCooldown <= 0 && renderer) {
+    if (wantsShoot && !isMouseOverHud && shootCooldown <= 0 && renderer) {
         let world;
         if (aim && aim.shooting) {
             // Aim joystick: project direction from player position
@@ -823,7 +823,7 @@ function processInput(dt) {
     }
 
     // Ability (right click)
-    if (input.wantsAbility() && renderer) {
+    if (input.wantsAbility() && !isMouseOverHud && renderer) {
         const world = renderer.getWorldCoords(input.mouseX, input.mouseY, game);
         network.sendUseAbility(game.playerId, world.x, world.y);
     }
@@ -867,7 +867,7 @@ function processInput(dt) {
             input.keys[key] = false;
             const slotIdx = n + 3;
             const item = game.inventory[slotIdx];
-            if (item && item.itemId > 0 && item.consumable) {
+            if (item && item.itemId >= 0 && item.consumable) {
                 network.sendMoveItem(game.playerId, slotIdx, slotIdx, false, true);
                 lastInvKey = '';
             }
@@ -1051,12 +1051,15 @@ function updateHUD() {
 // --- Inventory System ---
 let selectedSlot = -1; // Currently selected slot for swap (-1 = none)
 let lastInvKey = '';
+let isMouseOverHud = false; // Prevents shooting/ability when hovering over UI
+let dragSlot = -1; // Slot being dragged (-1 = none)
+let dragEl = null; // Floating drag element
 let lastLootKey = '';
 // Sprite data URL cache to avoid re-extracting every frame
 const spriteCache = {};
 
 function getItemSpriteUrl(item) {
-    if (!item || item.itemId <= 0 || !renderer) return null;
+    if (!item || item.itemId < 0 || !renderer) return null;
     const cacheKey = item.itemId;
     if (spriteCache[cacheKey]) return spriteCache[cacheKey];
     const itemDef = game.itemData[item.itemId] || item;
@@ -1133,7 +1136,7 @@ function updateGroundLootUI() {
             // Highlight items the partner has SELECTED for trade
             if (partnerSelected[i]) div.classList.add('trade-selected');
 
-            if (item && item.itemId > 0) {
+            if (item && item.itemId >= 0) {
                 const tooltip = game.getItemTooltip(item);
                 if (tooltip) div.title = tooltip;
                 const spriteUrl = getItemSpriteUrl(item);
@@ -1185,6 +1188,7 @@ function updateGroundLootUI() {
 function createSlot(item, label, slotIdx, isLoot = false) {
     const div = document.createElement('div');
     div.className = 'inv-slot' + (isLoot ? ' loot-slot' : '');
+    div.dataset.slotIdx = slotIdx;
     if (slotIdx === selectedSlot) div.classList.add('selected');
 
     // Trade selection highlight — use local tracking
@@ -1194,7 +1198,7 @@ function createSlot(item, label, slotIdx, isLoot = false) {
         }
     }
 
-    if (item && item.itemId > 0) {
+    if (item && item.itemId >= 0) {
         // Rich tooltip
         const tooltip = game.getItemTooltip(item);
         if (tooltip) div.title = tooltip;
@@ -1227,8 +1231,10 @@ function createSlot(item, label, slotIdx, isLoot = false) {
     let lastClickTime = 0;
     div.addEventListener('click', (e) => {
         e.stopPropagation();
+        // Skip click if we just finished a drag
+        if (dragSlot >= 0) return;
         const now = Date.now();
-        if (now - lastClickTime < 350 && item && item.itemId > 0 && item.consumable
+        if (now - lastClickTime < 350 && item && item.itemId >= 0 && item.consumable
             && slotIdx >= 4 && slotIdx <= 11) {
             // Double click/tap — consume the item
             network.sendMoveItem(game.playerId, slotIdx, slotIdx, false, true);
@@ -1241,6 +1247,15 @@ function createSlot(item, label, slotIdx, isLoot = false) {
     });
     // Right click (desktop) = drop
     div.addEventListener('contextmenu', (e) => { e.preventDefault(); e.stopPropagation(); onSlotRightClick(slotIdx, item); });
+
+    // Drag start (desktop)
+    div.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return; // left click only
+        if (item && item.itemId >= 0) {
+            e.preventDefault();
+            startDrag(slotIdx, item, e);
+        }
+    });
 
     return div;
 }
@@ -1260,7 +1275,7 @@ function onSlotClick(slotIdx, item, isRightClick = false) {
     }
 
     // Ground loot: single click = pick up to first empty inv slot
-    if (slotIdx >= 20 && slotIdx <= 27 && item && item.itemId > 0) {
+    if (slotIdx >= 20 && slotIdx <= 27 && item && item.itemId >= 0) {
         // console.log(`[INV] Picking up from ground slot ${slotIdx}, itemId=${item.itemId}`);
         // Send with target=4 (first inv slot) so server's isInv1 check passes
         // Server will use firstEmptyInvSlot() regardless
@@ -1271,7 +1286,7 @@ function onSlotClick(slotIdx, item, isRightClick = false) {
 
     if (selectedSlot === -1) {
         // Nothing selected - select this slot if it has an item
-        if (item && item.itemId > 0) {
+        if (item && item.itemId >= 0) {
             selectedSlot = slotIdx;
             lastInvKey = '';
         }
@@ -1296,7 +1311,7 @@ function onSlotRightClick(slotIdx, item) {
         return;
     }
     // Right-click: drop item to ground
-    if (item && item.itemId > 0 && slotIdx >= 0 && slotIdx <= 11) {
+    if (item && item.itemId >= 0 && slotIdx >= 0 && slotIdx <= 11) {
         // console.log(`[INV] Dropping item from slot ${slotIdx}`);
         network.sendMoveItem(game.playerId, -1, slotIdx, true, false);
         lastInvKey = '';
@@ -1326,6 +1341,68 @@ document.getElementById('game-canvas-container').addEventListener('click', () =>
         lastInvKey = '';
     }
 });
+
+// --- HUD hover detection (blocks shooting/ability over UI) ---
+document.getElementById('hud').addEventListener('mouseenter', () => { isMouseOverHud = true; });
+document.getElementById('hud').addEventListener('mouseleave', () => { isMouseOverHud = false; });
+document.getElementById('chat-panel').addEventListener('mouseenter', () => { isMouseOverHud = true; });
+document.getElementById('chat-panel').addEventListener('mouseleave', () => { isMouseOverHud = false; });
+
+// --- Drag and Drop for inventory slots ---
+function startDrag(slotIdx, item, e) {
+    if (!item || item.itemId < 0) return;
+    dragSlot = slotIdx;
+    selectedSlot = -1;
+
+    dragEl = document.createElement('div');
+    dragEl.className = 'inv-slot dragging';
+    dragEl.style.cssText = 'position:fixed;pointer-events:none;z-index:200;opacity:0.8;width:40px;height:40px;';
+    const spriteUrl = getItemSpriteUrl(item);
+    if (spriteUrl) {
+        const img = document.createElement('img');
+        img.src = spriteUrl;
+        img.style.cssText = 'width:100%;height:100%;image-rendering:pixelated;';
+        dragEl.appendChild(img);
+    }
+    document.body.appendChild(dragEl);
+    moveDrag(e);
+}
+
+function moveDrag(e) {
+    if (!dragEl) return;
+    dragEl.style.left = (e.clientX - 20) + 'px';
+    dragEl.style.top = (e.clientY - 20) + 'px';
+}
+
+function endDrag(e) {
+    if (dragSlot < 0 || !dragEl) { cleanupDrag(); return; }
+
+    // Find which slot we dropped on
+    const dropTarget = document.elementFromPoint(e.clientX, e.clientY);
+    const slotEl = dropTarget ? dropTarget.closest('.inv-slot') : null;
+    const targetIdx = slotEl ? parseInt(slotEl.dataset.slotIdx) : -1;
+
+    if (targetIdx >= 0 && targetIdx !== dragSlot && targetIdx <= 27) {
+        if (targetIdx >= 20) {
+            // Drop to ground
+            network.sendMoveItem(game.playerId, -1, dragSlot, true, false);
+        } else {
+            // Swap between inventory/equipment slots
+            network.sendMoveItem(game.playerId, targetIdx, dragSlot, false, false);
+        }
+        lastInvKey = ''; lastLootKey = '';
+    }
+
+    cleanupDrag();
+}
+
+function cleanupDrag() {
+    dragSlot = -1;
+    if (dragEl) { dragEl.remove(); dragEl = null; }
+}
+
+document.addEventListener('mousemove', moveDrag);
+document.addEventListener('mouseup', endDrag);
 
 // --- Chat ---
 function addChatMessage(from, message) {

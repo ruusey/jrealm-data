@@ -270,7 +270,7 @@
 		"consumable": false,
 		"tier": 0,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 0
 	},
 	{
@@ -288,7 +288,7 @@
 		"consumable": false,
 		"tier": 1,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 0
 	},
 	{
@@ -306,7 +306,7 @@
 		"consumable": false,
 		"tier": 2,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 0
 	},
 	{
@@ -324,7 +324,7 @@
 		"consumable": false,
 		"tier": 3,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 0
 	},
 	{
@@ -342,7 +342,7 @@
 		"consumable": false,
 		"tier": 4,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 0
 	},
 	{
@@ -360,7 +360,7 @@
 		"consumable": false,
 		"tier": 5,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 0
 	},
 	{
@@ -378,7 +378,7 @@
 		"consumable": false,
 		"tier": 6,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 0
 	},
 	{
@@ -396,7 +396,7 @@
 		"consumable": false,
 		"tier": 7,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 1
 	},
 	{
@@ -414,7 +414,7 @@
 		"consumable": false,
 		"tier": 8,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 2
 	},
 	{
@@ -432,7 +432,7 @@
 		"consumable": false,
 		"tier": 9,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 3
 	},
 	{
@@ -450,7 +450,7 @@
 		"consumable": false,
 		"tier": 10,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 4
 	},
 	{
@@ -468,7 +468,7 @@
 		"consumable": false,
 		"tier": 11,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 5
 	},
 	{
@@ -486,7 +486,7 @@
 		"consumable": false,
 		"tier": 12,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 6
 	},
 	{
@@ -504,7 +504,7 @@
 		"consumable": false,
 		"tier": 13,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 7
 	},
 	{
@@ -522,7 +522,7 @@
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 8
 	},
 	{
@@ -792,7 +792,7 @@
 		"consumable": false,
 		"tier": -1,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 8
 	},
 	{
@@ -836,7 +836,7 @@
 		"consumable": false,
 		"tier": -1,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 8
 	},
 	{
@@ -985,7 +985,7 @@
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 8
 	},
 	{
@@ -1549,7 +1549,7 @@
 		"consumable": false,
 		"tier": 0,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 0
 	},
 	{
@@ -1567,7 +1567,7 @@
 		"consumable": false,
 		"tier": 1,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 0
 	},
 	{
@@ -1585,7 +1585,7 @@
 		"consumable": false,
 		"tier": 2,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 0
 	},
 	{
@@ -1603,7 +1603,7 @@
 		"consumable": false,
 		"tier": 3,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 0
 	},
 	{
@@ -1621,7 +1621,7 @@
 		"consumable": false,
 		"tier": 4,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 0
 	},
 	{
@@ -1639,7 +1639,7 @@
 		"consumable": false,
 		"tier": 5,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 0
 	},
 	{
@@ -1657,7 +1657,7 @@
 		"consumable": false,
 		"tier": 6,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 0
 	},
 	{
@@ -1675,7 +1675,7 @@
 		"consumable": false,
 		"tier": 7,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 1
 	},
 	{
@@ -1693,7 +1693,7 @@
 		"consumable": false,
 		"tier": 8,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 2
 	},
 	{
@@ -1711,7 +1711,7 @@
 		"consumable": false,
 		"tier": 9,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 3
 	},
 	{
@@ -1729,7 +1729,7 @@
 		"consumable": false,
 		"tier": 10,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 4
 	},
 	{
@@ -1747,7 +1747,7 @@
 		"consumable": false,
 		"tier": 11,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 5
 	},
 	{
@@ -1765,7 +1765,7 @@
 		"consumable": false,
 		"tier": 12,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 6
 	},
 	{
@@ -1783,7 +1783,7 @@
 		"consumable": false,
 		"tier": 13,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 7
 	},
 	{
@@ -1801,7 +1801,7 @@
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 0,
-		"targetClass": 0,
+		"targetClass": -7,
 		"fameBonus": 8
 	},
 	{
@@ -2094,7 +2094,7 @@
 		"consumable": false,
 		"tier": 0,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 0
 	},
 	{
@@ -2112,7 +2112,7 @@
 		"consumable": false,
 		"tier": 1,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 0
 	},
 	{
@@ -2130,7 +2130,7 @@
 		"consumable": false,
 		"tier": 2,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 0
 	},
 	{
@@ -2139,7 +2139,7 @@
 		"col": 3,
 		"spriteKey": "rotmg-items.png",
 		"name": "Serpentine Staff",
-		"description": "A staff powered by the magic of Stheno�s minions.",
+		"description": "A staff powered by the magic of Stheno\u00ef\u00bf\u00bds minions.",
 		"damage": {
 			"projectileGroupId": 79,
 			"min": 20,
@@ -2148,7 +2148,7 @@
 		"consumable": false,
 		"tier": 3,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 0
 	},
 	{
@@ -2166,7 +2166,7 @@
 		"consumable": false,
 		"tier": 4,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 0
 	},
 	{
@@ -2184,7 +2184,7 @@
 		"consumable": false,
 		"tier": 5,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 0
 	},
 	{
@@ -2202,7 +2202,7 @@
 		"consumable": false,
 		"tier": 6,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 0
 	},
 	{
@@ -2220,7 +2220,7 @@
 		"consumable": false,
 		"tier": 7,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 1
 	},
 	{
@@ -2238,7 +2238,7 @@
 		"consumable": false,
 		"tier": 8,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 2
 	},
 	{
@@ -2256,7 +2256,7 @@
 		"consumable": false,
 		"tier": 9,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 3
 	},
 	{
@@ -2274,7 +2274,7 @@
 		"consumable": false,
 		"tier": 10,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 4
 	},
 	{
@@ -2292,7 +2292,7 @@
 		"consumable": false,
 		"tier": 11,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 5
 	},
 	{
@@ -2310,7 +2310,7 @@
 		"consumable": false,
 		"tier": 12,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 6
 	},
 	{
@@ -2328,7 +2328,7 @@
 		"consumable": false,
 		"tier": 13,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 7
 	},
 	{
@@ -2346,7 +2346,7 @@
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 8
 	},
 	{
@@ -2386,7 +2386,7 @@
 		"consumable": false,
 		"tier": 0,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 0
 	},
 	{
@@ -2404,7 +2404,7 @@
 		"consumable": false,
 		"tier": 1,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 0
 	},
 	{
@@ -2422,7 +2422,7 @@
 		"consumable": false,
 		"tier": 2,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 0
 	},
 	{
@@ -2440,7 +2440,7 @@
 		"consumable": false,
 		"tier": 3,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 0
 	},
 	{
@@ -2458,7 +2458,7 @@
 		"consumable": false,
 		"tier": 4,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 0
 	},
 	{
@@ -2476,7 +2476,7 @@
 		"consumable": false,
 		"tier": 5,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 0
 	},
 	{
@@ -2494,7 +2494,7 @@
 		"consumable": false,
 		"tier": 6,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 0
 	},
 	{
@@ -2512,7 +2512,7 @@
 		"consumable": false,
 		"tier": 7,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 1
 	},
 	{
@@ -2530,7 +2530,7 @@
 		"consumable": false,
 		"tier": 8,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 2
 	},
 	{
@@ -2548,7 +2548,7 @@
 		"consumable": false,
 		"tier": 9,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 3
 	},
 	{
@@ -2566,7 +2566,7 @@
 		"consumable": false,
 		"tier": 10,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 4
 	},
 	{
@@ -2584,7 +2584,7 @@
 		"consumable": false,
 		"tier": 11,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 5
 	},
 	{
@@ -2602,7 +2602,7 @@
 		"consumable": false,
 		"tier": 12,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 6
 	},
 	{
@@ -2620,7 +2620,7 @@
 		"consumable": false,
 		"tier": 13,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 7
 	},
 	{
@@ -2638,7 +2638,7 @@
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 0,
-		"targetClass": 3,
+		"targetClass": -6,
 		"fameBonus": 8
 	},
 	{
@@ -2818,7 +2818,7 @@
 		"consumable": false,
 		"tier": -1,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 8
 	},
 	{
@@ -2883,7 +2883,7 @@
 		"consumable": false,
 		"tier": 8,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 3
 	},
 	{
@@ -2905,7 +2905,7 @@
 		"consumable": false,
 		"tier": 10,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 4
 	},
 	{
@@ -2927,7 +2927,7 @@
 		"consumable": false,
 		"tier": 12,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 5
 	},
 	{
@@ -2949,7 +2949,7 @@
 		"consumable": false,
 		"tier": 10,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 4
 	},
 	{
@@ -2972,7 +2972,7 @@
 		"consumable": false,
 		"tier": 13,
 		"targetSlot": 0,
-		"targetClass": 2,
+		"targetClass": -5,
 		"fameBonus": 6
 	},
 	{
@@ -2995,10 +2995,9 @@
 		"consumable": false,
 		"tier": 11,
 		"targetSlot": 0,
-		"targetClass": 1,
+		"targetClass": -8,
 		"fameBonus": 5
 	},
-
 	{
 		"itemId": 200,
 		"row": 0,
@@ -3168,7 +3167,7 @@
 		"effect": {
 			"self": true,
 			"effectId": 0,
-			"duration": 5000,
+			"duration": 1500,
 			"cooldownDuration": 6500,
 			"mpCost": 70
 		},
@@ -3188,7 +3187,7 @@
 		"effect": {
 			"self": true,
 			"effectId": 0,
-			"duration": 5000,
+			"duration": 2000,
 			"cooldownDuration": 6500,
 			"mpCost": 75
 		},
@@ -3211,7 +3210,7 @@
 		"effect": {
 			"self": true,
 			"effectId": 0,
-			"duration": 5000,
+			"duration": 2500,
 			"cooldownDuration": 6500,
 			"mpCost": 75
 		},
@@ -3234,7 +3233,7 @@
 		"effect": {
 			"self": true,
 			"effectId": 0,
-			"duration": 5000,
+			"duration": 3000,
 			"cooldownDuration": 6500,
 			"mpCost": 80
 		},
@@ -3258,7 +3257,7 @@
 		"effect": {
 			"self": true,
 			"effectId": 0,
-			"duration": 5000,
+			"duration": 3500,
 			"cooldownDuration": 6000,
 			"mpCost": 80
 		},
@@ -3282,7 +3281,7 @@
 		"effect": {
 			"self": true,
 			"effectId": 0,
-			"duration": 5000,
+			"duration": 4000,
 			"cooldownDuration": 6000,
 			"mpCost": 85
 		},
@@ -3308,7 +3307,7 @@
 		"effect": {
 			"self": true,
 			"effectId": 0,
-			"duration": 5000,
+			"duration": 4500,
 			"cooldownDuration": 6000,
 			"mpCost": 90
 		},

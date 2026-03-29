@@ -415,7 +415,7 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 
 /* Mobile Touch Controls */
 #touch-joystick {
-    position: absolute; bottom: 20px; left: 20px;
+    position: absolute; bottom: 160px; left: 20px;
     z-index: 15; pointer-events: auto;
     touch-action: none;
 }
@@ -469,19 +469,19 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 #portal-enter-btn:hover { background: #9050d0; }
 
 #touch-aim {
-    position: absolute; bottom: 20px; right: 210px;
+    position: absolute; bottom: 30px; right: 210px;
     z-index: 15; pointer-events: auto;
     touch-action: none;
 }
 #aim-base {
-    width: 100px; height: 100px;
+    width: 140px; height: 140px;
     border-radius: 50%;
     background: rgba(255,80,80,0.1);
     border: 2px solid rgba(255,80,80,0.25);
     position: relative;
 }
 #aim-thumb {
-    width: 40px; height: 40px;
+    width: 50px; height: 50px;
     border-radius: 50%;
     background: rgba(255,80,80,0.4);
     border: 2px solid rgba(255,80,80,0.6);
@@ -503,6 +503,7 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 /* Mobile responsive */
 @media (max-width: 900px), (max-height: 500px) {
     #hud { width: 180px; top: 5px; right: 5px; }
+    #touch-joystick { bottom: 140px; left: 10px; }
     #touch-aim { right: 190px; }
     #mobile-buttons { right: 190px; }
     .bar-container { height: 18px; }

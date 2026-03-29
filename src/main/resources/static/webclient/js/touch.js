@@ -89,8 +89,8 @@ export function initTouchControls(input) {
     gameScreen.addEventListener('touchstart', (e) => {
         const touch = e.changedTouches[0];
         // Ignore touches on joystick areas
-        const isJoystick = touch.clientX < 150 && touch.clientY > window.innerHeight - 150;
-        const isAim = touch.clientX > window.innerWidth - 320 && touch.clientY > window.innerHeight - 150;
+        const isJoystick = touch.clientX < 160 && touch.clientY > window.innerHeight - 310;
+        const isAim = touch.clientX > window.innerWidth - 370 && touch.clientY > window.innerHeight - 190;
         if (isJoystick || isAim) return;
 
         const now = Date.now();

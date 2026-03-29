@@ -135,7 +135,7 @@ export class GameState {
         const s = { ...this.stats };
         for (let i = 0; i < 4; i++) {
             const item = this.inventory[i];
-            if (item && item.itemId > 0 && item.stats) {
+            if (item && item.itemId >= 0 && item.stats) {
                 s.hp += item.stats.hp || 0;
                 s.mp += item.stats.mp || 0;
                 s.def += item.stats.def || 0;
@@ -156,7 +156,7 @@ export class GameState {
 
     // Build tooltip text for an item
     getItemTooltip(item) {
-        if (!item || item.itemId <= 0) return null;
+        if (!item || item.itemId < 0) return null;
         const def = this.getItemDef(item.itemId) || {};
         const lines = [];
         lines.push(item.name || def.name || 'Unknown Item');

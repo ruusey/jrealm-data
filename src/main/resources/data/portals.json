@@ -178,5 +178,14 @@
 		"row": 3,
 		"col": 8,
 		"spriteKey": "rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 20,
+		"portalName": "Oryx_Castle_Portal",
+		"mapId": 25,
+		"targetRealmDepth": 999,
+		"row": 5,
+		"col": 4,
+		"spriteKey": "rotmg-tiles-2.png"
 	}
 ]

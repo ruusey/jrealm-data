@@ -66,6 +66,9 @@ let dirtyTerrains = false;
 let dirtyItems = false;
 let dirtyProjGroups = false;
 let dirtyMaps = false;
+let enemies = [];
+let selectedEnemy = null;
+let dirtyEnemies = false;
 let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
 let activeTab = 'tiles';
@@ -92,19 +95,21 @@ const goToSheetBtn = document.getElementById('goToSheetBtn');
 // ========== INIT ==========
 async function init() {
   populateSheetSelect();
-  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadImages()]);
+  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadImages()]);
   renderSheet();
   renderTileList();
   renderTerrainList();
   renderItemList();
   renderMapList();
+  renderEnemyList();
+  renderPgTabList();
   bindEvents();
 }
 
 function populateSheetSelect() {
   SPRITE_SHEETS.forEach(name => {
     sheetSelect.appendChild(new Option(name, name));
-    ['detailSprite', 'itemSprite', 'pgSprite'].forEach(id => {
+    ['detailSprite', 'itemSprite', 'pgSprite', 'enemySprite', 'pgDetailSprite'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.appendChild(new Option(name, name));
     });
@@ -138,6 +143,12 @@ async function loadMaps() {
   maps = await (await fetch(`${BASE}/maps.json`)).json();
   maps.sort((a, b) => a.mapId - b.mapId);
   document.getElementById('mapCount').textContent = maps.length;
+}
+
+async function loadEnemies() {
+    enemies = await (await fetch(`${BASE}/enemies.json`)).json();
+    enemies.sort((a, b) => a.enemyId - b.enemyId);
+    document.getElementById('enemyCount').textContent = enemies.length;
 }
 
 function getProjGroupById(id) { return projGroups.find(g => g.projectileGroupId === id); }
@@ -738,6 +749,524 @@ function applyProjGroup() {
   drawSpritePreview(cvs, g.spriteKey, g.row, g.col);
 }
 
+// ========== ENEMIES EDITOR ==========
+function drawEnemySpritePreview(canvas, enemy) {
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const img = images[enemy.spriteKey];
+    if (!img) return;
+    const ss = enemy.spriteSize || 8;
+    ctx.drawImage(img, (enemy.col || 0) * ss, (enemy.row || 0) * ss, ss, ss, 0, 0, canvas.width, canvas.height);
+}
+
+function renderEnemyList(filter) {
+    const list = document.getElementById('enemyListView');
+    list.innerHTML = '';
+    const lower = (filter || '').toLowerCase();
+    enemies.forEach(enemy => {
+        if (lower && !enemy.name.toLowerCase().includes(lower) && !String(enemy.enemyId).includes(lower)) return;
+        const row = document.createElement('div');
+        row.className = 'tile-row' + (selectedEnemy && selectedEnemy.enemyId === enemy.enemyId ? ' selected' : '');
+        const cvs = document.createElement('canvas'); cvs.width = 32; cvs.height = 32;
+        drawEnemySpritePreview(cvs, enemy);
+        const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = enemy.enemyId;
+        const name = document.createElement('span'); name.className = 'tile-name'; name.textContent = enemy.name;
+        const info = document.createElement('span'); info.style.cssText = 'color:#888;font-size:11px';
+        info.textContent = `HP:${enemy.health} XP:${enemy.xp}`;
+        const phaseCount = document.createElement('span'); phaseCount.style.cssText = 'color:#8cf;font-size:10px';
+        phaseCount.textContent = enemy.phases ? `${enemy.phases.length}P` : '';
+        row.append(cvs, id, name, info, phaseCount);
+        row.addEventListener('click', () => selectEnemy(enemy));
+        list.appendChild(row);
+    });
+}
+
+function selectEnemy(enemy) {
+    selectedEnemy = enemy;
+    document.getElementById('enemyListView').style.display = 'none';
+    document.querySelector('#enemiesTab .tile-header').style.display = 'none';
+    showEnemyDetail(enemy);
+}
+
+function deselectEnemy() {
+    selectedEnemy = null;
+    document.getElementById('enemyDetail').style.display = 'none';
+    document.getElementById('enemyListView').style.display = '';
+    document.querySelector('#enemiesTab .tile-header').style.display = '';
+    renderEnemyList(document.getElementById('enemySearch').value);
+}
+
+function showEnemyDetail(enemy) {
+    const d = document.getElementById('enemyDetail');
+    d.style.display = 'block';
+    document.getElementById('enemyTitle').textContent = `${enemy.name} (ID ${enemy.enemyId})`;
+    document.getElementById('enemyId').value = enemy.enemyId;
+    document.getElementById('enemyName').value = enemy.name || '';
+    document.getElementById('enemySprite').value = enemy.spriteKey || '';
+    document.getElementById('enemyRow').value = enemy.row || 0;
+    document.getElementById('enemyCol').value = enemy.col || 0;
+    document.getElementById('enemySpriteSize').value = enemy.spriteSize || 8;
+    document.getElementById('enemySize').value = enemy.size || 32;
+    document.getElementById('enemyAttackId').value = enemy.attackId != null ? enemy.attackId : -1;
+    document.getElementById('enemyXp').value = enemy.xp || 0;
+    document.getElementById('enemyHealth').value = enemy.health || 0;
+    document.getElementById('enemyMaxSpeed').value = enemy.maxSpeed || 0;
+    document.getElementById('enemyChaseRange').value = enemy.chaseRange || 0;
+    document.getElementById('enemyAttackRange').value = enemy.attackRange || 0;
+    const s = enemy.stats || {};
+    document.getElementById('eStatHp').value = s.hp || 0;
+    document.getElementById('eStatMp').value = s.mp || 0;
+    document.getElementById('eStatAtt').value = s.att || 0;
+    document.getElementById('eStatDef').value = s.def || 0;
+    document.getElementById('eStatSpd').value = s.spd || 0;
+    document.getElementById('eStatDex').value = s.dex || 0;
+    document.getElementById('eStatVit').value = s.vit || 0;
+    document.getElementById('eStatWis').value = s.wis || 0;
+    updateEnemyPreview();
+    renderPhases(enemy);
+}
+
+function updateEnemyPreview() {
+    if (!selectedEnemy) return;
+    const cvs = document.getElementById('enemyPreviewCanvas');
+    const spriteKey = document.getElementById('enemySprite').value;
+    const row = parseInt(document.getElementById('enemyRow').value) || 0;
+    const col = parseInt(document.getElementById('enemyCol').value) || 0;
+    const ss = parseInt(document.getElementById('enemySpriteSize').value) || 8;
+    const ctx = cvs.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+    const img = images[spriteKey];
+    if (img) ctx.drawImage(img, col * ss, row * ss, ss, ss, 0, 0, cvs.width, cvs.height);
+    document.getElementById('enemyPreviewLabel').textContent = `[${spriteKey} @ r${row} c${col} ${ss}px]`;
+}
+
+function applyEnemyDetail() {
+    if (!selectedEnemy) return;
+    const enemy = enemies.find(e => e.enemyId === selectedEnemy.enemyId);
+    if (!enemy) return;
+    enemy.name = document.getElementById('enemyName').value;
+    enemy.spriteKey = document.getElementById('enemySprite').value;
+    enemy.row = parseInt(document.getElementById('enemyRow').value) || 0;
+    enemy.col = parseInt(document.getElementById('enemyCol').value) || 0;
+    enemy.spriteSize = parseInt(document.getElementById('enemySpriteSize').value) || 8;
+    enemy.size = parseInt(document.getElementById('enemySize').value) || 32;
+    enemy.attackId = parseInt(document.getElementById('enemyAttackId').value);
+    enemy.xp = parseInt(document.getElementById('enemyXp').value) || 0;
+    enemy.health = parseInt(document.getElementById('enemyHealth').value) || 0;
+    enemy.maxSpeed = parseFloat(document.getElementById('enemyMaxSpeed').value) || 0;
+    enemy.chaseRange = parseFloat(document.getElementById('enemyChaseRange').value) || 0;
+    enemy.attackRange = parseFloat(document.getElementById('enemyAttackRange').value) || 0;
+    if (!enemy.stats) enemy.stats = {};
+    enemy.stats.hp = parseInt(document.getElementById('eStatHp').value) || 0;
+    enemy.stats.mp = parseInt(document.getElementById('eStatMp').value) || 0;
+    enemy.stats.att = parseInt(document.getElementById('eStatAtt').value) || 0;
+    enemy.stats.def = parseInt(document.getElementById('eStatDef').value) || 0;
+    enemy.stats.spd = parseInt(document.getElementById('eStatSpd').value) || 0;
+    enemy.stats.dex = parseInt(document.getElementById('eStatDex').value) || 0;
+    enemy.stats.vit = parseInt(document.getElementById('eStatVit').value) || 0;
+    enemy.stats.wis = parseInt(document.getElementById('eStatWis').value) || 0;
+    selectedEnemy = enemy;
+    markDirty('enemies');
+    renderEnemyList(document.getElementById('enemySearch').value);
+}
+
+function addEnemy() {
+    const maxId = enemies.reduce((max, e) => Math.max(max, e.enemyId), 0);
+    const newEnemy = {
+        enemyId: maxId + 1, name: 'New_Enemy_' + (maxId + 1),
+        spriteKey: 'lofi_char.png', row: 0, col: 0, spriteSize: 8,
+        size: 32, attackId: -1, xp: 100, health: 100,
+        maxSpeed: 1.4, chaseRange: 390, attackRange: 210,
+        stats: { hp: 100, def: 0, dex: 5 },
+        phases: []
+    };
+    enemies.push(newEnemy);
+    enemies.sort((a, b) => a.enemyId - b.enemyId);
+    document.getElementById('enemyCount').textContent = enemies.length;
+    markDirty('enemies');
+    selectEnemy(newEnemy);
+}
+
+function deleteEnemy() {
+    if (!selectedEnemy) return;
+    if (!confirm(`Delete enemy ${selectedEnemy.enemyId} (${selectedEnemy.name})?`)) return;
+    enemies = enemies.filter(e => e.enemyId !== selectedEnemy.enemyId);
+    document.getElementById('enemyCount').textContent = enemies.length;
+    selectedEnemy = null;
+    deselectEnemy();
+    markDirty('enemies');
+}
+
+// --- Phase Editor ---
+const MOVEMENT_TYPES = ['CHASE','ORBIT','STRAFE','CHARGE','FLEE','WANDER','ANCHOR','FIGURE_EIGHT'];
+const MOVEMENT_FIELDS = {
+    CHASE: ['speed'],
+    ORBIT: ['speed','radius','direction'],
+    STRAFE: ['speed','preferredRange'],
+    CHARGE: ['speed','chargeDistanceMin','pauseMs'],
+    FLEE: ['speed','fleeRange'],
+    WANDER: ['speed'],
+    ANCHOR: ['speed','anchorRadius'],
+    FIGURE_EIGHT: ['speed','radius'],
+};
+
+function makePhaseInput(label, value, onChange, type, step) {
+    const lbl = document.createElement('label');
+    lbl.textContent = label + ': ';
+    const inp = document.createElement('input');
+    inp.type = type || 'text';
+    inp.value = value;
+    if (step) inp.step = step;
+    inp.addEventListener('change', () => { onChange(inp.value); markDirty('enemies'); });
+    lbl.appendChild(inp);
+    return lbl;
+}
+
+function renderPhases(enemy) {
+    const container = document.getElementById('enemyPhases');
+    container.innerHTML = '';
+    if (!enemy.phases) enemy.phases = [];
+
+    enemy.phases.forEach((phase, idx) => {
+        const card = document.createElement('div');
+        card.className = 'phase-card';
+
+        // Header
+        const header = document.createElement('div');
+        header.className = 'phase-header';
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'phase-name';
+        nameSpan.textContent = '#' + (idx + 1) + ': ' + (phase.name || 'unnamed');
+        const hpSpan = document.createElement('span');
+        hpSpan.className = 'phase-hp';
+        hpSpan.textContent = 'HP<=' + ((phase.hpThreshold || 1.0) * 100).toFixed(0) + '%';
+
+        const actions = document.createElement('span');
+        actions.className = 'phase-actions';
+        if (idx > 0) {
+            const up = document.createElement('button'); up.textContent = '\u25B2'; up.title = 'Move up';
+            up.addEventListener('click', (e) => { e.stopPropagation(); enemy.phases.splice(idx - 1, 0, enemy.phases.splice(idx, 1)[0]); markDirty('enemies'); renderPhases(enemy); });
+            actions.appendChild(up);
+        }
+        if (idx < enemy.phases.length - 1) {
+            const dn = document.createElement('button'); dn.textContent = '\u25BC'; dn.title = 'Move down';
+            dn.addEventListener('click', (e) => { e.stopPropagation(); enemy.phases.splice(idx + 1, 0, enemy.phases.splice(idx, 1)[0]); markDirty('enemies'); renderPhases(enemy); });
+            actions.appendChild(dn);
+        }
+        const rm = document.createElement('button'); rm.textContent = '\u00D7'; rm.title = 'Remove';
+        rm.addEventListener('click', (e) => { e.stopPropagation(); enemy.phases.splice(idx, 1); markDirty('enemies'); renderPhases(enemy); });
+        actions.appendChild(rm);
+
+        header.append(nameSpan, hpSpan, actions);
+        header.addEventListener('click', () => card.classList.toggle('collapsed'));
+
+        // Body
+        const body = document.createElement('div');
+        body.className = 'phase-body';
+
+        // Phase name + threshold fields
+        const topFields = document.createElement('div');
+        topFields.className = 'phase-move-fields';
+        topFields.appendChild(makePhaseInput('Name', phase.name || '', (v) => { phase.name = v; nameSpan.textContent = '#' + (idx+1) + ': ' + v; }, 'text'));
+        topFields.appendChild(makePhaseInput('HP Threshold', phase.hpThreshold || 1.0, (v) => { phase.hpThreshold = parseFloat(v) || 1.0; hpSpan.textContent = 'HP<=' + (phase.hpThreshold*100).toFixed(0) + '%'; }, 'number', '0.01'));
+        body.appendChild(topFields);
+
+        // Movement editor
+        renderMovementEditor(body, phase);
+
+        // Attack patterns editor
+        renderAttackPatternsEditor(body, phase, enemy);
+
+        card.append(header, body);
+        container.appendChild(card);
+    });
+}
+
+function renderMovementEditor(body, phase) {
+    const h = document.createElement('h5'); h.textContent = 'Movement';
+    body.appendChild(h);
+
+    if (!phase.movement) phase.movement = { type: 'CHASE', speed: 1.4 };
+    const mov = phase.movement;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'phase-move-fields';
+
+    // Type dropdown
+    const typeLbl = document.createElement('label');
+    typeLbl.textContent = 'Type: ';
+    const typeSel = document.createElement('select');
+    MOVEMENT_TYPES.forEach(t => { const o = new Option(t, t); o.selected = mov.type === t; typeSel.appendChild(o); });
+    typeLbl.appendChild(typeSel);
+    wrap.appendChild(typeLbl);
+
+    const fieldsDiv = document.createElement('div');
+    fieldsDiv.className = 'phase-move-fields';
+    fieldsDiv.style.gridColumn = '1 / -1';
+
+    function rebuildFields() {
+        fieldsDiv.innerHTML = '';
+        const fields = MOVEMENT_FIELDS[mov.type] || ['speed'];
+        fields.forEach(f => {
+            if (f === 'direction') {
+                const lbl = document.createElement('label'); lbl.textContent = 'Direction: ';
+                const sel = document.createElement('select');
+                ['CW','CCW'].forEach(d => { const o = new Option(d,d); o.selected = mov.direction === d; sel.appendChild(o); });
+                sel.addEventListener('change', () => { mov.direction = sel.value; markDirty('enemies'); });
+                lbl.appendChild(sel);
+                fieldsDiv.appendChild(lbl);
+            } else {
+                fieldsDiv.appendChild(makePhaseInput(f, mov[f] != null ? mov[f] : 0, (v) => { mov[f] = parseFloat(v) || 0; }, 'number', '0.1'));
+            }
+        });
+    }
+
+    typeSel.addEventListener('change', () => { mov.type = typeSel.value; markDirty('enemies'); rebuildFields(); });
+    rebuildFields();
+    wrap.appendChild(fieldsDiv);
+    body.appendChild(wrap);
+}
+
+function renderAttackPatternsEditor(body, phase, enemy) {
+    const h = document.createElement('h5'); h.textContent = 'Attacks';
+    body.appendChild(h);
+
+    if (!phase.attacks) phase.attacks = [];
+    const container = document.createElement('div');
+
+    phase.attacks.forEach((atk, atkIdx) => {
+        const row = document.createElement('div');
+        row.className = 'attack-row';
+        const badge = document.createElement('span'); badge.style.cssText = 'color:#c8a86e;font-weight:600';
+        badge.textContent = '#' + (atkIdx + 1);
+
+        function mkField(label, key, width) {
+            const lbl = document.createElement('label'); lbl.textContent = label;
+            const inp = document.createElement('input'); inp.type = 'number';
+            inp.value = atk[key] != null ? atk[key] : '';
+            inp.style.width = (width || 50) + 'px';
+            inp.addEventListener('change', () => { atk[key] = parseFloat(inp.value) || 0; markDirty('enemies'); });
+            lbl.appendChild(inp);
+            return lbl;
+        }
+
+        const predLbl = document.createElement('label'); predLbl.textContent = 'Pred ';
+        const predCb = document.createElement('input'); predCb.type = 'checkbox'; predCb.checked = !!atk.predictive;
+        predCb.addEventListener('change', () => { atk.predictive = predCb.checked; markDirty('enemies'); });
+        predLbl.appendChild(predCb);
+
+        const rmBtn = document.createElement('button'); rmBtn.className = 'tg-remove'; rmBtn.textContent = '\u00D7';
+        rmBtn.addEventListener('click', () => { phase.attacks.splice(atkIdx, 1); markDirty('enemies'); renderPhases(enemy); });
+
+        row.append(badge,
+            mkField('PG:', 'projectileGroupId', 40),
+            mkField('CD:', 'cooldownMs', 50),
+            mkField('Burst:', 'burstCount', 35),
+            mkField('BDly:', 'burstDelayMs', 42),
+            mkField('AngOff:', 'angleOffsetPerBurst', 42),
+            mkField('MinR:', 'minRange', 42),
+            mkField('MaxR:', 'maxRange', 45),
+            predLbl, rmBtn
+        );
+        container.appendChild(row);
+    });
+
+    const addBtn = document.createElement('button'); addBtn.className = 'btn-add';
+    addBtn.textContent = '+ Attack'; addBtn.style.cssText = 'margin-top:3px;font-size:11px';
+    addBtn.addEventListener('click', () => {
+        phase.attacks.push({ projectileGroupId: 0, cooldownMs: 1000, burstCount: 1, burstDelayMs: 100 });
+        markDirty('enemies');
+        renderPhases(enemy);
+    });
+    container.appendChild(addBtn);
+    body.appendChild(container);
+}
+
+function addPhase() {
+    if (!selectedEnemy) return;
+    if (!selectedEnemy.phases) selectedEnemy.phases = [];
+    selectedEnemy.phases.push({
+        name: 'phase_' + (selectedEnemy.phases.length + 1),
+        hpThreshold: selectedEnemy.phases.length === 0 ? 1.0 : 0.5,
+        movement: { type: 'CHASE', speed: 1.4 },
+        attacks: []
+    });
+    markDirty('enemies');
+    renderPhases(selectedEnemy);
+}
+
+// ========== PROJECTILE GROUPS TAB ==========
+let selectedPgTab = null;
+
+function renderPgTabList(filter) {
+  const list = document.getElementById('pgListView');
+  list.innerHTML = '';
+  const lower = (filter || '').toLowerCase();
+  document.getElementById('pgCount').textContent = projGroups.length;
+  projGroups.forEach(group => {
+    const idStr = String(group.projectileGroupId);
+    const key = (group.spriteKey || '') + ' r' + (group.row||0) + ' c' + (group.col||0);
+    if (lower && !idStr.includes(lower) && !key.toLowerCase().includes(lower)) return;
+    const row = document.createElement('div');
+    row.className = 'tile-row' + (selectedPgTab && selectedPgTab.projectileGroupId === group.projectileGroupId ? ' selected' : '');
+    const cvs = document.createElement('canvas'); cvs.width = 32; cvs.height = 32;
+    drawSpritePreview(cvs, group.spriteKey, group.row || 0, group.col || 0);
+    const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = group.projectileGroupId;
+    const info = document.createElement('span'); info.className = 'tile-name';
+    info.textContent = (group.spriteKey || '?') + ' r' + (group.row||0) + 'c' + (group.col||0);
+    const projCount = document.createElement('span'); projCount.style.cssText = 'color:#8cf;font-size:10px';
+    projCount.textContent = (group.projectiles ? group.projectiles.length : 0) + ' proj';
+    const ao = document.createElement('span'); ao.style.cssText = 'color:#888;font-size:10px';
+    ao.textContent = group.angleOffset ? group.angleOffset : '';
+    row.append(cvs, id, info, projCount, ao);
+    row.addEventListener('click', () => selectPgTab(group));
+    list.appendChild(row);
+  });
+}
+
+function selectPgTab(group) {
+  selectedPgTab = group;
+  document.getElementById('pgListView').style.display = 'none';
+  document.querySelector('#projgroupsTab .tile-header').style.display = 'none';
+  showPgTabDetail(group);
+}
+
+function deselectPgTab() {
+  selectedPgTab = null;
+  document.getElementById('pgDetail').style.display = 'none';
+  document.getElementById('pgListView').style.display = '';
+  document.querySelector('#projgroupsTab .tile-header').style.display = '';
+  renderPgTabList(document.getElementById('pgSearch').value);
+}
+
+function showPgTabDetail(group) {
+  const d = document.getElementById('pgDetail');
+  d.style.display = 'block';
+  document.getElementById('pgDetailTitle').textContent = 'Projectile Group ' + group.projectileGroupId;
+  document.getElementById('pgDetailId').value = group.projectileGroupId;
+  document.getElementById('pgDetailSprite').value = group.spriteKey || '';
+  document.getElementById('pgDetailRow').value = group.row || 0;
+  document.getElementById('pgDetailCol').value = group.col || 0;
+  document.getElementById('pgDetailAngleOffset').value = group.angleOffset || '';
+  updatePgTabPreview();
+  renderPgTabProjList(group);
+}
+
+function updatePgTabPreview() {
+  if (!selectedPgTab) return;
+  const cvs = document.getElementById('pgDetailPreview');
+  const spriteKey = document.getElementById('pgDetailSprite').value;
+  const row = parseInt(document.getElementById('pgDetailRow').value) || 0;
+  const col = parseInt(document.getElementById('pgDetailCol').value) || 0;
+  drawSpritePreview(cvs, spriteKey, row, col);
+  document.getElementById('pgDetailPreviewLabel').textContent = '[' + spriteKey + ' @ r' + row + ' c' + col + ']';
+}
+
+function renderPgTabProjList(group) {
+  const container = document.getElementById('pgDetailProjectiles');
+  container.innerHTML = '';
+  if (!group.projectiles) return;
+
+  group.projectiles.forEach((p, idx) => {
+    const row = document.createElement('div');
+    row.className = 'proj-row';
+
+    const makeField = (label, key, val, width) => {
+      const lbl = document.createElement('label');
+      lbl.textContent = label;
+      const inp = document.createElement('input');
+      inp.type = key === 'angle' ? 'text' : 'number';
+      inp.value = val != null ? val : '';
+      inp.style.width = (width || 55) + 'px';
+      inp.addEventListener('change', () => {
+        if (key === 'angle') { p[key] = inp.value; }
+        else if (key === 'flags') { p[key] = inp.value.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n)); }
+        else { p[key] = parseFloat(inp.value) || 0; }
+        markDirty('projGroups');
+      });
+      lbl.appendChild(inp);
+      return lbl;
+    };
+
+    const modeSelect = document.createElement('select');
+    modeSelect.style.cssText = 'width:60px;font-size:11px';
+    [0, 2].forEach(m => {
+      const opt = new Option(POS_MODES[m] || m, m);
+      opt.selected = p.positionMode === m;
+      modeSelect.appendChild(opt);
+    });
+    modeSelect.addEventListener('change', () => { p.positionMode = parseInt(modeSelect.value); markDirty('projGroups'); });
+    const modeLbl = document.createElement('label'); modeLbl.textContent = 'Mode:'; modeLbl.appendChild(modeSelect);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7';
+    removeBtn.addEventListener('click', () => { group.projectiles.splice(idx, 1); markDirty('projGroups'); renderPgTabProjList(group); });
+
+    const numBadge = document.createElement('span'); numBadge.className = 'proj-num'; numBadge.textContent = '#' + (idx + 1);
+
+    row.append(numBadge, modeLbl,
+      makeField('Ang:', 'angle', p.angle, 65),
+      makeField('Dmg:', 'damage', p.damage, 40),
+      makeField('Rng:', 'range', p.range, 40),
+      makeField('Spd:', 'magnitude', p.magnitude, 40),
+      makeField('Sz:', 'size', p.size, 35),
+      makeField('Amp:', 'amplitude', p.amplitude, 40),
+      makeField('Frq:', 'frequency', p.frequency, 40),
+      makeField('Flags:', 'flags', (p.flags || []).join(','), 70),
+      removeBtn
+    );
+    container.appendChild(row);
+  });
+}
+
+function applyPgTabDetail() {
+  if (!selectedPgTab) return;
+  const g = getProjGroupById(selectedPgTab.projectileGroupId);
+  if (!g) return;
+  g.spriteKey = document.getElementById('pgDetailSprite').value;
+  g.row = parseInt(document.getElementById('pgDetailRow').value) || 0;
+  g.col = parseInt(document.getElementById('pgDetailCol').value) || 0;
+  g.angleOffset = document.getElementById('pgDetailAngleOffset').value || undefined;
+  markDirty('projGroups');
+  updatePgTabPreview();
+  renderPgTabList(document.getElementById('pgSearch').value);
+}
+
+function addPgTab() {
+  const maxId = projGroups.reduce((max, g) => Math.max(max, g.projectileGroupId), 0);
+  const newGroup = {
+    projectileGroupId: maxId + 1, row: 0, col: 0,
+    spriteKey: 'rotmg-projectiles.png', angleOffset: '0',
+    projectiles: [{ projectileId: maxId + 1, positionMode: 0, angle: '0', range: 150, size: 16, magnitude: 5.0, damage: 25, amplitude: 0, frequency: 0, flags: [0] }]
+  };
+  projGroups.push(newGroup);
+  projGroups.sort((a, b) => a.projectileGroupId - b.projectileGroupId);
+  markDirty('projGroups');
+  selectPgTab(newGroup);
+}
+
+function deletePgTab() {
+  if (!selectedPgTab) return;
+  if (!confirm('Delete projectile group ' + selectedPgTab.projectileGroupId + '?')) return;
+  projGroups = projGroups.filter(g => g.projectileGroupId !== selectedPgTab.projectileGroupId);
+  selectedPgTab = null;
+  deselectPgTab();
+  markDirty('projGroups');
+}
+
+function addPgTabProjectile() {
+  if (!selectedPgTab) return;
+  if (!selectedPgTab.projectiles) selectedPgTab.projectiles = [];
+  selectedPgTab.projectiles.push({
+    projectileId: selectedPgTab.projectileGroupId, positionMode: 0, angle: '0',
+    range: 150, size: 16, magnitude: 5.0, damage: 25, amplitude: 0, frequency: 0, flags: [0]
+  });
+  markDirty('projGroups');
+  renderPgTabProjList(selectedPgTab);
+}
+
 // ========== MAPS EDITOR ==========
 const MAP_TILE_PX = 16; // pixel size per cell on the map canvas
 
@@ -1163,6 +1692,8 @@ function switchTab(tab) {
   document.getElementById('terrainsTab').style.display = tab === 'terrains' ? '' : 'none';
   document.getElementById('mapsTab').style.display = tab === 'maps' ? '' : 'none';
   document.getElementById('itemsTab').style.display = tab === 'items' ? '' : 'none';
+  document.getElementById('enemiesTab').style.display = tab === 'enemies' ? '' : 'none';
+  document.getElementById('projgroupsTab').style.display = tab === 'projgroups' ? '' : 'none';
 }
 
 // ========== SAVE ==========
@@ -1172,6 +1703,7 @@ function markDirty(which) {
   if (which === 'items') dirtyItems = true;
   if (which === 'projGroups') dirtyProjGroups = true;
   if (which === 'maps') dirtyMaps = true;
+  if (which === 'enemies') dirtyEnemies = true;
   saveBtn.disabled = false;
   const parts = [];
   if (dirtyTiles) parts.push('tiles');
@@ -1179,6 +1711,7 @@ function markDirty(which) {
   if (dirtyItems) parts.push('items');
   if (dirtyProjGroups) parts.push('projectiles');
   if (dirtyMaps) parts.push('maps');
+  if (dirtyEnemies) parts.push('enemies');
   saveStatus.textContent = `(unsaved: ${parts.join(', ')})`;
   saveStatus.style.color = '#fa0';
 }
@@ -1218,6 +1751,16 @@ async function saveAll() {
       if (!res.ok) throw new Error('maps: ' + res.statusText);
       dirtyMaps = false;
       results.push('maps');
+    }
+    if (dirtyEnemies) {
+      const res = await fetch('/gamedata/enemies', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(enemies, null, '\t')
+      });
+      if (!res.ok) throw new Error('enemies: ' + res.statusText);
+      dirtyEnemies = false;
+      results.push('enemies');
     }
     saveStatus.textContent = `Saved ${results.join(', ')}!`;
     saveStatus.style.color = '#8f8';
@@ -1269,6 +1812,24 @@ function bindEvents() {
       applyItemDetail();
       document.getElementById('pickItemSpriteBtn').classList.remove('active');
       document.getElementById('pickItemSpriteBtn').textContent = 'Pick Sprite';
+    } else if (activeTab === 'enemies' && selectedEnemy) {
+      document.getElementById('enemyRow').value = row;
+      document.getElementById('enemyCol').value = col;
+      document.getElementById('enemySprite').value = currentSheet;
+      updateEnemyPreview();
+      applyEnemyDetail();
+      const btn = document.getElementById('pickEnemySpriteBtn');
+      btn.classList.remove('active');
+      btn.textContent = 'Pick Sprite';
+    } else if (activeTab === 'projgroups' && selectedPgTab) {
+      document.getElementById('pgDetailRow').value = row;
+      document.getElementById('pgDetailCol').value = col;
+      document.getElementById('pgDetailSprite').value = currentSheet;
+      updatePgTabPreview();
+      applyPgTabDetail();
+      const btn = document.getElementById('pickPgSpriteBtn');
+      btn.classList.remove('active');
+      btn.textContent = 'Pick Sprite';
     }
     pickMode = false;
   });
@@ -1363,6 +1924,62 @@ function bindEvents() {
     }
   });
 
+  // Enemies
+  document.getElementById('enemySearch').addEventListener('input', (e) => renderEnemyList(e.target.value));
+  document.getElementById('enemyBackBtn').addEventListener('click', deselectEnemy);
+  document.getElementById('applyEnemyBtn').addEventListener('click', applyEnemyDetail);
+  document.getElementById('addEnemyBtn').addEventListener('click', addEnemy);
+  document.getElementById('deleteEnemyBtn').addEventListener('click', deleteEnemy);
+  document.getElementById('addPhaseBtn').addEventListener('click', addPhase);
+  document.getElementById('pickEnemySpriteBtn').addEventListener('click', () => {
+    pickMode = !pickMode;
+    const btn = document.getElementById('pickEnemySpriteBtn');
+    btn.classList.toggle('active', pickMode);
+    btn.textContent = pickMode ? 'Click on Sheet...' : 'Pick Sprite';
+  });
+  document.getElementById('goToEnemySheetBtn').addEventListener('click', () => {
+    if (!selectedEnemy) return;
+    const ss = parseInt(document.getElementById('enemySpriteSize').value) || 8;
+    if (selectedEnemy.spriteKey !== currentSheet) {
+      currentSheet = selectedEnemy.spriteKey; sheetSelect.value = currentSheet; renderSheet();
+    }
+    const px = selectedEnemy.col * ss * SCALE, py = selectedEnemy.row * ss * SCALE;
+    const scroll = document.querySelector('.sheet-scroll');
+    scroll.scrollTo({ left: px - scroll.clientWidth / 2, top: py - scroll.clientHeight / 2, behavior: 'smooth' });
+  });
+  ['enemyRow','enemyCol','enemySprite','enemySpriteSize'].forEach(id => {
+    document.getElementById(id).addEventListener('change', updateEnemyPreview);
+    document.getElementById(id).addEventListener('input', updateEnemyPreview);
+  });
+
+  // Projectile Groups tab
+  document.getElementById('pgSearch').addEventListener('input', (e) => renderPgTabList(e.target.value));
+  document.getElementById('pgBackBtn').addEventListener('click', deselectPgTab);
+  document.getElementById('applyPgDetailBtn').addEventListener('click', applyPgTabDetail);
+  document.getElementById('addPgBtn').addEventListener('click', addPgTab);
+  document.getElementById('deletePgBtn').addEventListener('click', deletePgTab);
+  document.getElementById('addPgProjBtn').addEventListener('click', addPgTabProjectile);
+  document.getElementById('pickPgSpriteBtn').addEventListener('click', () => {
+    pickMode = !pickMode;
+    const btn = document.getElementById('pickPgSpriteBtn');
+    btn.classList.toggle('active', pickMode);
+    btn.textContent = pickMode ? 'Click on Sheet...' : 'Pick Sprite';
+  });
+  document.getElementById('goToPgSheetBtn').addEventListener('click', () => {
+    if (!selectedPgTab) return;
+    if (selectedPgTab.spriteKey !== currentSheet) {
+      currentSheet = selectedPgTab.spriteKey; sheetSelect.value = currentSheet; renderSheet();
+    }
+    const ss = gridSize;
+    const px = (selectedPgTab.col || 0) * ss * SCALE, py = (selectedPgTab.row || 0) * ss * SCALE;
+    const scroll = document.querySelector('.sheet-scroll');
+    scroll.scrollTo({ left: px - scroll.clientWidth / 2, top: py - scroll.clientHeight / 2, behavior: 'smooth' });
+  });
+  ['pgDetailRow','pgDetailCol','pgDetailSprite'].forEach(id => {
+    document.getElementById(id).addEventListener('change', updatePgTabPreview);
+    document.getElementById(id).addEventListener('input', updatePgTabPreview);
+  });
+
   // Tile picker modal
   document.getElementById('pickerCloseBtn').addEventListener('click', closeTilePicker);
   document.getElementById('pickerSearch').addEventListener('input', (e) => renderPickerList(e.target.value));
@@ -1371,7 +1988,7 @@ function bindEvents() {
   });
 
   window.addEventListener('beforeunload', (e) => {
-    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups || dirtyMaps) { e.preventDefault(); e.returnValue = ''; }
+    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups || dirtyMaps || dirtyEnemies) { e.preventDefault(); e.returnValue = ''; }
   });
 
   // Resize handle drag
