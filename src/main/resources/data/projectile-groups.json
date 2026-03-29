@@ -1,9 +1,9 @@
 [
 	{
 		"projectileGroupId": 0,
-		"row": 7,
-		"col": 4,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 12,
+		"col": 2,
+		"spriteKey": "rotmg-misc.png",
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -70,7 +70,8 @@
 					10
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 1,
@@ -1838,9 +1839,9 @@
 	},
 	{
 		"projectileGroupId": 35,
-		"row": 0,
-		"col": 2,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 10,
+		"col": 0,
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 35,
@@ -1870,9 +1871,9 @@
 	},
 	{
 		"projectileGroupId": 36,
-		"row": 1,
-		"col": 3,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 7,
+		"col": 2,
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 36,
@@ -1946,13 +1947,14 @@
 					0
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 37,
-		"row": 2,
+		"row": 7,
 		"col": 1,
-		"spriteKey": "rotmg-projectiles.png",
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 37,
@@ -2010,13 +2012,14 @@
 					11
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 38,
-		"row": 0,
-		"col": 5,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 7,
+		"col": 0,
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 38,
@@ -2046,9 +2049,9 @@
 	},
 	{
 		"projectileGroupId": 39,
-		"row": 1,
-		"col": 0,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 21,
+		"col": 12,
+		"spriteKey": "rotmg-tiles.png",
 		"projectiles": [
 			{
 				"projectileId": 39,
@@ -2170,13 +2173,14 @@
 					0
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 40,
-		"row": 0,
-		"col": 5,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 22,
+		"col": 2,
+		"spriteKey": "rotmg-tiles.png",
 		"projectiles": [
 			{
 				"projectileId": 40,
@@ -2274,13 +2278,14 @@
 					2
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 41,
-		"row": 2,
-		"col": 1,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 29,
+		"col": 13,
+		"spriteKey": "rotmg-tiles.png",
 		"projectiles": [
 			{
 				"projectileId": 41,
@@ -2370,9 +2375,9 @@
 	},
 	{
 		"projectileGroupId": 42,
-		"row": 0,
-		"col": 2,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 8,
+		"col": 1,
+		"spriteKey": "rotmg-misc.png",
 		"projectiles": [
 			{
 				"projectileId": 42,
@@ -2450,10 +2455,10 @@
 	},
 	{
 		"projectileGroupId": 43,
-		"row": 0,
-		"col": 5,
-		"spriteKey": "rotmg-projectiles.png",
-		"angleOffset": "{{PI/6}}",
+		"row": 12,
+		"col": 1,
+		"spriteKey": "rotmg-misc.png",
+		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
 				"projectileId": 43,
@@ -2663,9 +2668,9 @@
 	},
 	{
 		"projectileGroupId": 44,
-		"row": 1,
-		"col": 3,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 8,
+		"col": 5,
+		"spriteKey": "rotmg-misc.png",
 		"projectiles": [
 			{
 				"projectileId": 44,
@@ -2825,6 +2830,20 @@
 				"magnitude": 3.5,
 				"flags": [
 					14
+				]
+			},
+			{
+				"projectileId": 44,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
 				]
 			}
 		]
@@ -3031,9 +3050,9 @@
 	},
 	{
 		"projectileGroupId": 46,
-		"row": 0,
-		"col": 2,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 8,
+		"col": 3,
+		"spriteKey": "rotmg-misc.png",
 		"projectiles": [
 			{
 				"projectileId": 46,
@@ -3410,8 +3429,8 @@
 	},
 	{
 		"projectileGroupId": 52,
-		"row": 4,
-		"col": 3,
+		"row": 2,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -3504,13 +3523,14 @@
 					12
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 53,
-		"row": 3,
-		"col": 1,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 8,
+		"col": 10,
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 53,
@@ -3560,7 +3580,8 @@
 					14
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 54,
@@ -3597,7 +3618,7 @@
 	{
 		"projectileGroupId": 55,
 		"row": 4,
-		"col": 2,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -3664,8 +3685,8 @@
 	},
 	{
 		"projectileGroupId": 56,
-		"row": 3,
-		"col": 2,
+		"row": 5,
+		"col": 12,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -3792,8 +3813,8 @@
 	},
 	{
 		"projectileGroupId": 57,
-		"row": 5,
-		"col": 7,
+		"row": 6,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -3897,7 +3918,7 @@
 	{
 		"projectileGroupId": 58,
 		"row": 4,
-		"col": 3,
+		"col": 15,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -3994,8 +4015,8 @@
 	},
 	{
 		"projectileGroupId": 59,
-		"row": 3,
-		"col": 1,
+		"row": 9,
+		"col": 4,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -4358,8 +4379,8 @@
 	},
 	{
 		"projectileGroupId": 61,
-		"row": 4,
-		"col": 2,
+		"row": 11,
+		"col": 0,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -4765,8 +4786,8 @@
 	{
 		"projectileGroupId": 63,
 		"spriteKey": "rotmg-projectiles.png",
-		"row": 2,
-		"col": 1,
+		"row": 6,
+		"col": 9,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -5041,8 +5062,8 @@
 	{
 		"projectileGroupId": 65,
 		"spriteKey": "rotmg-projectiles.png",
-		"row": 1,
-		"col": 3,
+		"row": 6,
+		"col": 10,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -5127,8 +5148,8 @@
 	{
 		"projectileGroupId": 66,
 		"spriteKey": "rotmg-projectiles.png",
-		"row": 0,
-		"col": 2,
+		"row": 15,
+		"col": 5,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -5195,7 +5216,8 @@
 					10
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 67,
@@ -5338,8 +5360,8 @@
 	{
 		"projectileGroupId": 70,
 		"spriteKey": "rotmg-projectiles.png",
-		"row": 0,
-		"col": 8,
+		"row": 12,
+		"col": 2,
 		"angleOffset": "{{PI/10}}",
 		"projectiles": [
 			{
@@ -5412,8 +5434,8 @@
 	{
 		"projectileGroupId": 71,
 		"spriteKey": "rotmg-projectiles.png",
-		"row": 2,
-		"col": 0,
+		"row": 15,
+		"col": 13,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -5428,13 +5450,14 @@
 					10
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 72,
 		"spriteKey": "rotmg-projectiles.png",
-		"row": 0,
-		"col": 0,
+		"row": 6,
+		"col": 15,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -5480,8 +5503,8 @@
 	{
 		"projectileGroupId": 73,
 		"spriteKey": "rotmg-projectiles.png",
-		"row": 1,
-		"col": 5,
+		"row": 6,
+		"col": 0,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -5591,9 +5614,9 @@
 	},
 	{
 		"projectileGroupId": 74,
-		"spriteKey": "rotmg-projectiles.png",
-		"row": 1,
-		"col": 3,
+		"spriteKey": "rotmg-items-1.png",
+		"row": 10,
+		"col": 4,
 		"angleOffset": "{{PI/12}}",
 		"projectiles": [
 			{
@@ -5841,7 +5864,7 @@
 	{
 		"projectileGroupId": 81,
 		"row": 14,
-		"col": 10,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -5919,7 +5942,7 @@
 	{
 		"projectileGroupId": 83,
 		"row": 13,
-		"col": 8,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -5959,7 +5982,7 @@
 	{
 		"projectileGroupId": 85,
 		"row": 14,
-		"col": 8,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -5979,7 +6002,7 @@
 	{
 		"projectileGroupId": 86,
 		"row": 14,
-		"col": 10,
+		"col": 14,
 		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
@@ -6237,7 +6260,7 @@
 				"angle": "0",
 				"range": 280,
 				"size": 24,
-				"magnitude": 6.0,
+				"magnitude": 6,
 				"amplitude": 6,
 				"frequency": 18,
 				"flags": [
@@ -6252,7 +6275,7 @@
 				"angle": "0",
 				"range": 280,
 				"size": 24,
-				"magnitude": 6.0,
+				"magnitude": 6,
 				"amplitude": -6,
 				"frequency": 18,
 				"flags": [
@@ -6276,7 +6299,7 @@
 				"angle": "-0.15",
 				"range": 180,
 				"size": 32,
-				"magnitude": 7.0,
+				"magnitude": 7,
 				"flags": [
 					0,
 					3
@@ -6289,7 +6312,7 @@
 				"angle": "0.15",
 				"range": 180,
 				"size": 32,
-				"magnitude": 7.0,
+				"magnitude": 7,
 				"flags": [
 					0,
 					3
@@ -6311,7 +6334,7 @@
 				"angle": "-0.2",
 				"range": 320,
 				"size": 20,
-				"magnitude": 4.0,
+				"magnitude": 4,
 				"flags": [
 					0,
 					11
@@ -6324,7 +6347,7 @@
 				"angle": "0",
 				"range": 320,
 				"size": 20,
-				"magnitude": 4.0,
+				"magnitude": 4,
 				"flags": [
 					0,
 					11
@@ -6337,7 +6360,7 @@
 				"angle": "0.2",
 				"range": 320,
 				"size": 20,
-				"magnitude": 4.0,
+				"magnitude": 4,
 				"flags": [
 					0,
 					11
@@ -6359,7 +6382,7 @@
 				"angle": "0",
 				"range": 250,
 				"size": 28,
-				"magnitude": 5.0,
+				"magnitude": 5,
 				"amplitude": 10,
 				"frequency": 12,
 				"flags": [
@@ -6374,7 +6397,7 @@
 				"angle": "0",
 				"range": 250,
 				"size": 28,
-				"magnitude": 5.0,
+				"magnitude": 5,
 				"amplitude": -10,
 				"frequency": 12,
 				"flags": [
@@ -6386,8 +6409,8 @@
 	},
 	{
 		"projectileGroupId": 98,
-		"row": 10,
-		"col": 14,
+		"row": 8,
+		"col": 8,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -6428,7 +6451,7 @@
 	{
 		"projectileGroupId": 99,
 		"row": 10,
-		"col": 12,
+		"col": 6,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -6474,7 +6497,7 @@
 				"angle": "-0.12",
 				"range": 260,
 				"size": 22,
-				"magnitude": 5.0,
+				"magnitude": 5,
 				"amplitude": 7,
 				"frequency": 15,
 				"flags": [
@@ -6489,7 +6512,7 @@
 				"angle": "0",
 				"range": 260,
 				"size": 22,
-				"magnitude": 5.0,
+				"magnitude": 5,
 				"flags": [
 					0
 				]
@@ -6501,7 +6524,7 @@
 				"angle": "0.12",
 				"range": 260,
 				"size": 22,
-				"magnitude": 5.0,
+				"magnitude": 5,
 				"amplitude": -7,
 				"frequency": 15,
 				"flags": [
@@ -6513,8 +6536,8 @@
 	},
 	{
 		"projectileGroupId": 101,
-		"row": 14,
-		"col": 12,
+		"row": 7,
+		"col": 6,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -6525,7 +6548,7 @@
 				"angle": "0",
 				"range": 150,
 				"size": 32,
-				"magnitude": 8.0,
+				"magnitude": 8,
 				"flags": [
 					0,
 					3
@@ -6535,8 +6558,8 @@
 	},
 	{
 		"projectileGroupId": 102,
-		"row": 12,
-		"col": 14,
+		"row": 4,
+		"col": 13,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -6547,7 +6570,7 @@
 				"angle": "0",
 				"range": 350,
 				"size": 24,
-				"magnitude": 6.0,
+				"magnitude": 6,
 				"amplitude": 8,
 				"frequency": 20,
 				"flags": [
@@ -6562,7 +6585,7 @@
 				"angle": "0",
 				"range": 350,
 				"size": 24,
-				"magnitude": 6.0,
+				"magnitude": 6,
 				"amplitude": -8,
 				"frequency": 20,
 				"flags": [
@@ -6577,7 +6600,7 @@
 				"angle": "0",
 				"range": 350,
 				"size": 24,
-				"magnitude": 6.0,
+				"magnitude": 6,
 				"flags": [
 					0
 				]
@@ -6587,7 +6610,7 @@
 	{
 		"projectileGroupId": 103,
 		"row": 11,
-		"col": 14,
+		"col": 9,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -6672,7 +6695,7 @@
 				"angle": "0",
 				"range": 400,
 				"size": 32,
-				"magnitude": 5.0,
+				"magnitude": 5,
 				"amplitude": 12,
 				"frequency": 10,
 				"flags": [
@@ -6688,7 +6711,7 @@
 				"angle": "0",
 				"range": 400,
 				"size": 32,
-				"magnitude": 5.0,
+				"magnitude": 5,
 				"amplitude": -12,
 				"frequency": 10,
 				"flags": [
