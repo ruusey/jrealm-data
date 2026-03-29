@@ -1,9 +1,6 @@
 name: Build & Release JRealm-Data
 
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
 
 jobs:
@@ -11,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      packages: write
     steps:
       - name: Checkout jrealm-data
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Resolve jrealm dependency version
         id: jrealm-version
         run: |
           JREALM_VERSION=$(grep -A1 '<artifactId>jrealm</artifactId>' pom.xml | grep '<version>' | sed 's/.*<version>\(.*\)<\/version>.*/\1/')
           echo "version=$JREALM_VERSION" >> "$GITHUB_OUTPUT"
-          echo "jrealm dependency version: $JREALM_VERSION"
 
       - name: Checkout jrealm dependency
         uses: actions/checkout@v4
@@ -47,7 +44,20 @@ jobs:
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "Detected version: $VERSION"
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$PREV_TAG" ]; then
+            LOG=$(git log --oneline --no-merges -20)
+          else
+            LOG=$(git log --oneline --no-merges "$PREV_TAG"..HEAD)
+          fi
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "log<<$EOF" >> "$GITHUB_OUTPUT"
+          echo "$LOG" >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
 
       - name: Build jrealm-data
         run: mvn -B package -DskipTests --file pom.xml
@@ -60,7 +70,10 @@ jobs:
           body: |
             ## JRealm-Data v${{ steps.version.outputs.version }}
 
-            Built from commit ${{ github.sha }}.
+            Game data service fat JAR. Requires jrealm v${{ steps.jrealm-version.outputs.version }}.
+
+            ### Changes
+            ${{ steps.changelog.outputs.log }}
           draft: false
           prerelease: false
           files: target/jrealm-data.jar
