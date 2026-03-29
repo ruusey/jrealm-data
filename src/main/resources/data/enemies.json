@@ -12,18 +12,23 @@
 		"health": 2000,
 		"maxSpeed": 1.8,
 		"chaseRange": 390,
-		"attackRange": 300,
+		"attackRange": 512,
 		"stats": {
 			"hp": 2000,
 			"def": 5,
-			"dex": 20
+			"dex": 20,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
 				"name": "orbit",
 				"hpThreshold": 1,
 				"movement": {
-					"type": "ORBIT",
+					"type": "ANCHOR",
 					"speed": 1.8,
 					"radius": 120,
 					"direction": "CW"
@@ -42,7 +47,7 @@
 				"hpThreshold": 0.4,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 3.5,
+					"speed": 2,
 					"chargeDistanceMin": 40,
 					"pauseMs": 400
 				},

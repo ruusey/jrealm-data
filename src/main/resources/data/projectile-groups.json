@@ -10,7 +10,7 @@
 				"positionMode": 0,
 				"damage": 50,
 				"angle": -0.15,
-				"range": 216,
+				"range": 512,
 				"size": 16,
 				"magnitude": 3.8,
 				"flags": [
@@ -23,7 +23,7 @@
 				"positionMode": 0,
 				"damage": 50,
 				"angle": 0,
-				"range": 216,
+				"range": 512,
 				"size": 16,
 				"magnitude": 3.8,
 				"flags": [
@@ -36,7 +36,7 @@
 				"positionMode": 0,
 				"damage": 50,
 				"angle": 0.15,
-				"range": 216,
+				"range": 512,
 				"size": 16,
 				"magnitude": 3.8,
 				"flags": [

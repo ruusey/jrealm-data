@@ -4752,7 +4752,12 @@
 		"tier": 0,
 		"targetSlot": 1,
 		"targetClass": 11,
-		"fameBonus": 0
+		"fameBonus": 0,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 60,
+			"max": 100
+		}
 	},
 	{
 		"itemId": 271,
@@ -4772,7 +4777,12 @@
 		"tier": 1,
 		"targetSlot": 1,
 		"targetClass": 11,
-		"fameBonus": 0
+		"fameBonus": 0,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 100,
+			"max": 140
+		}
 	},
 	{
 		"itemId": 272,
@@ -4792,7 +4802,12 @@
 		"tier": 2,
 		"targetSlot": 1,
 		"targetClass": 11,
-		"fameBonus": 0
+		"fameBonus": 0,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 140,
+			"max": 180
+		}
 	},
 	{
 		"itemId": 273,
@@ -4812,7 +4827,12 @@
 		"tier": 3,
 		"targetSlot": 1,
 		"targetClass": 11,
-		"fameBonus": 1
+		"fameBonus": 1,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 180,
+			"max": 220
+		}
 	},
 	{
 		"itemId": 274,
@@ -4835,7 +4855,12 @@
 		"tier": 4,
 		"targetSlot": 1,
 		"targetClass": 11,
-		"fameBonus": 2
+		"fameBonus": 2,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 220,
+			"max": 260
+		}
 	},
 	{
 		"itemId": 275,
@@ -4858,7 +4883,12 @@
 		"tier": 5,
 		"targetSlot": 1,
 		"targetClass": 11,
-		"fameBonus": 4
+		"fameBonus": 4,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 260,
+			"max": 300
+		}
 	},
 	{
 		"itemId": 276,
@@ -4883,6 +4913,11 @@
 		"tier": 6,
 		"targetSlot": 1,
 		"targetClass": 11,
-		"fameBonus": 6
+		"fameBonus": 6,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 280,
+			"max": 320
+		}
 	}
 ]

@@ -366,10 +366,13 @@ export class GameState {
         if (futureX <= 0 || futureX + size >= mapW) return true;
         if (futureY <= 0 || futureY + size >= mapH) return true;
 
-        // Bounding box reduced by 1.5 (matches Java: size / 1.5)
-        const bboxSize = size / 1.5;
-        const bx = futureX + (size - bboxSize) / 2;
-        const by = futureY + (size - bboxSize) / 2;
+        // Bounding box slightly smaller than server's (size/1.5) to avoid false positives.
+        // Server uses Rectangle(futurePos, size/1.5, size/1.5) at top-left corner.
+        // Client uses slightly smaller (size/1.4) so it never blocks movement the server allows.
+        // This prevents the "client stops, server teleports you through" desync.
+        const bboxSize = Math.floor(size / 1.4);
+        const bx = futureX;
+        const by = futureY;
 
         // Check collision tiles around future position
         const cx = Math.floor((futureX + size / 2) / ts);
