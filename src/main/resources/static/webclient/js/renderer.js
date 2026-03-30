@@ -472,6 +472,7 @@ export class GameRenderer {
                 else if (this._hasEffect(enemy.effectIds, 2))  spr.tint = 0x888888;  // PARALYZED - grayscale
                 else if (this._hasEffect(enemy.effectIds, 3))  spr.tint = 0x88AACC;  // STUNNED - blue/decay
                 else if (this._hasEffect(enemy.effectIds, 16)) spr.tint = 0x992255;  // CURSED - dark red-purple
+                else if (this._hasEffect(enemy.effectIds, 17)) spr.tint = 0x40cc40;  // POISONED - sickly green
             }
             this.entityLayer.addChild(spr);
         } else {
@@ -706,6 +707,24 @@ export class GameRenderer {
                         const dr = r * (0.4 + 0.5 * Math.sin(elapsed * 0.006 + i));
                         g.beginFill(0x6020a0, alpha * 0.4);
                         g.drawCircle(sx + Math.cos(a) * dr, sy + Math.sin(a) * dr, 2);
+                        g.endFill();
+                    }
+                    break;
+
+                case 5: // POISON_SPLASH — expanding toxic green cloud
+                    g.lineStyle(2, 0x40cc40, alpha * 0.7);
+                    g.drawCircle(sx, sy, r * (0.3 + progress * 0.7));
+                    g.lineStyle(1, 0x30aa30, alpha * 0.4);
+                    g.drawCircle(sx, sy, r * (0.5 + progress * 0.3));
+                    g.lineStyle(0);
+                    // Green toxic particles
+                    for (let i = 0; i < 10; i++) {
+                        const a = (i / 10) * Math.PI * 2 + elapsed * 0.003;
+                        const dist = r * 0.5 * (1.0 - progress * 0.3);
+                        const px = sx + Math.cos(a) * dist;
+                        const py = sy + Math.sin(a) * dist;
+                        g.beginFill(0x30aa30, alpha * 0.5);
+                        g.drawCircle(px, py, 3);
                         g.endFill();
                     }
                     break;
