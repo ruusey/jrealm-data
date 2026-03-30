@@ -711,23 +711,53 @@ export class GameRenderer {
                     }
                     break;
 
-                case 5: // POISON_SPLASH — expanding toxic green cloud
-                    g.lineStyle(2, 0x40cc40, alpha * 0.7);
-                    g.drawCircle(sx, sy, r * (0.3 + progress * 0.7));
-                    g.lineStyle(1, 0x30aa30, alpha * 0.4);
-                    g.drawCircle(sx, sy, r * (0.5 + progress * 0.3));
-                    g.lineStyle(0);
-                    // Green toxic particles
-                    for (let i = 0; i < 10; i++) {
-                        const a = (i / 10) * Math.PI * 2 + elapsed * 0.003;
-                        const dist = r * 0.5 * (1.0 - progress * 0.3);
-                        const px = sx + Math.cos(a) * dist;
-                        const py = sy + Math.sin(a) * dist;
-                        g.beginFill(0x30aa30, alpha * 0.5);
-                        g.drawCircle(px, py, 3);
-                        g.endFill();
+                case 5: { // POISON — either throw arc (line) or splash (AoE)
+                    const isThrow = fx.targetX !== undefined && fx.targetY !== undefined
+                            && (fx.targetX !== 0 || fx.targetY !== 0) && r === 0;
+                    if (isThrow) {
+                        // Parabolic vial throw arc
+                        const tx = fx.targetX * SCALE + offsetX;
+                        const ty = fx.targetY * SCALE + offsetY;
+                        const pdx = tx - sx, pdy = ty - sy;
+                        const pdist = Math.sqrt(pdx * pdx + pdy * pdy);
+                        const arcH = pdist * 0.4;
+                        const vialFrac = Math.min(progress * 1.3, 1.0);
+                        // Trail
+                        g.lineStyle(2, 0x40cc40, alpha * 0.5);
+                        g.moveTo(sx, sy);
+                        for (let i = 1; i <= 12; i++) {
+                            const f = i / 12;
+                            if (f > vialFrac) break;
+                            const px = sx + pdx * f;
+                            const py = sy + pdy * f - 4 * arcH * f * (1 - f);
+                            g.lineTo(px, py);
+                        }
+                        // Vial dot
+                        if (vialFrac < 1.0) {
+                            const vx = sx + pdx * vialFrac;
+                            const vy = sy + pdy * vialFrac - 4 * arcH * vialFrac * (1 - vialFrac);
+                            g.lineStyle(0);
+                            g.beginFill(0x40ee40, alpha);
+                            g.drawCircle(vx, vy, 4);
+                            g.endFill();
+                        }
+                    } else {
+                        // AoE poison splash cloud
+                        g.lineStyle(2, 0x40cc40, alpha * 0.7);
+                        g.drawCircle(sx, sy, r * (0.3 + progress * 0.7));
+                        g.lineStyle(1, 0x30aa30, alpha * 0.4);
+                        g.drawCircle(sx, sy, r * (0.5 + progress * 0.3));
+                        g.lineStyle(0);
+                        for (let i = 0; i < 10; i++) {
+                            const a = (i / 10) * Math.PI * 2 + elapsed * 0.003;
+                            const dist2 = r * 0.5 * (1.0 - progress * 0.3);
+                            g.beginFill(0x30aa30, alpha * 0.5);
+                            g.drawCircle(sx + Math.cos(a) * dist2, sy + Math.sin(a) * dist2, 3);
+                            g.endFill();
+                        }
                     }
                     break;
+                }
             }
         }
 
