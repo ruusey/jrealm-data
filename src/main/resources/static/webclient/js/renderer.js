@@ -428,17 +428,52 @@ export class GameRenderer {
             this.entityLayer.addChild(g);
         }
 
-        // Player name
-        const name = player.name || CLASS_NAMES[classId] || 'Player';
-        const nameText = new PIXI.Text(name, {
-            fontSize: 16, fill: isLocal ? 0x40ff40 : 0xffffff,
-            fontFamily: 'monospace', fontWeight: 'bold',
-            stroke: 0x000000, strokeThickness: 3
-        });
-        nameText.anchor.set(0.5, 1);
-        nameText.x = sx + size / 2;
-        nameText.y = sy - 4;
-        this.entityLayer.addChild(nameText);
+        // HP and MP bars above player sprite
+        const barWidth = size;
+        const barHeight = 4;
+        const barGap = 2;
+        const barY = sy - barHeight * 2 - barGap - 4;
+
+        // Get health/mana data
+        const hp = isLocal ? gameState.health : (player.health || 0);
+        const maxHp = isLocal ? (gameState.getComputedStats()?.hp || gameState.maxHealth || 100) : (player.maxHealth || 100);
+        const mp = isLocal ? gameState.mana : (player.mana || 0);
+        const maxMp = isLocal ? (gameState.getComputedStats()?.mp || gameState.maxMana || 100) : (player.maxMana || 100);
+        const hpPct = maxHp > 0 ? Math.min(1, hp / maxHp) : 1;
+        const mpPct = maxMp > 0 ? Math.min(1, mp / maxMp) : 1;
+
+        const bars = new PIXI.Graphics();
+        // HP bar background
+        bars.beginFill(0x222222, 0.7);
+        bars.drawRect(sx, barY, barWidth, barHeight);
+        bars.endFill();
+        // HP bar fill
+        bars.beginFill(0x40c040, 0.9);
+        bars.drawRect(sx, barY, barWidth * hpPct, barHeight);
+        bars.endFill();
+        // MP bar background
+        bars.beginFill(0x222222, 0.7);
+        bars.drawRect(sx, barY + barHeight + barGap, barWidth, barHeight);
+        bars.endFill();
+        // MP bar fill
+        bars.beginFill(0x4080e0, 0.9);
+        bars.drawRect(sx, barY + barHeight + barGap, barWidth * mpPct, barHeight);
+        bars.endFill();
+        this.entityLayer.addChild(bars);
+
+        // Player name above bars (other players only — local player name goes in sidebar)
+        if (!isLocal) {
+            const name = player.name || CLASS_NAMES[classId] || 'Player';
+            const nameText = new PIXI.Text(name, {
+                fontSize: 16, fill: 0xffffff,
+                fontFamily: 'monospace', fontWeight: 'bold',
+                stroke: 0x000000, strokeThickness: 3
+            });
+            nameText.anchor.set(0.5, 1);
+            nameText.x = sx + size / 2;
+            nameText.y = barY - 2;
+            this.entityLayer.addChild(nameText);
+        }
     }
 
     renderEnemy(enemy, offsetX, offsetY, gameState) {

@@ -1001,6 +1001,15 @@ function updateHUD() {
     // Use computed stats (base + equipment bonuses) for display
     const computed = game.getComputedStats();
 
+    // Player identity header: Name Lv. X ClassName
+    const level = game.getPlayerLevel();
+    const className = CLASS_NAMES[game.classId] || 'Unknown';
+    const pName = game.playerName || 'Player';
+    const identityEl = document.getElementById('player-identity');
+    if (identityEl) {
+        identityEl.textContent = `${pName}  Lv. ${level}  ${className}`;
+    }
+
     // HP bar - max HP from computed stats
     const maxHp = computed ? computed.hp : game.maxHealth;
     const hpPct = maxHp > 0 ? Math.min(100, game.health / maxHp * 100) : 100;
@@ -1022,7 +1031,6 @@ function updateHUD() {
     document.getElementById('mp-bar').style.width = `${mpPct}%`;
 
     // XP/Level/Fame bar
-    const level = game.getPlayerLevel();
     const expInfo = game.getExpDisplayInfo();
     document.getElementById('xp-text').textContent = expInfo.text;
     document.getElementById('xp-bar').style.width = `${expInfo.pct}%`;

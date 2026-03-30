@@ -1,6 +1,6 @@
 // Game state management - entities, map, player data, trading, damage text
 
-export const CLASS_NAMES = ['Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'Knight', 'Paladin'];
+export const CLASS_NAMES = ['Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'Knight', 'Paladin', 'Assassin', 'Necromancer', 'Mystic', 'Trickster', 'Sorcerer'];
 
 export class GameState {
     constructor() {
