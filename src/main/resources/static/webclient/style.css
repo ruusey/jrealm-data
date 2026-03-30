@@ -147,10 +147,14 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 /* HUD */
 #hud {
     position: absolute;
-    top: 10px; right: 10px;
+    top: 10px; right: 10px; bottom: 10px;
     width: 300px;
     pointer-events: auto;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 #hud-bars { margin-bottom: 8px; }
 .bar-container {
@@ -260,6 +264,9 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     background: #1a1218cc;
     border: 1px solid #3a2a38;
     border-radius: 4px;
+    flex-shrink: 1;
+    min-height: 0;
+    overflow-y: auto;
     padding: 8px;
     margin-top: 4px;
     z-index: 10;
@@ -288,6 +295,9 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     margin-top: 6px;
     z-index: 10;
     position: relative;
+    flex-shrink: 1;
+    min-height: 0;
+    overflow-y: auto;
 }
 #nearby-players {
     background: #1a1218cc;
@@ -503,7 +513,7 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 
 /* Mobile responsive */
 @media (max-width: 900px), (max-height: 500px) {
-    #hud { width: 180px; top: 5px; right: 5px; }
+    #hud { width: 180px; top: 5px; right: 5px; bottom: 5px; }
     #touch-joystick { bottom: 140px; left: 10px; }
     #touch-aim { right: 190px; }
     #mobile-buttons { right: 190px; }
