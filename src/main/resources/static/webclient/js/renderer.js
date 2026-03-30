@@ -715,30 +715,55 @@ export class GameRenderer {
                     const isThrow = fx.targetX !== undefined && fx.targetY !== undefined
                             && (fx.targetX !== 0 || fx.targetY !== 0) && r === 0;
                     if (isThrow) {
-                        // Parabolic vial throw arc
+                        // Chunky parabolic vial throw arc (800ms flight)
                         const tx = fx.targetX * SCALE + offsetX;
                         const ty = fx.targetY * SCALE + offsetY;
                         const pdx = tx - sx, pdy = ty - sy;
                         const pdist = Math.sqrt(pdx * pdx + pdy * pdy);
-                        const arcH = pdist * 0.4;
-                        const vialFrac = Math.min(progress * 1.3, 1.0);
-                        // Trail
-                        g.lineStyle(2, 0x40cc40, alpha * 0.5);
-                        g.moveTo(sx, sy);
-                        for (let i = 1; i <= 12; i++) {
-                            const f = i / 12;
-                            if (f > vialFrac) break;
-                            const px = sx + pdx * f;
-                            const py = sy + pdy * f - 4 * arcH * f * (1 - f);
-                            g.lineTo(px, py);
+                        const arcH = pdist * 0.5;
+                        const vialFrac = Math.min(progress, 1.0);
+                        const steps = 20;
+
+                        // Thick trail behind vial
+                        for (let i = 0; i < steps; i++) {
+                            const f0 = i / steps, f1 = (i + 1) / steps;
+                            if (f1 > vialFrac) break;
+                            const x0 = sx + pdx * f0, y0 = sy + pdy * f0 - 4 * arcH * f0 * (1 - f0);
+                            const x1 = sx + pdx * f1, y1 = sy + pdy * f1 - 4 * arcH * f1 * (1 - f1);
+                            const thick = 2 + 6 * (f1 / Math.max(vialFrac, 0.01));
+                            const ta = 0.15 + 0.4 * (f1 / Math.max(vialFrac, 0.01));
+                            g.lineStyle(thick, 0x339920, ta);
+                            g.moveTo(x0, y0);
+                            g.lineTo(x1, y1);
                         }
-                        // Vial dot
+                        g.lineStyle(0);
+
+                        // Dripping particles
+                        for (let i = 0; i < 5; i++) {
+                            const pf = vialFrac * (0.3 + 0.7 * i / 5);
+                            const px2 = sx + pdx * pf;
+                            const py2 = sy + pdy * pf - 4 * arcH * pf * (1 - pf);
+                            const dripOff = progress * 20 * (i + 1) / 5;
+                            const da = Math.max(0, 0.5 - progress * 0.6);
+                            if (da > 0) {
+                                g.beginFill(0x2a8818, da);
+                                g.drawRect(px2 - 2, py2 + dripOff, 4, 3 + i);
+                                g.endFill();
+                            }
+                        }
+
+                        // Fat vial blob
                         if (vialFrac < 1.0) {
                             const vx = sx + pdx * vialFrac;
                             const vy = sy + pdy * vialFrac - 4 * arcH * vialFrac * (1 - vialFrac);
-                            g.lineStyle(0);
-                            g.beginFill(0x40ee40, alpha);
-                            g.drawCircle(vx, vy, 4);
+                            g.beginFill(0x30771a, 0.4);
+                            g.drawCircle(vx, vy, 10);
+                            g.endFill();
+                            g.beginFill(0x40cc30, 0.9);
+                            g.drawCircle(vx, vy, 7);
+                            g.endFill();
+                            g.beginFill(0x90ff70, 0.7);
+                            g.drawCircle(vx - 2, vy - 2, 3);
                             g.endFill();
                         }
                     } else {
