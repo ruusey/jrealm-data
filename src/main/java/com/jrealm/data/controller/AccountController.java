@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.jrealm.game.contants.CharacterClass;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -169,7 +171,7 @@ public class AccountController {
         ResponseEntity<?> res = null;
         try {
             final AccountEntity created = this.jrealmAccounts.registerJrealmAccount(account);
-            this.jrealmData.createInitialAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName(), 0);
+            this.jrealmData.createInitialAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName(), CharacterClass.WIZARD.classId);
             res = ApiUtils.buildSuccess(created);
         } catch (final Exception e) {
             final String errMsg = "Failed to register JRealm Account";
