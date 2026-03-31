@@ -312,6 +312,8 @@ export class GameState {
             player.name = packet.playerName;
             player.health = packet.health;
             player.maxHealth = packet.stats.hp;
+            player.mana = packet.mana;
+            player.maxMana = packet.stats.mp;
             player.stats = packet.stats;
             player.effectIds = packet.effectIds;
         }
@@ -657,7 +659,7 @@ export class GameState {
         const map = this._getParsedExpMap();
         if (!map) return 1;
         const exp = Number(this.experience);
-        if (exp > this._maxExperience) return this._maxExpLevel;
+        if (exp > this._maxExperience) return this._maxExpLevel + 1; // Level 20 (fame mode)
         let level = 1;
         for (const [lvl, range] of Object.entries(map)) {
             if (range.min <= exp && range.max >= exp) {
