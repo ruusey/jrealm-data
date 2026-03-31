@@ -2139,7 +2139,7 @@
 		"col": 3,
 		"spriteKey": "rotmg-items.png",
 		"name": "Serpentine Staff",
-		"description": "A staff powered by the magic of Stheno\u00ef\u00bf\u00bds minions.",
+		"description": "A staff powered by the magic of Sthenoï¿½s minions.",
 		"damage": {
 			"projectileGroupId": 79,
 			"min": 20,
@@ -4924,7 +4924,7 @@
 		"itemId": 277,
 		"row": 5,
 		"col": 2,
-		"spriteKey": "rotmg-projectiles-1.png",
+		"spriteKey": "rotmg-items-1.png",
 		"name": "Helm of the Juggernaut",
 		"description": "A legendary helm that grants immense defensive power, encasing the wearer in magical armor.",
 		"effect": {
@@ -4936,7 +4936,13 @@
 		},
 		"stats": {
 			"def": 10,
-			"spd": 5
+			"spd": 5,
+			"hp": 0,
+			"mp": 0,
+			"att": 0,
+			"dex": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"consumable": false,
 		"tier": -1,
