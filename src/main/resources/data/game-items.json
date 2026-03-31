@@ -4919,5 +4919,29 @@
 			"min": 280,
 			"max": 320
 		}
+	},
+	{
+		"itemId": 277,
+		"row": 5,
+		"col": 2,
+		"spriteKey": "rotmg-projectiles-1.png",
+		"name": "Helm of the Juggernaut",
+		"description": "A legendary helm that grants immense defensive power, encasing the wearer in magical armor.",
+		"effect": {
+			"self": false,
+			"effectId": 8,
+			"duration": 2500,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"stats": {
+			"def": 10,
+			"spd": 5
+		},
+		"consumable": false,
+		"tier": -1,
+		"targetSlot": 1,
+		"targetClass": 4,
+		"fameBonus": 8
 	}
 ]

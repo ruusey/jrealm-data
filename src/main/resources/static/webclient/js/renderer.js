@@ -416,6 +416,7 @@ export class GameRenderer {
             else if (this._hasEffect(effects, 1))  spr.tint = 0xFF8888;  // HEALING → red tint
             else if (this._hasEffect(effects, 4))  spr.tint = 0xBBFF88;  // SPEEDY → green/yellow
             else if (this._hasEffect(effects, 6))  spr.tint = 0xFFFFCC;  // INVINCIBLE → bright glow
+            else if (this._hasEffect(effects, 18)) spr.tint = 0x8899CC;  // ARMORED → blue-silver
             else if (this._hasEffect(effects, 14)) spr.tint = 0xFFAA66;  // DAMAGING → orange
 
             this.entityLayer.addChild(spr);

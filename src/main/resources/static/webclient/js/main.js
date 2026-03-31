@@ -35,7 +35,7 @@ let projectileCounter = 0;
 // --- Sprite sheets to load ---
 // Must match Java GameSpriteManager.SPRITE_NAMES exactly
 const SPRITE_SHEETS = [
-    'rotmg-projectiles.png',
+    'rotmg-projectiles.png', 'rotmg-projectiles-1.png',
     'rotmg-bosses-1.png', 'rotmg-bosses.png',
     'rotmg-items.png', 'rotmg-items-1.png',
     'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png',
