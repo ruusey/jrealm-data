@@ -78,7 +78,6 @@ public class PlayerDataController {
     }
 
     @PostMapping(value = "/account/{accountUuid}/character", produces = { "application/json" })
-    @AdminRestricted
     public ResponseEntity<?> createPlayerAccountCharacter(final HttpServletRequest request, @PathVariable final String accountUuid,
             @RequestParam Integer classId) {
         ResponseEntity<?> res = null;
