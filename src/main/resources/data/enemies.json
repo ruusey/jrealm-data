@@ -224,9 +224,9 @@
 	{
 		"enemyId": 5,
 		"name": "Red Demon",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 0,
-		"col": 1,
+		"spriteKey": "autumnNexusObjects16x16.png",
+		"row": 12,
+		"col": 2,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 8,
@@ -238,8 +238,14 @@
 		"stats": {
 			"hp": 2000,
 			"def": 5,
-			"dex": 12
-		}
+			"dex": 12,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 6,
@@ -654,9 +660,9 @@
 	{
 		"enemyId": 25,
 		"name": "Frost Knight",
-		"spriteKey": "lofi_char.png",
-		"row": 9,
-		"col": 7,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 17,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 43,
@@ -669,7 +675,11 @@
 			"hp": 5000,
 			"def": 30,
 			"dex": 15,
-			"spd": 8
+			"spd": 8,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
@@ -744,9 +754,9 @@
 	{
 		"enemyId": 26,
 		"name": "Inferno Demon",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
-		"col": 0,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 9,
+		"col": 5,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 44,
@@ -759,7 +769,11 @@
 			"hp": 6000,
 			"def": 20,
 			"dex": 20,
-			"spd": 5
+			"spd": 5,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
@@ -1066,9 +1080,9 @@
 	{
 		"enemyId": 31,
 		"name": "Magma Worm",
-		"spriteKey": "lofi_char.png",
-		"row": 12,
-		"col": 4,
+		"spriteKey": "d3Chars8x8r.png",
+		"row": 4,
+		"col": 2,
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 53,
@@ -1080,8 +1094,14 @@
 		"stats": {
 			"hp": 250,
 			"def": 3,
-			"dex": 20
-		}
+			"dex": 20,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 32,
@@ -1106,9 +1126,9 @@
 	{
 		"enemyId": 33,
 		"name": "Pit Viper",
-		"spriteKey": "lofi_char.png",
-		"row": 13,
-		"col": 4,
+		"spriteKey": "oryxHordeChars8x8.png",
+		"row": 21,
+		"col": 5,
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 55,
@@ -1120,8 +1140,14 @@
 		"stats": {
 			"hp": 280,
 			"def": 4,
-			"dex": 18
-		}
+			"dex": 18,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 34,
@@ -1147,9 +1173,9 @@
 	{
 		"enemyId": 35,
 		"name": "Tide Warden",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
-		"col": 3,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 21,
+		"col": 5,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 57,
@@ -1161,7 +1187,12 @@
 		"stats": {
 			"hp": 3000,
 			"def": 15,
-			"dex": 12
+			"dex": 12,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
@@ -1210,8 +1241,8 @@
 	{
 		"enemyId": 36,
 		"name": "Mycelium Colossus",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 41,
 		"col": 4,
 		"spriteSize": 16,
 		"size": 64,
@@ -1224,7 +1255,12 @@
 		"stats": {
 			"hp": 4000,
 			"def": 30,
-			"dex": 6
+			"dex": 6,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
@@ -1886,10 +1922,10 @@
 	{
 		"enemyId": 48,
 		"name": "Ogre Brute",
-		"spriteKey": "lofi_char.png",
-		"row": 8,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 0,
 		"col": 0,
-		"spriteSize": 8,
+		"spriteSize": 16,
 		"size": 48,
 		"attackId": 56,
 		"xp": 1000,
@@ -1900,8 +1936,14 @@
 		"stats": {
 			"hp": 800,
 			"def": 10,
-			"dex": 8
-		}
+			"dex": 8,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 49,
@@ -1920,8 +1962,14 @@
 		"stats": {
 			"hp": 4000,
 			"def": 25,
-			"dex": 8
-		}
+			"dex": 8,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 50,
@@ -1946,9 +1994,9 @@
 	{
 		"enemyId": 51,
 		"name": "Goblin Mage",
-		"spriteKey": "lofi_char.png",
-		"row": 5,
-		"col": 3,
+		"spriteKey": "d3Chars8x8r.png",
+		"row": 0,
+		"col": 0,
 		"spriteSize": 8,
 		"size": 24,
 		"health": 120,
@@ -2008,9 +2056,9 @@
 	{
 		"enemyId": 52,
 		"name": "Tide Elemental",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 1,
-		"col": 4,
+		"spriteKey": "crystalCaveChars16x16.png",
+		"row": 5,
+		"col": 1,
 		"spriteSize": 16,
 		"size": 40,
 		"health": 160,
@@ -2218,9 +2266,9 @@
 	{
 		"enemyId": 55,
 		"name": "Storm Mage",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 4,
-		"col": 6,
+		"spriteKey": "cursedLibraryChars8x8.png",
+		"row": 5,
+		"col": 2,
 		"spriteSize": 8,
 		"size": 32,
 		"health": 1200,
@@ -2544,9 +2592,9 @@
 	{
 		"enemyId": 59,
 		"name": "Shadow Assassin",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 8,
-		"col": 10,
+		"spriteKey": "oryxHordeChars8x8.png",
+		"row": 19,
+		"col": 2,
 		"spriteSize": 8,
 		"size": 28,
 		"health": 800,
@@ -2825,8 +2873,8 @@
 	{
 		"enemyId": 62,
 		"name": "Stone Warden",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 5,
+		"spriteKey": "oryxHordeChars16x16.png",
+		"row": 13,
 		"col": 2,
 		"spriteSize": 16,
 		"size": 64,
@@ -3007,9 +3055,9 @@
 	{
 		"enemyId": 64,
 		"name": "Spectral Knight",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 5,
-		"col": 4,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 33,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,

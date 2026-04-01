@@ -29,6 +29,7 @@
       <button class="tab" data-tab="enemies">Enemies</button>
       <button class="tab" data-tab="projgroups">Projectiles</button>
       <button class="tab" data-tab="lootgroups">Loot</button>
+      <button class="tab" data-tab="animations">Animations</button>
     </div>
     <div class="toolbar">
       <label>Sheet:
@@ -431,6 +432,38 @@
         </div>
     </div>
 
+  </div>
+
+  <!-- Animations Tab -->
+  <div class="panel tile-panel" id="animationsTab" style="display:none">
+    <div class="tile-header">
+      <h2>Animations (<span id="animCount">0</span>)</h2>
+      <input type="text" id="animSearch" placeholder="Search animations...">
+    </div>
+    <div class="tile-list" id="animListView"></div>
+
+    <div class="item-detail" id="animDetail" style="display:none">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <button id="animBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+        <h3 id="animDetailTitle" style="margin:0">Animation</h3>
+      </div>
+      <div class="detail-grid">
+        <label>Object ID: <input type="number" id="animObjId" readonly></label>
+        <label>Type: <input type="text" id="animObjType" readonly></label>
+        <label>Sprite: <select id="animSpriteKey"></select></label>
+      </div>
+      <div class="detail-preview" style="margin:6px 0">
+        <span>Preview:</span>
+        <canvas id="animPreview" width="64" height="64" style="border:1px solid #3a2a38;background:#111"></canvas>
+      </div>
+
+      <h4>Animation Sets</h4>
+      <div id="animSetsContainer" style="max-height:400px;overflow-y:auto"></div>
+
+      <div class="detail-actions" style="margin-top:8px">
+        <button id="applyAnimBtn" class="btn-apply">Apply</button>
+      </div>
+    </div>
   </div>
 
   <!-- Loot Groups Tab -->

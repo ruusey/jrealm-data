@@ -170,6 +170,10 @@ let lootTables = [];
 let selectedLootGroup = null;
 let dirtyLootGroups = false;
 let dirtyLootTables = false;
+let animations = [];
+let selectedAnim = null;
+let dirtyAnimations = false;
+let animPickingFrame = null; // {animName, frameIdx} when picking a frame from the sheet
 let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
 let activeTab = 'tiles';
@@ -196,7 +200,7 @@ const goToSheetBtn = document.getElementById('goToSheetBtn');
 // ========== INIT ==========
 async function init() {
   populateSheetSelect();
-  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadLootData(), loadImages()]);
+  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadLootData(), loadAnimations(), loadImages()]);
   renderSheet();
   renderTileList();
   renderTerrainList();
@@ -250,6 +254,12 @@ async function loadEnemies() {
     enemies = await (await fetch(`${BASE}/enemies.json`)).json();
     enemies.sort((a, b) => a.enemyId - b.enemyId);
     document.getElementById('enemyCount').textContent = enemies.length;
+}
+
+async function loadAnimations() {
+    animations = await (await fetch(`${BASE}/animations.json`)).json();
+    animations.sort((a, b) => a.objectId - b.objectId);
+    document.getElementById('animCount').textContent = animations.length;
 }
 
 async function loadLootData() {
@@ -1978,6 +1988,176 @@ function renderPickerList(filter) {
   });
 }
 
+// ========== ANIMATIONS ==========
+const ANIM_SET_NAMES = ['idle_side','walk_side','attack_side','idle_front','walk_front','attack_down','attack_up'];
+
+function renderAnimList(filter = '') {
+  const list = document.getElementById('animListView');
+  list.innerHTML = '';
+  const lower = (filter || '').toLowerCase();
+  animations.forEach(a => {
+    const label = a.className || a.objectType + ':' + a.objectId;
+    if (lower && !label.toLowerCase().includes(lower) && !String(a.objectId).includes(lower)) return;
+    const row = document.createElement('div');
+    row.className = 'tile-row' + (selectedAnim && selectedAnim.objectId === a.objectId && selectedAnim.objectType === a.objectType ? ' selected' : '');
+    const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = a.objectId;
+    const name = document.createElement('span'); name.className = 'tile-name'; name.textContent = label;
+    const type = document.createElement('span'); type.style.cssText = 'color:#888;font-size:11px'; type.textContent = a.objectType;
+    row.append(id, name, type);
+    row.addEventListener('click', () => selectAnim(a));
+    list.appendChild(row);
+  });
+}
+
+function selectAnim(a) {
+  selectedAnim = a;
+  document.getElementById('animListView').style.display = 'none';
+  document.querySelector('#animationsTab .tile-header').style.display = 'none';
+  showAnimDetail(a);
+}
+
+function deselectAnim() {
+  selectedAnim = null;
+  animPickingFrame = null;
+  document.getElementById('animDetail').style.display = 'none';
+  document.getElementById('animListView').style.display = '';
+  document.querySelector('#animationsTab .tile-header').style.display = '';
+  renderAnimList(document.getElementById('animSearch').value);
+}
+
+function showAnimDetail(a) {
+  document.getElementById('animDetail').style.display = '';
+  document.getElementById('animDetailTitle').textContent = a.className || (a.objectType + ':' + a.objectId);
+  document.getElementById('animObjId').value = a.objectId;
+  document.getElementById('animObjType').value = a.objectType;
+  // Populate sprite key dropdown
+  const sel = document.getElementById('animSpriteKey');
+  sel.innerHTML = '';
+  SPRITE_SHEETS.forEach(s => {
+    const opt = document.createElement('option'); opt.value = s; opt.textContent = s;
+    if (s === a.spriteKey) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  renderAnimSets(a);
+  updateAnimPreview(a);
+}
+
+function updateAnimPreview(a) {
+  const cvs = document.getElementById('animPreview');
+  const ctx = cvs.getContext('2d');
+  ctx.clearRect(0, 0, 64, 64);
+  const idle = a.animations?.idle_side;
+  if (!idle || !idle.frames.length) return;
+  const frame = idle.frames[0];
+  const img = images[a.spriteKey];
+  if (!img) return;
+  const ss = a.spriteKey.includes('16x16') ? 16 : 8;
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(img, frame.col * ss, frame.row * ss, ss, ss, 0, 0, 64, 64);
+}
+
+function renderAnimSets(a) {
+  const container = document.getElementById('animSetsContainer');
+  container.innerHTML = '';
+  if (!a.animations) a.animations = {};
+  const ss = a.spriteKey.includes('16x16') ? 16 : 8;
+
+  ANIM_SET_NAMES.forEach(animName => {
+    if (!a.animations[animName]) a.animations[animName] = { frames: [], durations: [] };
+    const animSet = a.animations[animName];
+
+    const card = document.createElement('div');
+    card.style.cssText = 'border:1px solid #333;border-radius:4px;padding:6px;margin-bottom:6px;background:#1a1820';
+
+    const header = document.createElement('div');
+    header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:4px';
+    const title = document.createElement('span');
+    title.style.cssText = 'font-weight:bold;font-size:12px;color:#c8a86e';
+    title.textContent = animName;
+    const addBtn = document.createElement('button');
+    addBtn.className = 'btn-add'; addBtn.textContent = '+ Frame';
+    addBtn.style.cssText = 'font-size:9px;padding:1px 6px';
+    addBtn.addEventListener('click', () => {
+      animSet.frames.push({ row: 0, col: 0 });
+      animSet.durations.push(8);
+      markDirty('animations');
+      renderAnimSets(a);
+    });
+    header.append(title, addBtn);
+    card.appendChild(header);
+
+    const framesRow = document.createElement('div');
+    framesRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px';
+
+    animSet.frames.forEach((frame, idx) => {
+      const frameDiv = document.createElement('div');
+      frameDiv.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid #2a2a38;border-radius:3px;padding:3px;background:#12101a';
+
+      // Sprite preview canvas - clickable to pick from sheet
+      const cvs = document.createElement('canvas'); cvs.width = 32; cvs.height = 32;
+      cvs.style.cssText = 'cursor:pointer;border:1px solid #444;image-rendering:pixelated';
+      cvs.title = 'Click to pick from sprite sheet';
+      const img = images[a.spriteKey];
+      if (img) {
+        const ctx = cvs.getContext('2d'); ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, frame.col * ss, frame.row * ss, ss, ss, 0, 0, 32, 32);
+      }
+      cvs.addEventListener('click', () => {
+        // Switch to the correct sprite sheet and enter pick mode
+        if (a.spriteKey !== currentSheet) {
+          currentSheet = a.spriteKey; sheetSelect.value = currentSheet; renderSheet();
+        }
+        animPickingFrame = { anim: a, animName, frameIdx: idx };
+        pickMode = true;
+        document.querySelectorAll('.btn-pick').forEach(b => b.classList.remove('active'));
+        // Scroll to the frame location on sheet
+        const px = frame.col * ss * SCALE, py = frame.row * ss * SCALE;
+        const scroll = document.querySelector('.sheet-scroll');
+        scroll.scrollTo({ left: px - scroll.clientWidth / 2, top: py - scroll.clientHeight / 2, behavior: 'smooth' });
+      });
+
+      // Row/Col labels
+      const posLabel = document.createElement('span');
+      posLabel.style.cssText = 'font-size:9px;color:#888';
+      posLabel.textContent = `r${frame.row} c${frame.col}`;
+
+      // Duration input
+      const durInput = document.createElement('input');
+      durInput.type = 'number'; durInput.min = '1'; durInput.value = animSet.durations[idx] || 8;
+      durInput.style.cssText = 'width:30px;font-size:9px;text-align:center';
+      durInput.title = 'Frame duration (ticks)';
+      durInput.addEventListener('change', () => {
+        animSet.durations[idx] = parseInt(durInput.value) || 8;
+        markDirty('animations');
+      });
+
+      // Remove button
+      const rmBtn = document.createElement('button');
+      rmBtn.className = 'tg-remove'; rmBtn.textContent = '×';
+      rmBtn.style.cssText = 'font-size:10px;padding:0 3px';
+      rmBtn.addEventListener('click', () => {
+        animSet.frames.splice(idx, 1);
+        animSet.durations.splice(idx, 1);
+        markDirty('animations');
+        renderAnimSets(a);
+      });
+
+      frameDiv.append(cvs, posLabel, durInput, rmBtn);
+      framesRow.appendChild(frameDiv);
+    });
+
+    card.appendChild(framesRow);
+    container.appendChild(card);
+  });
+}
+
+function applyAnimDetail() {
+  if (!selectedAnim) return;
+  selectedAnim.spriteKey = document.getElementById('animSpriteKey').value;
+  markDirty('animations');
+  updateAnimPreview(selectedAnim);
+}
+
 // ========== LOOT GROUPS ==========
 function renderLgList(filter = '') {
   const list = document.getElementById('lgListView');
@@ -2229,7 +2409,9 @@ function switchTab(tab) {
   document.getElementById('enemiesTab').style.display = tab === 'enemies' ? '' : 'none';
   document.getElementById('projgroupsTab').style.display = tab === 'projgroups' ? '' : 'none';
   document.getElementById('lootgroupsTab').style.display = tab === 'lootgroups' ? '' : 'none';
+  document.getElementById('animationsTab').style.display = tab === 'animations' ? '' : 'none';
   if (tab === 'lootgroups') renderLgList();
+  if (tab === 'animations') renderAnimList();
 }
 
 // ========== SAVE ==========
@@ -2242,6 +2424,7 @@ function markDirty(which) {
   if (which === 'enemies') dirtyEnemies = true;
   if (which === 'lootGroups') dirtyLootGroups = true;
   if (which === 'lootTables') dirtyLootTables = true;
+  if (which === 'animations') dirtyAnimations = true;
   saveBtn.disabled = false;
   const parts = [];
   if (dirtyTiles) parts.push('tiles');
@@ -2252,6 +2435,7 @@ function markDirty(which) {
   if (dirtyEnemies) parts.push('enemies');
   if (dirtyLootGroups) parts.push('loot groups');
   if (dirtyLootTables) parts.push('loot tables');
+  if (dirtyAnimations) parts.push('animations');
   saveStatus.textContent = `(unsaved: ${parts.join(', ')})`;
   saveStatus.style.color = '#fa0';
 }
@@ -2322,6 +2506,16 @@ async function saveAll() {
       dirtyLootTables = false;
       results.push('loot tables');
     }
+    if (dirtyAnimations) {
+      const res = await fetch('/gamedata/animations', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(animations, null, '\t')
+      });
+      if (!res.ok) throw new Error('animations: ' + res.statusText);
+      dirtyAnimations = false;
+      results.push('animations');
+    }
     saveStatus.textContent = `Saved ${results.join(', ')}!`;
     saveStatus.style.color = '#8f8';
   } catch (e) {
@@ -2390,6 +2584,13 @@ function bindEvents() {
       const btn = document.getElementById('pickPgSpriteBtn');
       btn.classList.remove('active');
       btn.textContent = 'Pick Sprite';
+    } else if (activeTab === 'animations' && animPickingFrame) {
+      const { anim, animName, frameIdx } = animPickingFrame;
+      anim.animations[animName].frames[frameIdx] = { row, col };
+      markDirty('animations');
+      renderAnimSets(anim);
+      updateAnimPreview(anim);
+      animPickingFrame = null;
     }
     pickMode = false;
   });
@@ -2558,6 +2759,11 @@ function bindEvents() {
     document.getElementById(id).addEventListener('input', updatePgTabPreview);
   });
 
+  // Animations tab
+  document.getElementById('animSearch').addEventListener('input', (e) => renderAnimList(e.target.value));
+  document.getElementById('animBackBtn').addEventListener('click', deselectAnim);
+  document.getElementById('applyAnimBtn').addEventListener('click', applyAnimDetail);
+
   // Loot Groups tab
   document.getElementById('lgSearch').addEventListener('input', (e) => renderLgList(e.target.value));
   document.getElementById('lgBackBtn').addEventListener('click', deselectLootGroup);
@@ -2581,7 +2787,7 @@ function bindEvents() {
   });
 
   window.addEventListener('beforeunload', (e) => {
-    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups || dirtyMaps || dirtyEnemies || dirtyLootGroups || dirtyLootTables) { e.preventDefault(); e.returnValue = ''; }
+    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups || dirtyMaps || dirtyEnemies || dirtyLootGroups || dirtyLootTables || dirtyAnimations) { e.preventDefault(); e.returnValue = ''; }
   });
 
   // Resize handle drag
