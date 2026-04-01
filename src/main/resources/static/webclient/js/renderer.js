@@ -575,7 +575,7 @@ export class GameRenderer {
         if (lootDef) {
             tex = this.getRegion(lootDef.spriteKey.replace('.png', ''), lootDef.col, lootDef.row, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
         } else if (isChest) {
-            tex = this.getRegion('rotmg-projectiles-1', 2, 0, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
+            tex = this.getRegion('rotmg-projectiles', 2, 0, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
         } else {
             const col = (tier >= 0 && tier < 5) ? tier : 0;
             tex = this.getRegion('rotmg-misc', col, 9, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);

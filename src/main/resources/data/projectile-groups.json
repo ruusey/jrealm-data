@@ -1846,11 +1846,11 @@
 			{
 				"projectileId": 35,
 				"positionMode": 0,
-				"damage": 45,
+				"damage": 30,
 				"angle": 0,
 				"range": 120,
-				"size": 8,
-				"magnitude": 5,
+				"size": 20,
+				"magnitude": 3,
 				"flags": [
 					0
 				]
@@ -1858,11 +1858,11 @@
 			{
 				"projectileId": 35,
 				"positionMode": 0,
-				"damage": 45,
+				"damage": 30,
 				"angle": 0.25,
 				"range": 120,
-				"size": 8,
-				"magnitude": 5,
+				"size": 20,
+				"magnitude": 3,
 				"flags": [
 					0
 				]
@@ -1871,9 +1871,9 @@
 	},
 	{
 		"projectileGroupId": 36,
-		"row": 7,
-		"col": 2,
-		"spriteKey": "rotmg-items-1.png",
+		"row": 14,
+		"col": 9,
+		"spriteKey": "lofiObj5b.png",
 		"projectiles": [
 			{
 				"projectileId": 36,
@@ -1881,8 +1881,8 @@
 				"damage": 35,
 				"angle": 0,
 				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"size": 20,
+				"magnitude": 4,
 				"flags": [
 					0
 				]
@@ -1893,8 +1893,8 @@
 				"damage": 35,
 				"angle": 0.25,
 				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"size": 20,
+				"magnitude": 4,
 				"flags": [
 					0
 				]
@@ -1903,46 +1903,10 @@
 				"projectileId": 36,
 				"positionMode": 0,
 				"damage": 35,
-				"angle": "{{PI/12}}",
+				"angle": "-0.25",
 				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
-				"flags": [
-					0
-				]
-			},
-			{
-				"projectileId": 36,
-				"positionMode": 0,
-				"damage": 35,
-				"angle": 0.25,
-				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
-				"flags": [
-					0
-				]
-			},
-			{
-				"projectileId": 36,
-				"positionMode": 0,
-				"damage": 35,
-				"angle": -0.2618,
-				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
-				"flags": [
-					0
-				]
-			},
-			{
-				"projectileId": 36,
-				"positionMode": 0,
-				"damage": 35,
-				"angle": -0.011799999999999977,
-				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"size": 20,
+				"magnitude": 4,
 				"flags": [
 					0
 				]
@@ -2017,9 +1981,9 @@
 	},
 	{
 		"projectileGroupId": 38,
-		"row": 7,
-		"col": 0,
-		"spriteKey": "rotmg-items-1.png",
+		"row": 15,
+		"col": 3,
+		"spriteKey": "lofiObj6.png",
 		"projectiles": [
 			{
 				"projectileId": 38,
@@ -2045,7 +2009,8 @@
 					3
 				]
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 39,
@@ -3325,9 +3290,9 @@
 	},
 	{
 		"projectileGroupId": 51,
-		"row": 5,
-		"col": 7,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 15,
+		"col": 8,
+		"spriteKey": "lofiObj6.png",
 		"projectiles": [
 			{
 				"projectileId": 51,
@@ -3430,9 +3395,9 @@
 	},
 	{
 		"projectileGroupId": 52,
-		"row": 2,
-		"col": 14,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 4,
+		"col": 9,
+		"spriteKey": "lofiObj6.png",
 		"projectiles": [
 			{
 				"projectileId": 52,
@@ -5466,8 +5431,8 @@
 				"damage": 20,
 				"angle": "-0.15",
 				"range": 280,
-				"size": 8,
-				"magnitude": 6,
+				"size": 20,
+				"magnitude": 3,
 				"flags": [
 					0,
 					10
@@ -5479,8 +5444,8 @@
 				"damage": 20,
 				"angle": 0,
 				"range": 280,
-				"size": 8,
-				"magnitude": 6,
+				"size": 20,
+				"magnitude": 3,
 				"flags": [
 					0,
 					10
@@ -5492,8 +5457,8 @@
 				"damage": 20,
 				"angle": "0.15",
 				"range": 280,
-				"size": 8,
-				"magnitude": 6,
+				"size": 20,
+				"magnitude": 3,
 				"flags": [
 					0,
 					10

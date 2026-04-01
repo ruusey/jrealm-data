@@ -258,14 +258,20 @@
 		"attackId": 19,
 		"xp": 100,
 		"health": 130,
-		"maxSpeed": 1.4,
+		"maxSpeed": 1.1,
 		"chaseRange": 420,
 		"attackRange": 240,
 		"stats": {
 			"hp": 130,
 			"def": 2,
-			"dex": 15
-		}
+			"dex": 15,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 7,
@@ -528,13 +534,18 @@
 		"attackId": 36,
 		"xp": 200,
 		"health": 250,
-		"maxSpeed": 2,
+		"maxSpeed": 1.75,
 		"chaseRange": 360,
-		"attackRange": 270,
+		"attackRange": 200,
 		"stats": {
 			"hp": 250,
 			"def": 1,
-			"dex": 20
+			"dex": 20,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": []
 	},
@@ -1059,13 +1070,18 @@
 		"attackId": 51,
 		"xp": 80,
 		"health": 80,
-		"maxSpeed": 1,
+		"maxSpeed": 0.8,
 		"chaseRange": 330,
 		"attackRange": 270,
 		"stats": {
 			"hp": 80,
 			"def": 1,
-			"dex": 6
+			"dex": 6,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": []
 	},
@@ -2017,11 +2033,11 @@
 		"spriteSize": 8,
 		"size": 24,
 		"health": 120,
-		"maxSpeed": 2.5,
+		"maxSpeed": 1,
 		"chaseRange": 200,
 		"attackRange": 150,
 		"attackId": 0,
-		"xp": 30,
+		"xp": 60,
 		"stats": {
 			"hp": 60,
 			"mp": 0,
@@ -2038,7 +2054,7 @@
 				"hpThreshold": 1,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 1.75,
+					"speed": 1.15,
 					"chargeDistanceMin": 40,
 					"pauseMs": 300
 				},
@@ -2056,7 +2072,7 @@
 				"hpThreshold": 0.3,
 				"movement": {
 					"type": "FLEE",
-					"speed": 1.75,
+					"speed": 1.5,
 					"fleeRange": 120
 				},
 				"attacks": [

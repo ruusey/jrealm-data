@@ -2,7 +2,7 @@
 	{
 		"tierId": -1,
 		"name": "Chest",
-		"spriteKey": "rotmg-projectiles-1.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"row": 0,
 		"col": 2,
 		"fullSize": true

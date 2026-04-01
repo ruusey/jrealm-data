@@ -235,10 +235,14 @@ export class GameState {
             });
         }
         for (const e of packet.enemies) {
+            // Preserve effectIds and health from PlayerStatePacket (LoadPacket overwrites otherwise)
+            const existing = this.enemies.get(e.id);
             this.enemies.set(e.id, {
                 ...e, dx: e.dX, dy: e.dY,
                 targetX: e.pos.x, targetY: e.pos.y,
-                animFrame: 0, animTimer: 0
+                animFrame: existing?.animFrame || 0, animTimer: existing?.animTimer || 0,
+                effectIds: existing?.effectIds || [],
+                health: existing?.health ?? e.health
             });
         }
         for (const b of packet.bullets) {
