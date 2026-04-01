@@ -4949,5 +4949,39 @@
 		"targetSlot": 1,
 		"targetClass": 4,
 		"fameBonus": 8
+	},
+	{
+		"itemId": 278,
+		"row": 5,
+		"col": 5,
+		"spriteKey": "rotmg-items-1.png",
+		"name": "Orb of Conflict",
+		"description": "A powerful orb that transforms the Mystic into a highly mobile killing machine, granting Speedy and Damaging for a few seconds.",
+		"stats": {
+			"att": 5,
+			"dex": 5
+		},
+		"effect": {
+			"self": false,
+			"effectId": 8,
+			"duration": 7000,
+			"cooldownDuration": 500,
+			"mpCost": 100
+		},
+		"selfEffects": [
+			{
+				"effectId": 4,
+				"duration": 2000
+			},
+			{
+				"effectId": 14,
+				"duration": 2000
+			}
+		],
+		"consumable": false,
+		"tier": -1,
+		"targetSlot": 1,
+		"targetClass": 9,
+		"fameBonus": 8
 	}
 ]
