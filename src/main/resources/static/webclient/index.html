@@ -117,6 +117,7 @@
         <!-- HUD Overlay -->
         <div id="hud">
             <div id="player-identity" style="padding:6px 8px;font-family:monospace;font-weight:bold;font-size:14px;color:#c8a86e;border-bottom:1px solid #333;margin-bottom:4px;text-shadow:1px 1px 2px #000;"></div>
+            <div id="minimap-container"><canvas id="minimap-canvas"></canvas></div>
             <div id="hud-bars">
                 <div class="bar-container">
                     <div id="hp-bar" class="bar hp"><span id="hp-text">0/0</span></div>
@@ -151,7 +152,10 @@
         <!-- Chat -->
         <div id="chat-panel">
             <div id="chat-messages"></div>
-            <input type="text" id="chat-input" placeholder="Press Enter to chat..." autocomplete="off">
+            <div id="chat-input-row">
+                <input type="text" id="chat-input" placeholder="Press Enter to chat..." autocomplete="off">
+                <button id="chat-toggle" title="Toggle chat">&#9660;</button>
+            </div>
         </div>
         <!-- Connection Status -->
         <div id="connection-status">Connecting...</div>

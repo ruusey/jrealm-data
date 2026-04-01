@@ -58,7 +58,8 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
                 || request.getServletPath().matches("/.*[a-z0-9 -].png")
                 || request.getServletPath().matches("/.*[a-z0-9 -].json")
                 || request.getServletPath().startsWith("/game-data/")
-                || request.getServletPath().startsWith("/ws/")) {
+                || request.getServletPath().startsWith("/ws/")
+                || request.getServletPath().equals("/")) {
             log.debug("Safe path detected {}", request.getServletPath());
             filterChain.doFilter(request, response);
             return;

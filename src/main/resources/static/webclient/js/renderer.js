@@ -6,7 +6,7 @@ const BASE_SPRITE_SIZE = 8;  // Sprite sheet cell size (pixels in sheet)
 const PLAYER_SIZE = 32;      // World render size for entities (matches tile size)
 // Auto-scale for mobile: smaller screens get less zoom so more tiles are visible
 const IS_MOBILE = window.innerWidth < 900 || ('ontouchstart' in window);
-const SCALE = IS_MOBILE ? 1 : 2;  // 1x on mobile for max visibility, 2x on desktop
+const SCALE = IS_MOBILE ? 0.75 : 2;  // 0.75x on mobile for max visibility, 2x on desktop
 const VIEWPORT_TILES = IS_MOBILE ? 16 : 24;
 
 // Parse template angle expressions like "{{PI/4}}", "{{1.5PI/6}}"

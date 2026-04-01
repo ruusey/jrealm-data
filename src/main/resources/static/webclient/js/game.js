@@ -40,6 +40,9 @@ export class GameState {
         // Realm transition
         this.awaitingRealmTransition = false;
 
+        // Minimap global player positions (1 Hz from server)
+        this.minimapPlayers = [];
+
         // Chat
         this.chatMessages = [];
 
@@ -98,6 +101,7 @@ export class GameState {
         this.cameraX = 0;
         this.cameraY = 0;
         this.awaitingRealmTransition = false;
+        this.minimapPlayers = [];
         this.chatMessages = [];
         this.isTrading = false;
         this.tradePartnerName = '';
@@ -435,6 +439,10 @@ export class GameState {
 
     handleUpdateTrade(packet) {
         this.tradeSelection = packet.selections;
+    }
+
+    handleGlobalPlayerPosition(packet) {
+        this.minimapPlayers = packet.players || [];
     }
 
     handleUpdateTradeSelection(packet) {

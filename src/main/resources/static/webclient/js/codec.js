@@ -258,7 +258,7 @@ export const PacketId = {
     USE_ABILITY: 11, MOVE_ITEM: 12, USE_PORTAL: 13, TEXT_EFFECT: 14,
     PLAYER_DEATH: 15, REQUEST_TRADE: 16, ACCEPT_TRADE: 17,
     UPDATE_TRADE_SELECTION: 18, UPDATE_TRADE: 19, DEATH_ACK: 20,
-    CREATE_EFFECT: 21, LOGIN_ACK: 22
+    CREATE_EFFECT: 21, LOGIN_ACK: 22, GLOBAL_PLAYER_POSITION: 23
 };
 
 // ---- Packet Readers (server → client packets read from binary) ----
@@ -334,6 +334,17 @@ export const PacketReaders = {
     [PacketId.UPDATE_TRADE_SELECTION](r) { return { selection: NetInventorySelection.read(r) }; },
     [PacketId.UPDATE_TRADE](r) { return { selections: NetTradeSelection.read(r) }; },
     [PacketId.LOGIN_ACK](r) { return { playerId: r.readLong() }; },
+    [PacketId.GLOBAL_PLAYER_POSITION](r) {
+        return {
+            players: r.readArray(rr => ({
+                playerId: rr.readLong(),
+                name: rr.readString(),
+                x: rr.readFloat(),
+                y: rr.readFloat(),
+                teleportable: rr.readBoolean()
+            }))
+        };
+    },
     [PacketId.DEATH_ACK](r) { return { playerId: r.readLong() }; },
     [PacketId.MOVE_ITEM](r) {
         return { playerId: r.readLong(), targetSlotIndex: r.readByte(), fromSlotIndex: r.readByte(),
@@ -447,7 +458,7 @@ const PACKET_NAMES = {
     11:'USE_ABILITY', 12:'MOVE_ITEM', 13:'USE_PORTAL', 14:'TEXT_EFFECT',
     15:'PLAYER_DEATH', 16:'REQUEST_TRADE', 17:'ACCEPT_TRADE',
     18:'UPDATE_TRADE_SELECTION', 19:'UPDATE_TRADE', 20:'DEATH_ACK',
-    21:'CREATE_EFFECT', 22:'LOGIN_ACK'
+    21:'CREATE_EFFECT', 22:'LOGIN_ACK', 23:'GLOBAL_PLAYER_POSITION'
 };
 
 export function parseFrame(arrayBuffer) {

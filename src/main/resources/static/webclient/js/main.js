@@ -13,6 +13,7 @@ import { InputHandler } from './input.js';
 import { PacketId, PacketWriters } from './codec.js';
 import { initTradeUI, updateNearbyPlayers } from './trade.js';
 import { initTouchControls, isTouchDevice, getJoystickDir, getAimDir, setDoubleTapHandler } from './touch.js';
+import { Minimap } from './minimap.js';
 
 // --- App State ---
 const api = new ApiClient();
@@ -31,6 +32,7 @@ let lastXDir = null; // null=none, 2=EAST, 3=WEST
 let lastYDir = null; // null=none, 0=NORTH, 1=SOUTH
 let shootCooldown = 0;
 let projectileCounter = 0;
+let minimap = null;
 
 // --- Sprite sheets to load ---
 // Must match Java GameSpriteManager.SPRITE_NAMES exactly
@@ -656,6 +658,15 @@ function setupNetworkHandlers() {
             renderer.updateTileSize(data.mapId);
             renderer._tileDebugLogged = false; // Re-log after map change
         }
+        // Build minimap tile cache for new map
+        if (!minimap) {
+            minimap = new Minimap(document.getElementById('minimap-canvas'));
+            minimap.onTeleport = (playerName) => {
+                network.sendText(game.playerId, '', '/tp ' + playerName);
+                addChatMessage('SYSTEM', `Teleporting to ${playerName}...`);
+            };
+        }
+        minimap.buildTileCache(game);
     });
     network.on(PacketId.LOAD, (data) => {
         game.handleLoad(data);
@@ -692,6 +703,10 @@ function setupNetworkHandlers() {
         if (data.playerId === game.playerId) {
             handlePlayerDeath();
         }
+    });
+
+    network.on(PacketId.GLOBAL_PLAYER_POSITION, (data) => {
+        game.handleGlobalPlayerPosition(data);
     });
 
     network.on(PacketId.CREATE_EFFECT, (data) => {
@@ -772,6 +787,9 @@ function gameLoop(timestamp) {
         if (renderer) {
             renderer.render(game);
         }
+
+        // Update minimap
+        if (minimap) minimap.render(game);
 
         // Update HUD + perf overlay
         updateHUD();
@@ -876,9 +894,10 @@ function processInput(dt) {
         return;
     }
 
-    // F1 = Go to vault
-    if (input.isKeyDown('F1')) {
+    // F1 or R = Go to vault
+    if (input.isKeyDown('F1') || (input.isKeyDown('KeyR') && !input.chatMode)) {
         input.keys['F1'] = false;
+        input.keys['KeyR'] = false;
         doRealmTransition(null, true); // vault
     }
 
@@ -1519,6 +1538,18 @@ function handleChatCommand(msg) {
         addChatMessage('SYSTEM', 'Trade confirmed. Waiting for partner...');
     }
 }
+
+// Chat toggle button
+document.getElementById('chat-toggle').addEventListener('click', () => {
+    const panel = document.getElementById('chat-panel');
+    panel.classList.toggle('collapsed');
+    // Reposition joystick relative to chat panel
+    const joystick = document.getElementById('touch-joystick');
+    if (joystick) {
+        const chatRect = panel.getBoundingClientRect();
+        joystick.style.bottom = (window.innerHeight - chatRect.top + 10) + 'px';
+    }
+});
 
 // Enter key opens chat
 window.addEventListener('keydown', (e) => {

@@ -156,6 +156,18 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     overflow-y: auto;
     overflow-x: hidden;
 }
+#minimap-container {
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: 4px;
+    background: #0a080c;
+    border: 1px solid #3a2a38;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    cursor: crosshair;
+}
+#minimap-canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
 #hud-bars { margin-bottom: 8px; }
 .bar-container {
     background: #1a1218;
@@ -398,8 +410,28 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 #chat-messages .msg-system { color: #c8a86e; }
 #chat-messages .msg-player { color: #e0d8c8; }
 #chat-messages .msg-name { color: #80b0e0; font-weight: 600; }
+#chat-input-row {
+    display: flex;
+    align-items: stretch;
+}
+#chat-toggle {
+    background: #1a1218;
+    border: 1px solid #3a2a38;
+    border-left: none;
+    border-radius: 0 0 4px 0;
+    color: #887868;
+    font-size: 10px;
+    padding: 0 6px;
+    cursor: pointer;
+    transition: color 0.15s;
+    line-height: 1;
+}
+#chat-toggle:hover { color: #c8a86e; }
+#chat-panel.collapsed #chat-messages { display: none; }
+#chat-panel.collapsed #chat-toggle { transform: rotate(180deg); }
 #chat-input {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     padding: 8px 10px;
     background: #1a1218;
     border: 1px solid #3a2a38;
@@ -511,29 +543,54 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 }
 #rotate-prompt span { font-size: 48px; margin-bottom: 16px; }
 
-/* Mobile responsive */
+/* Mobile responsive — compact sidebar (~50% smaller than previous 140px layout) */
 @media (max-width: 900px), (max-height: 500px) {
-    #hud { width: 180px; top: 5px; right: 5px; bottom: 5px; }
+    #hud { width: 95px; top: 2px; right: 2px; bottom: 2px; gap: 1px; }
+    #hud #player-identity { padding: 2px 4px !important; font-size: 8px !important; margin-bottom: 1px !important; }
+    #minimap-container {
+        display: block !important;
+        position: fixed !important;
+        top: 3px; left: 3px;
+        width: 110px !important; height: 110px !important;
+        aspect-ratio: auto !important;
+        z-index: 20;
+        margin: 0 !important;
+    }
+    #perf-overlay { display: none !important; }
     #touch-joystick { bottom: 140px; left: 10px; }
-    #touch-aim { right: 190px; }
-    #mobile-buttons { right: 190px; }
-    .bar-container { height: 18px; }
-    .bar span { font-size: 9px; }
-    #stats-panel { font-size: 10px; padding: 4px; }
-    .stat-row { font-size: 10px; }
-    #inventory-panel { padding: 4px; }
-    .inv-slot { width: 34px; height: 34px; }
-    .inv-slot img, .inv-slot canvas { width: 28px; height: 28px; }
-    .slot-label { font-size: 6px; }
-    .item-tier { font-size: 6px; }
-    #equip-label, #inv-label { font-size: 8px; }
+    #touch-aim { right: 140px; }
+    #mobile-buttons { right: 140px; }
+    #hud-bars { margin-bottom: 2px; }
+    .bar-container { height: 12px; margin-bottom: 1px; }
+    .bar span { font-size: 7px; }
+    #stats-panel { font-size: 7px; padding: 2px; gap: 0px 4px; margin-bottom: 2px; }
+    .stat-row { font-size: 7px; }
+    .stat-bonus { font-size: 6px; }
+    #inventory-panel { padding: 2px; }
+    .slot-row { gap: 2px; margin-bottom: 2px; }
+    .inv-slot { width: 22px; height: 22px; border-width: 1px; border-radius: 2px; }
+    .inv-slot img, .inv-slot canvas { width: 18px; height: 18px; }
+    .slot-label { font-size: 5px; }
+    .item-tier { font-size: 5px; }
+    #equip-label, #inv-label { font-size: 6px; margin-bottom: 1px; letter-spacing: 0px; }
+    #equip-slots { padding-bottom: 2px; margin-bottom: 2px; border-bottom-width: 1px; }
+    #nearby-players { max-height: 40px; font-size: 7px; padding: 2px; grid-template-columns: 1fr; }
+    #nearby-label { font-size: 6px !important; margin-bottom: 1px !important; }
+    #nearby-section { margin-top: 1px; }
+    .nearby-player { padding: 1px 2px; gap: 2px; }
+    .np-icon { width: 12px; height: 12px; font-size: 7px; line-height: 12px; }
+    #ground-loot-panel { padding: 2px; margin-top: 1px; }
+    #ground-loot-panel h4 { font-size: 7px; margin-bottom: 1px; }
+    #ground-loot-slots { gap: 2px; }
+    #trade-buttons { gap: 2px; margin-top: 2px; }
+    .trade-btn { padding: 3px; font-size: 7px; }
+    .trade-popup-content { padding: 6px 8px; }
+    .trade-popup-content p { font-size: 9px; margin-bottom: 6px; }
+    .trade-popup-btn { padding: 4px 8px; font-size: 9px; }
     #chat-panel { width: 250px; bottom: 5px; left: 5px; }
     #chat-messages { height: 80px; font-size: 10px; }
     #chat-input { font-size: 11px; padding: 5px; }
     #connection-status { font-size: 10px; padding: 2px 6px; }
-    #nearby-players { max-height: 60px; font-size: 9px; }
-    #ground-loot-panel { padding: 4px; }
-    #ground-loot-panel h4 { font-size: 9px; }
     .login-box, .charselect-box { width: 90vw; max-width: 400px; padding: 16px; }
     .charselect-box { max-height: 85vh; overflow-y: auto; }
     .charselect-box h2 { font-size: 18px; margin-bottom: 10px; }
