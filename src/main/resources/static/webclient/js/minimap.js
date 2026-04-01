@@ -69,33 +69,42 @@ export class Minimap {
 
     buildTileCache(gameState) {
         if (!gameState.mapTiles || !gameState.mapWidth || !gameState.mapHeight) return;
-        this.mapW = gameState.mapWidth;
-        this.mapH = gameState.mapHeight;
 
-        // 1px per tile offscreen canvas
-        const offscreen = document.createElement('canvas');
-        offscreen.width = this.mapW;
-        offscreen.height = this.mapH;
-        const ctx = offscreen.getContext('2d');
-
-        for (let r = 0; r < this.mapH; r++) {
-            const row = gameState.mapTiles[r];
-            if (!row) continue;
-            for (let c = 0; c < this.mapW; c++) {
-                const tile = row[c];
-                if (!tile) { ctx.fillStyle = TILE_COLORS.void; }
-                else if (tile.collision > 0) {
-                    const def = gameState.tileData?.[tile.collision];
-                    ctx.fillStyle = def?.data?.isWall ? TILE_COLORS.wall : TILE_COLORS.stone;
-                } else if (tile.base === 0) {
-                    ctx.fillStyle = TILE_COLORS.void;
-                } else {
-                    ctx.fillStyle = this._getTileColor(tile.base, gameState.tileData);
-                }
-                ctx.fillRect(c, r, 1, 1);
-            }
+        // Only create a new canvas if map dimensions changed
+        if (this.mapW !== gameState.mapWidth || this.mapH !== gameState.mapHeight || !this.tileImage) {
+            this.mapW = gameState.mapWidth;
+            this.mapH = gameState.mapHeight;
+            const offscreen = document.createElement('canvas');
+            offscreen.width = this.mapW;
+            offscreen.height = this.mapH;
+            this.tileImage = offscreen;
+            this._tileCtx = offscreen.getContext('2d');
+            // Fill with void initially
+            this._tileCtx.fillStyle = TILE_COLORS.void;
+            this._tileCtx.fillRect(0, 0, this.mapW, this.mapH);
         }
-        this.tileImage = offscreen;
+    }
+
+    // Paint specific tiles onto the minimap cache (called when LoadMap arrives)
+    paintTiles(gameState, tiles) {
+        if (!this.tileImage || !this._tileCtx || !tiles) return;
+        const ctx = this._tileCtx;
+        for (const t of tiles) {
+            // Server swaps x/y: xIndex=row, yIndex=col
+            const r = t.xIndex, c = t.yIndex;
+            if (r < 0 || r >= this.mapH || c < 0 || c >= this.mapW) continue;
+            const mapTile = gameState.mapTiles?.[r]?.[c];
+            if (!mapTile) continue;
+            if (mapTile.collision > 0) {
+                const def = gameState.tileData?.[mapTile.collision];
+                ctx.fillStyle = def?.data?.isWall ? TILE_COLORS.wall : TILE_COLORS.stone;
+            } else if (mapTile.base > 0) {
+                ctx.fillStyle = this._getTileColor(mapTile.base, gameState.tileData);
+            } else {
+                continue; // void, leave as black
+            }
+            ctx.fillRect(c, r, 1, 1);
+        }
     }
 
     _getTileColor(tileId, tileData) {
@@ -116,11 +125,13 @@ export class Minimap {
     }
 
     render(gameState) {
-        if (!this.tileImage || !this.canvas.offsetParent) return;
+        if (!this.canvas.offsetParent) return;
         // Throttle to ~10 fps — minimap doesn't need 60fps
         const now = performance.now();
         if (now - (this._lastRender || 0) < 100) return;
         this._lastRender = now;
+
+        if (!this.tileImage) return;
 
         // Only resize canvas buffer when container size actually changes
         const cw = this.canvas.clientWidth;

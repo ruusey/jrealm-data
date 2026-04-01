@@ -658,7 +658,7 @@ function setupNetworkHandlers() {
             renderer.updateTileSize(data.mapId);
             renderer._tileDebugLogged = false; // Re-log after map change
         }
-        // Build minimap tile cache for new map
+        // Build minimap tile cache only on actual map change
         if (!minimap) {
             minimap = new Minimap(document.getElementById('minimap-canvas'));
             minimap.onTeleport = (playerName) => {
@@ -666,7 +666,10 @@ function setupNetworkHandlers() {
                 addChatMessage('SYSTEM', `Teleporting to ${playerName}...`);
             };
         }
+        // Initialize/resize minimap tile cache on map dimension change,
+        // then paint the tiles that just arrived
         minimap.buildTileCache(game);
+        minimap.paintTiles(game, data.tiles);
     });
     network.on(PacketId.LOAD, (data) => {
         game.handleLoad(data);
