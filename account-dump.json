@@ -4,157 +4,14 @@
   "accountUuid" : "1043e146-e47e-4f4d-b6f6-644990eff3ae",
   "accountName" : "ruusey",
   "playerVault" : [ {
-    "chestId" : "49c38135-92b8-4542-88e2-00f66ee8a876",
-    "chestUuid" : "49c38135-92b8-4542-88e2-00f66ee8a876",
+    "chestId" : "2f159595-67ed-4d9c-bd1d-4e1f5ccaa690",
+    "chestUuid" : "2f159595-67ed-4d9c-bd1d-4e1f5ccaa690",
     "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 6,
-      "slotIdx" : 3,
-      "itemUuid" : "098f46c8-0dd1-4582-a56b-435542665428"
-    }, {
-      "itemId" : 0,
-      "slotIdx" : 6,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
-      "itemId" : 7,
-      "slotIdx" : 1,
-      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
-    }, {
-      "itemId" : 6,
-      "slotIdx" : 2,
-      "itemUuid" : "098f46c8-0dd1-4582-a56b-435542665428"
-    }, {
-      "itemId" : 0,
-      "slotIdx" : 5,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
-      "itemId" : 134,
-      "slotIdx" : 0,
-      "itemUuid" : "147c729f-3bf2-4250-8458-97b0c5558389"
-    }, {
-      "itemId" : 159,
-      "slotIdx" : 7,
-      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
-    }, {
-      "itemId" : 48,
-      "slotIdx" : 4,
-      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
-    } ]
+    "items" : [ ]
   }, {
-    "chestId" : "2a881743-da34-4f1e-8b43-cf064c6aa725",
-    "chestUuid" : "2a881743-da34-4f1e-8b43-cf064c6aa725",
+    "chestId" : "a41d5334-ed3e-41d9-8211-a6ced5c68c8c",
+    "chestUuid" : "a41d5334-ed3e-41d9-8211-a6ced5c68c8c",
     "ordinal" : 1,
-    "items" : [ {
-      "itemId" : 105,
-      "slotIdx" : 1,
-      "itemUuid" : "f963441d-ea3a-4863-a726-eda414166b06"
-    }, {
-      "itemId" : 103,
-      "slotIdx" : 5,
-      "itemUuid" : "f71f3d74-097f-4c6a-b935-558beed9faa6"
-    }, {
-      "itemId" : 134,
-      "slotIdx" : 6,
-      "itemUuid" : "147c729f-3bf2-4250-8458-97b0c5558389"
-    }, {
-      "itemId" : 47,
-      "slotIdx" : 4,
-      "itemUuid" : "4a4cdb32-0a46-4d46-981e-63142abfa987"
-    }, {
-      "itemId" : 119,
-      "slotIdx" : 3,
-      "itemUuid" : "9b98c2ce-8620-41e9-9933-adef83030fc0"
-    }, {
-      "itemId" : 133,
-      "slotIdx" : 7,
-      "itemUuid" : "f57f66a2-c42b-49b9-b765-b1badf72d669"
-    }, {
-      "itemId" : 73,
-      "slotIdx" : 2,
-      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
-    }, {
-      "itemId" : 74,
-      "slotIdx" : 0,
-      "itemUuid" : "2be6c63b-0522-4edf-b6fa-0149799a66d6"
-    } ]
-  }, {
-    "chestId" : "56b42647-9415-4fbf-a9fb-a98b8fa6089d",
-    "chestUuid" : "56b42647-9415-4fbf-a9fb-a98b8fa6089d",
-    "ordinal" : 2,
-    "items" : [ {
-      "itemId" : 1,
-      "slotIdx" : 2,
-      "itemUuid" : "98c3bb80-b97b-48fa-a44f-5225f7f150ea"
-    }, {
-      "itemId" : 2,
-      "slotIdx" : 5,
-      "itemUuid" : "4e15232a-d3ad-4717-87cd-44ffa639fa1a"
-    }, {
-      "itemId" : 73,
-      "slotIdx" : 1,
-      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
-    }, {
-      "itemId" : 0,
-      "slotIdx" : 4,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
-    }, {
-      "itemId" : 7,
-      "slotIdx" : 6,
-      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
-    }, {
-      "itemId" : 7,
-      "slotIdx" : 0,
-      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
-    }, {
-      "itemId" : 14,
-      "slotIdx" : 3,
-      "itemUuid" : "cc7cf4af-0e36-447f-a50e-91677f601363"
-    }, {
-      "itemId" : 1,
-      "slotIdx" : 7,
-      "itemUuid" : "98c3bb80-b97b-48fa-a44f-5225f7f150ea"
-    } ]
-  }, {
-    "chestId" : "efa83234-2a08-4819-8d32-a85a660e2f75",
-    "chestUuid" : "efa83234-2a08-4819-8d32-a85a660e2f75",
-    "ordinal" : 3,
-    "items" : [ {
-      "itemId" : 45,
-      "slotIdx" : 0,
-      "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
-    }, {
-      "itemId" : 3,
-      "slotIdx" : 5,
-      "itemUuid" : "b9f2e3f4-819e-4841-8341-e8ec15d92765"
-    }, {
-      "itemId" : 46,
-      "slotIdx" : 2,
-      "itemUuid" : "1147b625-57e6-47b9-897a-022bd0e9a517"
-    }, {
-      "itemId" : 89,
-      "slotIdx" : 4,
-      "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
-    }, {
-      "itemId" : 7,
-      "slotIdx" : 3,
-      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
-    }, {
-      "itemId" : 73,
-      "slotIdx" : 6,
-      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
-    }, {
-      "itemId" : 59,
-      "slotIdx" : 7,
-      "itemUuid" : "b47ee6da-2de1-4a13-87d4-56b63e1f13b3"
-    }, {
-      "itemId" : 5,
-      "slotIdx" : 1,
-      "itemUuid" : "23173410-7a99-48be-9ea7-f2d1d189c36e"
-    } ]
-  }, {
-    "chestId" : "48af64ea-2208-40b8-a3ec-2b8ef659cdc1",
-    "chestUuid" : "48af64ea-2208-40b8-a3ec-2b8ef659cdc1",
-    "ordinal" : 4,
     "items" : [ {
       "itemId" : 45,
       "slotIdx" : 0,
@@ -164,36 +21,212 @@
       "slotIdx" : 1,
       "itemUuid" : "7b0aa591-4458-43b1-be93-755307d98c13"
     }, {
-      "itemId" : 44,
+      "itemId" : 163,
+      "slotIdx" : 4,
+      "itemUuid" : "29fee799-5427-4b8e-9d9a-89e0c60470f5"
+    }, {
+      "itemId" : 218,
+      "slotIdx" : 2,
+      "itemUuid" : "8d3933ea-77bb-4226-bb21-644c04aff66c"
+    }, {
+      "itemId" : 89,
       "slotIdx" : 5,
+      "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 3,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 225,
+      "slotIdx" : 6,
+      "itemUuid" : "44807bdb-e6a5-425e-9a0c-0a1f1aa7ce71"
+    } ]
+  }, {
+    "chestId" : "d2ed9a73-a8ba-45e1-ae58-17e89ac5e566",
+    "chestUuid" : "d2ed9a73-a8ba-45e1-ae58-17e89ac5e566",
+    "ordinal" : 2,
+    "items" : [ ]
+  }, {
+    "chestId" : "3102452c-cd9c-42cd-9261-9b89a765f86b",
+    "chestUuid" : "3102452c-cd9c-42cd-9261-9b89a765f86b",
+    "ordinal" : 3,
+    "items" : [ ]
+  }, {
+    "chestId" : "683e5507-f005-448b-a99f-feef99d772d7",
+    "chestUuid" : "683e5507-f005-448b-a99f-feef99d772d7",
+    "ordinal" : 4,
+    "items" : [ {
+      "itemId" : 120,
+      "slotIdx" : 0,
+      "itemUuid" : "3a7b093b-798e-46e6-8c93-d101234ec9a5"
+    }, {
+      "itemId" : 45,
+      "slotIdx" : 2,
+      "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
+    }, {
+      "itemId" : 44,
+      "slotIdx" : 4,
       "itemUuid" : "e4930dea-f8a2-43e2-a04a-9b6a1b779e11"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 3,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 88,
+      "slotIdx" : 1,
+      "itemUuid" : "ef5fda97-c9fc-48db-8b97-c8e49122a26e"
+    } ]
+  }, {
+    "chestId" : "bd6b0de1-40b9-45cf-9b11-b6a637cd8d49",
+    "chestUuid" : "bd6b0de1-40b9-45cf-9b11-b6a637cd8d49",
+    "ordinal" : 5,
+    "items" : [ ]
+  }, {
+    "chestId" : "4bc72f42-d78c-48e9-a694-22a676f5dd54",
+    "chestUuid" : "4bc72f42-d78c-48e9-a694-22a676f5dd54",
+    "ordinal" : 6,
+    "items" : [ {
+      "itemId" : 103,
+      "slotIdx" : 0,
+      "itemUuid" : "f71f3d74-097f-4c6a-b935-558beed9faa6"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 4,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 1,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 134,
+      "slotIdx" : 3,
+      "itemUuid" : "147c729f-3bf2-4250-8458-97b0c5558389"
+    }, {
+      "itemId" : 47,
+      "slotIdx" : 6,
+      "itemUuid" : "4ee0586f-80cc-4add-a00d-75286f60be6a"
+    }, {
+      "itemId" : 89,
+      "slotIdx" : 5,
+      "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
+    }, {
+      "itemId" : 158,
+      "slotIdx" : 7,
+      "itemUuid" : "00874239-57f5-4fde-80f9-0be368165429"
+    }, {
+      "itemId" : 74,
+      "slotIdx" : 2,
+      "itemUuid" : "2be6c63b-0522-4edf-b6fa-0149799a66d6"
+    } ]
+  }, {
+    "chestId" : "23d629e7-9a24-48b1-864b-1e059b85acaa",
+    "chestUuid" : "23d629e7-9a24-48b1-864b-1e059b85acaa",
+    "ordinal" : 7,
+    "items" : [ {
+      "itemId" : 45,
+      "slotIdx" : 0,
+      "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 4,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 46,
+      "slotIdx" : 2,
+      "itemUuid" : "1147b625-57e6-47b9-897a-022bd0e9a517"
+    }, {
+      "itemId" : 59,
+      "slotIdx" : 3,
+      "itemUuid" : "b47ee6da-2de1-4a13-87d4-56b63e1f13b3"
+    }, {
+      "itemId" : 73,
+      "slotIdx" : 1,
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+    }, {
+      "itemId" : 30,
+      "slotIdx" : 6,
+      "itemUuid" : "b3a2a34f-ec70-47bb-b4f7-a493926bae6b"
+    }, {
+      "itemId" : 89,
+      "slotIdx" : 5,
+      "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
+    }, {
+      "itemId" : 31,
+      "slotIdx" : 7,
+      "itemUuid" : "0e1a02e8-0369-4c70-babb-ccb6fc9cb8c9"
+    } ]
+  }, {
+    "chestId" : "6675d748-e63d-4dac-807d-5eee377f7b83",
+    "chestUuid" : "6675d748-e63d-4dac-807d-5eee377f7b83",
+    "ordinal" : 8,
+    "items" : [ {
+      "itemId" : 3,
+      "slotIdx" : 3,
+      "itemUuid" : "a1f97b16-bbd4-4e9f-b73f-b5df22aa4d64"
     }, {
       "itemId" : 0,
       "slotIdx" : 4,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+      "itemUuid" : "3b41d1d2-51f4-480a-853a-a7fe7d0b2cb7"
+    }, {
+      "itemId" : 4,
+      "slotIdx" : 6,
+      "itemUuid" : "703dc666-6181-4aa6-b4dd-cd721d5b8b34"
+    }, {
+      "itemId" : 4,
+      "slotIdx" : 1,
+      "itemUuid" : "703dc666-6181-4aa6-b4dd-cd721d5b8b34"
     }, {
       "itemId" : 4,
       "slotIdx" : 2,
-      "itemUuid" : "38e565bf-9aaf-4b90-8dfa-78e05fdbabbc"
+      "itemUuid" : "703dc666-6181-4aa6-b4dd-cd721d5b8b34"
     }, {
-      "itemId" : 73,
-      "slotIdx" : 7,
-      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
+      "itemId" : 4,
+      "slotIdx" : 0,
+      "itemUuid" : "703dc666-6181-4aa6-b4dd-cd721d5b8b34"
     }, {
-      "itemId" : 3,
-      "slotIdx" : 6,
-      "itemUuid" : "b9f2e3f4-819e-4841-8341-e8ec15d92765"
+      "itemId" : 1,
+      "slotIdx" : 5,
+      "itemUuid" : "939f3a45-ab1d-4d27-a736-e144fb723d82"
+    } ]
+  }, {
+    "chestId" : "152502da-5253-4042-a780-af81d53a9adf",
+    "chestUuid" : "152502da-5253-4042-a780-af81d53a9adf",
+    "ordinal" : 9,
+    "items" : [ {
+      "itemId" : 135,
+      "slotIdx" : 0,
+      "itemUuid" : "ded04ef3-7719-4154-abcc-108543cc4f3a"
     }, {
-      "itemId" : 0,
+      "itemId" : 47,
+      "slotIdx" : 1,
+      "itemUuid" : "4ee0586f-80cc-4add-a00d-75286f60be6a"
+    }, {
+      "itemId" : 134,
+      "slotIdx" : 4,
+      "itemUuid" : "147c729f-3bf2-4250-8458-97b0c5558389"
+    }, {
+      "itemId" : 159,
+      "slotIdx" : 5,
+      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
+    }, {
+      "itemId" : 159,
       "slotIdx" : 3,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 2,
+      "itemUuid" : "2a161f2c-e4b6-4604-ab93-aa88b15b0837"
+    }, {
+      "itemId" : 120,
+      "slotIdx" : 6,
+      "itemUuid" : "3a7b093b-798e-46e6-8c93-d101234ec9a5"
     } ]
   } ],
   "characters" : [ {
     "characterUuid" : "146cdcbd-4266-4148-baef-4381eb22f4ad",
     "characterClass" : 0,
     "stats" : {
-      "xp" : 171094924,
+      "xp" : 184374344,
       "classId" : 0,
       "hp" : 720,
       "mp" : 252,
@@ -205,127 +238,71 @@
       "wis" : 50
     },
     "items" : [ {
-      "itemId" : 2,
-      "slotIdx" : 12,
-      "itemUuid" : "4e15232a-d3ad-4717-87cd-44ffa639fa1a"
-    }, {
-      "itemId" : 74,
-      "slotIdx" : 5,
-      "itemUuid" : "2be6c63b-0522-4edf-b6fa-0149799a66d6"
-    }, {
-      "itemId" : 48,
-      "slotIdx" : 6,
-      "itemUuid" : "1af2780e-6470-421f-9829-588d4cb62b21"
-    }, {
-      "itemId" : 158,
-      "slotIdx" : 7,
-      "itemUuid" : "5c7bfb92-659d-4598-9aa5-6d14c5e3ab99"
-    }, {
       "itemId" : 49,
       "slotIdx" : 0,
       "itemUuid" : "ef6d0ee1-f872-4f6e-8868-fdce8f3ed78c"
     }, {
-      "itemId" : 43,
-      "slotIdx" : 9,
-      "itemUuid" : "69343722-2017-4741-a864-536b246ac766"
+      "itemId" : 159,
+      "slotIdx" : 1,
+      "itemUuid" : "d9c23e7d-8dce-488e-92f7-ae3de0612d70"
     }, {
       "itemId" : 45,
       "slotIdx" : 2,
       "itemUuid" : "df56ad6d-50cb-4c11-8ad5-084ac53867dc"
     }, {
-      "itemId" : 47,
-      "slotIdx" : 10,
-      "itemUuid" : "4ee0586f-80cc-4add-a00d-75286f60be6a"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "2433c461-a18d-474c-b09e-e3cfd8d47c4d"
-    }, {
-      "itemId" : 105,
-      "slotIdx" : 11,
-      "itemUuid" : "f963441d-ea3a-4863-a726-eda414166b06"
+      "itemId" : 158,
+      "slotIdx" : 5,
+      "itemUuid" : "2d65cb4d-e6d5-409b-a901-78341d3285a6"
     }, {
       "itemId" : 89,
-      "slotIdx" : 8,
+      "slotIdx" : 4,
       "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
     }, {
-      "itemId" : 48,
-      "slotIdx" : 3,
-      "itemUuid" : "1af2780e-6470-421f-9829-588d4cb62b21"
-    }, {
-      "itemId" : 159,
-      "slotIdx" : 4,
-      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
+      "itemId" : 2,
+      "slotIdx" : 12,
+      "itemUuid" : "a900c7e3-cce0-4a00-8446-9d75ea2d4778"
     } ]
   }, {
     "characterUuid" : "27177eea-f2ab-47fd-bca5-ecb12a50f431",
     "characterClass" : 2,
     "stats" : {
-      "xp" : 10278974,
+      "xp" : 20397649,
       "classId" : 2,
-      "hp" : 691,
-      "mp" : 390,
+      "hp" : 670,
+      "mp" : 385,
       "def" : 25,
-      "att" : 77,
-      "spd" : 51,
+      "att" : 75,
+      "spd" : 50,
       "dex" : 75,
       "vit" : 40,
       "wis" : 60
     },
     "items" : [ {
-      "itemId" : 120,
-      "slotIdx" : 2,
-      "itemUuid" : "03918756-64d1-4ec3-a8a9-5a61049ac069"
+      "itemId" : 226,
+      "slotIdx" : 1,
+      "itemUuid" : "fb732d4d-e4cb-4a38-a80a-3444610a92dd"
     }, {
-      "itemId" : 48,
-      "slotIdx" : 3,
-      "itemUuid" : "14c3b86c-4dba-4269-b481-e091e10711bb"
-    }, {
-      "itemId" : 159,
-      "slotIdx" : 6,
-      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
-    }, {
-      "itemId" : 163,
-      "slotIdx" : 11,
-      "itemUuid" : "29fee799-5427-4b8e-9d9a-89e0c60470f5"
+      "itemId" : 3,
+      "slotIdx" : 8,
+      "itemUuid" : "dff7333e-ce09-4c7a-85e4-ec64b73d6470"
     }, {
       "itemId" : 135,
       "slotIdx" : 0,
-      "itemUuid" : "5a869b54-0c8c-4742-b98c-6c9ffe97cbf7"
+      "itemUuid" : "ded04ef3-7719-4154-abcc-108543cc4f3a"
     }, {
-      "itemId" : 7,
-      "slotIdx" : 8,
-      "itemUuid" : "c74b6023-bb68-49b5-9881-75a141cce3f3"
+      "itemId" : 48,
+      "slotIdx" : 3,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
     }, {
-      "itemId" : 118,
-      "slotIdx" : 5,
-      "itemUuid" : "ab790cc8-2b73-428b-bba3-a68620780c68"
-    }, {
-      "itemId" : 119,
-      "slotIdx" : 4,
-      "itemUuid" : "b3e7f527-b613-454d-acba-313a8bf38683"
-    }, {
-      "itemId" : 162,
-      "slotIdx" : 10,
-      "itemUuid" : "7ed4a880-a91b-4d56-8b12-4334190f4aba"
-    }, {
-      "itemId" : 136,
-      "slotIdx" : 1,
-      "itemUuid" : "32716828-36c1-46ce-a623-bcab9d3f3d5d"
-    }, {
-      "itemId" : 161,
-      "slotIdx" : 9,
-      "itemUuid" : "4bb3edf4-87fe-4db9-924e-7e38df60abee"
-    }, {
-      "itemId" : 7,
-      "slotIdx" : 7,
-      "itemUuid" : "c74b6023-bb68-49b5-9881-75a141cce3f3"
+      "itemId" : 120,
+      "slotIdx" : 2,
+      "itemUuid" : "3a7b093b-798e-46e6-8c93-d101234ec9a5"
     } ]
   }, {
     "characterUuid" : "324c1432-9ac2-458d-865c-ab10b2965f24",
     "characterClass" : 5,
     "stats" : {
-      "xp" : 66718949,
+      "xp" : 69356064,
       "classId" : 5,
       "hp" : 770,
       "mp" : 252,
@@ -337,55 +314,71 @@
       "wis" : 50
     },
     "items" : [ {
-      "itemId" : 74,
-      "slotIdx" : 2,
-      "itemUuid" : "2be6c63b-0522-4edf-b6fa-0149799a66d6"
+      "itemId" : 120,
+      "slotIdx" : 6,
+      "itemUuid" : "3a7b093b-798e-46e6-8c93-d101234ec9a5"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 18,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
     }, {
       "itemId" : 89,
       "slotIdx" : 0,
       "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
     }, {
-      "itemId" : 104,
-      "slotIdx" : 9,
-      "itemUuid" : "6fd386dc-ebef-4a20-8331-b151099a246d"
+      "itemId" : 137,
+      "slotIdx" : 14,
+      "itemUuid" : "74b6d54a-eff2-4ace-a882-0a7e53985929"
     }, {
-      "itemId" : 0,
-      "slotIdx" : 7,
-      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+      "itemId" : 76,
+      "slotIdx" : 16,
+      "itemUuid" : "6c78e04d-b73a-4d43-bd76-1a9d93d30a23"
     }, {
-      "itemId" : 2,
-      "slotIdx" : 10,
-      "itemUuid" : "4e15232a-d3ad-4717-87cd-44ffa639fa1a"
+      "itemId" : 7,
+      "slotIdx" : 12,
+      "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
+    }, {
+      "itemId" : 88,
+      "slotIdx" : 4,
+      "itemUuid" : "ef5fda97-c9fc-48db-8b97-c8e49122a26e"
+    }, {
+      "itemId" : 72,
+      "slotIdx" : 15,
+      "itemUuid" : "7b0aa591-4458-43b1-be93-755307d98c13"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 19,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 74,
+      "slotIdx" : 2,
+      "itemUuid" : "2be6c63b-0522-4edf-b6fa-0149799a66d6"
+    }, {
+      "itemId" : 70,
+      "slotIdx" : 13,
+      "itemUuid" : "ddaa4930-93ec-4efa-be9b-9ba6e259946b"
     }, {
       "itemId" : 155,
       "slotIdx" : 1,
       "itemUuid" : "eb76fc8b-9821-4dac-93a0-854aa9547ffa"
     }, {
       "itemId" : 7,
-      "slotIdx" : 8,
+      "slotIdx" : 5,
       "itemUuid" : "43256810-11d1-4218-bc92-0630ab4b37ce"
     }, {
-      "itemId" : 88,
-      "slotIdx" : 4,
-      "itemUuid" : "c604b16c-8b44-4e1b-8bc1-bbc00ac4f757"
+      "itemId" : 51,
+      "slotIdx" : 17,
+      "itemUuid" : "5389a4b2-b848-4f55-b127-414284573077"
     }, {
       "itemId" : 48,
       "slotIdx" : 3,
       "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
-    }, {
-      "itemId" : 31,
-      "slotIdx" : 6,
-      "itemUuid" : "0e1a02e8-0369-4c70-babb-ccb6fc9cb8c9"
-    }, {
-      "itemId" : 73,
-      "slotIdx" : 5,
-      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
     } ]
   }, {
     "characterUuid" : "6e51239b-9d23-42ad-b408-9c190657233b",
     "characterClass" : 1,
     "stats" : {
-      "xp" : 19849949,
+      "xp" : 20099719,
       "classId" : 1,
       "hp" : 700,
       "mp" : 252,
@@ -397,55 +390,39 @@
       "wis" : 50
     },
     "items" : [ {
-      "itemId" : 154,
-      "slotIdx" : 1,
-      "itemUuid" : "b4b4df81-2d87-4fdc-94c9-1097d7435356"
-    }, {
       "itemId" : 46,
       "slotIdx" : 2,
-      "itemUuid" : "19c1721f-9dfe-475f-ae42-36ebc6191aca"
+      "itemUuid" : "1147b625-57e6-47b9-897a-022bd0e9a517"
     }, {
-      "itemId" : 47,
-      "slotIdx" : 10,
-      "itemUuid" : "d98e610c-a559-408b-98d6-b51ad041d664"
-    }, {
-      "itemId" : 164,
+      "itemId" : 154,
       "slotIdx" : 6,
-      "itemUuid" : "334e6353-503c-4cec-8d2c-d91e0746f286"
+      "itemUuid" : "566304ee-224e-4f11-821c-2c477904d021"
     }, {
-      "itemId" : 47,
-      "slotIdx" : 9,
-      "itemUuid" : "d98e610c-a559-408b-98d6-b51ad041d664"
-    }, {
-      "itemId" : 166,
-      "slotIdx" : 7,
-      "itemUuid" : "8c3a7854-947d-4bcb-a91b-7e7b656066d6"
+      "itemId" : 7,
+      "slotIdx" : 4,
+      "itemUuid" : "c7646b36-7382-4c64-a80a-e7d24b5ad323"
     }, {
       "itemId" : 30,
-      "slotIdx" : 8,
-      "itemUuid" : "9dad8813-202a-43e2-82f9-1f2670266b18"
-    }, {
-      "itemId" : 164,
       "slotIdx" : 0,
-      "itemUuid" : "334e6353-503c-4cec-8d2c-d91e0746f286"
+      "itemUuid" : "b3a2a34f-ec70-47bb-b4f7-a493926bae6b"
     }, {
-      "itemId" : 47,
+      "itemId" : 220,
+      "slotIdx" : 1,
+      "itemUuid" : "3726cea2-d554-4e02-bb77-9b078c2c75c3"
+    }, {
+      "itemId" : 59,
+      "slotIdx" : 10,
+      "itemUuid" : "b3e41555-2d94-4471-b8d6-a9221077e3a6"
+    }, {
+      "itemId" : 73,
       "slotIdx" : 5,
-      "itemUuid" : "d98e610c-a559-408b-98d6-b51ad041d664"
-    }, {
-      "itemId" : 47,
-      "slotIdx" : 4,
-      "itemUuid" : "d98e610c-a559-408b-98d6-b51ad041d664"
-    }, {
-      "itemId" : 164,
-      "slotIdx" : 11,
-      "itemUuid" : "334e6353-503c-4cec-8d2c-d91e0746f286"
+      "itemUuid" : "7c8e2f36-f066-4a2d-92a3-141ca2ea0785"
     } ]
   }, {
     "characterUuid" : "dbdd9c12-05be-415c-9953-0cd29e8299e2",
     "characterClass" : 3,
     "stats" : {
-      "xp" : 1034399,
+      "xp" : 1194624,
       "classId" : 3,
       "hp" : 670,
       "mp" : 392,
@@ -457,47 +434,35 @@
       "wis" : 77
     },
     "items" : [ {
-      "itemId" : 137,
-      "slotIdx" : 4,
-      "itemUuid" : "0800fe5d-2101-4bde-bfa7-4617a519fe9a"
-    }, {
-      "itemId" : 30,
-      "slotIdx" : 7,
-      "itemUuid" : "b3a2a34f-ec70-47bb-b4f7-a493926bae6b"
-    }, {
-      "itemId" : 73,
-      "slotIdx" : 8,
-      "itemUuid" : "e7e7c7bc-9f3a-40a0-81d4-970ad4781d20"
-    }, {
-      "itemId" : 13,
-      "slotIdx" : 3,
-      "itemUuid" : "8292ca75-e652-4c67-b1c2-b0c76aae4119"
-    }, {
-      "itemId" : 151,
+      "itemId" : 150,
       "slotIdx" : 0,
-      "itemUuid" : "e7b85589-c7dd-4141-af8c-cbe0eb4712b8"
+      "itemUuid" : "ef1e07b1-51eb-4e6a-8d0d-01ac083f197d"
     }, {
-      "itemId" : 7,
+      "itemId" : 119,
+      "slotIdx" : 2,
+      "itemUuid" : "9b98c2ce-8620-41e9-9933-adef83030fc0"
+    }, {
+      "itemId" : 4,
+      "slotIdx" : 4,
+      "itemUuid" : "e6546b0d-1451-4d90-9c19-46919f923c82"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 3,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 2,
       "slotIdx" : 5,
-      "itemUuid" : "c18f900b-a504-4d7b-87cb-682fdcfd848f"
-    }, {
-      "itemId" : 6,
-      "slotIdx" : 6,
-      "itemUuid" : "8ebf74b7-26b6-4e7c-acab-4ab3b2a5bbd0"
+      "itemUuid" : "fca68d9f-9019-4c9c-adff-37985f0194fe"
     }, {
       "itemId" : 157,
       "slotIdx" : 1,
       "itemUuid" : "20238d83-1b82-462c-aba8-b1a6e51bcaf9"
-    }, {
-      "itemId" : 118,
-      "slotIdx" : 2,
-      "itemUuid" : "ab790cc8-2b73-428b-bba3-a68620780c68"
     } ]
   }, {
     "characterUuid" : "a800ef6f-7fe2-4d84-8558-753d952b6077",
     "characterClass" : 4,
     "stats" : {
-      "xp" : 1088249,
+      "xp" : 1220434,
       "classId" : 4,
       "hp" : 770,
       "mp" : 252,
@@ -509,25 +474,41 @@
       "wis" : 50
     },
     "items" : [ {
-      "itemId" : 88,
+      "itemId" : 4,
+      "slotIdx" : 5,
+      "itemUuid" : "e6546b0d-1451-4d90-9c19-46919f923c82"
+    }, {
+      "itemId" : 89,
       "slotIdx" : 0,
-      "itemUuid" : "c604b16c-8b44-4e1b-8bc1-bbc00ac4f757"
+      "itemUuid" : "1e512dbd-49d9-4d93-a690-5a50b982d820"
     }, {
-      "itemId" : 13,
-      "slotIdx" : 3,
-      "itemUuid" : "62e16dfe-a28d-45c6-bede-fba38633ab8c"
-    }, {
-      "itemId" : 156,
-      "slotIdx" : 1,
-      "itemUuid" : "5b913efe-5f1d-4e83-b59b-a89191fa5c41"
+      "itemId" : 5,
+      "slotIdx" : 9,
+      "itemUuid" : "134ad898-3210-4c2f-871a-2dc5bb97ef2f"
     }, {
       "itemId" : 87,
       "slotIdx" : 4,
       "itemUuid" : "c412dac3-8310-4864-8a0a-8a5717e6605d"
     }, {
+      "itemId" : 88,
+      "slotIdx" : 8,
+      "itemUuid" : "ef5fda97-c9fc-48db-8b97-c8e49122a26e"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 3,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
       "itemId" : 72,
       "slotIdx" : 2,
       "itemUuid" : "7b0aa591-4458-43b1-be93-755307d98c13"
+    }, {
+      "itemId" : 277,
+      "slotIdx" : 1,
+      "itemUuid" : "907a9eca-c6bf-4ea6-b9cd-4c369a464dc4"
+    }, {
+      "itemId" : 156,
+      "slotIdx" : 6,
+      "itemUuid" : "5b913efe-5f1d-4e83-b59b-a89191fa5c41"
     } ]
   }, {
     "characterUuid" : "1501aa39-0559-4d55-b7b1-5545a261a488",
@@ -561,45 +542,255 @@
     "characterUuid" : "0a9b979e-6672-4486-b3f3-3ff09fb758d8",
     "characterClass" : 6,
     "stats" : {
-      "xp" : 19150,
+      "xp" : 23440,
       "classId" : 6,
-      "hp" : 313,
-      "mp" : 145,
-      "def" : 0,
-      "att" : 16,
-      "spd" : 18,
-      "dex" : 19,
-      "vit" : 18,
-      "wis" : 22
+      "hp" : 807,
+      "mp" : 252,
+      "def" : 30,
+      "att" : 50,
+      "spd" : 50,
+      "dex" : 50,
+      "vit" : 62,
+      "wis" : 76
     },
     "items" : [ {
       "itemId" : 63,
       "slotIdx" : 2,
       "itemUuid" : "91a302aa-3dfb-4851-a3be-4c2391fe15d8"
     }, {
-      "itemId" : 94,
-      "slotIdx" : 4,
-      "itemUuid" : "e13d6f09-e7d1-4ebc-828a-a0d6f4215d37"
-    }, {
-      "itemId" : 87,
-      "slotIdx" : 5,
-      "itemUuid" : "23aeadef-1db1-4d32-abb4-07de18a4e820"
-    }, {
       "itemId" : 57,
       "slotIdx" : 3,
       "itemUuid" : "c828d546-5ade-423f-9ecd-e706764be48a"
     }, {
-      "itemId" : 6,
-      "slotIdx" : 6,
-      "itemUuid" : "415727bf-7e0a-41a7-ad6f-3c0b162c1918"
-    }, {
-      "itemId" : 86,
+      "itemId" : 87,
       "slotIdx" : 0,
-      "itemUuid" : "dff51a79-681e-4ecc-992f-095bd2a51f7d"
+      "itemUuid" : "23aeadef-1db1-4d32-abb4-07de18a4e820"
+    }, {
+      "itemId" : 2,
+      "slotIdx" : 5,
+      "itemUuid" : "7ff085e8-d978-4af8-b407-d62e4443594b"
     }, {
       "itemId" : 153,
       "slotIdx" : 1,
       "itemUuid" : "1f787e8c-70bc-401c-8110-18ef40702f9c"
+    } ]
+  }, {
+    "characterUuid" : "78b29c36-17e7-4a4a-9b07-c128ef9d0555",
+    "characterClass" : 8,
+    "stats" : {
+      "xp" : 3572355,
+      "classId" : 8,
+      "hp" : 596,
+      "mp" : 360,
+      "def" : 21,
+      "att" : 48,
+      "spd" : 41,
+      "dex" : 36,
+      "vit" : 31,
+      "wis" : 69
+    },
+    "items" : [ {
+      "itemId" : 14,
+      "slotIdx" : 3,
+      "itemUuid" : "30924c6d-92cb-4451-a816-353f2a1fa6e6"
+    }, {
+      "itemId" : 117,
+      "slotIdx" : 2,
+      "itemUuid" : "48779682-9035-468c-be2d-1b00490b5927"
+    }, {
+      "itemId" : 206,
+      "slotIdx" : 1,
+      "itemUuid" : "fca4b881-2e7a-4c61-b9e8-f1228b1cf0a3"
+    }, {
+      "itemId" : 133,
+      "slotIdx" : 0,
+      "itemUuid" : "4f7b047b-6a85-4395-b085-8a5382d92bce"
+    } ]
+  }, {
+    "characterUuid" : "22699c02-1847-42ca-87dd-fd9da1b4a632",
+    "characterClass" : 11,
+    "stats" : {
+      "xp" : 50165,
+      "classId" : 11,
+      "hp" : 430,
+      "mp" : 269,
+      "def" : 25,
+      "att" : 65,
+      "spd" : 60,
+      "dex" : 59,
+      "vit" : 70,
+      "wis" : 63
+    },
+    "items" : [ {
+      "itemId" : 114,
+      "slotIdx" : 2,
+      "itemUuid" : "f4805e80-19a8-47bc-9221-7663a9cb2afa"
+    }, {
+      "itemId" : 222,
+      "slotIdx" : 11,
+      "itemUuid" : "ad37c06b-dc78-4e31-abf0-d84a3be25e8a"
+    }, {
+      "itemId" : 0,
+      "slotIdx" : 6,
+      "itemUuid" : "af750987-c27f-4dfa-90d7-06acc096c276"
+    }, {
+      "itemId" : 138,
+      "slotIdx" : 0,
+      "itemUuid" : "a4683fb4-816c-431a-90bf-975ce31af5f2"
+    }, {
+      "itemId" : 276,
+      "slotIdx" : 1,
+      "itemUuid" : "91677784-77a1-42e2-b3a7-d9fd33f2fc10"
+    } ]
+  }, {
+    "characterUuid" : "744c67a0-6032-432d-acb3-170b11d9965c",
+    "characterClass" : 9,
+    "stats" : {
+      "xp" : 142160,
+      "classId" : 9,
+      "hp" : 536,
+      "mp" : 253,
+      "def" : 25,
+      "att" : 61,
+      "spd" : 62,
+      "dex" : 59,
+      "vit" : 48,
+      "wis" : 76
+    },
+    "items" : [ {
+      "itemId" : 165,
+      "slotIdx" : 6,
+      "itemUuid" : "c1d6fb27-30df-45b8-98ab-90421917d765"
+    }, {
+      "itemId" : 118,
+      "slotIdx" : 2,
+      "itemUuid" : "433eb6cd-40e2-4e46-a48c-dc9167dc8c7c"
+    }, {
+      "itemId" : 257,
+      "slotIdx" : 1,
+      "itemUuid" : "d00f26d7-1c76-4555-8347-66da780eb65f"
+    }, {
+      "itemId" : 1,
+      "slotIdx" : 5,
+      "itemUuid" : "3c081e0f-3a36-45c9-a48a-7327ff36e386"
+    }, {
+      "itemId" : 9,
+      "slotIdx" : 3,
+      "itemUuid" : "bf35d715-523c-4183-a055-0907cd7282e9"
+    }, {
+      "itemId" : 132,
+      "slotIdx" : 0,
+      "itemUuid" : "91567a9a-b4a9-4e4c-8ecc-feb5bc3fa9f6"
+    } ]
+  }, {
+    "characterUuid" : "e5ff32cf-b68e-45f1-84b7-029f9b6d4725",
+    "characterClass" : 7,
+    "stats" : {
+      "xp" : 2366165,
+      "classId" : 7,
+      "hp" : 781,
+      "mp" : 264,
+      "def" : 25,
+      "att" : 62,
+      "spd" : 81,
+      "dex" : 83,
+      "vit" : 41,
+      "wis" : 63
+    },
+    "items" : [ {
+      "itemId" : 46,
+      "slotIdx" : 2,
+      "itemUuid" : "1147b625-57e6-47b9-897a-022bd0e9a517"
+    }, {
+      "itemId" : 9,
+      "slotIdx" : 4,
+      "itemUuid" : "5ab74452-5ab3-498e-9e13-5fa6285d754f"
+    }, {
+      "itemId" : 2,
+      "slotIdx" : 5,
+      "itemUuid" : "4f4d47a6-bcb7-41c4-98c0-5caf8174e9e0"
+    }, {
+      "itemId" : 12,
+      "slotIdx" : 7,
+      "itemUuid" : "1510a2ae-08c3-47d9-9737-ec88d397388c"
+    }, {
+      "itemId" : 5,
+      "slotIdx" : 6,
+      "itemUuid" : "98877a1c-65ac-4fe6-8a8a-664fe6226fa4"
+    }, {
+      "itemId" : 254,
+      "slotIdx" : 1,
+      "itemUuid" : "4eee9928-20c2-45c7-9f5f-827d6cf596c5"
+    }, {
+      "itemId" : 105,
+      "slotIdx" : 0,
+      "itemUuid" : "f963441d-ea3a-4863-a726-eda414166b06"
+    } ]
+  }, {
+    "deleted" : 1775074742584,
+    "characterUuid" : "5bf1d46d-3f22-4f45-8d94-2ee789c977fe",
+    "characterClass" : 10,
+    "stats" : {
+      "xp" : 650,
+      "classId" : 10,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 1,
+      "att" : 12,
+      "spd" : 15,
+      "dex" : 16,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 5,
+      "slotIdx" : 5,
+      "itemUuid" : "1377be06-330c-4c20-8b1e-48c7b1be47d4"
+    }, {
+      "itemId" : 1,
+      "slotIdx" : 7,
+      "itemUuid" : "fe972c3c-a983-4dcf-84fa-0b5c56fad62a"
+    }, {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "ae409369-359b-4775-bf1e-582f1a66c42a"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "2480ccf5-e0be-4c27-80d1-7d2744598b3c"
+    }, {
+      "itemId" : 5,
+      "slotIdx" : 4,
+      "itemUuid" : "1377be06-330c-4c20-8b1e-48c7b1be47d4"
+    } ]
+  }, {
+    "deleted" : 1775078366483,
+    "characterUuid" : "91d855c7-bb04-4f22-9039-d4191c022c77",
+    "characterClass" : 9,
+    "stats" : {
+      "xp" : 3590,
+      "classId" : 9,
+      "hp" : 132,
+      "mp" : 105,
+      "def" : 4,
+      "att" : 16,
+      "spd" : 20,
+      "dex" : 14,
+      "vit" : 16,
+      "wis" : 20
+    },
+    "items" : [ {
+      "itemId" : 257,
+      "slotIdx" : 1,
+      "itemUuid" : "195dcfdf-1a76-4761-ae92-317cac778036"
+    }, {
+      "itemId" : 115,
+      "slotIdx" : 2,
+      "itemUuid" : "035068c9-cdcf-449e-9bcb-765a7dd661be"
+    }, {
+      "itemId" : 124,
+      "slotIdx" : 0,
+      "itemUuid" : "fb3b3bf9-5962-4c12-8635-ecaf3530d09f"
     } ]
   } ]
 }, {
@@ -886,1284 +1077,6 @@
       "itemId" : 32,
       "slotIdx" : 2,
       "itemUuid" : "b2c46788-4cfd-4aa8-9dd8-e7cfff0c35ee"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b7680a300e201cf9d6a24c",
-  "accountEmail" : "bot-1773627402526-0@jrealm-bot.local",
-  "accountUuid" : "702ad4d1-a3e6-4d13-ab0b-89feba736fe4",
-  "accountName" : "Bot_0",
-  "playerVault" : [ {
-    "chestUuid" : "a28ab3a5-ed2f-4917-9512-fd8e8267c5e8",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "be9863be-f518-42a9-8a4d-bbc8aa7a8e17"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "dd462642-ed9c-420d-a74b-7a028cdafbf8",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "46e7dbd1-ac90-45fe-9c3b-b997aeaf6e82"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "ddde6029-90ba-48fb-9b07-2f3ce100c718"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "04b9a0f4-6e97-408a-87bb-63fde4ee88be"
-    } ]
-  }, {
-    "characterUuid" : "ec03069d-69d9-4dfd-82fa-3c94ecc6e2ba",
-    "characterClass" : 10,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 10,
-      "hp" : 130,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 12,
-      "wis" : 12
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "0fd8d320-0b47-408f-a4ea-3e8c72f19a9b"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "6b059044-15e1-4667-8de0-c9d3db818403"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "cf610a7a-7bd3-424d-9021-f0e4f62f0381"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b7680a300e201cf9d6a24f",
-  "accountEmail" : "bot-1773627402556-1@jrealm-bot.local",
-  "accountUuid" : "5513e2dc-ca3e-4524-b7ab-fdb68c531cb7",
-  "accountName" : "Bot_1",
-  "playerVault" : [ {
-    "chestUuid" : "7b7ca441-f354-40ef-a97a-f6d2097f8c85",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "cbe08997-791a-48e7-aa0d-b9ee41750ba1"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "73e3d5d3-3039-45a3-a1d2-f8fd5b4c7f3d",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "8c368f96-f585-4499-a87b-30526c117348"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "f006a63e-ac59-4270-b9b4-6be797c724eb"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "92c72940-a38d-4aa9-a3f7-4706d7208aa4"
-    } ]
-  }, {
-    "characterUuid" : "5da8ad70-c620-4b18-8035-82a42442b3f7",
-    "characterClass" : 8,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 8,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 10,
-      "dex" : 12,
-      "vit" : 10,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 121,
-      "slotIdx" : 0,
-      "itemUuid" : "d7bf4f21-44e6-45c8-91e4-2ca09597b2c6"
-    }, {
-      "itemId" : 136,
-      "slotIdx" : 1,
-      "itemUuid" : "e922d254-3146-45f1-965c-a4b80ec00ebc"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "940e3552-8b5c-4d52-ac1a-c448d5a4c89d"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b7680a300e201cf9d6a252",
-  "accountEmail" : "bot-1773627402575-2@jrealm-bot.local",
-  "accountUuid" : "357fe594-0fd6-4f4b-8497-a2d35b9632ae",
-  "accountName" : "Bot_2",
-  "playerVault" : [ {
-    "chestUuid" : "45352f0b-161e-4fa6-8da3-8b34a464568e",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "d792bca9-3d53-463a-ae6a-04debc04c3bb"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "a5cc14ca-7bb3-421b-8a15-e55db2e38b74",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "7129fa4d-7534-4966-9b43-242b8e2ff7b1"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "ed0e8b2b-dbb5-4a0d-997f-f9bc35c2d905"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "d5c2582c-dea7-43fb-8868-8bf46a53d8f6"
-    } ]
-  }, {
-    "characterUuid" : "f1023c8d-f3b6-4fe1-ad25-108798e6a009",
-    "characterClass" : 8,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 8,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 10,
-      "dex" : 12,
-      "vit" : 10,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 121,
-      "slotIdx" : 0,
-      "itemUuid" : "ecedc440-f0a8-432d-973a-b3f0d1df8ecf"
-    }, {
-      "itemId" : 136,
-      "slotIdx" : 1,
-      "itemUuid" : "b7f83e6d-a4a1-41ff-9ee9-bf9e797f42d1"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "256cf74e-c398-4b4c-9ca6-8fecdf69cf87"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b7680a300e201cf9d6a255",
-  "accountEmail" : "bot-1773627402596-3@jrealm-bot.local",
-  "accountUuid" : "8b23a41d-51d3-42e9-8335-9443114a265c",
-  "accountName" : "Bot_3",
-  "playerVault" : [ {
-    "chestUuid" : "26a5fa57-de81-4b1c-91da-bfbef4e6f30c",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "26306623-34b4-462f-9dae-e636de27895a"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "c4038c9e-0655-4043-86a7-d18f674b0080",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "e36af242-5dfa-422b-9edc-1564a7885e39"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "96e08cee-3760-45b7-81ee-704361e0af9c"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "a59eb94b-3012-4bc2-b840-da6383dea435"
-    } ]
-  }, {
-    "characterUuid" : "9c6a3056-8f36-4eb9-9562-5228a349b377",
-    "characterClass" : 5,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 5,
-      "hp" : 200,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 15,
-      "spd" : 7,
-      "dex" : 10,
-      "vit" : 10,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 75,
-      "slotIdx" : 0,
-      "itemUuid" : "79a37052-dcc3-460e-9604-be204491ed27"
-    }, {
-      "itemId" : 155,
-      "slotIdx" : 1,
-      "itemUuid" : "f093674d-0e20-4ca0-89b9-8f23e9547769"
-    }, {
-      "itemId" : 60,
-      "slotIdx" : 2,
-      "itemUuid" : "3915b39e-1fb3-4c78-a3a4-bdbeabcc4788"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b7680a300e201cf9d6a258",
-  "accountEmail" : "bot-1773627402616-4@jrealm-bot.local",
-  "accountUuid" : "4404172b-15a7-4b16-a8a1-a8149d42eb5e",
-  "accountName" : "Bot_4",
-  "playerVault" : [ {
-    "chestUuid" : "9ad202b9-b059-4d86-8ab6-6b34a50a3e47",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "42322ae2-e557-426b-8599-850de3c60f86"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "e58f6cd3-9e2a-415b-a479-e228b1afbcf1",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "ead0f8dd-9075-405a-b004-cbca2edd473e"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "af62dca7-6243-4113-965d-f4effe4633a6"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "e7804c0b-e030-4c35-943e-a01cf66d8db9"
-    } ]
-  }, {
-    "characterUuid" : "f4fdb78f-81d4-4a07-9f0b-b56afb7532ec",
-    "characterClass" : 9,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 9,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 10,
-      "vit" : 12,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 121,
-      "slotIdx" : 0,
-      "itemUuid" : "0c577ade-2377-499e-ada4-53dd561f8134"
-    }, {
-      "itemId" : 136,
-      "slotIdx" : 1,
-      "itemUuid" : "802d979e-5f94-4c9c-9839-07975f0b590b"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "284e126e-034e-451c-903b-e921420c0085"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b7680a300e201cf9d6a25b",
-  "accountEmail" : "bot-1773627402636-5@jrealm-bot.local",
-  "accountUuid" : "9e156e3c-37b3-471d-baf3-efb6da5e3a2d",
-  "accountName" : "Bot_5",
-  "playerVault" : [ {
-    "chestUuid" : "0cd7a87e-3643-4a53-8c92-a95944de6e93",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "95979f80-73ae-4566-b102-aaea86011cfb"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "2a0cc4ee-f819-444b-9430-b05f291b08e7",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "964891d9-811a-436b-b694-78920e330c33"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "6027b9e7-1d23-46bb-9848-8a20d4b5993f"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "abb1061d-5364-4f6d-a32d-b4c9f7ec5087"
-    } ]
-  }, {
-    "characterUuid" : "dbdff34b-5b61-4317-ac7a-c9c44022aa1e",
-    "characterClass" : 9,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 9,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 10,
-      "vit" : 12,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 121,
-      "slotIdx" : 0,
-      "itemUuid" : "15c33441-6af7-4af8-8440-30159c05a506"
-    }, {
-      "itemId" : 136,
-      "slotIdx" : 1,
-      "itemUuid" : "97234c70-7a3f-44d9-b7b5-3c7c2a450039"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "028f1501-828d-4786-8bdf-d70a7e8e9370"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b768f8300e201cf9d6a25e",
-  "accountEmail" : "bot-1773627640225-0@jrealm-bot.local",
-  "accountUuid" : "2e049758-5c64-487f-87d4-b6c5e3d380e7",
-  "accountName" : "Bot_0",
-  "playerVault" : [ {
-    "chestUuid" : "ca8fb7cb-edcf-4362-b7fe-048827aa11de",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "d198d92f-3eb1-4d0b-a9ac-21f626c14191"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "51e79a0a-65df-41db-a7cf-857d9550bf1a",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "07ab394b-6981-4379-8d6c-eac69b9a295a"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "c647b532-c9b0-4046-8b1c-0243a4d0d127"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "2d742b53-c9ce-4427-befd-033e11bc3a3c"
-    } ]
-  }, {
-    "characterUuid" : "ac117d13-dc95-4576-95b4-9c2c64611ddd",
-    "characterClass" : 1,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 1,
-      "hp" : 130,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 12,
-      "vit" : 10,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 17,
-      "slotIdx" : 0,
-      "itemUuid" : "1384b41f-edf7-48ef-bf1e-2f8659f5d633"
-    }, {
-      "itemId" : 154,
-      "slotIdx" : 1,
-      "itemUuid" : "f43e9af1-8276-4ebe-8ac7-0cfa79108916"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "fb8a06b3-7107-4f01-9279-8fd88834d958"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b768f8300e201cf9d6a261",
-  "accountEmail" : "bot-1773627640260-1@jrealm-bot.local",
-  "accountUuid" : "fac88f13-0df0-427b-a8a7-2656904e45a8",
-  "accountName" : "Bot_1",
-  "playerVault" : [ {
-    "chestUuid" : "ca473e3d-c666-46e5-bc6b-e00518e8641e",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "d94bfb8d-a2df-4091-a384-fdcba9c86c08"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "0441fdc9-ce7f-4179-a5e1-1ff3e1bb6c78",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "c5f0980b-b6a0-42e4-9be0-4190f684e0f4"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "cfa5231e-c70e-41cd-99fd-8352d3056d62"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "f6187fe2-b6ff-4013-811f-273c5a2010d5"
-    } ]
-  }, {
-    "characterUuid" : "47f731eb-11d8-4171-b6a0-522dcb9471e2",
-    "characterClass" : 3,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 3,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 12,
-      "vit" : 10,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 137,
-      "slotIdx" : 0,
-      "itemUuid" : "a02c72f6-736c-4061-8f6b-b0bd906b548c"
-    }, {
-      "itemId" : 157,
-      "slotIdx" : 1,
-      "itemUuid" : "2ca15742-80c2-451e-8644-55217a014b51"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "f98d9dc7-8173-4fee-afb1-76b88e5698b2"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b768f8300e201cf9d6a264",
-  "accountEmail" : "bot-1773627640279-2@jrealm-bot.local",
-  "accountUuid" : "ec4ec1e5-5b84-4d9c-ba85-8ca0519e453b",
-  "accountName" : "Bot_2",
-  "playerVault" : [ {
-    "chestUuid" : "2a762e66-4df6-47ca-8f4e-b6fb116458d0",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "161c2e57-0cc8-44cb-a3f8-2e6801ed0087"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "c9e23c54-6cda-4e51-9378-90cb74394b9d",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "618185d3-47ba-4dd3-9c4f-6f397fc8f00b"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "ffab4439-8587-45a3-80f7-ed244c639b93"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "8e552cc9-0fd8-4673-b01f-759dbf0e983e"
-    } ]
-  }, {
-    "characterUuid" : "4cb4c9b3-c3c0-4e32-a4c2-a54a1faafdf0",
-    "characterClass" : 5,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 5,
-      "hp" : 200,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 15,
-      "spd" : 7,
-      "dex" : 10,
-      "vit" : 10,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 75,
-      "slotIdx" : 0,
-      "itemUuid" : "fa76135a-82d0-43ee-9974-e657cc882903"
-    }, {
-      "itemId" : 155,
-      "slotIdx" : 1,
-      "itemUuid" : "b2b9d792-0b5b-426c-b910-45b1e75e3500"
-    }, {
-      "itemId" : 60,
-      "slotIdx" : 2,
-      "itemUuid" : "ab00425e-f5dd-4de8-a2f8-ea99ffe3cbb9"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b768f8300e201cf9d6a267",
-  "accountEmail" : "bot-1773627640301-3@jrealm-bot.local",
-  "accountUuid" : "2f7e5371-da18-4825-9c0c-30e644faf541",
-  "accountName" : "Bot_3",
-  "playerVault" : [ {
-    "chestUuid" : "5cd026c6-70c2-47e5-abb1-3ba64c1903af",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "749ffac0-d70b-4fff-9d6e-a13e40e315fd"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "cc2e64c0-52ef-48de-853d-b8d671b005c4",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "5617d60e-87d5-4fe4-838c-87337ac22a97"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "79ead693-82c6-4a89-bd6a-7a9e151da091"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "edcb22b0-30e7-4e6f-a120-a66693b21cec"
-    } ]
-  }, {
-    "characterUuid" : "ff62fa28-b9d3-4286-95e8-9be43034cfa0",
-    "characterClass" : 6,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 6,
-      "hp" : 200,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 10,
-      "vit" : 10,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 75,
-      "slotIdx" : 0,
-      "itemUuid" : "3eea49da-ccfd-49eb-a0af-7c945b50fcfb"
-    }, {
-      "itemId" : 153,
-      "slotIdx" : 1,
-      "itemUuid" : "e3d99691-51b0-4526-8efc-1cd112544e2a"
-    }, {
-      "itemId" : 60,
-      "slotIdx" : 2,
-      "itemUuid" : "0d1516e8-4fa0-40e9-a7f6-843da854f745"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b768f8300e201cf9d6a26a",
-  "accountEmail" : "bot-1773627640319-4@jrealm-bot.local",
-  "accountUuid" : "592f5187-06db-4547-b1c0-261f1757eb71",
-  "accountName" : "Bot_4",
-  "playerVault" : [ {
-    "chestUuid" : "56d69739-10ba-4885-8dc8-a5a96158f8cf",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "bc982780-9e9f-4543-83d4-8b49d7823bbe"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "0ffc2bde-5d17-444a-83c7-e9d161ff8119",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "b6c3786b-0bdd-4cc2-b0aa-7ba5e934ccfe"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "513ebb3b-af94-4489-99aa-174e41910f46"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "1be0329e-3693-4d97-b78b-319ea76c8ca4"
-    } ]
-  }, {
-    "characterUuid" : "9c0577b2-5b0f-4f92-ba6f-47ed37cac705",
-    "characterClass" : 10,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 10,
-      "hp" : 130,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 12,
-      "wis" : 12
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "2344ad3d-0013-4bb3-8cf8-cf0fb37cda4c"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "06841a88-7bb1-402a-ad64-4b3c5b82d778"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "6320dadb-236e-4193-8a1f-9f1793185227"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b768f8300e201cf9d6a26d",
-  "accountEmail" : "bot-1773627640336-5@jrealm-bot.local",
-  "accountUuid" : "9fae356c-0dde-4b6d-a9b7-29ed034294aa",
-  "accountName" : "Bot_5",
-  "playerVault" : [ {
-    "chestUuid" : "22d9f0ea-2807-4220-8857-e94f76ebc7b7",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "b423d9d0-ecba-484a-9797-e6b56d824c46"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "10f44a45-2ae2-4dc0-9add-bb1de832ca89",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "4e91d2af-84c3-41b9-86ac-6f8a3c320508"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "ee4f399b-563e-4fb2-9e77-479877df6d4b"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "44a73a2d-6a4c-41d1-b3a5-050e1bdc9ef4"
-    } ]
-  }, {
-    "characterUuid" : "3aee815d-6932-4820-99c0-8481d6601b68",
-    "characterClass" : 3,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 3,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 12,
-      "vit" : 10,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 137,
-      "slotIdx" : 0,
-      "itemUuid" : "198b875e-c91b-497d-8b1f-1e48f7722ec7"
-    }, {
-      "itemId" : 157,
-      "slotIdx" : 1,
-      "itemUuid" : "94f87331-c4cc-47a5-bbb1-f00ae0f423ff"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "96067f6e-8575-4532-906b-095b19018d24"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b76963300e201cf9d6a270",
-  "accountEmail" : "bot-1773627746999-0@jrealm-bot.local",
-  "accountUuid" : "35a1a4e8-5ce9-4f2a-a596-b9a64387f808",
-  "accountName" : "Bot_0",
-  "playerVault" : [ {
-    "chestUuid" : "dc25c1a1-d2b1-4e8e-9925-57e8eedfd9cd",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "df19f432-61d2-4ff1-ac8d-fd8f684b5fd3"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "2adcc755-4885-4248-9157-0be5ffad2e33",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "48d9f902-fc37-4ecc-81d7-c233fb029641"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "6d2a8b7c-8112-4395-a380-cd18a3ef9c82"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "13aec755-f3aa-4dc6-952c-09fee4067c7b"
-    } ]
-  }, {
-    "characterUuid" : "c5d2fb7e-4bb4-4958-8604-c6dd942862dc",
-    "characterClass" : 3,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 3,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 12,
-      "vit" : 10,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 137,
-      "slotIdx" : 0,
-      "itemUuid" : "3349b6c1-2692-428a-abce-6be0689b0ded"
-    }, {
-      "itemId" : 157,
-      "slotIdx" : 1,
-      "itemUuid" : "5a1e2d11-f93c-4159-ba1d-8a5feddc6f3f"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "2dc97321-5b68-4c42-b74a-ce1425b496c9"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b76963300e201cf9d6a273",
-  "accountEmail" : "bot-1773627747029-1@jrealm-bot.local",
-  "accountUuid" : "6d7c5600-009e-45f8-9e3b-401bb2b71da8",
-  "accountName" : "Bot_1",
-  "playerVault" : [ {
-    "chestUuid" : "d35f514d-2a69-4021-b766-b6a1361e7241",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "0168a4fa-2160-4a65-82ca-dac9dd63a074"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "770d014c-6a4a-4a44-a544-78a988879dff",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "5866f2ab-0680-46f4-bce3-1c35ed0b9e6a"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "114ed6c7-8a5c-4f1e-ba6b-be147d69d2df"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "877ad2f3-76ba-4ded-9e9c-c4437e32f801"
-    } ]
-  }, {
-    "characterUuid" : "2af3e478-6251-4d64-aae7-c587b5e538a0",
-    "characterClass" : 9,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 9,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 10,
-      "vit" : 12,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 121,
-      "slotIdx" : 0,
-      "itemUuid" : "c584e72a-4cbf-46cb-9943-1159f1ea5930"
-    }, {
-      "itemId" : 136,
-      "slotIdx" : 1,
-      "itemUuid" : "2140b4b2-267c-4195-ad72-a8b10a90394b"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "a63bbdcd-ac44-4c31-9de3-e328881c037b"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b76963300e201cf9d6a276",
-  "accountEmail" : "bot-1773627747048-2@jrealm-bot.local",
-  "accountUuid" : "0ec89321-ed4e-4ea9-969b-425029455fe0",
-  "accountName" : "Bot_2",
-  "playerVault" : [ {
-    "chestUuid" : "1aad843e-a9ef-4832-b93c-c98a1534125b",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "55d275e3-9298-4045-b6e1-03ffdc4b2053"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "65170d43-c733-437a-aad9-33b606779387",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "7908405d-93fb-48f5-abb6-551c6924b80d"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "4e4f005b-2902-4642-aaf3-58b803c58ba5"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "f70d8750-1a06-4364-9ecb-0ac61dae4b96"
-    } ]
-  }, {
-    "characterUuid" : "738101fd-504b-4229-9a8c-3e7d01feb26b",
-    "characterClass" : 5,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 5,
-      "hp" : 200,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 15,
-      "spd" : 7,
-      "dex" : 10,
-      "vit" : 10,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 75,
-      "slotIdx" : 0,
-      "itemUuid" : "1ecd5054-01b7-4316-b02b-b92d8ec17d35"
-    }, {
-      "itemId" : 155,
-      "slotIdx" : 1,
-      "itemUuid" : "94f7f4d5-4b63-4f5a-8c0c-8a853949e3a7"
-    }, {
-      "itemId" : 60,
-      "slotIdx" : 2,
-      "itemUuid" : "df9e157b-6e8e-4a25-b662-1a9cf9d6592c"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b76963300e201cf9d6a279",
-  "accountEmail" : "bot-1773627747069-3@jrealm-bot.local",
-  "accountUuid" : "361226c9-a916-418f-9604-31f89c60731f",
-  "accountName" : "Bot_3",
-  "playerVault" : [ {
-    "chestUuid" : "bd9bf21a-1fa8-4459-85f1-aae3a7154bc8",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "2b549223-5837-4a66-8ef2-ea7d31b77952"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "15ff5197-e0eb-462f-9daf-ff3d051a2483",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "07630009-fe71-4279-b92c-629b00ce4b59"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "07cc212a-1413-46ee-aabc-873f88fddb6b"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "d4a4ba34-1ba6-4d76-97e8-50135345da75"
-    } ]
-  }, {
-    "characterUuid" : "e2ebd36b-66f8-4513-8078-4b4f145bd65b",
-    "characterClass" : 6,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 6,
-      "hp" : 200,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 12,
-      "dex" : 10,
-      "vit" : 10,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 75,
-      "slotIdx" : 0,
-      "itemUuid" : "9f130026-fc85-4953-adf3-285a4a32d94f"
-    }, {
-      "itemId" : 153,
-      "slotIdx" : 1,
-      "itemUuid" : "716acb76-4115-4655-a9f6-abb6cf2f2de8"
-    }, {
-      "itemId" : 60,
-      "slotIdx" : 2,
-      "itemUuid" : "54ee6f54-7157-42bb-af74-e869ef1c8d76"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b76963300e201cf9d6a27c",
-  "accountEmail" : "bot-1773627747089-4@jrealm-bot.local",
-  "accountUuid" : "627c6226-451b-411e-b363-e0cbf55b8e6e",
-  "accountName" : "Bot_4",
-  "playerVault" : [ {
-    "chestUuid" : "6ac1fa68-ac89-45be-9158-09020ed6c043",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "64a64010-6bc6-43c9-8aa8-b68939be8e78"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "8ac69ae1-8fc7-41e7-b281-1a9d8501e1ad",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "1e1cff50-bc5f-4385-99f5-c82542a94c7a"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "14682ef0-c748-458e-aeee-64d9d9372604"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "ad64819c-2c88-45c4-b730-4f390fc63521"
-    } ]
-  }, {
-    "characterUuid" : "22dff304-0440-455b-b717-2d593e748cc7",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "015d51b6-a30d-4763-9ea9-63ea6dd85ea1"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "1aab6256-4232-4d9c-a1d4-469c87097efb"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "12a6465f-15d0-45d3-bdb9-dc1d7df8f36a"
-    } ]
-  } ]
-}, {
-  "accountId" : "69b76963300e201cf9d6a27f",
-  "accountEmail" : "bot-1773627747107-5@jrealm-bot.local",
-  "accountUuid" : "a304683d-ea99-457d-a4f6-c9272cb6b94e",
-  "accountName" : "Bot_5",
-  "playerVault" : [ {
-    "chestUuid" : "d2df8497-201b-4897-bb41-7e46c838ee1e",
-    "ordinal" : 0,
-    "items" : [ {
-      "itemId" : 47,
-      "slotIdx" : 0,
-      "itemUuid" : "0593d897-793a-4492-b715-331852d05472"
-    } ]
-  } ],
-  "characters" : [ {
-    "characterUuid" : "35dfc77c-7a2d-465c-9f39-122b091382ff",
-    "characterClass" : 0,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 0,
-      "hp" : 150,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 10,
-      "spd" : 15,
-      "dex" : 15,
-      "vit" : 15,
-      "wis" : 10
-    },
-    "items" : [ {
-      "itemId" : 91,
-      "slotIdx" : 0,
-      "itemUuid" : "161eaf1d-d006-4b19-a8b3-0bfca3c627d2"
-    }, {
-      "itemId" : 152,
-      "slotIdx" : 1,
-      "itemUuid" : "660573ac-a8b1-436d-bed3-b01685e88359"
-    }, {
-      "itemId" : 32,
-      "slotIdx" : 2,
-      "itemUuid" : "fd576313-109a-4286-8e3f-f432cc0d9f02"
-    } ]
-  }, {
-    "characterUuid" : "ba7ee223-657f-403b-9e79-7b167ad9c1f8",
-    "characterClass" : 8,
-    "stats" : {
-      "xp" : 0,
-      "classId" : 8,
-      "hp" : 100,
-      "mp" : 100,
-      "def" : 0,
-      "att" : 12,
-      "spd" : 10,
-      "dex" : 12,
-      "vit" : 10,
-      "wis" : 15
-    },
-    "items" : [ {
-      "itemId" : 121,
-      "slotIdx" : 0,
-      "itemUuid" : "f3b5f43e-82e9-4596-af48-e350c077bf8c"
-    }, {
-      "itemId" : 136,
-      "slotIdx" : 1,
-      "itemUuid" : "78883b0e-1349-4f36-8186-4971333cef33"
-    }, {
-      "itemId" : 106,
-      "slotIdx" : 2,
-      "itemUuid" : "f2a45833-e0ad-44a7-aafb-0b2ee2e17a4d"
     } ]
   } ]
 }, {
@@ -2590,6 +1503,3332 @@
       "itemId" : 60,
       "slotIdx" : 2,
       "itemUuid" : "66170ae3-6106-435c-8410-805b14182a7d"
+    } ]
+  } ]
+}, {
+  "accountId" : "69b7999c7896466300e4d486",
+  "accountEmail" : "bot-1773640092606-0@jrealm-bot.local",
+  "accountUuid" : "949dc5bf-4a6a-495b-a297-307710fe2d13",
+  "accountName" : "Bot_0",
+  "playerVault" : [ {
+    "chestUuid" : "78396a96-0535-4af9-b81d-236267763390",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "06b79150-82d2-4d70-8b88-6f668ca2b1ee"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "3372f056-7e9a-4cd0-a016-684c222f6ced",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "6de35cc0-bf02-4600-bdd3-44a831550fa2"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "99a783f7-c6b9-4138-a4af-d3024515e9f9"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "e83fb215-d5d5-49f9-8d9e-4a49bdc0fdf0"
+    } ]
+  }, {
+    "characterUuid" : "96406093-a11f-4752-a926-9689138cb23e",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "cb710b0e-68f5-4721-82d5-4187c575f976"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "70cb907e-80c0-4ccd-9a95-f0041920d45c"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "8d85d002-8422-4e8a-ad97-70c9bc321910"
+    } ]
+  } ]
+}, {
+  "accountId" : "69b7999c7896466300e4d489",
+  "accountEmail" : "bot-1773640092693-1@jrealm-bot.local",
+  "accountUuid" : "edf55f5f-3f3e-4707-a1ed-37a6835176d4",
+  "accountName" : "Bot_1",
+  "playerVault" : [ {
+    "chestUuid" : "cfe1fd7a-f6e1-45d5-aeab-22aebbb432fe",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "0d588311-974e-4ce5-a399-e1c390a8952f"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "8568acf5-adec-43ba-8106-a764e7956bc3",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "74ebd6ef-57d8-4d7d-9b80-6695d2e45f05"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "47b1240d-9b26-4bd9-81e0-239ec745bb40"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "e0c4a0e7-ba5f-4aa5-b071-91a13bf61f96"
+    } ]
+  }, {
+    "characterUuid" : "292ff1ef-821b-4a84-9d81-9bae247c6616",
+    "characterClass" : 9,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 9,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 10,
+      "vit" : 12,
+      "wis" : 15
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "5a791c00-f298-499e-99bc-7c3f945e6e68"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "79f53238-7b74-4528-b6fa-2450da2c63ad"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "e4b59bf1-acd0-4e35-8477-c1567fdccbf8"
+    } ]
+  } ]
+}, {
+  "accountId" : "69b7999c7896466300e4d48c",
+  "accountEmail" : "bot-1773640092719-2@jrealm-bot.local",
+  "accountUuid" : "4c2de800-3708-4c09-bcc3-732449921a8c",
+  "accountName" : "Bot_2",
+  "playerVault" : [ {
+    "chestUuid" : "8d971905-a0ab-445a-b599-7b1ca5c0ddae",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "cf2bc823-8d48-4595-a2c0-bc5e9c5e1b71"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "e580a0c1-250e-40c7-b869-d0f7263056a5",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "f635a638-4b34-42ef-b5ff-5f10f5fcba67"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "f865b9f2-0e84-43e2-bbf8-3654a899e919"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "0212c867-0252-4221-b75a-36672005dd7d"
+    } ]
+  }, {
+    "characterUuid" : "cddc22c5-03f9-430b-a8fa-a20367a0e038",
+    "characterClass" : 5,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 5,
+      "hp" : 200,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 15,
+      "spd" : 7,
+      "dex" : 10,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 75,
+      "slotIdx" : 0,
+      "itemUuid" : "93c094e9-5938-4b92-a664-577632756886"
+    }, {
+      "itemId" : 155,
+      "slotIdx" : 1,
+      "itemUuid" : "61416e85-0527-4918-9df0-2d356a0fb72b"
+    }, {
+      "itemId" : 60,
+      "slotIdx" : 2,
+      "itemUuid" : "245a85ab-cf77-4fe3-809a-20ca7026aad0"
+    } ]
+  } ]
+}, {
+  "accountId" : "69b7999c7896466300e4d48f",
+  "accountEmail" : "bot-1773640092745-3@jrealm-bot.local",
+  "accountUuid" : "329a0d1b-a9b9-4fd4-bc02-a1795037c2c1",
+  "accountName" : "Bot_3",
+  "playerVault" : [ {
+    "chestUuid" : "c5fa6570-894c-4546-a38d-7774c9333161",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "689d656f-ab07-429b-bd5e-4918436832e0"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "acc39f4e-4fda-4e14-b40d-5bf8f5751f21",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "f804bb13-37b9-4581-b2dc-323e9da65968"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "2b7d2900-f2d6-4eb2-a9bf-cf78ba019c21"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "6cff7d63-a0a1-42de-a33c-a330e249a9fa"
+    } ]
+  }, {
+    "characterUuid" : "4bf8f307-2d48-4293-a0e2-722403351928",
+    "characterClass" : 8,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 8,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 15
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "fa88d9a7-0dfa-4bbc-8c5b-2967ae585fcb"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "e431ccb9-4239-481c-94ed-fa55299d7080"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "9cb5e280-2766-46d5-a3bd-5a3b7655283c"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d124f9f5b39ca993243",
+  "accountEmail" : "bot-1774472466938-0@jrealm-bot.local",
+  "accountUuid" : "d9834209-523b-480a-8892-4828ca1203d0",
+  "accountName" : "Bot_0",
+  "playerVault" : [ {
+    "chestUuid" : "c75c93a3-b988-443f-9fd0-9f4a24a2de78",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "117f8816-7060-47ff-87c0-8e5738760b58"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "c0120305-ee8e-4a92-8474-dcdb4ec83701",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "3f07de43-1438-4b72-abf4-b1f77bd7ce22"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "46bf5ddb-e0c7-45b2-8738-a5bb82ae45bf"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "17bfc374-c0b9-4bed-8816-a7edc28ea3ce"
+    } ]
+  }, {
+    "characterUuid" : "9b52b4db-e7b2-48ea-bb89-d6399e9fe1ec",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "15911c48-c99f-4d15-a858-90945b2f7830"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "3deffd80-c629-4464-be3b-14291df7084f"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "347f6db8-f506-43e3-95fe-2f028f315a8c"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca993246",
+  "accountEmail" : "bot-1774472467026-1@jrealm-bot.local",
+  "accountUuid" : "adae04f0-fba2-4753-9411-8a57798d9692",
+  "accountName" : "Bot_1",
+  "playerVault" : [ {
+    "chestUuid" : "66353884-121c-4844-b64e-bf11c2207d4e",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "54f1da03-579d-42fb-a9c7-788d741ea69e"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "2aab00a9-8cf4-4625-af6d-d9e447e79ee7",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "39fbf046-2922-479b-9fea-aeae0f5ff881"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "f0b37c9c-2327-44a2-a3ae-ba0cb7f64511"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "76526fc7-f006-4fa1-8b55-f3c538757a6a"
+    } ]
+  }, {
+    "characterUuid" : "1d5e8498-01bb-4329-850a-f4924b80d257",
+    "characterClass" : 9,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 9,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 10,
+      "vit" : 12,
+      "wis" : 15
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "55e2a12f-ca07-406e-a84e-d5ca87d75af5"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "bef359bc-dbee-4c47-9ae5-a38865fe6a12"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "3a349210-0615-461a-aec1-56751d4f8d1d"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca993249",
+  "accountEmail" : "bot-1774472467045-2@jrealm-bot.local",
+  "accountUuid" : "67cd1963-a611-4c04-a04c-eba2dc256b7c",
+  "accountName" : "Bot_2",
+  "playerVault" : [ {
+    "chestUuid" : "44d49453-c410-4e31-86af-c0b84e096eaa",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "d57f0238-dbf7-4a2a-8279-d0258838c54d"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "077cebe8-69d5-4315-80d3-2433a315d888",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "c46bb69f-3c37-48ff-b478-f2ed4d090006"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "ded1ad71-829b-4755-9dd0-d0aecdac729c"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "9aa390ef-37ad-4979-8de1-71be793e0f8e"
+    } ]
+  }, {
+    "characterUuid" : "4977f626-bd5b-43f2-aae6-10f1334dbd3e",
+    "characterClass" : 8,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 8,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 15
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "99a5b531-91e8-4b04-bce7-4f16f02f5fc6"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "f2518171-7816-4111-98e6-6f3a79f8dbcf"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "09a290c5-6fbb-4714-b0ad-710dd7469897"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca99324c",
+  "accountEmail" : "bot-1774472467063-3@jrealm-bot.local",
+  "accountUuid" : "8461fca2-503e-46a7-9a7d-4811aa877738",
+  "accountName" : "Bot_3",
+  "playerVault" : [ {
+    "chestUuid" : "0448254a-ab82-4aec-a780-b5234e785ca3",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "4a3725d3-6944-471a-84f1-d1668b625189"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "f262778d-c347-4a5d-87f3-867f0c1963f6",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "a3703904-3d19-4ebe-a033-fe388ec82d1a"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "30696349-c5f0-4406-899f-b47e195d49ff"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "ef0a2c04-7cc6-4f92-8d7c-64fd68b16cfd"
+    } ]
+  }, {
+    "characterUuid" : "ad74d80c-1be2-4069-b853-36f5151d0a4f",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 17,
+      "slotIdx" : 0,
+      "itemUuid" : "d85be630-3062-4563-a593-8ff24171a0a2"
+    }, {
+      "itemId" : 154,
+      "slotIdx" : 1,
+      "itemUuid" : "f374380e-6803-419d-adef-eb5d86f5b5ca"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "077d915b-85cb-4cc1-923a-b11e4b8d0b40"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca99324f",
+  "accountEmail" : "bot-1774472467083-4@jrealm-bot.local",
+  "accountUuid" : "cba7e9d1-e686-449e-ac08-13dc2033966f",
+  "accountName" : "Bot_4",
+  "playerVault" : [ {
+    "chestUuid" : "bb7d5f13-b0a5-4ece-b29c-ca0bd48c0fcf",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "f6f4660b-c7d2-4f20-893a-9728e152308a"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "720718d1-9308-40d1-862d-ebfb09f67ab3",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "20d98022-91bd-4fb2-8fc8-6368ae37d530"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "21a46cac-ffa7-4399-a904-e8bd9019908d"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "2fefadb0-9a96-4b29-893a-bcff425a3286"
+    } ]
+  }, {
+    "characterUuid" : "afc27dd6-c8ee-479d-af77-82e0f07742eb",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 17,
+      "slotIdx" : 0,
+      "itemUuid" : "cd268700-f783-429d-b055-f89c29e47242"
+    }, {
+      "itemId" : 154,
+      "slotIdx" : 1,
+      "itemUuid" : "a9176864-f222-4e91-bea9-9f73792cc756"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "304eb2c6-27ee-4960-b711-0c7f2f1b3e11"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca993252",
+  "accountEmail" : "bot-1774472467103-5@jrealm-bot.local",
+  "accountUuid" : "f8fad3b9-5afb-4992-838a-78b681efc04b",
+  "accountName" : "Bot_5",
+  "playerVault" : [ {
+    "chestUuid" : "e58dbc81-764e-4eeb-8638-0855d64a142c",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "c6689b0c-0000-4494-85aa-e6aa0c2f584b"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "6fd84868-04ee-4e10-887d-8badccdeb9a0",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "0355d5eb-581f-4afa-b5a2-466c51b8b713"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "15ec9a13-975d-463f-9634-7fc579cddcfd"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "0d5c5e00-ebac-45e7-a8ac-5ba238a66314"
+    } ]
+  }, {
+    "characterUuid" : "3422ce4a-d4be-4ff9-b0ef-f3c5fe56b8f8",
+    "characterClass" : 4,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 4,
+      "hp" : 200,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 15,
+      "spd" : 7,
+      "dex" : 10,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 75,
+      "slotIdx" : 0,
+      "itemUuid" : "802cdfb2-b934-4a86-8104-f111054ca76e"
+    }, {
+      "itemId" : 155,
+      "slotIdx" : 1,
+      "itemUuid" : "5f956a81-c613-43a6-8bee-637385168f80"
+    }, {
+      "itemId" : 60,
+      "slotIdx" : 2,
+      "itemUuid" : "135da6b6-d4f9-4ba8-8fca-78ce37207475"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca993255",
+  "accountEmail" : "bot-1774472467124-6@jrealm-bot.local",
+  "accountUuid" : "651f662f-3a06-464e-97c0-45e45e688b29",
+  "accountName" : "Bot_6",
+  "playerVault" : [ {
+    "chestUuid" : "3acb13f2-4d9c-4574-93e4-c3186a2720f8",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "57c03ab7-6cee-4e0c-b1fd-6d36f1ce865f"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "9f4b6aa4-70aa-401e-a023-bddbb15350c1",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "ce009b1c-eaa1-4819-8048-57091195f58b"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "aff12a32-0dca-487c-aa05-651f5f0ba3f7"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "e2c76fcd-7d30-44d3-a749-c58af0c157f2"
+    } ]
+  }, {
+    "characterUuid" : "75f3465e-ee24-4734-81cd-0917248bc27a",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 17,
+      "slotIdx" : 0,
+      "itemUuid" : "0e8fed03-c7d2-4882-9175-547124e6d325"
+    }, {
+      "itemId" : 154,
+      "slotIdx" : 1,
+      "itemUuid" : "660ef0ec-32c9-448d-8188-af0b9dfe0776"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "34c2fa07-60ba-494d-a69f-13d626fe7bb8"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca993258",
+  "accountEmail" : "bot-1774472467142-7@jrealm-bot.local",
+  "accountUuid" : "8dd0932f-1830-4937-b69c-bf32ce8a1581",
+  "accountName" : "Bot_7",
+  "playerVault" : [ {
+    "chestUuid" : "520e4fec-0cf4-4d34-b17d-97ee61486d59",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "4701614d-a455-49f7-93ba-5c80d3d881df"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "4f3fd5ce-256f-44a0-b027-c58035f55a69",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "9dedbb89-bfd6-4f6c-b1e6-fc20e189fb4d"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "e227ad1a-ec91-4386-8e33-7b87e809f896"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "79e38bd7-9075-4ea0-a4cf-eccfc5242d54"
+    } ]
+  }, {
+    "characterUuid" : "fa0a3782-0479-4958-af9b-caba459807e2",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "b4450c6c-7dc1-437a-b651-e7d5d7f1dc8b"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "42a2494a-67db-4bc6-b964-e0f9a46c519d"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "581213a0-bcad-4c7c-8a3b-fb38b6fed8c9"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca99325b",
+  "accountEmail" : "bot-1774472467166-8@jrealm-bot.local",
+  "accountUuid" : "4cc9e476-737a-4a52-987f-fefd6c50e996",
+  "accountName" : "Bot_8",
+  "playerVault" : [ {
+    "chestUuid" : "ad029724-b1f5-4f1c-9307-d2e1f10ba915",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "050e27dc-b72d-44de-9c37-4e1acf199955"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "3e602796-0d50-48ec-9eb3-99d9956d6e2d",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "f88c50b3-7a69-4ff9-9864-d6ccc5d4cabb"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "5d430680-55f0-4cfd-a536-566032e50d0b"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "12651a49-68d4-4d71-bb25-95edf7e3a78c"
+    } ]
+  }, {
+    "characterUuid" : "a1568adc-6b9e-424a-a686-c5fabe7a4f56",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 17,
+      "slotIdx" : 0,
+      "itemUuid" : "d1bde706-f6b3-44f3-bce0-f70b9b966829"
+    }, {
+      "itemId" : 154,
+      "slotIdx" : 1,
+      "itemUuid" : "d6225b80-4805-40ea-a065-d5a143f3ca6e"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "549a21c5-8f8d-4e9a-a6ce-29b97e5fe6c4"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c44d134f9f5b39ca99325e",
+  "accountEmail" : "bot-1774472467188-9@jrealm-bot.local",
+  "accountUuid" : "cfa878f9-7acb-4182-9397-8dcfb04c30a9",
+  "accountName" : "Bot_9",
+  "playerVault" : [ {
+    "chestUuid" : "1569de0b-d8a6-4bda-8bc9-0807a90f6024",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "82357d5f-4484-4ee1-8d7d-03ebbf20bd7c"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "a6e6a758-f76e-4aae-a5b9-caddda4a1606",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "c1d4c23e-849b-422f-8bf4-2067dc305805"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "0f5a62ca-e160-41b6-a7d8-8b71380af270"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "0388cae1-3de9-4aac-a24a-40adbb9ffc41"
+    } ]
+  }, {
+    "characterUuid" : "cf35865d-4ff1-4637-bedc-3901c55be662",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "6aa823b0-c636-4410-bd80-a86691fd173b"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "3200741c-336f-4aa7-a393-8eaffeb3e8b1"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "ad8d0f9e-8982-471d-adde-7739c9288155"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47a1182922718a4bc04fa",
+  "accountEmail" : "bot-1774483985172-0@jrealm-bot.local",
+  "accountUuid" : "60ab7bb8-3213-4b77-b30c-fc6a1eb07ad0",
+  "accountName" : "Bot_0",
+  "playerVault" : [ {
+    "chestUuid" : "3d5348d2-f1f0-448e-a370-07a46d4d1889",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "397432bf-aa9a-4698-a75c-d270bc815fc0"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "7972ed16-9bf5-48b0-a898-61a8129b75ea",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "3782c1f3-aa3b-485d-951e-27ef9589d808"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "cc3ecf09-6875-4cd7-bf8a-fe5d23ebb961"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "5ee9f8b4-5f21-45c9-8c2b-5fb436815392"
+    } ]
+  }, {
+    "characterUuid" : "f340d892-18e3-4731-b7d7-f2f9b2582075",
+    "characterClass" : 5,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 5,
+      "hp" : 200,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 15,
+      "spd" : 7,
+      "dex" : 10,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 75,
+      "slotIdx" : 0,
+      "itemUuid" : "b881a229-b449-410e-865b-f8eb12570baf"
+    }, {
+      "itemId" : 155,
+      "slotIdx" : 1,
+      "itemUuid" : "d551fff7-f55e-4b3a-88ad-069b6f69b4bf"
+    }, {
+      "itemId" : 60,
+      "slotIdx" : 2,
+      "itemUuid" : "bd5e90b5-b457-4ed7-abf5-a6fe7cb70820"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47a1182922718a4bc04fd",
+  "accountEmail" : "bot-1774483985258-1@jrealm-bot.local",
+  "accountUuid" : "7cb8301b-9833-4fa5-94be-c2de5f1e4c3a",
+  "accountName" : "Bot_1",
+  "playerVault" : [ {
+    "chestUuid" : "67134359-fc76-412b-9673-7a7fd98c8e93",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "30c5d6a9-d5f0-4046-a9cf-091cf648ab90"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "2cdeb03c-0a89-4d0f-8cb7-089bb2320e2d",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "27777513-1905-442f-86d0-a861051370d7"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "d753a890-c783-4bf0-b3b3-bcaebfb6b950"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "48991de1-bcda-4e96-95b0-e29bc225e2c4"
+    } ]
+  }, {
+    "characterUuid" : "f6a9e93a-2e86-4ae6-9e5d-7bba0db2f663",
+    "characterClass" : 7,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 7,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "463a78f3-0340-4a6f-8abf-03d364e6eee3"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "9b32b00e-a1c0-47bd-a666-a9f6b556982c"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "815714d9-a88b-421b-819f-cae6c8cacd2e"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47b0b82922718a4bc0500",
+  "accountEmail" : "bot-1774484235696-0@jrealm-bot.local",
+  "accountUuid" : "70959c46-651f-4c48-a631-4d4a4f56a649",
+  "accountName" : "Bot_0",
+  "playerVault" : [ {
+    "chestUuid" : "70380474-4075-4e0c-bb79-9450e76df5b7",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "5a6f0b58-9cf2-447e-ba6d-49b4c77274fa"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774484261346,
+    "characterUuid" : "e0c94f38-2829-4d68-82d2-b3c70e569fc9",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "06376d79-ddae-44e3-98ab-94ff2b27cf24"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "dc36496b-885a-4536-99cc-67778bb97e8e"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "5804a9e3-0897-4d42-a197-cf26f6b685f6"
+    } ]
+  }, {
+    "deleted" : 1774484261362,
+    "characterUuid" : "05ff44d0-b74c-4384-a2ec-e417d68ea094",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 17,
+      "slotIdx" : 0,
+      "itemUuid" : "4e5b242d-6e7a-4f1c-86df-8f0c3dfd9f72"
+    }, {
+      "itemId" : 154,
+      "slotIdx" : 1,
+      "itemUuid" : "f3bde6b2-3c0d-43dd-8815-b572a0617d56"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "942e6303-980c-4380-946b-a043436430b4"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47b0b82922718a4bc0503",
+  "accountEmail" : "bot-1774484235729-1@jrealm-bot.local",
+  "accountUuid" : "35cc15de-3898-4159-a08a-57fdbfe9d22f",
+  "accountName" : "Bot_1",
+  "playerVault" : [ {
+    "chestUuid" : "e4d3782b-c360-4c32-9289-1e84f33acd07",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "b4878af8-fbf5-41f2-887f-5feefe9cb9cc"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774484261384,
+    "characterUuid" : "ca407e5b-f345-4822-949a-8ae68fdff34e",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "e49801e8-0dc9-4628-a9cf-2c4aa460874d"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "8a3e4ec2-6640-4ebd-981b-65ab1d4240e4"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "2629cb02-d92b-4d67-af9e-fde00f869e09"
+    } ]
+  }, {
+    "deleted" : 1774484261394,
+    "characterUuid" : "9509e79c-bde0-4bf5-8d2d-d27296b070a9",
+    "characterClass" : 4,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 4,
+      "hp" : 200,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 15,
+      "spd" : 7,
+      "dex" : 10,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 75,
+      "slotIdx" : 0,
+      "itemUuid" : "3db3b1a6-c019-478f-ac57-df8eaabfad35"
+    }, {
+      "itemId" : 155,
+      "slotIdx" : 1,
+      "itemUuid" : "82ad38f8-2e26-4dc1-bdf9-502ba8d7a517"
+    }, {
+      "itemId" : 60,
+      "slotIdx" : 2,
+      "itemUuid" : "7993837c-2ac2-4f23-8c5c-4fac3fc10e4c"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47b0b82922718a4bc0506",
+  "accountEmail" : "bot-1774484235752-2@jrealm-bot.local",
+  "accountUuid" : "4f395629-87fe-4d3a-8688-1c20e1430816",
+  "accountName" : "Bot_2",
+  "playerVault" : [ {
+    "chestUuid" : "4c8146c0-af02-456f-bbbc-59d5401f283e",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "af5e772d-b337-4fc5-a78c-42b476463fcb"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774484261412,
+    "characterUuid" : "0a1abc01-697b-40a2-9d33-4008f33d4c43",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "a289994f-9aff-4cbe-8ad9-d116e3916544"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "43cf5b84-12dd-455d-a792-d5e9cb2d4cd1"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "bb435f94-e550-4238-823a-b46305240371"
+    } ]
+  }, {
+    "deleted" : 1774484261425,
+    "characterUuid" : "6d8703f4-1e75-40e4-8a36-72186bc10d8e",
+    "characterClass" : 4,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 4,
+      "hp" : 200,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 15,
+      "spd" : 7,
+      "dex" : 10,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 75,
+      "slotIdx" : 0,
+      "itemUuid" : "dddf1101-134f-4c86-98e3-09b0374564d1"
+    }, {
+      "itemId" : 155,
+      "slotIdx" : 1,
+      "itemUuid" : "bd24f16c-5a4e-4684-a89e-39ba4bcdb92c"
+    }, {
+      "itemId" : 60,
+      "slotIdx" : 2,
+      "itemUuid" : "512b726c-3c92-40ca-b765-0fd3306eefaa"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47b2b82922718a4bc0509",
+  "accountEmail" : "bot-1774484267866-0@jrealm-bot.local",
+  "accountUuid" : "50a50fce-0f5c-4a40-b5eb-170b4980e612",
+  "accountName" : "Bot_0",
+  "playerVault" : [ {
+    "chestUuid" : "12ae8184-2bd6-4a3f-aa39-96e51649f8ca",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "c8135788-f7af-419d-956d-ec291848f506"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "8c43b2f1-7501-4393-b327-f5ee0f8d0ea4",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "872bcf70-3232-4f0c-8b45-eafe31c18015"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "bc3384f7-73ce-487e-825d-5b0de680acd9"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "d7ed4a3e-258d-4b0d-a1d9-cc4ee3fc3f31"
+    } ]
+  }, {
+    "characterUuid" : "53ef3ffc-995a-449f-afa3-ebbdfc356974",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "53bd80c1-18af-43fd-9dfa-b91d7af8ba74"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "9283c58c-b252-452e-9da7-cec880bb3379"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "3a9c7074-f6fa-4366-bc18-b7489f6b6410"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47b2b82922718a4bc050c",
+  "accountEmail" : "bot-1774484267885-1@jrealm-bot.local",
+  "accountUuid" : "adea327c-70d8-4cf8-a56e-0a8ef2c41664",
+  "accountName" : "Bot_1",
+  "playerVault" : [ {
+    "chestUuid" : "e95a93de-e9e3-43b3-8611-425044fe6670",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "be9c1cc0-100e-49ac-83b7-95d1e6f84b49"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "bc7ace3b-7732-4e2b-97dd-10fcaa79821d",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "98e7a52a-6916-49aa-ba7f-a72c28e1a4e7"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "3238847e-2dd6-4bca-8715-18b690d7d778"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "7df9b06e-4c6e-4079-9315-a787dc538a1f"
+    } ]
+  }, {
+    "characterUuid" : "a3af110e-e13c-4353-bb59-81f957f67dec",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 17,
+      "slotIdx" : 0,
+      "itemUuid" : "504666ad-eac0-40f4-9d49-bd38d3d0ca4b"
+    }, {
+      "itemId" : 154,
+      "slotIdx" : 1,
+      "itemUuid" : "5830f4f9-8b5b-469e-8350-53fff1dd6b2f"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "cbf6c30e-e034-4078-9a39-78311d6c17c8"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c47b2b82922718a4bc050f",
+  "accountEmail" : "bot-1774484267906-2@jrealm-bot.local",
+  "accountUuid" : "f67c7526-14bb-4482-8d2f-04ad90fd7b76",
+  "accountName" : "Bot_2",
+  "playerVault" : [ {
+    "chestUuid" : "69b2f419-7ee7-450d-98d1-f889d691dc41",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "e8515718-f762-4146-8f12-f29dd76c085e"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "e4cc1990-beab-4bac-a521-2cfb67fdc227",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "c2a7c455-119b-49cd-8f94-599e116c3287"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "c588df96-0189-4543-baf1-38cef75d9a39"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "02ae3b06-4721-4c1c-aa31-05179f210c1c"
+    } ]
+  }, {
+    "characterUuid" : "ffa50340-15c0-4f8b-85b6-432d31192c62",
+    "characterClass" : 9,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 9,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 10,
+      "vit" : 12,
+      "wis" : 15
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "8ff8c435-6381-4df3-bb86-d5867e4500f7"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "736d4891-b315-4138-9a20-d3e9db61358b"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "576a3ef1-bbd9-4ad4-b389-818368da5f72"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c5707ba1261110c9a07c0e",
+  "accountEmail" : "lewis@jrealm.com",
+  "accountUuid" : "4bade5ab-ac2c-4d84-8539-f60ff640a7bb",
+  "accountName" : "whiteocean",
+  "playerVault" : [ {
+    "chestUuid" : "60b31c2d-7eef-4aaf-ad35-dfb0b0d1299d",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "6d09f940-0b4a-4d8e-a70b-c3b669dfed47"
+    } ]
+  }, {
+    "chestUuid" : "3d4df0cd-8b6f-4bb7-9113-df5a879f511b",
+    "ordinal" : 1,
+    "items" : [ ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774587860219,
+    "characterUuid" : "b5f3ee25-9f02-4538-9519-57ed3ef48812",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 4580,
+      "classId" : 0,
+      "hp" : 270,
+      "mp" : 137,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 24,
+      "dex" : 23,
+      "vit" : 18,
+      "wis" : 17
+    },
+    "items" : [ {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "24c371c5-266f-4437-9535-389019d00b04"
+    }, {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "256adbfe-9c0b-4f57-98ce-fa1e0a60aee1"
+    }, {
+      "itemId" : 33,
+      "slotIdx" : 2,
+      "itemUuid" : "f0027619-3a64-45cd-917b-a7228810d55f"
+    }, {
+      "itemId" : 50,
+      "slotIdx" : 3,
+      "itemUuid" : "512ff615-f262-4fc7-affd-d3e0b52c2c38"
+    } ]
+  }, {
+    "deleted" : 1774973888025,
+    "characterUuid" : "8059a479-6a28-4b37-ab4b-95e262c51ddb",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 800,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 3,
+      "att" : 12,
+      "spd" : 13,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 11
+    },
+    "items" : [ {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "bcea7655-b632-4c18-9032-cf648f80bff8"
+    }, {
+      "itemId" : 154,
+      "slotIdx" : 1,
+      "itemUuid" : "566304ee-224e-4f11-821c-2c477904d021"
+    }, {
+      "itemId" : 5,
+      "slotIdx" : 4,
+      "itemUuid" : "0b048dd6-127d-4928-ad11-5742bc411677"
+    }, {
+      "itemId" : 124,
+      "slotIdx" : 8,
+      "itemUuid" : "48c323b7-0e1d-4531-84c6-fc0df004f0f8"
+    }, {
+      "itemId" : 53,
+      "slotIdx" : 6,
+      "itemUuid" : "54e3d06d-08c2-40a6-a2f0-c9afac3b139d"
+    } ]
+  }, {
+    "deleted" : 1774674728287,
+    "characterUuid" : "99d6b67c-19d9-46d2-9bc5-bc82f494849a",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 32280,
+      "classId" : 2,
+      "hp" : 445,
+      "mp" : 244,
+      "def" : 1,
+      "att" : 32,
+      "spd" : 29,
+      "dex" : 43,
+      "vit" : 29,
+      "wis" : 35
+    },
+    "items" : [ {
+      "itemId" : 103,
+      "slotIdx" : 8,
+      "itemUuid" : "f71f3d74-097f-4c6a-b935-558beed9faa6"
+    }, {
+      "itemId" : 133,
+      "slotIdx" : 0,
+      "itemUuid" : "f57f66a2-c42b-49b9-b765-b1badf72d669"
+    }, {
+      "itemId" : 14,
+      "slotIdx" : 4,
+      "itemUuid" : "cf4fbef8-0db7-485a-85d8-76b465240314"
+    }, {
+      "itemId" : 47,
+      "slotIdx" : 5,
+      "itemUuid" : "4ee0586f-80cc-4add-a00d-75286f60be6a"
+    }, {
+      "itemId" : 113,
+      "slotIdx" : 2,
+      "itemUuid" : "659fb8f3-4a62-494b-9ab3-d063fe888a46"
+    }, {
+      "itemId" : 136,
+      "slotIdx" : 1,
+      "itemUuid" : "2a161f2c-e4b6-4604-ab93-aa88b15b0837"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 3,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 82,
+      "slotIdx" : 7,
+      "itemUuid" : "23d4a46c-0740-4b84-9bb5-ab80f4f5c28f"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c5922355cf4157eb7011fc",
+  "accountEmail" : "bogey123@gmail.com",
+  "accountUuid" : "aa7ceed7-0fc9-4088-ae73-66fa4ad04e0c",
+  "accountName" : "lupper9",
+  "playerVault" : [ {
+    "chestUuid" : "e135de7f-be59-462e-880b-5482eeb1f65e",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "3cee28cc-6559-4cbb-8cfa-81d53e7414d8"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774555876868,
+    "characterUuid" : "9d56d221-d91a-4285-b55f-f159c2a820f9",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "ffc87695-6f63-40a8-abb1-504e1d43b719"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "eed9f8ec-5f9a-416e-bd59-2e2d4eebbf0b"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "25d3d168-041c-4d87-b484-41ad42002426"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c602b53127aa3967110d17",
+  "accountEmail" : "test@test.com",
+  "accountUuid" : "af906ef0-32d5-4182-862f-49f4950f1a31",
+  "accountName" : "test0",
+  "playerVault" : [ {
+    "chestUuid" : "a13659f1-73a4-4571-8448-9e1215c0652e",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "6db0ca54-7643-4fdb-99d3-8bba9b0963a8"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "85a995d5-945b-4cf0-a02a-745d520b80c2",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "acd03a8d-7db6-4d99-8692-513b706e7073"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "8bba92fd-f17e-458b-9eaf-9606e0d3c47c"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "67547884-48ee-4d8d-b948-e2ee021e06e0"
+    } ]
+  }, {
+    "deleted" : 1774584723408,
+    "characterUuid" : "8e410a61-60db-4331-8d04-a63251192603",
+    "characterClass" : 10,
+    "stats" : {
+      "xp" : 2105,
+      "classId" : 10,
+      "hp" : 169,
+      "mp" : 144,
+      "def" : 0,
+      "att" : 14,
+      "spd" : 19,
+      "dex" : 21,
+      "vit" : 15,
+      "wis" : 16
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "8839222a-b404-4a27-8dda-64e6a60e474a"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "22087b88-bd7d-4706-b580-9b95b48b829e"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "4f300b2a-4485-4217-9117-6221b69328f6"
+    }, {
+      "itemId" : 50,
+      "slotIdx" : 3,
+      "itemUuid" : "3953320f-803c-4b2f-a12b-c34055cffc4d"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c6175091222a25aaa8177f",
+  "accountEmail" : "weatherfan0611@gmail.com",
+  "accountUuid" : "9bfb6655-0909-4591-a903-01f990960780",
+  "accountName" : "TGBTheFrst",
+  "playerVault" : [ {
+    "chestUuid" : "78e0c769-9aa9-41e7-bf5a-2a9df862c5da",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "1fd9b815-8150-4536-8430-405a7cfd3928"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774589813927,
+    "characterUuid" : "a63a8f35-3dc2-4fa4-b449-f1c7ecfdd2eb",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "a148cedb-5cc0-4639-ad4d-b5f437d57379"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "47f677dd-5f74-4ec6-b2a8-d3878959d52c"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "6ee58997-c863-4104-bb9b-c8fe365e5bc2"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c6275591222a25aaa81782",
+  "accountEmail" : "epicdjepic@gmail.com",
+  "accountUuid" : "73ebc4b5-a016-466a-93f8-aea0645c1f99",
+  "accountName" : "hover",
+  "playerVault" : [ {
+    "chestUuid" : "cf47fc21-2379-4340-84ea-21fb2e251162",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "a6087848-baad-4727-91d9-5c4a1d0b3fb2"
+    } ]
+  }, {
+    "chestUuid" : "d4680302-ad17-4b5c-84e7-ba6bcc7b3faf",
+    "ordinal" : 1,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "9887d7c4-6e2c-491d-81b2-cf8a4b9359bf",
+    "ordinal" : 2,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "2347f8ba-3054-4d32-9d63-a6a4936241a3",
+    "ordinal" : 3,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "e9a917d3-ab83-48db-ad62-d30982429908",
+    "ordinal" : 4,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "f5539d3d-ce28-4cc5-977e-df653f20ee89",
+    "ordinal" : 5,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "d401cc6a-2eec-4959-94bc-dc554864c9c1",
+    "ordinal" : 6,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "05865618-c515-4114-9b6a-d33efe18812f",
+    "ordinal" : 7,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "aa970883-d515-4d2c-9a7d-1d800b0ce17d",
+    "ordinal" : 8,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "5abe06f2-53c9-4a13-b15e-b22bf6f168bd",
+    "ordinal" : 9,
+    "items" : [ ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774594551162,
+    "characterUuid" : "967900c8-bb57-4fe8-8c63-9ed591e3150f",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 4565,
+      "classId" : 0,
+      "hp" : 269,
+      "mp" : 152,
+      "def" : 0,
+      "att" : 15,
+      "spd" : 25,
+      "dex" : 20,
+      "vit" : 18,
+      "wis" : 14
+    },
+    "items" : [ {
+      "itemId" : 0,
+      "slotIdx" : 5,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c636fd91222a25aaa81785",
+  "accountEmail" : "a@a.com",
+  "accountUuid" : "2b06ebf0-ebc0-4a04-8106-3d87eb91a21e",
+  "accountName" : "uibjnk,",
+  "playerVault" : [ {
+    "chestUuid" : "93749ae8-119a-4d20-94a6-878aa7484734",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "0c0a5a00-6689-40bb-87cc-1e2871b6615c"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "7354a955-d957-4d0e-a073-3d30ec537fea",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "600a6f87-ad5f-4c2e-8e03-645d185e3427"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "b920c2c0-8899-4af8-9e40-beec6fc31759"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "5664db21-7040-4963-9058-3b8132961b6a"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c80d43aa91a81e88b73a11",
+  "accountEmail" : "yvbhkjn@gmail.com",
+  "accountUuid" : "d9e8c902-a0a5-4361-91c2-e643003549de",
+  "accountName" : "qwtafshjb",
+  "playerVault" : [ {
+    "chestUuid" : "93d0ba29-3a16-4f16-ab7d-7f41afc5a6a4",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "2d0bb402-9822-44ec-aac9-0d259f55a965"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "586657d2-b390-4be8-b392-d112be95716e",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "115d4529-48b1-42f2-97de-9c6d9127a73b"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "36eae715-9035-4ac0-b562-6b208f1f19b7"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "2a812fdd-05b1-45f4-a8cd-c747dba1fac6"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c80d67aa91a81e88b73a14",
+  "accountEmail" : "gesd@gmail.com",
+  "accountUuid" : "89b8523c-4139-49b1-8fdd-702797eccbb9",
+  "accountName" : "wrgsd",
+  "playerVault" : [ {
+    "chestUuid" : "4857d77a-69e3-4207-86bf-86a0ef457726",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "a6b0928a-97f0-4466-ae25-bc7b295cbf5a"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "28435572-cd72-4158-90f3-e42bcd1729db",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "9e1bb31d-c789-4e8c-b574-b6c588c20967"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "4bf17057-20e6-4a28-92ae-08cf0b5df28c"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "be8517d7-b0e2-4c81-889b-4f2f5cfbfa57"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c817e5aa91a81e88b73a17",
+  "accountEmail" : "vitor.perez227@gmail.com",
+  "accountUuid" : "32b8dc1f-016c-4fca-9254-81530ff2339e",
+  "accountName" : "vitor.perez227@gmail.com",
+  "playerVault" : [ {
+    "chestUuid" : "62e67ba8-4f98-4d9f-ac23-f13229e829e4",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "6141c078-3ad3-4832-89de-41555648d26a"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774721013834,
+    "characterUuid" : "8043254d-30e6-4a6c-9937-7980fc13760c",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "728cdb89-3100-468f-ac62-0aa1eaf30dec"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "42327d29-0962-4988-9365-4b919aa2bc67"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "608b7fe9-d0c9-4a9b-9b3c-02c6780c3f9e"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c8183daa91a81e88b73a1a",
+  "accountEmail" : "vitor.perez2227@gmail.com",
+  "accountUuid" : "db5204a2-13e9-4a3c-8d9b-2d07c4abd5c0",
+  "accountName" : "nroyalgeb",
+  "playerVault" : [ {
+    "chestUuid" : "a59bdb6f-f5cc-43de-bfd5-cb8fbf4f7e87",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "b5d3ebc4-33b8-4cd2-b6bf-4a3d24d272ed"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "825af710-1b73-4db3-a944-160f8760cbd3",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "fdf80eca-52dd-47b5-a36e-933c1166544c"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "60672804-5ffe-45d0-b9da-3a34e8ebd800"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "41d98e89-d331-49a1-a9dc-16e6be51a463"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c8aee3c3a7483aac7ab406",
+  "accountEmail" : "rich.chen9@gmail.com",
+  "accountUuid" : "a27efe8e-5675-4b62-b92c-b73eb4f633a4",
+  "accountName" : "rich.chen9@gmail.com",
+  "playerVault" : [ {
+    "chestUuid" : "1a2aeecb-80d4-4aeb-b9af-48b78fb56c9f",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "c176722f-0222-46cc-9362-b2732c9056f4"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "c7956606-8a05-4859-bf20-0a24b1ecbb56",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "5dbbbb3b-1c25-4ec2-be2f-3f78384f81b2"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "aecdacf3-bf6f-4f04-aaf0-9403e9439f4e"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "db409fa7-f6d3-4cfa-aaff-435d4a70f784"
+    } ]
+  } ]
+}, {
+  "accountId" : "69c96f26142b3f3d1a15cf6b",
+  "accountEmail" : "liamshiley@gmail.com",
+  "accountUuid" : "d9c8a0bc-adb6-4b19-a698-85b26be6c1c7",
+  "accountName" : "JoeNutz",
+  "playerVault" : [ {
+    "chestUuid" : "3c36d57b-c34e-4769-b028-9d175b042cca",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "866d23dd-5164-4917-9f5b-714fd3b66d87"
+    } ]
+  }, {
+    "chestUuid" : "38d8e17f-2f41-4379-b106-5db3b3ed6106",
+    "ordinal" : 1,
+    "items" : [ ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774808945592,
+    "characterUuid" : "93fae880-8c29-4855-a748-91736f3f8d3d",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 25,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "310dbd49-b1a7-44c1-aa22-269773ab14dc"
+    }, {
+      "itemId" : 152,
+      "slotIdx" : 1,
+      "itemUuid" : "6517b600-1e7c-4369-872b-62da2959a8fe"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "fff9bb83-3652-49bb-85bb-bd2d05a1579e"
+    } ]
+  } ]
+}, {
+  "accountId" : "69ca74cdc456df7e30b3dd2d",
+  "accountEmail" : "testicles@email.com",
+  "accountUuid" : "b0147808-f253-48c7-bd57-9c8dfd5f85f1",
+  "accountName" : "testicles",
+  "playerVault" : [ {
+    "chestUuid" : "8a945c71-d003-4919-bd81-a68c280c492f",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "32b43593-f6fd-4231-86c4-13eb50770252"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "7162f97c-9b00-468f-9830-695dc85a1cd5",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "c9bc486e-7e3f-4043-88db-5328dd630ddb"
+    }, {
+      "itemId" : 207,
+      "slotIdx" : 1,
+      "itemUuid" : "12bbe0c3-10e1-443c-9bad-e4a46183fac1"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "af709611-accb-4603-944e-a81360beeeef"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cb8944716a211516f4e53a",
+  "accountEmail" : "hsg3894@gmail.com",
+  "accountUuid" : "0102b031-2434-458d-aa2d-176a0eee82fe",
+  "accountName" : "Dim",
+  "playerVault" : [ {
+    "chestUuid" : "cec950c1-8b77-4135-aee0-c94296f1861d",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "cc7f7f7f-9706-489c-96e8-05ff8972d2ee"
+    } ]
+  }, {
+    "chestUuid" : "92a2dfd6-0c5c-49f2-8f32-1e9cb9bb93ce",
+    "ordinal" : 1,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "78b8c560-80b4-429f-b0a8-09525f2fd219",
+    "ordinal" : 2,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "cbcf6c0a-3970-412a-a511-7fefa56a65eb",
+    "ordinal" : 3,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "db47e269-153a-4852-8c37-6a02fc527666",
+    "ordinal" : 4,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "01312ce2-4531-4b0b-b764-9b76862350f0",
+    "ordinal" : 5,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "fad2b8fb-edde-4a2d-a781-0d333af95cfd",
+    "ordinal" : 6,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "90628f21-8f3d-49cf-82c3-ebed5c60e61c",
+    "ordinal" : 7,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "708562bd-8a7d-47d6-983d-06a63de28b99",
+    "ordinal" : 8,
+    "items" : [ ]
+  }, {
+    "chestUuid" : "6c80492c-a73f-4423-aece-e2b90aea2f18",
+    "ordinal" : 9,
+    "items" : [ ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774946651559,
+    "characterUuid" : "73da1b96-0281-4546-9241-e4b4e1ab7e0d",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "5817dc78-b3e0-4b60-bb7c-619c8be60008"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "82bba780-07c8-4a32-9965-1526e72723f8"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "6f99e1f7-721b-4f51-bb33-b5b0a181736f"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cbb14a716a211516f4e53d",
+  "accountEmail" : "timbaattle@gmail.com",
+  "accountUuid" : "3b750615-ceba-419f-b614-b1c1d0faeb8d",
+  "accountName" : "Potato",
+  "playerVault" : [ {
+    "chestId" : "e5f61a35-98da-466c-94c8-8566bf0b0c34",
+    "chestUuid" : "e5f61a35-98da-466c-94c8-8566bf0b0c34",
+    "ordinal" : 0,
+    "items" : [ ]
+  }, {
+    "chestId" : "d6f720a7-1054-4c91-8c91-56bf2fed29a5",
+    "chestUuid" : "d6f720a7-1054-4c91-8c91-56bf2fed29a5",
+    "ordinal" : 1,
+    "items" : [ ]
+  }, {
+    "chestId" : "2c898cb2-a427-42d2-981b-8cff21f06be5",
+    "chestUuid" : "2c898cb2-a427-42d2-981b-8cff21f06be5",
+    "ordinal" : 2,
+    "items" : [ ]
+  }, {
+    "chestId" : "da8f4910-016c-4aa0-bef8-1a883633c820",
+    "chestUuid" : "da8f4910-016c-4aa0-bef8-1a883633c820",
+    "ordinal" : 3,
+    "items" : [ ]
+  }, {
+    "chestId" : "dad52cd6-2865-44a2-8420-f9cb1281d01d",
+    "chestUuid" : "dad52cd6-2865-44a2-8420-f9cb1281d01d",
+    "ordinal" : 4,
+    "items" : [ {
+      "itemId" : 89,
+      "slotIdx" : 0,
+      "itemUuid" : "87da6240-01a2-4def-9046-48d5864e3b32"
+    }, {
+      "itemId" : 89,
+      "slotIdx" : 6,
+      "itemUuid" : "87da6240-01a2-4def-9046-48d5864e3b32"
+    }, {
+      "itemId" : 74,
+      "slotIdx" : 7,
+      "itemUuid" : "7035a67a-757a-44e7-a378-c4364f5bb8ab"
+    }, {
+      "itemId" : 159,
+      "slotIdx" : 1,
+      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
+    }, {
+      "itemId" : 90,
+      "slotIdx" : 3,
+      "itemUuid" : "50d37ca9-fec5-48db-82a1-f041033b9d98"
+    }, {
+      "itemId" : 70,
+      "slotIdx" : 5,
+      "itemUuid" : "2189dcf7-9593-451d-b8cc-3b8a2cc27de7"
+    }, {
+      "itemId" : 158,
+      "slotIdx" : 4,
+      "itemUuid" : "00874239-57f5-4fde-80f9-0be368165429"
+    }, {
+      "itemId" : 159,
+      "slotIdx" : 2,
+      "itemUuid" : "a1a41310-24bd-4f7c-9f01-22d77fd31bc0"
+    } ]
+  }, {
+    "chestId" : "c45b8ff8-bc97-4a94-9621-d62b3262f3f0",
+    "chestUuid" : "c45b8ff8-bc97-4a94-9621-d62b3262f3f0",
+    "ordinal" : 5,
+    "items" : [ ]
+  }, {
+    "chestId" : "b7f4ca83-e562-4179-97d9-10ab06444df0",
+    "chestUuid" : "b7f4ca83-e562-4179-97d9-10ab06444df0",
+    "ordinal" : 6,
+    "items" : [ ]
+  }, {
+    "chestId" : "b377e8a1-6722-4777-a91a-da4e96263db0",
+    "chestUuid" : "b377e8a1-6722-4777-a91a-da4e96263db0",
+    "ordinal" : 7,
+    "items" : [ ]
+  }, {
+    "chestId" : "41a268db-09c8-417f-8009-ab3eedf49805",
+    "chestUuid" : "41a268db-09c8-417f-8009-ab3eedf49805",
+    "ordinal" : 8,
+    "items" : [ {
+      "itemId" : 158,
+      "slotIdx" : 1,
+      "itemUuid" : "00874239-57f5-4fde-80f9-0be368165429"
+    }, {
+      "itemId" : 59,
+      "slotIdx" : 0,
+      "itemUuid" : "a8ad1f75-57b7-4659-bef0-51c839216ac9"
+    } ]
+  }, {
+    "chestId" : "c2c2cde9-6cff-446b-8f5e-e6a50510b61e",
+    "chestUuid" : "c2c2cde9-6cff-446b-8f5e-e6a50510b61e",
+    "ordinal" : 9,
+    "items" : [ ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "2237a2bb-8cc7-402c-802a-2689bab540e6",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 2222130,
+      "classId" : 2,
+      "hp" : 446,
+      "mp" : 225,
+      "def" : 25,
+      "att" : 75,
+      "spd" : 54,
+      "dex" : 75,
+      "vit" : 40,
+      "wis" : 60
+    },
+    "items" : [ {
+      "itemId" : 4,
+      "slotIdx" : 12,
+      "itemUuid" : "e6546b0d-1451-4d90-9c19-46919f923c82"
+    }, {
+      "itemId" : 227,
+      "slotIdx" : 1,
+      "itemUuid" : "8f59877d-4881-4e4c-a601-cd70e5fe7f1b"
+    }, {
+      "itemId" : 0,
+      "slotIdx" : 13,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 3,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 135,
+      "slotIdx" : 0,
+      "itemUuid" : "4ca354f1-f12b-49a4-8ff0-c98dba8c9629"
+    }, {
+      "itemId" : 120,
+      "slotIdx" : 2,
+      "itemUuid" : "3a7b093b-798e-46e6-8c93-d101234ec9a5"
+    } ]
+  }, {
+    "characterUuid" : "4956022b-cb9c-4fb5-b484-bf74bc6d7dd4",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 103200,
+      "classId" : 1,
+      "hp" : 581,
+      "mp" : 190,
+      "def" : 19,
+      "att" : 66,
+      "spd" : 55,
+      "dex" : 52,
+      "vit" : 40,
+      "wis" : 50
+    },
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "0b64c73a-a00a-48b4-9236-ee3a764cb288"
+    }, {
+      "itemId" : 45,
+      "slotIdx" : 2,
+      "itemUuid" : "77830eac-846b-4235-8c9d-1ce9dcfe203b"
+    }, {
+      "itemId" : 214,
+      "slotIdx" : 1,
+      "itemUuid" : "440f795f-ecba-4dd3-8eff-4aa7a8827bca"
+    }, {
+      "itemId" : 158,
+      "slotIdx" : 4,
+      "itemUuid" : "00874239-57f5-4fde-80f9-0be368165429"
+    }, {
+      "itemId" : 30,
+      "slotIdx" : 5,
+      "itemUuid" : "eac1159b-94ce-4873-ad33-e5bcee1999e6"
+    } ]
+  }, {
+    "characterUuid" : "ff61363f-d8fe-46a6-a6ed-73bbe38c49cc",
+    "characterClass" : 0,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 0,
+      "hp" : 150,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 10,
+      "spd" : 15,
+      "dex" : 15,
+      "vit" : 15,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 207,
+      "slotIdx" : 1,
+      "itemUuid" : "7b57b1f0-037f-45cd-9955-b0076b9a5364"
+    }, {
+      "itemId" : 91,
+      "slotIdx" : 0,
+      "itemUuid" : "3c24b7e5-0fb5-4e44-a7b2-b867b2e1fc16"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "ad8e68dd-2bd1-4047-9504-11bdc6d6b831"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cbf064cda71f3f9315cd66",
+  "accountEmail" : "Alexeyfpp@yandex.ru",
+  "accountUuid" : "6b43d6af-4ead-4729-9d46-0707312157b3",
+  "accountName" : "pidekster",
+  "playerVault" : [ {
+    "chestId" : "c266f959-e6ab-445c-9073-512400866c9d",
+    "chestUuid" : "c266f959-e6ab-445c-9073-512400866c9d",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 1,
+      "itemUuid" : "0b64c73a-a00a-48b4-9236-ee3a764cb288"
+    }, {
+      "itemId" : 158,
+      "slotIdx" : 3,
+      "itemUuid" : "00874239-57f5-4fde-80f9-0be368165429"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 6,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "0b64c73a-a00a-48b4-9236-ee3a764cb288"
+    }, {
+      "itemId" : 158,
+      "slotIdx" : 2,
+      "itemUuid" : "00874239-57f5-4fde-80f9-0be368165429"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 5,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 4,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    } ]
+  }, {
+    "chestId" : "1f129880-0c58-48e7-942c-21d74348c40d",
+    "chestUuid" : "1f129880-0c58-48e7-942c-21d74348c40d",
+    "ordinal" : 1,
+    "items" : [ ]
+  }, {
+    "chestId" : "e732f0eb-93f9-4571-87da-cb34a3638220",
+    "chestUuid" : "e732f0eb-93f9-4571-87da-cb34a3638220",
+    "ordinal" : 2,
+    "items" : [ ]
+  }, {
+    "chestId" : "1c2dd269-cb39-4726-af68-13da11cb6a88",
+    "chestUuid" : "1c2dd269-cb39-4726-af68-13da11cb6a88",
+    "ordinal" : 3,
+    "items" : [ ]
+  }, {
+    "chestId" : "b477d5fc-faf3-46cf-9ede-979788f85050",
+    "chestUuid" : "b477d5fc-faf3-46cf-9ede-979788f85050",
+    "ordinal" : 4,
+    "items" : [ ]
+  }, {
+    "chestId" : "1d88f442-bca7-4cb8-9ef8-6165aa70feb9",
+    "chestUuid" : "1d88f442-bca7-4cb8-9ef8-6165aa70feb9",
+    "ordinal" : 5,
+    "items" : [ ]
+  }, {
+    "chestId" : "02e2333a-f1da-4f3f-8032-5ae3c0f4efb4",
+    "chestUuid" : "02e2333a-f1da-4f3f-8032-5ae3c0f4efb4",
+    "ordinal" : 6,
+    "items" : [ ]
+  }, {
+    "chestId" : "ac82eb3d-be3e-4c92-8d26-dd3555e0d789",
+    "chestUuid" : "ac82eb3d-be3e-4c92-8d26-dd3555e0d789",
+    "ordinal" : 7,
+    "items" : [ ]
+  }, {
+    "chestId" : "24b268b9-296a-4a34-94e5-7afa1a53e093",
+    "chestUuid" : "24b268b9-296a-4a34-94e5-7afa1a53e093",
+    "ordinal" : 8,
+    "items" : [ ]
+  }, {
+    "chestId" : "30e60208-ba4e-40cf-9f94-31aed7e1d4bf",
+    "chestUuid" : "30e60208-ba4e-40cf-9f94-31aed7e1d4bf",
+    "ordinal" : 9,
+    "items" : [ ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "1f8f40a7-8aee-47a9-b061-f2056e2a1d57",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 27085,
+      "classId" : 2,
+      "hp" : 287,
+      "mp" : 191,
+      "def" : 2,
+      "att" : 24,
+      "spd" : 23,
+      "dex" : 35,
+      "vit" : 20,
+      "wis" : 24
+    },
+    "items" : [ {
+      "itemId" : 133,
+      "slotIdx" : 0,
+      "itemUuid" : "f57f66a2-c42b-49b9-b765-b1badf72d669"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 5,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 8,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 227,
+      "slotIdx" : 1,
+      "itemUuid" : "8f59877d-4881-4e4c-a601-cd70e5fe7f1b"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 7,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 10,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 3,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 120,
+      "slotIdx" : 2,
+      "itemUuid" : "3a7b093b-798e-46e6-8c93-d101234ec9a5"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 6,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    }, {
+      "itemId" : 48,
+      "slotIdx" : 9,
+      "itemUuid" : "c500dc44-4254-4b4d-94ca-b5dd7b55a7c7"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cbf15bcda71f3f9315cd69",
+  "accountEmail" : "michaelsni97@gmail.com",
+  "accountUuid" : "68e47770-30da-42e3-998a-691d06ca6f8d",
+  "accountName" : "Petrazxal",
+  "playerVault" : [ {
+    "chestUuid" : "810030c7-1002-404c-a93c-1ca09d11eded",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "6da4a118-66ab-4e78-a96f-09f09793abb3"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1774973340723,
+    "characterUuid" : "05ea1d5e-ddca-488b-b05a-1e75d79a7ec5",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 350,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "04729f77-1208-4ef7-a145-2c2203b484b0"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "254cfe6b-e122-4a45-9f4c-6bc53b3f4d75"
+    }, {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "1bd774e2-b9d0-41bb-b6c2-8ce0a55f8c1c"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cc2111067c43450fd66285",
+  "accountEmail" : "dan@gmail.com",
+  "accountUuid" : "5d18ccd3-c03f-4a58-8f25-0c6e55a609b8",
+  "accountName" : "dandan",
+  "playerVault" : [ {
+    "chestUuid" : "7a8eda95-1957-4cb5-8606-2e433dca2da5",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "af34f5f9-2d89-48d2-8faa-71bca32d916f"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "8a3f7c91-fabe-4d4e-8d8d-92ec36ec9484",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "f7f7518c-16bf-4ce3-b45c-fb49369b1944"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "623ee703-57bc-4c99-a92a-b86e82a09a72"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "186d5920-2d3b-418b-bf4c-30185cf46d53"
+    } ]
+  }, {
+    "characterUuid" : "57643a2f-436b-489c-9247-99a310695c9f",
+    "characterClass" : 5,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 5,
+      "hp" : 200,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 15,
+      "spd" : 7,
+      "dex" : 10,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 75,
+      "slotIdx" : 0,
+      "itemUuid" : "c837f2f3-cc7b-46e7-a23f-7972be167242"
+    }, {
+      "itemId" : 242,
+      "slotIdx" : 1,
+      "itemUuid" : "a318cc60-00cc-483f-b6ee-a6a7936b4737"
+    }, {
+      "itemId" : 60,
+      "slotIdx" : 2,
+      "itemUuid" : "2d89f470-b2e1-45e3-824f-801a9a26b0ea"
+    } ]
+  } ]
+}, {
+  "accountId" : "69ccb6b6bdafbe09bdd2f37a",
+  "accountEmail" : "brocollectingouremails@gmail.com",
+  "accountUuid" : "63dbc7f6-cd3d-4b37-9969-348e87258663",
+  "accountName" : "ubuvwevwevweunutwinwevweelebuenosas",
+  "playerVault" : [ {
+    "chestUuid" : "dcc8bd23-c818-4ede-9ec2-21d575b96d9f",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "fd2303a6-e829-42a0-a2fa-83e0d5180443"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "58fdffa3-381d-4633-8afb-26be425697f2",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "bd481e49-4338-48ec-b618-313808487571"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "9aef11cb-4938-472c-a7c3-d4d6da005c9b"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "e86a02ed-c898-44a8-91d4-3f0a432b265b"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cccf41bdafbe09bdd2f37d",
+  "accountEmail" : "mssmt1@gmail.com",
+  "accountUuid" : "dbd1c3b8-b77a-41ab-a850-6ad027819746",
+  "accountName" : "Mystwas",
+  "playerVault" : [ {
+    "chestUuid" : "f00c92a8-68de-4bf5-8cdc-0b53d17ef8bd",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "0fc90fc1-5a30-4554-8eaa-93c45678730d"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1775030206303,
+    "characterUuid" : "60bd6e04-4b99-4b4e-82cd-ca3169206f6f",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 160,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "cb73e186-8290-408b-8a4d-937b9f6b24e0"
+    }, {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "c518adc1-af7e-424d-bce0-0e3f6269be62"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "74cdd0a1-4c83-49a6-84b3-3575a9aa7f1c"
+    }, {
+      "itemId" : 4,
+      "slotIdx" : 4,
+      "itemUuid" : "60308eab-68bf-4be7-9bea-6ff908d3165e"
+    } ]
+  }, {
+    "characterUuid" : "668288b5-10b1-464a-8943-8d9e99fd8518",
+    "characterClass" : 11,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 11,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 14,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 15,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 137,
+      "slotIdx" : 0,
+      "itemUuid" : "b269e028-2929-4544-a8b4-484a2c32f119"
+    }, {
+      "itemId" : 270,
+      "slotIdx" : 1,
+      "itemUuid" : "b3b9e740-01b3-4da5-84c0-8b819332565a"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "8216386b-02ed-4540-915c-5f0ff2fe0592"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cce79dbdafbe09bdd2f380",
+  "accountEmail" : "fran04x@gmail.com",
+  "accountUuid" : "e4584ad5-999f-4ec9-bcf4-83230451bbe8",
+  "accountName" : "fran04x",
+  "playerVault" : [ {
+    "chestUuid" : "910edd64-8ea0-49d8-a847-737b1150f450",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "62b22996-16ec-47fc-8f23-f7623234fe9c"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1775036882779,
+    "characterUuid" : "9fea06f4-aaf3-45c9-9164-f1054122608a",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 30,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "513e5397-08ec-406f-887d-bf91091f85f2"
+    }, {
+      "itemId" : 75,
+      "slotIdx" : 4,
+      "itemUuid" : "78330429-baba-4b5f-9e7a-aaed0007d90f"
+    }, {
+      "itemId" : 60,
+      "slotIdx" : 7,
+      "itemUuid" : "f11c68e7-4804-4c19-94fb-667dc959747f"
+    }, {
+      "itemId" : 63,
+      "slotIdx" : 6,
+      "itemUuid" : "3f673345-9c19-49e6-b0c3-71fcf674b489"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "a3705847-e5c5-4407-b80d-84811664a744"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "48ce2a3e-16e4-41b9-b4d0-3d5d0d9476da"
+    }, {
+      "itemId" : 0,
+      "slotIdx" : 5,
+      "itemUuid" : "74a1b69b-2fac-4bc4-a1ba-6110200a7e58"
+    } ]
+  }, {
+    "deleted" : 1775036406145,
+    "characterUuid" : "92d72f48-4a28-4de5-95aa-006ee995fdc5",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "dbca52a1-6251-4663-9ba5-0c8961a6f7fd"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "4c0cf082-a0f2-4d92-9b1c-9ddef456ac25"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "a27aa0f8-2584-48bf-ad1b-086fd547c4ab"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cd3b932aa5b01073298163",
+  "accountEmail" : "alexeyfpp@yandex.ru",
+  "accountUuid" : "9c51f924-4035-430a-9f06-c2d3ca2b99b1",
+  "accountName" : "pidakter",
+  "playerVault" : [ {
+    "chestId" : "9a8f3c8e-6bc1-430b-95bf-02e48de3b756",
+    "chestUuid" : "9a8f3c8e-6bc1-430b-95bf-02e48de3b756",
+    "ordinal" : 0,
+    "items" : [ ]
+  }, {
+    "chestId" : "c75e676e-ef01-438c-a1b6-6fb14871cedf",
+    "chestUuid" : "c75e676e-ef01-438c-a1b6-6fb14871cedf",
+    "ordinal" : 1,
+    "items" : [ ]
+  }, {
+    "chestId" : "2016f82b-947f-4808-b490-01ce2967181c",
+    "chestUuid" : "2016f82b-947f-4808-b490-01ce2967181c",
+    "ordinal" : 2,
+    "items" : [ ]
+  }, {
+    "chestId" : "c8c8bd73-9c8d-435a-b06f-a40ecbbb0e57",
+    "chestUuid" : "c8c8bd73-9c8d-435a-b06f-a40ecbbb0e57",
+    "ordinal" : 3,
+    "items" : [ ]
+  }, {
+    "chestId" : "08694e0b-748c-4dd1-b3d7-4aa2506fa624",
+    "chestUuid" : "08694e0b-748c-4dd1-b3d7-4aa2506fa624",
+    "ordinal" : 4,
+    "items" : [ ]
+  }, {
+    "chestId" : "46699b79-7707-423e-bd04-a10e400c8c7c",
+    "chestUuid" : "46699b79-7707-423e-bd04-a10e400c8c7c",
+    "ordinal" : 5,
+    "items" : [ ]
+  }, {
+    "chestId" : "5b983274-c6b8-449e-a47c-117331a74198",
+    "chestUuid" : "5b983274-c6b8-449e-a47c-117331a74198",
+    "ordinal" : 6,
+    "items" : [ ]
+  }, {
+    "chestId" : "823004ca-d110-44e8-bcd5-625ae16ade8c",
+    "chestUuid" : "823004ca-d110-44e8-bcd5-625ae16ade8c",
+    "ordinal" : 7,
+    "items" : [ ]
+  }, {
+    "chestId" : "0c15e13c-6655-4659-8bd6-3d0241291051",
+    "chestUuid" : "0c15e13c-6655-4659-8bd6-3d0241291051",
+    "ordinal" : 8,
+    "items" : [ ]
+  }, {
+    "chestId" : "1b001b35-8670-4c5d-949e-34350c4dbf76",
+    "chestUuid" : "1b001b35-8670-4c5d-949e-34350c4dbf76",
+    "ordinal" : 9,
+    "items" : [ ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "67586d0d-c425-4984-92f5-0d2ab6bf7688",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "9de704a0-7a3b-4957-948e-aaaf61b02289"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "d85b488f-d934-4c21-aae5-211563c3d6d7"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "13d43904-4d45-44b1-a44a-d410637050b1"
+    } ]
+  }, {
+    "characterUuid" : "05d2e006-0e44-4fbb-b43a-d697c36fa808",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 980,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 2,
+      "att" : 13,
+      "spd" : 13,
+      "dex" : 13,
+      "vit" : 10,
+      "wis" : 11
+    },
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "c1e8cfad-052f-4969-a850-0d4ef535bccf"
+    }, {
+      "itemId" : 214,
+      "slotIdx" : 1,
+      "itemUuid" : "5f9285f7-28c0-4519-aa5b-a475a850bf4f"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "7476d51b-99ef-404b-8c3b-b39f8a9bae2a"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cd54842aa5b01073298166",
+  "accountEmail" : "williamwbailey103@gmail.com",
+  "accountUuid" : "fc15083b-cf32-4bf9-91b9-5a8a3cd4e724",
+  "accountName" : "juno",
+  "playerVault" : [ {
+    "chestUuid" : "75b03cbb-69fa-4df9-9159-24de1d4eee62",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "1537b535-727e-45ea-a315-d5096d88289a"
+    } ]
+  } ],
+  "characters" : [ {
+    "characterUuid" : "a3ff786a-4320-46ed-9ebf-62007d43dbe1",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "1cdc2d55-f39e-4cf9-8d2c-3e59a35da12e"
+    }, {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "8b80753e-2276-42bc-b7b8-97977a9cc2e1"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "8ad652b1-ff46-4e6e-83c9-88176fe8bf5d"
+    } ]
+  }, {
+    "characterUuid" : "dfd08ae5-4176-4d41-8ff4-cc654da1a487",
+    "characterClass" : 1,
+    "stats" : {
+      "xp" : 0,
+      "classId" : 1,
+      "hp" : 130,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 10,
+      "wis" : 10
+    },
+    "items" : [ {
+      "itemId" : 214,
+      "slotIdx" : 1,
+      "itemUuid" : "e7536f31-5887-478e-925e-569b1ac4206a"
+    }, {
+      "itemId" : 32,
+      "slotIdx" : 2,
+      "itemUuid" : "42262917-b859-41d6-ba3f-01df24748e93"
+    }, {
+      "itemId" : 17,
+      "slotIdx" : 0,
+      "itemUuid" : "6967ac3c-8b06-4aaa-abf3-ed14576e9190"
+    } ]
+  } ]
+}, {
+  "accountId" : "69cd72852aa5b01073298169",
+  "accountEmail" : "kert11gattin@gmail.com",
+  "accountUuid" : "86ffe0c9-de89-43c1-88d1-ae22f8e6e5a1",
+  "accountName" : "Big",
+  "playerVault" : [ {
+    "chestUuid" : "0461c058-bb64-4f50-a8a3-bf365af51ecc",
+    "ordinal" : 0,
+    "items" : [ {
+      "itemId" : 47,
+      "slotIdx" : 0,
+      "itemUuid" : "8eff37c3-52ad-48e6-83cb-a4016cabc4fd"
+    } ]
+  } ],
+  "characters" : [ {
+    "deleted" : 1775072092968,
+    "characterUuid" : "baf292bf-a904-49ef-8b54-ddd7076aef94",
+    "characterClass" : 2,
+    "stats" : {
+      "xp" : 180,
+      "classId" : 2,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 12,
+      "spd" : 10,
+      "dex" : 15,
+      "vit" : 12,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 221,
+      "slotIdx" : 1,
+      "itemUuid" : "6bd30990-6c0a-475b-85f9-8b7e99b31023"
+    }, {
+      "itemId" : 121,
+      "slotIdx" : 0,
+      "itemUuid" : "8975633f-fa25-4764-8ab9-1987930a58cc"
+    }, {
+      "itemId" : 106,
+      "slotIdx" : 2,
+      "itemUuid" : "05ce8dec-6bf7-42b4-b3c1-20dca0cda01c"
+    }, {
+      "itemId" : 4,
+      "slotIdx" : 4,
+      "itemUuid" : "e6546b0d-1451-4d90-9c19-46919f923c82"
+    }, {
+      "itemId" : 2,
+      "slotIdx" : 5,
+      "itemUuid" : "fca68d9f-9019-4c9c-adff-37985f0194fe"
+    } ]
+  }, {
+    "deleted" : 1775072608451,
+    "characterUuid" : "59b5f236-f76f-4dff-8560-39088747aa80",
+    "characterClass" : 11,
+    "stats" : {
+      "xp" : 740,
+      "classId" : 11,
+      "hp" : 100,
+      "mp" : 100,
+      "def" : 0,
+      "att" : 14,
+      "spd" : 12,
+      "dex" : 12,
+      "vit" : 15,
+      "wis" : 12
+    },
+    "items" : [ {
+      "itemId" : 0,
+      "slotIdx" : 8,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+    }, {
+      "itemId" : 1,
+      "slotIdx" : 4,
+      "itemUuid" : "fe972c3c-a983-4dcf-84fa-0b5c56fad62a"
+    }, {
+      "itemId" : 151,
+      "slotIdx" : 0,
+      "itemUuid" : "e7b85589-c7dd-4141-af8c-cbe0eb4712b8"
+    }, {
+      "itemId" : 270,
+      "slotIdx" : 1,
+      "itemUuid" : "c0a3168b-457b-4f93-9dbe-bc02108ad777"
+    }, {
+      "itemId" : 2,
+      "slotIdx" : 6,
+      "itemUuid" : "fca68d9f-9019-4c9c-adff-37985f0194fe"
+    }, {
+      "itemId" : 0,
+      "slotIdx" : 9,
+      "itemUuid" : "049ab232-83db-4a92-a67f-992b5224b323"
+    }, {
+      "itemId" : 1,
+      "slotIdx" : 5,
+      "itemUuid" : "fe972c3c-a983-4dcf-84fa-0b5c56fad62a"
+    }, {
+      "itemId" : 5,
+      "slotIdx" : 7,
+      "itemUuid" : "1377be06-330c-4c20-8b1e-48c7b1be47d4"
+    }, {
+      "itemId" : 118,
+      "slotIdx" : 2,
+      "itemUuid" : "44cdec63-8b64-4090-ab50-48f93fc3d943"
     } ]
   } ]
 } ]

@@ -1807,15 +1807,20 @@
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 51,
-		"xp": 50,
-		"health": 70,
-		"maxSpeed": 2,
+		"xp": 100,
+		"health": 120,
+		"maxSpeed": 1.5,
 		"chaseRange": 270,
 		"attackRange": 150,
 		"stats": {
 			"hp": 70,
 			"def": 0,
-			"dex": 14
+			"dex": 14,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": []
 	},
@@ -1917,9 +1922,9 @@
 		"attackId": 56,
 		"xp": 560,
 		"health": 350,
-		"maxSpeed": 2.2,
+		"maxSpeed": 1.7,
 		"chaseRange": 280,
-		"attackRange": 180,
+		"attackRange": 200,
 		"stats": {
 			"hp": 350,
 			"def": 3,

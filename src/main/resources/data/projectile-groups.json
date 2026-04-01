@@ -1846,11 +1846,11 @@
 			{
 				"projectileId": 35,
 				"positionMode": 0,
-				"damage": 30,
+				"damage": 45,
 				"angle": 0,
 				"range": 120,
-				"size": 20,
-				"magnitude": 3,
+				"size": 8,
+				"magnitude": 5,
 				"flags": [
 					0
 				]
@@ -1858,11 +1858,11 @@
 			{
 				"projectileId": 35,
 				"positionMode": 0,
-				"damage": 30,
+				"damage": 45,
 				"angle": 0.25,
 				"range": 120,
-				"size": 20,
-				"magnitude": 3,
+				"size": 8,
+				"magnitude": 5,
 				"flags": [
 					0
 				]
@@ -1871,9 +1871,9 @@
 	},
 	{
 		"projectileGroupId": 36,
-		"row": 14,
-		"col": 9,
-		"spriteKey": "lofiObj5b.png",
+		"row": 7,
+		"col": 2,
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 36,
@@ -1881,8 +1881,8 @@
 				"damage": 35,
 				"angle": 0,
 				"range": 150,
-				"size": 20,
-				"magnitude": 4,
+				"size": 8,
+				"magnitude": 4.5,
 				"flags": [
 					0
 				]
@@ -1893,8 +1893,8 @@
 				"damage": 35,
 				"angle": 0.25,
 				"range": 150,
-				"size": 20,
-				"magnitude": 4,
+				"size": 8,
+				"magnitude": 4.5,
 				"flags": [
 					0
 				]
@@ -1903,10 +1903,46 @@
 				"projectileId": 36,
 				"positionMode": 0,
 				"damage": 35,
-				"angle": "-0.25",
+				"angle": "{{PI/12}}",
 				"range": 150,
-				"size": 20,
-				"magnitude": 4,
+				"size": 8,
+				"magnitude": 4.5,
+				"flags": [
+					0
+				]
+			},
+			{
+				"projectileId": 36,
+				"positionMode": 0,
+				"damage": 35,
+				"angle": 0.25,
+				"range": 150,
+				"size": 8,
+				"magnitude": 4.5,
+				"flags": [
+					0
+				]
+			},
+			{
+				"projectileId": 36,
+				"positionMode": 0,
+				"damage": 35,
+				"angle": -0.2618,
+				"range": 150,
+				"size": 8,
+				"magnitude": 4.5,
+				"flags": [
+					0
+				]
+			},
+			{
+				"projectileId": 36,
+				"positionMode": 0,
+				"damage": 35,
+				"angle": -0.011799999999999977,
+				"range": 150,
+				"size": 8,
+				"magnitude": 4.5,
 				"flags": [
 					0
 				]
@@ -1981,9 +2017,9 @@
 	},
 	{
 		"projectileGroupId": 38,
-		"row": 15,
-		"col": 3,
-		"spriteKey": "lofiObj6.png",
+		"row": 7,
+		"col": 0,
+		"spriteKey": "rotmg-items-1.png",
 		"projectiles": [
 			{
 				"projectileId": 38,
@@ -2009,8 +2045,7 @@
 					3
 				]
 			}
-		],
-		"angleOffset": "{{PI/4}}"
+		]
 	},
 	{
 		"projectileGroupId": 39,
@@ -3290,9 +3325,9 @@
 	},
 	{
 		"projectileGroupId": 51,
-		"row": 15,
-		"col": 8,
-		"spriteKey": "lofiObj6.png",
+		"row": 7,
+		"col": 15,
+		"spriteKey": "cursedLibraryObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 51,
@@ -3395,9 +3430,9 @@
 	},
 	{
 		"projectileGroupId": 52,
-		"row": 4,
-		"col": 9,
-		"spriteKey": "lofiObj6.png",
+		"row": 2,
+		"col": 14,
+		"spriteKey": "rotmg-projectiles.png",
 		"projectiles": [
 			{
 				"projectileId": 52,
@@ -3652,17 +3687,17 @@
 	{
 		"projectileGroupId": 56,
 		"row": 5,
-		"col": 12,
-		"spriteKey": "rotmg-projectiles.png",
+		"col": 6,
+		"spriteKey": "cursedLibraryObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 56,
 				"positionMode": 0,
 				"damage": 25,
 				"angle": -0.6,
-				"range": 150,
+				"range": 200,
 				"size": 12,
-				"magnitude": 5.5,
+				"magnitude": 3,
 				"flags": [
 					14
 				]
@@ -3672,9 +3707,9 @@
 				"positionMode": 0,
 				"damage": 25,
 				"angle": -0.35,
-				"range": 150,
+				"range": 200,
 				"size": 12,
-				"magnitude": 5.5,
+				"magnitude": 3,
 				"flags": [
 					14
 				]
@@ -3684,9 +3719,9 @@
 				"positionMode": 0,
 				"damage": 25,
 				"angle": -0.3,
-				"range": 150,
+				"range": 200,
 				"size": 12,
-				"magnitude": 5.5,
+				"magnitude": 3,
 				"flags": [
 					14
 				]
@@ -5431,8 +5466,8 @@
 				"damage": 20,
 				"angle": "-0.15",
 				"range": 280,
-				"size": 20,
-				"magnitude": 3,
+				"size": 8,
+				"magnitude": 6,
 				"flags": [
 					0,
 					10
@@ -5444,8 +5479,8 @@
 				"damage": 20,
 				"angle": 0,
 				"range": 280,
-				"size": 20,
-				"magnitude": 3,
+				"size": 8,
+				"magnitude": 6,
 				"flags": [
 					0,
 					10
@@ -5457,8 +5492,8 @@
 				"damage": 20,
 				"angle": "0.15",
 				"range": 280,
-				"size": 20,
-				"magnitude": 3,
+				"size": 8,
+				"magnitude": 6,
 				"flags": [
 					0,
 					10

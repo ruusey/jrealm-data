@@ -45,7 +45,7 @@ const SPRITE_SHEETS = [
     'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
     'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png',
     'chars8x8rBeach.png', 'chars8x8rHero2.png', 'cursedLibraryChars16x16.png',
-    'd3Chars8x8r.png', 'cursedLibraryChars8x8.png',
+    'd3Chars8x8r.png', 'cursedLibraryChars8x8.png', 'cursedLibraryObjects8x8.png',
     'archbishopObjects16x16.png', 'autumnNexusObjects16x16.png',
     'chars16x16dEncounters2.png', 'crystalCaveChars16x16.png',
     'epicHiveChars8x8.png', 'lairOfDraconisChars8x8.png',
@@ -185,9 +185,9 @@ function showCharacterSelect() {
             infoDiv.innerHTML = `
                 <div class="char-name">${className}</div>
                 <div class="char-details">
-                    HP: ${stats.hp || '?'} | MP: ${stats.mp || '?'} |
-                    ATT: ${stats.att || '?'} | DEF: ${stats.def || '?'} |
-                    SPD: ${stats.spd || '?'} | DEX: ${stats.dex || '?'}
+                    HP: ${stats.hp ?? '?'} | MP: ${stats.mp ?? '?'} |
+                    ATT: ${stats.att ?? '?'} | DEF: ${stats.def ?? '?'} |
+                    SPD: ${stats.spd ?? '?'} | DEX: ${stats.dex ?? '?'}
                 </div>
                 <div class="char-details" style="font-size:10px;color:#665848">${char.characterUuid}</div>
             `;
