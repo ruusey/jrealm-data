@@ -57,6 +57,8 @@ export class GameState {
         // Shooting animation state: set to attack anim name while firing, null otherwise
         this.shootingAnim = null;
         this.shootingAnimTimer = 0;
+        this.attackFrame = 0;
+        this.attackFrameTimer = 0;
 
         // Floating damage text
         this.damageTexts = []; // {text, x, y, color, life}

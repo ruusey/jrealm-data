@@ -3322,5 +3322,31 @@
 				]
 			}
 		]
+	},
+	{
+		"enemyId": 66,
+		"name": "Lord Of The Lost Lands",
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 14,
+		"col": 0,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": 48,
+		"xp": 100,
+		"health": 20000,
+		"maxSpeed": 1.4,
+		"chaseRange": 400,
+		"attackRange": 300,
+		"stats": {
+			"hp": 20000,
+			"def": 50,
+			"dex": 5,
+			"mp": 0,
+			"att": 20,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	}
 ]

@@ -402,9 +402,17 @@ export class GameRenderer {
             } else {
                 animName = isVertical ? (isBack ? 'idle_back' : 'idle_front') : 'idle_side';
             }
+            const isAttacking = isLocal && gameState.shootingAnim;
             const anim = animDef.animations[animName] || animDef.animations['idle_side'];
             const frames = anim.frames;
-            const fIdx = isMoving ? (player.animFrame % frames.length) : 0;
+            let fIdx;
+            if (isAttacking) {
+                fIdx = gameState.attackFrame % frames.length;
+            } else if (isMoving) {
+                fIdx = player.animFrame % frames.length;
+            } else {
+                fIdx = 0;
+            }
             row = frames[fIdx].row;
             frameCol = frames[fIdx].col;
         } else {

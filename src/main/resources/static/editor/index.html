@@ -30,6 +30,7 @@
       <button class="tab" data-tab="projgroups">Projectiles</button>
       <button class="tab" data-tab="lootgroups">Loot</button>
       <button class="tab" data-tab="animations">Animations</button>
+      <button class="tab" data-tab="portals">Portals</button>
     </div>
     <div class="toolbar">
       <label>Sheet:
@@ -134,6 +135,7 @@
       <div class="tile-header">
         <h2>Maps (<span id="mapCount">0</span>)</h2>
         <input type="text" id="mapSearch" placeholder="Search maps...">
+        <button id="addMapBtn" class="btn-add" style="margin-left:8px">+ New Map</button>
       </div>
       <div class="tile-list" id="mapListView"></div>
 
@@ -233,6 +235,7 @@
       <div class="tile-header">
         <h2>Items (<span id="itemCount">0</span>)</h2>
         <input type="text" id="itemSearch" placeholder="Search items...">
+        <button id="addItemBtn" class="btn-add" style="margin-left:8px">+ New Item</button>
       </div>
       <div class="tile-list" id="itemListView"></div>
 
@@ -462,6 +465,41 @@
 
       <div class="detail-actions" style="margin-top:8px">
         <button id="applyAnimBtn" class="btn-apply">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portals Tab -->
+  <div class="panel tile-panel" id="portalsTab" style="display:none">
+    <div class="tile-header">
+      <h2>Portals (<span id="portalCount">0</span>)</h2>
+      <input type="text" id="portalSearch" placeholder="Search portals...">
+      <button id="addPortalBtn" class="btn-add" style="margin-left:8px">+ New Portal</button>
+    </div>
+    <div class="tile-list" id="portalListView"></div>
+
+    <div class="item-detail" id="portalDetail" style="display:none">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <button id="portalBackBtn" class="btn-pick">&laquo; Back</button>
+        <h3 id="portalTitle" style="margin:0"></h3>
+      </div>
+      <div class="detail-grid">
+        <label>Portal ID: <input type="number" id="portalIdField" disabled></label>
+        <label>Name: <input type="text" id="portalNameField"></label>
+        <label>Target Map: <input type="number" id="portalMapId" min="0"></label>
+        <label>Depth: <input type="number" id="portalDepth"></label>
+        <label>Target Node ID: <input type="text" id="portalTargetNodeId" placeholder="(optional)"></label>
+      </div>
+      <h4>Sprite</h4>
+      <div class="detail-grid">
+        <label>Sheet: <select id="portalSprite"></select></label>
+        <label>Row: <input type="number" id="portalRow" min="0"></label>
+        <label>Col: <input type="number" id="portalCol" min="0"></label>
+        <canvas id="portalPreviewCanvas" width="48" height="48" style="background:#12101a;border:1px solid #333;border-radius:4px"></canvas>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button id="applyPortalBtn" class="btn-pick" style="background:#3a6e3a">Apply</button>
+        <button id="deletePortalBtn" class="btn-pick" style="background:#6e3a3a">Delete</button>
       </div>
     </div>
   </div>

@@ -102,6 +102,12 @@ public class GameDataController {
 	     return saveDataFile("animations.json", json);
 	 }
 
+	 @PutMapping(value = "/portals", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
+	 public ResponseEntity<?> savePortals(final HttpServletRequest request, @RequestBody final String json) {
+	     return saveDataFile("portals.json", json);
+	 }
+
 	 private ResponseEntity<?> saveDataFile(String filename, String json) {
 	     try {
 	         URL resource = getClass().getClassLoader().getResource("data/" + filename);

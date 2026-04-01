@@ -173,6 +173,9 @@ let dirtyLootTables = false;
 let animations = [];
 let selectedAnim = null;
 let dirtyAnimations = false;
+let portals = [];
+let selectedPortal = null;
+let dirtyPortals = false;
 let animPickingFrame = null; // {animName, frameIdx} when picking a frame from the sheet
 let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
@@ -200,7 +203,7 @@ const goToSheetBtn = document.getElementById('goToSheetBtn');
 // ========== INIT ==========
 async function init() {
   populateSheetSelect();
-  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadLootData(), loadAnimations(), loadImages()]);
+  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadLootData(), loadAnimations(), loadPortals(), loadImages()]);
   renderSheet();
   renderTileList();
   renderTerrainList();
@@ -208,13 +211,20 @@ async function init() {
   renderMapList();
   renderEnemyList();
   renderPgTabList();
+  renderPortalList();
   bindEvents();
+
+  // Enhance manual ID inputs with searchable dropdowns
+  enhanceWithDropdown('dmgProjGroup', projGroupOptions);
+  enhanceWithDropdown('enemyAttackId', projGroupOptions);
+  enhanceWithDropdown('dpWallTile', tileOptions);
+  enhanceWithDropdown('dpBossEnemy', enemyOptions);
 }
 
 function populateSheetSelect() {
   SPRITE_SHEETS.forEach(name => {
     sheetSelect.appendChild(new Option(name, name));
-    ['detailSprite', 'itemSprite', 'pgSprite', 'enemySprite', 'pgDetailSprite'].forEach(id => {
+    ['detailSprite', 'itemSprite', 'pgSprite', 'enemySprite', 'pgDetailSprite', 'portalSprite'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.appendChild(new Option(name, name));
     });
@@ -601,6 +611,23 @@ function drawSpritePreview(canvas, spriteKey, row, col) {
   ctx.drawImage(img, col * ss, row * ss, ss, ss, 0, 0, canvas.width, canvas.height);
 }
 
+function addItem() {
+  const maxId = items.reduce((max, i) => Math.max(max, i.itemId), 0);
+  const newItem = {
+    itemId: maxId + 1, name: 'New_Item_' + (maxId + 1),
+    description: '', spriteKey: 'rotmg-items.png', row: 0, col: 0,
+    spriteSize: 8, tier: 0, slotType: 0, rateOfFire: 1,
+    stats: { hp: 0, mp: 0, def: 0, att: 0, spd: 0, dex: 0, vit: 0, wis: 0 },
+    damage: { min: 0, max: 0, projectileGroupId: -1 },
+    effect: { effectId: 0, mpCost: 0, duration: 0, cooldownDuration: 0, self: false }
+  };
+  items.push(newItem);
+  items.sort((a, b) => a.itemId - b.itemId);
+  document.getElementById('itemCount').textContent = items.length;
+  markDirty('items');
+  selectItem(newItem);
+}
+
 function renderItemList(filter = '') {
   const list = document.getElementById('itemListView');
   list.innerHTML = '';
@@ -732,8 +759,150 @@ function applyItemDetail() {
 const POS_MODES = { 0: 'TARGET_PLAYER', 1: 'RELATIVE', 2: 'ABSOLUTE' };
 const FLAG_NAMES = {
   0:'INVISIBLE', 1:'HEALING', 2:'PARALYZED', 3:'STUNNED', 4:'SPEEDY', 5:'HEAL',
-  9:'TELEPORT', 10:'PLAYER_PROJ', 11:'DAZED', 12:'PARAMETRIC', 13:'INV_PARAMETRIC', 14:'DAMAGING'
+  6:'INVINCIBLE', 8:'NONE', 9:'TELEPORT', 10:'PLAYER_PROJ', 11:'DAZED',
+  12:'PARAMETRIC', 13:'INV_PARAMETRIC', 14:'DAMAGING', 15:'STASIS',
+  16:'CURSED', 17:'POISONED', 18:'ARMORED', 19:'BERSERK'
 };
+
+// Searchable dropdown picker for ID fields.
+// `options` = [{id, label}], `onSelect` = callback(id), `currentVal` = pre-selected id
+function createSearchableSelect(options, onSelect, currentVal, placeholder) {
+  const wrapper = document.createElement('div');
+  wrapper.style.cssText = 'position:relative;display:inline-block';
+  const input = document.createElement('input');
+  input.type = 'text'; input.placeholder = placeholder || 'Search...';
+  input.style.cssText = 'width:160px;font-size:11px;padding:2px 4px;background:#1a1820;color:#e0d8c8;border:1px solid #333';
+  const cur = options.find(o => o.id === currentVal);
+  if (cur) input.value = cur.label;
+  const list = document.createElement('div');
+  list.style.cssText = 'display:none;position:absolute;top:100%;left:0;z-index:999;max-height:200px;overflow-y:auto;background:#1a1820;border:1px solid #555;width:240px';
+
+  function renderOptions(filter) {
+    list.innerHTML = '';
+    const lower = (filter || '').toLowerCase();
+    let count = 0;
+    for (const opt of options) {
+      if (lower && !opt.label.toLowerCase().includes(lower) && !String(opt.id).includes(lower)) continue;
+      if (++count > 50) break;
+      const row = document.createElement('div');
+      row.style.cssText = 'padding:3px 6px;font-size:11px;cursor:pointer;color:#e0d8c8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis';
+      row.textContent = opt.label;
+      row.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        input.value = opt.label;
+        list.style.display = 'none';
+        onSelect(opt.id);
+      });
+      row.addEventListener('mouseenter', () => { row.style.background = '#333'; });
+      row.addEventListener('mouseleave', () => { row.style.background = ''; });
+      list.appendChild(row);
+    }
+    if (count === 0) {
+      const empty = document.createElement('div');
+      empty.style.cssText = 'padding:4px 6px;font-size:10px;color:#888';
+      empty.textContent = 'No matches';
+      list.appendChild(empty);
+    }
+  }
+
+  input.addEventListener('focus', () => { renderOptions(input.value); list.style.display = 'block'; });
+  input.addEventListener('input', () => { renderOptions(input.value); list.style.display = 'block'; });
+  input.addEventListener('blur', () => { setTimeout(() => { list.style.display = 'none'; }, 150); });
+  wrapper.append(input, list);
+  return wrapper;
+}
+
+// Checkbox grid for projectile flags
+function createFlagCheckboxes(currentFlags, onChange) {
+  const container = document.createElement('div');
+  container.style.cssText = 'display:flex;flex-wrap:wrap;gap:2px 8px;padding:2px 0';
+  const sorted = Object.entries(FLAG_NAMES).sort((a,b) => parseInt(a[0]) - parseInt(b[0]));
+  for (const [id, name] of sorted) {
+    const flagId = parseInt(id);
+    const label = document.createElement('label');
+    label.style.cssText = 'display:flex;align-items:center;gap:2px;font-size:10px;color:#c8a86e;cursor:pointer;white-space:nowrap';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = (currentFlags || []).includes(flagId);
+    cb.style.cssText = 'margin:0;cursor:pointer';
+    cb.addEventListener('change', () => {
+      const flags = [];
+      container.querySelectorAll('input[type=checkbox]').forEach((box, i) => {
+        if (box.checked) flags.push(parseInt(sorted[i][0]));
+      });
+      onChange(flags);
+    });
+    label.append(cb, document.createTextNode(`${name}(${id})`));
+    container.appendChild(label);
+  }
+  return container;
+}
+
+// Helper to build option lists from loaded data
+function itemOptions() { return items.map(i => ({id: i.itemId, label: `[${i.itemId}] ${i.name || 'Unnamed'}`})); }
+function enemyOptions() { return enemies.map(e => ({id: e.enemyId, label: `[${e.enemyId}] ${e.name || 'Unnamed'}`})); }
+function projGroupOptions() { return [{id: -1, label: '[-1] None/Scripted'}, ...projGroups.map(g => ({id: g.projectileGroupId, label: `[${g.projectileGroupId}] PG ${g.projectileGroupId}`}))]; }
+function tileOptions() { return tiles.map(t => ({id: t.tileId, label: `[${t.tileId}] ${t.name || 'Tile ' + t.tileId}`})); }
+function lootGroupOptions() { return lootGroups.map(g => ({id: g.lootGroupId, label: `[${g.lootGroupId}] ${g.name || 'Group ' + g.lootGroupId}`})); }
+
+// Enhance a number input by adding a searchable dropdown next to it.
+// The hidden input keeps working for data read/write; the dropdown sets its value.
+function enhanceWithDropdown(inputId, optionsFn) {
+  const input = document.getElementById(inputId);
+  if (!input || input._enhanced) return;
+  input._enhanced = true;
+  input.style.width = '50px';
+  const picker = createSearchableSelect(optionsFn(), (id) => {
+    input.value = id;
+    input.dispatchEvent(new Event('change'));
+  }, parseInt(input.value), 'Search...');
+  input.parentElement.appendChild(picker);
+}
+
+// Show a searchable picker dialog and return the selected ID via callback
+function showPickerDialog(title, optionsFn, callback) {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center';
+  const dialog = document.createElement('div');
+  dialog.style.cssText = 'background:#1a1820;border:1px solid #555;border-radius:6px;padding:12px;min-width:280px;max-height:400px;display:flex;flex-direction:column';
+  const header = document.createElement('div');
+  header.style.cssText = 'font-size:13px;color:#c8a86e;margin-bottom:8px;font-weight:bold';
+  header.textContent = title;
+  const searchInput = document.createElement('input');
+  searchInput.type = 'text'; searchInput.placeholder = 'Type to search...';
+  searchInput.style.cssText = 'width:100%;font-size:12px;padding:4px 6px;background:#12101a;color:#e0d8c8;border:1px solid #333;margin-bottom:6px;box-sizing:border-box';
+  const listDiv = document.createElement('div');
+  listDiv.style.cssText = 'overflow-y:auto;max-height:280px';
+  const cancelBtn = document.createElement('button');
+  cancelBtn.textContent = 'Cancel'; cancelBtn.className = 'btn-pick';
+  cancelBtn.style.cssText = 'margin-top:8px;align-self:flex-end';
+  cancelBtn.addEventListener('click', () => document.body.removeChild(overlay));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) document.body.removeChild(overlay); });
+
+  function renderList(filter) {
+    listDiv.innerHTML = '';
+    const lower = (filter || '').toLowerCase();
+    const opts = optionsFn();
+    let count = 0;
+    for (const opt of opts) {
+      if (lower && !opt.label.toLowerCase().includes(lower) && !String(opt.id).includes(lower)) continue;
+      if (++count > 80) break;
+      const row = document.createElement('div');
+      row.style.cssText = 'padding:4px 8px;font-size:12px;cursor:pointer;color:#e0d8c8;border-bottom:1px solid #222';
+      row.textContent = opt.label;
+      row.addEventListener('click', () => { document.body.removeChild(overlay); callback(opt.id); });
+      row.addEventListener('mouseenter', () => { row.style.background = '#333'; });
+      row.addEventListener('mouseleave', () => { row.style.background = ''; });
+      listDiv.appendChild(row);
+    }
+  }
+  searchInput.addEventListener('input', () => renderList(searchInput.value));
+  renderList('');
+  dialog.append(header, searchInput, listDiv, cancelBtn);
+  overlay.appendChild(dialog);
+  document.body.appendChild(overlay);
+  searchInput.focus();
+}
 
 function viewProjGroup() {
   const pgId = parseInt(document.getElementById('dmgProjGroup').value);
@@ -832,10 +1001,16 @@ function renderProjList(group) {
     row2.append(spacer,
       makeLabeledField('Size', 'size', p.size, p, 'projGroups'),
       makeLabeledField('Amplitude', 'amplitude', p.amplitude, p, 'projGroups'),
-      makeLabeledField('Frequency', 'frequency', p.frequency, p, 'projGroups'),
-      makeLabeledField('Flags', 'flags', (p.flags || []).join(', '), p, 'projGroups'),
-      document.createElement('span'), document.createElement('span'));
+      makeLabeledField('Frequency', 'frequency', p.frequency, p, 'projGroups'));
     container.appendChild(row2);
+    const flagRow = document.createElement('div');
+    flagRow.className = 'proj-row row2';
+    flagRow.style.cssText = 'border-top:none;margin-top:-4px;padding:2px 6px';
+    const flagLabel = document.createElement('span');
+    flagLabel.style.cssText = 'font-size:10px;color:#aaa;margin-right:4px';
+    flagLabel.textContent = 'Flags:';
+    flagRow.append(flagLabel, createFlagCheckboxes(p.flags, (flags) => { p.flags = flags; markDirty('projGroups'); }));
+    container.appendChild(flagRow);
   });
 }
 
@@ -1198,10 +1373,16 @@ function renderAttackPatternsEditor(body, phase, enemy) {
         const rmBtn = document.createElement('button'); rmBtn.className = 'tg-remove'; rmBtn.textContent = '\u00D7';
         rmBtn.addEventListener('click', () => { phase.attacks.splice(atkIdx, 1); markDirty('enemies'); renderPhases(enemy); });
 
-        // PG field with "Edit" link to jump to that projectile group
+        // PG field with searchable dropdown + "Edit" link
         const pgWrapper = document.createElement('div');
         pgWrapper.style.cssText = 'display:flex;align-items:flex-end;gap:4px';
-        pgWrapper.appendChild(mkField('PG:', 'projectileGroupId', 40));
+        const pgLabel = document.createElement('span');
+        pgLabel.style.cssText = 'font-size:11px;color:#aaa';
+        pgLabel.textContent = 'PG:';
+        pgWrapper.appendChild(pgLabel);
+        pgWrapper.appendChild(createSearchableSelect(projGroupOptions(), (id) => {
+          atk.projectileGroupId = id; markDirty('enemies');
+        }, atk.projectileGroupId, 'Proj Group...'));
         const editPgBtn = document.createElement('button');
         editPgBtn.className = 'btn-pick';
         editPgBtn.textContent = 'Edit';
@@ -1352,10 +1533,16 @@ function renderPgTabProjList(group) {
     row2.append(spacer,
       makeLabeledField('Size', 'size', p.size, p, 'projGroups'),
       makeLabeledField('Amplitude', 'amplitude', p.amplitude, p, 'projGroups'),
-      makeLabeledField('Frequency', 'frequency', p.frequency, p, 'projGroups'),
-      makeLabeledField('Flags', 'flags', (p.flags || []).join(', '), p, 'projGroups'),
-      document.createElement('span'), document.createElement('span'));
+      makeLabeledField('Frequency', 'frequency', p.frequency, p, 'projGroups'));
     container.appendChild(row2);
+    const flagRow = document.createElement('div');
+    flagRow.className = 'proj-row row2';
+    flagRow.style.cssText = 'border-top:none;margin-top:-4px;padding:2px 6px';
+    const flagLabel = document.createElement('span');
+    flagLabel.style.cssText = 'font-size:10px;color:#aaa;margin-right:4px';
+    flagLabel.textContent = 'Flags:';
+    flagRow.append(flagLabel, createFlagCheckboxes(p.flags, (flags) => { p.flags = flags; markDirty('projGroups'); }));
+    container.appendChild(flagRow);
   });
 }
 
@@ -1413,6 +1600,28 @@ function getMapType(m) {
   if (m.dungeonId >= 0 && m.dungeonParams) return 'dungeon';
   if (m.terrainId >= 0) return 'terrain';
   return 'unknown';
+}
+
+function addMap() {
+  // Prompt for dimensions
+  const widthStr = window.prompt('Map width (tiles):', '32');
+  if (widthStr === null) return;
+  const heightStr = window.prompt('Map height (tiles):', widthStr);
+  if (heightStr === null) return;
+  const w = Math.max(1, parseInt(widthStr) || 32);
+  const h = Math.max(1, parseInt(heightStr) || 32);
+  const maxId = maps.reduce((max, m) => Math.max(max, m.mapId), 0);
+  const data = new Array(w * h).fill(0);
+  const newMap = {
+    mapId: maxId + 1, mapName: 'New_Map_' + (maxId + 1),
+    width: w, height: h, tileSize: 32,
+    data: data
+  };
+  maps.push(newMap);
+  maps.sort((a, b) => a.mapId - b.mapId);
+  document.getElementById('mapCount').textContent = maps.length;
+  markDirty('maps');
+  selectMap(newMap);
 }
 
 function renderMapList(filter = '') {
@@ -2278,14 +2487,11 @@ function deleteLootGroup() {
 
 function addItemToLootGroup() {
   if (!selectedLootGroup) return;
-  // Open a simple item picker — reuse the existing item search pattern
-  const itemId = parseInt(prompt('Enter Item ID to add:'));
-  if (isNaN(itemId)) return;
-  const item = items.find(i => i.itemId === itemId);
-  if (!item) { alert('Item not found'); return; }
-  selectedLootGroup.potentialDrops.push(itemId);
-  markDirty('lootGroups');
-  renderLgItems(selectedLootGroup);
+  showPickerDialog('Select Item to Add', itemOptions, (itemId) => {
+    selectedLootGroup.potentialDrops.push(itemId);
+    markDirty('lootGroups');
+    renderLgItems(selectedLootGroup);
+  });
 }
 
 // ========== ENEMY LOOT TABLE INLINE EDITOR ==========
@@ -2357,21 +2563,21 @@ function renderEnemyLootSection(enemy) {
   addGroupBtn.className = 'btn-add'; addGroupBtn.textContent = '+ Group';
   addGroupBtn.style.cssText = 'font-size:10px;padding:2px 6px';
   addGroupBtn.addEventListener('click', () => {
-    const gid = prompt('Loot Group ID:');
-    if (gid === null) return;
-    lt.drops[`group:${gid}`] = 0.1;
-    markDirty('lootTables');
-    renderEnemyLootSection(enemy);
+    showPickerDialog('Select Loot Group', lootGroupOptions, (gid) => {
+      lt.drops[`group:${gid}`] = 0.1;
+      markDirty('lootTables');
+      renderEnemyLootSection(enemy);
+    });
   });
   const addItemBtn = document.createElement('button');
   addItemBtn.className = 'btn-add'; addItemBtn.textContent = '+ Item';
   addItemBtn.style.cssText = 'font-size:10px;padding:2px 6px';
   addItemBtn.addEventListener('click', () => {
-    const iid = prompt('Item ID:');
-    if (iid === null) return;
-    lt.drops[`item:${iid}`] = 0.05;
-    markDirty('lootTables');
-    renderEnemyLootSection(enemy);
+    showPickerDialog('Select Item', itemOptions, (iid) => {
+      lt.drops[`item:${iid}`] = 0.05;
+      markDirty('lootTables');
+      renderEnemyLootSection(enemy);
+    });
   });
   addRow.append(addGroupBtn, addItemBtn);
   container.appendChild(addRow);
@@ -2399,6 +2605,116 @@ function renderEnemyLootSection(enemy) {
 }
 
 // ========== TABS ==========
+// ========== PORTALS EDITOR ==========
+async function loadPortals() {
+  portals = await (await fetch(`${BASE}/portals.json`)).json();
+  portals.sort((a, b) => a.portalId - b.portalId);
+  document.getElementById('portalCount').textContent = portals.length;
+}
+
+function portalOptions() { return portals.map(p => ({id: p.portalId, label: `[${p.portalId}] ${p.portalName}`})); }
+function mapOptions() { return maps.map(m => ({id: m.mapId, label: `[${m.mapId}] ${m.mapName}`})); }
+
+function renderPortalList(filter) {
+  const list = document.getElementById('portalListView');
+  list.innerHTML = '';
+  const lower = (filter || '').toLowerCase();
+  portals.forEach(p => {
+    if (lower && !p.portalName.toLowerCase().includes(lower) && !String(p.portalId).includes(lower)) return;
+    const row = document.createElement('div');
+    row.className = 'tile-row' + (selectedPortal && selectedPortal.portalId === p.portalId ? ' selected' : '');
+    const cvs = document.createElement('canvas'); cvs.width = 28; cvs.height = 28;
+    drawSpritePreview(cvs, p.spriteKey, p.row || 0, p.col || 0);
+    const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = p.portalId;
+    const name = document.createElement('span'); name.className = 'tile-name'; name.textContent = p.portalName;
+    const mapName = maps.find(m => m.mapId === p.mapId);
+    const target = document.createElement('span'); target.style.cssText = 'color:#8080e0;font-size:11px';
+    target.textContent = mapName ? `→ ${mapName.mapName}` : `→ map:${p.mapId}`;
+    row.append(cvs, id, name, target);
+    row.addEventListener('click', () => selectPortal(p));
+    list.appendChild(row);
+  });
+}
+
+function selectPortal(p) {
+  selectedPortal = p;
+  document.getElementById('portalListView').style.display = 'none';
+  document.querySelector('#portalsTab .tile-header').style.display = 'none';
+  showPortalDetail(p);
+}
+
+function deselectPortal() {
+  selectedPortal = null;
+  document.getElementById('portalDetail').style.display = 'none';
+  document.getElementById('portalListView').style.display = '';
+  document.querySelector('#portalsTab .tile-header').style.display = '';
+  renderPortalList(document.getElementById('portalSearch').value);
+}
+
+function showPortalDetail(p) {
+  document.getElementById('portalDetail').style.display = '';
+  document.getElementById('portalTitle').textContent = `Portal ${p.portalId}: ${p.portalName}`;
+  document.getElementById('portalIdField').value = p.portalId;
+  document.getElementById('portalNameField').value = p.portalName || '';
+  document.getElementById('portalMapId').value = p.mapId != null ? p.mapId : 0;
+  document.getElementById('portalDepth').value = p.targetRealmDepth != null ? p.targetRealmDepth : -1;
+  document.getElementById('portalTargetNodeId').value = p.targetNodeId || '';
+  document.getElementById('portalSprite').value = p.spriteKey || '';
+  document.getElementById('portalRow').value = p.row || 0;
+  document.getElementById('portalCol').value = p.col || 0;
+  updatePortalPreview();
+  // Enhance target map with dropdown
+  enhanceWithDropdown('portalMapId', mapOptions);
+}
+
+function updatePortalPreview() {
+  const cvs = document.getElementById('portalPreviewCanvas');
+  const spriteKey = document.getElementById('portalSprite').value;
+  const row = parseInt(document.getElementById('portalRow').value) || 0;
+  const col = parseInt(document.getElementById('portalCol').value) || 0;
+  drawSpritePreview(cvs, spriteKey, row, col);
+}
+
+function applyPortalDetail() {
+  if (!selectedPortal) return;
+  const p = portals.find(x => x.portalId === selectedPortal.portalId);
+  if (!p) return;
+  p.portalName = document.getElementById('portalNameField').value;
+  p.mapId = parseInt(document.getElementById('portalMapId').value) || 0;
+  p.targetRealmDepth = parseInt(document.getElementById('portalDepth').value) || -1;
+  const nodeId = document.getElementById('portalTargetNodeId').value.trim();
+  if (nodeId) p.targetNodeId = nodeId; else delete p.targetNodeId;
+  p.spriteKey = document.getElementById('portalSprite').value;
+  p.row = parseInt(document.getElementById('portalRow').value) || 0;
+  p.col = parseInt(document.getElementById('portalCol').value) || 0;
+  markDirty('portals');
+  document.getElementById('portalTitle').textContent = `Portal ${p.portalId}: ${p.portalName}`;
+  updatePortalPreview();
+}
+
+function addPortal() {
+  const maxId = portals.reduce((max, p) => Math.max(max, p.portalId), 0);
+  const newPortal = {
+    portalId: maxId + 1, portalName: 'New_Portal_' + (maxId + 1),
+    mapId: 0, targetRealmDepth: -1,
+    row: 0, col: 0, spriteKey: 'rotmg-tiles-2.png'
+  };
+  portals.push(newPortal);
+  portals.sort((a, b) => a.portalId - b.portalId);
+  document.getElementById('portalCount').textContent = portals.length;
+  markDirty('portals');
+  selectPortal(newPortal);
+}
+
+function deletePortal() {
+  if (!selectedPortal) return;
+  if (!confirm(`Delete portal ${selectedPortal.portalId} (${selectedPortal.portalName})?`)) return;
+  portals = portals.filter(p => p.portalId !== selectedPortal.portalId);
+  document.getElementById('portalCount').textContent = portals.length;
+  markDirty('portals');
+  deselectPortal();
+}
+
 function switchTab(tab) {
   activeTab = tab;
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
@@ -2410,8 +2726,10 @@ function switchTab(tab) {
   document.getElementById('projgroupsTab').style.display = tab === 'projgroups' ? '' : 'none';
   document.getElementById('lootgroupsTab').style.display = tab === 'lootgroups' ? '' : 'none';
   document.getElementById('animationsTab').style.display = tab === 'animations' ? '' : 'none';
+  document.getElementById('portalsTab').style.display = tab === 'portals' ? '' : 'none';
   if (tab === 'lootgroups') renderLgList();
   if (tab === 'animations') renderAnimList();
+  if (tab === 'portals') renderPortalList();
 }
 
 // ========== SAVE ==========
@@ -2425,6 +2743,7 @@ function markDirty(which) {
   if (which === 'lootGroups') dirtyLootGroups = true;
   if (which === 'lootTables') dirtyLootTables = true;
   if (which === 'animations') dirtyAnimations = true;
+  if (which === 'portals') dirtyPortals = true;
   saveBtn.disabled = false;
   const parts = [];
   if (dirtyTiles) parts.push('tiles');
@@ -2436,6 +2755,7 @@ function markDirty(which) {
   if (dirtyLootGroups) parts.push('loot groups');
   if (dirtyLootTables) parts.push('loot tables');
   if (dirtyAnimations) parts.push('animations');
+  if (dirtyPortals) parts.push('portals');
   saveStatus.textContent = `(unsaved: ${parts.join(', ')})`;
   saveStatus.style.color = '#fa0';
 }
@@ -2515,6 +2835,16 @@ async function saveAll() {
       if (!res.ok) throw new Error('animations: ' + res.statusText);
       dirtyAnimations = false;
       results.push('animations');
+    }
+    if (dirtyPortals) {
+      const res = await fetch('/gamedata/portals', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(portals, null, '\t')
+      });
+      if (!res.ok) throw new Error('portals: ' + res.statusText);
+      dirtyPortals = false;
+      results.push('portals');
     }
     saveStatus.textContent = `Saved ${results.join(', ')}!`;
     saveStatus.style.color = '#8f8';
@@ -2621,6 +2951,7 @@ function bindEvents() {
 
   // Items
   document.getElementById('itemSearch').addEventListener('input', (e) => renderItemList(e.target.value));
+  document.getElementById('addItemBtn').addEventListener('click', addItem);
   document.getElementById('itemBackBtn').addEventListener('click', deselectItem);
   document.getElementById('applyItemBtn').addEventListener('click', applyItemDetail);
   document.getElementById('viewProjGroupBtn').addEventListener('click', viewProjGroup);
@@ -2652,6 +2983,7 @@ function bindEvents() {
 
   // Maps
   document.getElementById('mapSearch').addEventListener('input', (e) => renderMapList(e.target.value));
+  document.getElementById('addMapBtn').addEventListener('click', addMap);
   document.getElementById('mapBackBtn').addEventListener('click', deselectMap);
   document.getElementById('mapLayerSelect').addEventListener('change', renderMapCanvas);
   document.getElementById('mapShowGrid').addEventListener('change', drawMapOverlay);
@@ -2771,6 +3103,16 @@ function bindEvents() {
   document.getElementById('addLgBtn').addEventListener('click', addLootGroup);
   document.getElementById('deleteLgBtn').addEventListener('click', deleteLootGroup);
   document.getElementById('lgAddItemBtn').addEventListener('click', addItemToLootGroup);
+
+  // Portals
+  document.getElementById('portalSearch').addEventListener('input', (e) => renderPortalList(e.target.value));
+  document.getElementById('portalBackBtn').addEventListener('click', deselectPortal);
+  document.getElementById('applyPortalBtn').addEventListener('click', applyPortalDetail);
+  document.getElementById('addPortalBtn').addEventListener('click', addPortal);
+  document.getElementById('deletePortalBtn').addEventListener('click', deletePortal);
+  document.getElementById('portalSprite').addEventListener('change', updatePortalPreview);
+  document.getElementById('portalRow').addEventListener('change', updatePortalPreview);
+  document.getElementById('portalCol').addEventListener('change', updatePortalPreview);
 
   // Tile picker modal
   document.getElementById('pickerCloseBtn').addEventListener('click', closeTilePicker);

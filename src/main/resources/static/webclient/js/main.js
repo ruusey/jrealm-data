@@ -43,7 +43,7 @@ const SPRITE_SHEETS = [
     'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png', 'rotmg-tiles-all.png',
     'rotmg-abilities.png', 'rotmg-misc.png',
     'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
-    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png',
+    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png', 'lofiObj3.png',
     'chars8x8rBeach.png', 'chars8x8rHero2.png', 'cursedLibraryChars16x16.png',
     'd3Chars8x8r.png', 'cursedLibraryChars8x8.png', 'cursedLibraryObjects8x8.png',
     'archbishopObjects16x16.png', 'autumnNexusObjects16x16.png',
@@ -870,7 +870,19 @@ function processInput(dt) {
     // Tick down shooting animation timer
     if (game.shootingAnimTimer > 0) {
         game.shootingAnimTimer -= dt;
-        if (game.shootingAnimTimer <= 0) game.shootingAnim = null;
+        if (game.shootingAnimTimer <= 0) {
+            game.shootingAnim = null;
+            game.attackFrame = 0;
+            game.attackFrameTimer = 0;
+        }
+    }
+    // Cycle attack animation frames while shooting
+    if (game.shootingAnim) {
+        game.attackFrameTimer += dt;
+        if (game.attackFrameTimer > 0.08) { // ~80ms per frame
+            game.attackFrameTimer = 0;
+            game.attackFrame++;
+        }
     }
 
     if (wantsShoot && !isMouseOverHud && shootCooldown <= 0 && renderer) {
@@ -900,7 +912,7 @@ function processInput(dt) {
             } else {
                 game.shootingAnim = 'attack_up';
             }
-            game.shootingAnimTimer = 0.15; // show attack frame for 150ms
+            game.shootingAnimTimer = 0.3; // hold attack anim; refreshes each shot
             const weapon = game.inventory.length > 0 ? game.inventory[0] : null;
             const projGroupId = weapon ? weapon.damage.projectileGroupId : 0;
             network.sendShoot(
