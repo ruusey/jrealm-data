@@ -867,6 +867,12 @@ function processInput(dt) {
     if (shootCooldown > 0) shootCooldown -= dt;
     const aim = isTouchDevice() ? getAimDir() : null;
     const wantsShoot = aim ? aim.shooting : input.wantsShoot();
+    // Tick down shooting animation timer
+    if (game.shootingAnimTimer > 0) {
+        game.shootingAnimTimer -= dt;
+        if (game.shootingAnimTimer <= 0) game.shootingAnim = null;
+    }
+
     if (wantsShoot && !isMouseOverHud && shootCooldown <= 0 && renderer) {
         let world;
         if (aim && aim.shooting) {
@@ -882,6 +888,19 @@ function processInput(dt) {
         }
         const local = game.getLocalPlayer();
         if (local) {
+            // Determine attack animation from aim direction relative to player
+            const relX = world.x - local.pos.x;
+            const relY = world.y - local.pos.y;
+            if (Math.abs(relX) > Math.abs(relY)) {
+                game.shootingAnim = 'attack_side';
+                // Flip sprite to face aim direction
+                local.facing = relX < 0 ? 'left' : 'right';
+            } else if (relY > 0) {
+                game.shootingAnim = 'attack_down';
+            } else {
+                game.shootingAnim = 'attack_up';
+            }
+            game.shootingAnimTimer = 0.15; // show attack frame for 150ms
             const weapon = game.inventory.length > 0 ? game.inventory[0] : null;
             const projGroupId = weapon ? weapon.damage.projectileGroupId : 0;
             network.sendShoot(

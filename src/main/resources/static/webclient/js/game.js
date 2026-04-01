@@ -54,6 +54,10 @@ export class GameState {
         this.tradeSelection = null;  // NetTradeSelection from server
         this.tradeConfirmed = false;
 
+        // Shooting animation state: set to attack anim name while firing, null otherwise
+        this.shootingAnim = null;
+        this.shootingAnimTimer = 0;
+
         // Floating damage text
         this.damageTexts = []; // {text, x, y, color, life}
 

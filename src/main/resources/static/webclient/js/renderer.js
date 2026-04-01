@@ -392,7 +392,16 @@ export class GameRenderer {
             sheetKey = animDef.spriteKey.replace('.png', '');
             const isMoving = Math.abs(player.dx || 0) > 0.1 || Math.abs(player.dy || 0) > 0.1;
             const isVertical = Math.abs(player.dy || 0) > Math.abs(player.dx || 0);
-            let animName = isMoving ? (isVertical ? 'walk_front' : 'walk_side') : (isVertical ? 'idle_front' : 'idle_side');
+            const isBack = isVertical && (player.dy || 0) < 0;
+            let animName;
+            // Attack animation takes priority (local player only — we know aim direction)
+            if (isLocal && gameState.shootingAnim) {
+                animName = gameState.shootingAnim;
+            } else if (isMoving) {
+                animName = isVertical ? (isBack ? 'walk_back' : 'walk_front') : 'walk_side';
+            } else {
+                animName = isVertical ? (isBack ? 'idle_back' : 'idle_front') : 'idle_side';
+            }
             const anim = animDef.animations[animName] || animDef.animations['idle_side'];
             const frames = anim.frames;
             const fIdx = isMoving ? (player.animFrame % frames.length) : 0;

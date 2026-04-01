@@ -1989,7 +1989,7 @@ function renderPickerList(filter) {
 }
 
 // ========== ANIMATIONS ==========
-const ANIM_SET_NAMES = ['idle_side','walk_side','attack_side','idle_front','walk_front','attack_down','attack_up'];
+const ANIM_SET_NAMES = ['idle_side','walk_side','attack_side','idle_front','walk_front','attack_down','idle_back','walk_back','attack_up'];
 
 function renderAnimList(filter = '') {
   const list = document.getElementById('animListView');
