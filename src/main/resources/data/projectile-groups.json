@@ -11,7 +11,7 @@
 				"damage": 50,
 				"angle": -0.15,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.8,
 				"flags": [
 					0,
@@ -24,7 +24,7 @@
 				"damage": 50,
 				"angle": 0,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.8,
 				"flags": [
 					0,
@@ -37,33 +37,7 @@
 				"damage": 50,
 				"angle": 0.15,
 				"range": 512,
-				"size": 16,
-				"magnitude": 3.8,
-				"flags": [
-					0,
-					10
-				]
-			},
-			{
-				"projectileId": 0,
-				"positionMode": 0,
-				"damage": 50,
-				"angle": -0.3,
-				"range": 216,
-				"size": 16,
-				"magnitude": 3.8,
-				"flags": [
-					0,
-					10
-				]
-			},
-			{
-				"projectileId": 0,
-				"positionMode": 0,
-				"damage": 50,
-				"angle": 0.3,
-				"range": 216,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.8,
 				"flags": [
 					0,
@@ -3538,9 +3512,9 @@
 				"positionMode": 0,
 				"damage": 55,
 				"angle": -0.5,
-				"range": 150,
-				"size": 12,
-				"magnitude": 5,
+				"range": 200,
+				"size": 20,
+				"magnitude": 4,
 				"flags": [
 					14
 				]
@@ -3550,9 +3524,9 @@
 				"positionMode": 0,
 				"damage": 55,
 				"angle": -0.25,
-				"range": 150,
-				"size": 12,
-				"magnitude": 5,
+				"range": 200,
+				"size": 20,
+				"magnitude": 4,
 				"flags": [
 					14
 				]
@@ -3562,9 +3536,9 @@
 				"positionMode": 0,
 				"damage": 55,
 				"angle": 0.5,
-				"range": 150,
-				"size": 12,
-				"magnitude": 5,
+				"range": 200,
+				"size": 20,
+				"magnitude": 4,
 				"flags": [
 					14
 				]
@@ -3573,10 +3547,10 @@
 				"projectileId": 53,
 				"positionMode": 0,
 				"damage": 55,
-				"angle": 0.75,
-				"range": 150,
-				"size": 12,
-				"magnitude": 5,
+				"angle": "0.25",
+				"range": 200,
+				"size": 20,
+				"magnitude": 4,
 				"flags": [
 					14
 				]

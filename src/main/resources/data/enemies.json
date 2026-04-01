@@ -1116,7 +1116,7 @@
 		"attackId": 53,
 		"xp": 275,
 		"health": 250,
-		"maxSpeed": 2.4,
+		"maxSpeed": 2.5,
 		"chaseRange": 360,
 		"attackRange": 180,
 		"stats": {
@@ -2036,7 +2036,7 @@
 		"row": 0,
 		"col": 0,
 		"spriteSize": 8,
-		"size": 24,
+		"size": 32,
 		"health": 120,
 		"maxSpeed": 1,
 		"chaseRange": 200,
@@ -2059,7 +2059,7 @@
 				"hpThreshold": 1,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 1.15,
+					"speed": 0.5,
 					"chargeDistanceMin": 40,
 					"pauseMs": 300
 				},
@@ -2077,7 +2077,7 @@
 				"hpThreshold": 0.3,
 				"movement": {
 					"type": "FLEE",
-					"speed": 1.5,
+					"speed": 0.5,
 					"fleeRange": 120
 				},
 				"attacks": [
