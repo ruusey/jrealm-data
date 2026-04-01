@@ -336,9 +336,9 @@
 	{
 		"enemyId": 10,
 		"name": "Cyclops",
-		"spriteKey": "rotmg-bosses.png",
-		"row": 0,
-		"col": 2,
+		"spriteKey": "archbishopObjects16x16.png",
+		"row": 2,
+		"col": 10,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
@@ -350,8 +350,14 @@
 		"stats": {
 			"hp": 700,
 			"def": 5,
-			"dex": 10
-		}
+			"dex": 10,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 11,
@@ -640,9 +646,9 @@
 	{
 		"enemyId": 24,
 		"name": "Shadow Bat",
-		"spriteKey": "lofi_char.png",
-		"row": 9,
-		"col": 6,
+		"spriteKey": "cursedLibraryChars16x16.png",
+		"row": 14,
+		"col": 2,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 42,
@@ -654,8 +660,14 @@
 		"stats": {
 			"hp": 900,
 			"def": 5,
-			"dex": 22
-		}
+			"dex": 22,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 25,
@@ -1526,9 +1538,9 @@
 	{
 		"enemyId": 39,
 		"name": "Basilisk King",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
-		"col": 7,
+		"spriteKey": "cursedLibraryChars16x16.png",
+		"row": 15,
+		"col": 1,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 61,
@@ -1540,7 +1552,12 @@
 		"stats": {
 			"hp": 4500,
 			"def": 18,
-			"dex": 16
+			"dex": 16,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
@@ -2203,8 +2220,8 @@
 	{
 		"enemyId": 54,
 		"name": "Dire Wolf",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
+		"spriteKey": "epicHiveChars8x8.png",
+		"row": 8,
 		"col": 0,
 		"spriteSize": 8,
 		"size": 28,
@@ -2220,7 +2237,7 @@
 			"def": 3,
 			"att": 0,
 			"spd": 0,
-			"dex": 0,
+			"dex": 5,
 			"vit": 0,
 			"wis": 0
 		},
@@ -2440,9 +2457,9 @@
 	{
 		"enemyId": 57,
 		"name": "Flame Wraith",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 12,
-		"col": 4,
+		"spriteKey": "lairOfDraconisChars8x8.png",
+		"row": 2,
+		"col": 2,
 		"spriteSize": 8,
 		"size": 32,
 		"health": 700,
@@ -3150,9 +3167,9 @@
 	{
 		"enemyId": 65,
 		"name": "Oryx the Mad God",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
-		"col": 4,
+		"spriteKey": "secludedThicketChars16x16.png",
+		"row": 4,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
