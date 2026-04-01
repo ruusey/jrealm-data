@@ -43,7 +43,8 @@ const SPRITE_SHEETS = [
     'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png', 'rotmg-tiles-all.png',
     'rotmg-abilities.png', 'rotmg-misc.png',
     'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
-    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png'
+    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png',
+    'chars8x8rBeach.png', 'chars8x8rHero2.png', 'cursedLibraryChars16x16.png'
 ];
 
 // --- Screen Management ---

@@ -572,7 +572,6 @@ export class GameRenderer {
 
         // Data-driven loot sprite lookup
         let tex = null;
-        const lootDef = gameState?.lootContainerDefs?.[tier];
         if (lootDef) {
             tex = this.getRegion(lootDef.spriteKey.replace('.png', ''), lootDef.col, lootDef.row, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
         } else if (isChest) {
