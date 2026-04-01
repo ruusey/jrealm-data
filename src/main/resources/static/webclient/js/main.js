@@ -1138,6 +1138,7 @@ let isMouseOverHud = false; // Prevents shooting/ability when hovering over UI
 let dragSlot = -1; // Slot being dragged (-1 = none)
 let dragEl = null; // Floating drag element
 let lastLootKey = '';
+let lastTouchTime = 0; // Tracks recent touch events to filter synthetic mouse events
 // Sprite data URL cache to avoid re-extracting every frame
 const spriteCache = {};
 
@@ -1331,14 +1332,37 @@ function createSlot(item, label, slotIdx, isLoot = false) {
     // Right click (desktop) = drop
     div.addEventListener('contextmenu', (e) => { e.preventDefault(); e.stopPropagation(); onSlotRightClick(slotIdx, item); });
 
-    // Drag start (desktop)
+    // Drag start (desktop only - skip on touch devices to not interfere with taps)
     div.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return; // left click only
+        // Skip if this is a touch-originated mouse event
+        if (e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents) return;
+        // Fallback: skip if we've seen a recent touch event (within 500ms)
+        if (Date.now() - lastTouchTime < 500) return;
         if (item && item.itemId >= 0) {
             e.preventDefault();
             startDrag(slotIdx, item, e);
         }
     });
+
+    // Touch-based drag start (with hold delay to distinguish from tap)
+    let touchHoldTimer = null;
+    div.addEventListener('touchstart', (e) => {
+        lastTouchTime = Date.now();
+        if (!item || item.itemId < 0) return;
+        const touch = e.touches[0];
+        touchHoldTimer = setTimeout(() => {
+            startDrag(slotIdx, item, { clientX: touch.clientX, clientY: touch.clientY });
+        }, 300); // Start drag after 300ms hold
+    }, { passive: true });
+
+    div.addEventListener('touchend', () => {
+        if (touchHoldTimer) { clearTimeout(touchHoldTimer); touchHoldTimer = null; }
+    });
+
+    div.addEventListener('touchmove', () => {
+        if (touchHoldTimer) { clearTimeout(touchHoldTimer); touchHoldTimer = null; }
+    }, { passive: true });
 
     return div;
 }
@@ -1488,6 +1512,25 @@ function cleanupDrag() {
 
 document.addEventListener('mousemove', moveDrag);
 document.addEventListener('mouseup', endDrag);
+
+// Touch event handlers for drag operations (ensures cleanup on mobile)
+document.addEventListener('touchmove', (e) => {
+    if (dragSlot < 0 || !dragEl) return;
+    const touch = e.touches[0];
+    if (touch) moveDrag({ clientX: touch.clientX, clientY: touch.clientY });
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+    if (dragSlot < 0) return;
+    const touch = e.changedTouches[0];
+    if (touch) {
+        endDrag({ clientX: touch.clientX, clientY: touch.clientY });
+    } else {
+        cleanupDrag();
+    }
+});
+
+document.addEventListener('touchcancel', cleanupDrag);
 
 // --- Chat ---
 function addChatMessage(from, message) {
