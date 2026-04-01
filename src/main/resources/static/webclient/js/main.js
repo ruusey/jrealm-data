@@ -45,7 +45,12 @@ const SPRITE_SHEETS = [
     'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
     'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png',
     'chars8x8rBeach.png', 'chars8x8rHero2.png', 'cursedLibraryChars16x16.png',
-    'd3Chars8x8r.png', 'cursedLibraryChars8x8.png'
+    'd3Chars8x8r.png', 'cursedLibraryChars8x8.png',
+    'archbishopObjects16x16.png', 'autumnNexusObjects16x16.png',
+    'chars16x16dEncounters2.png', 'crystalCaveChars16x16.png',
+    'epicHiveChars8x8.png', 'lairOfDraconisChars8x8.png',
+    'oryxHordeChars16x16.png', 'oryxHordeChars8x8.png',
+    'secludedThicketChars16x16.png'
 ];
 
 // --- Screen Management ---
@@ -1412,6 +1417,8 @@ function toggleTradeSelection(slotIdx) {
 
 // Drop selected item when clicking game canvas (outside inventory)
 document.getElementById('game-canvas-container').addEventListener('click', () => {
+    // Blur chat input when clicking on game canvas — returns keyboard to game
+    document.getElementById('chat-input').blur();
     if (selectedSlot >= 0 && selectedSlot <= 11 && currentScreen === 'game') {
         // console.log(`[INV] Dropping item from slot ${selectedSlot} (canvas click)`);
         network.sendMoveItem(game.playerId, -1, selectedSlot, true, false);
@@ -1507,6 +1514,10 @@ function escapeHtml(s) {
 const chatInput = document.getElementById('chat-input');
 chatInput.addEventListener('focus', () => { input.chatMode = true; });
 chatInput.addEventListener('blur', () => { input.chatMode = false; });
+// Click anywhere outside chat = return focus to game
+document.getElementById('hud').addEventListener('mousedown', (e) => {
+    if (e.target !== chatInput) chatInput.blur();
+});
 chatInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         const msg = chatInput.value.trim();
