@@ -383,15 +383,30 @@ export class GameRenderer {
         const sy = player.pos.y * SCALE + offsetY;
         const size = (player.size || PLAYER_SIZE) * SCALE;
 
-        // Try to use sprite sheet
+        // Animation-driven sprite selection
         const classId = player.classId || 0;
-        const sheetIdx = Math.floor(classId / 3);
-        const localRow = (classId % 3) * 4;
-        const sheetKey = `rotmg-classes-${sheetIdx}`;
+        const animDef = gameState.animations?.[`player:${classId}`];
+        let sheetKey, frameCol, row;
 
-        const isMoving = Math.abs(player.dx || 0) > 0.1 || Math.abs(player.dy || 0) > 0.1;
-        const frameCol = isMoving ? player.animFrame : 0;
-        const row = localRow; // Side walk row
+        if (animDef) {
+            sheetKey = animDef.spriteKey.replace('.png', '');
+            const isMoving = Math.abs(player.dx || 0) > 0.1 || Math.abs(player.dy || 0) > 0.1;
+            const isVertical = Math.abs(player.dy || 0) > Math.abs(player.dx || 0);
+            let animName = isMoving ? (isVertical ? 'walk_front' : 'walk_side') : (isVertical ? 'idle_front' : 'idle_side');
+            const anim = animDef.animations[animName] || animDef.animations['idle_side'];
+            const frames = anim.frames;
+            const fIdx = isMoving ? (player.animFrame % frames.length) : 0;
+            row = frames[fIdx].row;
+            frameCol = frames[fIdx].col;
+        } else {
+            // Legacy fallback
+            const sheetIdx = Math.floor(classId / 3);
+            const localRow = (classId % 3) * 4;
+            sheetKey = `rotmg-classes-${sheetIdx}`;
+            const isMoving = Math.abs(player.dx || 0) > 0.1 || Math.abs(player.dy || 0) > 0.1;
+            frameCol = isMoving ? player.animFrame : 0;
+            row = localRow;
+        }
 
         // Circular ground shadow under player
         const pShadow = new PIXI.Graphics();
@@ -535,17 +550,18 @@ export class GameRenderer {
 
     // renderBullet removed — bullets are now batched inline in renderEntities()
 
-    renderLootContainer(loot, offsetX, offsetY) {
+    renderLootContainer(loot, offsetX, offsetY, gameState) {
         const sx = loot.pos.x * SCALE + offsetX;
         const sy = loot.pos.y * SCALE + offsetY;
         const fullSize = this.tileSize * SCALE;
         const tier = loot.tier;
         const isChest = loot.isChest || tier === -1;
+        const lootDef = gameState?.lootContainerDefs?.[tier];
+        const renderFull = lootDef ? lootDef.fullSize : isChest;
 
-        // Chests render full size, loot bags render at half size (centered)
-        const size = isChest ? fullSize : fullSize / 2;
-        const ox = isChest ? 0 : fullSize / 4; // Center half-size bags
-        const oy = isChest ? 0 : fullSize / 4;
+        const size = renderFull ? fullSize : fullSize / 2;
+        const ox = renderFull ? 0 : fullSize / 4;
+        const oy = renderFull ? 0 : fullSize / 4;
 
         // Circular ground shadow (slightly below sprite)
         const shadowG = new PIXI.Graphics();
@@ -554,12 +570,13 @@ export class GameRenderer {
         shadowG.endFill();
         this.entityLayer.addChild(shadowG);
 
-        // Loot sprite lookup
+        // Data-driven loot sprite lookup
         let tex = null;
-        if (isChest) {
-            tex = this.getRegion('rotmg-projectiles', 2, 0, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
-        } else if (tier === 5) {
-            tex = this.getRegion('rotmg-projectiles', 3, 1, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
+        const lootDef = gameState?.lootContainerDefs?.[tier];
+        if (lootDef) {
+            tex = this.getRegion(lootDef.spriteKey.replace('.png', ''), lootDef.col, lootDef.row, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
+        } else if (isChest) {
+            tex = this.getRegion('rotmg-projectiles-1', 2, 0, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
         } else {
             const col = (tier >= 0 && tier < 5) ? tier : 0;
             tex = this.getRegion('rotmg-misc', col, 9, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);

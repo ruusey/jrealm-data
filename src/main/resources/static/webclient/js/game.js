@@ -307,8 +307,6 @@ export class GameState {
                 console.log(`[INV] First UpdatePacket inventory: len=${packet.inventory?.length}, ids=[${ids.join(',')}]`);
             }
             this.inventory = packet.inventory;
-            this.effectIds = packet.effectIds;
-            this.effectTimes = packet.effectTimes;
             this.playerName = packet.playerName;
         }
         const player = this.players.get(packet.playerId);
@@ -319,6 +317,25 @@ export class GameState {
             player.mana = packet.mana;
             player.maxMana = packet.stats.mp;
             player.stats = packet.stats;
+        }
+        const enemy = this.enemies.get(packet.playerId);
+        if (enemy) {
+            enemy.health = packet.health;
+        }
+    }
+
+    handlePlayerState(packet) {
+        const isLocal = packet.playerId === this.playerId;
+        if (isLocal) {
+            this.health = packet.health;
+            this.mana = packet.mana;
+            this.effectIds = packet.effectIds;
+            this.effectTimes = packet.effectTimes;
+        }
+        const player = this.players.get(packet.playerId);
+        if (player) {
+            player.health = packet.health;
+            player.mana = packet.mana;
             player.effectIds = packet.effectIds;
         }
         const enemy = this.enemies.get(packet.playerId);

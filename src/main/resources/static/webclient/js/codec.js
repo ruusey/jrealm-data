@@ -258,7 +258,8 @@ export const PacketId = {
     USE_ABILITY: 11, MOVE_ITEM: 12, USE_PORTAL: 13, TEXT_EFFECT: 14,
     PLAYER_DEATH: 15, REQUEST_TRADE: 16, ACCEPT_TRADE: 17,
     UPDATE_TRADE_SELECTION: 18, UPDATE_TRADE: 19, DEATH_ACK: 20,
-    CREATE_EFFECT: 21, LOGIN_ACK: 22, GLOBAL_PLAYER_POSITION: 23
+    CREATE_EFFECT: 21, LOGIN_ACK: 22, GLOBAL_PLAYER_POSITION: 23,
+    PLAYER_STATE: 24
 };
 
 // ---- Packet Readers (server → client packets read from binary) ----
@@ -268,7 +269,12 @@ export const PacketReaders = {
         return {
             playerId: r.readLong(), playerName: r.readString(), stats: NetStats.read(r),
             health: r.readInt(), mana: r.readInt(), experience: r.readLong(),
-            inventory: r.readArray(rr => NetGameItem.read(rr)),
+            inventory: r.readArray(rr => NetGameItem.read(rr))
+        };
+    },
+    [PacketId.PLAYER_STATE](r) {
+        return {
+            playerId: r.readLong(), health: r.readInt(), mana: r.readInt(),
             effectIds: r.readShortArray(), effectTimes: r.readLongArray()
         };
     },
@@ -458,7 +464,8 @@ const PACKET_NAMES = {
     11:'USE_ABILITY', 12:'MOVE_ITEM', 13:'USE_PORTAL', 14:'TEXT_EFFECT',
     15:'PLAYER_DEATH', 16:'REQUEST_TRADE', 17:'ACCEPT_TRADE',
     18:'UPDATE_TRADE_SELECTION', 19:'UPDATE_TRADE', 20:'DEATH_ACK',
-    21:'CREATE_EFFECT', 22:'LOGIN_ACK', 23:'GLOBAL_PLAYER_POSITION'
+    21:'CREATE_EFFECT', 22:'LOGIN_ACK', 23:'GLOBAL_PLAYER_POSITION',
+    24:'PLAYER_STATE'
 };
 
 export function parseFrame(arrayBuffer) {

@@ -472,7 +472,7 @@ async function startGame() {
 
     // Load game data
     try {
-        const [tileData, enemyData, itemData, charClasses, portalData, projGroups, expLevels, mapData, lootContainerDefs] = await Promise.all([
+        const [tileData, enemyData, itemData, charClasses, portalData, projGroups, expLevels, mapData, lootContainerDefs, animData] = await Promise.all([
             api.getGameData('tiles.json'),
             api.getGameData('enemies.json'),
             api.getGameData('game-items.json'),
@@ -481,7 +481,8 @@ async function startGame() {
             api.getGameData('projectile-groups.json'),
             api.getGameData('exp-levels.json'),
             api.getGameData('maps.json'),
-            api.getGameData('loot-containers.json')
+            api.getGameData('loot-containers.json'),
+            api.getGameData('animations.json')
         ]);
 
         // Index by ID
@@ -500,6 +501,10 @@ async function startGame() {
         // Index loot container definitions by tierId
         game.lootContainerDefs = {};
         if (Array.isArray(lootContainerDefs)) lootContainerDefs.forEach(d => game.lootContainerDefs[d.tierId] = d);
+
+        // Index animation definitions by "type:id" key
+        game.animations = {};
+        if (Array.isArray(animData)) animData.forEach(a => game.animations[`${a.objectType}:${a.objectId}`] = a);
 
         if (Array.isArray(portalData)) portalData.forEach(p => game.portalData[p.portalId] = p);
         else game.portalData = portalData;
@@ -706,6 +711,10 @@ function setupNetworkHandlers() {
         if (data.playerId === game.playerId) {
             handlePlayerDeath();
         }
+    });
+
+    network.on(PacketId.PLAYER_STATE, (data) => {
+        game.handlePlayerState(data);
     });
 
     network.on(PacketId.GLOBAL_PLAYER_POSITION, (data) => {
