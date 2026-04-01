@@ -244,21 +244,21 @@
 		]
 	},
 	{
-		"lootGroupId": 23,
-		"lootGroupName": "Tier 6 Armor",
-		"potentialDrops": [
-			37,
-			66,
-			111
-		]
-	},
-	{
 		"lootGroupId": 22,
 		"lootGroupName": "Tier 7 Armor",
 		"potentialDrops": [
 			38,
 			66,
 			112
+		]
+	},
+	{
+		"lootGroupId": 23,
+		"lootGroupName": "Tier 6 Armor",
+		"potentialDrops": [
+			37,
+			66,
+			111
 		]
 	},
 	{
@@ -510,6 +510,18 @@
 			55,
 			56,
 			57
+		]
+	},
+	{
+		"lootGroupId": 40,
+		"lootGroupName": "Untiered",
+		"potentialDrops": [
+			48,
+			47,
+			49,
+			277,
+			158,
+			89
 		]
 	}
 ]

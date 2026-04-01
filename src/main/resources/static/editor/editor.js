@@ -37,6 +37,7 @@ function authHeaders() {
 }
 
 const SPRITE_SHEETS = [
+  // Original sheets
   'rotmg-tiles-all.png','rotmg-tiles.png','rotmg-tiles-1.png','rotmg-tiles-2.png',
   'rotmg-tiles-1_0.png','rotmg-tiles-1_.png',
   'rotmg-misc.png','lofi_environment.png','lofi_obj.png',
@@ -45,6 +46,101 @@ const SPRITE_SHEETS = [
   'rotmg-items.png','rotmg-items-1.png',
   'rotmg-projectiles.png','rotmg-abilities.png',
   'rotmg-bosses.png','rotmg-bosses-1.png','rotmg-bosses-1_.png',
+  'rotmg-classes-0.png','rotmg-classes-1.png','rotmg-classes-2.png','rotmg-classes-3.png',
+  'lofi_classes.png',
+  // Backgrounds & misc
+  'DarknessBackground.png','StarburstSpinner.png','cursors.png','stars.png',
+  'sidesMask.png','innerMask.png','innerP1Mask.png','innerP2Mask.png',
+  'theGoldenArcher.png','theGoldenArcherMask.png',
+  // Hanami / Sakura
+  'Hanami8x8chars.png','HanamiParts8x8.png',
+  'SakuraEnvironment16x16.png','SakuraEnvironment8x8.png',
+  // Lofi sheets
+  'lofi.png','lofiChar.png','lofiChar2.png','lofiCharBig.png',
+  'lofiEnvironment.png','lofiEnvironment2.png','lofiEnvironment3.png',
+  'lofiGravestone.png','lofiInterface.png','lofiInterface2.png','lofiInterfaceBig.png',
+  'lofiObj.png','lofiObj2.png','lofiObj3.png','lofiObj4.png','lofiObj40x40.png',
+  'lofiObj5.png','lofiObj5b.png','lofiObj6.png','lofiObjBig.png',
+  'lofiParts.png','lofiProjs.png','lofiProjsBig.png',
+  // Lofi particles
+  'lofiParticlesBeam.png','lofiParticlesElectric.png','lofiParticlesHolyBeam.png',
+  'lofiParticlesMeteor.png','lofiParticlesShocker.png','lofiParticlesSkull.png',
+  'lofiParticlesTelegraph.png',
+  // Textiles
+  'textile4x4.png','textile5x5.png','textile9x9.png','textile10x10.png',
+  // Generic char sheets
+  'chars8x8dBeach.png','chars8x8dEncounters.png','chars8x8dHero1.png',
+  'chars8x8rBeach.png','chars8x8rEncounters.png','chars8x8rHero1.png','chars8x8rHero2.png',
+  'chars8x8rHigh.png','chars8x8rLow1.png','chars8x8rLow2.png',
+  'chars8x8rMid.png','chars8x8rMid2.png',
+  'chars8x8rPets1.png','chars8x8rPets1Mask.png','chars8x8rPets2.png','chars8x8rPetsKaratePenguin.png',
+  'chars16x8dEncounters.png','chars16x8rEncounters.png',
+  'chars16x16dEncounters.png','chars16x16dEncounters2.png',
+  'chars16x16dMountains1.png','chars16x16dMountains2.png','chars16x16rEncounters.png',
+  // Dungeon sheets (d1-d3)
+  'd1Chars16x16r.png','d1Chars8x8r.png','d1LofiObj.png','d1LofiObjBig.png',
+  'd2Chars16x16r.png','d2LofiObj.png','d2LofiObjBig.png',
+  'd3Chars16x16r.png','d3Chars8x8r.png','d3LofiObj.png','d3LofiObjBig.png',
+  // Ancient Ruins
+  'ancientRuinsChars16x16.png','ancientRuinsChars8x8.png',
+  'ancientRuinsObjects16x16.png','ancientRuinsObjects8x8.png',
+  // Archbishop
+  'archbishopChars16x16.png','archbishopChars8x8.png',
+  'archbishopObjects16x16.png','archbishopObjects64x64.png','archbishopObjects8x8.png',
+  // Autumn Nexus
+  'autumnNexusChars16x16.png','autumnNexusChars8x8.png',
+  'autumnNexusObjects16x16.png','autumnNexusObjects8x8.png',
+  // Battle Oryx
+  'battleOryxChars16x16.png','battleOryxChars8x8.png',
+  'battleOryxObjects16x16.png','battleOryxObjects8x8.png',
+  // Buffed Bunny
+  'buffedBunnyChars16x16.png','buffedBunnyObjects16x16.png','buffedBunnyObjects8x8.png',
+  // Cnidarian Reef
+  'cnidarianReefObjects16x16.png','cnidarianReefObjects8x8.png',
+  // Crystal Cave
+  'crystalCaveChars16x16.png','crystalCaveChars8x8.png',
+  'crystalCaveObjects16x16.png','crystalCaveObjects8x8.png',
+  // Cursed Library
+  'cursedLibraryChars16x16.png','cursedLibraryChars8x8.png','cursedLibraryCharsAvalon16x16.png',
+  'cursedLibraryObjects16x16.png','cursedLibraryObjects8x8.png',
+  // Epic Hive
+  'epicHiveChars16x16.png','epicHiveChars8x8.png',
+  'epicHiveObjects16x16.png','epicHiveObjects8x8.png',
+  // Fungal Cavern
+  'fungalCavernChars16x16.png','fungalCavernChars8x8.png',
+  'fungalCavernObjects16x16.png','fungalCavernObjects8x8.png',
+  // Inner Workings
+  'innerWorkingsChars16x16.png','innerWorkingsChars8x8.png',
+  'innerWorkingsObjects16x16.png','innerWorkingsObjects8x8.png',
+  // Lair of Draconis
+  'lairOfDraconisChars16x16.png','lairOfDraconisChars8x8.png',
+  'lairOfDraconisObjects16x16.png','lairOfDraconisObjects8x8.png',
+  // Lair of Shaitan
+  'lairOfShaitanChars16x16.png','lairOfShaitanObjects16x16.png','lairOfShaitanObjects8x8.png',
+  // Lost Halls
+  'lostHallsChars16x16.png','lostHallsChars8x8.png',
+  'lostHallsObjects16x16.png','lostHallsObjects8x8.png',
+  // Magic Woods
+  'magicWoodsChars16x16.png','magicWoodsChars8x8.png',
+  'magicWoodsObjects16x16.png','magicWoodsObjects8x8.png',
+  // Mountain Temple
+  'mountainTempleChars16x16.png','mountainTempleChars8x8.png',
+  'mountainTempleObjects16x16.png','mountainTempleObjects8x8.png',
+  // Oryx Horde
+  'oryxHordeChars16x16.png','oryxHordeChars8x8.png',
+  'oryxHordeObjects16x16.png','oryxHordeObjects8x8.png',
+  // Oryx Sanctuary
+  'oryxSanctuaryChars16x16.png','oryxSanctuaryChars32x32.png','oryxSanctuaryChars8x8.png',
+  'oryxSanctuaryObjects16x16.png','oryxSanctuaryObjects32x32.png','oryxSanctuaryObjects8x8.png',
+  // Parasite Den
+  'parasiteDenChars16x16.png','parasiteDenChars8x8.png',
+  'parasiteDenObjects16x16.png','parasiteDenObjects8x8.png',
+  // Secluded Thicket
+  'secludedThicketChars16x16.png','secludedThicketChars8x8.png',
+  'secludedThicketObjects16x16.png','secludedThicketObjects8x8.png',
+  // Summer Nexus
+  'summerNexusChars16x16.png','summerNexusChars8x8.png',
+  'summerNexusObjects16x16.png','summerNexusObjects8x8.png',
 ];
 
 let tiles = [];
@@ -69,6 +165,11 @@ let dirtyMaps = false;
 let enemies = [];
 let selectedEnemy = null;
 let dirtyEnemies = false;
+let lootGroups = [];
+let lootTables = [];
+let selectedLootGroup = null;
+let dirtyLootGroups = false;
+let dirtyLootTables = false;
 let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
 let activeTab = 'tiles';
@@ -95,7 +196,7 @@ const goToSheetBtn = document.getElementById('goToSheetBtn');
 // ========== INIT ==========
 async function init() {
   populateSheetSelect();
-  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadImages()]);
+  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadLootData(), loadImages()]);
   renderSheet();
   renderTileList();
   renderTerrainList();
@@ -149,6 +250,15 @@ async function loadEnemies() {
     enemies = await (await fetch(`${BASE}/enemies.json`)).json();
     enemies.sort((a, b) => a.enemyId - b.enemyId);
     document.getElementById('enemyCount').textContent = enemies.length;
+}
+
+async function loadLootData() {
+    lootGroups = await (await fetch(`${BASE}/loot-groups.json`)).json();
+    lootGroups.sort((a, b) => a.lootGroupId - b.lootGroupId);
+    lootTables = await (await fetch(`${BASE}/loot-tables.json`)).json();
+    lootTables.sort((a, b) => a.enemyId - b.enemyId);
+    document.getElementById('lgCount').textContent = lootGroups.length;
+    document.getElementById('ltCount').textContent = lootTables.length;
 }
 
 function getProjGroupById(id) { return projGroups.find(g => g.projectileGroupId === id); }
@@ -833,6 +943,7 @@ function showEnemyDetail(enemy) {
     document.getElementById('eStatVit').value = s.vit || 0;
     document.getElementById('eStatWis').value = s.wis || 0;
     updateEnemyPreview();
+    renderEnemyLootSection(enemy);
     renderPhases(enemy);
 }
 
@@ -1867,6 +1978,246 @@ function renderPickerList(filter) {
   });
 }
 
+// ========== LOOT GROUPS ==========
+function renderLgList(filter = '') {
+  const list = document.getElementById('lgListView');
+  list.innerHTML = '';
+  const lower = (filter || '').toLowerCase();
+  lootGroups.forEach(lg => {
+    if (lower && !lg.lootGroupName.toLowerCase().includes(lower) && !String(lg.lootGroupId).includes(lower)) return;
+    const row = document.createElement('div');
+    row.className = 'tile-row' + (selectedLootGroup && selectedLootGroup.lootGroupId === lg.lootGroupId ? ' selected' : '');
+    const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = lg.lootGroupId;
+    const name = document.createElement('span'); name.className = 'tile-name'; name.textContent = lg.lootGroupName;
+    const count = document.createElement('span'); count.style.cssText = 'color:#888;font-size:11px';
+    count.textContent = `${lg.potentialDrops.length} items`;
+    row.append(id, name, count);
+    row.addEventListener('click', () => selectLootGroup(lg));
+    list.appendChild(row);
+  });
+}
+
+function selectLootGroup(lg) {
+  selectedLootGroup = lg;
+  document.getElementById('lgListView').style.display = 'none';
+  document.querySelector('#lootgroupsTab .tile-header').style.display = 'none';
+  showLgDetail(lg);
+}
+
+function deselectLootGroup() {
+  selectedLootGroup = null;
+  document.getElementById('lgDetail').style.display = 'none';
+  document.getElementById('lgListView').style.display = '';
+  document.querySelector('#lootgroupsTab .tile-header').style.display = '';
+  renderLgList(document.getElementById('lgSearch').value);
+}
+
+function showLgDetail(lg) {
+  document.getElementById('lgDetail').style.display = '';
+  document.getElementById('lgDetailTitle').textContent = lg.lootGroupName;
+  document.getElementById('lgDetailId').value = lg.lootGroupId;
+  document.getElementById('lgDetailName').value = lg.lootGroupName;
+  renderLgItems(lg);
+  renderLgEnemyUsage(lg);
+}
+
+function renderLgItems(lg) {
+  const container = document.getElementById('lgDetailItems');
+  container.innerHTML = '';
+  lg.potentialDrops.forEach((itemId, idx) => {
+    const item = items.find(i => i.itemId === itemId);
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:6px;padding:3px 4px;border-bottom:1px solid #222';
+    const cvs = document.createElement('canvas'); cvs.width = 24; cvs.height = 24;
+    if (item) {
+      const img = images[item.spriteKey];
+      if (img) {
+        const ss = gridSize;
+        const ctx = cvs.getContext('2d'); ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, (item.col || 0) * ss, (item.row || 0) * ss, ss, ss, 0, 0, 24, 24);
+      }
+    }
+    const idSpan = document.createElement('span'); idSpan.className = 'tile-id'; idSpan.textContent = itemId;
+    const nameSpan = document.createElement('span'); nameSpan.style.cssText = 'flex:1;font-size:12px;color:#ccc';
+    nameSpan.textContent = item ? item.name : '(unknown)';
+    const tierSpan = document.createElement('span'); tierSpan.style.cssText = 'font-size:10px;color:#888';
+    tierSpan.textContent = item ? `T${item.tier}` : '';
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '×';
+    removeBtn.addEventListener('click', () => {
+      lg.potentialDrops.splice(idx, 1);
+      markDirty('lootGroups');
+      renderLgItems(lg);
+    });
+    row.append(cvs, idSpan, nameSpan, tierSpan, removeBtn);
+    container.appendChild(row);
+  });
+}
+
+function renderLgEnemyUsage(lg) {
+  const container = document.getElementById('lgEnemyUsage');
+  container.innerHTML = '';
+  const groupKey = `group:${lg.lootGroupId}`;
+  for (const lt of lootTables) {
+    if (lt.drops && lt.drops[groupKey] !== undefined) {
+      const en = enemies.find(e => e.enemyId === lt.enemyId);
+      const div = document.createElement('div');
+      div.style.cssText = 'padding:2px 0';
+      div.textContent = `Enemy ${lt.enemyId} (${en ? en.name : '?'}) — ${(lt.drops[groupKey] * 100).toFixed(0)}% chance`;
+      container.appendChild(div);
+    }
+  }
+  if (!container.children.length) {
+    container.innerHTML = '<span style="color:#555">Not used by any enemy</span>';
+  }
+}
+
+function applyLgDetail() {
+  if (!selectedLootGroup) return;
+  selectedLootGroup.lootGroupName = document.getElementById('lgDetailName').value;
+  markDirty('lootGroups');
+  document.getElementById('lgDetailTitle').textContent = selectedLootGroup.lootGroupName;
+}
+
+function addLootGroup() {
+  const maxId = lootGroups.reduce((m, g) => Math.max(m, g.lootGroupId), -1);
+  const lg = { lootGroupId: maxId + 1, lootGroupName: 'New Loot Group', potentialDrops: [] };
+  lootGroups.push(lg);
+  markDirty('lootGroups');
+  renderLgList();
+  selectLootGroup(lg);
+}
+
+function deleteLootGroup() {
+  if (!selectedLootGroup) return;
+  if (!confirm(`Delete loot group "${selectedLootGroup.lootGroupName}"?`)) return;
+  lootGroups = lootGroups.filter(g => g.lootGroupId !== selectedLootGroup.lootGroupId);
+  markDirty('lootGroups');
+  deselectLootGroup();
+}
+
+function addItemToLootGroup() {
+  if (!selectedLootGroup) return;
+  // Open a simple item picker — reuse the existing item search pattern
+  const itemId = parseInt(prompt('Enter Item ID to add:'));
+  if (isNaN(itemId)) return;
+  const item = items.find(i => i.itemId === itemId);
+  if (!item) { alert('Item not found'); return; }
+  selectedLootGroup.potentialDrops.push(itemId);
+  markDirty('lootGroups');
+  renderLgItems(selectedLootGroup);
+}
+
+// ========== ENEMY LOOT TABLE INLINE EDITOR ==========
+function getLootTableForEnemy(enemyId) {
+  return lootTables.find(lt => lt.enemyId === enemyId);
+}
+
+function renderEnemyLootSection(enemy) {
+  const container = document.getElementById('enemyLootSection');
+  if (!container) return;
+  container.innerHTML = '';
+
+  let lt = getLootTableForEnemy(enemy.enemyId);
+  if (!lt) {
+    const btn = document.createElement('button');
+    btn.className = 'btn-add'; btn.textContent = '+ Create Loot Table';
+    btn.addEventListener('click', () => {
+      lootTables.push({ enemyId: enemy.enemyId, drops: { 'group:0': 1.0 }, portalDrops: {} });
+      markDirty('lootTables');
+      renderEnemyLootSection(enemy);
+    });
+    container.appendChild(btn);
+    return;
+  }
+
+  // Drops section
+  const dropsH = document.createElement('h4'); dropsH.textContent = 'Drops'; dropsH.style.margin = '4px 0';
+  container.appendChild(dropsH);
+
+  const dropsList = document.createElement('div');
+  dropsList.style.cssText = 'max-height:150px;overflow-y:auto';
+  Object.entries(lt.drops).forEach(([key, prob]) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid #222;font-size:12px';
+    const isGroup = key.startsWith('group:');
+    const refId = parseInt(key.split(':')[1]);
+    const label = document.createElement('span'); label.style.cssText = 'flex:1;color:#ccc';
+    if (isGroup) {
+      const lg = lootGroups.find(g => g.lootGroupId === refId);
+      label.textContent = `${key} (${lg ? lg.lootGroupName : '?'})`;
+      label.style.color = '#c8a86e';
+    } else {
+      const item = items.find(i => i.itemId === refId);
+      label.textContent = `${key} (${item ? item.name : '?'})`;
+    }
+    const probInput = document.createElement('input');
+    probInput.type = 'number'; probInput.step = '0.01'; probInput.min = '0'; probInput.max = '1';
+    probInput.value = prob; probInput.style.cssText = 'width:55px;font-size:11px';
+    probInput.addEventListener('change', () => {
+      lt.drops[key] = parseFloat(probInput.value) || 0;
+      markDirty('lootTables');
+    });
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '×';
+    removeBtn.addEventListener('click', () => {
+      delete lt.drops[key];
+      markDirty('lootTables');
+      renderEnemyLootSection(enemy);
+    });
+    row.append(label, probInput, removeBtn);
+    dropsList.appendChild(row);
+  });
+  container.appendChild(dropsList);
+
+  // Add drop buttons
+  const addRow = document.createElement('div');
+  addRow.style.cssText = 'display:flex;gap:4px;margin-top:4px';
+  const addGroupBtn = document.createElement('button');
+  addGroupBtn.className = 'btn-add'; addGroupBtn.textContent = '+ Group';
+  addGroupBtn.style.cssText = 'font-size:10px;padding:2px 6px';
+  addGroupBtn.addEventListener('click', () => {
+    const gid = prompt('Loot Group ID:');
+    if (gid === null) return;
+    lt.drops[`group:${gid}`] = 0.1;
+    markDirty('lootTables');
+    renderEnemyLootSection(enemy);
+  });
+  const addItemBtn = document.createElement('button');
+  addItemBtn.className = 'btn-add'; addItemBtn.textContent = '+ Item';
+  addItemBtn.style.cssText = 'font-size:10px;padding:2px 6px';
+  addItemBtn.addEventListener('click', () => {
+    const iid = prompt('Item ID:');
+    if (iid === null) return;
+    lt.drops[`item:${iid}`] = 0.05;
+    markDirty('lootTables');
+    renderEnemyLootSection(enemy);
+  });
+  addRow.append(addGroupBtn, addItemBtn);
+  container.appendChild(addRow);
+
+  // Portal drops
+  if (lt.portalDrops && Object.keys(lt.portalDrops).length > 0) {
+    const portalH = document.createElement('h4'); portalH.textContent = 'Portal Drops'; portalH.style.margin = '8px 0 4px';
+    container.appendChild(portalH);
+    Object.entries(lt.portalDrops).forEach(([portalId, prob]) => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:4px;padding:2px 0;font-size:12px';
+      const label = document.createElement('span'); label.style.cssText = 'flex:1;color:#8080e0';
+      label.textContent = `Portal ${portalId}`;
+      const probInput = document.createElement('input');
+      probInput.type = 'number'; probInput.step = '0.01'; probInput.min = '0'; probInput.max = '1';
+      probInput.value = prob; probInput.style.cssText = 'width:55px;font-size:11px';
+      probInput.addEventListener('change', () => {
+        lt.portalDrops[portalId] = parseFloat(probInput.value) || 0;
+        markDirty('lootTables');
+      });
+      row.append(label, probInput);
+      container.appendChild(row);
+    });
+  }
+}
+
 // ========== TABS ==========
 function switchTab(tab) {
   activeTab = tab;
@@ -1877,6 +2228,8 @@ function switchTab(tab) {
   document.getElementById('itemsTab').style.display = tab === 'items' ? '' : 'none';
   document.getElementById('enemiesTab').style.display = tab === 'enemies' ? '' : 'none';
   document.getElementById('projgroupsTab').style.display = tab === 'projgroups' ? '' : 'none';
+  document.getElementById('lootgroupsTab').style.display = tab === 'lootgroups' ? '' : 'none';
+  if (tab === 'lootgroups') renderLgList();
 }
 
 // ========== SAVE ==========
@@ -1887,6 +2240,8 @@ function markDirty(which) {
   if (which === 'projGroups') dirtyProjGroups = true;
   if (which === 'maps') dirtyMaps = true;
   if (which === 'enemies') dirtyEnemies = true;
+  if (which === 'lootGroups') dirtyLootGroups = true;
+  if (which === 'lootTables') dirtyLootTables = true;
   saveBtn.disabled = false;
   const parts = [];
   if (dirtyTiles) parts.push('tiles');
@@ -1895,6 +2250,8 @@ function markDirty(which) {
   if (dirtyProjGroups) parts.push('projectiles');
   if (dirtyMaps) parts.push('maps');
   if (dirtyEnemies) parts.push('enemies');
+  if (dirtyLootGroups) parts.push('loot groups');
+  if (dirtyLootTables) parts.push('loot tables');
   saveStatus.textContent = `(unsaved: ${parts.join(', ')})`;
   saveStatus.style.color = '#fa0';
 }
@@ -1944,6 +2301,26 @@ async function saveAll() {
       if (!res.ok) throw new Error('enemies: ' + res.statusText);
       dirtyEnemies = false;
       results.push('enemies');
+    }
+    if (dirtyLootGroups) {
+      const res = await fetch('/gamedata/lootgroups', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(lootGroups, null, '\t')
+      });
+      if (!res.ok) throw new Error('loot groups: ' + res.statusText);
+      dirtyLootGroups = false;
+      results.push('loot groups');
+    }
+    if (dirtyLootTables) {
+      const res = await fetch('/gamedata/loottables', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(lootTables, null, '\t')
+      });
+      if (!res.ok) throw new Error('loot tables: ' + res.statusText);
+      dirtyLootTables = false;
+      results.push('loot tables');
     }
     saveStatus.textContent = `Saved ${results.join(', ')}!`;
     saveStatus.style.color = '#8f8';
@@ -2181,6 +2558,14 @@ function bindEvents() {
     document.getElementById(id).addEventListener('input', updatePgTabPreview);
   });
 
+  // Loot Groups tab
+  document.getElementById('lgSearch').addEventListener('input', (e) => renderLgList(e.target.value));
+  document.getElementById('lgBackBtn').addEventListener('click', deselectLootGroup);
+  document.getElementById('applyLgBtn').addEventListener('click', applyLgDetail);
+  document.getElementById('addLgBtn').addEventListener('click', addLootGroup);
+  document.getElementById('deleteLgBtn').addEventListener('click', deleteLootGroup);
+  document.getElementById('lgAddItemBtn').addEventListener('click', addItemToLootGroup);
+
   // Tile picker modal
   document.getElementById('pickerCloseBtn').addEventListener('click', closeTilePicker);
   document.getElementById('pickerSearch').addEventListener('input', (e) => renderPickerList(e.target.value));
@@ -2196,7 +2581,7 @@ function bindEvents() {
   });
 
   window.addEventListener('beforeunload', (e) => {
-    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups || dirtyMaps || dirtyEnemies) { e.preventDefault(); e.returnValue = ''; }
+    if (dirtyTiles || dirtyTerrains || dirtyItems || dirtyProjGroups || dirtyMaps || dirtyEnemies || dirtyLootGroups || dirtyLootTables) { e.preventDefault(); e.returnValue = ''; }
   });
 
   // Resize handle drag

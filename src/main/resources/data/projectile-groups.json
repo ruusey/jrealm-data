@@ -2024,25 +2024,25 @@
 			{
 				"projectileId": 38,
 				"positionMode": 0,
-				"damage": 60,
-				"angle": 0,
+				"damage": 55,
+				"angle": "-0.15",
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 20,
+				"magnitude": 3.5,
 				"flags": [
-					2
+					3
 				]
 			},
 			{
 				"projectileId": 38,
 				"positionMode": 0,
-				"damage": 60,
-				"angle": 0.25,
+				"damage": 55,
+				"angle": "0.15",
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 20,
+				"magnitude": 3.5,
 				"flags": [
-					2
+					3
 				]
 			}
 		]

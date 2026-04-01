@@ -323,7 +323,7 @@ export class GameRenderer {
         sortable.sort((a, b) => a.y - b.y);
 
         for (const ent of sortable) {
-            if (ent.type === 'loot') this.renderLootContainer(ent.data, offsetX, offsetY);
+            if (ent.type === 'loot') this.renderLootContainer(ent.data, offsetX, offsetY, gameState);
             else if (ent.type === 'portal') this.renderPortal(ent.data, offsetX, offsetY, gameState);
             else if (ent.type === 'enemy') this.renderEnemy(ent.data, offsetX, offsetY, gameState);
             else if (ent.type === 'player') this.renderPlayer(ent.data, offsetX, offsetY, ent.id === gameState.playerId, gameState);

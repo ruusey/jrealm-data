@@ -1,0 +1,58 @@
+[
+	{
+		"tierId": -1,
+		"name": "Chest",
+		"spriteKey": "rotmg-projectiles-1.png",
+		"row": 0,
+		"col": 2,
+		"fullSize": true
+	},
+	{
+		"tierId": 0,
+		"name": "Brown Bag",
+		"spriteKey": "rotmg-misc.png",
+		"row": 9,
+		"col": 0,
+		"fullSize": false
+	},
+	{
+		"tierId": 1,
+		"name": "Purple Bag",
+		"spriteKey": "rotmg-misc.png",
+		"row": 9,
+		"col": 1,
+		"fullSize": false
+	},
+	{
+		"tierId": 2,
+		"name": "Cyan Bag",
+		"spriteKey": "rotmg-misc.png",
+		"row": 9,
+		"col": 2,
+		"fullSize": false
+	},
+	{
+		"tierId": 3,
+		"name": "Blue Bag",
+		"spriteKey": "rotmg-misc.png",
+		"row": 9,
+		"col": 3,
+		"fullSize": false
+	},
+	{
+		"tierId": 4,
+		"name": "White Bag",
+		"spriteKey": "rotmg-misc.png",
+		"row": 9,
+		"col": 4,
+		"fullSize": false
+	},
+	{
+		"tierId": 5,
+		"name": "Grave",
+		"spriteKey": "rotmg-projectiles.png",
+		"row": 1,
+		"col": 3,
+		"fullSize": false
+	}
+]

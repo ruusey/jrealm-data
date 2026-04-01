@@ -38,17 +38,12 @@ let minimap = null;
 // Must match Java GameSpriteManager.SPRITE_NAMES exactly
 const SPRITE_SHEETS = [
     'rotmg-projectiles.png', 'rotmg-projectiles-1.png',
-    'rotmg-bosses-1.png', 'rotmg-bosses.png',
+    'rotmg-bosses.png', 'rotmg-bosses-1.png', 'rotmg-bosses-1_.png',
     'rotmg-items.png', 'rotmg-items-1.png',
-    'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png',
-    'rotmg-tiles-all.png', 'rotmg-tiles-1_0.png', 'rotmg-tiles-1_.png',
+    'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png', 'rotmg-tiles-all.png',
     'rotmg-abilities.png', 'rotmg-misc.png',
-    'buttons.png', 'fillbars.png', 'icons.png', 'slots.png', 'ui.png',
-    'rotmg-bosses-1_.png',
     'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
-    'lofi_char.png', 'lofi_environment.png', 'lofi_halls.png',
-    'lofi_obj.png', 'lofi_obj_packA.png', 'lofi_obj_packB.png',
-    'lofi_dungeon_features.png'
+    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png'
 ];
 
 // --- Screen Management ---
@@ -477,7 +472,7 @@ async function startGame() {
 
     // Load game data
     try {
-        const [tileData, enemyData, itemData, charClasses, portalData, projGroups, expLevels, mapData] = await Promise.all([
+        const [tileData, enemyData, itemData, charClasses, portalData, projGroups, expLevels, mapData, lootContainerDefs] = await Promise.all([
             api.getGameData('tiles.json'),
             api.getGameData('enemies.json'),
             api.getGameData('game-items.json'),
@@ -485,7 +480,8 @@ async function startGame() {
             api.getGameData('portals.json'),
             api.getGameData('projectile-groups.json'),
             api.getGameData('exp-levels.json'),
-            api.getGameData('maps.json')
+            api.getGameData('maps.json'),
+            api.getGameData('loot-containers.json')
         ]);
 
         // Index by ID
@@ -500,6 +496,10 @@ async function startGame() {
 
         if (Array.isArray(charClasses)) charClasses.forEach(c => game.characterClasses[c.classId] = c);
         else game.characterClasses = charClasses;
+
+        // Index loot container definitions by tierId
+        game.lootContainerDefs = {};
+        if (Array.isArray(lootContainerDefs)) lootContainerDefs.forEach(d => game.lootContainerDefs[d.tierId] = d);
 
         if (Array.isArray(portalData)) portalData.forEach(p => game.portalData[p.portalId] = p);
         else game.portalData = portalData;

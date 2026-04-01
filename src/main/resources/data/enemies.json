@@ -284,9 +284,9 @@
 	{
 		"enemyId": 8,
 		"name": "Purple_Mage_0",
-		"spriteKey": "lofi_char.png",
-		"row": 9,
-		"col": 6,
+		"spriteKey": "chars8x8rHero2.png",
+		"row": 3,
+		"col": 2,
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 21,
@@ -298,8 +298,14 @@
 		"stats": {
 			"hp": 600,
 			"def": 5,
-			"dex": 15
-		}
+			"dex": 15,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 9,
@@ -410,9 +416,9 @@
 	{
 		"enemyId": 14,
 		"name": "Beach Bandit",
-		"spriteKey": "lofi_char.png",
-		"row": 1,
-		"col": 15,
+		"spriteKey": "chars8x8rBeach.png",
+		"row": 13,
+		"col": 2,
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": -1,
@@ -424,15 +430,21 @@
 		"stats": {
 			"hp": 90,
 			"def": 1,
-			"dex": 5
-		}
+			"dex": 5,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 15,
 		"name": "Pheonix",
-		"spriteKey": "rotmg-bosses.png",
+		"spriteKey": "cursedLibraryChars16x16.png",
 		"row": 3,
-		"col": 2,
+		"col": 5,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,
@@ -444,8 +456,14 @@
 		"stats": {
 			"hp": 900,
 			"def": 5,
-			"dex": 5
-		}
+			"dex": 5,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 16,
@@ -2713,9 +2731,9 @@
 	{
 		"enemyId": 61,
 		"name": "Oryx Guardian",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
-		"col": 3,
+		"spriteKey": "cursedLibraryChars16x16.png",
+		"row": 16,
+		"col": 5,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": -1,

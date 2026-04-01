@@ -84,6 +84,18 @@ public class GameDataController {
 	     return saveDataFile("maps.json", json);
 	 }
 
+	 @PutMapping(value = "/lootgroups", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
+	 public ResponseEntity<?> saveLootGroups(final HttpServletRequest request, @RequestBody final String json) {
+	     return saveDataFile("loot-groups.json", json);
+	 }
+
+	 @PutMapping(value = "/loottables", consumes = { "application/json" }, produces = { "application/json" })
+	 @AdminRestricted
+	 public ResponseEntity<?> saveLootTables(final HttpServletRequest request, @RequestBody final String json) {
+	     return saveDataFile("loot-tables.json", json);
+	 }
+
 	 private ResponseEntity<?> saveDataFile(String filename, String json) {
 	     try {
 	         URL resource = getClass().getClassLoader().getResource("data/" + filename);

@@ -28,6 +28,7 @@
       <button class="tab" data-tab="items">Items</button>
       <button class="tab" data-tab="enemies">Enemies</button>
       <button class="tab" data-tab="projgroups">Projectiles</button>
+      <button class="tab" data-tab="lootgroups">Loot</button>
     </div>
     <div class="toolbar">
       <label>Sheet:
@@ -374,6 +375,9 @@
                 <label>WIS <input type="number" id="eStatWis"></label>
             </div>
 
+            <h4>Loot Drops</h4>
+            <div id="enemyLootSection" style="margin-bottom:8px"></div>
+
             <h4>Phases</h4>
             <div id="enemyPhases"></div>
             <button id="addPhaseBtn" class="btn-add" style="margin-top:4px">+ Add Phase</button>
@@ -427,6 +431,39 @@
         </div>
     </div>
 
+  </div>
+
+  <!-- Loot Groups Tab -->
+  <div class="panel tile-panel" id="lootgroupsTab" style="display:none">
+    <div class="tile-header">
+      <h2>Loot Groups (<span id="lgCount">0</span>) &amp; Tables (<span id="ltCount">0</span>)</h2>
+      <input type="text" id="lgSearch" placeholder="Search loot groups...">
+      <button id="addLgBtn" class="btn-add">+ Add Group</button>
+    </div>
+    <div class="tile-list" id="lgListView"></div>
+
+    <div class="item-detail" id="lgDetail" style="display:none">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <button id="lgBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
+        <h3 id="lgDetailTitle" style="margin:0">Loot Group</h3>
+      </div>
+      <div class="detail-grid">
+        <label>Group ID: <input type="number" id="lgDetailId" readonly></label>
+        <label>Name: <input type="text" id="lgDetailName"></label>
+      </div>
+
+      <h4>Potential Drops (Items)</h4>
+      <div id="lgDetailItems" style="max-height:250px;overflow-y:auto"></div>
+      <button id="lgAddItemBtn" class="btn-add" style="margin-top:4px">+ Add Item</button>
+
+      <h4 style="margin-top:12px">Enemies Using This Group</h4>
+      <div id="lgEnemyUsage" style="max-height:150px;overflow-y:auto;font-size:12px;color:#887868"></div>
+
+      <div class="detail-actions" style="margin-top:8px">
+        <button id="applyLgBtn" class="btn-apply">Apply</button>
+        <button id="deleteLgBtn" class="btn-delete">Delete</button>
+      </div>
+    </div>
   </div>
 </div>
 
