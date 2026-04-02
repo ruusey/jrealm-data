@@ -78,6 +78,12 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         api.setDataServerUrl(gameServerHost);
         const loginData = await api.login(email, password);
         account = await api.getAccount(loginData.accountGuid);
+        // Load animation data for character select icons (front-facing idle)
+        try {
+            const animData = await api.getGameData('animations.json');
+            _animDataByClass = {};
+            if (Array.isArray(animData)) animData.forEach(a => { if (a.objectType === 'player') _animDataByClass[a.objectId] = a; });
+        } catch (e) { /* non-critical */ }
         showCharacterSelect();
     } catch (err) {
         errorEl.textContent = err.message;
@@ -146,6 +152,28 @@ const ALL_CLASSES = [
     'Paladin', 'Assassin', 'Necromancer', 'Mystic', 'Trickster', 'Sorcerer'
 ];
 let selectedClassId = null;
+let _animDataByClass = {}; // classId -> animation model, loaded once for char select icons
+
+// Draw the idle_front frame for a class using animations.json data, with fallback to legacy math
+function drawClassIcon(canvas, classId) {
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const anim = _animDataByClass[classId];
+    if (anim && anim.animations && anim.animations.idle_front) {
+        const frame = anim.animations.idle_front.frames[0];
+        const img = _charSpriteSheets[anim.spriteKey.replace('.png', '')];
+        if (img) {
+            ctx.drawImage(img, frame.col * 8, frame.row * 8, 8, 8, 0, 0, canvas.width, canvas.height);
+            return;
+        }
+    }
+    // Fallback: legacy side-idle
+    const sheetIdx = Math.floor(classId / 3);
+    const localRow = (classId % 3) * 4;
+    const img = _charSpriteSheets[`rotmg-classes-${sheetIdx}`];
+    if (img) ctx.drawImage(img, 0, localRow * 8, 8, 8, 0, 0, canvas.width, canvas.height);
+}
 
 function showCharacterSelect() {
     showScreen('charselect');
@@ -170,15 +198,9 @@ function showCharacterSelect() {
             const iconDiv = document.createElement('div');
             iconDiv.className = 'char-icon';
             const classId = char.characterClass || 0;
-            const sheetIdx = Math.floor(classId / 3);
-            const localRow = (classId % 3) * 4;
-            const sheetName = `rotmg-classes-${sheetIdx}`;
             const cvs = document.createElement('canvas');
             cvs.width = 40; cvs.height = 40;
-            const ctx = cvs.getContext('2d');
-            ctx.imageSmoothingEnabled = false;
-            const img = _charSpriteSheets[sheetName];
-            if (img) ctx.drawImage(img, 0, localRow * 8, 8, 8, 0, 0, 40, 40);
+            drawClassIcon(cvs, classId);
             iconDiv.appendChild(cvs);
 
             const infoDiv = document.createElement('div');
@@ -211,15 +233,10 @@ function showCharacterSelect() {
     for (let i = 0; i < ALL_CLASSES.length; i++) {
         const opt = document.createElement('div');
         opt.className = 'class-option';
-        const si = Math.floor(i / 3);
-        const lr = (i % 3) * 4;
         const cCvs = document.createElement('canvas');
         cCvs.width = 28; cCvs.height = 28;
         cCvs.style.cssText = 'vertical-align:middle;margin-right:6px;';
-        const cCtx = cCvs.getContext('2d');
-        cCtx.imageSmoothingEnabled = false;
-        const cImg = _charSpriteSheets[`rotmg-classes-${si}`];
-        if (cImg) cCtx.drawImage(cImg, 0, lr * 8, 8, 8, 0, 0, 28, 28);
+        drawClassIcon(cCvs, i);
         opt.appendChild(cCvs);
         opt.appendChild(document.createTextNode(ALL_CLASSES[i]));
         opt.addEventListener('click', () => {

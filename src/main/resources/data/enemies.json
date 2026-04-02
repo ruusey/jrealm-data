@@ -3348,5 +3348,48 @@
 			"wis": 0
 		},
 		"phases": []
+	},
+	{
+		"enemyId": 67,
+		"name": "Healer",
+		"spriteKey": "lofiObjBig.png",
+		"row": 22,
+		"col": 1,
+		"spriteSize": 16,
+		"size": 32,
+		"attackId": 0,
+		"xp": 100,
+		"health": 100,
+		"maxSpeed": 1.4,
+		"chaseRange": 390,
+		"attackRange": 210,
+		"stats": {
+			"hp": 100,
+			"def": 0,
+			"dex": 5,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": [
+			{
+				"name": "phase_1",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "ANCHOR",
+					"speed": 0
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 0,
+						"cooldownMs": 1000,
+						"burstCount": 1,
+						"burstDelayMs": 100
+					}
+				]
+			}
+		]
 	}
 ]

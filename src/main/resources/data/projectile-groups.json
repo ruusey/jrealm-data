@@ -8,39 +8,42 @@
 			{
 				"projectileId": 0,
 				"positionMode": 0,
-				"damage": 50,
-				"angle": -0.15,
+				"damage": 0,
+				"angle": "0",
 				"range": 512,
 				"size": 24,
-				"magnitude": 3.8,
+				"magnitude": 3,
 				"flags": [
 					0,
+					1,
 					10
 				]
 			},
 			{
 				"projectileId": 0,
 				"positionMode": 0,
-				"damage": 50,
+				"damage": 0,
 				"angle": 0,
 				"range": 512,
 				"size": 24,
-				"magnitude": 3.8,
+				"magnitude": 3,
 				"flags": [
 					0,
+					1,
 					10
 				]
 			},
 			{
 				"projectileId": 0,
 				"positionMode": 0,
-				"damage": 50,
-				"angle": 0.15,
+				"damage": 0,
+				"angle": "0",
 				"range": 512,
 				"size": 24,
-				"magnitude": 3.8,
+				"magnitude": 3,
 				"flags": [
 					0,
+					1,
 					10
 				]
 			}
