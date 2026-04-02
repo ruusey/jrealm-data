@@ -1,6 +1,8 @@
-// HTTP REST API client for jrealm-data (login, account, game data)
+// HTTP REST API client for OpenRealm data service
 
-const DATA_PORT = 8085;
+function isLocalHost(host) {
+    return !host || host === 'localhost' || host === '127.0.0.1';
+}
 
 export class ApiClient {
     constructor() {
@@ -10,13 +12,9 @@ export class ApiClient {
     }
 
     setDataServerUrl(host) {
-        // If accessing from same origin, use relative URLs
-        // Otherwise, construct the full URL
-        if (host && host !== window.location.hostname) {
-            this.baseUrl = `http://${host}:${DATA_PORT}`;
-        } else {
-            this.baseUrl = '';
-        }
+        // The data API is always same-origin — the page is served by the data service.
+        // The host dropdown only controls the game server (WebSocket) connection.
+        this.baseUrl = '';
     }
 
     async request(method, path, body = null) {

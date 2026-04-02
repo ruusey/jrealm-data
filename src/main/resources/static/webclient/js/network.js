@@ -34,10 +34,8 @@ export class GameNetwork {
     }
 
     connect(gameServerHost) {
-        const wsPort = 2223;
-        // Use wss:// if page is served over HTTPS, ws:// otherwise
-        const wsProto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-        const url = `${wsProto}://${gameServerHost}:${wsPort}`;
+        const host = gameServerHost || 'localhost';
+        const url = `ws://${host}:2223`;
         console.log('[NET] Connecting to', url);
 
         this.ws = new WebSocket(url);

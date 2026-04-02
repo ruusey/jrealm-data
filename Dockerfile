@@ -11,5 +11,5 @@ RUN mvn -B clean package -DskipTests -f ./jrealm-data/pom.xml
 
 FROM eclipse-temurin:17-jre
 COPY --from=build /app/jrealm-data/target/jrealm-data.jar /jrealm-data.jar
-EXPOSE 8085
+EXPOSE 80
 ENTRYPOINT ["java", "-jar", "jrealm-data.jar"]

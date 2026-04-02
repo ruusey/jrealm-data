@@ -1,8 +1,7 @@
-var BASE_URL = "http://127.0.0.1:8085/"
-if (location.hostname.indexOf('localhost') >= 0 ||
-	location.hostname.indexOf('127.0.0.1') >= 0)
-	BASE_URL = "http://127.0.0.1:8085/";
-else BASE_URL = "http://ttp.chat";
+var BASE_URL = "";
+if (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+	BASE_URL = "http://127.0.0.1/";
+else BASE_URL = location.protocol + "//" + location.host + "/";
 var token = null
 var accountId = null;
 var gameItemNameMap = null;
