@@ -757,10 +757,14 @@ function applyItemDetail() {
 
 // ========== PROJECTILE GROUP EDITOR ==========
 const POS_MODES = { 0: 'TARGET_PLAYER', 1: 'RELATIVE', 2: 'ABSOLUTE' };
+// Behavior flags — control projectile movement/rendering (stored in "flags" array)
 const FLAG_NAMES = {
-  0:'INVISIBLE', 1:'HEALING', 2:'PARALYZED', 3:'STUNNED', 4:'SPEEDY', 5:'HEAL',
-  6:'INVINCIBLE', 8:'NONE', 9:'TELEPORT', 10:'PLAYER_PROJ', 11:'DAZED',
-  12:'PARAMETRIC', 13:'INV_PARAMETRIC', 14:'DAMAGING', 15:'STASIS',
+  10:'PLAYER_PROJ', 12:'PARAMETRIC', 13:'INV_PARAMETRIC', 20:'ORBITAL'
+};
+// On-hit status effects — applied to targets on collision (stored in "effects" array)
+const EFFECT_NAMES = {
+  1:'HEALING', 2:'PARALYZED', 3:'STUNNED', 4:'SPEEDY', 5:'HEAL',
+  6:'INVINCIBLE', 11:'DAZED', 14:'DAMAGING', 15:'STASIS',
   16:'CURSED', 17:'POISONED', 18:'ARMORED', 19:'BERSERK'
 };
 
@@ -810,6 +814,49 @@ function createSearchableSelect(options, onSelect, currentVal, placeholder) {
   input.addEventListener('blur', () => { setTimeout(() => { list.style.display = 'none'; }, 150); });
   wrapper.append(input, list);
   return wrapper;
+}
+
+// Effects editor — list of {effectId, duration} pairs for on-hit status effects
+function createEffectsEditor(currentEffects, onChange) {
+  const container = document.createElement('div');
+  container.style.cssText = 'padding:2px 0';
+  const effects = currentEffects || [];
+
+  function rebuild() {
+    container.innerHTML = '';
+    effects.forEach((eff, idx) => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:4px;margin-bottom:2px';
+      const sel = document.createElement('select');
+      sel.style.cssText = 'font-size:10px;background:#12101a;color:#e0d8c8;border:1px solid #333';
+      for (const [id, name] of Object.entries(EFFECT_NAMES).sort((a,b) => parseInt(a[0]) - parseInt(b[0]))) {
+        const opt = new Option(`${name}(${id})`, id);
+        opt.selected = parseInt(id) === eff.effectId;
+        sel.appendChild(opt);
+      }
+      sel.addEventListener('change', () => { eff.effectId = parseInt(sel.value); onChange(effects); });
+      const durInput = document.createElement('input');
+      durInput.type = 'number'; durInput.value = eff.duration || 3000;
+      durInput.style.cssText = 'width:60px;font-size:10px;background:#12101a;color:#e0d8c8;border:1px solid #333';
+      durInput.addEventListener('change', () => { eff.duration = parseInt(durInput.value) || 0; onChange(effects); });
+      const durLabel = document.createElement('span');
+      durLabel.style.cssText = 'font-size:9px;color:#888';
+      durLabel.textContent = 'ms';
+      const rmBtn = document.createElement('button');
+      rmBtn.textContent = '\u00d7'; rmBtn.className = 'tg-remove';
+      rmBtn.style.cssText = 'font-size:10px;padding:0 4px';
+      rmBtn.addEventListener('click', () => { effects.splice(idx, 1); onChange(effects); rebuild(); });
+      row.append(sel, durInput, durLabel, rmBtn);
+      container.appendChild(row);
+    });
+    const addBtn = document.createElement('button');
+    addBtn.className = 'btn-add'; addBtn.textContent = '+ Effect';
+    addBtn.style.cssText = 'font-size:9px;padding:1px 6px';
+    addBtn.addEventListener('click', () => { effects.push({effectId: 2, duration: 3000}); onChange(effects); rebuild(); });
+    container.appendChild(addBtn);
+  }
+  rebuild();
+  return container;
 }
 
 // Checkbox grid for projectile flags
@@ -1011,6 +1058,15 @@ function renderProjList(group) {
     flagLabel.textContent = 'Flags:';
     flagRow.append(flagLabel, createFlagCheckboxes(p.flags, (flags) => { p.flags = flags; markDirty('projGroups'); }));
     container.appendChild(flagRow);
+    // Effects editor (on-hit status effects with durations)
+    const effectRow = document.createElement('div');
+    effectRow.className = 'proj-row row2';
+    effectRow.style.cssText = 'border-top:none;margin-top:-4px;padding:2px 6px';
+    const effectLabel = document.createElement('span');
+    effectLabel.style.cssText = 'font-size:10px;color:#aaa;margin-right:4px';
+    effectLabel.textContent = 'Effects:';
+    effectRow.append(effectLabel, createEffectsEditor(p.effects, (effects) => { p.effects = effects; markDirty('projGroups'); }));
+    container.appendChild(effectRow);
   });
 }
 
@@ -1543,6 +1599,15 @@ function renderPgTabProjList(group) {
     flagLabel.textContent = 'Flags:';
     flagRow.append(flagLabel, createFlagCheckboxes(p.flags, (flags) => { p.flags = flags; markDirty('projGroups'); }));
     container.appendChild(flagRow);
+    // Effects editor (on-hit status effects with durations)
+    const effectRow = document.createElement('div');
+    effectRow.className = 'proj-row row2';
+    effectRow.style.cssText = 'border-top:none;margin-top:-4px;padding:2px 6px';
+    const effectLabel = document.createElement('span');
+    effectLabel.style.cssText = 'font-size:10px;color:#aaa;margin-right:4px';
+    effectLabel.textContent = 'Effects:';
+    effectRow.append(effectLabel, createEffectsEditor(p.effects, (effects) => { p.effects = effects; markDirty('projGroups'); }));
+    container.appendChild(effectRow);
   });
 }
 

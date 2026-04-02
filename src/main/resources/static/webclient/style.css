@@ -63,7 +63,7 @@ button.secondary:hover { background: #4a3a48; }
 .register-link a:hover { text-decoration: underline; }
 
 /* Character Select */
-.charselect-box { width: 560px; }
+.charselect-box { width: 560px; max-height: 90vh; overflow-y: auto; }
 .charselect-box h2 { color: #c8a86e; margin-bottom: 20px; }
 .charselect-box h3 { color: #a89888; font-size: 14px; margin: 12px 0 8px; }
 #char-list { max-height: 280px; overflow-y: auto; margin-bottom: 12px; }
@@ -654,3 +654,27 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     transform: translateX(-50%);
     pointer-events: none;
 }
+
+/* Leaderboard */
+.leaderboard-section { margin-top: 16px; max-height: 300px; overflow-y: auto; }
+.leaderboard-section h3 { color: #c8a86e; margin-bottom: 8px; }
+.leaderboard-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-bottom: 1px solid #2a2530;
+    font-size: 13px; cursor: default;
+}
+.leaderboard-row:hover { background: #2a2530; }
+.lb-rank { color: #c8a86e; font-weight: bold; min-width: 28px; }
+.lb-info { flex: 1; color: #e0d8c8; }
+.lb-fame { color: #aa8844; font-size: 12px; white-space: nowrap; }
+
+#lb-tooltip {
+    display: none; position: absolute; z-index: 9999;
+    background: #1a1620; border: 1px solid #554840;
+    border-radius: 6px; padding: 8px 12px; pointer-events: none;
+    font-size: 12px; color: #e0d8c8; min-width: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.lb-tooltip-title { color: #c8a86e; font-weight: bold; margin-bottom: 4px; }
+.lb-tooltip-item { padding: 1px 0; color: #b8b0a0; }
+.lb-tooltip-stats { margin-top: 4px; padding-top: 4px; border-top: 1px solid #333; color: #888; font-size: 11px; }

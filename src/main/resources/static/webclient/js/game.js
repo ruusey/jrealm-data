@@ -598,7 +598,22 @@ export class GameState {
             const amp = b.amplitude || 0;
             const freq = b.frequency || 0;
 
-            if (amp !== 0 && freq !== 0) {
+            const isOrbital = b.flags && b.flags.includes(20);
+
+            if (isOrbital) {
+                // Orbital projectile — circles around a fixed center point
+                if (b._orbitPhase === undefined) {
+                    // First tick: compute orbit center from spawn pos and starting angle
+                    b._orbitPhase = b.angle;
+                    b._orbitRadius = amp || 64;
+                    b._orbitCenterX = b.pos.x - b._orbitRadius * Math.cos(b._orbitPhase);
+                    b._orbitCenterY = b.pos.y - b._orbitRadius * Math.sin(b._orbitPhase);
+                }
+                b._orbitPhase += (freq * bulletScale) * Math.PI / 180;
+                b.pos.x = b._orbitCenterX + b._orbitRadius * Math.cos(b._orbitPhase);
+                b.pos.y = b._orbitCenterY + b._orbitRadius * Math.sin(b._orbitPhase);
+                b._traveled = (b._traveled || 0) + b._orbitRadius * Math.abs((freq * bulletScale) * Math.PI / 180);
+            } else if (amp !== 0 && freq !== 0) {
                 // Parametric (wavy) projectile
                 if (b._timeStep === undefined) b._timeStep = 0;
                 const prevOffset = amp * Math.sin(b._timeStep * Math.PI / 180);

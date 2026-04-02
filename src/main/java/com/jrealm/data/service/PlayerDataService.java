@@ -26,6 +26,8 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.jrealm.data.auth.PlayerIdentityFilter;
 import com.jrealm.data.dto.CharacterDto;
+import com.jrealm.data.dto.CharacterStatsDto;
+import com.jrealm.data.dto.LeaderboardEntryDto;
 import com.jrealm.data.dto.ChestDto;
 import com.jrealm.data.dto.GameItemRefDto;
 import com.jrealm.data.dto.PlayerAccountDto;
@@ -122,18 +124,63 @@ public class PlayerDataService {
         return this.mapper.map(character, CharacterDto.class);
     }
     
-    public List<CharacterDto> getTopCharacters(int count) {
-        final int topNCharacters = count;
-        final List<CharacterDto> results = new ArrayList<>();
-        List<CharacterEntity> characters = this.playerAccountRepository.findAll().stream().map(acc->acc.getCharacters()).flatMap(List::stream).collect(Collectors.toList());
-        Collections.sort(characters, new Comparator<CharacterEntity>() {
-            public int compare(CharacterEntity o1, CharacterEntity o2) {
-                return o2.getStats().getXp().compareTo(o1.getStats().getXp());
+    public List<LeaderboardEntryDto> getTopCharacters(int count) {
+        final List<LeaderboardEntryDto> results = new ArrayList<>();
+        final List<PlayerAccountEntity> accounts = this.playerAccountRepository.findAll();
+
+        // Flatten all characters with their account name, sort by XP descending
+        final List<Map.Entry<String, CharacterEntity>> ranked = new ArrayList<>();
+        for (PlayerAccountEntity acc : accounts) {
+            if (acc.getCharacters() == null) continue;
+            for (CharacterEntity ch : acc.getCharacters()) {
+                if (ch.getStats() == null || ch.getStats().getXp() == null) continue;
+                ranked.add(Map.entry(acc.getAccountName() != null ? acc.getAccountName() : "Unknown", ch));
             }
-        });
-        characters = characters.subList(0, topNCharacters > characters.size() ? characters.size() : topNCharacters);
-        for (CharacterEntity statEntry : characters) {
-            results.add(this.mapper.map(statEntry, CharacterDto.class));
+        }
+        ranked.sort((a, b) -> Long.compare(
+                b.getValue().getStats().getXp(),
+                a.getValue().getStats().getXp()));
+
+        final int limit = Math.min(count, ranked.size());
+        for (int i = 0; i < limit; i++) {
+            final Map.Entry<String, CharacterEntity> entry = ranked.get(i);
+            final CharacterEntity ch = entry.getValue();
+            final CharacterStatsDto statsDto = this.mapper.map(ch.getStats(), CharacterStatsDto.class);
+            final Integer classId = ch.getStats().getClassId() != null ? ch.getStats().getClassId() : ch.getCharacterClass();
+
+            // Resolve level and class name from game data
+            int level = 1;
+            long fame = 0;
+            String className = "Unknown";
+            if (GameDataManager.EXPERIENCE_LVLS != null && statsDto.getXp() != null) {
+                level = GameDataManager.EXPERIENCE_LVLS.getLevel(statsDto.getXp());
+                fame = GameDataManager.EXPERIENCE_LVLS.getBaseFame(statsDto.getXp());
+            }
+            if (GameDataManager.CHARACTER_CLASSES != null && classId != null) {
+                final com.jrealm.game.model.CharacterClassModel model = GameDataManager.CHARACTER_CLASSES.get(classId);
+                if (model != null) className = model.getClassName();
+            }
+
+            // Map equipment items (slots 0-3)
+            final List<GameItemRefDto> equipment = new ArrayList<>();
+            if (ch.getItems() != null) {
+                for (com.jrealm.data.entity.GameItemRefEntity item : ch.getItems()) {
+                    if (item.getSlotIdx() != null && item.getSlotIdx() < 4) {
+                        equipment.add(this.mapper.map(item, GameItemRefDto.class));
+                    }
+                }
+            }
+
+            results.add(LeaderboardEntryDto.builder()
+                    .accountName(entry.getKey())
+                    .characterUuid(ch.getCharacterUuid())
+                    .characterClass(classId)
+                    .className(className)
+                    .level(level)
+                    .fame(fame)
+                    .equipment(equipment)
+                    .stats(statsDto)
+                    .build());
         }
         return results;
     }

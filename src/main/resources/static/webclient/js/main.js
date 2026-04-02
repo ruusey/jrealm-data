@@ -43,7 +43,7 @@ const SPRITE_SHEETS = [
     'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png', 'rotmg-tiles-all.png',
     'rotmg-abilities.png', 'rotmg-misc.png',
     'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
-    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png', 'lofiObj3.png',
+    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png', 'lofiObj3.png', 'lofiObjBig.png',
     'chars8x8rBeach.png', 'chars8x8rHero2.png', 'cursedLibraryChars16x16.png',
     'd3Chars8x8r.png', 'cursedLibraryChars8x8.png', 'cursedLibraryObjects8x8.png',
     'd3LofiObj.png', 'lofiProjs.png', 'chars16x16dEncounters.png',
@@ -251,6 +251,91 @@ function showCharacterSelect() {
     // Vault chest count
     const chestCount = account.playerVault ? account.playerVault.length : 0;
     document.getElementById('chest-count').textContent = `Vault Chests: ${chestCount}/10`;
+
+    // Load leaderboard
+    loadLeaderboard();
+}
+
+async function loadLeaderboard() {
+    const listEl = document.getElementById('leaderboard-list');
+    listEl.innerHTML = '<p style="color:#887868">Loading...</p>';
+    try {
+        const entries = await api.request('GET', '/data/stats/top?count=25');
+        if (!entries || entries.length === 0) {
+            listEl.innerHTML = '<p style="color:#887868">No characters yet.</p>';
+            return;
+        }
+        listEl.innerHTML = '';
+        entries.forEach((entry, idx) => {
+            const row = document.createElement('div');
+            row.className = 'leaderboard-row';
+
+            const rank = document.createElement('span');
+            rank.className = 'lb-rank';
+            rank.textContent = `#${idx + 1}`;
+
+            const icon = document.createElement('canvas');
+            icon.width = 24; icon.height = 24;
+            icon.style.cssText = 'vertical-align:middle;margin-right:6px';
+            drawClassIcon(icon, entry.characterClass || 0);
+
+            const info = document.createElement('span');
+            info.className = 'lb-info';
+            info.textContent = `${entry.accountName} - ${entry.className} Lv. ${entry.level}`;
+
+            const fame = document.createElement('span');
+            fame.className = 'lb-fame';
+            fame.textContent = `Fame: ${(entry.fame || 0).toLocaleString()}`;
+
+            row.append(rank, icon, info, fame);
+
+            // Equipment tooltip on hover
+            if (entry.equipment && entry.equipment.length > 0) {
+                row.addEventListener('mouseenter', (e) => {
+                    showEquipmentTooltip(e, entry);
+                });
+                row.addEventListener('mouseleave', () => {
+                    hideEquipmentTooltip();
+                });
+            }
+            listEl.appendChild(row);
+        });
+    } catch (e) {
+        listEl.innerHTML = `<p style="color:#c44">${e.message}</p>`;
+    }
+}
+
+function showEquipmentTooltip(event, entry) {
+    let tip = document.getElementById('lb-tooltip');
+    if (!tip) {
+        tip = document.createElement('div');
+        tip.id = 'lb-tooltip';
+        document.body.appendChild(tip);
+    }
+    const slotNames = ['Weapon', 'Ability', 'Armor', 'Ring'];
+    let html = `<div class="lb-tooltip-title">${entry.accountName}'s ${entry.className}</div>`;
+    for (let i = 0; i < 4; i++) {
+        const equip = entry.equipment.find(e => e.slotIdx === i);
+        if (equip && equip.itemId >= 0) {
+            const itemDef = game.itemData?.[equip.itemId];
+            const name = itemDef?.name || `Item ${equip.itemId}`;
+            html += `<div class="lb-tooltip-item">${slotNames[i]}: ${name}</div>`;
+        } else {
+            html += `<div class="lb-tooltip-item" style="color:#665848">${slotNames[i]}: Empty</div>`;
+        }
+    }
+    if (entry.stats) {
+        html += `<div class="lb-tooltip-stats">HP:${entry.stats.hp ?? 0} MP:${entry.stats.mp ?? 0} ATT:${entry.stats.att ?? 0} DEF:${entry.stats.def ?? 0} SPD:${entry.stats.spd ?? 0} DEX:${entry.stats.dex ?? 0}</div>`;
+    }
+    tip.innerHTML = html;
+    tip.style.display = 'block';
+    tip.style.left = (event.pageX + 12) + 'px';
+    tip.style.top = (event.pageY - 10) + 'px';
+}
+
+function hideEquipmentTooltip() {
+    const tip = document.getElementById('lb-tooltip');
+    if (tip) tip.style.display = 'none';
 }
 
 document.getElementById('play-btn').addEventListener('click', () => {
