@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import com.jrealm.data.dto.auth.AccountDto;
+import com.jrealm.data.dto.auth.AccountProvision;
 import com.jrealm.data.service.AccountService;
 import com.jrealm.data.util.AdminRestricted;
 import com.jrealm.data.util.Util;
@@ -52,11 +53,13 @@ public class PrivelegedAccessFilter implements HandlerInterceptor {
         
         final HandlerMethod handlerMethod = (HandlerMethod) handler;
         final java.lang.reflect.Method method = handlerMethod.getMethod();
-        if (method.getDeclaredAnnotation(AdminRestricted.class) != null) {
+        final AdminRestricted restriction = method.getDeclaredAnnotation(AdminRestricted.class);
+        if (restriction != null) {
             final String authedUuid = response.getHeader("Account-Uuid");
-            log.info("User {} accessing Admin-Restricted endpoint...", authedUuid);
+            final AccountProvision[] required = restriction.provisions();
+            log.info("User {} accessing restricted endpoint (requires any of {})...", authedUuid, java.util.Arrays.toString(required));
             AccountDto account = this.accountService.getAccountByGuid(authedUuid);
-            if (account.isAdmin()) {
+            if (account != null && account.hasAccess(required)) {
                 return true;
             }
             response.setStatus(401);

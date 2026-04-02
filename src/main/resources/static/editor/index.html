@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JRealm Tile Editor</title>
+<title>OpenRealm Editor</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <!-- Admin Login Gate -->
 <div id="editor-login" style="display:flex;align-items:center;justify-content:center;height:100vh;background:#1a1218;">
   <div style="background:#2a2030;padding:40px;border-radius:8px;border:2px solid #4a3a50;width:340px;text-align:center;">
-    <h2 style="color:#c8a86e;margin-bottom:20px;">JRealm Editor</h2>
+    <h2 style="color:#c8a86e;margin-bottom:20px;">OpenRealm Editor</h2>
     <p style="color:#887868;font-size:13px;margin-bottom:16px;">Admin login required</p>
     <input id="editor-email" type="email" placeholder="Email" style="width:100%;padding:8px;margin-bottom:8px;background:#1a1218;border:1px solid #3a2a38;color:#e0d8c8;border-radius:4px;">
     <input id="editor-password" type="password" placeholder="Password" style="width:100%;padding:8px;margin-bottom:12px;background:#1a1218;border:1px solid #3a2a38;color:#e0d8c8;border-radius:4px;">
@@ -20,7 +20,7 @@
 </div>
 <div id="app" style="display:none;">
   <header>
-    <h1>JRealm Editor</h1>
+    <h1>OpenRealm Editor</h1>
     <div class="tabs">
       <button class="tab active" data-tab="tiles">Tiles</button>
       <button class="tab" data-tab="terrains">Terrains</button>
@@ -496,10 +496,11 @@
         <label>Row: <input type="number" id="portalRow" min="0"></label>
         <label>Col: <input type="number" id="portalCol" min="0"></label>
         <canvas id="portalPreviewCanvas" width="48" height="48" style="background:#12101a;border:1px solid #333;border-radius:4px"></canvas>
+        <button id="pickPortalSpriteBtn" class="btn-pick">Pick Sprite</button>
       </div>
       <div style="margin-top:8px;display:flex;gap:8px">
-        <button id="applyPortalBtn" class="btn-pick" style="background:#3a6e3a">Apply</button>
-        <button id="deletePortalBtn" class="btn-pick" style="background:#6e3a3a">Delete</button>
+        <button id="applyPortalBtn" class="btn-apply">Apply</button>
+        <button id="deletePortalBtn" class="btn-delete">Delete</button>
       </div>
     </div>
   </div>

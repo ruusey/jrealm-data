@@ -2914,6 +2914,15 @@ function bindEvents() {
       const btn = document.getElementById('pickPgSpriteBtn');
       btn.classList.remove('active');
       btn.textContent = 'Pick Sprite';
+    } else if (activeTab === 'portals' && selectedPortal) {
+      document.getElementById('portalRow').value = row;
+      document.getElementById('portalCol').value = col;
+      document.getElementById('portalSprite').value = currentSheet;
+      updatePortalPreview();
+      applyPortalDetail();
+      const btn = document.getElementById('pickPortalSpriteBtn');
+      btn.classList.remove('active');
+      btn.textContent = 'Pick Sprite';
     } else if (activeTab === 'animations' && animPickingFrame) {
       const { anim, animName, frameIdx } = animPickingFrame;
       anim.animations[animName].frames[frameIdx] = { row, col };
@@ -3110,6 +3119,12 @@ function bindEvents() {
   document.getElementById('applyPortalBtn').addEventListener('click', applyPortalDetail);
   document.getElementById('addPortalBtn').addEventListener('click', addPortal);
   document.getElementById('deletePortalBtn').addEventListener('click', deletePortal);
+  document.getElementById('pickPortalSpriteBtn').addEventListener('click', () => {
+    pickMode = !pickMode;
+    const btn = document.getElementById('pickPortalSpriteBtn');
+    btn.classList.toggle('active', pickMode);
+    btn.textContent = pickMode ? 'Click on Sheet...' : 'Pick Sprite';
+  });
   document.getElementById('portalSprite').addEventListener('change', updatePortalPreview);
   document.getElementById('portalRow').addEventListener('change', updatePortalPreview);
   document.getElementById('portalCol').addEventListener('change', updatePortalPreview);

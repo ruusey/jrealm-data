@@ -3,10 +3,10 @@
 		"accountName": "ruusey",
 		"email": "ru@jrealm.com",
 		"accountSubscriptions": [
-			"TRIAL"
+			"ADMIN"
 		],
 		"accountProvisions": [
-			"JREALM"
+			"OPENREALM_SYS_ADMIN"
 		],
 		"accountProperties": {
 			"isOwner": "true"
@@ -20,7 +20,7 @@
 			"ADMIN"
 		],
 		"accountProvisions": [
-			"JREALM"
+			"OPENREALM_SYS_ADMIN"
 		],
 		"accountProperties": {
 			"sysAdmin": "true"

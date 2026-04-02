@@ -40,9 +40,9 @@
 		"portalName": "Cave_0_Portal",
 		"mapId": 3,
 		"targetRealmDepth": 2,
-		"row": 9,
-		"col": 12,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 58,
+		"col": 8,
+		"spriteKey": "rotmg-tiles-all.png"
 	},
 	{
 		"portalId": 5,
@@ -58,9 +58,9 @@
 		"portalName": "Dungeon_0_Portal",
 		"mapId": 6,
 		"targetRealmDepth": 999,
-		"row": 4,
-		"col": 12,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 79,
+		"col": 14,
+		"spriteKey": "lofiObj3.png"
 	},
 	{
 		"portalId": 7,
@@ -76,9 +76,9 @@
 		"portalName": "Ice_Cave_Portal",
 		"mapId": 8,
 		"targetRealmDepth": 999,
-		"row": 9,
-		"col": 12,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 84,
+		"col": 15,
+		"spriteKey": "lofiObj3.png"
 	},
 	{
 		"portalId": 9,
@@ -112,9 +112,9 @@
 		"portalName": "Magma_Depths_Portal",
 		"mapId": 17,
 		"targetRealmDepth": 999,
-		"row": 4,
+		"row": 51,
 		"col": 15,
-		"spriteKey": "rotmg-tiles-2.png"
+		"spriteKey": "lofiObj3.png"
 	},
 	{
 		"portalId": 13,
@@ -130,18 +130,18 @@
 		"portalName": "Serpents_Den_Portal",
 		"mapId": 19,
 		"targetRealmDepth": 999,
-		"row": 8,
-		"col": 11,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 86,
+		"col": 12,
+		"spriteKey": "lofiObj3.png"
 	},
 	{
 		"portalId": 15,
 		"portalName": "Infernal_Pit_Portal",
 		"mapId": 20,
 		"targetRealmDepth": 999,
-		"row": 8,
-		"col": 13,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 75,
+		"col": 11,
+		"spriteKey": "lofiObj3.png"
 	},
 	{
 		"portalId": 16,
@@ -157,27 +157,27 @@
 		"portalName": "Dragons_Roost_Portal",
 		"mapId": 22,
 		"targetRealmDepth": 999,
-		"row": 9,
-		"col": 10,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 49,
+		"col": 8,
+		"spriteKey": "lofiObj3.png"
 	},
 	{
 		"portalId": 18,
 		"portalName": "Enchanted_Maze_Portal",
 		"mapId": 23,
 		"targetRealmDepth": 999,
-		"row": 4,
-		"col": 11,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 95,
+		"col": 0,
+		"spriteKey": "lofiObj3.png"
 	},
 	{
 		"portalId": 19,
 		"portalName": "Throne_of_Eternity_Portal",
 		"mapId": 24,
 		"targetRealmDepth": 999,
-		"row": 3,
-		"col": 8,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 14,
+		"col": 10,
+		"spriteKey": "d3LofiObj.png"
 	},
 	{
 		"portalId": 20,

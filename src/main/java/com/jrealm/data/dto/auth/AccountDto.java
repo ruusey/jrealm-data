@@ -42,8 +42,28 @@ public class AccountDto implements Serializable {
 	private Date updated;
 	private Date deleted;
 
+	/**
+	 * Check if this account has access given a set of required provisions.
+	 * Passes if any held provision satisfies any required provision.
+	 */
+	public boolean hasAccess(AccountProvision... required) {
+		return AccountProvision.checkAccess(this.accountProvisions, required);
+	}
+
 	public boolean isAdmin() {
-		return this.accountSubscriptions!=null && this.accountSubscriptions.size()>0 && this.accountSubscriptions.contains(AccountSubscription.ADMIN);
+		return this.hasAccess(AccountProvision.OPENREALM_ADMIN);
+	}
+
+	public boolean isSysAdmin() {
+		return this.hasAccess(AccountProvision.OPENREALM_SYS_ADMIN);
+	}
+
+	public boolean isEditor() {
+		return this.hasAccess(AccountProvision.OPENREALM_EDITOR);
+	}
+
+	public boolean isModerator() {
+		return this.hasAccess(AccountProvision.OPENREALM_MODERATOR);
 	}
 	@Override
 	public boolean equals(Object obj) {

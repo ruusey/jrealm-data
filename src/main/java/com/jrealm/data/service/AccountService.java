@@ -195,13 +195,16 @@ public class AccountService {
         try {
             AccountEntity existing = this.accountRepo.findByEmail(account.getEmail());
             if (existing != null) {
-                AccountService.log.info("JRealm user {} already Exists", account.getEmail());
-                throw new Exception(MessageFormat.format("JRealm user {0} already Exists", account.getEmail()));
+                AccountService.log.info("OpenRealm user {} already Exists", account.getEmail());
+                throw new Exception(MessageFormat.format("OpenRealm user {0} already Exists", account.getEmail()));
             }
             AccountEntity existingName = this.accountRepo.findByAccountName(account.getAccountName());
             if (existingName != null) {
                 throw new Exception("Account name '" + account.getAccountName() + "' is already taken");
             }
+
+            // All new registrations get OPENREALM_PLAYER — ignore any client-supplied provisions
+            account.setAccountProvisions(java.util.Arrays.asList(AccountProvision.OPENREALM_PLAYER));
 
             AccountEntity accountEntity = this.saveAccountDetails(account);
 

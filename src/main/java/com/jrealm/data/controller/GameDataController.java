@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jrealm.data.dto.auth.AccountProvision;
 import com.jrealm.data.util.AdminRestricted;
 import com.jrealm.data.util.ApiUtils;
 import com.jrealm.game.data.GameDataManager;
@@ -49,61 +50,61 @@ public class GameDataController {
 	    }
 
 	 @PutMapping(value = "/tiles", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveTiles(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("tiles.json", json);
 	 }
 
 	 @PutMapping(value = "/terrains", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveTerrains(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("terrains.json", json);
 	 }
 
 	 @PutMapping(value = "/items", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveItems(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("game-items.json", json);
 	 }
 
 	 @PutMapping(value = "/projectiles", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveProjectiles(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("projectile-groups.json", json);
 	 }
 
 	 @PutMapping(value = "/enemies", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveEnemies(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("enemies.json", json);
 	 }
 
 	 @PutMapping(value = "/maps", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveMaps(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("maps.json", json);
 	 }
 
 	 @PutMapping(value = "/lootgroups", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveLootGroups(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("loot-groups.json", json);
 	 }
 
 	 @PutMapping(value = "/loottables", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveLootTables(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("loot-tables.json", json);
 	 }
 
 	 @PutMapping(value = "/animations", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> saveAnimations(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("animations.json", json);
 	 }
 
 	 @PutMapping(value = "/portals", consumes = { "application/json" }, produces = { "application/json" })
-	 @AdminRestricted
+	 @AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
 	 public ResponseEntity<?> savePortals(final HttpServletRequest request, @RequestBody final String json) {
 	     return saveDataFile("portals.json", json);
 	 }

@@ -137,7 +137,7 @@ function createAccount() {
 	if (!accountName) {
 		addToConsole({ "error": "Invalid Account Name" })
 	}
-	var acc = { "email": $("#user-email").val(), "password": $("#user-pass").val(), "accountName": accountName, "accountProvisions": ["JREALM"], "accountSubscriptions": ["TRIAL"], "accountProperties": {} }
+	var acc = { "email": $("#user-email").val(), "password": $("#user-pass").val(), "accountName": accountName, "accountProvisions": ["OPENREALM_PLAYER"], "accountSubscriptions": [], "accountProperties": {} }
 	$.postJSON(BASE_URL + "admin/account/register", acc, function(data) {
 		addToConsole(data);
 		login();
