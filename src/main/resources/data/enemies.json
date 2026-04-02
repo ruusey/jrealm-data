@@ -347,7 +347,7 @@
 		"col": 10,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": -1,
+		"attackId": 2,
 		"xp": 600,
 		"health": 700,
 		"maxSpeed": 1.4,
@@ -363,7 +363,45 @@
 			"vit": 0,
 			"wis": 0
 		},
-		"phases": []
+		"phases": [
+			{
+				"name": "Main",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.4
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 2,
+						"cooldownMs": 2500,
+						"aimMode": "RING",
+						"shotCount": 8,
+						"burstCount": 1,
+						"burstDelayMs": 100
+					},
+					{
+						"projectileGroupId": 2,
+						"cooldownMs": 2000,
+						"aimMode": "PLAYER",
+						"predictive": true,
+						"shotCount": 3,
+						"spreadAngle": 0.3,
+						"burstCount": 2,
+						"burstDelayMs": 150
+					},
+					{
+						"projectileGroupId": 2,
+						"cooldownMs": 3000,
+						"aimMode": "PLAYER",
+						"shotCount": 1,
+						"burstCount": 6,
+						"burstDelayMs": 80,
+						"angleOffsetPerBurst": 0.35
+					}
+				]
+			}
+		]
 	},
 	{
 		"enemyId": 11,
@@ -373,7 +411,7 @@
 		"col": 6,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": -1,
+		"attackId": 26,
 		"xp": 1500,
 		"health": 1800,
 		"maxSpeed": 1.4,
@@ -383,7 +421,28 @@
 			"hp": 1800,
 			"def": 20,
 			"dex": 5
-		}
+		},
+		"phases": [
+			{
+				"name": "Main",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.4
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 26,
+						"cooldownMs": 1200,
+						"aimMode": "PLAYER",
+						"shotCount": 1,
+						"burstCount": 6,
+						"burstDelayMs": 150,
+						"angleOffsetPerBurst": 0.5236
+					}
+				]
+			}
+		]
 	},
 	{
 		"enemyId": 12,
@@ -393,7 +452,7 @@
 		"col": 7,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": -1,
+		"attackId": 27,
 		"xp": 350,
 		"health": 800,
 		"maxSpeed": 1.4,
@@ -403,7 +462,29 @@
 			"hp": 800,
 			"def": 20,
 			"dex": 1
-		}
+		},
+		"phases": [
+			{
+				"name": "Main",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.4
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 27,
+						"cooldownMs": 800,
+						"aimMode": "PLAYER",
+						"shotCount": 1,
+						"burstCount": 4,
+						"burstDelayMs": 100,
+						"angleOffsetPerBurst": 0.6283,
+						"mirror": true
+					}
+				]
+			}
+		]
 	},
 	{
 		"enemyId": 13,
@@ -413,7 +494,7 @@
 		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": -1,
+		"attackId": 2,
 		"xp": 12500,
 		"health": 10000,
 		"maxSpeed": 2,
@@ -429,7 +510,48 @@
 			"vit": 0,
 			"wis": 0
 		},
-		"phases": []
+		"phases": [
+			{
+				"name": "Main",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.8
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 2,
+						"cooldownMs": 1500,
+						"aimMode": "PLAYER",
+						"burstCount": 2,
+						"burstDelayMs": 250
+					},
+					{
+						"projectileGroupId": 18,
+						"cooldownMs": 2000,
+						"aimMode": "PLAYER",
+						"burstCount": 2,
+						"burstDelayMs": 250
+					},
+					{
+						"projectileGroupId": 26,
+						"cooldownMs": 2500,
+						"aimMode": "RING",
+						"shotCount": 6,
+						"burstCount": 1
+					},
+					{
+						"projectileGroupId": 27,
+						"cooldownMs": 1800,
+						"aimMode": "PLAYER",
+						"shotCount": 3,
+						"spreadAngle": 0.4,
+						"burstCount": 2,
+						"burstDelayMs": 200
+					}
+				]
+			}
+		]
 	},
 	{
 		"enemyId": 14,
@@ -439,7 +561,7 @@
 		"col": 2,
 		"spriteSize": 8,
 		"size": 32,
-		"attackId": -1,
+		"attackId": 18,
 		"xp": 120,
 		"health": 90,
 		"maxSpeed": 1.4,
@@ -455,7 +577,25 @@
 			"vit": 0,
 			"wis": 0
 		},
-		"phases": []
+		"phases": [
+			{
+				"name": "Main",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.4
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 18,
+						"cooldownMs": 600,
+						"aimMode": "PLAYER",
+						"burstCount": 3,
+						"burstDelayMs": 150
+					}
+				]
+			}
+		]
 	},
 	{
 		"enemyId": 15,
@@ -465,7 +605,7 @@
 		"col": 5,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": -1,
+		"attackId": 34,
 		"xp": 400,
 		"health": 900,
 		"maxSpeed": 1.4,
@@ -481,7 +621,25 @@
 			"vit": 0,
 			"wis": 0
 		},
-		"phases": []
+		"phases": [
+			{
+				"name": "Main",
+				"hpThreshold": 1,
+				"movement": {
+					"type": "CHASE",
+					"speed": 1.4
+				},
+				"attacks": [
+					{
+						"projectileGroupId": 34,
+						"cooldownMs": 800,
+						"aimMode": "RING",
+						"shotCount": 6,
+						"sourceNoise": 120
+					}
+				]
+			}
+		]
 	},
 	{
 		"enemyId": 16,
@@ -519,7 +677,12 @@
 		"stats": {
 			"hp": 300,
 			"def": 2,
-			"dex": 8
+			"dex": 8,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": []
 	},

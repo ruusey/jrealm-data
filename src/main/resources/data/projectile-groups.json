@@ -1767,7 +1767,7 @@
 				"damage": 45,
 				"angle": 0,
 				"range": 120,
-				"size": 8,
+				"size": 20,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -1777,7 +1777,7 @@
 				"damage": 45,
 				"angle": 0.25,
 				"range": 120,
-				"size": 8,
+				"size": 20,
 				"magnitude": 5,
 				"flags": []
 			}
