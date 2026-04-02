@@ -12,20 +12,5 @@
 			"isOwner": "true"
 		},
 		"password": "password"
-	},
-	{
-		"accountName": "SYSADMIN",
-		"email": "admin@jrealm.com",
-		"accountSubscriptions": [
-			"ADMIN"
-		],
-		"accountProvisions": [
-			"OPENREALM_SYS_ADMIN"
-		],
-		"accountProperties": {
-			"sysAdmin": "true"
-		},
-		"password": "Sy5Adm1n%"
-
 	}
 ]

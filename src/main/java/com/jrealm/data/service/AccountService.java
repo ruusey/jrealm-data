@@ -85,12 +85,6 @@ public class AccountService {
 
                 for (AccountDto account : accounts) {
                     final AccountEntity createdAccount = this.registerJrealmAccount(account);
-                    if (account.isAdmin()) {
-                        final CreateTokenRequestDto createApiKey = CreateTokenRequestDto.builder()
-                                .accountGuid(createdAccount.getAccountGuid()).tokenName("SYS_TOKEN").build();
-                        final CreateTokenResponseDto createdApiKey = this.createApiToken(createApiKey);
-                        log.info("SYSTOKEN Created for account {}\n SYS_TOKEN={}", account, createdApiKey.getToken());
-                    }
                     AccountService.log.info("Seeded account {}", createdAccount);
                 }
 
@@ -98,11 +92,6 @@ public class AccountService {
         } catch (Exception e) {
             AccountService.log.error("Failed to seed Accounts", e);
         }
-    }
-
-    public String getSystoken() {
-        final AccountTokenEntity sysToken = this.tokenRepo.findByTokenName("SYS_TOKEN");
-        return sysToken.getToken();
     }
 
     public AccountEntity saveAccountDetails(AccountDto account) {
@@ -417,11 +406,6 @@ public class AccountService {
                 .email(account.getEmail()).accountGuid(account.getAccountGuid()).accountName(account.getAccountName())
                 .accountProperties(accProperties).accountProvisions(accProvisions)
                 .accountSubscriptions(accSubscriptions).build();
-    }
-
-    public boolean isAdminApiKey(final String apiToken) throws Exception {
-        final AccountDto adminAccount = this.getAccountByToken(apiToken);
-        return adminAccount.isAdmin();
     }
 
     public AccountDto getAccountByToken(String apiToken) throws Exception {
