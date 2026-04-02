@@ -500,6 +500,7 @@ export class GameState {
 
     updateInterpolation(dt) {
         const SNAP_DISTANCE = 96;
+        const moveScale = dt * 64; // match server tick rate (64Hz)
 
         for (const [id, p] of this.players) {
             const dx = p.targetX - p.pos.x, dy = p.targetY - p.pos.y;
@@ -511,9 +512,17 @@ export class GameState {
                 // LOCAL PLAYER: Velocity dead-reckoning + server correction.
                 //
                 // Each frame: advance position by velocity (prediction),
-                // then blend toward the server's authoritative position.
-                // This prevents drift accumulation while staying smooth.
+                // then blend toward the server's predicted position.
+                // targetX/targetY also advance by velocity so they represent
+                // the server's dead-reckoned prediction, not a stale snapshot.
                 const hasVel = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
+
+                // Advance targetX/targetY by velocity so correction blend doesn't
+                // fight against movement when server is using dead reckoning
+                if (hasVel) {
+                    p.targetX += p.dx * moveScale;
+                    p.targetY += p.dy * moveScale;
+                }
 
                 if (!hasVel) {
                     // STOPPED: converge to server position with collision check
@@ -524,7 +533,6 @@ export class GameState {
                     }
                 } else {
                     // MOVING: predict forward using velocity, then correct toward server pos.
-                    const moveScale = dt * 64;
                     const predDx = p.dx * moveScale;
                     const predDy = p.dy * moveScale;
 
@@ -547,7 +555,7 @@ export class GameState {
                         p.pos.y += predDy;
                     }
 
-                    // Blend toward server position to prevent drift.
+                    // Blend toward server predicted position to prevent drift.
                     // Only correct if it doesn't push us into a wall.
                     const corrDx = p.targetX - p.pos.x;
                     const corrDy = p.targetY - p.pos.y;
@@ -565,10 +573,19 @@ export class GameState {
                     }
                 }
             } else {
-                // OTHER PLAYERS: smooth lerp, no velocity prediction
-                // (player movement is unpredictable, extrapolation causes rubber-banding)
-                p.pos.x += dx * 0.4;
-                p.pos.y += dy * 0.4;
+                // OTHER PLAYERS: velocity dead-reckoning + correction blend.
+                // Server dead reckoning expects clients to extrapolate using velocity.
+                const hasVelOther = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
+                if (hasVelOther) {
+                    p.pos.x += p.dx * moveScale;
+                    p.pos.y += p.dy * moveScale;
+                }
+                // Blend toward server position to correct drift
+                if (dist > 0.5) {
+                    const corrFactor = Math.min(0.3, 0.05 + dist * 0.01);
+                    p.pos.x += dx * corrFactor;
+                    p.pos.y += dy * corrFactor;
+                }
             }
 
             if (Math.abs(p.dx) > 0.1) p.facing = p.dx > 0 ? 'right' : 'left';
@@ -576,16 +593,28 @@ export class GameState {
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
 
-        // Enemies: lerp toward server position.
-        // At 16-32Hz updates, use moderate lerp for smooth movement.
+        // Enemies: velocity dead-reckoning + server correction blend.
+        // Server uses dead reckoning and only sends corrections when the actual
+        // position diverges from what we'd predict using velocity. Between
+        // corrections, we extrapolate forward using dx/dy.
         for (const [id, e] of this.enemies) {
             const dx = e.targetX - e.pos.x, dy = e.targetY - e.pos.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist > SNAP_DISTANCE) {
                 e.pos.x = e.targetX; e.pos.y = e.targetY;
-            } else if (dist > 0.5) {
-                e.pos.x += dx * 0.35;
-                e.pos.y += dy * 0.35;
+            } else {
+                // Extrapolate using velocity
+                e.pos.x += e.dx * moveScale;
+                e.pos.y += e.dy * moveScale;
+                // Blend toward server correction position to prevent drift
+                const corrDx = e.targetX - e.pos.x;
+                const corrDy = e.targetY - e.pos.y;
+                const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
+                if (corrDist > 0.5) {
+                    const corrFactor = Math.min(0.3, 0.05 + corrDist * 0.01);
+                    e.pos.x += corrDx * corrFactor;
+                    e.pos.y += corrDy * corrFactor;
+                }
             }
         }
 

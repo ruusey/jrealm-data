@@ -4983,5 +4983,165 @@
 		"targetSlot": 1,
 		"targetClass": 9,
 		"fameBonus": 8
+	},
+	{
+		"itemId": 279,
+		"row": 11,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Decoy Prism",
+		"description": "A crude prism that bends light to create a faint image of its user.",
+		"effect": {
+			"self": true,
+			"effectId": 8,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 60
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 10,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 280,
+		"row": 11,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Deception Prism",
+		"description": "A prism that projects a convincing double of its wielder.",
+		"stats": {
+			"wis": 1
+		},
+		"effect": {
+			"self": true,
+			"effectId": 8,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 65
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 10,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 281,
+		"row": 11,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Illusion Prism",
+		"description": "This prism casts an illusion so real that even seasoned warriors are fooled.",
+		"stats": {
+			"wis": 2
+		},
+		"effect": {
+			"self": true,
+			"effectId": 8,
+			"duration": 5000,
+			"cooldownDuration": 1000,
+			"mpCost": 70
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 10,
+		"fameBonus": 0
+	},
+	{
+		"itemId": 282,
+		"row": 11,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Hallucination Prism",
+		"description": "A prism of such quality that its projections can deceive even magical sight.",
+		"stats": {
+			"wis": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 8,
+			"duration": 6000,
+			"cooldownDuration": 1000,
+			"mpCost": 75
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 10,
+		"fameBonus": 1
+	},
+	{
+		"itemId": 283,
+		"row": 11,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Prism of Figments",
+		"description": "An expertly cut prism that creates figments indistinguishable from reality.",
+		"stats": {
+			"wis": 4
+		},
+		"effect": {
+			"self": true,
+			"effectId": 8,
+			"duration": 7000,
+			"cooldownDuration": 1000,
+			"mpCost": 80
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 10,
+		"fameBonus": 2
+	},
+	{
+		"itemId": 284,
+		"row": 11,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Prism of Phantoms",
+		"description": "A rare prism that summons phantoms so lifelike they draw the ire of all foes.",
+		"stats": {
+			"wis": 5
+		},
+		"effect": {
+			"self": true,
+			"effectId": 8,
+			"duration": 8000,
+			"cooldownDuration": 1000,
+			"mpCost": 85
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 10,
+		"fameBonus": 4
+	},
+	{
+		"itemId": 285,
+		"row": 11,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Prism of Apparitions",
+		"description": "A masterwork prism that conjures apparitions of terrifying realism, confounding all who gaze upon them.",
+		"stats": {
+			"wis": 6,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": true,
+			"effectId": 8,
+			"duration": 9000,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 10,
+		"fameBonus": 6
 	}
 ]

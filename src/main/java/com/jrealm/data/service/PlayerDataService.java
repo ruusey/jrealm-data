@@ -1,8 +1,5 @@
 package com.jrealm.data.service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +20,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.jrealm.data.auth.PlayerIdentityFilter;
 import com.jrealm.data.dto.CharacterDto;
 import com.jrealm.data.dto.CharacterStatsDto;
@@ -82,7 +78,6 @@ public class PlayerDataService {
                             CharacterClass.WIZARD.classId);
                 }
             }
-            this.exportPlayerAccounts();
         } catch (Exception e) {
             PlayerDataService.log.error("Failed to seed Player Account. Reason: {}", e);
         }
@@ -235,39 +230,6 @@ public class PlayerDataService {
         PlayerDataService.log.info("Successfully deleted character {} in {}ms", characterUuid,
                 (Instant.now().toEpochMilli() - start));
         this.playerAccountRepository.save(account);
-    }
-    
-    public void importPlayerAccounts() {
-        try {
-            final File dumpFile = new File(System.getProperty("user.dir")+"/account-dump.json");
-            final FileInputStream inputStream = new FileInputStream(dumpFile);
-            final String fileContent = new String(inputStream.readAllBytes());
-            final PlayerAccountDto[] accounts = GameDataManager.JSON_MAPPER.readValue(fileContent, PlayerAccountDto[].class);
-            for(PlayerAccountDto account : accounts) {
-                this.saveAccount(account);
-            }
-            inputStream.close();
-        }catch(Exception e) {
-            log.error("Gailed to import player accounts. Reason: {}", e);
-        }
-    }
-    
-    public void exportPlayerAccounts() {
-        final List<PlayerAccountDto> accountsToExport = this.getAllAccounts();
-        log.info("Beginning account export for {} player accounts", accountsToExport.size());
-        final File dumpFile = new File(System.getProperty("user.dir")+"/account-dump.json");
-        try {
-            dumpFile.createNewFile();
-            GameDataManager.JSON_MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
-            final FileOutputStream fileOutputStream = new FileOutputStream(dumpFile);
-            final String charactersText = GameDataManager.JSON_MAPPER.writeValueAsString(accountsToExport);
-            fileOutputStream.write(charactersText.getBytes());
-            fileOutputStream.close();
-            GameDataManager.JSON_MAPPER.disable(SerializationFeature.INDENT_OUTPUT);
-            log.info("Account export completed successfully");
-        }catch(Exception e) {
-            log.error("Failed to export accounts. Reason: {}", e);
-        }
     }
     
     public List<PlayerAccountDto> getAllAccounts(){
