@@ -114,30 +114,33 @@ public class PlayerIdentityFilter extends OncePerRequestFilter {
     }
     
     public AccountDto getAuthedUser(HttpServletRequest request) {
-        String authToken = null;
-        AccountAuthEntity authedUser = null;
-        AccountTokenEntity systemToken = null;
-        AccountDto account =null;
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader == null || authHeader.isEmpty()) return null;
         try {
-            if (request.getHeader("Authorization").contains("Bearer")) {
-                authToken = this.extractBearerToken(request);
-                systemToken = this.accountTokenRepo.findByToken(authToken);
-                account = this.accountService.getAccountByGuid(systemToken.getAccountGuid());
+            if (authHeader.contains("Bearer")) {
+                String token = this.extractBearerToken(request);
+                AccountTokenEntity systemToken = this.accountTokenRepo.findByToken(token);
+                if (systemToken == null) return null;
+                return this.accountService.getAccountByGuid(systemToken.getAccountGuid());
             } else {
-                authToken = this.extractAuthToken(request);
-                authedUser = this.accountAuthRepo.findBySessionToken(authToken);
-                account = this.accountService.getAccountByGuid(authedUser.getAccountGuid());
+                AccountAuthEntity authedUser = this.accountAuthRepo.findBySessionToken(authHeader);
+                if (authedUser == null) return null;
+                return this.accountService.getAccountByGuid(authedUser.getAccountGuid());
             }
         } catch (Exception e) {
-            log.error("Failed to authenticate user. Reason: {}", e);
+            log.error("Failed to authenticate user. Reason: {}", e.getMessage());
         }
-        return account;
+        return null;
     }
     
     public boolean accountGuidMatch(String providedGuid, HttpServletRequest actualRequest) {
+       // Trusted hosts (localhost / game server) bypass account ownership checks
+       if (Util.isTrustedHost(actualRequest.getRemoteAddr())) return true;
        final AccountDto actualAccount = this.getAuthedUser(actualRequest);
-       final AccountDto providedAccount =  this.accountService.getAccountByGuid(providedGuid);
-       if(actualAccount.isAdmin()) return true;
+       if (actualAccount == null) return false;
+       if (actualAccount.isAdmin()) return true;
+       final AccountDto providedAccount = this.accountService.getAccountByGuid(providedGuid);
+       if (providedAccount == null) return false;
        return actualAccount.getAccountGuid().equals(providedAccount.getAccountGuid());
     }
 }
