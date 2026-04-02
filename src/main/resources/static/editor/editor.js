@@ -2096,7 +2096,7 @@ function cancelPlaceEnemy() {
 }
 
 function placeEnemyOnMap(e) {
-  if (!placingEnemy || !selectedMap) return;
+  if (!selectedMap) return;
   const canvas = document.getElementById('mapOverlayCanvas');
   const rect = canvas.getBoundingClientRect();
   const scaleX = canvas.width / rect.width;
@@ -2105,9 +2105,25 @@ function placeEnemyOnMap(e) {
   const row = Math.floor((e.clientY - rect.top) * scaleY / MAP_TILE_PX);
   if (row < 0 || row >= selectedMap.height || col < 0 || col >= selectedMap.width) return;
 
-  if (!selectedMap.staticSpawns) selectedMap.staticSpawns = [];
   const pixelX = col * selectedMap.tileSize;
   const pixelY = row * selectedMap.tileSize;
+
+  // Moving an existing spawn
+  if (movingSpawnIdx >= 0 && selectedMap.staticSpawns && movingSpawnIdx < selectedMap.staticSpawns.length) {
+    selectedMap.staticSpawns[movingSpawnIdx].x = pixelX;
+    selectedMap.staticSpawns[movingSpawnIdx].y = pixelY;
+    movingSpawnIdx = -1;
+    document.getElementById('mapEnemyPlaceInfo').textContent = '';
+    document.getElementById('mapOverlayCanvas').style.cursor = '';
+    markDirty('maps');
+    renderStaticSpawnList();
+    drawMapOverlay();
+    return;
+  }
+
+  // Placing a new spawn
+  if (!placingEnemy) return;
+  if (!selectedMap.staticSpawns) selectedMap.staticSpawns = [];
   selectedMap.staticSpawns.push({ enemyId: placingEnemyId, x: pixelX, y: pixelY });
   markDirty('maps');
   cancelPlaceEnemy();
@@ -2115,8 +2131,18 @@ function placeEnemyOnMap(e) {
   drawMapOverlay();
 }
 
+let movingSpawnIdx = -1;
+
+function moveStaticSpawn(idx) {
+  movingSpawnIdx = idx;
+  const en = enemies.find(e => e.enemyId === selectedMap.staticSpawns[idx].enemyId);
+  document.getElementById('mapEnemyPlaceInfo').textContent = `Click map to move ${en ? en.name : 'Enemy'} to new location`;
+  document.getElementById('mapOverlayCanvas').style.cursor = 'crosshair';
+}
+
 function removeStaticSpawn(idx) {
   if (!selectedMap || !selectedMap.staticSpawns) return;
+  if (movingSpawnIdx === idx) movingSpawnIdx = -1;
   selectedMap.staticSpawns.splice(idx, 1);
   markDirty('maps');
   renderStaticSpawnList();
@@ -2154,10 +2180,14 @@ function renderStaticSpawnList() {
     const tileCol = Math.round(ss.x / selectedMap.tileSize);
     const tileRow = Math.round(ss.y / selectedMap.tileSize);
     pos.textContent = `[${tileCol},${tileRow}]`;
+    const moveBtn = document.createElement('button');
+    moveBtn.className = 'btn-pick'; moveBtn.textContent = 'Move';
+    moveBtn.style.cssText = 'font-size:9px;padding:1px 6px';
+    moveBtn.addEventListener('click', () => moveStaticSpawn(idx));
     const removeBtn = document.createElement('button');
     removeBtn.className = 'tg-remove'; removeBtn.textContent = '×';
     removeBtn.addEventListener('click', () => removeStaticSpawn(idx));
-    row.append(cvs, name, pos, removeBtn);
+    row.append(cvs, name, pos, moveBtn, removeBtn);
     container.appendChild(row);
   });
 }
