@@ -1463,9 +1463,9 @@
 	{
 		"enemyId": 38,
 		"name": "Shadow Warlord",
-		"spriteKey": "lofi_char.png",
-		"row": 10,
-		"col": 6,
+		"spriteKey": "d1Chars16x16r.png",
+		"row": 2,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
 		"attackId": 60,
@@ -1478,7 +1478,11 @@
 			"hp": 5500,
 			"def": 25,
 			"dex": 18,
-			"spd": 8
+			"spd": 8,
+			"mp": 0,
+			"att": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"phases": [
 			{
@@ -1801,9 +1805,9 @@
 	{
 		"enemyId": 41,
 		"name": "Goblin Scout",
-		"spriteKey": "lofi_char.png",
-		"row": 5,
-		"col": 0,
+		"spriteKey": "d2LofiObj.png",
+		"row": 0,
+		"col": 11,
 		"spriteSize": 8,
 		"size": 32,
 		"attackId": 51,
@@ -3331,8 +3335,8 @@
 		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": 48,
-		"xp": 100,
+		"attackId": 106,
+		"xp": 10000,
 		"health": 20000,
 		"maxSpeed": 1.4,
 		"chaseRange": 400,

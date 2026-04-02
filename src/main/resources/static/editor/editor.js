@@ -181,6 +181,32 @@ let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
 let activeTab = 'tiles';
 
+// Navigation history stack for back-button support across editors
+const navHistory = [];
+
+function pushNav(state) {
+  navHistory.push(state);
+}
+
+function popNav() {
+  if (navHistory.length === 0) return null;
+  return navHistory.pop();
+}
+
+function restoreNav() {
+  const state = popNav();
+  if (!state) return false;
+  switchTab(state.tab);
+  if (state.tab === 'enemies' && state.enemyId != null) {
+    const enemy = enemies.find(e => e.enemyId === state.enemyId);
+    if (enemy) selectEnemy(enemy);
+  } else if (state.tab === 'items' && state.itemId != null) {
+    const item = items.find(i => i.itemId === state.itemId);
+    if (item) selectItem(item);
+  }
+  return true;
+}
+
 // DOM refs
 const sheetSelect = document.getElementById('sheetSelect');
 const gridSizeSelect = document.getElementById('gridSize');
@@ -964,6 +990,11 @@ function viewProjGroup() {
 function closeProjGroup() {
   selectedProjGroup = null;
   document.getElementById('projGroupDetail').style.display = 'none';
+  // If there is navigation history, restore the previous editing context
+  if (navHistory.length > 0) {
+    restoreNav();
+    return;
+  }
   if (selectedItem) {
     document.getElementById('itemDetail').style.display = 'block';
   }
@@ -1394,6 +1425,12 @@ function renderMovementEditor(body, phase) {
 function navigateToProjGroup(pgId) {
     const group = getProjGroupById(pgId);
     if (!group) { alert('Projectile group ' + pgId + ' not found'); return; }
+    // Save current editing context so back button returns here
+    if (activeTab === 'enemies' && selectedEnemy) {
+        pushNav({ tab: 'enemies', enemyId: selectedEnemy.enemyId });
+    } else if (activeTab === 'items' && selectedItem) {
+        pushNav({ tab: 'items', itemId: selectedItem.itemId });
+    }
     switchTab('projgroups');
     selectPgTab(group);
 }
@@ -1411,11 +1448,12 @@ function renderAttackPatternsEditor(body, phase, enemy) {
         const badge = document.createElement('span'); badge.style.cssText = 'color:#c8a86e;font-weight:600';
         badge.textContent = '#' + (atkIdx + 1);
 
-        function mkField(label, key, width) {
+        function mkField(label, key, width, step) {
             const lbl = document.createElement('label'); lbl.textContent = label;
             const inp = document.createElement('input'); inp.type = 'number';
             inp.value = atk[key] != null ? atk[key] : '';
             inp.style.width = (width || 50) + 'px';
+            if (step) inp.step = step;
             inp.addEventListener('change', () => { atk[key] = parseFloat(inp.value) || 0; markDirty('enemies'); });
             lbl.appendChild(inp);
             return lbl;
@@ -1425,6 +1463,24 @@ function renderAttackPatternsEditor(body, phase, enemy) {
         const predCb = document.createElement('input'); predCb.type = 'checkbox'; predCb.checked = !!atk.predictive;
         predCb.addEventListener('change', () => { atk.predictive = predCb.checked; markDirty('enemies'); });
         predLbl.appendChild(predCb);
+
+        // Mirror checkbox
+        const mirrorLbl = document.createElement('label'); mirrorLbl.textContent = 'Mirror ';
+        const mirrorCb = document.createElement('input'); mirrorCb.type = 'checkbox'; mirrorCb.checked = !!atk.mirror;
+        mirrorCb.addEventListener('change', () => { atk.mirror = mirrorCb.checked; markDirty('enemies'); });
+        mirrorLbl.appendChild(mirrorCb);
+
+        // AimMode dropdown
+        const aimLbl = document.createElement('label'); aimLbl.textContent = 'Aim ';
+        const aimSel = document.createElement('select');
+        aimSel.style.cssText = 'width:70px;font-size:11px';
+        ['PLAYER','RING','FIXED'].forEach(m => {
+            const opt = document.createElement('option'); opt.value = m; opt.textContent = m;
+            if ((atk.aimMode || 'PLAYER') === m) opt.selected = true;
+            aimSel.appendChild(opt);
+        });
+        aimSel.addEventListener('change', () => { atk.aimMode = aimSel.value; markDirty('enemies'); });
+        aimLbl.appendChild(aimSel);
 
         const rmBtn = document.createElement('button'); rmBtn.className = 'tg-remove'; rmBtn.textContent = '\u00D7';
         rmBtn.addEventListener('click', () => { phase.attacks.splice(atkIdx, 1); markDirty('enemies'); renderPhases(enemy); });
@@ -1454,7 +1510,10 @@ function renderAttackPatternsEditor(body, phase, enemy) {
             mkField('Angle Offset:', 'angleOffsetPerBurst', 42),
             mkField('Min Range:', 'minRange', 42),
             mkField('Max Range:', 'maxRange', 45),
-            predLbl, rmBtn
+            mkField('Shots:', 'shotCount', 35),
+            mkField('Spread:', 'spreadAngle', 45, '0.01'),
+            mkField('Src Noise:', 'sourceNoise', 45),
+            aimLbl, predLbl, mirrorLbl, rmBtn
         );
         container.appendChild(row);
     });
@@ -1462,7 +1521,7 @@ function renderAttackPatternsEditor(body, phase, enemy) {
     const addBtn = document.createElement('button'); addBtn.className = 'btn-add';
     addBtn.textContent = '+ Attack'; addBtn.style.cssText = 'margin-top:3px;font-size:11px';
     addBtn.addEventListener('click', () => {
-        phase.attacks.push({ projectileGroupId: 0, cooldownMs: 1000, burstCount: 1, burstDelayMs: 100 });
+        phase.attacks.push({ projectileGroupId: 0, cooldownMs: 1000, burstCount: 1, burstDelayMs: 100, aimMode: 'PLAYER', shotCount: 1, spreadAngle: 0, mirror: false, sourceNoise: 0 });
         markDirty('enemies');
         renderPhases(enemy);
     });
@@ -1522,6 +1581,11 @@ function selectPgTab(group) {
 function deselectPgTab() {
   selectedPgTab = null;
   document.getElementById('pgDetail').style.display = 'none';
+  // If there is navigation history, restore the previous editing context
+  if (navHistory.length > 0) {
+    restoreNav();
+    return;
+  }
   document.getElementById('pgListView').style.display = '';
   document.querySelector('#projgroupsTab .tile-header').style.display = '';
   renderPgTabList(document.getElementById('pgSearch').value);

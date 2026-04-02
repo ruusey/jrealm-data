@@ -46,7 +46,7 @@ const SPRITE_SHEETS = [
     'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png', 'lofiObj3.png', 'lofiObjBig.png',
     'chars8x8rBeach.png', 'chars8x8rHero2.png', 'cursedLibraryChars16x16.png',
     'd3Chars8x8r.png', 'cursedLibraryChars8x8.png', 'cursedLibraryObjects8x8.png',
-    'd3LofiObj.png', 'lofiProjs.png', 'chars16x16dEncounters.png',
+    'd2LofiObj.png', 'd3LofiObj.png', 'lofiProjs.png', 'chars16x16dEncounters.png',
     'archbishopObjects16x16.png', 'autumnNexusObjects16x16.png',
     'chars16x16dEncounters2.png', 'crystalCaveChars16x16.png',
     'epicHiveChars8x8.png', 'lairOfDraconisChars8x8.png',
@@ -1055,9 +1055,10 @@ function processInput(dt) {
     }
 
     // F2 = Use nearest portal
-    if (input.isKeyDown('F2') || input.isKeyDown('KeyF')) {
+    if (input.isKeyDown('F2') || input.isKeyDown('KeyF') || input.isKeyDown('Space')) {
         input.keys['F2'] = false;
         input.keys['KeyF'] = false;
+        input.keys['Space'] = false;
         const local = game.getLocalPlayer();
         if (local) {
             let closest = null, closestDist = Infinity;

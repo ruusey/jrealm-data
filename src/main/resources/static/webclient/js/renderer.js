@@ -740,26 +740,33 @@ export class GameRenderer {
                     const ty = fx.targetY * SCALE + offsetY;
                     const dx = tx - sx, dy = ty - sy;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    const segments = Math.max(4, Math.floor(dist / 12));
+                    const segments = Math.max(4, Math.floor(dist / 10));
                     const perpX = -dy / dist, perpY = dx / dist;
 
-                    // Draw jagged lightning bolt
-                    g.lineStyle(2, 0x80c0ff, alpha * 0.9);
+                    // Outer glow — thick mystic blue
+                    g.lineStyle(6, 0x2040a0, alpha * 0.35);
                     g.moveTo(sx, sy);
                     for (let i = 1; i < segments; i++) {
                         const t = i / segments;
-                        const jitter = (Math.random() - 0.5) * 16 * alpha;
-                        const lx = sx + dx * t + perpX * jitter;
-                        const ly = sy + dy * t + perpY * jitter;
-                        g.lineTo(lx, ly);
+                        const jitter = (Math.random() - 0.5) * 20 * alpha;
+                        g.lineTo(sx + dx * t + perpX * jitter, sy + dy * t + perpY * jitter);
                     }
                     g.lineTo(tx, ty);
-                    // Bright core
-                    g.lineStyle(1, 0xffffff, alpha * 0.6);
+                    // Main bolt — medium mystic blue
+                    g.lineStyle(3, 0x4080e0, alpha * 0.85);
                     g.moveTo(sx, sy);
                     for (let i = 1; i < segments; i++) {
                         const t = i / segments;
-                        const jitter = (Math.random() - 0.5) * 8 * alpha;
+                        const jitter = (Math.random() - 0.5) * 14 * alpha;
+                        g.lineTo(sx + dx * t + perpX * jitter, sy + dy * t + perpY * jitter);
+                    }
+                    g.lineTo(tx, ty);
+                    // Bright core — lighter blue
+                    g.lineStyle(1.5, 0x90c0ff, alpha * 0.7);
+                    g.moveTo(sx, sy);
+                    for (let i = 1; i < segments; i++) {
+                        const t = i / segments;
+                        const jitter = (Math.random() - 0.5) * 6 * alpha;
                         g.lineTo(sx + dx * t + perpX * jitter, sy + dy * t + perpY * jitter);
                     }
                     g.lineTo(tx, ty);
