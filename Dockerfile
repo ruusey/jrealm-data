@@ -1,15 +1,15 @@
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Install jrealm dependency into local Maven repo
-COPY ./jrealm ./jrealm
-RUN mvn -B clean install -DskipTests -f ./jrealm/pom.xml
+# Install openrealm dependency into local Maven repo
+COPY ./openrealm ./openrealm
+RUN mvn -B clean install -DskipTests -f ./openrealm/pom.xml
 
-# Build jrealm-data
-COPY ./jrealm-data ./jrealm-data
-RUN mvn -B clean package -DskipTests -f ./jrealm-data/pom.xml
+# Build openrealm-data
+COPY ./openrealm-data ./openrealm-data
+RUN mvn -B clean package -DskipTests -f ./openrealm-data/pom.xml
 
 FROM eclipse-temurin:17-jre
-COPY --from=build /app/jrealm-data/target/jrealm-data.jar /jrealm-data.jar
+COPY --from=build /app/openrealm-data/target/openrealm-data.jar /openrealm-data.jar
 EXPOSE 80
-ENTRYPOINT ["java", "-jar", "jrealm-data.jar"]
+ENTRYPOINT ["java", "-jar", "openrealm-data.jar"]

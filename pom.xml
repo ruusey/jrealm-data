@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jrealm.data</groupId>
-	<artifactId>jrealm-data</artifactId>
+	<artifactId>openrealm-data</artifactId>
 	<version>1.2.0</version>
-	<name>jrealm-data</name>
-	<description>Data access for JRealm</description>
+	<name>openrealm-data</name>
+	<description>Data access for OpenRealm</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
