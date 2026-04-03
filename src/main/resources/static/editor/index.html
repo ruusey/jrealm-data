@@ -111,22 +111,27 @@
       </div>
       <div class="terrain-select-list" id="terrainSelectList"></div>
 
-      <div class="terrain-detail" id="terrainDetail" style="display:none">
+      <div class="terrain-detail" id="terrainDetail" style="display:none;overflow-y:auto;max-height:calc(100vh - 120px)">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
           <button id="terrainBackBtn" class="btn-pick" style="padding:3px 8px">&larr; Back</button>
           <h3 id="terrainTitle" style="margin:0">Terrain</h3>
         </div>
-        <div class="terrain-info">
-          <span id="terrainDims"></span>
+        <div class="detail-grid" style="margin-bottom:8px">
+          <label>Dimensions: <span id="terrainDims"></span></label>
+          <label>Enemy Density: <input type="number" id="terrainDensity" min="0" max="1" step="0.001" style="width:80px"></label>
         </div>
 
         <h4>Tile Groups</h4>
         <div id="terrainTileGroups"></div>
 
-        <div class="terrain-add-tile">
-          <label>Rarity: <input type="number" id="terrainAddRarity" min="0" max="1" step="0.01" value="0.05" style="width:60px"></label>
-          <button id="terrainAddTileBtn" class="btn-add">+ Add Tile</button>
-        </div>
+        <h4 style="margin-top:12px">Zones</h4>
+        <div id="terrainZones"></div>
+
+        <h4 style="margin-top:12px">Enemy Groups</h4>
+        <div id="terrainEnemyGroups"></div>
+
+        <h4 style="margin-top:12px">SetPiece Placements</h4>
+        <div id="terrainSetPieces"></div>
 
         <div class="detail-actions" style="margin-top:8px">
           <button id="saveTerrainBtn" class="btn-apply">Apply Terrain Changes</button>
@@ -218,6 +223,7 @@
             </label>
             <span id="mapBrushInfo" class="map-brush-info">Brush: (none)</span>
             <button id="mapPickTileBtn" class="btn-add">Select Brush Tile</button>
+            <button id="mapStampSpBtn" class="btn-add" style="background:#446">Stamp SetPiece</button>
             <label><input type="checkbox" id="mapShowGrid" checked> Grid</label>
           </div>
           <div class="map-canvas-scroll" id="mapCanvasScroll">
@@ -553,20 +559,7 @@
       </div>
     </div>
   </div>
-</div>
 
-<!-- Tile Picker Modal -->
-<div id="tilePickerOverlay" class="picker-overlay" style="display:none">
-  <div class="picker-modal">
-    <div class="picker-header">
-      <h3>Select a Tile</h3>
-      <input type="text" id="pickerSearch" placeholder="Search tiles...">
-      <button id="pickerCloseBtn" class="tg-remove" style="font-size:20px">&times;</button>
-    </div>
-    <div class="picker-list" id="pickerList"></div>
-  </div>
-</div>
-<!-- Enemy Picker Modal -->
     <!-- Right panel: SetPieces tab -->
     <div class="panel tile-panel" id="setpiecesTab" style="display:none">
       <div class="tile-header">
@@ -583,16 +576,19 @@
           <label>Width: <input type="number" id="spWidth" min="1" max="32"></label>
           <label>Height: <input type="number" id="spHeight" min="1" max="32"></label>
         </div>
-        <div style="margin:6px 0">
-          <label>Paint Layer:
+        <div style="margin:6px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <label>Layer:
             <select id="spLayerSelect" style="width:120px">
-              <option value="0">Base (Layer 0)</option>
-              <option value="1">Collision (Layer 1)</option>
+              <option value="0">0 - Base (Floor)</option>
+              <option value="1">1 - Collision (Objects)</option>
             </select>
           </label>
-          <label style="margin-left:8px">Brush Tile ID: <input type="number" id="spBrushTile" min="0" value="0" style="width:60px" onchange="spBrushTileId=parseInt(this.value)||0"></label>
+          <span id="spBrushInfo" class="map-brush-info">Brush: (none)</span>
+          <button id="spPickTileBtn" class="btn-add">Select Brush Tile</button>
         </div>
-        <canvas id="spCanvas" width="240" height="240" style="border:1px solid #444;cursor:crosshair;margin:6px 0" onclick="spCanvasClick(event)"></canvas>
+        <div style="overflow:auto;max-height:500px;border:1px solid #444;margin:6px 0">
+          <canvas id="spCanvas" width="240" height="240" style="cursor:crosshair"></canvas>
+        </div>
         <div class="detail-actions">
           <button onclick="applySetPiece()" class="btn-apply">Apply</button>
         </div>
@@ -631,6 +627,20 @@
       </div>
     </div>
 
+</div>
+
+<!-- Tile Picker Modal -->
+<div id="tilePickerOverlay" class="picker-overlay" style="display:none">
+  <div class="picker-modal">
+    <div class="picker-header">
+      <h3>Select a Tile</h3>
+      <input type="text" id="pickerSearch" placeholder="Search tiles...">
+      <button id="pickerCloseBtn" class="tg-remove" style="font-size:20px">&times;</button>
+    </div>
+    <div class="picker-list" id="pickerList"></div>
+  </div>
+</div>
+<!-- Enemy Picker Modal -->
 <div id="enemyPickerOverlay" class="picker-overlay" style="display:none">
   <div class="picker-modal">
     <div class="picker-header">

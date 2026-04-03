@@ -66,8 +66,7 @@ const SPRITE_SHEETS = [
   'lofiParticlesBeam.png','lofiParticlesElectric.png','lofiParticlesHolyBeam.png',
   'lofiParticlesMeteor.png','lofiParticlesShocker.png','lofiParticlesSkull.png',
   'lofiParticlesTelegraph.png',
-  // Textiles
-  'textile4x4.png','textile5x5.png','textile9x9.png','textile10x10.png',
+  // Textiles (removed: textile4x4/5x5/9x9/10x10 — files deleted)
   // Generic char sheets
   'chars8x8dBeach.png','chars8x8dEncounters.png','chars8x8dHero1.png',
   'chars8x8rBeach.png','chars8x8rEncounters.png','chars8x8rHero1.png','chars8x8rHero2.png',
@@ -78,8 +77,8 @@ const SPRITE_SHEETS = [
   'chars16x16dEncounters.png','chars16x16dEncounters2.png',
   'chars16x16dMountains1.png','chars16x16dMountains2.png','chars16x16rEncounters.png',
   // Dungeon sheets (d1-d3)
-  'd1Chars16x16r.png','d1Chars8x8r.png','d1LofiObj.png','d1LofiObjBig.png',
-  'd2Chars16x16r.png','d2LofiObj.png','d2LofiObjBig.png',
+  'd1Chars16x16r.png',
+  'd2LofiObj.png',
   'd3Chars16x16r.png','d3Chars8x8r.png','d3LofiObj.png','d3LofiObjBig.png',
   // Ancient Ruins
   'ancientRuinsChars16x16.png','ancientRuinsChars8x8.png',
@@ -139,7 +138,7 @@ const SPRITE_SHEETS = [
   'secludedThicketChars16x16.png','secludedThicketChars8x8.png',
   'secludedThicketObjects16x16.png','secludedThicketObjects8x8.png',
   // Summer Nexus
-  'summerNexusChars16x16.png','summerNexusChars8x8.png',
+  'summerNexusChars16x16.png',
   'summerNexusObjects16x16.png','summerNexusObjects8x8.png',
 ];
 
@@ -549,18 +548,149 @@ function renderTerrainDetail() {
   const detail = document.getElementById('terrainDetail');
   detail.style.display = 'block';
   document.getElementById('terrainTitle').textContent = `${t.name} (ID ${t.terrainId})`;
-  document.getElementById('terrainDims').textContent = `${t.width}x${t.height} tiles, tileSize: ${t.tileSize}`;
+  document.getElementById('terrainDims').textContent = `${t.width}x${t.height}, tileSize: ${t.tileSize}`;
+  document.getElementById('terrainDensity').value = t.enemyDensity || 0;
+  document.getElementById('terrainDensity').onchange = () => {
+    t.enemyDensity = parseFloat(document.getElementById('terrainDensity').value) || 0;
+    markDirty('terrains');
+  };
 
+  // ---- Tile Groups ----
   const container = document.getElementById('terrainTileGroups');
   container.innerHTML = '';
+  if (!t.tileGroups || !t.tileGroups.length) { container.textContent = 'No tile groups'; }
+  else {
+    t.tileGroups.forEach((group, gi) => {
+      const section = document.createElement('details');
+      section.open = gi === 0;
+      section.style.cssText = 'background:#1a1a2e;padding:6px;border-radius:4px;margin-bottom:6px';
+      const summary = document.createElement('summary');
+      summary.style.cssText = 'cursor:pointer;font-weight:600;font-size:13px';
+      summary.textContent = `[${group.ordinal}] ${group.name || 'Group ' + gi} — ${(group.tileIds||[]).length} base, ${(group.decorationTileIds||[]).length} deco`;
+      section.appendChild(summary);
 
-  const group = t.tileGroups && t.tileGroups[0];
-  if (!group) { container.textContent = 'No tile groups'; return; }
+      // Base tiles
+      const baseLabel = document.createElement('div');
+      baseLabel.style.cssText = 'font-size:11px;color:#8cf;margin:6px 0 2px';
+      baseLabel.innerHTML = '<b>Base Tiles</b> (tileIds)';
+      section.appendChild(baseLabel);
+      renderTileIdList(section, group, 'tileIds', gi);
 
-  group.tileIds.forEach((tileId, idx) => {
+      // Add base tile button
+      const addBaseBtn = document.createElement('button');
+      addBaseBtn.className = 'btn-add'; addBaseBtn.textContent = '+ Add Base Tile';
+      addBaseBtn.style.cssText = 'font-size:11px;padding:2px 6px;margin:4px 0';
+      addBaseBtn.addEventListener('click', () => {
+        openTilePicker((tileId) => {
+          if (!group.tileIds) group.tileIds = [];
+          if (group.tileIds.includes(tileId)) return;
+          group.tileIds.push(tileId);
+          if (!group.rarities) group.rarities = {};
+          group.rarities[String(tileId)] = 0.5;
+          markDirty('terrains');
+          renderTerrainDetail();
+        });
+      });
+      section.appendChild(addBaseBtn);
+
+      // Decoration tiles
+      const decoLabel = document.createElement('div');
+      decoLabel.style.cssText = 'font-size:11px;color:#fc8;margin:8px 0 2px';
+      decoLabel.innerHTML = '<b>Decoration Tiles</b> (decorationTileIds — collision layer)';
+      section.appendChild(decoLabel);
+      renderTileIdList(section, group, 'decorationTileIds', gi);
+
+      // Add decoration tile button
+      const addDecoBtn = document.createElement('button');
+      addDecoBtn.className = 'btn-add'; addDecoBtn.textContent = '+ Add Decoration Tile';
+      addDecoBtn.style.cssText = 'font-size:11px;padding:2px 6px;margin:4px 0';
+      addDecoBtn.addEventListener('click', () => {
+        openTilePicker((tileId) => {
+          if (!group.decorationTileIds) group.decorationTileIds = [];
+          if (group.decorationTileIds.includes(tileId)) return;
+          group.decorationTileIds.push(tileId);
+          if (!group.rarities) group.rarities = {};
+          group.rarities[String(tileId)] = 0.03;
+          markDirty('terrains');
+          renderTerrainDetail();
+        });
+      });
+      section.appendChild(addDecoBtn);
+
+      container.appendChild(section);
+    });
+  }
+
+  // ---- Zones ----
+  const zonesContainer = document.getElementById('terrainZones');
+  zonesContainer.innerHTML = '';
+  if (t.zones && t.zones.length) {
+    t.zones.forEach(zone => {
+      const div = document.createElement('div');
+      div.style.cssText = 'background:#1a1a2e;padding:6px;border-radius:4px;margin-bottom:4px;font-size:11px';
+      div.innerHTML = `<b>${zone.displayName}</b> (${zone.zoneId}) — radius: ${zone.minRadius}-${zone.maxRadius}, difficulty: ${zone.difficulty}, tileGroup: ${zone.tileGroupOrdinal}, enemyGroup: ${zone.enemyGroupOrdinal}`;
+      zonesContainer.appendChild(div);
+    });
+  } else {
+    zonesContainer.textContent = 'No zones defined';
+  }
+
+  // ---- Enemy Groups ----
+  const egContainer = document.getElementById('terrainEnemyGroups');
+  egContainer.innerHTML = '';
+  if (t.enemyGroups && t.enemyGroups.length) {
+    t.enemyGroups.forEach(eg => {
+      const div = document.createElement('div');
+      div.style.cssText = 'background:#1a1a2e;padding:6px;border-radius:4px;margin-bottom:4px;font-size:11px';
+      const enemyNames = (eg.enemyIds || []).map(id => {
+        const e = enemies.find(en => en.enemyId === id);
+        return e ? e.name : '#' + id;
+      });
+      div.innerHTML = `<b>[${eg.ordinal}] ${eg.name}</b>: ${enemyNames.join(', ')}`;
+      egContainer.appendChild(div);
+    });
+  } else {
+    egContainer.textContent = 'No enemy groups';
+  }
+
+  // ---- SetPiece Placements ----
+  const spContainer = document.getElementById('terrainSetPieces');
+  spContainer.innerHTML = '';
+  if (t.setPieces && t.setPieces.length) {
+    t.setPieces.forEach((sp, i) => {
+      const model = setpieces.find(s => s.setPieceId === sp.setPieceId);
+      const div = document.createElement('div');
+      div.style.cssText = 'background:#1a1a2e;padding:6px;border-radius:4px;margin-bottom:4px;font-size:11px;display:flex;align-items:center;gap:6px';
+      div.innerHTML = `<b>${model ? model.name : 'SetPiece #' + sp.setPieceId}</b> — count: ${sp.minCount}-${sp.maxCount}, zones: ${(sp.allowedZones||[]).join(', ')}`;
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7';
+      removeBtn.addEventListener('click', () => {
+        t.setPieces.splice(i, 1);
+        markDirty('terrains');
+        renderTerrainDetail();
+      });
+      div.appendChild(removeBtn);
+      spContainer.appendChild(div);
+    });
+  }
+  const addSpBtn = document.createElement('button');
+  addSpBtn.className = 'btn-add'; addSpBtn.textContent = '+ Add SetPiece';
+  addSpBtn.style.cssText = 'font-size:11px;padding:2px 6px;margin:4px 0';
+  addSpBtn.addEventListener('click', () => {
+    if (!t.setPieces) t.setPieces = [];
+    t.setPieces.push({ setPieceId: 0, minCount: 1, maxCount: 3, allowedZones: [] });
+    markDirty('terrains');
+    renderTerrainDetail();
+  });
+  spContainer.appendChild(addSpBtn);
+}
+
+// Render a list of tile IDs (base or decoration) within a tileGroup
+function renderTileIdList(parent, group, field, groupIdx) {
+  const arr = group[field] || [];
+  arr.forEach((tileId, idx) => {
     const tile = getTileById(tileId);
     const rarity = group.rarities ? (group.rarities[String(tileId)] || 0) : 0;
-
     const row = document.createElement('div');
     row.className = 'tg-tile-row';
 
@@ -570,25 +700,29 @@ function renderTerrainDetail() {
     const idSpan = document.createElement('span'); idSpan.className = 'tile-id'; idSpan.textContent = tileId;
     const nameSpan = document.createElement('span'); nameSpan.className = 'tg-name';
     nameSpan.textContent = tile ? tile.name : '(unknown)';
+    nameSpan.style.cursor = 'pointer'; nameSpan.title = 'Click to view in Tiles tab';
+    nameSpan.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (tile) { switchTab('tiles'); selectTile(tile); }
+    });
 
     const rarityInput = document.createElement('input');
     rarityInput.type = 'number'; rarityInput.min = 0; rarityInput.max = 1; rarityInput.step = 0.01;
-    rarityInput.value = rarity;
-    rarityInput.title = 'Rarity (0-1)';
+    rarityInput.value = rarity; rarityInput.title = 'Rarity (0-1)';
+    rarityInput.style.width = '60px';
     rarityInput.addEventListener('change', () => {
       if (!group.rarities) group.rarities = {};
       group.rarities[String(tileId)] = parseFloat(rarityInput.value) || 0;
       markDirty('terrains');
     });
 
-    // Replace button - opens tile picker
     const replaceBtn = document.createElement('button');
     replaceBtn.className = 'btn-add'; replaceBtn.textContent = 'Replace';
     replaceBtn.style.cssText = 'padding:2px 8px;font-size:11px';
     replaceBtn.addEventListener('click', () => {
       openTilePicker((newId) => {
         if (newId === tileId) return;
-        group.tileIds[idx] = newId;
+        group[field][idx] = newId;
         const oldRarity = group.rarities ? (group.rarities[String(tileId)] || 0) : 0;
         if (group.rarities) delete group.rarities[String(tileId)];
         if (!group.rarities) group.rarities = {};
@@ -599,33 +733,21 @@ function renderTerrainDetail() {
     });
 
     const removeBtn = document.createElement('button');
-    removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7'; removeBtn.title = 'Remove tile';
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7'; removeBtn.title = 'Remove';
     removeBtn.addEventListener('click', () => {
-      group.tileIds.splice(idx, 1);
+      group[field].splice(idx, 1);
       if (group.rarities) delete group.rarities[String(tileId)];
       markDirty('terrains');
       renderTerrainDetail();
     });
 
-    // Click tile name to jump to it in tile editor
-    nameSpan.style.cursor = 'pointer';
-    nameSpan.title = 'Click to view in Tiles tab';
-    nameSpan.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (tile) {
-        switchTab('tiles');
-        selectTile(tile);
-        const el = tileList.querySelector(`[data-tile-id="${tile.tileId}"]`);
-        if (el) el.scrollIntoView({ block: 'center' });
-      }
-    });
-
     row.append(cvs, idSpan, nameSpan, rarityInput, replaceBtn, removeBtn);
-    container.appendChild(row);
+    parent.appendChild(row);
   });
 }
 
 function addTileToTerrain() {
+  // Legacy — kept for backward compat but renderTerrainDetail now has per-group add buttons
   if (!selectedTerrain) return;
   const group = selectedTerrain.tileGroups && selectedTerrain.tileGroups[0];
   if (!group) return;
@@ -2262,7 +2384,52 @@ function drawEnemySpawnsOnOverlay() {
   });
 }
 
+let stampingSetPiece = null; // SetPiece model being stamped, or null
+
+function startStampSetPiece() {
+  if (!selectedMap || !selectedMap.data) { alert('Select a static map first'); return; }
+  // Show a simple prompt to pick a setPieceId
+  const idStr = window.prompt('SetPiece ID to stamp:', '0');
+  if (idStr === null) return;
+  const id = parseInt(idStr);
+  const sp = setpieces.find(s => s.setPieceId === id);
+  if (!sp) { alert('SetPiece #' + id + ' not found'); return; }
+  stampingSetPiece = sp;
+  document.getElementById('mapBrushInfo').innerHTML = `<b style="color:#8cf">Stamping: ${sp.name} (${sp.width}x${sp.height}) — click map to place</b>`;
+}
+
+function stampSetPieceOnMap(e) {
+  const cvs = document.getElementById('mapCanvas');
+  const rect = cvs.getBoundingClientRect();
+  const col = Math.floor((e.clientX - rect.left) / MAP_TILE_PX);
+  const row = Math.floor((e.clientY - rect.top) / MAP_TILE_PX);
+  const sp = stampingSetPiece;
+  const m = selectedMap;
+  if (!sp || !m || !m.data) return;
+
+  for (let dy = 0; dy < sp.height; dy++) {
+    for (let dx = 0; dx < sp.width; dx++) {
+      const tr = row + dy, tc = col + dx;
+      if (tr < 0 || tr >= m.height || tc < 0 || tc >= m.width) continue;
+      // Stamp base layer
+      if (sp.baseLayout && sp.baseLayout[dy] && sp.baseLayout[dy][dx] > 0) {
+        if (m.data['0'] && m.data['0'][tr]) m.data['0'][tr][tc] = sp.baseLayout[dy][dx];
+      }
+      // Stamp collision layer
+      if (sp.collisionLayout && sp.collisionLayout[dy] && sp.collisionLayout[dy][dx] > 0) {
+        if (m.data['1'] && m.data['1'][tr]) m.data['1'][tr][tc] = sp.collisionLayout[dy][dx];
+      }
+    }
+  }
+
+  stampingSetPiece = null;
+  markDirty('maps');
+  renderMapCanvas();
+  updateMapBrushInfo();
+}
+
 function mapCanvasClick(e) {
+  if (stampingSetPiece) { stampSetPieceOnMap(e); return; }
   if (placingEnemy) { placeEnemyOnMap(e); return; }
   if (!selectedMap || !selectedMap.data || mapBrushTileId < 0) return;
   const canvas = document.getElementById('mapOverlayCanvas');
@@ -2995,35 +3162,57 @@ function addSetPiece() {
   renderSetPieceList();
 }
 
+const SP_TILE_PX = 24;
+
 function renderSpCanvas() {
   const cvs = document.getElementById('spCanvas');
   if (!cvs || !selectedSetPiece) return;
   const sp = selectedSetPiece;
-  const cellSize = 24;
-  cvs.width = sp.width * cellSize;
-  cvs.height = sp.height * cellSize;
+  cvs.width = sp.width * SP_TILE_PX;
+  cvs.height = sp.height * SP_TILE_PX;
   const ctx = cvs.getContext('2d');
-  ctx.clearRect(0, 0, cvs.width, cvs.height);
-  for (let r = 0; r < sp.height; r++) {
-    for (let c = 0; c < sp.width; c++) {
-      // Draw base layer
-      const baseId = sp.baseLayout && sp.baseLayout[r] ? sp.baseLayout[r][c] : 0;
-      if (baseId > 0) {
-        const t = getTileById(baseId);
-        if (t) drawTileAt(ctx, t, c * cellSize, r * cellSize, cellSize);
-        else { ctx.fillStyle = '#335'; ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize); }
-      } else {
-        ctx.fillStyle = '#111'; ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+  ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = '#111';
+  ctx.fillRect(0, 0, cvs.width, cvs.height);
+
+  const layer = document.getElementById('spLayerSelect') ? document.getElementById('spLayerSelect').value : '0';
+
+  // Always draw base layer first
+  const baseData = sp.baseLayout;
+  if (baseData) {
+    for (let r = 0; r < sp.height && r < baseData.length; r++) {
+      for (let c = 0; c < sp.width && c < baseData[r].length; c++) {
+        const tileId = baseData[r][c];
+        if (tileId > 0) {
+          const t = getTileById(tileId);
+          if (t) drawTileAt(ctx, t, c * SP_TILE_PX, r * SP_TILE_PX, SP_TILE_PX);
+          else { ctx.fillStyle = '#335'; ctx.fillRect(c * SP_TILE_PX, r * SP_TILE_PX, SP_TILE_PX, SP_TILE_PX); }
+        }
       }
-      // Draw collision layer on top
-      const collId = sp.collisionLayout && sp.collisionLayout[r] ? sp.collisionLayout[r][c] : 0;
-      if (collId > 0) {
-        const t = getTileById(collId);
-        if (t) drawTileAt(ctx, t, c * cellSize, r * cellSize, cellSize);
-      }
-      // Grid lines
-      ctx.strokeStyle = '#333'; ctx.strokeRect(c * cellSize, r * cellSize, cellSize, cellSize);
     }
+  }
+
+  // Draw collision layer on top
+  const collData = sp.collisionLayout;
+  if (collData) {
+    for (let r = 0; r < sp.height && r < collData.length; r++) {
+      for (let c = 0; c < sp.width && c < collData[r].length; c++) {
+        const tileId = collData[r][c];
+        if (tileId > 0) {
+          const t = getTileById(tileId);
+          if (t) drawTileAt(ctx, t, c * SP_TILE_PX, r * SP_TILE_PX, SP_TILE_PX);
+        }
+      }
+    }
+  }
+
+  // Grid overlay
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+  for (let r = 0; r <= sp.height; r++) {
+    ctx.beginPath(); ctx.moveTo(0, r * SP_TILE_PX); ctx.lineTo(sp.width * SP_TILE_PX, r * SP_TILE_PX); ctx.stroke();
+  }
+  for (let c = 0; c <= sp.width; c++) {
+    ctx.beginPath(); ctx.moveTo(c * SP_TILE_PX, 0); ctx.lineTo(c * SP_TILE_PX, sp.height * SP_TILE_PX); ctx.stroke();
   }
 }
 
@@ -3035,20 +3224,64 @@ function drawTileAt(ctx, tile, x, y, size) {
   ctx.drawImage(img, tile.col * srcSize, tile.row * srcSize, srcSize, srcSize, x, y, size, size);
 }
 
-function spCanvasClick(e) {
+function updateSpBrushInfo() {
+  const info = document.getElementById('spBrushInfo');
+  if (!info) return;
+  if (spBrushTileId < 0) {
+    info.innerHTML = 'Brush: (none)';
+  } else {
+    const tile = getTileById(spBrushTileId);
+    const cvs = document.createElement('canvas'); cvs.width = 20; cvs.height = 20;
+    if (tile) drawTilePreview(cvs, tile);
+    info.innerHTML = '';
+    info.appendChild(document.createTextNode('Brush: '));
+    info.appendChild(cvs);
+    info.appendChild(document.createTextNode(` ${tile ? tile.name : spBrushTileId}`));
+  }
+}
+
+function paintSpCell(row, col) {
   if (!selectedSetPiece || spBrushTileId < 0) return;
-  const cvs = document.getElementById('spCanvas');
-  const rect = cvs.getBoundingClientRect();
-  const cellSize = 24;
-  const col = Math.floor((e.clientX - rect.left) / cellSize);
-  const row = Math.floor((e.clientY - rect.top) / cellSize);
-  if (row < 0 || row >= selectedSetPiece.height || col < 0 || col >= selectedSetPiece.width) return;
+  const sp = selectedSetPiece;
+  if (row < 0 || row >= sp.height || col < 0 || col >= sp.width) return;
   const layer = document.getElementById('spLayerSelect') ? document.getElementById('spLayerSelect').value : '0';
-  const layout = layer === '1' ? selectedSetPiece.collisionLayout : selectedSetPiece.baseLayout;
+  const layout = layer === '1' ? sp.collisionLayout : sp.baseLayout;
   if (!layout || !layout[row]) return;
+  if (layout[row][col] === spBrushTileId) return;
   layout[row][col] = spBrushTileId;
   markDirty('setpieces');
-  renderSpCanvas();
+  // Redraw just the cell
+  const cvs = document.getElementById('spCanvas');
+  const ctx = cvs.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  const x = col * SP_TILE_PX, y = row * SP_TILE_PX;
+  // Redraw base
+  ctx.fillStyle = '#111'; ctx.fillRect(x, y, SP_TILE_PX, SP_TILE_PX);
+  const baseId = sp.baseLayout && sp.baseLayout[row] ? sp.baseLayout[row][col] : 0;
+  if (baseId > 0) { const t = getTileById(baseId); if (t) drawTileAt(ctx, t, x, y, SP_TILE_PX); }
+  const collId = sp.collisionLayout && sp.collisionLayout[row] ? sp.collisionLayout[row][col] : 0;
+  if (collId > 0) { const t = getTileById(collId); if (t) drawTileAt(ctx, t, x, y, SP_TILE_PX); }
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)'; ctx.strokeRect(x, y, SP_TILE_PX, SP_TILE_PX);
+}
+
+function initSpCanvasEvents() {
+  const cvs = document.getElementById('spCanvas');
+  if (!cvs) return;
+  cvs.addEventListener('mousedown', (e) => {
+    spPainting = true;
+    const rect = cvs.getBoundingClientRect();
+    const col = Math.floor((e.clientX - rect.left) / SP_TILE_PX);
+    const row = Math.floor((e.clientY - rect.top) / SP_TILE_PX);
+    paintSpCell(row, col);
+  });
+  cvs.addEventListener('mousemove', (e) => {
+    if (!spPainting) return;
+    const rect = cvs.getBoundingClientRect();
+    const col = Math.floor((e.clientX - rect.left) / SP_TILE_PX);
+    const row = Math.floor((e.clientY - rect.top) / SP_TILE_PX);
+    paintSpCell(row, col);
+  });
+  window.addEventListener('mouseup', () => { spPainting = false; });
 }
 
 // ========== REALM EVENTS ==========
@@ -3472,6 +3705,19 @@ function bindEvents() {
       updateMapBrushInfo();
     });
   });
+
+  // Map setpiece stamping
+  document.getElementById('mapStampSpBtn').addEventListener('click', startStampSetPiece);
+
+  // SetPiece editor
+  document.getElementById('spPickTileBtn').addEventListener('click', () => {
+    openTilePicker((tileId) => {
+      spBrushTileId = tileId;
+      updateSpBrushInfo();
+    });
+  });
+  document.getElementById('spLayerSelect').addEventListener('change', renderSpCanvas);
+  initSpCanvasEvents();
   document.getElementById('applyMapBtn').addEventListener('click', () => { markDirty('maps'); });
   document.getElementById('mapPlaceEnemyBtn').addEventListener('click', startPlaceEnemy);
   document.getElementById('mapCancelPlaceBtn').addEventListener('click', cancelPlaceEnemy);
