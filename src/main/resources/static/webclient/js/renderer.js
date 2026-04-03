@@ -8,54 +8,27 @@ const PLAYER_SIZE = 32;      // World render size for entities (matches tile siz
 const IS_MOBILE = window.innerWidth < 900 || ('ontouchstart' in window);
 const SCALE = IS_MOBILE ? 0.75 : 2;  // 0.75x on mobile for max visibility, 2x on desktop
 const VIEWPORT_TILES = IS_MOBILE ? 16 : 24;
-const OUTLINE_THICKNESS = 1.5;
-const OUTLINE_COLOR = [0.0, 0.0, 0.0, 1.0]; // Black, fully opaque
+const OUTLINE_OFFSETS = [[1,0],[-1,0],[0,1],[0,-1]];
+const OUTLINE_TINT = 0x000000;
+const OUTLINE_ALPHA = 0.85;
 
-// Single-pass GPU outline shader. Samples 4 neighboring texels — if any neighbor
-// has alpha but the current pixel is transparent, draws the outline color.
-// Shared across all entity sprites so PixiJS can batch the filter pass.
-const OUTLINE_FRAG = `
-    varying vec2 vTextureCoord;
-    uniform sampler2D uSampler;
-    uniform vec4 uOutlineColor;
-    uniform vec2 uTexelStep; // 1.0 / textureSize, set per-sprite by PixiJS
-
-    void main(void) {
-        vec4 color = texture2D(uSampler, vTextureCoord);
-        if (color.a > 0.1) {
-            gl_FragColor = color;
-            return;
-        }
-        // Sample 4 cardinal neighbors
-        float a = 0.0;
-        a += texture2D(uSampler, vTextureCoord + vec2( uTexelStep.x, 0.0)).a;
-        a += texture2D(uSampler, vTextureCoord + vec2(-uTexelStep.x, 0.0)).a;
-        a += texture2D(uSampler, vTextureCoord + vec2(0.0,  uTexelStep.y)).a;
-        a += texture2D(uSampler, vTextureCoord + vec2(0.0, -uTexelStep.y)).a;
-        if (a > 0.1) {
-            gl_FragColor = uOutlineColor;
-        } else {
-            gl_FragColor = vec4(0.0);
-        }
+/**
+ * Add a black pixel outline around a sprite by rendering 4 tinted copies
+ * at 1px cardinal offsets behind it. All copies share the same texture
+ * (no GPU upload), and PixiJS batches them in the same draw call.
+ */
+function addSpriteWithOutline(container, tex, x, y, w, h, opts) {
+    for (const [ox, oy] of OUTLINE_OFFSETS) {
+        const ol = new PIXI.Sprite(tex);
+        ol.x = x + ox; ol.y = y + oy;
+        ol.width = w; ol.height = h;
+        ol.tint = OUTLINE_TINT;
+        ol.alpha = OUTLINE_ALPHA;
+        if (opts?.anchor) ol.anchor.copyFrom(opts.anchor);
+        if (opts?.flipX) { ol.anchor.set(1, ol.anchor.y); ol.scale.x = -Math.abs(ol.scale.x); }
+        if (opts?.rotation != null) ol.rotation = opts.rotation;
+        container.addChild(ol);
     }
-`;
-
-function createOutlineFilter() {
-    const filter = new PIXI.Filter(null, OUTLINE_FRAG, {
-        uOutlineColor: OUTLINE_COLOR,
-        uTexelStep: [0.0, 0.0],
-    });
-    filter.padding = Math.ceil(OUTLINE_THICKNESS);
-    // Auto-fit ensures the filter reads the correct texture dimensions
-    filter.autoFit = true;
-    filter.apply = function(filterManager, input, output, clearMode) {
-        this.uniforms.uTexelStep = [
-            OUTLINE_THICKNESS / input.sourceFrame.width,
-            OUTLINE_THICKNESS / input.sourceFrame.height
-        ];
-        filterManager.applyFilter(this, input, output, clearMode);
-    };
-    return filter;
 }
 
 // Parse template angle expressions like "{{PI/4}}", "{{1.5PI/6}}"
@@ -92,8 +65,6 @@ export class GameRenderer {
         this.healthBarGraphics = null;
         this.tileGraphics = null;
 
-        // Shared GPU outline filter — one instance, applied to all entity sprites
-        this.outlineFilter = null;
     }
 
     async init() {
@@ -121,7 +92,6 @@ export class GameRenderer {
         this.healthBarGraphics = new PIXI.Graphics();
         this.uiLayer.addChild(this.healthBarGraphics);
 
-        this.outlineFilter = createOutlineFilter();
     }
 
     async loadTexture(key, url) {
@@ -335,10 +305,10 @@ export class GameRenderer {
                     shadowG.endFill();
                     this.tileLayer.addChild(shadowG);
 
+                    addSpriteWithOutline(this.tileLayer, tex, sx, sy, drawSize, drawSize);
                     const spr = new PIXI.Sprite(tex);
                     spr.x = sx; spr.y = sy;
                     spr.width = drawSize; spr.height = drawSize;
-                    spr.filters = [this.outlineFilter];
                     this.tileLayer.addChild(spr);
                 } else {
                     // === DECORATION (non-collision) - with ground shadow ===
@@ -421,7 +391,6 @@ export class GameRenderer {
                 const tfAngle = Math.PI / 2;
                 const angleOffset = projGroup ? parseAngleTemplate(projGroup.angleOffset) : 0;
                 spr.rotation = -bullet.angle + tfAngle + (angleOffset > 0 ? angleOffset : 0);
-                spr.filters = [this.outlineFilter];
                 this.entityLayer.addChild(spr);
             } else {
                 bulletGfx.beginFill(0xffff80);
@@ -507,7 +476,8 @@ export class GameRenderer {
             else if (this._hasEffect(effects, 18)) spr.tint = 0x8899CC;  // ARMORED → blue-silver
             else if (this._hasEffect(effects, 14)) spr.tint = 0xFFAA66;  // DAMAGING → orange
 
-            spr.filters = [this.outlineFilter];
+            addSpriteWithOutline(this.entityLayer, tex, sx, sy, size, size,
+                flipX ? { flipX: true } : null);
             this.entityLayer.addChild(spr);
         } else {
             // Fallback: colored square
@@ -599,7 +569,7 @@ export class GameRenderer {
                 else if (this._hasEffect(enemy.effectIds, 16)) spr.tint = 0x992255;  // CURSED - dark red-purple
                 else if (this._hasEffect(enemy.effectIds, 17)) spr.tint = 0x40cc40;  // POISONED - sickly green
             }
-            spr.filters = [this.outlineFilter];
+            addSpriteWithOutline(this.entityLayer, tex, sx, sy, size, size);
             this.entityLayer.addChild(spr);
         } else {
             const g = new PIXI.Graphics();
