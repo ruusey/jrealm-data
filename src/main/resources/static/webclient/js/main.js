@@ -286,11 +286,14 @@ async function loadLeaderboard() {
 
             const info = document.createElement('span');
             info.className = 'lb-info';
-            info.textContent = `${entry.accountName} - ${entry.className} Lv. ${entry.level}`;
+            const isFameMode = (entry.fame || 0) > 0;
+            info.textContent = `${entry.accountName} - ${entry.className} Lv. ${isFameMode ? 20 : entry.level}`;
 
             const fame = document.createElement('span');
             fame.className = 'lb-fame';
-            fame.textContent = `Fame: ${(entry.fame || 0).toLocaleString()}`;
+            fame.textContent = isFameMode
+                ? `Fame: ${entry.fame.toLocaleString()}`
+                : `XP: ${(entry.stats && entry.stats.xp != null ? entry.stats.xp : 0).toLocaleString()}`;
 
             row.append(rank, icon, info, fame);
 
@@ -319,18 +322,35 @@ function showEquipmentTooltip(event, entry) {
     }
     const slotNames = ['Weapon', 'Ability', 'Armor', 'Ring'];
     let html = `<div class="lb-tooltip-title">${entry.accountName}'s ${entry.className}</div>`;
+    html += '<div class="lb-tooltip-equip">';
     for (let i = 0; i < 4; i++) {
         const equip = entry.equipment.find(e => e.slotIdx === i);
         if (equip && equip.itemId >= 0) {
             const itemDef = game.itemData?.[equip.itemId];
             const name = itemDef?.name || `Item ${equip.itemId}`;
-            html += `<div class="lb-tooltip-item">${slotNames[i]}: ${name}</div>`;
+            const spriteUrl = getItemSpriteUrl({ itemId: equip.itemId });
+            const imgTag = spriteUrl
+                ? `<img src="${spriteUrl}" class="lb-tooltip-sprite">`
+                : '<span class="lb-tooltip-sprite-empty"></span>';
+            const tierTag = itemDef?.tier >= 0 ? `<span class="lb-tooltip-tier">T${itemDef.tier}</span>` : '';
+            html += `<div class="lb-tooltip-item">${imgTag}<span class="lb-tooltip-slot">${slotNames[i]}:</span> ${name}${tierTag}</div>`;
         } else {
-            html += `<div class="lb-tooltip-item" style="color:#665848">${slotNames[i]}: Empty</div>`;
+            html += `<div class="lb-tooltip-item" style="color:#665848"><span class="lb-tooltip-sprite-empty"></span><span class="lb-tooltip-slot">${slotNames[i]}:</span> Empty</div>`;
         }
     }
+    html += '</div>';
     if (entry.stats) {
-        html += `<div class="lb-tooltip-stats">HP:${entry.stats.hp ?? 0} MP:${entry.stats.mp ?? 0} ATT:${entry.stats.att ?? 0} DEF:${entry.stats.def ?? 0} SPD:${entry.stats.spd ?? 0} DEX:${entry.stats.dex ?? 0}</div>`;
+        const s = entry.stats;
+        html += '<div class="lb-tooltip-stats">'
+            + `<div class="lb-stat"><span class="lb-stat-label">HP</span><span class="lb-stat-val lb-stat-hp">${s.hp ?? 0}</span></div>`
+            + `<div class="lb-stat"><span class="lb-stat-label">MP</span><span class="lb-stat-val lb-stat-mp">${s.mp ?? 0}</span></div>`
+            + `<div class="lb-stat"><span class="lb-stat-label">ATT</span><span class="lb-stat-val">${s.att ?? 0}</span></div>`
+            + `<div class="lb-stat"><span class="lb-stat-label">DEF</span><span class="lb-stat-val">${s.def ?? 0}</span></div>`
+            + `<div class="lb-stat"><span class="lb-stat-label">SPD</span><span class="lb-stat-val">${s.spd ?? 0}</span></div>`
+            + `<div class="lb-stat"><span class="lb-stat-label">DEX</span><span class="lb-stat-val">${s.dex ?? 0}</span></div>`
+            + `<div class="lb-stat"><span class="lb-stat-label">VIT</span><span class="lb-stat-val">${s.vit ?? 0}</span></div>`
+            + `<div class="lb-stat"><span class="lb-stat-label">WIS</span><span class="lb-stat-val">${s.wis ?? 0}</span></div>`
+            + '</div>';
     }
     tip.innerHTML = html;
     tip.style.display = 'block';
