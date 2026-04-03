@@ -566,7 +566,7 @@
 		"health": 90,
 		"maxSpeed": 1.4,
 		"chaseRange": 390,
-		"attackRange": 127.5,
+		"attackRange": 50,
 		"stats": {
 			"hp": 90,
 			"def": 1,
