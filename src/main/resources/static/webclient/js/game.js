@@ -597,7 +597,13 @@ export class GameState {
         // Server uses dead reckoning and only sends corrections when the actual
         // position diverges from what we'd predict using velocity. Between
         // corrections, we extrapolate forward using dx/dy.
+        // targetX/targetY advance by velocity each frame so they represent the
+        // server's predicted position, not a stale snapshot.
         for (const [id, e] of this.enemies) {
+            // Advance target by velocity (mirrors server dead reckoning prediction)
+            e.targetX += e.dx * moveScale;
+            e.targetY += e.dy * moveScale;
+
             const dx = e.targetX - e.pos.x, dy = e.targetY - e.pos.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist > SNAP_DISTANCE) {
@@ -606,7 +612,7 @@ export class GameState {
                 // Extrapolate using velocity
                 e.pos.x += e.dx * moveScale;
                 e.pos.y += e.dy * moveScale;
-                // Blend toward server correction position to prevent drift
+                // Blend toward server predicted position to prevent drift
                 const corrDx = e.targetX - e.pos.x;
                 const corrDy = e.targetY - e.pos.y;
                 const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);

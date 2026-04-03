@@ -192,8 +192,11 @@ public class AccountService {
                 throw new Exception("Account name '" + account.getAccountName() + "' is already taken");
             }
 
-            // All new registrations get OPENREALM_PLAYER — ignore any client-supplied provisions
+            // All new registrations get OPENREALM_PLAYER provision and TRIAL subscription
             account.setAccountProvisions(java.util.Arrays.asList(AccountProvision.OPENREALM_PLAYER));
+            if (account.getAccountSubscriptions() == null || account.getAccountSubscriptions().isEmpty()) {
+                account.setAccountSubscriptions(java.util.Arrays.asList(AccountSubscription.TRIAL));
+            }
 
             AccountEntity accountEntity = this.saveAccountDetails(account);
 

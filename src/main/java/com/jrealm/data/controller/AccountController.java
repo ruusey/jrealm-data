@@ -31,6 +31,9 @@ import com.jrealm.data.service.PlayerDataService;
 import com.jrealm.data.util.ApiUtils;
 import com.jrealm.data.util.Util;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class AccountController {
     private transient final AccountService jrealmAccounts;
@@ -155,11 +158,16 @@ public class AccountController {
         ResponseEntity<?> res = null;
         try {
             final AccountEntity created = this.jrealmAccounts.registerJrealmAccount(account);
-            this.jrealmData.createInitialAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName(), CharacterClass.WIZARD.classId);
+            try {
+                this.jrealmData.createInitialAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName(), CharacterClass.WIZARD.classId);
+            } catch (final Exception charEx) {
+                AccountController.log.error("Account created but initial character setup failed for {}", created.getAccountGuid(), charEx);
+            }
             res = ApiUtils.buildSuccess(created);
         } catch (final Exception e) {
             final String errMsg = "Failed to register JRealm Account";
-            res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
+            final String reason = e.getMessage() != null ? e.getMessage() : e.getClass().getName();
+            res = ApiUtils.buildAndLogError(errMsg, reason);
         }
         return res;
     }

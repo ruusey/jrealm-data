@@ -185,7 +185,8 @@ export const NetEnemy = {
         return {
             id: r.readLong(), enemyId: r.readInt(), weaponId: r.readInt(), size: r.readShort(),
             pos: Vector2f.read(r), dX: r.readFloat(), dY: r.readFloat(),
-            healthMultiplier: r.readInt(), health: r.readInt(), maxHealth: r.readInt()
+            healthMultiplier: r.readInt(), health: r.readInt(), maxHealth: r.readInt(),
+            shortId: r.readShort()
         };
     }
 };
@@ -195,7 +196,8 @@ export const NetPlayer = {
         return {
             id: r.readLong(), name: r.readString(), accountUuid: r.readString(),
             characterUuid: r.readString(), classId: r.readInt(), size: r.readShort(),
-            pos: Vector2f.read(r), dX: r.readFloat(), dY: r.readFloat()
+            pos: Vector2f.read(r), dX: r.readFloat(), dY: r.readFloat(),
+            shortId: r.readShort()
         };
     }
 };

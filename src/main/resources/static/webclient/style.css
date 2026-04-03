@@ -61,6 +61,10 @@ button.secondary:hover { background: #4a3a48; }
 .register-link { font-size: 13px; color: #887868; margin-top: 12px; }
 .register-link a { color: #c8a86e; text-decoration: none; }
 .register-link a:hover { text-decoration: underline; }
+.discord-link { margin-top: 20px; padding-top: 16px; border-top: 1px solid #3a2a38; }
+.discord-link a { display: inline-flex; align-items: center; gap: 8px; color: #7289da; text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.discord-link a:hover { color: #99aab5; }
+.discord-link svg { flex-shrink: 0; }
 
 /* Character Select */
 .charselect-box { width: 560px; max-height: 90vh; overflow-y: auto; }

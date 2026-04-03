@@ -3545,8 +3545,8 @@
 	{
 		"enemyId": 68,
 		"name": "Decoy",
-		"spriteKey": "rotmg-players.png",
-		"row": 0,
+		"spriteKey": "rotmg-classes-3.png",
+		"row": 3,
 		"col": 0,
 		"spriteSize": 8,
 		"size": 32,
