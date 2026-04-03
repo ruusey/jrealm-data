@@ -574,17 +574,28 @@ export class GameState {
                 }
             } else {
                 // OTHER PLAYERS: velocity dead-reckoning + correction blend.
-                // Server dead reckoning expects clients to extrapolate using velocity.
+                // Advance targetX/targetY by velocity so they represent where the
+                // server expects the entity to be now (mirrors server dead reckoning).
                 const hasVelOther = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
+                if (hasVelOther) {
+                    p.targetX += p.dx * moveScale;
+                    p.targetY += p.dy * moveScale;
+                }
+
+                // Extrapolate pos using velocity, then blend toward server prediction.
+                const corrDx = p.targetX - p.pos.x;
+                const corrDy = p.targetY - p.pos.y;
+                const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
+
                 if (hasVelOther) {
                     p.pos.x += p.dx * moveScale;
                     p.pos.y += p.dy * moveScale;
                 }
-                // Blend toward server position to correct drift
-                if (dist > 0.5) {
-                    const corrFactor = Math.min(0.3, 0.05 + dist * 0.01);
-                    p.pos.x += dx * corrFactor;
-                    p.pos.y += dy * corrFactor;
+                // Stronger blend to snap toward server prediction quickly
+                if (corrDist > 0.5) {
+                    const corrFactor = Math.min(0.5, 0.15 + corrDist * 0.02);
+                    p.pos.x += (p.targetX - p.pos.x) * corrFactor;
+                    p.pos.y += (p.targetY - p.pos.y) * corrFactor;
                 }
             }
 
@@ -610,14 +621,17 @@ export class GameState {
                 e.pos.x = e.targetX; e.pos.y = e.targetY;
             } else {
                 // Extrapolate using velocity
-                e.pos.x += e.dx * moveScale;
-                e.pos.y += e.dy * moveScale;
-                // Blend toward server predicted position to prevent drift
+                const hasVel = Math.abs(e.dx) > 0.01 || Math.abs(e.dy) > 0.01;
+                if (hasVel) {
+                    e.pos.x += e.dx * moveScale;
+                    e.pos.y += e.dy * moveScale;
+                }
+                // Blend toward server predicted position
                 const corrDx = e.targetX - e.pos.x;
                 const corrDy = e.targetY - e.pos.y;
                 const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
                 if (corrDist > 0.5) {
-                    const corrFactor = Math.min(0.3, 0.05 + corrDist * 0.01);
+                    const corrFactor = Math.min(0.5, 0.15 + corrDist * 0.02);
                     e.pos.x += corrDx * corrFactor;
                     e.pos.y += corrDy * corrFactor;
                 }

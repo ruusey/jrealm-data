@@ -5143,5 +5143,29 @@
 		"targetSlot": 1,
 		"targetClass": 10,
 		"fameBonus": 6
+	},
+	{
+		"itemId": 286,
+		"row": 5,
+		"col": 3,
+		"spriteKey": "lofiObj2.png",
+		"name": "Tome of Holy Protection",
+		"description": "A blessed tome that sacrifices healing power to encase the caster in divine armor, greatly bolstering their defense.",
+		"stats": {
+			"hp": 40,
+			"def": 8
+		},
+		"effect": {
+			"self": true,
+			"effectId": 5,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 160
+		},
+		"consumable": false,
+		"tier": -1,
+		"targetSlot": 1,
+		"targetClass": 3,
+		"fameBonus": 7
 	}
 ]

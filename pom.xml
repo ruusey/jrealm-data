@@ -58,7 +58,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.jrealm.game</groupId>
-			<artifactId>jrealm</artifactId>
+			<artifactId>openrealm</artifactId>
 			<version>0.5.0</version>
 		</dependency>
 		<dependency>
