@@ -776,11 +776,13 @@ export class GameState {
             return { text: `Lv 20  Fame: ${fame}`, pct: 100, isFame: true };
         }
 
-        // Show XP progress within current level
+        // Show XP progress within current level as difference from level floor
         const range = map[level];
         if (!range) return { text: `Lv ${level}`, pct: 0, isFame: false };
-        const pct = Math.min(100, (exp / range.max) * 100);
-        return { text: `Lv ${level}  ${exp} / ${range.max}`, pct, isFame: false };
+        const xpIntoLevel = exp - range.min;
+        const xpForLevel = range.max - range.min;
+        const pct = Math.min(100, (xpIntoLevel / xpForLevel) * 100);
+        return { text: `Lv ${level}  ${xpIntoLevel} / ${xpForLevel}`, pct, isFame: false };
     }
 
     // Get max stats for the current class
