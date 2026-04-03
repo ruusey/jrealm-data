@@ -98,6 +98,7 @@ select:focus, input:focus { outline: none; border-color: #e94560; }
 .flag-c { background: #a33; color: #fcc; }
 .flag-s { background: #338; color: #ccf; }
 .flag-d { background: #833; color: #fcc; }
+.flag-w { background: #555; color: #eee; }
 
 .tile-detail, .terrain-detail {
   background: #16213e; border-radius: 4px; padding: 10px; margin-top: 8px; flex-shrink: 0;

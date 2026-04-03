@@ -114,9 +114,9 @@
     {
         "tileId": 8,
         "name": "Sand_Floor_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 16,
-        "col": 14,
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 12,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1066,9 +1066,9 @@
     {
         "tileId": 76,
         "name": "Crystal_Wall_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 7,
-        "col": 10,
+        "spriteKey": "cursedLibraryObjects8x8.png",
+        "row": 1,
+        "col": 12,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1080,9 +1080,9 @@
     {
         "tileId": 77,
         "name": "Crystal_Wall_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 7,
-        "col": 11,
+        "spriteKey": "cursedLibraryObjects8x8.png",
+        "row": 1,
+        "col": 13,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1108,9 +1108,9 @@
     {
         "tileId": 79,
         "name": "Necropolis_Floor_0",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 24,
-        "col": 2,
+        "spriteKey": "cursedLibraryObjects8x8.png",
+        "row": 0,
+        "col": 4,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1122,9 +1122,9 @@
     {
         "tileId": 80,
         "name": "Necropolis_Floor_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 24,
-        "col": 4,
+        "spriteKey": "cursedLibraryObjects8x8.png",
+        "row": 0,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1192,9 +1192,9 @@
     {
         "tileId": 85,
         "name": "Sunken_Wall",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 26,
-        "col": 9,
+        "spriteKey": "cursedLibraryObjects8x8.png",
+        "row": 1,
+        "col": 10,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1276,9 +1276,9 @@
     {
         "tileId": 91,
         "name": "Magma_Wall",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 46,
-        "col": 0,
+        "spriteKey": "lofiEnvironment.png",
+        "row": 3,
+        "col": 4,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1332,9 +1332,9 @@
     {
         "tileId": 95,
         "name": "Shadow_Wall_1",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 48,
-        "col": 11,
+        "spriteKey": "lofiEnvironment.png",
+        "row": 0,
+        "col": 6,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -1738,9 +1738,9 @@
     {
         "tileId": 124,
         "name": "Crystal_Floor_Accent",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 48,
-        "col": 7,
+        "spriteKey": "lairOfDraconisObjects8x8.png",
+        "row": 2,
+        "col": 15,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1752,9 +1752,9 @@
     {
         "tileId": 125,
         "name": "Necropolis_Floor_Accent",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 24,
-        "col": 3,
+        "spriteKey": "lairOfDraconisObjects8x8.png",
+        "row": 4,
+        "col": 8,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1864,9 +1864,9 @@
     {
         "tileId": 133,
         "name": "Magma_Floor_Accent",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 40,
-        "col": 0,
+        "spriteKey": "fungalCavernObjects8x8.png",
+        "row": 4,
+        "col": 4,
         "size": 32,
         "data": {
             "hasCollision": 0,
@@ -1962,9 +1962,9 @@
     {
         "tileId": 140,
         "name": "Rock_2",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 39,
-        "col": 8,
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 2,
+        "col": 2,
         "size": 32,
         "data": {
             "hasCollision": 1,
@@ -2041,6 +2041,1042 @@
             "slows": 0,
             "damaging": 0,
             "isWall": 1
+        }
+    },
+    {
+        "tileId": 146,
+        "name": "Wood_Floor_0",
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 8,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 1
+        }
+    },
+    {
+        "tileId": 147,
+        "name": "Bright_Grass_0",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 20,
+        "col": 15,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 148,
+        "name": "Bright_Grass_1",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 21,
+        "col": 15,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 149,
+        "name": "Cellar_Tile_0",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 15,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 150,
+        "name": "Cellar_TIle_1",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 15,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 151,
+        "name": "Cellar_Tile_2",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 15,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 152,
+        "name": "Cellar_Tile_3",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 15,
+        "col": 3,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 153,
+        "name": "Marble_Tile_0",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 22,
+        "col": 4,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 154,
+        "name": "Marble_Tile_1",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 22,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 155,
+        "name": "Vine_Growth_0",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 16,
+        "col": 6,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 156,
+        "name": "Vine_Growth_1",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 16,
+        "col": 14,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 157,
+        "name": "Dark_TIle_0",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 2,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 158,
+        "name": "Dark_Tile_1",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 2,
+        "col": 13,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 159,
+        "name": "Dark_Tile_2",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 2,
+        "col": 14,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 160,
+        "name": "Dark_Tile_3",
+        "spriteKey": "lofiEnvironment2.png",
+        "row": 6,
+        "col": 6,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 161,
+        "name": "Ice_Tile_0",
+        "spriteKey": "d3LofiObj.png",
+        "row": 20,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 162,
+        "name": "Ice_Tile_1",
+        "spriteKey": "d3LofiObj.png",
+        "row": 20,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 163,
+        "name": "Ice_Tile_2",
+        "spriteKey": "d3LofiObj.png",
+        "row": 20,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 164,
+        "name": "Ice_Tile_3",
+        "spriteKey": "d3LofiObj.png",
+        "row": 20,
+        "col": 3,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 165,
+        "name": "Steel_Tile_0",
+        "spriteKey": "d3LofiObj.png",
+        "row": 5,
+        "col": 8,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 166,
+        "name": "Steel_Tile_1",
+        "spriteKey": "d3LofiObj.png",
+        "row": 4,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 167,
+        "name": "Stones_0",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 4,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 168,
+        "name": "Stones_1",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 4,
+        "col": 9,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 169,
+        "name": "Stones_2",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 4,
+        "col": 13,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 170,
+        "name": "Stones_3",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 5,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 171,
+        "name": "Stones_4",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 4,
+        "col": 10,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 172,
+        "name": "Stones_3",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 4,
+        "col": 15,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 173,
+        "name": "Tree_0",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 6,
+        "col": 4,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 174,
+        "name": "Tree_1",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 6,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 175,
+        "name": "Tree_2",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 6,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 176,
+        "name": "Tree_3",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 6,
+        "col": 8,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 177,
+        "name": "Tree_4",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 6,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 178,
+        "name": "Bush_0",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 7,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 179,
+        "name": "Bush_1",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 7,
+        "col": 14,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 180,
+        "name": "Lily_Pad_0",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 5,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 181,
+        "name": "Lily_Pad_1",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 5,
+        "col": 14,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 182,
+        "name": "Lily_Pad_2",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 5,
+        "col": 11,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 183,
+        "name": "Checker_Tile_0",
+        "spriteKey": "summerNexusObjects8x8.png",
+        "row": 22,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 184,
+        "name": "Stone_Wall_0",
+        "spriteKey": "summerNexusObjects8x8.png",
+        "row": 40,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 1
+        }
+    },
+    {
+        "tileId": 185,
+        "name": "Bush_2",
+        "spriteKey": "magicWoodsObjects8x8.png",
+        "row": 0,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 186,
+        "name": "Bush_3",
+        "spriteKey": "summerNexusObjects8x8.png",
+        "row": 25,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 187,
+        "name": "Bush_4",
+        "spriteKey": "magicWoodsObjects8x8.png",
+        "row": 0,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 188,
+        "name": "Bush_5",
+        "spriteKey": "summerNexusObjects8x8.png",
+        "row": 26,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 189,
+        "name": "Crystal_Tile_0",
+        "spriteKey": "crystalCaveObjects8x8.png",
+        "row": 10,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 190,
+        "name": "Crystal_Tile_1",
+        "spriteKey": "crystalCaveObjects8x8.png",
+        "row": 10,
+        "col": 6,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 191,
+        "name": "Crystal_Tile_2",
+        "spriteKey": "crystalCaveObjects8x8.png",
+        "row": 11,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 192,
+        "name": "Crystal_Tile_3",
+        "spriteKey": "crystalCaveObjects8x8.png",
+        "row": 11,
+        "col": 6,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 193,
+        "name": "Crystal_Tile_4",
+        "spriteKey": "crystalCaveObjects8x8.png",
+        "row": 9,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 194,
+        "name": "Crystal_Tile_5",
+        "spriteKey": "crystalCaveObjects8x8.png",
+        "row": 9,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 195,
+        "name": "Crystal_Tile_6",
+        "spriteKey": "crystalCaveObjects8x8.png",
+        "row": 9,
+        "col": 6,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 196,
+        "name": "Dark_Water_0",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 5,
+        "col": 9,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 1,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 197,
+        "name": "Dark_Water_1",
+        "spriteKey": "mountainTempleObjects8x8.png",
+        "row": 5,
+        "col": 10,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 198,
+        "name": "Checker_Tile_1",
+        "spriteKey": "lostHallsObjects8x8.png",
+        "row": 0,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 199,
+        "name": "Checker_TIle_2",
+        "spriteKey": "lostHallsObjects8x8.png",
+        "row": 0,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 200,
+        "name": "Candle_0",
+        "spriteKey": "lostHallsObjects8x8.png",
+        "row": 9,
+        "col": 2,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 201,
+        "name": "Candle_1",
+        "spriteKey": "lostHallsObjects8x8.png",
+        "row": 9,
+        "col": 4,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 202,
+        "name": "Candle_2",
+        "spriteKey": "lostHallsObjects8x8.png",
+        "row": 9,
+        "col": 5,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 203,
+        "name": "Checker_Tile_3",
+        "spriteKey": "lostHallsObjects8x8.png",
+        "row": 0,
+        "col": 15,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 204,
+        "name": "Fungus_0",
+        "spriteKey": "fungalCavernObjects8x8.png",
+        "row": 5,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 205,
+        "name": "Fungus_1",
+        "spriteKey": "fungalCavernObjects8x8.png",
+        "row": 5,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 206,
+        "name": "Fungus_2",
+        "spriteKey": "fungalCavernObjects8x8.png",
+        "row": 2,
+        "col": 1,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 207,
+        "name": "Decoration_0",
+        "spriteKey": "lofiEnvironment.png",
+        "row": 8,
+        "col": 13,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 208,
+        "name": "Decoration_1",
+        "spriteKey": "lofiEnvironment.png",
+        "row": 8,
+        "col": 8,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 209,
+        "name": "Decoration_2",
+        "spriteKey": "lofiEnvironment.png",
+        "row": 8,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 210,
+        "name": "Decoration_3",
+        "spriteKey": "lofiEnvironment.png",
+        "row": 8,
+        "col": 11,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 211,
+        "name": "Barrel_0",
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 7,
+        "col": 6,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 212,
+        "name": "Barrel_1",
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 7,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 1,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 213,
+        "name": "Candle_3",
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 10,
+        "col": 0,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 214,
+        "name": "Candle_4",
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 5,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 215,
+        "name": "Decoration_4",
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 9,
+        "col": 8,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 216,
+        "name": "Decoration_5",
+        "spriteKey": "lofiEnvironment3.png",
+        "row": 11,
+        "col": 4,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 217,
+        "name": "Carpet_0",
+        "spriteKey": "lofi_environment.png",
+        "row": 10,
+        "col": 11,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 218,
+        "name": "Carpet_1",
+        "spriteKey": "lofi_environment.png",
+        "row": 3,
+        "col": 12,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
+        }
+    },
+    {
+        "tileId": 219,
+        "name": "Decoration_6",
+        "spriteKey": "lofi_dungeon_features.png",
+        "row": 0,
+        "col": 7,
+        "size": 32,
+        "data": {
+            "hasCollision": 0,
+            "slows": 0,
+            "damaging": 0,
+            "isWall": 0
         }
     }
 ]

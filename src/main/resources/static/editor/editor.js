@@ -397,6 +397,7 @@ function renderTileList(filter = '') {
     if (t.data && t.data.hasCollision) flags.innerHTML += '<span class="flag flag-c">C</span>';
     if (t.data && t.data.slows) flags.innerHTML += '<span class="flag flag-s">S</span>';
     if (t.data && t.data.damaging) flags.innerHTML += '<span class="flag flag-d">D</span>';
+    if (t.data && t.data.isWall) flags.innerHTML += '<span class="flag flag-w">W</span>';
 
     row.append(cvs, id, name, flags);
     row.addEventListener('click', () => selectTile(t));
@@ -427,6 +428,7 @@ function showDetail(tile) {
   document.getElementById('detailCollision').checked = !!(tile.data && tile.data.hasCollision);
   document.getElementById('detailSlows').checked = !!(tile.data && tile.data.slows);
   document.getElementById('detailDamaging').checked = !!(tile.data && tile.data.damaging);
+  document.getElementById('detailIsWall').checked = !!(tile.data && tile.data.isWall);
   updatePreview();
 }
 
@@ -453,6 +455,7 @@ function applyDetail() {
   tile.data.hasCollision = document.getElementById('detailCollision').checked ? 1 : 0;
   tile.data.slows = document.getElementById('detailSlows').checked ? 1 : 0;
   tile.data.damaging = document.getElementById('detailDamaging').checked ? 1 : 0;
+  tile.data.isWall = document.getElementById('detailIsWall').checked ? 1 : 0;
   selectedTile = tile;
   markDirty('tiles');
   renderTileList(tileSearch.value);
@@ -461,7 +464,7 @@ function applyDetail() {
 
 function addTile() {
   const maxId = tiles.reduce((max, t) => Math.max(max, t.tileId), -1);
-  const newTile = { tileId: maxId + 1, name: 'New_Tile_' + (maxId + 1), spriteKey: currentSheet, row: 0, col: 0, size: 32, data: { hasCollision: 0, slows: 0, damaging: 0 } };
+  const newTile = { tileId: maxId + 1, name: 'New_Tile_' + (maxId + 1), spriteKey: currentSheet, row: 0, col: 0, size: 32, data: { hasCollision: 0, slows: 0, damaging: 0, isWall: 0 } };
   tiles.push(newTile);
   tiles.sort((a, b) => a.tileId - b.tileId);
   tileCount.textContent = tiles.length;
@@ -2346,6 +2349,7 @@ function renderPickerList(filter) {
     if (t.data && t.data.hasCollision) flags.innerHTML += '<span class="flag flag-c">C</span>';
     if (t.data && t.data.slows) flags.innerHTML += '<span class="flag flag-s">S</span>';
     if (t.data && t.data.damaging) flags.innerHTML += '<span class="flag flag-d">D</span>';
+    if (t.data && t.data.isWall) flags.innerHTML += '<span class="flag flag-w">W</span>';
 
     row.append(cvs, id, name, flags);
     row.addEventListener('click', () => {

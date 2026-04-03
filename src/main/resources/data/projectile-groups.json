@@ -878,9 +878,9 @@
 	},
 	{
 		"projectileGroupId": 16,
-		"row": 10,
-		"col": 2,
-		"spriteKey": "rotmg-items-1.png",
+		"row": 2,
+		"col": 9,
+		"spriteKey": "battleOryxObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 16,
@@ -898,9 +898,9 @@
 	},
 	{
 		"projectileGroupId": 17,
-		"row": 10,
-		"col": 2,
-		"spriteKey": "rotmg-items-1.png",
+		"row": 1,
+		"col": 10,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 17,
@@ -1389,8 +1389,8 @@
 	{
 		"projectileGroupId": 25,
 		"row": 4,
-		"col": 12,
-		"spriteKey": "rotmg-tiles.png",
+		"col": 4,
+		"spriteKey": "lofiProjs.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -1628,9 +1628,9 @@
 	},
 	{
 		"projectileGroupId": 30,
-		"row": 6,
-		"col": 4,
-		"spriteKey": "rotmg-items-1.png",
+		"row": 0,
+		"col": 7,
+		"spriteKey": "crystalCaveObjects8x8.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
 			{
@@ -3392,9 +3392,9 @@
 	},
 	{
 		"projectileGroupId": 52,
-		"row": 2,
-		"col": 14,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 0,
+		"col": 4,
+		"spriteKey": "crystalCaveObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 52,
@@ -5414,9 +5414,9 @@
 	},
 	{
 		"projectileGroupId": 71,
-		"spriteKey": "rotmg-projectiles.png",
-		"row": 15,
-		"col": 13,
+		"spriteKey": "crystalCaveObjects8x8.png",
+		"row": 1,
+		"col": 6,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -6793,6 +6793,144 @@
 						"effectId": 2,
 						"duration": 3000
 					}
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 107,
+		"row": 8,
+		"col": 14,
+		"spriteKey": "lostHallsObjects8x8.png",
+		"angleOffset": "0",
+		"projectiles": [
+			{
+				"projectileId": 107,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 108,
+		"row": 9,
+		"col": 0,
+		"spriteKey": "lostHallsObjects8x8.png",
+		"angleOffset": "0",
+		"projectiles": [
+			{
+				"projectileId": 108,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 109,
+		"row": 12,
+		"col": 1,
+		"spriteKey": "lostHallsObjects8x8.png",
+		"angleOffset": "{{PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 109,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 110,
+		"row": 7,
+		"col": 12,
+		"spriteKey": "lostHallsObjects8x8.png",
+		"angleOffset": "0",
+		"projectiles": [
+			{
+				"projectileId": 110,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 111,
+		"row": 7,
+		"col": 10,
+		"spriteKey": "lostHallsObjects8x8.png",
+		"angleOffset": "0",
+		"projectiles": [
+			{
+				"projectileId": 111,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 112,
+		"row": 12,
+		"col": 12,
+		"spriteKey": "lostHallsObjects8x8.png",
+		"angleOffset": "{{PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 112,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
 				]
 			}
 		]
