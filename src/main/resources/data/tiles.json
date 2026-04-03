@@ -2320,7 +2320,7 @@
             "hasCollision": 0,
             "slows": 0,
             "damaging": 0,
-            "isWall": 0
+            "isWall": 1
         }
     },
     {
