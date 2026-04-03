@@ -3567,5 +3567,31 @@
 			"wis": 0
 		},
 		"phases": []
+	},
+	{
+		"enemyId": 69,
+		"name": "Chicken_Boss_0",
+		"spriteKey": "rotmg-bosses.png",
+		"row": 5,
+		"col": 6,
+		"spriteSize": 16,
+		"size": 64,
+		"attackId": -1,
+		"xp": 100000,
+		"health": 10000,
+		"maxSpeed": 0.2,
+		"chaseRange": 390,
+		"attackRange": 210,
+		"stats": {
+			"hp": 100000,
+			"def": 0,
+			"dex": 5,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	}
 ]

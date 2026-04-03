@@ -1743,11 +1743,17 @@ function addMap() {
   const w = Math.max(1, parseInt(widthStr) || 32);
   const h = Math.max(1, parseInt(heightStr) || 32);
   const maxId = maps.reduce((max, m) => Math.max(max, m.mapId), 0);
-  const data = new Array(w * h).fill(0);
+  // Build layer data as object with 2D arrays (layer "0" = base, "1" = collision)
+  const layer0 = [];
+  const layer1 = [];
+  for (let r = 0; r < h; r++) {
+    layer0.push(new Array(w).fill(0));
+    layer1.push(new Array(w).fill(0));
+  }
   const newMap = {
     mapId: maxId + 1, mapName: 'New_Map_' + (maxId + 1),
     width: w, height: h, tileSize: 32,
-    data: data
+    data: { "0": layer0, "1": layer1 }
   };
   maps.push(newMap);
   maps.sort((a, b) => a.mapId - b.mapId);
