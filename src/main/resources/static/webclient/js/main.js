@@ -989,6 +989,33 @@ function processInput(dt) {
         lastYDir = yDir;
     }
 
+    // Local player velocity prediction — compute speed from stats and apply
+    // direction immediately so movement feels instant. Server corrections via
+    // ObjectMovePacket will adjust targetX/targetY if we drift.
+    const local = game.getLocalPlayer();
+    if (local) {
+        const computed = game.getComputedStats();
+        const spdStat = computed ? computed.spd : 10;
+        let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
+        const effects = game.effectIds || [];
+        if (effects.some(id => id === 4)) tilesPerSec *= 1.5;  // SPEEDY
+        if (effects.some(id => id === 2)) tilesPerSec = 0;      // PARALYZED
+        if (effects.some(id => id === 11)) tilesPerSec *= 0.5;  // DAZED
+        let spd = tilesPerSec * 32.0 / 64.0; // px per server tick
+
+        let pdx = 0, pdy = 0;
+        if (yDir === 0) pdy = -1; // NORTH
+        if (yDir === 1) pdy = 1;  // SOUTH
+        if (xDir === 2) pdx = 1;  // EAST
+        if (xDir === 3) pdx = -1; // WEST
+        // Diagonal normalization
+        if (pdx !== 0 && pdy !== 0) {
+            spd = spd * Math.sqrt(2) / 2;
+        }
+        local.dx = pdx * spd;
+        local.dy = pdy * spd;
+    }
+
     // Shooting - matches Java PlayState shoot cooldown exactly:
     // dex = floor((6.5 * (DEX_stat + 17.3)) / 75)
     // canShoot = (now - lastShot) > (1000 / dex + 10) ms

@@ -223,14 +223,13 @@ export class GameState {
     handleLoad(packet) {
         for (const p of packet.players) {
             if (p.id === this.playerId) {
-                // Update existing local player data, don't overwrite position (prediction handles that)
+                // Local player: update metadata only. Position is fully client-predicted.
+                // Do NOT set targetX/targetY — it causes snapping on slow connections.
                 const existing = this.players.get(p.id);
                 if (existing) {
-                    existing.targetX = p.pos.x;
-                    existing.targetY = p.pos.y;
                     existing.classId = p.classId;
                     existing.name = p.name;
-                    existing.size = p.size || 32;
+                    existing.size = p.size || 28;
                     continue;
                 }
             }
@@ -280,17 +279,31 @@ export class GameState {
             if (t === 0) {
                 const p = this.players.get(id);
                 if (p) {
-                    if (id === this.playerId && this.awaitingRealmTransition) {
-                        // Snap position during realm transition (no lerp)
-                        p.pos.x = mov.posX; p.pos.y = mov.posY;
+                    if (id === this.playerId) {
+                        // Server sends our position on teleport or as periodic reconciliation.
+                        // Snap if large difference (teleport or collision mismatch),
+                        // ignore if close (normal drift within tolerance).
+                        const errX = mov.posX - p.pos.x;
+                        const errY = mov.posY - p.pos.y;
+                        const errDist = Math.sqrt(errX * errX + errY * errY);
+                        if (errDist > 8) {
+                            // Significant desync — server-authoritative correction
+                            p.pos.x = mov.posX; p.pos.y = mov.posY;
+                        }
                         p.targetX = mov.posX; p.targetY = mov.posY;
-                        this.cameraX = mov.posX; this.cameraY = mov.posY;
-                        this.awaitingRealmTransition = false;
-                        console.log(`[REALM] Transition complete, snapped to (${mov.posX}, ${mov.posY})`);
+                        if (this.awaitingRealmTransition) {
+                            p.pos.x = mov.posX; p.pos.y = mov.posY;
+                            this.cameraX = mov.posX; this.cameraY = mov.posY;
+                            this.awaitingRealmTransition = false;
+                        }
                     } else {
                         p.targetX = mov.posX; p.targetY = mov.posY;
                     }
-                    p.dx = mov.velX; p.dy = mov.velY;
+                    // For local player, dx/dy are driven by local input prediction.
+                    // Only update velocity from server for OTHER players.
+                    if (id !== this.playerId) {
+                        p.dx = mov.velX; p.dy = mov.velY;
+                    }
                 }
             } else if (t === 1) {
                 const e = this.enemies.get(id);
@@ -385,42 +398,67 @@ export class GameState {
         this.visualEffects.push(effect);
     }
 
-    // Client-side collision check — matches server's TileManager.collisionTile exactly.
-    // Server uses: Rectangle(futurePos, size*0.85, size*0.85) at top-left corner.
+    // Client-side collision check — must match server's TileManager.collisionTile exactly.
+    // Server checks: collision layer tiles in ±5 range, void tiles on base layer,
+    // and map boundary limits.
     _checkCollision(entity, dx, dy) {
         if (!this.mapTiles || !this.tileData) return false;
         const ts = 32;
-        const size = entity.size || 32;
+        const size = entity.size || 28; // matches server PLAYER_SIZE = 28
         const futureX = entity.pos.x + dx;
         const futureY = entity.pos.y + dy;
 
+        // Map boundary (matches server collidesXLimit / collidesYLimit)
         const mapW = this.mapWidth * ts, mapH = this.mapHeight * ts;
         if (futureX <= 0 || futureX + size >= mapW) return true;
         if (futureY <= 0 || futureY + size >= mapH) return true;
 
+        // Collision tile check — 85% hitbox, ±5 tile radius
+        // Matches server TileManager.collisionTile exactly
         const hitSize = Math.floor(size * 0.85);
-        const bx = futureX;
-        const by = futureY;
-
-        const cx = Math.floor((futureX + size / 2) / ts);
-        const cy = Math.floor((futureY + size / 2) / ts);
-        for (let ty = cy - 2; ty <= cy + 2; ty++) {
-            for (let tx = cx - 2; tx <= cx + 2; tx++) {
+        const cx = Math.floor(entity.pos.x / ts);
+        const cy = Math.floor(entity.pos.y / ts);
+        for (let ty = cy - 5; ty <= cy + 5; ty++) {
+            for (let tx = cx - 5; tx <= cx + 5; tx++) {
                 if (ty < 0 || ty >= this.mapHeight || tx < 0 || tx >= this.mapWidth) continue;
                 const tile = this.mapTiles[ty]?.[tx];
                 if (!tile || tile.collision <= 0) continue;
                 const tileDef = this.tileData[tile.collision];
                 if (!tileDef?.data?.hasCollision) continue;
                 const tl = tx * ts, tt = ty * ts;
-                if (bx < tl + ts && bx + hitSize > tl && by < tt + ts && by + hitSize > tt) return true;
+                // AABB: strict >= means touching edges don't collide (matches server Rectangle.intersect)
+                if (futureX < tl + ts && futureX + hitSize > tl &&
+                    futureY < tt + ts && futureY + hitSize > tt) return true;
             }
         }
 
-        if (cx >= 0 && cx < this.mapWidth && cy >= 0 && cy < this.mapHeight) {
-            const baseTile = this.mapTiles[cy]?.[cx];
-            if (baseTile && baseTile.base === 0) return true;
+        // Void tile check — base layer at center+offset
+        // Matches server TileManager.isVoidTile: null tile = safe, tileId==0 = void
+        const voidCheckX = Math.floor((entity.pos.x + size / 2 + dx) / ts);
+        const voidCheckY = Math.floor((entity.pos.y + size / 2 + dy) / ts);
+        if (voidCheckX >= 0 && voidCheckX < this.mapWidth && voidCheckY >= 0 && voidCheckY < this.mapHeight) {
+            const baseTile = this.mapTiles[voidCheckY]?.[voidCheckX];
+            if (baseTile && baseTile.base === 0) return true; // only void (0) blocks, null = safe
         }
         return false;
+    }
+
+    // Check if player is on a slow tile (matches server collidesSlowTile)
+    // Matches server TileManager.collidesSlowTile — checks BASE layer (not collision layer)
+    _isOnSlowTile(entity) {
+        if (!this.mapTiles || !this.tileData) return false;
+        const ts = 32;
+        const size = entity.size || 28;
+        const cx = Math.floor((entity.pos.x + size / 2) / ts);
+        const cy = Math.floor((entity.pos.y + size / 2) / ts);
+        if (cx < 0 || cx >= this.mapWidth || cy < 0 || cy >= this.mapHeight) return false;
+        const tile = this.mapTiles[cy]?.[cx];
+        if (!tile || tile.base <= 0) return false;
+        const tileDef = this.tileData[tile.base];
+        if (!tileDef?.data?.slows) return false;
+        const tileX = cx * ts, tileY = cy * ts;
+        return (entity.pos.x < tileX + ts && entity.pos.x + size > tileX &&
+                entity.pos.y < tileY + ts && entity.pos.y + size > tileY);
     }
 
     updateVisualEffects() {
@@ -503,63 +541,39 @@ export class GameState {
         const moveScale = dt * 64; // match server tick rate (64Hz)
 
         for (const [id, p] of this.players) {
-            const dx = p.targetX - p.pos.x, dy = p.targetY - p.pos.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist > SNAP_DISTANCE) {
-                p.pos.x = p.targetX; p.pos.y = p.targetY;
-            } else if (id === this.playerId) {
-                // LOCAL PLAYER: Input-driven movement with server correction.
-                //
-                // Movement is driven entirely by local input (dx/dy from server
-                // velocity + collision checks). targetX/targetY is the server's
-                // last authoritative position — it does NOT advance by velocity.
-                // A gentle correction blend nudges pos toward target to prevent
-                // long-term drift, but local input always takes priority.
+            if (id === this.playerId) {
+                // LOCAL PLAYER: Fully client-predicted. No server position involvement.
+                // dx/dy computed in processInput() from local input + stats.
                 const hasVel = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
+                if (hasVel) {
+                    // Apply slow tile factor (matches server movePlayer)
+                    const slow = this._isOnSlowTile(p) ? 3.0 : 1.0;
+                    const predDx = (p.dx / slow) * moveScale;
+                    const predDy = (p.dy / slow) * moveScale;
 
-                if (!hasVel) {
-                    // STOPPED: converge to server position with collision check
-                    if (dist > 0.5) {
-                        const sx = dx * 0.8, sy = dy * 0.8;
-                        if (!this._checkCollision(p, sx, 0)) p.pos.x += sx;
-                        if (!this._checkCollision(p, 0, sy)) p.pos.y += sy;
-                    }
-                } else {
-                    // MOVING: predict forward using velocity with collision checks.
-                    const predDx = p.dx * moveScale;
-                    const predDy = p.dy * moveScale;
-
+                    // Check X, Y, then diagonal (matches server movePlayer exactly)
                     const xOk = !this._checkCollision(p, predDx, 0);
                     const yOk = !this._checkCollision(p, 0, predDy);
-                    if (xOk && yOk) {
-                        if (!this._checkCollision(p, predDx, predDy)) {
-                            p.pos.x += predDx;
-                            p.pos.y += predDy;
+
+                    if (!xOk && !yOk) {
+                        // Both blocked — don't move
+                    } else if (xOk && yOk) {
+                        // Both free — check diagonal to prevent corner cutting
+                        if (predDx !== 0 && predDy !== 0 && this._checkCollision(p, predDx, predDy)) {
+                            // Diagonal blocked — block lesser axis (matches server)
+                            if (Math.abs(predDx) >= Math.abs(predDy)) {
+                                p.pos.x += predDx; // keep X, block Y
+                            } else {
+                                p.pos.y += predDy; // keep Y, block X
+                            }
                         } else {
                             p.pos.x += predDx;
+                            p.pos.y += predDy;
                         }
                     } else if (xOk) {
                         p.pos.x += predDx;
-                    } else if (yOk) {
+                    } else {
                         p.pos.y += predDy;
-                    }
-
-                    // Gentle server correction — only nudge toward server position
-                    // when drift exceeds a threshold. Low blend factor keeps movement
-                    // smooth on high-latency connections. Server remains authoritative
-                    // via the snap threshold above (SNAP_DISTANCE).
-                    if (dist > 2.0) {
-                        const corrFactor = Math.min(0.15, 0.02 + dist * 0.004);
-                        const cx = dx * corrFactor;
-                        const cy = dy * corrFactor;
-                        if (!this._checkCollision(p, cx, cy)) {
-                            p.pos.x += cx;
-                            p.pos.y += cy;
-                        } else {
-                            if (!this._checkCollision(p, cx, 0)) p.pos.x += cx;
-                            if (!this._checkCollision(p, 0, cy)) p.pos.y += cy;
-                        }
                     }
                 }
             } else {
