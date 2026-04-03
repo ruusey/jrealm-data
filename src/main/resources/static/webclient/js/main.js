@@ -852,6 +852,12 @@ function setupNetworkHandlers() {
         game.handlePlayerState(data);
     });
 
+    // Server reconciliation: server sends authoritative position + last processed input seq.
+    // Client discards acknowledged inputs and replays remaining ones from server position.
+    network.on(PacketId.PLAYER_POS_ACK, (data) => {
+        game.handlePosAck(data);
+    });
+
     network.on(PacketId.GLOBAL_PLAYER_POSITION, (data) => {
         game.handleGlobalPlayerPosition(data);
     });
@@ -964,56 +970,75 @@ function processInput(dt) {
         }
     }
 
-    // --- Send direction packets to server only on change ---
-    // Each axis is handled independently to avoid intermediate NONE stops
-    // that cause choppy diagonal movement transitions.
+    // --- Send direction packets to server with sequence number ---
     if (xDir !== lastXDir || yDir !== lastYDir) {
         const isMoving = xDir !== null || yDir !== null;
 
         if (!isMoving) {
-            // Fully stopped: send NONE to clear all server-side direction flags
-            network.sendPlayerMove(game.playerId, 4, false);
+            game._inputSeq = (game._inputSeq || 0) + 1;
+            network.sendPlayerMove(game.playerId, 4, false, game._inputSeq);
         } else {
-            // Handle Y axis change
             if (yDir !== lastYDir) {
-                if (lastYDir !== null) network.sendPlayerMove(game.playerId, lastYDir, false);
-                if (yDir !== null) network.sendPlayerMove(game.playerId, yDir, true);
+                if (lastYDir !== null) {
+                    game._inputSeq = (game._inputSeq || 0) + 1;
+                    network.sendPlayerMove(game.playerId, lastYDir, false, game._inputSeq);
+                }
+                if (yDir !== null) {
+                    game._inputSeq = (game._inputSeq || 0) + 1;
+                    network.sendPlayerMove(game.playerId, yDir, true, game._inputSeq);
+                }
             }
-            // Handle X axis change
             if (xDir !== lastXDir) {
-                if (lastXDir !== null) network.sendPlayerMove(game.playerId, lastXDir, false);
-                if (xDir !== null) network.sendPlayerMove(game.playerId, xDir, true);
+                if (lastXDir !== null) {
+                    game._inputSeq = (game._inputSeq || 0) + 1;
+                    network.sendPlayerMove(game.playerId, lastXDir, false, game._inputSeq);
+                }
+                if (xDir !== null) {
+                    game._inputSeq = (game._inputSeq || 0) + 1;
+                    network.sendPlayerMove(game.playerId, xDir, true, game._inputSeq);
+                }
             }
         }
         lastXDir = xDir;
         lastYDir = yDir;
     }
 
-    // Local player velocity prediction — compute speed from stats and apply
-    // direction immediately so movement feels instant. Server corrections via
-    // ObjectMovePacket will adjust targetX/targetY if we drift.
+    // Local player velocity prediction + input buffer for server reconciliation.
+    // Each frame: compute velocity from current input, store in input buffer,
+    // apply locally with collision checks. When server acks a seq, replay
+    // all inputs after that seq from the server's authoritative position.
     const local = game.getLocalPlayer();
     if (local) {
         const computed = game.getComputedStats();
         const spdStat = computed ? computed.spd : 10;
         let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
         const effects = game.effectIds || [];
-        if (effects.some(id => id === 4)) tilesPerSec *= 1.5;  // SPEEDY
-        if (effects.some(id => id === 2)) tilesPerSec = 0;      // PARALYZED
-        if (effects.some(id => id === 11)) tilesPerSec *= 0.5;  // DAZED
-        let spd = tilesPerSec * 32.0 / 64.0; // px per server tick
+        if (effects.some(id => id === 4)) tilesPerSec *= 1.5;
+        if (effects.some(id => id === 2)) tilesPerSec = 0;
+        if (effects.some(id => id === 11)) tilesPerSec *= 0.5;
+        let spd = tilesPerSec * 32.0 / 64.0;
 
         let pdx = 0, pdy = 0;
-        if (yDir === 0) pdy = -1; // NORTH
-        if (yDir === 1) pdy = 1;  // SOUTH
-        if (xDir === 2) pdx = 1;  // EAST
-        if (xDir === 3) pdx = -1; // WEST
-        // Diagonal normalization
+        if (yDir === 0) pdy = -1;
+        if (yDir === 1) pdy = 1;
+        if (xDir === 2) pdx = 1;
+        if (xDir === 3) pdx = -1;
         if (pdx !== 0 && pdy !== 0) {
             spd = spd * Math.sqrt(2) / 2;
         }
         local.dx = pdx * spd;
         local.dy = pdy * spd;
+
+        // Store this frame's input in the buffer for replay on server ack
+        if (!game._inputBuffer) game._inputBuffer = [];
+        game._inputBuffer.push({
+            seq: game._inputSeq || 0,
+            dx: local.dx,
+            dy: local.dy,
+            dt: dt
+        });
+        // Cap buffer to prevent memory leak (5 seconds of frames)
+        if (game._inputBuffer.length > 300) game._inputBuffer.shift();
     }
 
     // Shooting - matches Java PlayState shoot cooldown exactly:

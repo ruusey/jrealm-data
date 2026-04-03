@@ -261,7 +261,7 @@ export const PacketId = {
     PLAYER_DEATH: 15, REQUEST_TRADE: 16, ACCEPT_TRADE: 17,
     UPDATE_TRADE_SELECTION: 18, UPDATE_TRADE: 19, DEATH_ACK: 20,
     CREATE_EFFECT: 21, LOGIN_ACK: 22, GLOBAL_PLAYER_POSITION: 23,
-    PLAYER_STATE: 24
+    PLAYER_STATE: 24, COMPACT_MOVE: 25, PLAYER_POS_ACK: 26
 };
 
 // ---- Packet Readers (server → client packets read from binary) ----
@@ -366,7 +366,10 @@ export const PacketReaders = {
                  toVault: r.readByte(), toNexus: r.readByte() };
     },
     [PacketId.PLAYER_MOVE](r) {
-        return { entityId: r.readLong(), dir: r.readByte(), move: r.readBoolean() };
+        return { entityId: r.readLong(), dir: r.readByte(), move: r.readBoolean(), seq: r.readInt() };
+    },
+    [PacketId.PLAYER_POS_ACK](r) {
+        return { seq: r.readInt(), posX: r.readFloat(), posY: r.readFloat() };
     }
 };
 
@@ -384,9 +387,9 @@ function buildPacket(packetId, writerFn) {
 }
 
 export const PacketWriters = {
-    playerMove(entityId, dir, move) {
+    playerMove(entityId, dir, move, seq) {
         return buildPacket(PacketId.PLAYER_MOVE, w => {
-            w.writeLong(entityId); w.writeByte(dir); w.writeBoolean(move);
+            w.writeLong(entityId); w.writeByte(dir); w.writeBoolean(move); w.writeInt(seq || 0);
         });
     },
 

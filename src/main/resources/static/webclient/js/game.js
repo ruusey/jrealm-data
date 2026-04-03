@@ -273,6 +273,53 @@ export class GameState {
         for (const id of packet.portals) this.portals.delete(id);
     }
 
+    // Server reconciliation: replay unacknowledged inputs from server's authoritative position.
+    handlePosAck(data) {
+        const local = this.getLocalPlayer();
+        if (!local) return;
+
+        // Discard all inputs up to and including the acknowledged seq
+        if (!this._inputBuffer) this._inputBuffer = [];
+        while (this._inputBuffer.length > 0 && this._inputBuffer[0].seq <= data.seq) {
+            this._inputBuffer.shift();
+        }
+
+        // Start from server's authoritative position
+        local.pos.x = data.posX;
+        local.pos.y = data.posY;
+
+        // Replay all unacknowledged inputs with collision checks
+        for (const input of this._inputBuffer) {
+            const slow = this._isOnSlowTile(local) ? 3.0 : 1.0;
+            const predDx = (input.dx / slow) * input.dt * 64;
+            const predDy = (input.dy / slow) * input.dt * 64;
+
+            if (Math.abs(predDx) < 0.001 && Math.abs(predDy) < 0.001) continue;
+
+            const xOk = !this._checkCollision(local, predDx, 0);
+            const yOk = !this._checkCollision(local, 0, predDy);
+
+            if (!xOk && !yOk) {
+                // blocked
+            } else if (xOk && yOk) {
+                if (predDx !== 0 && predDy !== 0 && this._checkCollision(local, predDx, predDy)) {
+                    if (Math.abs(predDx) >= Math.abs(predDy)) {
+                        local.pos.x += predDx;
+                    } else {
+                        local.pos.y += predDy;
+                    }
+                } else {
+                    local.pos.x += predDx;
+                    local.pos.y += predDy;
+                }
+            } else if (xOk) {
+                local.pos.x += predDx;
+            } else {
+                local.pos.y += predDy;
+            }
+        }
+    }
+
     handleObjectMove(packet) {
         for (const mov of packet.movements) {
             const t = mov.entityType, id = mov.entityId;
@@ -280,21 +327,20 @@ export class GameState {
                 const p = this.players.get(id);
                 if (p) {
                     if (id === this.playerId) {
-                        // Server sends our position on teleport or as periodic reconciliation.
-                        // Snap if large difference (teleport or collision mismatch),
-                        // ignore if close (normal drift within tolerance).
-                        const errX = mov.posX - p.pos.x;
-                        const errY = mov.posY - p.pos.y;
-                        const errDist = Math.sqrt(errX * errX + errY * errY);
-                        if (errDist > 8) {
-                            // Significant desync — server-authoritative correction
-                            p.pos.x = mov.posX; p.pos.y = mov.posY;
-                        }
-                        p.targetX = mov.posX; p.targetY = mov.posY;
+                        // Local player only receives ObjectMovePacket on teleport
+                        // (server skips local player for normal movement).
+                        // Normal reconciliation handled by PlayerPosAckPacket.
                         if (this.awaitingRealmTransition) {
                             p.pos.x = mov.posX; p.pos.y = mov.posY;
+                            p.targetX = mov.posX; p.targetY = mov.posY;
                             this.cameraX = mov.posX; this.cameraY = mov.posY;
                             this.awaitingRealmTransition = false;
+                            this._inputBuffer = [];
+                        } else {
+                            // Teleport (planewalker etc) — snap + clear input buffer
+                            p.pos.x = mov.posX; p.pos.y = mov.posY;
+                            p.targetX = mov.posX; p.targetY = mov.posY;
+                            this._inputBuffer = [];
                         }
                     } else {
                         p.targetX = mov.posX; p.targetY = mov.posY;
@@ -542,29 +588,27 @@ export class GameState {
 
         for (const [id, p] of this.players) {
             if (id === this.playerId) {
-                // LOCAL PLAYER: Fully client-predicted. No server position involvement.
-                // dx/dy computed in processInput() from local input + stats.
+                // LOCAL PLAYER: client-predicted movement with server reconciliation.
+                // Each frame: apply velocity with collision checks (instant feel).
+                // On server ack (PlayerPosAckPacket): replay unacknowledged inputs
+                // from server position in handlePosAck() — zero drift, no blending.
                 const hasVel = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
                 if (hasVel) {
-                    // Apply slow tile factor (matches server movePlayer)
                     const slow = this._isOnSlowTile(p) ? 3.0 : 1.0;
                     const predDx = (p.dx / slow) * moveScale;
                     const predDy = (p.dy / slow) * moveScale;
 
-                    // Check X, Y, then diagonal (matches server movePlayer exactly)
                     const xOk = !this._checkCollision(p, predDx, 0);
                     const yOk = !this._checkCollision(p, 0, predDy);
 
                     if (!xOk && !yOk) {
-                        // Both blocked — don't move
+                        // blocked
                     } else if (xOk && yOk) {
-                        // Both free — check diagonal to prevent corner cutting
                         if (predDx !== 0 && predDy !== 0 && this._checkCollision(p, predDx, predDy)) {
-                            // Diagonal blocked — block lesser axis (matches server)
                             if (Math.abs(predDx) >= Math.abs(predDy)) {
-                                p.pos.x += predDx; // keep X, block Y
+                                p.pos.x += predDx;
                             } else {
-                                p.pos.y += predDy; // keep Y, block X
+                                p.pos.y += predDy;
                             }
                         } else {
                             p.pos.x += predDx;
