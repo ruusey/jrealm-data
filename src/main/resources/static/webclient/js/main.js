@@ -1809,6 +1809,23 @@ document.getElementById('mobile-vault-btn')?.addEventListener('click', () => {
     doRealmTransition(null, true);
 });
 
+// --- View Mode Toggle (mobile/desktop) ---
+const viewToggle = document.getElementById('viewmode-toggle');
+if (viewToggle) {
+    const currentMode = localStorage.getItem('openrealm_viewmode');
+    const isMobileNow = document.getElementById('touch-joystick')?.style.display === 'block';
+    viewToggle.textContent = isMobileNow ? 'Desktop Mode' : 'Mobile Mode';
+    viewToggle.addEventListener('click', () => {
+        const current = localStorage.getItem('openrealm_viewmode');
+        if (current === 'mobile' || (!current && isMobileNow)) {
+            localStorage.setItem('openrealm_viewmode', 'desktop');
+        } else {
+            localStorage.setItem('openrealm_viewmode', 'mobile');
+        }
+        window.location.reload();
+    });
+}
+
 document.getElementById('portal-enter-btn')?.addEventListener('click', () => {
     if (!game.playerId) return;
     const local = game.getLocalPlayer();

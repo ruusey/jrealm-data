@@ -32,6 +32,8 @@
       <button class="tab" data-tab="lootgroups">Loot</button>
       <button class="tab" data-tab="animations">Animations</button>
       <button class="tab" data-tab="portals">Portals</button>
+      <button class="tab" data-tab="setpieces">SetPieces</button>
+      <button class="tab" data-tab="realmevents">Events</button>
     </div>
     <div class="toolbar">
       <label>Sheet:
@@ -565,6 +567,70 @@
   </div>
 </div>
 <!-- Enemy Picker Modal -->
+    <!-- Right panel: SetPieces tab -->
+    <div class="panel tile-panel" id="setpiecesTab" style="display:none">
+      <div class="tile-header">
+        <h2>SetPieces (<span id="spCount">0</span>)</h2>
+        <input type="text" id="spSearch" placeholder="Search setpieces..." oninput="renderSetPieceList(this.value)">
+        <button id="addSpBtn" class="btn-add" onclick="addSetPiece()">+ Add</button>
+      </div>
+      <div class="tile-list" id="spListView"></div>
+      <div id="spDetail" style="display:none">
+        <h3>SetPiece Detail</h3>
+        <div class="detail-grid">
+          <label>ID: <input type="number" id="spId" readonly></label>
+          <label>Name: <input type="text" id="spName"></label>
+          <label>Width: <input type="number" id="spWidth" min="1" max="32"></label>
+          <label>Height: <input type="number" id="spHeight" min="1" max="32"></label>
+        </div>
+        <div style="margin:6px 0">
+          <label>Paint Layer:
+            <select id="spLayerSelect" style="width:120px">
+              <option value="0">Base (Layer 0)</option>
+              <option value="1">Collision (Layer 1)</option>
+            </select>
+          </label>
+          <label style="margin-left:8px">Brush Tile ID: <input type="number" id="spBrushTile" min="0" value="0" style="width:60px" onchange="spBrushTileId=parseInt(this.value)||0"></label>
+        </div>
+        <canvas id="spCanvas" width="240" height="240" style="border:1px solid #444;cursor:crosshair;margin:6px 0" onclick="spCanvasClick(event)"></canvas>
+        <div class="detail-actions">
+          <button onclick="applySetPiece()" class="btn-apply">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel: Realm Events tab -->
+    <div class="panel tile-panel" id="realmeventsTab" style="display:none">
+      <div class="tile-header">
+        <h2>Realm Events (<span id="reCount">0</span>)</h2>
+        <input type="text" id="reSearch" placeholder="Search events..." oninput="renderRealmEventList(this.value)">
+        <button id="addReBtn" class="btn-add" onclick="addRealmEvent()">+ Add</button>
+      </div>
+      <div class="tile-list" id="reListView"></div>
+      <div id="reDetail" style="display:none">
+        <h3>Event Detail</h3>
+        <div class="detail-grid">
+          <label>ID: <input type="number" id="reId" readonly></label>
+          <label>Name: <input type="text" id="reName"></label>
+          <label>Boss Enemy ID: <input type="number" id="reBossId" min="0"></label>
+          <label>Health Mult: <input type="number" id="reHealthMult" min="1"></label>
+          <label>SetPiece ID: <input type="number" id="reSetPieceId" min="-1"></label>
+          <label>Duration (s): <input type="number" id="reDuration" min="30"></label>
+        </div>
+        <div class="detail-grid" style="margin-top:6px">
+          <label>Announce: <input type="text" id="reAnnounce" style="width:100%"></label>
+          <label>Defeat: <input type="text" id="reDefeat" style="width:100%"></label>
+          <label>Timeout: <input type="text" id="reTimeout" style="width:100%"></label>
+          <label>Zones (comma sep): <input type="text" id="reZones" style="width:100%"></label>
+        </div>
+        <h4 style="margin-top:8px">Minion Waves <button onclick="addMinionWave()" class="btn-add" style="font-size:11px;padding:2px 6px">+ Wave</button></h4>
+        <div id="reWaves"></div>
+        <div class="detail-actions" style="margin-top:8px">
+          <button onclick="applyRealmEvent()" class="btn-apply">Apply</button>
+        </div>
+      </div>
+    </div>
+
 <div id="enemyPickerOverlay" class="picker-overlay" style="display:none">
   <div class="picker-modal">
     <div class="picker-header">

@@ -176,6 +176,15 @@ let dirtyAnimations = false;
 let portals = [];
 let selectedPortal = null;
 let dirtyPortals = false;
+let setpieces = [];
+let selectedSetPiece = null;
+let dirtySetPieces = false;
+let spBrushTileId = -1;
+let spPainting = false;
+let spLayer = '0';
+let realmEvents = [];
+let selectedRealmEvent = null;
+let dirtyRealmEvents = false;
 let animPickingFrame = null; // {animName, frameIdx} when picking a frame from the sheet
 let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
@@ -229,7 +238,7 @@ const goToSheetBtn = document.getElementById('goToSheetBtn');
 // ========== INIT ==========
 async function init() {
   populateSheetSelect();
-  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadLootData(), loadAnimations(), loadPortals(), loadImages()]);
+  await Promise.all([loadTiles(), loadTerrains(), loadItems(), loadProjGroups(), loadMaps(), loadEnemies(), loadLootData(), loadAnimations(), loadPortals(), loadSetPieces(), loadRealmEvents(), loadImages()]);
   renderSheet();
   renderTileList();
   renderTerrainList();
@@ -238,6 +247,8 @@ async function init() {
   renderEnemyList();
   renderPgTabList();
   renderPortalList();
+  renderSetPieceList();
+  renderRealmEventList();
   bindEvents();
 
   // Enhance manual ID inputs with searchable dropdowns
@@ -2904,6 +2915,248 @@ function deletePortal() {
   deselectPortal();
 }
 
+// ========== SET PIECES ==========
+async function loadSetPieces() {
+  try {
+    setpieces = await (await fetch(`${BASE}/setpieces.json`)).json();
+    setpieces.sort((a, b) => a.setPieceId - b.setPieceId);
+  } catch (e) { setpieces = []; }
+  const el = document.getElementById('spCount');
+  if (el) el.textContent = setpieces.length;
+}
+
+function renderSetPieceList(filter = '') {
+  const list = document.getElementById('spListView');
+  if (!list) return;
+  list.innerHTML = '';
+  const lf = filter.toLowerCase();
+  setpieces.filter(sp => !lf || sp.name.toLowerCase().includes(lf) || String(sp.setPieceId).includes(lf))
+    .forEach(sp => {
+      const row = document.createElement('div');
+      row.className = 'tile-row' + (selectedSetPiece === sp ? ' selected' : '');
+      row.innerHTML = `<span class="tile-id">${sp.setPieceId}</span><span class="tile-name">${sp.name} (${sp.width}x${sp.height})</span>`;
+      row.addEventListener('click', () => selectSetPiece(sp));
+      list.appendChild(row);
+    });
+}
+
+function selectSetPiece(sp) {
+  selectedSetPiece = sp;
+  renderSetPieceList();
+  const detail = document.getElementById('spDetail');
+  if (!detail) return;
+  detail.style.display = '';
+  document.getElementById('spId').value = sp.setPieceId;
+  document.getElementById('spName').value = sp.name;
+  document.getElementById('spWidth').value = sp.width;
+  document.getElementById('spHeight').value = sp.height;
+  renderSpCanvas();
+}
+
+function applySetPiece() {
+  if (!selectedSetPiece) return;
+  selectedSetPiece.name = document.getElementById('spName').value;
+  const newW = parseInt(document.getElementById('spWidth').value) || selectedSetPiece.width;
+  const newH = parseInt(document.getElementById('spHeight').value) || selectedSetPiece.height;
+  // Resize layouts if dimensions changed
+  if (newW !== selectedSetPiece.width || newH !== selectedSetPiece.height) {
+    selectedSetPiece.baseLayout = resizeLayout(selectedSetPiece.baseLayout, selectedSetPiece.width, selectedSetPiece.height, newW, newH);
+    selectedSetPiece.collisionLayout = resizeLayout(selectedSetPiece.collisionLayout, selectedSetPiece.width, selectedSetPiece.height, newW, newH);
+    selectedSetPiece.width = newW;
+    selectedSetPiece.height = newH;
+  }
+  markDirty('setpieces');
+  renderSetPieceList();
+  renderSpCanvas();
+}
+
+function resizeLayout(layout, oldW, oldH, newW, newH) {
+  const result = [];
+  for (let r = 0; r < newH; r++) {
+    const row = [];
+    for (let c = 0; c < newW; c++) {
+      row.push(layout && r < oldH && c < oldW ? layout[r][c] : 0);
+    }
+    result.push(row);
+  }
+  return result;
+}
+
+function addSetPiece() {
+  const maxId = setpieces.reduce((max, sp) => Math.max(max, sp.setPieceId), -1);
+  const w = 7, h = 7;
+  const base = [], coll = [];
+  for (let r = 0; r < h; r++) { base.push(new Array(w).fill(0)); coll.push(new Array(w).fill(0)); }
+  const sp = { setPieceId: maxId + 1, name: 'New_SetPiece_' + (maxId + 1), width: w, height: h, baseLayout: base, collisionLayout: coll };
+  setpieces.push(sp);
+  setpieces.sort((a, b) => a.setPieceId - b.setPieceId);
+  markDirty('setpieces');
+  selectSetPiece(sp);
+  renderSetPieceList();
+}
+
+function renderSpCanvas() {
+  const cvs = document.getElementById('spCanvas');
+  if (!cvs || !selectedSetPiece) return;
+  const sp = selectedSetPiece;
+  const cellSize = 24;
+  cvs.width = sp.width * cellSize;
+  cvs.height = sp.height * cellSize;
+  const ctx = cvs.getContext('2d');
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+  for (let r = 0; r < sp.height; r++) {
+    for (let c = 0; c < sp.width; c++) {
+      // Draw base layer
+      const baseId = sp.baseLayout && sp.baseLayout[r] ? sp.baseLayout[r][c] : 0;
+      if (baseId > 0) {
+        const t = getTileById(baseId);
+        if (t) drawTileAt(ctx, t, c * cellSize, r * cellSize, cellSize);
+        else { ctx.fillStyle = '#335'; ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize); }
+      } else {
+        ctx.fillStyle = '#111'; ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+      }
+      // Draw collision layer on top
+      const collId = sp.collisionLayout && sp.collisionLayout[r] ? sp.collisionLayout[r][c] : 0;
+      if (collId > 0) {
+        const t = getTileById(collId);
+        if (t) drawTileAt(ctx, t, c * cellSize, r * cellSize, cellSize);
+      }
+      // Grid lines
+      ctx.strokeStyle = '#333'; ctx.strokeRect(c * cellSize, r * cellSize, cellSize, cellSize);
+    }
+  }
+}
+
+function drawTileAt(ctx, tile, x, y, size) {
+  const img = images[tile.spriteKey];
+  if (!img) { ctx.fillStyle = '#555'; ctx.fillRect(x, y, size, size); return; }
+  const ts = tile.size || 32;
+  const srcSize = ts === 32 ? 8 : ts;
+  ctx.drawImage(img, tile.col * srcSize, tile.row * srcSize, srcSize, srcSize, x, y, size, size);
+}
+
+function spCanvasClick(e) {
+  if (!selectedSetPiece || spBrushTileId < 0) return;
+  const cvs = document.getElementById('spCanvas');
+  const rect = cvs.getBoundingClientRect();
+  const cellSize = 24;
+  const col = Math.floor((e.clientX - rect.left) / cellSize);
+  const row = Math.floor((e.clientY - rect.top) / cellSize);
+  if (row < 0 || row >= selectedSetPiece.height || col < 0 || col >= selectedSetPiece.width) return;
+  const layer = document.getElementById('spLayerSelect') ? document.getElementById('spLayerSelect').value : '0';
+  const layout = layer === '1' ? selectedSetPiece.collisionLayout : selectedSetPiece.baseLayout;
+  if (!layout || !layout[row]) return;
+  layout[row][col] = spBrushTileId;
+  markDirty('setpieces');
+  renderSpCanvas();
+}
+
+// ========== REALM EVENTS ==========
+async function loadRealmEvents() {
+  try {
+    realmEvents = await (await fetch(`${BASE}/realm-events.json`)).json();
+    realmEvents.sort((a, b) => a.eventId - b.eventId);
+  } catch (e) { realmEvents = []; }
+  const el = document.getElementById('reCount');
+  if (el) el.textContent = realmEvents.length;
+}
+
+function renderRealmEventList(filter = '') {
+  const list = document.getElementById('reListView');
+  if (!list) return;
+  list.innerHTML = '';
+  const lf = filter.toLowerCase();
+  realmEvents.filter(ev => !lf || ev.name.toLowerCase().includes(lf) || String(ev.eventId).includes(lf))
+    .forEach(ev => {
+      const row = document.createElement('div');
+      row.className = 'tile-row' + (selectedRealmEvent === ev ? ' selected' : '');
+      const bossName = enemies.find(e => e.enemyId === ev.bossEnemyId);
+      row.innerHTML = `<span class="tile-id">${ev.eventId}</span><span class="tile-name">${ev.name}</span><span class="tile-flags"><span class="flag flag-c">${ev.durationSeconds}s</span></span>`;
+      row.addEventListener('click', () => selectRealmEvent(ev));
+      list.appendChild(row);
+    });
+}
+
+function selectRealmEvent(ev) {
+  selectedRealmEvent = ev;
+  renderRealmEventList();
+  const detail = document.getElementById('reDetail');
+  if (!detail) return;
+  detail.style.display = '';
+  document.getElementById('reId').value = ev.eventId;
+  document.getElementById('reName').value = ev.name;
+  document.getElementById('reBossId').value = ev.bossEnemyId;
+  document.getElementById('reHealthMult').value = ev.healthMultiplier;
+  document.getElementById('reSetPieceId').value = ev.setPieceId;
+  document.getElementById('reDuration').value = ev.durationSeconds;
+  document.getElementById('reAnnounce').value = ev.announceMessage || '';
+  document.getElementById('reDefeat').value = ev.defeatMessage || '';
+  document.getElementById('reTimeout').value = ev.timeoutMessage || '';
+  document.getElementById('reZones').value = (ev.allowedZones || []).join(', ');
+  renderMinionWaves();
+}
+
+function applyRealmEvent() {
+  if (!selectedRealmEvent) return;
+  const ev = selectedRealmEvent;
+  ev.name = document.getElementById('reName').value;
+  ev.bossEnemyId = parseInt(document.getElementById('reBossId').value) || 0;
+  ev.healthMultiplier = parseInt(document.getElementById('reHealthMult').value) || 1;
+  ev.setPieceId = parseInt(document.getElementById('reSetPieceId').value) || -1;
+  ev.durationSeconds = parseInt(document.getElementById('reDuration').value) || 300;
+  ev.announceMessage = document.getElementById('reAnnounce').value;
+  ev.defeatMessage = document.getElementById('reDefeat').value;
+  ev.timeoutMessage = document.getElementById('reTimeout').value;
+  ev.allowedZones = document.getElementById('reZones').value.split(',').map(s => s.trim()).filter(Boolean);
+  markDirty('realmEvents');
+  renderRealmEventList();
+}
+
+function addRealmEvent() {
+  const maxId = realmEvents.reduce((max, ev) => Math.max(max, ev.eventId), -1);
+  const ev = {
+    eventId: maxId + 1, name: 'New_Event_' + (maxId + 1),
+    announceMessage: 'A %s has appeared!', defeatMessage: 'The event boss has been defeated!',
+    timeoutMessage: 'The event boss has vanished...', bossEnemyId: 1, healthMultiplier: 4,
+    setPieceId: -1, allowedZones: ['grasslands'], durationSeconds: 300, minionWaves: []
+  };
+  realmEvents.push(ev);
+  realmEvents.sort((a, b) => a.eventId - b.eventId);
+  markDirty('realmEvents');
+  selectRealmEvent(ev);
+  renderRealmEventList();
+}
+
+function renderMinionWaves() {
+  const container = document.getElementById('reWaves');
+  if (!container || !selectedRealmEvent) return;
+  container.innerHTML = '';
+  const waves = selectedRealmEvent.minionWaves || [];
+  waves.forEach((w, i) => {
+    const enemyName = enemies.find(e => e.enemyId === w.enemyId);
+    const div = document.createElement('div');
+    div.style.cssText = 'background:#1a1a2e;padding:6px;border-radius:4px;margin-bottom:4px;font-size:11px';
+    div.innerHTML = `<b>Wave ${i + 1}</b> @${Math.round(w.triggerHpPercent * 100)}% HP: ${w.count}x enemy#${w.enemyId}${enemyName ? ' (' + enemyName.name + ')' : ''} hp×${w.healthMultiplier} offset=${w.offset}px `
+      + `<button onclick="removeWave(${i})" style="font-size:10px;color:#f66;background:none;border:1px solid #f66;padding:1px 4px;cursor:pointer">X</button>`;
+    container.appendChild(div);
+  });
+}
+
+function addMinionWave() {
+  if (!selectedRealmEvent) return;
+  if (!selectedRealmEvent.minionWaves) selectedRealmEvent.minionWaves = [];
+  selectedRealmEvent.minionWaves.push({ triggerHpPercent: 0.5, enemyId: 1, count: 4, healthMultiplier: 2, offset: 128 });
+  markDirty('realmEvents');
+  renderMinionWaves();
+}
+
+function removeWave(idx) {
+  if (!selectedRealmEvent || !selectedRealmEvent.minionWaves) return;
+  selectedRealmEvent.minionWaves.splice(idx, 1);
+  markDirty('realmEvents');
+  renderMinionWaves();
+}
+
 function switchTab(tab) {
   activeTab = tab;
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
@@ -2916,9 +3169,13 @@ function switchTab(tab) {
   document.getElementById('lootgroupsTab').style.display = tab === 'lootgroups' ? '' : 'none';
   document.getElementById('animationsTab').style.display = tab === 'animations' ? '' : 'none';
   document.getElementById('portalsTab').style.display = tab === 'portals' ? '' : 'none';
+  document.getElementById('setpiecesTab').style.display = tab === 'setpieces' ? '' : 'none';
+  document.getElementById('realmeventsTab').style.display = tab === 'realmevents' ? '' : 'none';
   if (tab === 'lootgroups') renderLgList();
   if (tab === 'animations') renderAnimList();
   if (tab === 'portals') renderPortalList();
+  if (tab === 'setpieces') renderSetPieceList();
+  if (tab === 'realmevents') renderRealmEventList();
 }
 
 // ========== SAVE ==========
@@ -2933,6 +3190,8 @@ function markDirty(which) {
   if (which === 'lootTables') dirtyLootTables = true;
   if (which === 'animations') dirtyAnimations = true;
   if (which === 'portals') dirtyPortals = true;
+  if (which === 'setpieces') dirtySetPieces = true;
+  if (which === 'realmEvents') dirtyRealmEvents = true;
   saveBtn.disabled = false;
   const parts = [];
   if (dirtyTiles) parts.push('tiles');
@@ -2945,6 +3204,8 @@ function markDirty(which) {
   if (dirtyLootTables) parts.push('loot tables');
   if (dirtyAnimations) parts.push('animations');
   if (dirtyPortals) parts.push('portals');
+  if (dirtySetPieces) parts.push('set pieces');
+  if (dirtyRealmEvents) parts.push('realm events');
   saveStatus.textContent = `(unsaved: ${parts.join(', ')})`;
   saveStatus.style.color = '#fa0';
 }
@@ -3034,6 +3295,26 @@ async function saveAll() {
       if (!res.ok) throw new Error('portals: ' + res.statusText);
       dirtyPortals = false;
       results.push('portals');
+    }
+    if (dirtySetPieces) {
+      const res = await fetch('/gamedata/setpieces', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(setpieces, null, '\t')
+      });
+      if (!res.ok) throw new Error('set pieces: ' + res.statusText);
+      dirtySetPieces = false;
+      results.push('set pieces');
+    }
+    if (dirtyRealmEvents) {
+      const res = await fetch('/gamedata/realm-events', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(realmEvents, null, '\t')
+      });
+      if (!res.ok) throw new Error('realm events: ' + res.statusText);
+      dirtyRealmEvents = false;
+      results.push('realm events');
     }
     saveStatus.textContent = `Saved ${results.join(', ')}!`;
     saveStatus.style.color = '#8f8';

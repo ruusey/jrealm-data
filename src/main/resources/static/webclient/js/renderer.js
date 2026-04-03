@@ -4,9 +4,20 @@ import { CLASS_NAMES } from './game.js';
 
 const BASE_SPRITE_SIZE = 8;  // Sprite sheet cell size (pixels in sheet)
 const PLAYER_SIZE = 32;      // World render size for entities (matches tile size)
-// Auto-scale for mobile: smaller screens get less zoom so more tiles are visible
-const IS_MOBILE = window.innerWidth < 900 || ('ontouchstart' in window);
-const SCALE = IS_MOBILE ? 0.75 : 2;  // 0.75x on mobile for max visibility, 2x on desktop
+// Detect mobile mode: true phones/tablets, not 2-in-1 laptops with touchscreens.
+// A manual override is stored in localStorage ('forceDesktop' / 'forceMobile').
+function detectMobile() {
+    const override = localStorage.getItem('openrealm_viewmode');
+    if (override === 'mobile') return true;
+    if (override === 'desktop') return false;
+    // Only treat as mobile if the screen is actually small AND touch-capable.
+    // 2-in-1 laptops have touch but large viewports (1920px+), so screen size is the key signal.
+    const smallScreen = window.innerWidth < 900 && window.innerHeight < 600;
+    const mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    return smallScreen || mobileUA;
+}
+const IS_MOBILE = detectMobile();
+const SCALE = IS_MOBILE ? 0.75 : 2;
 const VIEWPORT_TILES = IS_MOBILE ? 16 : 24;
 const OUTLINE_OFFSETS = [[1,0],[-1,0],[0,1],[0,-1]];
 const OUTLINE_TINT = 0x000000;

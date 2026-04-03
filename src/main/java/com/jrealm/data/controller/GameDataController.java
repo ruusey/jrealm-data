@@ -109,6 +109,18 @@ public class GameDataController {
 		return saveDataFile("portals.json", json);
 	}
 
+	@PutMapping(value = "/setpieces", consumes = { "application/json" }, produces = { "application/json" })
+	@AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
+	public ResponseEntity<?> saveSetPieces(final HttpServletRequest request, @RequestBody final String json) {
+		return saveDataFile("setpieces.json", json);
+	}
+
+	@PutMapping(value = "/realm-events", consumes = { "application/json" }, produces = { "application/json" })
+	@AdminRestricted(provisions = { AccountProvision.OPENREALM_EDITOR })
+	public ResponseEntity<?> saveRealmEvents(final HttpServletRequest request, @RequestBody final String json) {
+		return saveDataFile("realm-events.json", json);
+	}
+
 	private ResponseEntity<?> saveDataFile(String filename, String json) {
 		try {
 			URL resource = getClass().getClassLoader().getResource("data/" + filename);

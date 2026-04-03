@@ -20,7 +20,15 @@ export function getAimDir() { return aimDir; }
 export function setDoubleTapHandler(fn) { doubleTapCallback = fn; }
 
 export function initTouchControls(input) {
-    isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const override = localStorage.getItem('openrealm_viewmode');
+    if (override === 'desktop') { isMobile = false; return; }
+    if (override === 'mobile') { isMobile = true; }
+    else {
+        // Only enable touch controls on actual mobile devices, not 2-in-1 laptops.
+        const smallScreen = window.innerWidth < 900 && window.innerHeight < 600;
+        const mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+        isMobile = smallScreen || mobileUA;
+    }
     if (!isMobile) return;
 
     document.getElementById('touch-joystick').style.display = 'block';
