@@ -624,13 +624,13 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 
 /* View mode toggle — fixed top-left of game screen, always visible */
 #viewmode-toggle {
-    position: absolute; top: 70px; left: 8px;
-    z-index: 50; padding: 2px 6px; width: auto;
-    background: rgba(40,35,50,0.7); border: 1px solid rgba(200,168,110,0.3);
-    border-radius: 3px; color: rgba(200,168,110,0.6); font-size: 9px;
+    position: absolute; bottom: 200px; left: 10px;
+    z-index: 50; padding: 3px 8px; width: auto;
+    background: rgba(30,25,40,0.85); border: 1px solid rgba(200,168,110,0.5);
+    border-radius: 4px; color: #c8a86e; font-size: 11px;
     font-family: monospace; cursor: pointer; pointer-events: auto;
 }
-#viewmode-toggle:hover { color: #c8a86e; background: rgba(60,50,75,0.9); }
+#viewmode-toggle:hover { background: rgba(60,50,75,0.95); }
 
 /* Death Screen */
 #death-overlay {

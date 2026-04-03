@@ -509,20 +509,14 @@ export class GameState {
             if (dist > SNAP_DISTANCE) {
                 p.pos.x = p.targetX; p.pos.y = p.targetY;
             } else if (id === this.playerId) {
-                // LOCAL PLAYER: Velocity dead-reckoning + server correction.
+                // LOCAL PLAYER: Input-driven movement with server correction.
                 //
-                // Each frame: advance position by velocity (prediction),
-                // then blend toward the server's predicted position.
-                // targetX/targetY also advance by velocity so they represent
-                // the server's dead-reckoned prediction, not a stale snapshot.
+                // Movement is driven entirely by local input (dx/dy from server
+                // velocity + collision checks). targetX/targetY is the server's
+                // last authoritative position — it does NOT advance by velocity.
+                // A gentle correction blend nudges pos toward target to prevent
+                // long-term drift, but local input always takes priority.
                 const hasVel = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
-
-                // Advance targetX/targetY by velocity so correction blend doesn't
-                // fight against movement when server is using dead reckoning
-                if (hasVel) {
-                    p.targetX += p.dx * moveScale;
-                    p.targetY += p.dy * moveScale;
-                }
 
                 if (!hasVel) {
                     // STOPPED: converge to server position with collision check
@@ -532,21 +526,17 @@ export class GameState {
                         if (!this._checkCollision(p, 0, sy)) p.pos.y += sy;
                     }
                 } else {
-                    // MOVING: predict forward using velocity, then correct toward server pos.
+                    // MOVING: predict forward using velocity with collision checks.
                     const predDx = p.dx * moveScale;
                     const predDy = p.dy * moveScale;
 
-                    // Test X, Y, and diagonal independently.
-                    // This prevents corner-cutting through diagonal wall pairs.
                     const xOk = !this._checkCollision(p, predDx, 0);
                     const yOk = !this._checkCollision(p, 0, predDy);
                     if (xOk && yOk) {
-                        // Diagonal safe — also verify the combined move
                         if (!this._checkCollision(p, predDx, predDy)) {
                             p.pos.x += predDx;
                             p.pos.y += predDy;
                         } else {
-                            // Diagonal blocked — slide along whichever axis is free
                             p.pos.x += predDx;
                         }
                     } else if (xOk) {
@@ -555,21 +545,21 @@ export class GameState {
                         p.pos.y += predDy;
                     }
 
-                    // Blend toward server predicted position to prevent drift.
-                    // Only correct if it doesn't push us into a wall.
-                    const corrDx = p.targetX - p.pos.x;
-                    const corrDy = p.targetY - p.pos.y;
-                    const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
-                    const corrFactor = Math.min(0.25, 0.04 + corrDist * 0.008);
-                    const cx = corrDx * corrFactor;
-                    const cy = corrDy * corrFactor;
-                    // Test correction against collision too
-                    if (!this._checkCollision(p, cx, cy)) {
-                        p.pos.x += cx;
-                        p.pos.y += cy;
-                    } else {
-                        if (!this._checkCollision(p, cx, 0)) p.pos.x += cx;
-                        if (!this._checkCollision(p, 0, cy)) p.pos.y += cy;
+                    // Gentle server correction — only nudge toward server position
+                    // when drift exceeds a threshold. Low blend factor keeps movement
+                    // smooth on high-latency connections. Server remains authoritative
+                    // via the snap threshold above (SNAP_DISTANCE).
+                    if (dist > 2.0) {
+                        const corrFactor = Math.min(0.15, 0.02 + dist * 0.004);
+                        const cx = dx * corrFactor;
+                        const cy = dy * corrFactor;
+                        if (!this._checkCollision(p, cx, cy)) {
+                            p.pos.x += cx;
+                            p.pos.y += cy;
+                        } else {
+                            if (!this._checkCollision(p, cx, 0)) p.pos.x += cx;
+                            if (!this._checkCollision(p, 0, cy)) p.pos.y += cy;
+                        }
                     }
                 }
             } else {

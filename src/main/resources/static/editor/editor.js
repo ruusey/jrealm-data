@@ -1954,6 +1954,7 @@ function showMapDetail(m) {
     updateMapBrushInfo();
     renderMapCanvas();
     renderStaticSpawnList();
+    renderSpawnPointList();
     cancelPlaceEnemy();
   } else if (type === 'dungeon') {
     dungeonEditor.style.display = 'block';
@@ -2190,6 +2191,112 @@ function drawMapOverlay() {
     }
   }
   drawEnemySpawnsOnOverlay();
+  drawSpawnPointsOnOverlay();
+}
+
+// ========== PLAYER SPAWN POINTS ==========
+let placingSpawnPoint = false;
+
+function renderSpawnPointList() {
+  const container = document.getElementById('spawnPointList');
+  container.innerHTML = '';
+  if (!selectedMap) return;
+  const points = selectedMap.spawnPoints || [];
+  if (points.length === 0) {
+    container.innerHTML = '<span style="color:#666;font-size:12px">No spawn points. Players will spawn at map center.</span>';
+    return;
+  }
+  points.forEach((sp, idx) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:3px 4px;border-bottom:1px solid #222';
+    const marker = document.createElement('span');
+    marker.style.cssText = 'color:#4f4;font-size:14px;font-weight:bold';
+    marker.textContent = '\u25C9'; // circle marker
+    const posLabel = document.createElement('span');
+    posLabel.style.cssText = 'flex:1;font-size:12px;color:#ccc';
+    posLabel.textContent = `(${sp[0]}, ${sp[1]})`;
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tg-remove'; removeBtn.textContent = '\u00d7';
+    removeBtn.addEventListener('click', () => {
+      selectedMap.spawnPoints.splice(idx, 1);
+      markDirty('maps');
+      renderSpawnPointList();
+      drawMapOverlay();
+    });
+    row.append(marker, posLabel, removeBtn);
+    container.appendChild(row);
+  });
+}
+
+function drawSpawnPointsOnOverlay() {
+  if (!selectedMap || !selectedMap.spawnPoints || selectedMap.spawnPoints.length === 0) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const ctx = canvas.getContext('2d');
+  const tileSize = selectedMap.tileSize || 32;
+  selectedMap.spawnPoints.forEach(sp => {
+    const px = (sp[0] / tileSize) * MAP_TILE_PX;
+    const py = (sp[1] / tileSize) * MAP_TILE_PX;
+    // Green circle marker for player spawn points
+    ctx.fillStyle = 'rgba(80, 255, 80, 0.4)';
+    ctx.beginPath();
+    ctx.arc(px + MAP_TILE_PX / 2, py + MAP_TILE_PX / 2, MAP_TILE_PX / 2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#4f4';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    // "S" label
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold ' + Math.max(8, MAP_TILE_PX * 0.6) + 'px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('S', px + MAP_TILE_PX / 2, py + MAP_TILE_PX / 2);
+  });
+}
+
+document.getElementById('mapAddSpawnPointBtn').addEventListener('click', () => {
+  if (!selectedMap) return;
+  if (!selectedMap.spawnPoints) selectedMap.spawnPoints = [];
+  // Add at map center by default
+  const cx = Math.floor(selectedMap.width / 2) * selectedMap.tileSize;
+  const cy = Math.floor(selectedMap.height / 2) * selectedMap.tileSize;
+  selectedMap.spawnPoints.push([cx, cy]);
+  markDirty('maps');
+  renderSpawnPointList();
+  drawMapOverlay();
+});
+
+document.getElementById('mapPlaceSpawnPointBtn').addEventListener('click', () => {
+  if (!selectedMap) return;
+  placingSpawnPoint = true;
+  document.getElementById('mapPlaceSpawnPointBtn').style.display = 'none';
+  document.getElementById('mapCancelPlaceSpawnBtn').style.display = '';
+  document.getElementById('mapOverlayCanvas').style.cursor = 'crosshair';
+});
+
+document.getElementById('mapCancelPlaceSpawnBtn').addEventListener('click', () => {
+  placingSpawnPoint = false;
+  document.getElementById('mapPlaceSpawnPointBtn').style.display = '';
+  document.getElementById('mapCancelPlaceSpawnBtn').style.display = 'none';
+  document.getElementById('mapOverlayCanvas').style.cursor = '';
+});
+
+function placeSpawnPointOnMap(e) {
+  if (!selectedMap) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const col = Math.floor((e.clientX - rect.left) * scaleX / MAP_TILE_PX);
+  const row = Math.floor((e.clientY - rect.top) * scaleY / MAP_TILE_PX);
+  if (row < 0 || row >= selectedMap.height || col < 0 || col >= selectedMap.width) return;
+  const pixelX = col * selectedMap.tileSize;
+  const pixelY = row * selectedMap.tileSize;
+  if (!selectedMap.spawnPoints) selectedMap.spawnPoints = [];
+  selectedMap.spawnPoints.push([pixelX, pixelY]);
+  markDirty('maps');
+  // Stay in placement mode for easy multi-point placement
+  renderSpawnPointList();
+  drawMapOverlay();
 }
 
 // ========== STATIC ENEMY SPAWNS ==========
@@ -2430,6 +2537,7 @@ function stampSetPieceOnMap(e) {
 
 function mapCanvasClick(e) {
   if (stampingSetPiece) { stampSetPieceOnMap(e); return; }
+  if (placingSpawnPoint) { placeSpawnPointOnMap(e); return; }
   if (placingEnemy) { placeEnemyOnMap(e); return; }
   if (!selectedMap || !selectedMap.data || mapBrushTileId < 0) return;
   const canvas = document.getElementById('mapOverlayCanvas');

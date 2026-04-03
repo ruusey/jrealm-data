@@ -835,7 +835,7 @@ function setupNetworkHandlers() {
 
     network.on(PacketId.TEXT, (data) => {
         game.handleText(data);
-        addChatMessage(data.from, data.message);
+        addChatMessage(data.from, data.message, data.to);
     });
 
     network.on(PacketId.TEXT_EFFECT, (data) => {
@@ -1070,6 +1070,13 @@ function processInput(dt) {
         input.keys['Escape'] = false;
         returnToCharacterSelect();
         return;
+    }
+
+    // I = Toggle autofire
+    if (input.isKeyDown('KeyI') && !input.chatMode) {
+        input.keys['KeyI'] = false;
+        const on = input.toggleAutofire();
+        addChatMessage('SYSTEM', on ? 'Autofire enabled' : 'Autofire disabled');
     }
 
     // F1 or R = Go to vault
@@ -1693,7 +1700,24 @@ document.addEventListener('touchend', (e) => {
 document.addEventListener('touchcancel', cleanupDrag);
 
 // --- Chat ---
-function addChatMessage(from, message) {
+const CHAT_ROLE_COLORS = {
+    'sysadmin': '#ff6644',
+    'admin':    '#cc66ff',
+    'mod':      '#44dddd',
+};
+const CHAT_NAME_COLORS = {
+    'SYSTEM':   '#c8a86e',
+    'Overseer': '#e8c840',
+};
+const DEFAULT_NAME_COLOR = '#80b0e0';
+
+function getNameColor(from, role) {
+    if (CHAT_NAME_COLORS[from]) return CHAT_NAME_COLORS[from];
+    if (role && CHAT_ROLE_COLORS[role]) return CHAT_ROLE_COLORS[role];
+    return DEFAULT_NAME_COLOR;
+}
+
+function addChatMessage(from, message, role) {
     const el = document.getElementById('chat-messages');
     const div = document.createElement('div');
     if (from === 'SYSTEM') {
@@ -1701,7 +1725,9 @@ function addChatMessage(from, message) {
         div.textContent = message;
     } else {
         div.className = 'msg-player';
-        div.innerHTML = `<span class="msg-name">${escapeHtml(from)}</span>: ${escapeHtml(message)}`;
+        const color = getNameColor(from, role);
+        const nameSpan = `<span class="msg-name" style="color:${color}">[${escapeHtml(from)}]</span>`;
+        div.innerHTML = `${nameSpan}: ${escapeHtml(message)}`;
     }
     el.appendChild(div);
     el.scrollTop = el.scrollHeight;

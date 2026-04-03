@@ -8,6 +8,7 @@ export class InputHandler {
         this.mouseDown = [false, false, false];
         this.mouseClicked = [false, false, false];
         this.chatMode = false;
+        this.autofire = false;
 
         // Movement state
         this.moveDir = -1;      // Current direction byte
@@ -90,6 +91,11 @@ export class InputHandler {
         return { dir, moving, dx, dy };
     }
 
-    wantsShoot() { return this.mouseDown[0] && !this.chatMode; }
+    wantsShoot() { return (this.mouseDown[0] || this.autofire) && !this.chatMode; }
     wantsAbility() { return this.consumeClick(2) && !this.chatMode; }
+
+    toggleAutofire() {
+        this.autofire = !this.autofire;
+        return this.autofire;
+    }
 }
