@@ -187,5 +187,14 @@
 		"row": 5,
 		"col": 4,
 		"spriteKey": "rotmg-tiles-2.png"
+	},
+	{
+		"portalId": 21,
+		"portalName": "Admin_Arena_21",
+		"mapId": 28,
+		"targetRealmDepth": 999,
+		"row": 25,
+		"col": 2,
+		"spriteKey": "rotmg-tiles.png"
 	}
 ]

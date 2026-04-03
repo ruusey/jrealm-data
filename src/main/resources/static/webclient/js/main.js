@@ -1771,7 +1771,6 @@ function handleChatCommand(msg) {
 document.getElementById('chat-toggle').addEventListener('click', () => {
     const panel = document.getElementById('chat-panel');
     panel.classList.toggle('collapsed');
-    // Reposition joystick relative to chat panel
     const joystick = document.getElementById('touch-joystick');
     if (joystick) {
         const chatRect = panel.getBoundingClientRect();
@@ -1810,18 +1809,22 @@ document.getElementById('mobile-vault-btn')?.addEventListener('click', () => {
 });
 
 // --- View Mode Toggle (mobile/desktop) ---
+// Use the same detection logic as renderer.js and touch.js to determine current mode.
+// Cannot rely on joystick DOM state — it's set later during network setup.
+function isCurrentlyMobile() {
+    const override = localStorage.getItem('openrealm_viewmode');
+    if (override === 'mobile') return true;
+    if (override === 'desktop') return false;
+    const smallScreen = window.innerWidth < 900 && window.innerHeight < 600;
+    const mobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    return smallScreen || mobileUA;
+}
 const viewToggle = document.getElementById('viewmode-toggle');
 if (viewToggle) {
-    const currentMode = localStorage.getItem('openrealm_viewmode');
-    const isMobileNow = document.getElementById('touch-joystick')?.style.display === 'block';
-    viewToggle.textContent = isMobileNow ? 'Desktop Mode' : 'Mobile Mode';
+    const mobileNow = isCurrentlyMobile();
+    viewToggle.textContent = mobileNow ? 'Desktop View' : 'Mobile View';
     viewToggle.addEventListener('click', () => {
-        const current = localStorage.getItem('openrealm_viewmode');
-        if (current === 'mobile' || (!current && isMobileNow)) {
-            localStorage.setItem('openrealm_viewmode', 'desktop');
-        } else {
-            localStorage.setItem('openrealm_viewmode', 'mobile');
-        }
+        localStorage.setItem('openrealm_viewmode', mobileNow ? 'desktop' : 'mobile');
         window.location.reload();
     });
 }

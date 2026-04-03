@@ -3657,7 +3657,6 @@ function bindEvents() {
     document.getElementById(id).addEventListener('input', updatePreview);
   });
 
-  document.getElementById('terrainAddTileBtn').addEventListener('click', addTileToTerrain);
   document.getElementById('terrainBackBtn').addEventListener('click', deselectTerrain);
   document.getElementById('saveTerrainBtn').addEventListener('click', () => { markDirty('terrains'); });
 
