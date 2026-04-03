@@ -159,8 +159,20 @@
             <label>Max Room W: <input type="number" id="dpMaxRoomW" min="1"></label>
             <label>Min Room H: <input type="number" id="dpMinRoomH" min="1"></label>
             <label>Max Room H: <input type="number" id="dpMaxRoomH" min="1"></label>
-            <label>Wall Tile: <input type="number" id="dpWallTile" min="0"></label>
-            <label>Boss Enemy: <input type="number" id="dpBossEnemy" min="-1"></label>
+            <label>Wall Tile:
+              <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
+                <canvas id="dpWallTilePreview" width="24" height="24" style="border:1px solid #444;background:#111;flex-shrink:0"></canvas>
+                <input type="number" id="dpWallTile" min="0" style="flex:1">
+                <button id="dpPickWallTileBtn" class="btn-pick" style="padding:2px 8px;font-size:11px">Pick</button>
+              </div>
+            </label>
+            <label>Boss Enemy:
+              <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
+                <canvas id="dpBossEnemyPreview" width="24" height="24" style="border:1px solid #444;background:#111;flex-shrink:0"></canvas>
+                <input type="number" id="dpBossEnemy" min="-1" style="flex:1">
+                <button id="dpPickBossEnemyBtn" class="btn-pick" style="padding:2px 8px;font-size:11px">Pick</button>
+              </div>
+            </label>
           </div>
           <div style="margin:6px 0">
             <label style="font-size:12px">Shapes:

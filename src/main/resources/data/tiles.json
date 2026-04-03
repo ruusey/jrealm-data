@@ -702,9 +702,9 @@
     {
         "tileId": 50,
         "name": "Tombstone",
-        "spriteKey": "rotmg-tiles-all.png",
-        "row": 3,
-        "col": 10,
+        "spriteKey": "lofi_obj.png",
+        "row": 1,
+        "col": 3,
         "size": 32,
         "data": {
             "hasCollision": 1,

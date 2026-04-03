@@ -198,10 +198,13 @@ public class PlayerDataService {
 
         // Equip the player with their starting equipment
         final Map<Integer, GameItem> startingEquip = GameDataManager.getStartingEquipment(clazz);
-        for (int i = 0; i < startingEquip.values().size(); i++) {
-            final GameItem toEquip = startingEquip.get(i);
-            final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(i, toEquip.getItemId());
-            character.addItem(toEquipEntity);
+        if (startingEquip != null) {
+            for (Map.Entry<Integer, GameItem> entry : startingEquip.entrySet()) {
+                if (entry.getValue() != null) {
+                    final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(entry.getKey(), entry.getValue().getItemId());
+                    character.addItem(toEquipEntity);
+                }
+            }
         }
 
         final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(classId);
@@ -305,12 +308,17 @@ public class PlayerDataService {
                 .characterClass(characterClass).build();
 
         // Equip the player with their starting equipment
-        final Map<Integer, GameItem> startingEquip = GameDataManager
-                .getStartingEquipment(CharacterClass.valueOf(characterClass));
-        for (int i = 0; i < startingEquip.values().size(); i++) {
-            final GameItem toEquip = startingEquip.get(i);
-            final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(i, toEquip.getItemId());
-            character.addItem(toEquipEntity);
+        final CharacterClass clazz = CharacterClass.valueOf(characterClass);
+        if (clazz != null) {
+            final Map<Integer, GameItem> startingEquip = GameDataManager.getStartingEquipment(clazz);
+            if (startingEquip != null) {
+                for (Map.Entry<Integer, GameItem> entry : startingEquip.entrySet()) {
+                    if (entry.getValue() != null) {
+                        final GameItemRefEntity toEquipEntity = GameItemRefEntity.from(entry.getKey(), entry.getValue().getItemId());
+                        character.addItem(toEquipEntity);
+                    }
+                }
+            }
         }
 
         final CharacterStatsEntity characterStats = CharacterStatsEntity.characterDefaults(characterClass);

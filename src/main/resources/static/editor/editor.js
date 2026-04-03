@@ -1836,6 +1836,8 @@ function showDungeonParams(m) {
   document.getElementById('dpMaxRoomH').value = dp.maxRoomHeight || 14;
   document.getElementById('dpWallTile').value = dp.wallTileId || 0;
   document.getElementById('dpBossEnemy').value = dp.bossEnemyId != null ? dp.bossEnemyId : -1;
+  updateDpWallTilePreview();
+  updateDpBossEnemyPreview();
 
   const shapes = dp.shapeTemplates || [];
   document.querySelectorAll('#dpShapes input').forEach(cb => {
@@ -1882,6 +1884,24 @@ function renderDungeonFloorTiles(dp) {
     row.append(cvs, idSpan, nameSpan, replaceBtn, removeBtn);
     container.appendChild(row);
   });
+}
+
+function updateDpWallTilePreview() {
+  const cvs = document.getElementById('dpWallTilePreview');
+  const tileId = parseInt(document.getElementById('dpWallTile').value);
+  const tile = getTileById(tileId);
+  const ctx = cvs.getContext('2d');
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+  if (tile) drawTilePreview(cvs, tile);
+}
+
+function updateDpBossEnemyPreview() {
+  const cvs = document.getElementById('dpBossEnemyPreview');
+  const enemyId = parseInt(document.getElementById('dpBossEnemy').value);
+  const enemy = enemies.find(e => e.enemyId === enemyId);
+  const ctx = cvs.getContext('2d');
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+  if (enemy) drawEnemySpritePreview(cvs, enemy);
 }
 
 function applyDungeonParams() {
@@ -3170,6 +3190,20 @@ function bindEvents() {
   document.getElementById('mapCancelPlaceBtn').addEventListener('click', cancelPlaceEnemy);
   document.getElementById('applyDungeonBtn').addEventListener('click', applyDungeonParams);
   document.getElementById('dpAddFloorTileBtn').addEventListener('click', addDungeonFloorTile);
+  document.getElementById('dpWallTile').addEventListener('change', updateDpWallTilePreview);
+  document.getElementById('dpBossEnemy').addEventListener('change', updateDpBossEnemyPreview);
+  document.getElementById('dpPickWallTileBtn').addEventListener('click', () => {
+    openTilePicker((tileId) => {
+      document.getElementById('dpWallTile').value = tileId;
+      updateDpWallTilePreview();
+    });
+  });
+  document.getElementById('dpPickBossEnemyBtn').addEventListener('click', () => {
+    openEnemyPicker((enemy) => {
+      document.getElementById('dpBossEnemy').value = enemy.enemyId;
+      updateDpBossEnemyPreview();
+    });
+  });
 
   // Map canvas paint events
   const mapOverlay = document.getElementById('mapOverlayCanvas');
