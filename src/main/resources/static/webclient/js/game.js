@@ -306,7 +306,7 @@ export class GameState {
         let totalBufferedTicks = 0;
         for (const f of this._inputBuffer) totalBufferedTicks += f.dt * 64;
 
-        if (serverTicksSinceLastAck > totalBufferedTicks * 2) {
+        if (serverTicksSinceLastAck > 10 && serverTicksSinceLastAck > totalBufferedTicks * 2) {
             // Idle gap detected — server ticked many times while we weren't moving.
             // Clear the buffer and accept server position as ground truth.
             this._inputBuffer = [];
