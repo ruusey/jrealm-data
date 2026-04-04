@@ -301,13 +301,22 @@ export class GameState {
         if (!this._inputBuffer) this._inputBuffer = [];
         const serverTicksSinceLastAck = data.seq - (this._lastAckSeq || data.seq);
         this._lastAckSeq = data.seq;
-        let ticksToDiscard = Math.max(0, Math.min(serverTicksSinceLastAck, 128));
-        while (this._inputBuffer.length > 0 && ticksToDiscard > 0) {
-            const frame = this._inputBuffer[0];
-            // Each frame covers frame.dt seconds = frame.dt * 64 server ticks
-            const frameTicks = frame.dt * 64;
-            ticksToDiscard -= frameTicks;
-            this._inputBuffer.shift();
+
+        // Calculate total buffered time in server ticks
+        let totalBufferedTicks = 0;
+        for (const f of this._inputBuffer) totalBufferedTicks += f.dt * 64;
+
+        if (serverTicksSinceLastAck > totalBufferedTicks * 2) {
+            // Idle gap detected — server ticked many times while we weren't moving.
+            // Clear the buffer and accept server position as ground truth.
+            this._inputBuffer = [];
+        } else if (serverTicksSinceLastAck > 0) {
+            let ticksToDiscard = serverTicksSinceLastAck;
+            while (this._inputBuffer.length > 0 && ticksToDiscard > 0) {
+                const frameTicks = this._inputBuffer[0].dt * 64;
+                ticksToDiscard -= frameTicks;
+                this._inputBuffer.shift();
+            }
         }
 
         // Replay unacknowledged inputs from the server's authoritative position
@@ -370,11 +379,9 @@ export class GameState {
             local.pos.x = replayX;
             local.pos.y = replayY;
         } else if (err > 1.0) {
-            // Scale blend factor with error: small errors correct faster,
-            // large errors correct slower to avoid visible teleporting
-            const blend = err > 12 ? 0.15 : err > 4 ? 0.3 : 0.5;
-            local.pos.x = savedX + errX * blend;
-            local.pos.y = savedY + errY * blend;
+            // Blend toward correct position
+            local.pos.x = savedX + errX * 0.4;
+            local.pos.y = savedY + errY * 0.4;
         } else {
             // Within tolerance
             local.pos.x = savedX;
