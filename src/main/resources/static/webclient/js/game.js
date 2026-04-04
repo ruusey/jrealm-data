@@ -299,7 +299,17 @@ export class GameState {
         if (!local) return;
 
         if (!this._inputBuffer) this._inputBuffer = [];
-        while (this._inputBuffer.length > 0 && this._inputBuffer[0].seq <= data.seq) {
+        // Estimate how many client frames correspond to server ticks since last ack.
+        // Server increments seq every tick (64Hz). Discard frames whose cumulative
+        // time covers the server's processed ticks.
+        const serverTicksSinceLastAck = data.seq - (this._lastAckSeq || 0);
+        this._lastAckSeq = data.seq;
+        let ticksToDiscard = serverTicksSinceLastAck;
+        while (this._inputBuffer.length > 0 && ticksToDiscard > 0) {
+            const frame = this._inputBuffer[0];
+            // Each frame covers frame.dt seconds = frame.dt * 64 server ticks
+            const frameTicks = frame.dt * 64;
+            ticksToDiscard -= frameTicks;
             this._inputBuffer.shift();
         }
 

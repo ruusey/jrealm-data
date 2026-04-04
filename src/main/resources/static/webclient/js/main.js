@@ -1035,10 +1035,14 @@ function processInput(dt) {
         local.dx = pdx * spd;
         local.dy = pdy * spd;
 
-        // Store this frame's input in the buffer for replay on server ack
+        // Store this frame's input in the buffer with a per-frame tick counter.
+        // The server increments lastInputSeq every tick in movePlayer().
+        // The ack sends the server's tick count, which we use to discard
+        // the corresponding number of client frames.
+        game._frameTick = (game._frameTick || 0) + 1;
         if (!game._inputBuffer) game._inputBuffer = [];
         game._inputBuffer.push({
-            seq: game._inputSeq || 0,
+            tick: game._frameTick,
             dx: local.dx,
             dy: local.dy,
             dt: dt
