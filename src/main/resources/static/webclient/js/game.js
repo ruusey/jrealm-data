@@ -383,9 +383,11 @@ export class GameState {
                             this._inputBuffer = [];
                         }
                     } else {
-                        // Other player: snapshot interpolation
-                        p._prevX = p._snapX != null ? p._snapX : p.pos.x;
-                        p._prevY = p._snapY != null ? p._snapY : p.pos.y;
+                        // Other player: snapshot interpolation from current visual position
+                        const now = performance.now();
+                        p._interpDuration = p._snapTime ? (now - p._snapTime) : 62;
+                        p._prevX = p.pos.x;
+                        p._prevY = p.pos.y;
                         p._snapX = mov.posX;
                         p._snapY = mov.posY;
                         p._snapTime = performance.now();
@@ -398,12 +400,14 @@ export class GameState {
             } else if (t === 1) {
                 const e = this.enemies.get(id);
                 if (e) {
-                    // Snapshot interpolation: shift current → previous, store new as current
-                    e._prevX = e._snapX != null ? e._snapX : e.pos.x;
-                    e._prevY = e._snapY != null ? e._snapY : e.pos.y;
+                    // Snapshot interpolation: track actual update interval for smooth lerp
+                    const now = performance.now();
+                    e._interpDuration = e._snapTime ? (now - e._snapTime) : 62;
+                    e._prevX = e.pos.x;
+                    e._prevY = e.pos.y;
                     e._snapX = mov.posX;
                     e._snapY = mov.posY;
-                    e._snapTime = performance.now();
+                    e._snapTime = now;
                     e.dx = mov.velX; e.dy = mov.velY;
                     e.targetX = mov.posX; e.targetY = mov.posY;
                 }
@@ -677,15 +681,16 @@ export class GameState {
             } else {
                 // OTHER PLAYERS: snapshot interpolation (same as enemies).
                 if (p._snapTime != null) {
+                    const duration = p._interpDuration || 62;
                     const elapsed = performance.now() - p._snapTime;
-                    const t = Math.min(elapsed / ENEMY_INTERP_DURATION, 1.0);
+                    const t = Math.min(elapsed / duration, 1.0);
                     p.pos.x = p._prevX + (p._snapX - p._prevX) * t;
                     p.pos.y = p._prevY + (p._snapY - p._prevY) * t;
                     if (t >= 1.0 && (Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01)) {
-                        const extraTime = (elapsed - ENEMY_INTERP_DURATION) / 1000;
-                        if (extraTime < 0.1) {
-                            p.pos.x = p._snapX + p.dx * extraTime * 64;
-                            p.pos.y = p._snapY + p.dy * extraTime * 64;
+                        const overTime = (elapsed - duration) / 1000;
+                        if (overTime > 0 && overTime < 0.5) {
+                            p.pos.x = p._snapX + p.dx * overTime * 64;
+                            p.pos.y = p._snapY + p.dy * overTime * 64;
                         }
                     }
                 }
@@ -706,19 +711,21 @@ export class GameState {
                 e.pos.x = e.targetX; e.pos.y = e.targetY;
                 continue;
             }
+            // Use the measured interval between the last two server updates as the
+            // interpolation duration. This adapts to dead reckoning's variable rate.
+            const duration = e._interpDuration || 62;
             const elapsed = performance.now() - e._snapTime;
-            const t = Math.min(elapsed / ENEMY_INTERP_DURATION, 1.0);
+            const t = Math.min(elapsed / duration, 1.0);
             e.pos.x = e._prevX + (e._snapX - e._prevX) * t;
             e.pos.y = e._prevY + (e._snapY - e._prevY) * t;
 
-            // Past the interpolation window — extrapolate gently by velocity
-            // to prevent freezing if server updates are delayed
+            // Past the window — continue extrapolating by velocity so enemies
+            // don't freeze if the next update is delayed
             if (t >= 1.0 && (Math.abs(e.dx) > 0.01 || Math.abs(e.dy) > 0.01)) {
-                const extraTime = (elapsed - ENEMY_INTERP_DURATION) / 1000;
-                const maxExtra = 0.1; // cap extrapolation at 100ms past window
-                if (extraTime < maxExtra) {
-                    e.pos.x = e._snapX + e.dx * extraTime * 64;
-                    e.pos.y = e._snapY + e.dy * extraTime * 64;
+                const overTime = (elapsed - duration) / 1000;
+                if (overTime > 0 && overTime < 0.5) {
+                    e.pos.x = e._snapX + e.dx * overTime * 64;
+                    e.pos.y = e._snapY + e.dy * overTime * 64;
                 }
             }
         }
