@@ -913,8 +913,9 @@ const perfMetrics = {
                 // Ping = average RTT / 2
                 const avg = this._pingSamples.reduce((a, b) => a + b, 0) / this._pingSamples.length;
                 this.ping = Math.round(avg / 2);
-                // Jitter = stddev of samples
-                const variance = this._pingSamples.reduce((sum, s) => sum + (s - avg) ** 2, 0) / this._pingSamples.length;
+                // Jitter = stddev of ping (RTT/2) samples
+                const pingAvg = avg / 2;
+                const variance = this._pingSamples.reduce((sum, s) => sum + ((s / 2) - pingAvg) ** 2, 0) / this._pingSamples.length;
                 this.jitter = Math.round(Math.sqrt(variance));
             }
             this._lastHeartbeatSend = 0;
@@ -1034,6 +1035,12 @@ function processInput(dt) {
         }
         local.dx = pdx * spd;
         local.dy = pdy * spd;
+
+        // Defensive clamp: ensure velocity magnitude never exceeds max possible speed.
+        // max speed = base(4+5.6) * SPEEDY(1.5) * 32/64 = 7.2 px/tick
+        const maxSpd = 8.0;
+        if (Math.abs(local.dx) > maxSpd) local.dx = Math.sign(local.dx) * maxSpd;
+        if (Math.abs(local.dy) > maxSpd) local.dy = Math.sign(local.dy) * maxSpd;
 
         // Store this frame's input in the buffer with a per-frame tick counter.
         // The server increments lastInputSeq every tick in movePlayer().

@@ -299,9 +299,6 @@ export class GameState {
         if (!local) return;
 
         if (!this._inputBuffer) this._inputBuffer = [];
-        // Estimate how many client frames correspond to server ticks since last ack.
-        // Server increments seq every tick (64Hz). Discard frames whose cumulative
-        // time covers the server's processed ticks.
         const serverTicksSinceLastAck = data.seq - (this._lastAckSeq || data.seq);
         this._lastAckSeq = data.seq;
         let ticksToDiscard = Math.max(0, Math.min(serverTicksSinceLastAck, 128));
@@ -369,19 +366,17 @@ export class GameState {
         const err = Math.sqrt(errX * errX + errY * errY);
 
         if (err > 32) {
-            // Large desync (teleport, collision mismatch) — hard snap
+            // Large desync — hard snap
             local.pos.x = replayX;
             local.pos.y = replayY;
-        } else if (err > 8) {
-            // Medium drift — moderate blend
-            local.pos.x = savedX + errX * 0.3;
-            local.pos.y = savedY + errY * 0.3;
         } else if (err > 1.0) {
-            // Small drift (direction change residual) — fast blend
-            local.pos.x = savedX + errX * 0.6;
-            local.pos.y = savedY + errY * 0.6;
+            // Scale blend factor with error: small errors correct faster,
+            // large errors correct slower to avoid visible teleporting
+            const blend = err > 12 ? 0.15 : err > 4 ? 0.3 : 0.5;
+            local.pos.x = savedX + errX * blend;
+            local.pos.y = savedY + errY * blend;
         } else {
-            // Within tolerance — keep current position
+            // Within tolerance
             local.pos.x = savedX;
             local.pos.y = savedY;
         }

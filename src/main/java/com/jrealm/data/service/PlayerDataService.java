@@ -114,7 +114,7 @@ public class PlayerDataService {
         }
 
         ownerAccount = this.playerAccountRepository.save(ownerAccount);
-        PlayerDataService.log.info("Successfully saved character stats for character {} in {}ms",
+        PlayerDataService.log.debug("Successfully saved character stats for character {} in {}ms",
                 character.getCharacterUuid(), (Instant.now().toEpochMilli() - start));
         return this.mapper.map(character, CharacterDto.class);
     }
@@ -378,7 +378,7 @@ public class PlayerDataService {
         final long start = Instant.now().toEpochMilli();
         final Optional<PlayerAccountEntity> entity = this.playerAccountRepository.findById(accountId);
         if (entity.isPresent()) {
-            PlayerDataService.log.info("Fetched account by id {} in {}ms", accountId,
+            PlayerDataService.log.debug("Fetched account by id {} in {}ms", accountId,
                     (Instant.now().toEpochMilli() - start));
             return this.mapper.map(entity, PlayerAccountDto.class);
         }
@@ -400,7 +400,7 @@ public class PlayerDataService {
         final long start = Instant.now().toEpochMilli();
         final PlayerAccountEntity entity = this.playerAccountRepository.findByAccountUuid(accountUuid);
         if (entity != null) {
-            PlayerDataService.log.info("Fetched account by UUID {} in {}ms", accountUuid,
+            PlayerDataService.log.debug("Fetched account by UUID {} in {}ms", accountUuid,
                     (Instant.now().toEpochMilli() - start));
             return this.mapper.map(entity, PlayerAccountDto.class);
         }
