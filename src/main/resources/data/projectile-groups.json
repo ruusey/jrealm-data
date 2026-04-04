@@ -6922,7 +6922,21 @@
 			{
 				"projectileId": 112,
 				"positionMode": 0,
-				"angle": "0",
+				"angle": "0.1",
+				"range": 150,
+				"size": 16,
+				"magnitude": 5,
+				"damage": 25,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				]
+			},
+			{
+				"projectileId": 112,
+				"positionMode": 0,
+				"angle": "-0.1",
 				"range": 150,
 				"size": 16,
 				"magnitude": 5,

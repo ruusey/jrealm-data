@@ -303,13 +303,21 @@ export class GameState {
             this._inputBuffer.shift();
         }
 
-        // Start from server's authoritative position
+        // Replay unacknowledged inputs from the server's authoritative position
+        // into a TEMPORARY position. Compare with where the client currently is.
+        // Only correct if they differ significantly — this prevents micro-jitter
+        // from snap-then-replay on every ack.
         const serverX = data.posX;
         const serverY = data.posY;
-        local.pos.x = serverX;
-        local.pos.y = serverY;
+        let replayX = serverX;
+        let replayY = serverY;
 
-        // Replay all unacknowledged inputs with collision checks
+        // Save pos for collision checks during replay
+        const savedX = local.pos.x;
+        const savedY = local.pos.y;
+        local.pos.x = replayX;
+        local.pos.y = replayY;
+
         for (const input of this._inputBuffer) {
             const slow = this._isOnSlowTile(local) ? 3.0 : 1.0;
             const predDx = (input.dx / slow) * input.dt * 64;
@@ -340,23 +348,28 @@ export class GameState {
             }
         }
 
-        // Detect persistent desync (e.g., PARALYZED — server blocks movement but
-        // client keeps predicting). If replayed position consistently diverges from
-        // server position, force stop and snap.
-        const replayErrX = local.pos.x - serverX;
-        const replayErrY = local.pos.y - serverY;
-        const replayErr = Math.sqrt(replayErrX * replayErrX + replayErrY * replayErrY);
-        if (replayErr > 8) {
-            local._reconcileFailCount = (local._reconcileFailCount || 0) + 1;
-            if (local._reconcileFailCount >= 5) {
-                local.dx = 0;
-                local.dy = 0;
-                local.pos.x = serverX;
-                local.pos.y = serverY;
-                this._inputBuffer = [];
-            }
+        replayX = local.pos.x;
+        replayY = local.pos.y;
+
+        // Compare replayed position with where the client currently is.
+        // If close enough, keep the client's current position (no visible correction).
+        // If diverged, smoothly blend toward the replayed position.
+        const errX = replayX - savedX;
+        const errY = replayY - savedY;
+        const err = Math.sqrt(errX * errX + errY * errY);
+
+        if (err > 32) {
+            // Large desync (teleport, collision mismatch) — hard snap
+            local.pos.x = replayX;
+            local.pos.y = replayY;
+        } else if (err > 1.0) {
+            // Small drift — blend smoothly toward correct position
+            local.pos.x = savedX + errX * 0.3;
+            local.pos.y = savedY + errY * 0.3;
         } else {
-            local._reconcileFailCount = 0;
+            // Within tolerance — keep current position, no correction needed
+            local.pos.x = savedX;
+            local.pos.y = savedY;
         }
     }
 
@@ -383,14 +396,6 @@ export class GameState {
                             this._inputBuffer = [];
                         }
                     } else {
-                        // Other player: snapshot interpolation from current visual position
-                        const now = performance.now();
-                        p._interpDuration = p._snapTime ? (now - p._snapTime) : 62;
-                        p._prevX = p.pos.x;
-                        p._prevY = p.pos.y;
-                        p._snapX = mov.posX;
-                        p._snapY = mov.posY;
-                        p._snapTime = performance.now();
                         p.targetX = mov.posX; p.targetY = mov.posY;
                     }
                     if (id !== this.playerId) {
@@ -400,16 +405,8 @@ export class GameState {
             } else if (t === 1) {
                 const e = this.enemies.get(id);
                 if (e) {
-                    // Snapshot interpolation: track actual update interval for smooth lerp
-                    const now = performance.now();
-                    e._interpDuration = e._snapTime ? (now - e._snapTime) : 62;
-                    e._prevX = e.pos.x;
-                    e._prevY = e.pos.y;
-                    e._snapX = mov.posX;
-                    e._snapY = mov.posY;
-                    e._snapTime = now;
-                    e.dx = mov.velX; e.dy = mov.velY;
                     e.targetX = mov.posX; e.targetY = mov.posY;
+                    e.dx = mov.velX; e.dy = mov.velY;
                 }
             } else if (t === 2) {
                 const b = this.bullets.get(id);
@@ -679,20 +676,14 @@ export class GameState {
                     }
                 }
             } else {
-                // OTHER PLAYERS: snapshot interpolation (same as enemies).
-                if (p._snapTime != null) {
-                    const duration = p._interpDuration || 62;
-                    const elapsed = performance.now() - p._snapTime;
-                    const t = Math.min(elapsed / duration, 1.0);
-                    p.pos.x = p._prevX + (p._snapX - p._prevX) * t;
-                    p.pos.y = p._prevY + (p._snapY - p._prevY) * t;
-                    if (t >= 1.0 && (Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01)) {
-                        const overTime = (elapsed - duration) / 1000;
-                        if (overTime > 0 && overTime < 0.5) {
-                            p.pos.x = p._snapX + p.dx * overTime * 64;
-                            p.pos.y = p._snapY + p.dy * overTime * 64;
-                        }
-                    }
+                // OTHER PLAYERS: lerp toward server position.
+                const odx = p.targetX - p.pos.x, ody = p.targetY - p.pos.y;
+                const odist = Math.sqrt(odx * odx + ody * ody);
+                if (odist > SNAP_DISTANCE) {
+                    p.pos.x = p.targetX; p.pos.y = p.targetY;
+                } else if (odist > 0.5) {
+                    p.pos.x += odx * 0.4;
+                    p.pos.y += ody * 0.4;
                 }
             }
 
@@ -701,32 +692,15 @@ export class GameState {
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
 
-        // Enemies: snapshot interpolation. Render where the enemy WAS one update ago,
-        // interpolating between the last two server positions. Adds ~31-62ms of visual
-        // latency (imperceptible) but guarantees smooth movement on any path shape
-        // (orbit, strafe, figure-eight) without prediction artifacts.
-        // Server update rate for enemies: 16-32Hz → interpolation window = 31-62ms.
+        // Enemies: lerp toward server position. Simple, smooth, no prediction.
         for (const [id, e] of this.enemies) {
-            if (e._snapTime == null) {
+            const dx = e.targetX - e.pos.x, dy = e.targetY - e.pos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist > SNAP_DISTANCE) {
                 e.pos.x = e.targetX; e.pos.y = e.targetY;
-                continue;
-            }
-            // Use the measured interval between the last two server updates as the
-            // interpolation duration. This adapts to dead reckoning's variable rate.
-            const duration = e._interpDuration || 62;
-            const elapsed = performance.now() - e._snapTime;
-            const t = Math.min(elapsed / duration, 1.0);
-            e.pos.x = e._prevX + (e._snapX - e._prevX) * t;
-            e.pos.y = e._prevY + (e._snapY - e._prevY) * t;
-
-            // Past the window — continue extrapolating by velocity so enemies
-            // don't freeze if the next update is delayed
-            if (t >= 1.0 && (Math.abs(e.dx) > 0.01 || Math.abs(e.dy) > 0.01)) {
-                const overTime = (elapsed - duration) / 1000;
-                if (overTime > 0 && overTime < 0.5) {
-                    e.pos.x = e._snapX + e.dx * overTime * 64;
-                    e.pos.y = e._snapY + e.dy * overTime * 64;
-                }
+            } else if (dist > 0.5) {
+                e.pos.x += dx * 0.35;
+                e.pos.y += dy * 0.35;
             }
         }
 
