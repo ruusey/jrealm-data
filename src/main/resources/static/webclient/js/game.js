@@ -21,6 +21,7 @@ export class GameState {
         this.mapHeight = 0;
         this.mapId = 0;
         this.realmId = null;
+        this.tileSize = 32;
 
         // Player stats
         this.stats = null;
@@ -519,7 +520,7 @@ export class GameState {
     // and map boundary limits.
     _checkCollision(entity, dx, dy) {
         if (!this.mapTiles || !this.tileData) return false;
-        const ts = 32;
+        const ts = this.tileSize || 32;
         const size = entity.size || 28; // matches server PLAYER_SIZE = 28
         const futureX = entity.pos.x + dx;
         const futureY = entity.pos.y + dy;
@@ -563,7 +564,7 @@ export class GameState {
     // Matches server TileManager.collidesSlowTile — checks BASE layer (not collision layer)
     _isOnSlowTile(entity) {
         if (!this.mapTiles || !this.tileData) return false;
-        const ts = 32;
+        const ts = this.tileSize || 32;
         const size = entity.size || 28;
         const cx = Math.floor((entity.pos.x + size / 2) / ts);
         const cy = Math.floor((entity.pos.y + size / 2) / ts);
@@ -791,8 +792,9 @@ export class GameState {
             // (matches server proccessTerrainHit: tileBounds.inside(bulletCenter))
             const bCenterX = b.pos.x + (b.size || 4) / 2;
             const bCenterY = b.pos.y + (b.size || 4) / 2;
-            const btx = Math.floor(bCenterX / 32);
-            const bty = Math.floor(bCenterY / 32);
+            const bts = this.tileSize || 32;
+            const btx = Math.floor(bCenterX / bts);
+            const bty = Math.floor(bCenterY / bts);
             if (this.mapTiles && btx >= 0 && btx < this.mapWidth && bty >= 0 && bty < this.mapHeight) {
                 const bTile = this.mapTiles[bty]?.[btx];
                 if (bTile && bTile.collision > 0) {

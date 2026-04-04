@@ -56,7 +56,9 @@ const SPRITE_SHEETS = [
     'lostHallsObjects8x8.png', 'magicWoodsObjects8x8.png', 'mountainTempleObjects8x8.png',
     'summerNexusObjects8x8.png',
     'oryxHordeChars16x16.png', 'oryxHordeChars8x8.png',
-    'secludedThicketChars16x16.png'
+    'secludedThicketChars16x16.png',
+    'test0.png', 'test1.png', 'test2.png', 'test3.png',
+    'test4.png', 'test5.png', 'test6.png', 'test7.png'
 ];
 
 // --- Screen Management ---
@@ -796,6 +798,7 @@ function setupNetworkHandlers() {
         // Update tile size from map definitions
         if (renderer) {
             renderer.updateTileSize(data.mapId);
+            game.tileSize = renderer.tileSize;
             renderer._tileDebugLogged = false; // Re-log after map change
         }
         // Build minimap tile cache only on actual map change

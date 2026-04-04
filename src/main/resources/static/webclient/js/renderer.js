@@ -468,7 +468,8 @@ export class GameRenderer {
         pShadow.endFill();
         this.entityLayer.addChild(pShadow);
 
-        const tex = this.getRegion(sheetKey, frameCol, row, BASE_SPRITE_SIZE, BASE_SPRITE_SIZE);
+        const spSize = animDef?.spriteSize || BASE_SPRITE_SIZE;
+        const tex = this.getRegion(sheetKey, frameCol, row, spSize, spSize);
         if (tex) {
             const flipX = player.facing === 'left';
 

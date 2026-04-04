@@ -4,6 +4,7 @@
 		"objectType": "player",
 		"className": "Rogue",
 		"spriteKey": "rotmg-classes-0.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -156,6 +157,7 @@
 		"objectType": "player",
 		"className": "Archer",
 		"spriteKey": "rotmg-classes-0.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -308,6 +310,7 @@
 		"objectType": "player",
 		"className": "Wizard",
 		"spriteKey": "rotmg-classes-0.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -460,6 +463,7 @@
 		"objectType": "player",
 		"className": "Priest",
 		"spriteKey": "rotmg-classes-1.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -612,6 +616,7 @@
 		"objectType": "player",
 		"className": "Warrior",
 		"spriteKey": "rotmg-classes-1.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -764,6 +769,7 @@
 		"objectType": "player",
 		"className": "Knight",
 		"spriteKey": "rotmg-classes-1.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -916,6 +922,7 @@
 		"objectType": "player",
 		"className": "Paladin",
 		"spriteKey": "rotmg-classes-2.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -1068,6 +1075,7 @@
 		"objectType": "player",
 		"className": "Assassin",
 		"spriteKey": "rotmg-classes-2.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -1220,6 +1228,7 @@
 		"objectType": "player",
 		"className": "Necromancer",
 		"spriteKey": "rotmg-classes-2.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -1372,6 +1381,7 @@
 		"objectType": "player",
 		"className": "Mystic",
 		"spriteKey": "rotmg-classes-3.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -1524,6 +1534,7 @@
 		"objectType": "player",
 		"className": "Trickster",
 		"spriteKey": "rotmg-classes-3.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -1676,6 +1687,7 @@
 		"objectType": "player",
 		"className": "Sorcerer",
 		"spriteKey": "rotmg-classes-3.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
