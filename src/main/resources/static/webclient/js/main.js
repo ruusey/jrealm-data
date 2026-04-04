@@ -925,7 +925,8 @@ const perfMetrics = {
 // --- Game Loop ---
 let lastTime = 0;
 function gameLoop(timestamp) {
-    const dt = Math.min((timestamp - lastTime) / 1000, 0.1); // Cap delta at 100ms
+    if (lastTime === 0) lastTime = timestamp; // prevent massive first-frame dt
+    const dt = Math.min((timestamp - lastTime) / 1000, 0.05); // Cap delta at 50ms
     lastTime = timestamp;
     perfMetrics.update(timestamp);
 
@@ -971,7 +972,12 @@ function processInput(dt) {
     }
 
     // --- Send direction packets to server with sequence number ---
-    if (xDir !== lastXDir || yDir !== lastYDir) {
+    // Rate-limit direction changes to prevent packet flooding from analog stick drift.
+    // At most 1 direction change per 50ms (20 changes/sec max).
+    if (!game._lastDirChangeTime) game._lastDirChangeTime = 0;
+    const dirChangeThrottle = performance.now() - game._lastDirChangeTime > 50;
+    if ((xDir !== lastXDir || yDir !== lastYDir) && dirChangeThrottle) {
+        game._lastDirChangeTime = performance.now();
         const isMoving = xDir !== null || yDir !== null;
 
         if (!isMoving) {
@@ -1845,16 +1851,26 @@ function handleChatCommand(msg) {
     }
 }
 
+// Position joystick sticky above chat panel
+function repositionJoystick() {
+    const joystick = document.getElementById('touch-joystick');
+    const panel = document.getElementById('chat-panel');
+    if (joystick && panel) {
+        const chatRect = panel.getBoundingClientRect();
+        joystick.style.bottom = (window.innerHeight - chatRect.top + 4) + 'px';
+    }
+}
+
 // Chat toggle button
 document.getElementById('chat-toggle').addEventListener('click', () => {
     const panel = document.getElementById('chat-panel');
     panel.classList.toggle('collapsed');
-    const joystick = document.getElementById('touch-joystick');
-    if (joystick) {
-        const chatRect = panel.getBoundingClientRect();
-        joystick.style.bottom = (window.innerHeight - chatRect.top + 10) + 'px';
-    }
+    requestAnimationFrame(repositionJoystick);
 });
+
+// Position joystick on load and resize
+repositionJoystick();
+window.addEventListener('resize', repositionJoystick);
 
 // Enter key opens chat
 window.addEventListener('keydown', (e) => {

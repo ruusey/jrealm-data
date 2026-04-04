@@ -143,9 +143,22 @@ function updateMoveJoystick(touch, rect, thumb) {
     if (norm < 0.25) { joystickDir = { dx: 0, dy: 0, xDir: null, yDir: null }; return; }
 
     const ndx = dx / maxDist, ndy = dy / maxDist;
-    let xDir = null, yDir = null;
-    if (ndx > 0.4) xDir = 2; else if (ndx < -0.4) xDir = 3;
-    if (ndy > 0.4) yDir = 1; else if (ndy < -0.4) yDir = 0;
+    // Hysteresis: higher threshold to ENTER a direction, lower to LEAVE.
+    // Prevents oscillation when stick hovers near threshold (analog drift).
+    const enterThresh = 0.45, leaveThresh = 0.3;
+    let xDir = joystickDir.xDir, yDir = joystickDir.yDir;
+    if (xDir === null) {
+        if (ndx > enterThresh) xDir = 2; else if (ndx < -enterThresh) xDir = 3;
+    } else {
+        if (xDir === 2 && ndx < leaveThresh) xDir = ndx < -enterThresh ? 3 : null;
+        else if (xDir === 3 && ndx > -leaveThresh) xDir = ndx > enterThresh ? 2 : null;
+    }
+    if (yDir === null) {
+        if (ndy > enterThresh) yDir = 1; else if (ndy < -enterThresh) yDir = 0;
+    } else {
+        if (yDir === 1 && ndy < leaveThresh) yDir = ndy < -enterThresh ? 0 : null;
+        else if (yDir === 0 && ndy > -leaveThresh) yDir = ndy > enterThresh ? 1 : null;
+    }
     joystickDir = { dx: ndx, dy: ndy, xDir, yDir };
 }
 

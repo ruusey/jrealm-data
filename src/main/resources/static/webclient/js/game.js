@@ -340,9 +340,9 @@ export class GameState {
         const replayErrX = local.pos.x - serverX;
         const replayErrY = local.pos.y - serverY;
         const replayErr = Math.sqrt(replayErrX * replayErrX + replayErrY * replayErrY);
-        if (replayErr > 4) {
+        if (replayErr > 8) {
             local._reconcileFailCount = (local._reconcileFailCount || 0) + 1;
-            if (local._reconcileFailCount >= 3) {
+            if (local._reconcileFailCount >= 5) {
                 local.dx = 0;
                 local.dy = 0;
                 local.pos.x = serverX;
