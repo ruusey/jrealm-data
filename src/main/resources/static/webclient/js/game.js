@@ -251,10 +251,24 @@ export class GameState {
             });
         }
         for (const b of packet.bullets) {
-            this.bullets.set(b.id, {
+            const bullet = {
                 ...b, dx: b.dX, dy: b.dY,
                 targetX: b.pos.x, targetY: b.pos.y
-            });
+            };
+            // Fast-forward STRAIGHT bullets only to approximate current server position.
+            // Parametric (wavy) and orbital bullets have complex paths that can't be
+            // trivially fast-forwarded without replaying the full physics.
+            const elapsed = (Date.now() - Number(b.createdTime)) / 1000;
+            const catchupScale = Math.min(elapsed * 64, 15); // cap at 15 ticks (~234ms)
+            const isOrb = b.flags && b.flags.includes(20);
+            const isParametric = (b.amplitude || 0) !== 0 && (b.frequency || 0) !== 0;
+            if (catchupScale > 0.5 && b.magnitude > 0 && !isOrb && !isParametric) {
+                bullet.pos = { ...bullet.pos };
+                bullet.pos.x += Math.sin(b.angle) * b.magnitude * catchupScale;
+                bullet.pos.y += Math.cos(b.angle) * b.magnitude * catchupScale;
+                bullet._traveled = b.magnitude * catchupScale;
+            }
+            this.bullets.set(b.id, bullet);
         }
         for (const c of packet.containers) {
             // Always replace - server sends updated container with new items
@@ -278,15 +292,16 @@ export class GameState {
         const local = this.getLocalPlayer();
         if (!local) return;
 
-        // Discard all inputs up to and including the acknowledged seq
         if (!this._inputBuffer) this._inputBuffer = [];
         while (this._inputBuffer.length > 0 && this._inputBuffer[0].seq <= data.seq) {
             this._inputBuffer.shift();
         }
 
         // Start from server's authoritative position
-        local.pos.x = data.posX;
-        local.pos.y = data.posY;
+        const serverX = data.posX;
+        const serverY = data.posY;
+        local.pos.x = serverX;
+        local.pos.y = serverY;
 
         // Replay all unacknowledged inputs with collision checks
         for (const input of this._inputBuffer) {
@@ -317,6 +332,25 @@ export class GameState {
             } else {
                 local.pos.y += predDy;
             }
+        }
+
+        // Detect persistent desync (e.g., PARALYZED — server blocks movement but
+        // client keeps predicting). If replayed position consistently diverges from
+        // server position, force stop and snap.
+        const replayErrX = local.pos.x - serverX;
+        const replayErrY = local.pos.y - serverY;
+        const replayErr = Math.sqrt(replayErrX * replayErrX + replayErrY * replayErrY);
+        if (replayErr > 4) {
+            local._reconcileFailCount = (local._reconcileFailCount || 0) + 1;
+            if (local._reconcileFailCount >= 3) {
+                local.dx = 0;
+                local.dy = 0;
+                local.pos.x = serverX;
+                local.pos.y = serverY;
+                this._inputBuffer = [];
+            }
+        } else {
+            local._reconcileFailCount = 0;
         }
     }
 
@@ -652,36 +686,27 @@ export class GameState {
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
 
-        // Enemies: velocity dead-reckoning + server correction blend.
-        // Server uses dead reckoning and only sends corrections when the actual
-        // position diverges from what we'd predict using velocity. Between
-        // corrections, we extrapolate forward using dx/dy.
-        // targetX/targetY advance by velocity each frame so they represent the
-        // server's predicted position, not a stale snapshot.
+        // Enemies: velocity extrapolation + correction toward server position.
+        // Extrapolate keeps movement smooth between server updates.
+        // targetX/Y is NOT advanced — it stays at the last server-sent position.
+        // When a new ObjectMovePacket arrives, targetX/Y jumps to the new position
+        // and the correction blend catches up.
         for (const [id, e] of this.enemies) {
-            // Advance target by velocity (mirrors server dead reckoning prediction)
-            e.targetX += e.dx * moveScale;
-            e.targetY += e.dy * moveScale;
-
             const dx = e.targetX - e.pos.x, dy = e.targetY - e.pos.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist > SNAP_DISTANCE) {
                 e.pos.x = e.targetX; e.pos.y = e.targetY;
             } else {
-                // Extrapolate using velocity
-                const hasVel = Math.abs(e.dx) > 0.01 || Math.abs(e.dy) > 0.01;
-                if (hasVel) {
+                // Extrapolate by velocity (keeps movement smooth between server updates)
+                if (Math.abs(e.dx) > 0.01 || Math.abs(e.dy) > 0.01) {
                     e.pos.x += e.dx * moveScale;
                     e.pos.y += e.dy * moveScale;
                 }
-                // Blend toward server predicted position
-                const corrDx = e.targetX - e.pos.x;
-                const corrDy = e.targetY - e.pos.y;
-                const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
-                if (corrDist > 0.5) {
-                    const corrFactor = Math.min(0.5, 0.15 + corrDist * 0.02);
-                    e.pos.x += corrDx * corrFactor;
-                    e.pos.y += corrDy * corrFactor;
+                // Blend toward server's last known position to prevent drift
+                if (dist > 0.5) {
+                    const corrFactor = Math.min(0.25, 0.05 + dist * 0.01);
+                    e.pos.x += dx * corrFactor;
+                    e.pos.y += dy * corrFactor;
                 }
             }
         }
@@ -698,13 +723,12 @@ export class GameState {
             const isOrbital = b.flags && b.flags.includes(20);
 
             if (isOrbital) {
-                // Orbital projectile — circles around a fixed center point
+                // Orbital projectile — use server-serialized center/radius/phase
                 if (b._orbitPhase === undefined) {
-                    // First tick: compute orbit center from spawn pos and starting angle
-                    b._orbitPhase = b.angle;
-                    b._orbitRadius = amp || 64;
-                    b._orbitCenterX = b.pos.x - b._orbitRadius * Math.cos(b._orbitPhase);
-                    b._orbitCenterY = b.pos.y - b._orbitRadius * Math.sin(b._orbitPhase);
+                    b._orbitPhase = b.orbitPhase || b.angle;
+                    b._orbitRadius = b.orbitRadius || amp || 64;
+                    b._orbitCenterX = b.orbitCenterX || (b.pos.x - b._orbitRadius * Math.cos(b._orbitPhase));
+                    b._orbitCenterY = b.orbitCenterY || (b.pos.y - b._orbitRadius * Math.sin(b._orbitPhase));
                 }
                 b._orbitPhase += (freq * bulletScale) * Math.PI / 180;
                 b.pos.x = b._orbitCenterX + b._orbitRadius * Math.cos(b._orbitPhase);
@@ -712,7 +736,7 @@ export class GameState {
                 b._traveled = (b._traveled || 0) + b._orbitRadius * Math.abs((freq * bulletScale) * Math.PI / 180);
             } else if (amp !== 0 && freq !== 0) {
                 // Parametric (wavy) projectile
-                if (b._timeStep === undefined) b._timeStep = 0;
+                if (b._timeStep === undefined) b._timeStep = Number(b.timeStep) || 0;
                 const prevOffset = amp * Math.sin(b._timeStep * Math.PI / 180);
                 b._timeStep = (b._timeStep + freq * bulletScale) % 360;
                 const currOffset = amp * Math.sin(b._timeStep * Math.PI / 180);
@@ -734,6 +758,23 @@ export class GameState {
                 b.pos.x += vx;
                 b.pos.y += vy;
                 b._traveled = (b._traveled || 0) + Math.sqrt(vx * vx + vy * vy);
+            }
+
+            // Collision tile check — destroy bullet if center enters a collision tile
+            // (matches server proccessTerrainHit: tileBounds.inside(bulletCenter))
+            const bCenterX = b.pos.x + (b.size || 4) / 2;
+            const bCenterY = b.pos.y + (b.size || 4) / 2;
+            const btx = Math.floor(bCenterX / 32);
+            const bty = Math.floor(bCenterY / 32);
+            if (this.mapTiles && btx >= 0 && btx < this.mapWidth && bty >= 0 && bty < this.mapHeight) {
+                const bTile = this.mapTiles[bty]?.[btx];
+                if (bTile && bTile.collision > 0) {
+                    const bTileDef = this.tileData[bTile.collision];
+                    if (bTileDef?.data?.hasCollision) {
+                        this.bullets.delete(id);
+                        continue;
+                    }
+                }
             }
 
             const lifetime = now - Number(b.createdTime);

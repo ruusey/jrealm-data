@@ -210,7 +210,9 @@ export const NetBullet = {
             angle: r.readFloat(), magnitude: r.readFloat(), range: r.readFloat(),
             damage: r.readShort(), flags: r.readShortArray(), invert: r.readBoolean(),
             timeStep: r.readLong(), amplitude: r.readShort(), frequency: r.readShort(),
-            createdTime: r.readLong()
+            createdTime: r.readLong(),
+            orbitCenterX: r.readFloat(), orbitCenterY: r.readFloat(),
+            orbitRadius: r.readFloat(), orbitPhase: r.readFloat()
         };
     }
 };
