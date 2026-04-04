@@ -236,6 +236,9 @@ export class GameState {
             this.players.set(p.id, {
                 ...p, dx: p.dX, dy: p.dY,
                 targetX: p.pos.x, targetY: p.pos.y,
+                _prevX: p.pos.x, _prevY: p.pos.y,
+                _snapX: p.pos.x, _snapY: p.pos.y,
+                _snapTime: performance.now(),
                 animFrame: 0, animTimer: 0, facing: 'right'
             });
         }
@@ -245,6 +248,9 @@ export class GameState {
             this.enemies.set(e.id, {
                 ...e, dx: e.dX, dy: e.dY,
                 targetX: e.pos.x, targetY: e.pos.y,
+                _prevX: e.pos.x, _prevY: e.pos.y,
+                _snapX: e.pos.x, _snapY: e.pos.y,
+                _snapTime: performance.now(),
                 animFrame: existing?.animFrame || 0, animTimer: existing?.animTimer || 0,
                 effectIds: existing?.effectIds || [],
                 health: existing?.health ?? e.health
@@ -377,17 +383,30 @@ export class GameState {
                             this._inputBuffer = [];
                         }
                     } else {
+                        // Other player: snapshot interpolation
+                        p._prevX = p._snapX != null ? p._snapX : p.pos.x;
+                        p._prevY = p._snapY != null ? p._snapY : p.pos.y;
+                        p._snapX = mov.posX;
+                        p._snapY = mov.posY;
+                        p._snapTime = performance.now();
                         p.targetX = mov.posX; p.targetY = mov.posY;
                     }
-                    // For local player, dx/dy are driven by local input prediction.
-                    // Only update velocity from server for OTHER players.
                     if (id !== this.playerId) {
                         p.dx = mov.velX; p.dy = mov.velY;
                     }
                 }
             } else if (t === 1) {
                 const e = this.enemies.get(id);
-                if (e) { e.targetX = mov.posX; e.targetY = mov.posY; e.dx = mov.velX; e.dy = mov.velY; }
+                if (e) {
+                    // Snapshot interpolation: shift current → previous, store new as current
+                    e._prevX = e._snapX != null ? e._snapX : e.pos.x;
+                    e._prevY = e._snapY != null ? e._snapY : e.pos.y;
+                    e._snapX = mov.posX;
+                    e._snapY = mov.posY;
+                    e._snapTime = performance.now();
+                    e.dx = mov.velX; e.dy = mov.velY;
+                    e.targetX = mov.posX; e.targetY = mov.posY;
+                }
             } else if (t === 2) {
                 const b = this.bullets.get(id);
                 if (b) { b.targetX = mov.posX; b.targetY = mov.posY; b.dx = mov.velX; b.dy = mov.velY; }
@@ -619,6 +638,7 @@ export class GameState {
     updateInterpolation(dt) {
         const SNAP_DISTANCE = 96;
         const moveScale = dt * 64; // match server tick rate (64Hz)
+        const ENEMY_INTERP_DURATION = 62; // ms — snapshot interpolation window
 
         for (const [id, p] of this.players) {
             if (id === this.playerId) {
@@ -655,29 +675,19 @@ export class GameState {
                     }
                 }
             } else {
-                // OTHER PLAYERS: velocity dead-reckoning + correction blend.
-                // Advance targetX/targetY by velocity so they represent where the
-                // server expects the entity to be now (mirrors server dead reckoning).
-                const hasVelOther = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
-                if (hasVelOther) {
-                    p.targetX += p.dx * moveScale;
-                    p.targetY += p.dy * moveScale;
-                }
-
-                // Extrapolate pos using velocity, then blend toward server prediction.
-                const corrDx = p.targetX - p.pos.x;
-                const corrDy = p.targetY - p.pos.y;
-                const corrDist = Math.sqrt(corrDx * corrDx + corrDy * corrDy);
-
-                if (hasVelOther) {
-                    p.pos.x += p.dx * moveScale;
-                    p.pos.y += p.dy * moveScale;
-                }
-                // Stronger blend to snap toward server prediction quickly
-                if (corrDist > 0.5) {
-                    const corrFactor = Math.min(0.5, 0.15 + corrDist * 0.02);
-                    p.pos.x += (p.targetX - p.pos.x) * corrFactor;
-                    p.pos.y += (p.targetY - p.pos.y) * corrFactor;
+                // OTHER PLAYERS: snapshot interpolation (same as enemies).
+                if (p._snapTime != null) {
+                    const elapsed = performance.now() - p._snapTime;
+                    const t = Math.min(elapsed / ENEMY_INTERP_DURATION, 1.0);
+                    p.pos.x = p._prevX + (p._snapX - p._prevX) * t;
+                    p.pos.y = p._prevY + (p._snapY - p._prevY) * t;
+                    if (t >= 1.0 && (Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01)) {
+                        const extraTime = (elapsed - ENEMY_INTERP_DURATION) / 1000;
+                        if (extraTime < 0.1) {
+                            p.pos.x = p._snapX + p.dx * extraTime * 64;
+                            p.pos.y = p._snapY + p.dy * extraTime * 64;
+                        }
+                    }
                 }
             }
 
@@ -686,27 +696,29 @@ export class GameState {
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
 
-        // Enemies: velocity extrapolation + correction toward server position.
-        // Extrapolate keeps movement smooth between server updates.
-        // targetX/Y is NOT advanced — it stays at the last server-sent position.
-        // When a new ObjectMovePacket arrives, targetX/Y jumps to the new position
-        // and the correction blend catches up.
+        // Enemies: snapshot interpolation. Render where the enemy WAS one update ago,
+        // interpolating between the last two server positions. Adds ~31-62ms of visual
+        // latency (imperceptible) but guarantees smooth movement on any path shape
+        // (orbit, strafe, figure-eight) without prediction artifacts.
+        // Server update rate for enemies: 16-32Hz → interpolation window = 31-62ms.
         for (const [id, e] of this.enemies) {
-            const dx = e.targetX - e.pos.x, dy = e.targetY - e.pos.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist > SNAP_DISTANCE) {
+            if (e._snapTime == null) {
                 e.pos.x = e.targetX; e.pos.y = e.targetY;
-            } else {
-                // Extrapolate by velocity (keeps movement smooth between server updates)
-                if (Math.abs(e.dx) > 0.01 || Math.abs(e.dy) > 0.01) {
-                    e.pos.x += e.dx * moveScale;
-                    e.pos.y += e.dy * moveScale;
-                }
-                // Blend toward server's last known position to prevent drift
-                if (dist > 0.5) {
-                    const corrFactor = Math.min(0.25, 0.05 + dist * 0.01);
-                    e.pos.x += dx * corrFactor;
-                    e.pos.y += dy * corrFactor;
+                continue;
+            }
+            const elapsed = performance.now() - e._snapTime;
+            const t = Math.min(elapsed / ENEMY_INTERP_DURATION, 1.0);
+            e.pos.x = e._prevX + (e._snapX - e._prevX) * t;
+            e.pos.y = e._prevY + (e._snapY - e._prevY) * t;
+
+            // Past the interpolation window — extrapolate gently by velocity
+            // to prevent freezing if server updates are delayed
+            if (t >= 1.0 && (Math.abs(e.dx) > 0.01 || Math.abs(e.dy) > 0.01)) {
+                const extraTime = (elapsed - ENEMY_INTERP_DURATION) / 1000;
+                const maxExtra = 0.1; // cap extrapolation at 100ms past window
+                if (extraTime < maxExtra) {
+                    e.pos.x = e._snapX + e.dx * extraTime * 64;
+                    e.pos.y = e._snapY + e.dy * extraTime * 64;
                 }
             }
         }
