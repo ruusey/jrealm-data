@@ -302,9 +302,9 @@ export class GameState {
         // Estimate how many client frames correspond to server ticks since last ack.
         // Server increments seq every tick (64Hz). Discard frames whose cumulative
         // time covers the server's processed ticks.
-        const serverTicksSinceLastAck = data.seq - (this._lastAckSeq || 0);
+        const serverTicksSinceLastAck = data.seq - (this._lastAckSeq || data.seq);
         this._lastAckSeq = data.seq;
-        let ticksToDiscard = serverTicksSinceLastAck;
+        let ticksToDiscard = Math.max(0, Math.min(serverTicksSinceLastAck, 128));
         while (this._inputBuffer.length > 0 && ticksToDiscard > 0) {
             const frame = this._inputBuffer[0];
             // Each frame covers frame.dt seconds = frame.dt * 64 server ticks
@@ -372,12 +372,16 @@ export class GameState {
             // Large desync (teleport, collision mismatch) — hard snap
             local.pos.x = replayX;
             local.pos.y = replayY;
-        } else if (err > 1.0) {
-            // Small drift — blend smoothly toward correct position
+        } else if (err > 8) {
+            // Medium drift — moderate blend
             local.pos.x = savedX + errX * 0.3;
             local.pos.y = savedY + errY * 0.3;
+        } else if (err > 1.0) {
+            // Small drift (direction change residual) — fast blend
+            local.pos.x = savedX + errX * 0.6;
+            local.pos.y = savedY + errY * 0.6;
         } else {
-            // Within tolerance — keep current position, no correction needed
+            // Within tolerance — keep current position
             local.pos.x = savedX;
             local.pos.y = savedY;
         }
@@ -691,9 +695,16 @@ export class GameState {
                 const odist = Math.sqrt(odx * odx + ody * ody);
                 if (odist > SNAP_DISTANCE) {
                     p.pos.x = p.targetX; p.pos.y = p.targetY;
-                } else if (odist > 0.5) {
-                    p.pos.x += odx * 0.4;
-                    p.pos.y += ody * 0.4;
+                } else if (odist > 0.3) {
+                    const speed = odist / 0.05;
+                    const step = speed * dt;
+                    if (step >= odist) {
+                        p.pos.x = p.targetX; p.pos.y = p.targetY;
+                    } else {
+                        const ratio = step / odist;
+                        p.pos.x += odx * ratio;
+                        p.pos.y += ody * ratio;
+                    }
                 }
             }
 
@@ -702,15 +713,26 @@ export class GameState {
             if (p.animTimer > 0.125) { p.animTimer = 0; p.animFrame = ((p.animFrame || 0) + 1) % 2; }
         }
 
-        // Enemies: lerp toward server position. Simple, smooth, no prediction.
+        // Enemies: constant-speed movement toward server position.
+        // Move at a fixed rate that covers the distance in ~31ms (32Hz update interval).
+        // This avoids the lerp problem of "fast then stop" between updates.
         for (const [id, e] of this.enemies) {
             const dx = e.targetX - e.pos.x, dy = e.targetY - e.pos.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist > SNAP_DISTANCE) {
                 e.pos.x = e.targetX; e.pos.y = e.targetY;
-            } else if (dist > 0.5) {
-                e.pos.x += dx * 0.35;
-                e.pos.y += dy * 0.35;
+            } else if (dist > 0.3) {
+                // Move at constant speed: cover the distance in ~50ms (slightly longer
+                // than update interval to avoid overshooting)
+                const speed = dist / 0.05; // pixels per second to cover dist in 50ms
+                const step = speed * dt;    // pixels this frame
+                if (step >= dist) {
+                    e.pos.x = e.targetX; e.pos.y = e.targetY;
+                } else {
+                    const ratio = step / dist;
+                    e.pos.x += dx * ratio;
+                    e.pos.y += dy * ratio;
+                }
             }
         }
 

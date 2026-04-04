@@ -1019,9 +1019,9 @@ function processInput(dt) {
         const spdStat = computed ? computed.spd : 10;
         let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
         const effects = game.effectIds || [];
-        if (effects.some(id => id === 4)) tilesPerSec *= 1.5;
-        if (effects.some(id => id === 2)) tilesPerSec = 0;
-        if (effects.some(id => id === 11)) tilesPerSec *= 0.5;
+        if (effects.some(id => id === 4)) tilesPerSec *= 1.5;  // SPEEDY
+        if (effects.some(id => id === 2)) tilesPerSec = 0;      // PARALYZED
+        // DAZED (11) only affects dex/attack speed, not movement speed
         let spd = tilesPerSec * 32.0 / 64.0;
 
         let pdx = 0, pdy = 0;
@@ -1051,10 +1051,9 @@ function processInput(dt) {
         if (game._inputBuffer.length > 300) game._inputBuffer.shift();
     }
 
-    // Shooting - matches Java PlayState shoot cooldown exactly:
-    // dex = floor((6.5 * (DEX_stat + 17.3)) / 75)
-    // canShoot = (now - lastShot) > (1000 / dex + 10) ms
-    if (shootCooldown > 0) shootCooldown -= dt;
+    // Shooting — uses wall-clock timestamp to match server's absolute time check.
+    // Server: canShoot = (now - lastShotTime) > (1000 / dex)
+    if (!game._lastShotTime) game._lastShotTime = 0;
     const aim = isTouchDevice() ? getAimDir() : null;
     const wantsShoot = aim ? aim.shooting : input.wantsShoot();
     // Tick down shooting animation timer
@@ -1075,7 +1074,17 @@ function processInput(dt) {
         }
     }
 
-    if (wantsShoot && !isMouseOverHud && shootCooldown <= 0 && renderer) {
+    // Compute cooldown from stats
+    const shootComputed = game.getComputedStats();
+    const shootDexStat = shootComputed ? shootComputed.dex : 10;
+    let shootDex = Math.floor((6.5 * (shootDexStat + 17.3)) / 75);
+    const shootEffects = game.effectIds || [];
+    if (shootEffects.some(id => id === 4)) shootDex = Math.floor(shootDex * 1.5);
+    if (shootEffects.some(id => id === 11)) shootDex = 1;
+    const shootCooldownMs = 1000 / Math.max(shootDex, 1) + 10;
+    const canShoot = (performance.now() - game._lastShotTime) > shootCooldownMs;
+
+    if (wantsShoot && !isMouseOverHud && canShoot && renderer) {
         let world;
         if (aim && aim.shooting) {
             // Aim joystick: project direction from player position
@@ -1109,15 +1118,7 @@ function processInput(dt) {
                 ++projectileCounter, game.playerId, projGroupId,
                 world.x, world.y, local.pos.x, local.pos.y
             );
-            const computed = game.getComputedStats();
-            const dexStat = computed ? computed.dex : 10;
-            let dex = Math.floor((6.5 * (dexStat + 17.3)) / 75);
-            // SPEEDY effect (effectId=4) multiplies dex by 1.5 (matches server)
-            const effects = game.effectIds || [];
-            if (effects.some(id => id === 4)) dex = Math.floor(dex * 1.5);
-            // DAZED effect (effectId=11) forces dex to 1
-            if (effects.some(id => id === 11)) dex = 1;
-            shootCooldown = (1000 / Math.max(dex, 1) + 10) / 1000;
+            game._lastShotTime = performance.now();
         }
     }
 
