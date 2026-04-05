@@ -2,7 +2,13 @@ const BASE = '/game-data';
 const SCALE = 4;
 
 // --- Admin Auth ---
-let editorSessionToken = null;
+let editorSessionToken = localStorage.getItem('editorToken') || null;
+
+// Auto-restore session if token exists
+if (editorSessionToken) {
+  document.getElementById('editor-login').style.display = 'none';
+  document.getElementById('app').style.display = '';
+}
 
 document.getElementById('editor-login-btn').addEventListener('click', async () => {
   const email = document.getElementById('editor-email').value;
@@ -19,6 +25,7 @@ document.getElementById('editor-login-btn').addEventListener('click', async () =
     const data = await res.json();
     editorSessionToken = data.token || data.data?.token;
     if (!editorSessionToken) throw new Error('No token received');
+    localStorage.setItem('editorToken', editorSessionToken);
     document.getElementById('editor-login').style.display = 'none';
     document.getElementById('app').style.display = '';
   } catch (e) {
@@ -28,6 +35,13 @@ document.getElementById('editor-login-btn').addEventListener('click', async () =
 
 document.getElementById('editor-password').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') document.getElementById('editor-login-btn').click();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  editorSessionToken = null;
+  localStorage.removeItem('editorToken');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('editor-login').style.display = '';
 });
 
 function authHeaders() {
