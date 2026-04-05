@@ -140,6 +140,9 @@ const SPRITE_SHEETS = [
   // Summer Nexus
   'summerNexusChars16x16.png',
   'summerNexusObjects16x16.png','summerNexusObjects8x8.png',
+  // New sprite sheets (variable size: 32x32 and 64x64)
+  'test0.png','test1.png','test2.png','test3.png',
+  'test4.png','test5.png','test6.png','test7.png',
 ];
 
 let tiles = [];
@@ -2722,6 +2725,7 @@ function showAnimDetail(a) {
     if (s === a.spriteKey) opt.selected = true;
     sel.appendChild(opt);
   });
+  document.getElementById('animSpriteSize').value = a.spriteSize || 8;
   renderAnimSets(a);
   updateAnimPreview(a);
 }
@@ -2735,7 +2739,7 @@ function updateAnimPreview(a) {
   const frame = idle.frames[0];
   const img = images[a.spriteKey];
   if (!img) return;
-  const ss = a.spriteKey.includes('16x16') ? 16 : 8;
+  const ss = a.spriteSize || 8;
   ctx.imageSmoothingEnabled = false;
   ctx.drawImage(img, frame.col * ss, frame.row * ss, ss, ss, 0, 0, 64, 64);
 }
@@ -2744,31 +2748,50 @@ function renderAnimSets(a) {
   const container = document.getElementById('animSetsContainer');
   container.innerHTML = '';
   if (!a.animations) a.animations = {};
-  const ss = a.spriteKey.includes('16x16') ? 16 : 8;
+  const ss = a.spriteSize || 8;
 
   ANIM_SET_NAMES.forEach(animName => {
     if (!a.animations[animName]) a.animations[animName] = { frames: [], durations: [] };
     const animSet = a.animations[animName];
 
     const card = document.createElement('div');
-    card.style.cssText = 'border:1px solid #333;border-radius:4px;padding:6px;margin-bottom:6px;background:#1a1820';
+    card.style.cssText = 'border:1px solid #333;border-radius:4px;margin-bottom:4px;background:#1a1820;overflow:hidden';
 
     const header = document.createElement('div');
-    header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:4px';
+    header.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:4px 6px;cursor:pointer;user-select:none;background:#12122a';
+    const titleWrap = document.createElement('div');
+    titleWrap.style.cssText = 'display:flex;align-items:center;gap:6px';
+    const arrow = document.createElement('span');
+    arrow.style.cssText = 'font-size:10px;color:#888;transition:transform 0.15s';
+    arrow.textContent = '\u25B6';
     const title = document.createElement('span');
     title.style.cssText = 'font-weight:bold;font-size:12px;color:#c8a86e';
     title.textContent = animName;
+    const frameCount = document.createElement('span');
+    frameCount.style.cssText = 'font-size:10px;color:#666';
+    frameCount.textContent = `(${animSet.frames.length}f)`;
+    titleWrap.append(arrow, title, frameCount);
     const addBtn = document.createElement('button');
     addBtn.className = 'btn-add'; addBtn.textContent = '+ Frame';
     addBtn.style.cssText = 'font-size:9px;padding:1px 6px';
-    addBtn.addEventListener('click', () => {
+    addBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       animSet.frames.push({ row: 0, col: 0 });
       animSet.durations.push(8);
       markDirty('animations');
       renderAnimSets(a);
     });
-    header.append(title, addBtn);
+    header.append(titleWrap, addBtn);
     card.appendChild(header);
+
+    const body = document.createElement('div');
+    body.style.cssText = 'padding:6px;display:none';
+
+    header.addEventListener('click', () => {
+      const open = body.style.display !== 'none';
+      body.style.display = open ? 'none' : 'block';
+      arrow.style.transform = open ? '' : 'rotate(90deg)';
+    });
 
     const framesRow = document.createElement('div');
     framesRow.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px';
@@ -2830,7 +2853,8 @@ function renderAnimSets(a) {
       framesRow.appendChild(frameDiv);
     });
 
-    card.appendChild(framesRow);
+    body.appendChild(framesRow);
+    card.appendChild(body);
     container.appendChild(card);
   });
 }
@@ -2838,7 +2862,9 @@ function renderAnimSets(a) {
 function applyAnimDetail() {
   if (!selectedAnim) return;
   selectedAnim.spriteKey = document.getElementById('animSpriteKey').value;
+  selectedAnim.spriteSize = parseInt(document.getElementById('animSpriteSize').value) || 8;
   markDirty('animations');
+  renderAnimSets(selectedAnim);
   updateAnimPreview(selectedAnim);
 }
 
@@ -3711,6 +3737,7 @@ function bindEvents() {
       document.getElementById('enemyRow').value = row;
       document.getElementById('enemyCol').value = col;
       document.getElementById('enemySprite').value = currentSheet;
+      document.getElementById('enemySpriteSize').value = gridSize;
       updateEnemyPreview();
       applyEnemyDetail();
       const btn = document.getElementById('pickEnemySpriteBtn');
@@ -3941,6 +3968,8 @@ function bindEvents() {
   document.getElementById('animSearch').addEventListener('input', (e) => renderAnimList(e.target.value));
   document.getElementById('animBackBtn').addEventListener('click', deselectAnim);
   document.getElementById('applyAnimBtn').addEventListener('click', applyAnimDetail);
+  document.getElementById('animSpriteKey').addEventListener('change', applyAnimDetail);
+  document.getElementById('animSpriteSize').addEventListener('change', applyAnimDetail);
 
   // Loot Groups tab
   document.getElementById('lgSearch').addEventListener('input', (e) => renderLgList(e.target.value));

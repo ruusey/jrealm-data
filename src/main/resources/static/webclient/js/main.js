@@ -68,6 +68,27 @@ function showScreen(name) {
     currentScreen = name;
 }
 
+// --- Session Restore ---
+// Try to resume a previous session so the user doesn't have to re-login every time
+(async function tryRestoreSession() {
+    if (!api.restoreSession()) return;
+    try {
+        const savedHost = localStorage.getItem('or_gameServer') || 'openrealm.net';
+        gameServerHost = savedHost;
+        document.getElementById('server-addr').value = savedHost;
+        account = await api.getAccount(api.accountGuid);
+        try {
+            const animData = await api.getGameData('animations.json');
+            _animDataByClass = {};
+            if (Array.isArray(animData)) animData.forEach(a => { if (a.objectType === 'player') _animDataByClass[a.objectId] = a; });
+        } catch (e) { /* non-critical */ }
+        showCharacterSelect();
+    } catch (err) {
+        // Token expired or invalid — clear and show login
+        api.clearSession();
+    }
+})();
+
 // --- Login ---
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -84,6 +105,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     try {
         api.setDataServerUrl(gameServerHost);
         const loginData = await api.login(email, password);
+        try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
         account = await api.getAccount(loginData.accountGuid);
         // Load animation data for character select icons (front-facing idle)
         try {
@@ -130,6 +152,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
         await api.register(email, password, name);
         // Auto-login after registration
         const loginData = await api.login(email, password);
+        try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
         account = await api.getAccount(loginData.accountGuid);
         document.getElementById('register-form').style.display = 'none';
         document.getElementById('login-form').style.display = 'block';
@@ -455,6 +478,7 @@ document.getElementById('change-pw-btn').addEventListener('click', async () => {
 
 document.getElementById('logout-btn').addEventListener('click', () => {
     network.disconnect();
+    api.clearSession();
     account = null;
     selectedCharacter = null;
     showScreen('login');

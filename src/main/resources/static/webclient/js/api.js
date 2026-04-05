@@ -41,7 +41,37 @@ export class ApiClient {
         const data = await this.request('POST', '/admin/account/login', { email, password });
         this.sessionToken = data.token;
         this.accountGuid = data.accountGuid;
+        this.saveSession();
         return data;
+    }
+
+    saveSession() {
+        try {
+            localStorage.setItem('or_session', JSON.stringify({
+                token: this.sessionToken,
+                accountGuid: this.accountGuid
+            }));
+        } catch (e) { /* localStorage unavailable */ }
+    }
+
+    restoreSession() {
+        try {
+            const raw = localStorage.getItem('or_session');
+            if (!raw) return false;
+            const s = JSON.parse(raw);
+            if (s.token && s.accountGuid) {
+                this.sessionToken = s.token;
+                this.accountGuid = s.accountGuid;
+                return true;
+            }
+        } catch (e) { /* corrupt or unavailable */ }
+        return false;
+    }
+
+    clearSession() {
+        this.sessionToken = null;
+        this.accountGuid = null;
+        try { localStorage.removeItem('or_session'); } catch (e) {}
     }
 
     async getAccount(accountGuid) {

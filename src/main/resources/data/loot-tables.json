@@ -1199,5 +1199,15 @@
 			"group:40": 0.1
 		},
 		"portalDrops": {}
+	},
+	{
+		"enemyId": 70,
+		"drops": {
+			"group:0": 1,
+			"group:40": 0.1,
+			"group:1": 0.1,
+			"group:2": 0.1
+		},
+		"portalDrops": {}
 	}
 ]

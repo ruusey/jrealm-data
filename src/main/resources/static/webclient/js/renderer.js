@@ -3,7 +3,8 @@
 import { CLASS_NAMES } from './game.js';
 
 const BASE_SPRITE_SIZE = 8;  // Sprite sheet cell size (pixels in sheet)
-const PLAYER_SIZE = 32;      // World render size for entities (matches tile size)
+const PLAYER_SIZE = 28;      // World collision size for players
+const PLAYER_RENDER_SIZE = 38; // Visual render size for players
 // Detect mobile mode: true phones/tablets, not 2-in-1 laptops with touchscreens.
 // A manual override is stored in localStorage ('forceDesktop' / 'forceMobile').
 function detectMobile() {
@@ -415,9 +416,11 @@ export class GameRenderer {
     }
 
     renderPlayer(player, offsetX, offsetY, isLocal, gameState) {
-        const sx = player.pos.x * SCALE + offsetX;
-        const sy = player.pos.y * SCALE + offsetY;
-        const size = (player.size || PLAYER_SIZE) * SCALE;
+        const collisionSize = (player.size || PLAYER_SIZE) * SCALE;
+        const size = PLAYER_RENDER_SIZE * SCALE;
+        const renderOffset = (size - collisionSize) / 2;
+        const sx = player.pos.x * SCALE + offsetX - renderOffset;
+        const sy = player.pos.y * SCALE + offsetY - renderOffset;
 
         // Animation-driven sprite selection
         const classId = player.classId || 0;

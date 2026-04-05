@@ -43,6 +43,8 @@
         <select id="gridSize">
           <option value="8" selected>8x8</option>
           <option value="16">16x16</option>
+          <option value="32">32x32</option>
+          <option value="64">64x64</option>
         </select>
       </label>
       <button id="saveBtn" class="btn-save" disabled>Save All</button>
@@ -381,7 +383,7 @@
                 <label>Sprite: <select id="enemySprite"></select></label>
                 <label>Row: <input type="number" id="enemyRow" min="0"></label>
                 <label>Col: <input type="number" id="enemyCol" min="0"></label>
-                <label>Sprite Size: <select id="enemySpriteSize"><option value="8">8</option><option value="16">16</option></select></label>
+                <label>Sprite Size: <select id="enemySpriteSize"><option value="8">8</option><option value="16">16</option><option value="32">32</option><option value="64">64</option></select></label>
                 <label>Render Size: <input type="number" id="enemySize" min="8"></label>
                 <label>Attack ID: <input type="number" id="enemyAttackId">
                     <span id="attackIdInfo" style="font-size:10px;color:#888"></span>
@@ -468,8 +470,6 @@
         </div>
     </div>
 
-  </div>
-
   <!-- Animations Tab -->
   <div class="panel tile-panel" id="animationsTab" style="display:none">
     <div class="tile-header">
@@ -487,6 +487,12 @@
         <label>Object ID: <input type="number" id="animObjId" readonly></label>
         <label>Type: <input type="text" id="animObjType" readonly></label>
         <label>Sprite: <select id="animSpriteKey"></select></label>
+        <label>Sprite Size: <select id="animSpriteSize">
+          <option value="8">8</option>
+          <option value="16">16</option>
+          <option value="32">32</option>
+          <option value="64">64</option>
+        </select></label>
       </div>
       <div class="detail-preview" style="margin:6px 0">
         <span>Preview:</span>
@@ -494,7 +500,7 @@
       </div>
 
       <h4>Animation Sets</h4>
-      <div id="animSetsContainer" style="max-height:400px;overflow-y:auto"></div>
+      <div id="animSetsContainer" style="overflow-y:auto"></div>
 
       <div class="detail-actions" style="margin-top:8px">
         <button id="applyAnimBtn" class="btn-apply">Apply</button>
@@ -638,7 +644,8 @@
       </div>
     </div>
 
-</div>
+  </div> <!-- .main -->
+</div> <!-- #app -->
 
 <!-- Tile Picker Modal -->
 <div id="tilePickerOverlay" class="picker-overlay" style="display:none">

@@ -6894,8 +6894,62 @@
 		"row": 7,
 		"col": 10,
 		"spriteKey": "lostHallsObjects8x8.png",
-		"angleOffset": "0",
+		"angleOffset": "{{PI/4}}",
 		"projectiles": [
+			{
+				"projectileId": 111,
+				"positionMode": 0,
+				"angle": "0.1",
+				"range": 400,
+				"size": 36,
+				"magnitude": 5,
+				"damage": 90,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				]
+			},
+			{
+				"projectileId": 111,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 400,
+				"size": 36,
+				"magnitude": 5,
+				"damage": 90,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				],
+				"effects": [
+					{
+						"effectId": 11,
+						"duration": 22999
+					}
+				]
+			},
+			{
+				"projectileId": 111,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 400,
+				"size": 36,
+				"magnitude": 5,
+				"damage": 90,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					0
+				],
+				"effects": [
+					{
+						"effectId": 11,
+						"duration": 3000
+					}
+				]
+			},
 			{
 				"projectileId": 111,
 				"positionMode": 0,
@@ -6908,6 +6962,12 @@
 				"frequency": 0,
 				"flags": [
 					0
+				],
+				"effects": [
+					{
+						"effectId": 11,
+						"duration": 3000
+					}
 				]
 			}
 		]

@@ -3593,5 +3593,31 @@
 			"wis": 0
 		},
 		"phases": []
+	},
+	{
+		"enemyId": 70,
+		"name": "TestEnemy_0",
+		"spriteKey": "test1.png",
+		"row": 0,
+		"col": 2,
+		"spriteSize": 32,
+		"size": 80,
+		"attackId": 111,
+		"xp": 100000,
+		"health": 100000,
+		"maxSpeed": 1.4,
+		"chaseRange": 390,
+		"attackRange": 210,
+		"stats": {
+			"hp": 100000,
+			"def": 100,
+			"dex": 5,
+			"mp": 0,
+			"att": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
+		},
+		"phases": []
 	}
 ]
