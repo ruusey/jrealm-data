@@ -139,6 +139,25 @@ export class GameState {
         this.awaitingRealmTransition = true;
     }
 
+    // Expire effects locally using effectTimes, matching server's removeExpiredEffects().
+    // Must be called every frame so client and server agree on when effects end.
+    removeExpiredEffects() {
+        const now = Date.now();
+        for (let i = 0; i < this.effectIds.length; i++) {
+            if (this.effectIds[i] !== -1 && this.effectTimes[i] !== -1) {
+                if (now > this.effectTimes[i]) {
+                    this.effectIds[i] = -1;
+                    this.effectTimes[i] = -1;
+                }
+            }
+        }
+    }
+
+    // Check if a specific effect is currently active
+    hasEffect(effectId) {
+        return this.effectIds.some(id => id === effectId);
+    }
+
     // Computed stats = base stats + equipment bonuses (slots 0-3)
     // Matches Java Player.getComputedStats()
     getComputedStats() {

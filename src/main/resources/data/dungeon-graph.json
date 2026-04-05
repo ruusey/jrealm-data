@@ -6,6 +6,7 @@
 		"difficulty": 1,
 		"entryPoint": true,
 		"bossNode": false,
+		"shared": true,
 		"childNodes": ["grasslands", "coastal_ruins", "sunken_temple"],
 		"portalDropNodeMap": {
 			"grasslands": 1,

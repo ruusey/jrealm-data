@@ -1043,12 +1043,14 @@ function processInput(dt) {
     // all inputs after that seq from the server's authoritative position.
     const local = game.getLocalPlayer();
     if (local) {
+        // Expire effects locally so client and server agree on timing
+        game.removeExpiredEffects();
+
         const computed = game.getComputedStats();
         const spdStat = computed ? computed.spd : 10;
         let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
-        const effects = game.effectIds || [];
-        if (effects.some(id => id === 4)) tilesPerSec *= 1.5;  // SPEEDY
-        if (effects.some(id => id === 2)) tilesPerSec = 0;      // PARALYZED
+        if (game.hasEffect(4)) tilesPerSec *= 1.5;  // SPEEDY
+        if (game.hasEffect(2)) tilesPerSec = 0;      // PARALYZED
         // DAZED (11) only affects dex/attack speed, not movement speed
         let spd = tilesPerSec * 32.0 / 64.0;
 
@@ -1073,16 +1075,20 @@ function processInput(dt) {
         // The server increments lastInputSeq every tick in movePlayer().
         // The ack sends the server's tick count, which we use to discard
         // the corresponding number of client frames.
-        game._frameTick = (game._frameTick || 0) + 1;
-        if (!game._inputBuffer) game._inputBuffer = [];
-        game._inputBuffer.push({
-            tick: game._frameTick,
-            dx: local.dx,
-            dy: local.dy,
-            dt: dt
-        });
-        // Cap buffer to prevent memory leak (5 seconds of frames)
-        if (game._inputBuffer.length > 300) game._inputBuffer.shift();
+        // Skip buffering while PARALYZED — server doesn't increment lastInputSeq
+        // during paralysis, so these frames would pollute reconciliation.
+        if (!game.hasEffect(2)) {
+            game._frameTick = (game._frameTick || 0) + 1;
+            if (!game._inputBuffer) game._inputBuffer = [];
+            game._inputBuffer.push({
+                tick: game._frameTick,
+                dx: local.dx,
+                dy: local.dy,
+                dt: dt
+            });
+            // Cap buffer to prevent memory leak (5 seconds of frames)
+            if (game._inputBuffer.length > 300) game._inputBuffer.shift();
+        }
     }
 
     // Shooting — uses wall-clock timestamp to match server's absolute time check.

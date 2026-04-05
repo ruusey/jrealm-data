@@ -196,5 +196,14 @@
 		"row": 25,
 		"col": 2,
 		"spriteKey": "rotmg-tiles.png"
+	},
+	{
+		"portalId": 22,
+		"portalName": "Nexus_Portal",
+		"mapId": 29,
+		"targetRealmDepth": -1,
+		"row": 3,
+		"col": 6,
+		"spriteKey": "rotmg-tiles-2.png"
 	}
 ]
