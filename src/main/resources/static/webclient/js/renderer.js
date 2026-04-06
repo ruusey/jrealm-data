@@ -4,7 +4,7 @@ import { CLASS_NAMES } from './game.js';
 
 const BASE_SPRITE_SIZE = 8;  // Sprite sheet cell size (pixels in sheet)
 const PLAYER_SIZE = 28;      // World collision size for players
-const PLAYER_RENDER_SIZE = 38; // Visual render size for players
+const PLAYER_RENDER_SIZE = 32; // Visual render size for players
 // Detect mobile mode: true phones/tablets, not 2-in-1 laptops with touchscreens.
 // A manual override is stored in localStorage ('forceDesktop' / 'forceMobile').
 function detectMobile() {

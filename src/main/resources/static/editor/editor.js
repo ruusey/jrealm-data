@@ -362,7 +362,11 @@ function renderSheet() {
   drawOverlay();
 
   const cols = Math.floor(img.width / gridSize), rows = Math.floor(img.height / gridSize);
-  sheetInfo.textContent = `(${img.width}x${img.height}px, ${cols}x${rows} cells @ ${gridSize}px)`;
+  let info = `(${img.width}x${img.height}px, ${cols}x${rows} cells @ ${gridSize}px)`;
+  if (pickMode && animPickingFrame) {
+    info += ' — Click a cell to assign frame';
+  }
+  sheetInfo.textContent = info;
 }
 
 function drawOverlay() {
@@ -3722,7 +3726,10 @@ function bindEvents() {
     const rect = sheetCanvas.getBoundingClientRect();
     const col = Math.floor((e.clientX - rect.left) / (gridSize * SCALE));
     const row = Math.floor((e.clientY - rect.top) / (gridSize * SCALE));
-    hoverInfo.textContent = `Row: ${row}  Col: ${col}  (px: ${col * gridSize}, ${row * gridSize})`;
+    hoverInfo.textContent = pickMode
+      ? `Click to pick: Row ${row}, Col ${col}`
+      : `Row: ${row}  Col: ${col}  (px: ${col * gridSize}, ${row * gridSize})`;
+    scrollEl.style.cursor = pickMode ? 'crosshair' : '';
   });
 
   // Sheet click - pick sprite (works for both tiles and items)
@@ -3777,6 +3784,14 @@ function bindEvents() {
       btn.textContent = 'Pick Sprite';
     } else if (activeTab === 'animations' && animPickingFrame) {
       const { anim, animName, frameIdx } = animPickingFrame;
+      // If picking from a different sheet, update the animation's spriteKey to match
+      if (currentSheet !== anim.spriteKey) {
+        anim.spriteKey = currentSheet;
+        document.getElementById('animSpriteKey').value = currentSheet;
+      }
+      // Also sync sprite size to current grid size
+      anim.spriteSize = gridSize;
+      document.getElementById('animSpriteSize').value = gridSize;
       anim.animations[animName].frames[frameIdx] = { row, col };
       markDirty('animations');
       renderAnimSets(anim);
@@ -3982,8 +3997,26 @@ function bindEvents() {
   document.getElementById('animSearch').addEventListener('input', (e) => renderAnimList(e.target.value));
   document.getElementById('animBackBtn').addEventListener('click', deselectAnim);
   document.getElementById('applyAnimBtn').addEventListener('click', applyAnimDetail);
-  document.getElementById('animSpriteKey').addEventListener('change', applyAnimDetail);
-  document.getElementById('animSpriteSize').addEventListener('change', applyAnimDetail);
+  document.getElementById('animSpriteKey').addEventListener('change', () => {
+    applyAnimDetail();
+    // Sync top sheet dropdown to the animation's sheet so picking works
+    const newSheet = document.getElementById('animSpriteKey').value;
+    if (newSheet !== currentSheet) {
+      currentSheet = newSheet;
+      sheetSelect.value = currentSheet;
+      renderSheet();
+    }
+  });
+  document.getElementById('animSpriteSize').addEventListener('change', () => {
+    applyAnimDetail();
+    // Sync grid size to the animation's sprite size
+    const newSize = parseInt(document.getElementById('animSpriteSize').value) || 8;
+    if (newSize !== gridSize) {
+      gridSize = newSize;
+      gridSizeSelect.value = gridSize;
+      renderSheet();
+    }
+  });
 
   // Loot Groups tab
   document.getElementById('lgSearch').addEventListener('input', (e) => renderLgList(e.target.value));

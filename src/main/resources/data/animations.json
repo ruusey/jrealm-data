@@ -3,8 +3,8 @@
 		"objectId": 0,
 		"objectType": "player",
 		"className": "Rogue",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-0.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
@@ -22,10 +22,15 @@
 					{
 						"row": 0,
 						"col": 0
+					},
+					{
+						"row": 0,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
@@ -33,16 +38,26 @@
 					{
 						"row": 0,
 						"col": 0
+					},
+					{
+						"row": 0,
+						"col": 4
+					},
+					{
+						"row": 0,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 1,
 						"col": 0
 					}
 				],
@@ -53,29 +68,44 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 0
+						"row": 1,
+						"col": 1
+					},
+					{
+						"row": 1,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 1,
 						"col": 0
+					},
+					{
+						"row": 1,
+						"col": 4
+					},
+					{
+						"row": 1,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 2,
 						"col": 0
 					}
 				],
@@ -86,23 +116,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 2,
 						"col": 0
+					},
+					{
+						"row": 2,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 2,
 						"col": 0
+					},
+					{
+						"row": 2,
+						"col": 4
+					},
+					{
+						"row": 2,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -111,14 +156,14 @@
 		"objectId": 1,
 		"objectType": "player",
 		"className": "Archer",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-0.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 1
+						"row": 4,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -128,30 +173,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 4,
+						"col": 0
+					},
+					{
+						"row": 4,
 						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 1
+						"row": 4,
+						"col": 0
+					},
+					{
+						"row": 4,
+						"col": 4
+					},
+					{
+						"row": 4,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 1
+						"row": 5,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -161,30 +221,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 5,
 						"col": 1
+					},
+					{
+						"row": 5,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 1
+						"row": 5,
+						"col": 0
+					},
+					{
+						"row": 5,
+						"col": 4
+					},
+					{
+						"row": 5,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 1
+						"row": 6,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -194,23 +269,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 6,
+						"col": 0
+					},
+					{
+						"row": 6,
 						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 1
+						"row": 6,
+						"col": 0
+					},
+					{
+						"row": 6,
+						"col": 4
+					},
+					{
+						"row": 6,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -219,14 +309,14 @@
 		"objectId": 2,
 		"objectType": "player",
 		"className": "Wizard",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-0.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 8,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -236,30 +326,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 8,
+						"col": 0
+					},
+					{
+						"row": 8,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 8,
+						"col": 0
+					},
+					{
+						"row": 8,
+						"col": 4
+					},
+					{
+						"row": 8,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 9,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -269,30 +374,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 0,
+						"row": 9,
+						"col": 1
+					},
+					{
+						"row": 9,
 						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 9,
+						"col": 0
+					},
+					{
+						"row": 9,
+						"col": 4
+					},
+					{
+						"row": 9,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 10,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -302,23 +422,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 10,
+						"col": 0
+					},
+					{
+						"row": 10,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 2
+						"row": 10,
+						"col": 0
+					},
+					{
+						"row": 10,
+						"col": 4
+					},
+					{
+						"row": 10,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -327,14 +462,14 @@
 		"objectId": 3,
 		"objectType": "player",
 		"className": "Priest",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-1.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
 						"row": 0,
-						"col": 3
+						"col": 0
 					}
 				],
 				"durations": [
@@ -345,29 +480,44 @@
 				"frames": [
 					{
 						"row": 0,
-						"col": 3
+						"col": 0
+					},
+					{
+						"row": 0,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
 						"row": 0,
-						"col": 3
+						"col": 0
+					},
+					{
+						"row": 0,
+						"col": 4
+					},
+					{
+						"row": 0,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 3
+						"row": 1,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -377,30 +527,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 3
+						"row": 1,
+						"col": 1
+					},
+					{
+						"row": 1,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 3
+						"row": 1,
+						"col": 0
+					},
+					{
+						"row": 1,
+						"col": 4
+					},
+					{
+						"row": 1,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 3
+						"row": 2,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -410,23 +575,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 3
+						"row": 2,
+						"col": 0
+					},
+					{
+						"row": 2,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 0,
-						"col": 3
+						"row": 2,
+						"col": 0
+					},
+					{
+						"row": 2,
+						"col": 4
+					},
+					{
+						"row": 2,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -435,13 +615,13 @@
 		"objectId": 4,
 		"objectType": "player",
 		"className": "Warrior",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-1.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 4,
 						"col": 0
 					}
 				],
@@ -452,29 +632,44 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 4,
 						"col": 0
+					},
+					{
+						"row": 4,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 4,
 						"col": 0
+					},
+					{
+						"row": 4,
+						"col": 4
+					},
+					{
+						"row": 4,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 5,
 						"col": 0
 					}
 				],
@@ -485,29 +680,44 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 0
+						"row": 5,
+						"col": 1
+					},
+					{
+						"row": 5,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 5,
 						"col": 0
+					},
+					{
+						"row": 5,
+						"col": 4
+					},
+					{
+						"row": 5,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 6,
 						"col": 0
 					}
 				],
@@ -518,23 +728,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 6,
 						"col": 0
+					},
+					{
+						"row": 6,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 6,
 						"col": 0
+					},
+					{
+						"row": 6,
+						"col": 4
+					},
+					{
+						"row": 6,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -543,14 +768,14 @@
 		"objectId": 5,
 		"objectType": "player",
 		"className": "Knight",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-1.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 1
+						"row": 8,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -560,30 +785,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 8,
+						"col": 0
+					},
+					{
+						"row": 8,
 						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 1
+						"row": 8,
+						"col": 0
+					},
+					{
+						"row": 8,
+						"col": 4
+					},
+					{
+						"row": 8,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 1
+						"row": 9,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -593,30 +833,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 9,
 						"col": 1
+					},
+					{
+						"row": 9,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 1
+						"row": 9,
+						"col": 0
+					},
+					{
+						"row": 9,
+						"col": 4
+					},
+					{
+						"row": 9,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 1
+						"row": 10,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -626,23 +881,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 1,
+						"row": 10,
+						"col": 0
+					},
+					{
+						"row": 10,
 						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 1
+						"row": 10,
+						"col": 0
+					},
+					{
+						"row": 10,
+						"col": 4
+					},
+					{
+						"row": 10,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -651,14 +921,14 @@
 		"objectId": 6,
 		"objectType": "player",
 		"className": "Paladin",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-2.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 2
+						"row": 0,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -668,30 +938,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 2
+						"row": 0,
+						"col": 0
+					},
+					{
+						"row": 0,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 2
+						"row": 0,
+						"col": 0
+					},
+					{
+						"row": 0,
+						"col": 4
+					},
+					{
+						"row": 0,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
 						"row": 1,
-						"col": 2
+						"col": 0
 					}
 				],
 				"durations": [
@@ -702,29 +987,44 @@
 				"frames": [
 					{
 						"row": 1,
+						"col": 1
+					},
+					{
+						"row": 1,
 						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
 						"row": 1,
-						"col": 2
+						"col": 0
+					},
+					{
+						"row": 1,
+						"col": 4
+					},
+					{
+						"row": 1,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 2
+						"row": 2,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -734,23 +1034,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 2
+						"row": 2,
+						"col": 0
+					},
+					{
+						"row": 2,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 2
+						"row": 2,
+						"col": 0
+					},
+					{
+						"row": 2,
+						"col": 4
+					},
+					{
+						"row": 2,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -759,14 +1074,14 @@
 		"objectId": 7,
 		"objectType": "player",
 		"className": "Assassin",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-2.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 4,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -776,30 +1091,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 4,
+						"col": 0
+					},
+					{
+						"row": 4,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 4,
+						"col": 0
+					},
+					{
+						"row": 4,
+						"col": 4
+					},
+					{
+						"row": 4,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 5,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -809,30 +1139,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 5,
+						"col": 1
+					},
+					{
+						"row": 5,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 5,
+						"col": 0
+					},
+					{
+						"row": 5,
+						"col": 4
+					},
+					{
+						"row": 5,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 6,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -842,23 +1187,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 6,
+						"col": 0
+					},
+					{
+						"row": 6,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 6,
+						"col": 0
+					},
+					{
+						"row": 6,
+						"col": 4
+					},
+					{
+						"row": 6,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -867,13 +1227,13 @@
 		"objectId": 8,
 		"objectType": "player",
 		"className": "Necromancer",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-2.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 7,
 						"col": 0
 					}
 				],
@@ -884,29 +1244,44 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 7,
 						"col": 0
+					},
+					{
+						"row": 7,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 7,
 						"col": 0
+					},
+					{
+						"row": 7,
+						"col": 4
+					},
+					{
+						"row": 7,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 8,
 						"col": 0
 					}
 				],
@@ -917,29 +1292,44 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 0
+						"row": 8,
+						"col": 1
+					},
+					{
+						"row": 8,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 8,
 						"col": 0
+					},
+					{
+						"row": 8,
+						"col": 4
+					},
+					{
+						"row": 8,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 9,
 						"col": 0
 					}
 				],
@@ -950,23 +1340,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 9,
 						"col": 0
+					},
+					{
+						"row": 9,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 9,
 						"col": 0
+					},
+					{
+						"row": 9,
+						"col": 4
+					},
+					{
+						"row": 9,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -975,14 +1380,14 @@
 		"objectId": 9,
 		"objectType": "player",
 		"className": "Mystic",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-3.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 1
+						"row": 0,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -992,30 +1397,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 0,
+						"col": 0
+					},
+					{
+						"row": 0,
 						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 1
+						"row": 0,
+						"col": 0
+					},
+					{
+						"row": 0,
+						"col": 4
+					},
+					{
+						"row": 0,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 1
+						"row": 1,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1025,30 +1445,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 1,
 						"col": 1
+					},
+					{
+						"row": 1,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 1
+						"row": 1,
+						"col": 0
+					},
+					{
+						"row": 1,
+						"col": 4
+					},
+					{
+						"row": 1,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
 						"row": 2,
-						"col": 1
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1059,22 +1494,37 @@
 				"frames": [
 					{
 						"row": 2,
-						"col": 1
-					}
-				],
-				"durations": [
-					999
-				]
-			},
-			"attack_up": {
-				"frames": [
+						"col": 0
+					},
 					{
 						"row": 2,
 						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
+				]
+			},
+			"attack_up": {
+				"frames": [
+					{
+						"row": 2,
+						"col": 0
+					},
+					{
+						"row": 2,
+						"col": 4
+					},
+					{
+						"row": 2,
+						"col": 5
+					}
+				],
+				"durations": [
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -1083,14 +1533,14 @@
 		"objectId": 10,
 		"objectType": "player",
 		"className": "Trickster",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-3.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 3,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1100,30 +1550,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 3,
+						"col": 0
+					},
+					{
+						"row": 3,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 3,
+						"col": 0
+					},
+					{
+						"row": 3,
+						"col": 4
+					},
+					{
+						"row": 3,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 4,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1133,30 +1598,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 2,
+						"row": 4,
+						"col": 1
+					},
+					{
+						"row": 4,
 						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 4,
+						"col": 0
+					},
+					{
+						"row": 4,
+						"col": 4
+					},
+					{
+						"row": 4,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 5,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1166,23 +1646,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 5,
+						"col": 0
+					},
+					{
+						"row": 5,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 2
+						"row": 5,
+						"col": 0
+					},
+					{
+						"row": 5,
+						"col": 4
+					},
+					{
+						"row": 5,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
@@ -1191,14 +1686,14 @@
 		"objectId": 11,
 		"objectType": "player",
 		"className": "Sorcerer",
-		"spriteKey": "test5.png",
-		"spriteSize": 32,
+		"spriteKey": "rotmg-classes-3.png",
+		"spriteSize": 8,
 		"animations": {
 			"idle_side": {
 				"frames": [
 					{
-						"row": 1,
-						"col": 3
+						"row": 6,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1208,30 +1703,45 @@
 			"walk_side": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 6,
+						"col": 0
+					},
+					{
+						"row": 6,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_side": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 6,
+						"col": 0
+					},
+					{
+						"row": 6,
+						"col": 4
+					},
+					{
+						"row": 6,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_front": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 7,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1241,30 +1751,45 @@
 			"walk_front": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 7,
+						"col": 1
+					},
+					{
+						"row": 7,
+						"col": 2
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_down": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 7,
+						"col": 0
+					},
+					{
+						"row": 7,
+						"col": 4
+					},
+					{
+						"row": 7,
+						"col": 5
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			},
 			"idle_back": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 8,
+						"col": 0
 					}
 				],
 				"durations": [
@@ -1274,23 +1799,38 @@
 			"walk_back": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 8,
+						"col": 0
+					},
+					{
+						"row": 8,
+						"col": 1
 					}
 				],
 				"durations": [
-					999
+					8,
+					8
 				]
 			},
 			"attack_up": {
 				"frames": [
 					{
-						"row": 2,
-						"col": 3
+						"row": 8,
+						"col": 0
+					},
+					{
+						"row": 8,
+						"col": 1
+					},
+					{
+						"row": 8,
+						"col": 4
 					}
 				],
 				"durations": [
-					999
+					5,
+					5,
+					5
 				]
 			}
 		}
