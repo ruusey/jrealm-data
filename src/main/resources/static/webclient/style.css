@@ -487,7 +487,7 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 }
 
 #mobile-buttons {
-    position: absolute; top: 10px; right: 210px;
+    position: absolute; top: 10px; right: 320px;
     z-index: 15; pointer-events: auto;
     display: flex; flex-direction: row; gap: 6px;
 }
@@ -518,7 +518,7 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 #portal-enter-btn:hover { background: #9050d0; }
 
 #touch-aim {
-    position: absolute; bottom: 30px; right: 210px;
+    position: absolute; bottom: 30px; right: 320px;
     z-index: 15; pointer-events: auto;
     touch-action: none;
 }
@@ -564,8 +564,8 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     }
     #perf-overlay { display: none !important; }
     #touch-joystick { bottom: 140px; left: 10px; }
-    #touch-aim { right: 140px; }
-    #mobile-buttons { right: 140px; }
+    #touch-aim { right: 105px; }
+    #mobile-buttons { right: 105px; }
     #hud-bars { margin-bottom: 2px; }
     .bar-container { height: 12px; margin-bottom: 1px; }
     .bar span { font-size: 7px; }

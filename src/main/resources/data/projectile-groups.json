@@ -1795,8 +1795,8 @@
 				"damage": 35,
 				"angle": 0,
 				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"size": 24,
+				"magnitude": 2.5,
 				"flags": []
 			},
 			{

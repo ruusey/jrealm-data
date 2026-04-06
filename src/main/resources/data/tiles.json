@@ -44,7 +44,7 @@
     {
         "tileId": 3,
         "name": "Wood_Table",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 12,
         "size": 32,
@@ -58,7 +58,7 @@
     {
         "tileId": 4,
         "name": "Wood_Chair_Right",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 9,
         "size": 32,
@@ -72,7 +72,7 @@
     {
         "tileId": 5,
         "name": "Wood_Chair_Left",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 10,
         "size": 32,
@@ -184,7 +184,7 @@
     {
         "tileId": 13,
         "name": "Grass_Floor_2",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 4,
         "col": 6,
         "size": 32,
@@ -282,7 +282,7 @@
     {
         "tileId": 20,
         "name": "Rock_1",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 5,
         "col": 9,
         "size": 32,
@@ -338,7 +338,7 @@
     {
         "tileId": 24,
         "name": "Sand_Base",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 11,
         "col": 13,
         "size": 32,
@@ -352,7 +352,7 @@
     {
         "tileId": 25,
         "name": "Water_Shallow",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 7,
         "col": 2,
         "size": 32,
@@ -366,7 +366,7 @@
     {
         "tileId": 26,
         "name": "Sand_Shore",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 11,
         "col": 14,
         "size": 32,
@@ -380,7 +380,7 @@
     {
         "tileId": 27,
         "name": "Cave_Floor_0",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 6,
         "col": 0,
         "size": 32,
@@ -394,7 +394,7 @@
     {
         "tileId": 28,
         "name": "Cave_Floor_1",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 5,
         "col": 7,
         "size": 32,
@@ -408,7 +408,7 @@
     {
         "tileId": 29,
         "name": "Cave_Floor_Main",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 0,
         "col": 5,
         "size": 32,
@@ -422,7 +422,7 @@
     {
         "tileId": 30,
         "name": "Cave_Wall_0",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 12,
         "col": 14,
         "size": 32,
@@ -436,7 +436,7 @@
     {
         "tileId": 31,
         "name": "Stalagmite_0",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 15,
         "col": 2,
         "size": 32,
@@ -450,7 +450,7 @@
     {
         "tileId": 32,
         "name": "Stalagmite_1",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 5,
         "col": 15,
         "size": 32,
@@ -464,7 +464,7 @@
     {
         "tileId": 33,
         "name": "Small_Shrub",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 4,
         "col": 14,
         "size": 32,
@@ -478,7 +478,7 @@
     {
         "tileId": 34,
         "name": "Mushroom",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 6,
         "col": 12,
         "size": 32,
@@ -492,7 +492,7 @@
     {
         "tileId": 35,
         "name": "Tall_Grass",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 15,
         "col": 3,
         "size": 32,
@@ -506,7 +506,7 @@
     {
         "tileId": 36,
         "name": "Tree_2",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 4,
         "col": 9,
         "size": 32,
@@ -562,7 +562,7 @@
     {
         "tileId": 40,
         "name": "Water_Deep",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 11,
         "col": 12,
         "size": 32,
@@ -576,7 +576,7 @@
     {
         "tileId": 41,
         "name": "Water_Medium",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 12,
         "col": 12,
         "size": 32,
@@ -590,7 +590,7 @@
     {
         "tileId": 42,
         "name": "Water_Light",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 2,
         "size": 32,
@@ -702,7 +702,7 @@
     {
         "tileId": 50,
         "name": "Tombstone",
-        "spriteKey": "lofi_obj.png",
+        "spriteKey": "rotmg-projectiles.png",
         "row": 1,
         "col": 3,
         "size": 32,
@@ -884,7 +884,7 @@
     {
         "tileId": 63,
         "name": "Coastal_Wall_1",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 2,
         "col": 0,
         "size": 32,
@@ -898,7 +898,7 @@
     {
         "tileId": 64,
         "name": "Forest_Floor_0",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 7,
         "col": 1,
         "size": 32,
@@ -912,7 +912,7 @@
     {
         "tileId": 65,
         "name": "Forest_Floor_1",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 1,
         "size": 32,
@@ -1276,7 +1276,7 @@
     {
         "tileId": 91,
         "name": "Magma_Wall",
-        "spriteKey": "lofiEnvironment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 3,
         "col": 4,
         "size": 32,
@@ -1332,7 +1332,7 @@
     {
         "tileId": 95,
         "name": "Shadow_Wall_1",
-        "spriteKey": "lofiEnvironment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 0,
         "col": 6,
         "size": 32,
@@ -1682,7 +1682,7 @@
     {
         "tileId": 120,
         "name": "Stone_A",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 6,
         "col": 9,
         "size": 32,
@@ -1696,7 +1696,7 @@
     {
         "tileId": 121,
         "name": "Stone_B",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 6,
         "col": 10,
         "size": 32,
@@ -2900,7 +2900,7 @@
     {
         "tileId": 207,
         "name": "Decoration_0",
-        "spriteKey": "lofiEnvironment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 13,
         "size": 32,
@@ -2914,7 +2914,7 @@
     {
         "tileId": 208,
         "name": "Decoration_1",
-        "spriteKey": "lofiEnvironment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 8,
         "size": 32,
@@ -2928,7 +2928,7 @@
     {
         "tileId": 209,
         "name": "Decoration_2",
-        "spriteKey": "lofiEnvironment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 7,
         "size": 32,
@@ -2942,7 +2942,7 @@
     {
         "tileId": 210,
         "name": "Decoration_3",
-        "spriteKey": "lofiEnvironment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 8,
         "col": 11,
         "size": 32,
@@ -3040,7 +3040,7 @@
     {
         "tileId": 217,
         "name": "Carpet_0",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 10,
         "col": 11,
         "size": 32,
@@ -3054,7 +3054,7 @@
     {
         "tileId": 218,
         "name": "Carpet_1",
-        "spriteKey": "lofi_environment.png",
+        "spriteKey": "rotmg-tiles-1.png",
         "row": 3,
         "col": 12,
         "size": 32,

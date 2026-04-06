@@ -697,9 +697,9 @@
 		"attackId": 36,
 		"xp": 200,
 		"health": 250,
-		"maxSpeed": 1.75,
+		"maxSpeed": 1.45,
 		"chaseRange": 360,
-		"attackRange": 200,
+		"attackRange": 250,
 		"stats": {
 			"hp": 250,
 			"def": 1,
