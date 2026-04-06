@@ -741,6 +741,9 @@ function setupNetworkHandlers() {
                     game.classId = loginResp.classId;
                     game.cameraX = loginResp.spawnX;
                     game.cameraY = loginResp.spawnY;
+                    // Clear any pending click state so stale right-clicks
+                    // from the login screen don't fire an ability on join
+                    input.mouseClicked = [false, false, false];
                     console.log(`[LOGIN] playerId=${game.playerId} (type=${typeof game.playerId}), ` +
                         `classId=${game.classId}, spawn=(${game.cameraX}, ${game.cameraY})`);
 

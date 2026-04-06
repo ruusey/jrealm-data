@@ -247,5 +247,16 @@
 		"bossNode": true,
 		"childNodes": [],
 		"portalDropNodeMap": {}
+	},
+	{
+		"nodeId": "nexus",
+		"displayName": "Nexus",
+		"mapId": 29,
+		"difficulty": 0,
+		"entryPoint": false,
+		"bossNode": false,
+		"shared": true,
+		"childNodes": [],
+		"portalDropNodeMap": {}
 	}
 ]
