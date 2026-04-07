@@ -531,7 +531,16 @@ export class GameState {
         // Color by text effect type: 0=damage(red), 1=heal(green), 2=armor(blue), 3=env(blue), 4=info(orange)
         const colors = [0xff4040, 0x40ff40, 0x4080ff, 0x4080ff, 0xff8040];
         const color = colors[packet.textEffectId] || 0xffffff;
-        this.damageTexts.push({ text: packet.text, x, y, color, life: 45 });
+
+        // Offset stacking: count active texts near this position to avoid overlap
+        const TEXT_LIFE = 68; // ~1.1s at 60fps (50% longer than original 45)
+        const STACK_OFFSET = 4.0; // world units per stacked text
+        let stackCount = 0;
+        for (const dt of this.damageTexts) {
+            const dx = dt.x - x, dy = dt.y - y;
+            if (dx * dx + dy * dy < 100) stackCount++;
+        }
+        this.damageTexts.push({ text: packet.text, x, y: y - stackCount * STACK_OFFSET, color, life: TEXT_LIFE });
     }
 
     addVisualEffect(effect) {
@@ -835,9 +844,9 @@ export class GameState {
             }
         }
 
-        // Update damage texts
+        // Update damage texts — float upward and fade out
         for (let i = this.damageTexts.length - 1; i >= 0; i--) {
-            this.damageTexts[i].y -= 1.4;
+            this.damageTexts[i].y -= 1.0; // slower float (was 1.4) since lifetime is longer
             this.damageTexts[i].life--;
             if (this.damageTexts[i].life <= 0) this.damageTexts.splice(i, 1);
         }

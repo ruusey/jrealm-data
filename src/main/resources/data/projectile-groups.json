@@ -8863,7 +8863,7 @@
 				"flags": []
 			}
 		],
-		"angleOffset": "{{-PI/4}"
+		"angleOffset": "{{3PI/4}}"
 	},
 	{
 		"projectileGroupId": 172,
@@ -8932,7 +8932,7 @@
 				"flags": []
 			}
 		],
-		"angleOffset": "{{PI/2}"
+		"angleOffset": "{{PI/2}}"
 	},
 	{
 		"projectileGroupId": 173,
@@ -9484,7 +9484,7 @@
 				"flags": []
 			}
 		],
-		"angleOffset": "{{-PI/4}}"
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 199,
@@ -10088,7 +10088,6 @@
 		"projectileGroupId": 227,
 		"row": 2,
 		"col": 14,
-		"spriteKey": "lofiProjs.png",
 		"angleOffset": "0",
 		"projectiles": [
 			{
@@ -10105,6 +10104,7 @@
 					10
 				]
 			}
-		]
+		],
+		"spriteKey": "lofiProjs.png"
 	}
 ]

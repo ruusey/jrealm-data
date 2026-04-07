@@ -826,10 +826,17 @@
 		"name": "Dirk of Cronus",
 		"description": "Commisioned by me",
 		"stats": {
-			"wis": 5
+			"wis": 5,
+			"hp": 0,
+			"mp": 0,
+			"att": 0,
+			"def": 0,
+			"spd": 0,
+			"dex": 0,
+			"vit": 0
 		},
 		"damage": {
-			"projectileGroupId": 93,
+			"projectileGroupId": 227,
 			"min": 270,
 			"max": 320
 		},
@@ -2139,7 +2146,7 @@
 		"col": 3,
 		"spriteKey": "rotmg-items.png",
 		"name": "Serpentine Staff",
-		"description": "A staff powered by the magic of Sthenoï¿½s minions.",
+		"description": "A staff powered by the magic of SthenoÃ¯Â¿Â½s minions.",
 		"damage": {
 			"projectileGroupId": 79,
 			"min": 20,
@@ -5200,5 +5207,31 @@
 		"targetSlot": 1,
 		"targetClass": 3,
 		"fameBonus": 7
+	},
+	{
+		"itemId": 287,
+		"row": 6,
+		"col": 14,
+		"spriteKey": "rotmg-items-1.png",
+		"name": "Seal of Blasphemous Prayer",
+		"description": "A seal of dark prayer that grants a brief moment of invulnerability to nearby allies.",
+		"stats": {
+			"hp": 40,
+			"mp": 20,
+			"def": 5,
+			"wis": 3
+		},
+		"effect": {
+			"self": true,
+			"effectId": 6,
+			"duration": 1500,
+			"cooldownDuration": 1500,
+			"mpCost": 110
+		},
+		"consumable": false,
+		"tier": -1,
+		"targetSlot": 1,
+		"targetClass": 6,
+		"fameBonus": 6
 	}
 ]

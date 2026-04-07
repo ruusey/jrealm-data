@@ -484,15 +484,21 @@ export class GameRenderer {
             spr.width = size; spr.height = size;
             if (flipX) { spr.anchor.set(1, 0); spr.scale.x = -Math.abs(spr.scale.x); }
 
-            // Status effect tinting (matches Java Player.updateEffectState)
-            // effectIds from UpdatePacket: local player = game.effectIds, other = player.effectIds
+            // Status effect tinting — all ProjectileEffectTypes that affect players
             const effects = isLocal ? gameState.effectIds : (player.effectIds || []);
-            if (this._hasEffect(effects, 0))      spr.tint = 0xCCBB88;  // INVISIBLE → sepia
-            else if (this._hasEffect(effects, 1))  spr.tint = 0xFF8888;  // HEALING → red tint
-            else if (this._hasEffect(effects, 4))  spr.tint = 0xBBFF88;  // SPEEDY → green/yellow
-            else if (this._hasEffect(effects, 6))  spr.tint = 0xFFFFCC;  // INVINCIBLE → bright glow
-            else if (this._hasEffect(effects, 18)) spr.tint = 0x8899CC;  // ARMORED → blue-silver
+            if (this._hasEffect(effects, 6))       spr.tint = 0xFFFFCC;  // INVINCIBLE → bright golden glow
+            else if (this._hasEffect(effects, 2))  spr.tint = 0x888888;  // PARALYZED → grayscale
+            else if (this._hasEffect(effects, 3))  spr.tint = 0x88AACC;  // STUNNED → blue-grey
+            else if (this._hasEffect(effects, 15)) spr.tint = 0x333338;  // STASIS → dark stone
+            else if (this._hasEffect(effects, 0))  spr.tint = 0xCCBB88;  // INVISIBLE → sepia
+            else if (this._hasEffect(effects, 19)) spr.tint = 0xFF6644;  // BERSERK → fiery red-orange
             else if (this._hasEffect(effects, 14)) spr.tint = 0xFFAA66;  // DAMAGING → orange
+            else if (this._hasEffect(effects, 18)) spr.tint = 0x8899CC;  // ARMORED → blue-silver
+            else if (this._hasEffect(effects, 1))  spr.tint = 0xFF8888;  // HEALING → warm red
+            else if (this._hasEffect(effects, 4))  spr.tint = 0xBBFF88;  // SPEEDY → green/yellow
+            else if (this._hasEffect(effects, 11)) spr.tint = 0x9988AA;  // DAZED → muted purple
+            else if (this._hasEffect(effects, 16)) spr.tint = 0x992255;  // CURSED → dark magenta
+            else if (this._hasEffect(effects, 17)) spr.tint = 0x40CC40;  // POISONED → sickly green
 
             addSpriteWithOutline(this.entityLayer, tex, sx, sy, size, size,
                 flipX ? { flipX: true } : null);
@@ -580,13 +586,20 @@ export class GameRenderer {
             spr.x = sx; spr.y = sy;
             spr.width = size; spr.height = size;
 
-            // Status effect tinting (matches Java Enemy.updateEffectState)
+            // Status effect tinting — all ProjectileEffectTypes that affect enemies
             if (enemy.effectIds) {
-                if (this._hasEffect(enemy.effectIds, 15))      spr.tint = 0x333338;  // STASIS - dark grey stone
-                else if (this._hasEffect(enemy.effectIds, 2))  spr.tint = 0x888888;  // PARALYZED - grayscale
-                else if (this._hasEffect(enemy.effectIds, 3))  spr.tint = 0x88AACC;  // STUNNED - blue/decay
-                else if (this._hasEffect(enemy.effectIds, 16)) spr.tint = 0x992255;  // CURSED - dark red-purple
-                else if (this._hasEffect(enemy.effectIds, 17)) spr.tint = 0x40cc40;  // POISONED - sickly green
+                if (this._hasEffect(enemy.effectIds, 15))      spr.tint = 0x333338;  // STASIS → dark stone
+                else if (this._hasEffect(enemy.effectIds, 6))  spr.tint = 0xFFFFCC;  // INVINCIBLE → bright glow
+                else if (this._hasEffect(enemy.effectIds, 2))  spr.tint = 0x888888;  // PARALYZED → grayscale
+                else if (this._hasEffect(enemy.effectIds, 3))  spr.tint = 0x88AACC;  // STUNNED → blue-grey
+                else if (this._hasEffect(enemy.effectIds, 11)) spr.tint = 0x9988AA;  // DAZED → muted purple
+                else if (this._hasEffect(enemy.effectIds, 16)) spr.tint = 0x992255;  // CURSED → dark magenta
+                else if (this._hasEffect(enemy.effectIds, 17)) spr.tint = 0x40CC40;  // POISONED → sickly green
+                else if (this._hasEffect(enemy.effectIds, 19)) spr.tint = 0xFF6644;  // BERSERK → fiery red-orange
+                else if (this._hasEffect(enemy.effectIds, 14)) spr.tint = 0xFFAA66;  // DAMAGING → orange
+                else if (this._hasEffect(enemy.effectIds, 18)) spr.tint = 0x8899CC;  // ARMORED → blue-silver
+                else if (this._hasEffect(enemy.effectIds, 4))  spr.tint = 0xBBFF88;  // SPEEDY → green/yellow
+                else if (this._hasEffect(enemy.effectIds, 1))  spr.tint = 0xFF8888;  // HEALING → warm red
             }
             addSpriteWithOutline(this.entityLayer, tex, sx, sy, size, size);
             this.entityLayer.addChild(spr);
@@ -914,11 +927,14 @@ export class GameRenderer {
     }
 
     renderDamageTexts(gameState, offsetX, offsetY) {
+        const TEXT_LIFE = 68; // must match game.js
         for (const dt of gameState.damageTexts) {
             const sx = dt.x * SCALE + offsetX;
             const sy = dt.y * SCALE + offsetY;
-            const alpha = Math.max(0, dt.life / 45);
+            const alpha = Math.max(0, dt.life / TEXT_LIFE);
             const colorStr = '#' + dt.color.toString(16).padStart(6, '0');
+            // Scale text slightly larger when fresh, shrink as it fades
+            const scale = 0.8 + 0.4 * (dt.life / TEXT_LIFE);
             const txt = new PIXI.Text(dt.text, {
                 fontSize: 24, fill: colorStr,
                 fontFamily: 'monospace', fontWeight: 'bold',
@@ -927,6 +943,7 @@ export class GameRenderer {
             txt.anchor.set(0.5, 0.5);
             txt.x = sx; txt.y = sy;
             txt.alpha = alpha;
+            txt.scale.set(scale);
             this.uiLayer.addChild(txt);
         }
     }
