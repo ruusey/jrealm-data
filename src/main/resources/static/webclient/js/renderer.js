@@ -135,13 +135,14 @@ export class GameRenderer {
         for (const [tileId, tileDef] of Object.entries(tileData)) {
             if (!tileDef || !tileDef.spriteKey) continue;
             // spriteSize defaults to BASE_SPRITE_SIZE if 0 or missing (matches Java GameSpriteManager)
-            const spriteSize = tileDef.spriteSize || BASE_SPRITE_SIZE;
+            const sw = tileDef.spriteSize || BASE_SPRITE_SIZE;
+            const sh = tileDef.spriteHeight || sw;
             const tex = this.getRegion(
                 tileDef.spriteKey,
                 tileDef.col || 0,
                 tileDef.row || 0,
-                spriteSize,
-                spriteSize
+                sw,
+                sh
             );
             if (tex) {
                 this.tileTextures[tileId] = tex;
@@ -385,11 +386,12 @@ export class GameRenderer {
             const projGroup = gameState.projectileGroups[bullet.projectileId];
             let tex = null;
             if (projGroup && projGroup.spriteKey) {
-                const cacheKey = projGroup.spriteKey + ':' + (projGroup.row||0) + ':' + (projGroup.col||0);
+                const sw = projGroup.spriteSize || BASE_SPRITE_SIZE;
+                const sh = projGroup.spriteHeight || sw;
+                const cacheKey = projGroup.spriteKey + ':' + (projGroup.row||0) + ':' + (projGroup.col||0) + ':' + sw + 'x' + sh;
                 if (!(cacheKey in this._bulletTexCache)) {
                     this._bulletTexCache[cacheKey] = this.getRegion(
-                        projGroup.spriteKey, projGroup.col || 0, projGroup.row || 0,
-                        projGroup.spriteSize || BASE_SPRITE_SIZE, projGroup.spriteSize || BASE_SPRITE_SIZE);
+                        projGroup.spriteKey, projGroup.col || 0, projGroup.row || 0, sw, sh);
                 }
                 tex = this._bulletTexCache[cacheKey];
             }
@@ -471,8 +473,9 @@ export class GameRenderer {
         pShadow.endFill();
         this.entityLayer.addChild(pShadow);
 
-        const spSize = animDef?.spriteSize || BASE_SPRITE_SIZE;
-        const tex = this.getRegion(sheetKey, frameCol, row, spSize, spSize);
+        const spW = animDef?.spriteSize || BASE_SPRITE_SIZE;
+        const spH = animDef?.spriteHeight || spW;
+        const tex = this.getRegion(sheetKey, frameCol, row, spW, spH);
         if (tex) {
             const flipX = player.facing === 'left';
 
@@ -560,8 +563,9 @@ export class GameRenderer {
         const enemyDef = gameState.enemyData[enemy.enemyId];
         let tex = null;
         if (enemyDef && enemyDef.spriteKey) {
-            tex = this.getRegion(enemyDef.spriteKey, enemyDef.col || 0, enemyDef.row || 0,
-                                 enemyDef.spriteSize || BASE_SPRITE_SIZE, enemyDef.spriteSize || BASE_SPRITE_SIZE);
+            const sw = enemyDef.spriteSize || BASE_SPRITE_SIZE;
+            const sh = enemyDef.spriteHeight || sw;
+            tex = this.getRegion(enemyDef.spriteKey, enemyDef.col || 0, enemyDef.row || 0, sw, sh);
         }
 
         // Circular ground shadow under enemy
@@ -664,9 +668,10 @@ export class GameRenderer {
         const portalDef = gameState ? gameState.portalData[portal.portalId] : null;
         let tex = null;
         if (portalDef && portalDef.spriteKey) {
-            const spriteSize = portalDef.spriteSize || BASE_SPRITE_SIZE;
+            const sw = portalDef.spriteSize || BASE_SPRITE_SIZE;
+            const sh = portalDef.spriteHeight || sw;
             tex = this.getRegion(portalDef.spriteKey, portalDef.col || 0,
-                                 portalDef.row || 0, spriteSize, spriteSize);
+                                 portalDef.row || 0, sw, sh);
         }
 
         // Circular ground shadow
@@ -944,13 +949,14 @@ export class GameRenderer {
     }
 
     // Extract a sprite region as a data URL for use in HTML elements
-    getSpriteDataUrl(spriteKey, col, row, spriteSize) {
-        const sz = spriteSize || BASE_SPRITE_SIZE;
-        const tex = this.getRegion(spriteKey, col, row, sz, sz);
+    getSpriteDataUrl(spriteKey, col, row, spriteSize, spriteHeight) {
+        const sw = spriteSize || BASE_SPRITE_SIZE;
+        const sh = spriteHeight || sw;
+        const tex = this.getRegion(spriteKey, col, row, sw, sh);
         if (!tex || !this.app) return null;
         try {
             const tempSprite = new PIXI.Sprite(tex);
-            const rt = PIXI.RenderTexture.create({ width: sz, height: sz });
+            const rt = PIXI.RenderTexture.create({ width: sw, height: sh });
             this.app.renderer.render(tempSprite, { renderTexture: rt });
             const canvas = this.app.renderer.extract.canvas(rt);
             const url = canvas.toDataURL();

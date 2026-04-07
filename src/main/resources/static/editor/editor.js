@@ -51,112 +51,34 @@ function authHeaders() {
 }
 
 const SPRITE_SHEETS = [
-  // Original sheets
+  // Core game sheets
   'rotmg-tiles-all.png','rotmg-tiles.png','rotmg-tiles-1.png','rotmg-tiles-2.png',
-  'rotmg-tiles-1_0.png','rotmg-tiles-1_.png',
-  'rotmg-misc.png','lofi_environment.png','lofi_obj.png',
-  'lofi_char.png','lofi_dungeon_features.png','lofi_halls.png',
-  'lofi_obj_packA.png','lofi_obj_packB.png',
-  'rotmg-items.png','rotmg-items-1.png',
+  'rotmg-misc.png','rotmg-items.png','rotmg-items-1.png',
   'rotmg-projectiles.png','rotmg-abilities.png',
-  'rotmg-bosses.png','rotmg-bosses-1.png','rotmg-bosses-1_.png',
+  'rotmg-bosses.png','rotmg-bosses-1.png',
   'rotmg-classes-0.png','rotmg-classes-1.png','rotmg-classes-2.png','rotmg-classes-3.png',
-  'lofi_classes.png',
-  // Backgrounds & misc
-  'DarknessBackground.png','StarburstSpinner.png','cursors.png','stars.png',
-  'sidesMask.png','innerMask.png','innerP1Mask.png','innerP2Mask.png',
-  'theGoldenArcher.png','theGoldenArcherMask.png',
-  // Hanami / Sakura
-  'Hanami8x8chars.png','HanamiParts8x8.png',
-  'SakuraEnvironment16x16.png','SakuraEnvironment8x8.png',
   // Lofi sheets
-  'lofi.png','lofiChar.png','lofiChar2.png','lofiCharBig.png',
-  'lofiEnvironment.png','lofiEnvironment2.png','lofiEnvironment3.png',
-  'lofiGravestone.png','lofiInterface.png','lofiInterface2.png','lofiInterfaceBig.png',
-  'lofiObj.png','lofiObj2.png','lofiObj3.png','lofiObj4.png','lofiObj40x40.png',
-  'lofiObj5.png','lofiObj5b.png','lofiObj6.png','lofiObjBig.png',
-  'lofiParts.png','lofiProjs.png','lofiProjsBig.png',
-  // Lofi particles
-  'lofiParticlesBeam.png','lofiParticlesElectric.png','lofiParticlesHolyBeam.png',
-  'lofiParticlesMeteor.png','lofiParticlesShocker.png','lofiParticlesSkull.png',
-  'lofiParticlesTelegraph.png',
-  // Textiles (removed: textile4x4/5x5/9x9/10x10 — files deleted)
-  // Generic char sheets
-  'chars8x8dBeach.png','chars8x8dEncounters.png','chars8x8dHero1.png',
-  'chars8x8rBeach.png','chars8x8rEncounters.png','chars8x8rHero1.png','chars8x8rHero2.png',
-  'chars8x8rHigh.png','chars8x8rLow1.png','chars8x8rLow2.png',
-  'chars8x8rMid.png','chars8x8rMid2.png',
-  'chars8x8rPets1.png','chars8x8rPets1Mask.png','chars8x8rPets2.png','chars8x8rPetsKaratePenguin.png',
-  'chars16x8dEncounters.png','chars16x8rEncounters.png',
+  'lofiEnvironment2.png','lofiEnvironment3.png',
+  'lofiObj2.png','lofiObj3.png','lofiObjBig.png',
+  'lofiProjs.png','lofiProjectiles.png',
+  'lofi_dungeon_features.png',
+  // New variable-size sheets
+  'lofiWorld.png','lofiBosses16x16.png','lofiBosses16x20.png','lofiCharacter10x10.png',
+  // Character sheets
+  'chars8x8rBeach.png','chars8x8rHero2.png',
   'chars16x16dEncounters.png','chars16x16dEncounters2.png',
-  'chars16x16dMountains1.png','chars16x16dMountains2.png','chars16x16rEncounters.png',
-  // Dungeon sheets (d1-d3)
-  'd1Chars16x16r.png',
-  'd2LofiObj.png',
-  'd3Chars16x16r.png','d3Chars8x8r.png','d3LofiObj.png','d3LofiObjBig.png',
-  // Ancient Ruins
-  'ancientRuinsChars16x16.png','ancientRuinsChars8x8.png',
-  'ancientRuinsObjects16x16.png','ancientRuinsObjects8x8.png',
-  // Archbishop
-  'archbishopChars16x16.png','archbishopChars8x8.png',
-  'archbishopObjects16x16.png','archbishopObjects64x64.png','archbishopObjects8x8.png',
-  // Autumn Nexus
-  'autumnNexusChars16x16.png','autumnNexusChars8x8.png',
-  'autumnNexusObjects16x16.png','autumnNexusObjects8x8.png',
-  // Battle Oryx
-  'battleOryxChars16x16.png','battleOryxChars8x8.png',
-  'battleOryxObjects16x16.png','battleOryxObjects8x8.png',
-  // Buffed Bunny
-  'buffedBunnyChars16x16.png','buffedBunnyObjects16x16.png','buffedBunnyObjects8x8.png',
-  // Cnidarian Reef
-  'cnidarianReefObjects16x16.png','cnidarianReefObjects8x8.png',
-  // Crystal Cave
-  'crystalCaveChars16x16.png','crystalCaveChars8x8.png',
-  'crystalCaveObjects16x16.png','crystalCaveObjects8x8.png',
-  // Cursed Library
-  'cursedLibraryChars16x16.png','cursedLibraryChars8x8.png','cursedLibraryCharsAvalon16x16.png',
-  'cursedLibraryObjects16x16.png','cursedLibraryObjects8x8.png',
-  // Epic Hive
-  'epicHiveChars16x16.png','epicHiveChars8x8.png',
-  'epicHiveObjects16x16.png','epicHiveObjects8x8.png',
-  // Fungal Cavern
-  'fungalCavernChars16x16.png','fungalCavernChars8x8.png',
-  'fungalCavernObjects16x16.png','fungalCavernObjects8x8.png',
-  // Inner Workings
-  'innerWorkingsChars16x16.png','innerWorkingsChars8x8.png',
-  'innerWorkingsObjects16x16.png','innerWorkingsObjects8x8.png',
-  // Lair of Draconis
-  'lairOfDraconisChars16x16.png','lairOfDraconisChars8x8.png',
-  'lairOfDraconisObjects16x16.png','lairOfDraconisObjects8x8.png',
-  // Lair of Shaitan
-  'lairOfShaitanChars16x16.png','lairOfShaitanObjects16x16.png','lairOfShaitanObjects8x8.png',
-  // Lost Halls
-  'lostHallsChars16x16.png','lostHallsChars8x8.png',
-  'lostHallsObjects16x16.png','lostHallsObjects8x8.png',
-  // Magic Woods
-  'magicWoodsChars16x16.png','magicWoodsChars8x8.png',
-  'magicWoodsObjects16x16.png','magicWoodsObjects8x8.png',
-  // Mountain Temple
-  'mountainTempleChars16x16.png','mountainTempleChars8x8.png',
-  'mountainTempleObjects16x16.png','mountainTempleObjects8x8.png',
-  // Oryx Horde
+  // Dungeon sheets
+  'd1Chars16x16r.png','d2LofiObj.png','d3Chars8x8r.png','d3LofiObj.png',
+  'archbishopObjects16x16.png','autumnNexusObjects16x16.png',
+  'battleOryxObjects8x8.png',
+  'crystalCaveChars16x16.png','crystalCaveObjects8x8.png',
+  'cursedLibraryChars16x16.png','cursedLibraryChars8x8.png','cursedLibraryObjects8x8.png',
+  'epicHiveChars8x8.png',
+  'fungalCavernObjects8x8.png',
+  'lairOfDraconisChars8x8.png','lairOfDraconisObjects8x8.png',
+  'lostHallsObjects8x8.png','magicWoodsObjects8x8.png','mountainTempleObjects8x8.png',
   'oryxHordeChars16x16.png','oryxHordeChars8x8.png',
-  'oryxHordeObjects16x16.png','oryxHordeObjects8x8.png',
-  // Oryx Sanctuary
-  'oryxSanctuaryChars16x16.png','oryxSanctuaryChars32x32.png','oryxSanctuaryChars8x8.png',
-  'oryxSanctuaryObjects16x16.png','oryxSanctuaryObjects32x32.png','oryxSanctuaryObjects8x8.png',
-  // Parasite Den
-  'parasiteDenChars16x16.png','parasiteDenChars8x8.png',
-  'parasiteDenObjects16x16.png','parasiteDenObjects8x8.png',
-  // Secluded Thicket
-  'secludedThicketChars16x16.png','secludedThicketChars8x8.png',
-  'secludedThicketObjects16x16.png','secludedThicketObjects8x8.png',
-  // Summer Nexus
-  'summerNexusChars16x16.png',
-  'summerNexusObjects16x16.png','summerNexusObjects8x8.png',
-  // New sprite sheets (variable size: 32x32 and 64x64)
-  'test0.png','test1.png','test2.png','test3.png',
-  'test4.png','test5.png','test6.png','test7.png',
+  'secludedThicketChars16x16.png','summerNexusObjects8x8.png',
 ];
 
 let tiles = [];
@@ -204,6 +126,8 @@ let dirtyRealmEvents = false;
 let animPickingFrame = null; // {animName, frameIdx} when picking a frame from the sheet
 let currentSheet = SPRITE_SHEETS[0];
 let gridSize = 8;
+let gridHeight = 0; // 0 = same as gridSize
+function getGridH() { return gridHeight > 0 ? gridHeight : gridSize; }
 let activeTab = 'tiles';
 
 // Navigation history stack for back-button support across editors
@@ -361,8 +285,10 @@ function renderSheet() {
   ctx.drawImage(img, 0, 0, w, h);
   drawOverlay();
 
-  const cols = Math.floor(img.width / gridSize), rows = Math.floor(img.height / gridSize);
-  let info = `(${img.width}x${img.height}px, ${cols}x${rows} cells @ ${gridSize}px)`;
+  const gh = getGridH();
+  const cols = Math.floor(img.width / gridSize), rows = Math.floor(img.height / gh);
+  const sizeLabel = gridSize === gh ? `${gridSize}px` : `${gridSize}x${gh}px`;
+  let info = `(${img.width}x${img.height}px, ${cols}x${rows} cells @ ${sizeLabel})`;
   if (pickMode && animPickingFrame) {
     info += ' — Click a cell to assign frame';
   }
@@ -375,26 +301,26 @@ function drawOverlay() {
   const w = img.width * SCALE, h = img.height * SCALE;
   const ctx = sheetOverlay.getContext('2d');
   ctx.clearRect(0, 0, w, h);
-  const gs = gridSize * SCALE;
+  const gsW = gridSize * SCALE, gsH = getGridH() * SCALE;
   ctx.strokeStyle = 'rgba(255,255,255,0.15)';
   ctx.lineWidth = 1;
-  for (let x = 0; x <= w; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
-  for (let y = 0; y <= h; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+  for (let x = 0; x <= w; x += gsW) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+  for (let y = 0; y <= h; y += gsH) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
 
   // Highlight assigned tiles on this sheet
-  const ss = gridSize;
+  const ss = gridSize, sh = getGridH();
   tiles.forEach(t => {
     if (t.spriteKey !== currentSheet) return;
-    const px = t.col * ss * SCALE, py = t.row * ss * SCALE, sz = ss * SCALE;
+    const px = t.col * ss * SCALE, py = t.row * sh * SCALE, szW = ss * SCALE, szH = sh * SCALE;
     const isSel = selectedTile && selectedTile.tileId === t.tileId;
     if (isSel) {
       ctx.strokeStyle = '#e94560'; ctx.lineWidth = 2;
-      ctx.strokeRect(px + 1, py + 1, sz - 2, sz - 2);
+      ctx.strokeRect(px + 1, py + 1, szW - 2, szH - 2);
       ctx.fillStyle = 'rgba(233,69,96,0.3)';
-      ctx.fillRect(px, py, sz, sz);
+      ctx.fillRect(px, py, szW, szH);
     } else {
       ctx.fillStyle = 'rgba(100,200,255,0.15)';
-      ctx.fillRect(px, py, sz, sz);
+      ctx.fillRect(px, py, szW, szH);
     }
   });
 }
@@ -406,8 +332,8 @@ function drawTilePreview(canvas, tile) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const img = images[tile.spriteKey];
   if (!img) return;
-  const ss = gridSize;
-  ctx.drawImage(img, tile.col * ss, tile.row * ss, ss, ss, 0, 0, canvas.width, canvas.height);
+  const ss = gridSize, sh = getGridH();
+  ctx.drawImage(img, tile.col * ss, tile.row * sh, ss, sh, 0, 0, canvas.width, canvas.height);
 }
 
 // ========== TILE LIST ==========
@@ -1291,7 +1217,8 @@ function drawEnemySpritePreview(canvas, enemy) {
     const img = images[enemy.spriteKey];
     if (!img) return;
     const ss = enemy.spriteSize || 8;
-    ctx.drawImage(img, (enemy.col || 0) * ss, (enemy.row || 0) * ss, ss, ss, 0, 0, canvas.width, canvas.height);
+    const sh = enemy.spriteHeight || ss;
+    ctx.drawImage(img, (enemy.col || 0) * ss, (enemy.row || 0) * sh, ss, sh, 0, 0, canvas.width, canvas.height);
 }
 
 function renderEnemyList(filter) {
@@ -1341,6 +1268,7 @@ function showEnemyDetail(enemy) {
     document.getElementById('enemyRow').value = enemy.row || 0;
     document.getElementById('enemyCol').value = enemy.col || 0;
     document.getElementById('enemySpriteSize').value = enemy.spriteSize || 8;
+    document.getElementById('enemySpriteHeight').value = enemy.spriteHeight || 0;
     document.getElementById('enemySize').value = enemy.size || 32;
     document.getElementById('enemyAttackId').value = enemy.attackId != null ? enemy.attackId : -1;
     // Show context for attackId: -1 = scripted, >= 0 = projectile group
@@ -1383,12 +1311,14 @@ function updateEnemyPreview() {
     const row = parseInt(document.getElementById('enemyRow').value) || 0;
     const col = parseInt(document.getElementById('enemyCol').value) || 0;
     const ss = parseInt(document.getElementById('enemySpriteSize').value) || 8;
+    const sh = parseInt(document.getElementById('enemySpriteHeight').value) || ss;
     const ctx = cvs.getContext('2d');
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, cvs.width, cvs.height);
     const img = images[spriteKey];
-    if (img) ctx.drawImage(img, col * ss, row * ss, ss, ss, 0, 0, cvs.width, cvs.height);
-    document.getElementById('enemyPreviewLabel').textContent = `[${spriteKey} @ r${row} c${col} ${ss}px]`;
+    if (img) ctx.drawImage(img, col * ss, row * sh, ss, sh, 0, 0, cvs.width, cvs.height);
+    const sizeLabel = ss === sh ? `${ss}px` : `${ss}x${sh}px`;
+    document.getElementById('enemyPreviewLabel').textContent = `[${spriteKey} @ r${row} c${col} ${sizeLabel}]`;
 }
 
 function applyEnemyDetail() {
@@ -1400,6 +1330,7 @@ function applyEnemyDetail() {
     enemy.row = parseInt(document.getElementById('enemyRow').value) || 0;
     enemy.col = parseInt(document.getElementById('enemyCol').value) || 0;
     enemy.spriteSize = parseInt(document.getElementById('enemySpriteSize').value) || 8;
+    enemy.spriteHeight = parseInt(document.getElementById('enemySpriteHeight').value) || 0;
     enemy.size = parseInt(document.getElementById('enemySize').value) || 32;
     enemy.attackId = parseInt(document.getElementById('enemyAttackId').value);
     enemy.xp = parseInt(document.getElementById('enemyXp').value) || 0;
@@ -2350,10 +2281,10 @@ function renderEnemyPickerList(filter) {
     const cvs = document.createElement('canvas'); cvs.width = 28; cvs.height = 28;
     const img = images[en.spriteKey];
     if (img) {
-      const ss = en.spriteSize || 8;
+      const ss = en.spriteSize || 8, esh = en.spriteHeight || ss;
       const ctx = cvs.getContext('2d');
       ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(img, en.col * ss, en.row * ss, ss, ss, 0, 0, 28, 28);
+      ctx.drawImage(img, en.col * ss, en.row * esh, ss, esh, 0, 0, 28, 28);
     }
     const id = document.createElement('span'); id.className = 'tile-id'; id.textContent = en.enemyId;
     const name = document.createElement('span'); name.className = 'tile-name'; name.textContent = en.name;
@@ -2457,9 +2388,9 @@ function renderStaticSpawnList() {
     if (en) {
       const img = images[en.spriteKey];
       if (img) {
-        const ess = en.spriteSize || 8;
+        const ess = en.spriteSize || 8, esh = en.spriteHeight || ess;
         const ctx = cvs.getContext('2d'); ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(img, en.col * ess, en.row * ess, ess, ess, 0, 0, 20, 20);
+        ctx.drawImage(img, en.col * ess, en.row * esh, ess, esh, 0, 0, 20, 20);
       }
     }
     const name = document.createElement('span');
@@ -2497,9 +2428,9 @@ function drawEnemySpawnsOnOverlay() {
     if (en) {
       const img = images[en.spriteKey];
       if (img) {
-        const ess = en.spriteSize || 8;
+        const ess = en.spriteSize || 8, esh = en.spriteHeight || ess;
         ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(img, en.col * ess, en.row * ess, ess, ess, px, py, MAP_TILE_PX, MAP_TILE_PX);
+        ctx.drawImage(img, en.col * ess, en.row * esh, ess, esh, px, py, MAP_TILE_PX, MAP_TILE_PX);
       }
     }
     // Red diamond marker
@@ -2744,6 +2675,7 @@ function showAnimDetail(a) {
     sel.appendChild(opt);
   });
   document.getElementById('animSpriteSize').value = a.spriteSize || 8;
+  document.getElementById('animSpriteHeight').value = a.spriteHeight || 0;
   renderAnimSets(a);
   updateAnimPreview(a);
 }
@@ -2758,8 +2690,9 @@ function updateAnimPreview(a) {
   const img = images[a.spriteKey];
   if (!img) return;
   const ss = a.spriteSize || 8;
+  const sh = a.spriteHeight || ss;
   ctx.imageSmoothingEnabled = false;
-  ctx.drawImage(img, frame.col * ss, frame.row * ss, ss, ss, 0, 0, 64, 64);
+  ctx.drawImage(img, frame.col * ss, frame.row * sh, ss, sh, 0, 0, 64, 64);
 }
 
 function renderAnimSets(a) {
@@ -2767,6 +2700,7 @@ function renderAnimSets(a) {
   container.innerHTML = '';
   if (!a.animations) a.animations = {};
   const ss = a.spriteSize || 8;
+  const sh = a.spriteHeight || ss;
 
   ANIM_SET_NAMES.forEach(animName => {
     if (!a.animations[animName]) a.animations[animName] = { frames: [], durations: [] };
@@ -2825,7 +2759,7 @@ function renderAnimSets(a) {
       const img = images[a.spriteKey];
       if (img) {
         const ctx = cvs.getContext('2d'); ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(img, frame.col * ss, frame.row * ss, ss, ss, 0, 0, 32, 32);
+        ctx.drawImage(img, frame.col * ss, frame.row * sh, ss, sh, 0, 0, 32, 32);
       }
       cvs.addEventListener('click', () => {
         // Switch to the correct sprite sheet and enter pick mode
@@ -2836,7 +2770,7 @@ function renderAnimSets(a) {
         pickMode = true;
         document.querySelectorAll('.btn-pick').forEach(b => b.classList.remove('active'));
         // Scroll to the frame location on sheet
-        const px = frame.col * ss * SCALE, py = frame.row * ss * SCALE;
+        const px = frame.col * ss * SCALE, py = frame.row * sh * SCALE;
         const scroll = document.querySelector('.sheet-scroll');
         scroll.scrollTo({ left: px - scroll.clientWidth / 2, top: py - scroll.clientHeight / 2, behavior: 'smooth' });
       });
@@ -2881,6 +2815,7 @@ function applyAnimDetail() {
   if (!selectedAnim) return;
   selectedAnim.spriteKey = document.getElementById('animSpriteKey').value;
   selectedAnim.spriteSize = parseInt(document.getElementById('animSpriteSize').value) || 8;
+  selectedAnim.spriteHeight = parseInt(document.getElementById('animSpriteHeight').value) || 0;
   markDirty('animations');
   renderAnimSets(selectedAnim);
   updateAnimPreview(selectedAnim);
@@ -3713,7 +3648,8 @@ async function saveAll() {
 // ========== EVENTS ==========
 function bindEvents() {
   sheetSelect.addEventListener('change', () => { currentSheet = sheetSelect.value; renderSheet(); });
-  gridSizeSelect.addEventListener('change', () => { gridSize = parseInt(gridSizeSelect.value); renderSheet(); });
+  gridSizeSelect.addEventListener('change', () => { gridSize = parseInt(gridSizeSelect.value) || 8; renderSheet(); });
+  document.getElementById('gridHeight').addEventListener('change', () => { gridHeight = parseInt(document.getElementById('gridHeight').value) || 0; renderSheet(); });
 
   // Tabs
   document.querySelectorAll('.tab').forEach(btn => {
@@ -3725,10 +3661,10 @@ function bindEvents() {
   scrollEl.addEventListener('mousemove', (e) => {
     const rect = sheetCanvas.getBoundingClientRect();
     const col = Math.floor((e.clientX - rect.left) / (gridSize * SCALE));
-    const row = Math.floor((e.clientY - rect.top) / (gridSize * SCALE));
+    const row = Math.floor((e.clientY - rect.top) / (getGridH() * SCALE));
     hoverInfo.textContent = pickMode
       ? `Click to pick: Row ${row}, Col ${col}`
-      : `Row: ${row}  Col: ${col}  (px: ${col * gridSize}, ${row * gridSize})`;
+      : `Row: ${row}  Col: ${col}  (px: ${col * gridSize}, ${row * getGridH()})`;
     scrollEl.style.cursor = pickMode ? 'crosshair' : '';
   });
 
@@ -3737,7 +3673,7 @@ function bindEvents() {
     if (!pickMode) return;
     const rect = sheetCanvas.getBoundingClientRect();
     const col = Math.floor((e.clientX - rect.left) / (gridSize * SCALE));
-    const row = Math.floor((e.clientY - rect.top) / (gridSize * SCALE));
+    const row = Math.floor((e.clientY - rect.top) / (getGridH() * SCALE));
 
     if (activeTab === 'tiles' && selectedTile) {
       document.getElementById('detailRow').value = row;
@@ -3759,6 +3695,7 @@ function bindEvents() {
       document.getElementById('enemyCol').value = col;
       document.getElementById('enemySprite').value = currentSheet;
       document.getElementById('enemySpriteSize').value = gridSize;
+      document.getElementById('enemySpriteHeight').value = gridHeight;
       updateEnemyPreview();
       applyEnemyDetail();
       const btn = document.getElementById('pickEnemySpriteBtn');
@@ -3791,7 +3728,9 @@ function bindEvents() {
       }
       // Also sync sprite size to current grid size
       anim.spriteSize = gridSize;
+      anim.spriteHeight = gridHeight;
       document.getElementById('animSpriteSize').value = gridSize;
+      document.getElementById('animSpriteHeight').value = gridHeight;
       anim.animations[animName].frames[frameIdx] = { row, col };
       markDirty('animations');
       renderAnimSets(anim);
@@ -3953,14 +3892,15 @@ function bindEvents() {
   document.getElementById('goToEnemySheetBtn').addEventListener('click', () => {
     if (!selectedEnemy) return;
     const ss = parseInt(document.getElementById('enemySpriteSize').value) || 8;
+    const esh = parseInt(document.getElementById('enemySpriteHeight').value) || ss;
     if (selectedEnemy.spriteKey !== currentSheet) {
       currentSheet = selectedEnemy.spriteKey; sheetSelect.value = currentSheet; renderSheet();
     }
-    const px = selectedEnemy.col * ss * SCALE, py = selectedEnemy.row * ss * SCALE;
+    const px = selectedEnemy.col * ss * SCALE, py = selectedEnemy.row * esh * SCALE;
     const scroll = document.querySelector('.sheet-scroll');
     scroll.scrollTo({ left: px - scroll.clientWidth / 2, top: py - scroll.clientHeight / 2, behavior: 'smooth' });
   });
-  ['enemyRow','enemyCol','enemySprite','enemySpriteSize'].forEach(id => {
+  ['enemyRow','enemyCol','enemySprite','enemySpriteSize','enemySpriteHeight'].forEach(id => {
     document.getElementById(id).addEventListener('change', updateEnemyPreview);
     document.getElementById(id).addEventListener('input', updateEnemyPreview);
   });
@@ -4014,6 +3954,15 @@ function bindEvents() {
     if (newSize !== gridSize) {
       gridSize = newSize;
       gridSizeSelect.value = gridSize;
+      renderSheet();
+    }
+  });
+  document.getElementById('animSpriteHeight').addEventListener('change', () => {
+    applyAnimDetail();
+    const newH = parseInt(document.getElementById('animSpriteHeight').value) || 0;
+    if (newH !== gridHeight) {
+      gridHeight = newH;
+      document.getElementById('gridHeight').value = gridHeight;
       renderSheet();
     }
   });
@@ -4081,5 +4030,372 @@ function bindEvents() {
     }
   });
 }
+
+// ========== PROJECTILE SIMULATOR ==========
+const SIM = {
+  overlay: null, canvas: null, ctx: null,
+  bullets: [], animId: null, lastTime: 0,
+  mouseX: 0, mouseY: 0, mouseDown: false,
+  lastShotTime: 0, projGroup: null, attackPattern: null,
+  burstState: null, // for multi-burst tracking
+
+  parseAngle(str) {
+    if (str == null || str === '') return 0;
+    if (typeof str === 'number') return str;
+    const m = String(str).match(/\{\{(.+?)\}\}/);
+    if (!m) return parseFloat(str) || 0;
+    let expr = m[1].trim();
+    expr = expr.replace(/(\d*\.?\d*)PI/g, (_, c) => ((c === '' ? 1 : parseFloat(c)) * Math.PI).toString());
+    try { return Function('"use strict"; return (' + expr + ')')(); } catch { return 0; }
+  },
+
+  open(pgGroup, title) {
+    this.projGroup = pgGroup;
+    this.overlay = document.getElementById('projSimOverlay');
+    this.canvas = document.getElementById('simCanvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.bullets = [];
+    this.lastShotTime = 0;
+    this.burstState = null;
+    document.getElementById('simTitle').textContent = title || 'Projectile Simulator';
+    document.getElementById('simSubtitle').textContent = pgGroup ? `Group ${pgGroup.projectileGroupId}` : '';
+    this.overlay.style.display = 'flex';
+    this.resize();
+    this.bindEvents();
+    this.lastTime = performance.now();
+    this.loop();
+  },
+
+  close() {
+    this.overlay.style.display = 'none';
+    if (this.animId) cancelAnimationFrame(this.animId);
+    this.animId = null;
+    this.unbindEvents();
+  },
+
+  resize() {
+    const r = this.canvas.getBoundingClientRect();
+    this.canvas.width = r.width;
+    this.canvas.height = r.height;
+  },
+
+  _bound: {},
+  bindEvents() {
+    this._bound.mm = (e) => { const r = this.canvas.getBoundingClientRect(); this.mouseX = e.clientX - r.left; this.mouseY = e.clientY - r.top; };
+    this._bound.md = (e) => { if (e.button === 0) this.mouseDown = true; };
+    this._bound.mu = (e) => { if (e.button === 0) this.mouseDown = false; };
+    this._bound.rs = () => this.resize();
+    this.canvas.addEventListener('mousemove', this._bound.mm);
+    this.canvas.addEventListener('mousedown', this._bound.md);
+    this.canvas.addEventListener('mouseup', this._bound.mu);
+    window.addEventListener('resize', this._bound.rs);
+  },
+  unbindEvents() {
+    this.canvas.removeEventListener('mousemove', this._bound.mm);
+    this.canvas.removeEventListener('mousedown', this._bound.md);
+    this.canvas.removeEventListener('mouseup', this._bound.mu);
+    window.removeEventListener('resize', this._bound.rs);
+  },
+
+  getCenter() { return { x: this.canvas.width / 2, y: this.canvas.height / 2 }; },
+
+  getAngle(sx, sy, tx, ty) {
+    return Math.atan2(ty - sy, tx - sx) - Math.PI / 2;
+  },
+
+  fireProjGroup(pg, srcX, srcY, baseAngle) {
+    if (!pg || !pg.projectiles) return;
+    for (const proj of pg.projectiles) {
+      const posMode = proj.positionMode || 0;
+      let angle;
+      if (posMode === 0) { // TARGET_PLAYER - relative to aim direction
+        angle = baseAngle + this.parseAngle(proj.angle);
+      } else {
+        angle = this.parseAngle(proj.angle);
+      }
+      const flags = proj.flags || [];
+      const isParametric = flags.includes(12) || flags.includes(13);
+      const isOrbital = flags.includes(20);
+      const invert = flags.includes(13);
+
+      const b = {
+        x: srcX, y: srcY,
+        angle, magnitude: proj.magnitude || 3,
+        range: proj.range || 400,
+        maxRange: proj.range || 400,
+        size: proj.size || 16,
+        damage: proj.damage || 0,
+        amplitude: proj.amplitude || 0,
+        frequency: proj.frequency || 0,
+        timeStep: 0, invert,
+        isParametric, isOrbital,
+        orbitCX: srcX, orbitCY: srcY,
+        orbitRadius: Math.abs(proj.amplitude || 50),
+        orbitPhase: angle,
+        createdTime: performance.now()
+      };
+      this.bullets.push(b);
+    }
+  },
+
+  fireAttackPattern(pg, srcX, srcY, targetX, targetY) {
+    const mode = document.getElementById('simAimMode').value;
+    const shotCount = parseInt(document.getElementById('simShotCount').value) || 1;
+    const spread = parseFloat(document.getElementById('simSpread').value) || 0;
+    const burstCount = parseInt(document.getElementById('simBurstCount').value) || 1;
+    const burstDelay = parseInt(document.getElementById('simBurstDelay').value) || 100;
+    const burstAngleOff = parseFloat(document.getElementById('simBurstAngle').value) || 0;
+
+    const doFire = (burstIdx) => {
+      if (mode === 'RING') {
+        for (let s = 0; s < shotCount; s++) {
+          const angle = (s * 2 * Math.PI / shotCount) + burstAngleOff * burstIdx;
+          this.fireProjGroup(pg, srcX, srcY, angle);
+        }
+      } else if (mode === 'FIXED') {
+        const fixedAngle = 0 + burstAngleOff * burstIdx;
+        if (shotCount <= 1) {
+          this.fireProjGroup(pg, srcX, srcY, fixedAngle);
+        } else {
+          const half = spread / 2;
+          for (let s = 0; s < shotCount; s++) {
+            const t = shotCount > 1 ? s / (shotCount - 1) : 0.5;
+            const a = fixedAngle - half + t * spread;
+            this.fireProjGroup(pg, srcX, srcY, a);
+          }
+        }
+      } else { // PLAYER
+        let baseAngle = this.getAngle(srcX, srcY, targetX, targetY);
+        baseAngle += burstAngleOff * burstIdx;
+        if (shotCount <= 1) {
+          this.fireProjGroup(pg, srcX, srcY, baseAngle);
+        } else {
+          const half = spread / 2;
+          for (let s = 0; s < shotCount; s++) {
+            const t = shotCount > 1 ? s / (shotCount - 1) : 0.5;
+            const a = baseAngle - half + t * spread;
+            this.fireProjGroup(pg, srcX, srcY, a);
+          }
+        }
+      }
+    };
+
+    // Handle burst
+    if (burstCount <= 1) {
+      doFire(0);
+    } else {
+      for (let b = 0; b < burstCount; b++) {
+        setTimeout(() => doFire(b), b * burstDelay);
+      }
+    }
+  },
+
+  updateBullet(b, dt) {
+    const scale = dt * 64;
+    if (b.isOrbital) {
+      b.orbitPhase += (b.frequency * scale) * Math.PI / 180;
+      b.x = b.orbitCX + b.orbitRadius * Math.cos(b.orbitPhase);
+      b.y = b.orbitCY + b.orbitRadius * Math.sin(b.orbitPhase);
+      b.range -= b.orbitRadius * Math.abs((b.frequency * scale) * Math.PI / 180);
+    } else if (b.isParametric) {
+      const prevOff = b.amplitude * Math.sin(b.timeStep * Math.PI / 180);
+      b.timeStep = (b.timeStep + b.frequency * scale) % 360;
+      const currOff = b.amplitude * Math.sin(b.timeStep * Math.PI / 180);
+      const perpDelta = (currOff - prevOff) * (b.invert ? -1 : 1);
+      const fwdX = Math.sin(b.angle) * b.magnitude * scale;
+      const fwdY = Math.cos(b.angle) * b.magnitude * scale;
+      const perpX = Math.cos(b.angle);
+      const perpY = -Math.sin(b.angle);
+      b.x += fwdX + perpX * perpDelta;
+      b.y += fwdY + perpY * perpDelta;
+      b.range -= b.magnitude * scale;
+    } else {
+      const vx = Math.sin(b.angle) * b.magnitude * scale;
+      const vy = Math.cos(b.angle) * b.magnitude * scale;
+      b.x += vx;
+      b.y += vy;
+      b.range -= Math.sqrt(vx * vx + vy * vy);
+    }
+  },
+
+  loop() {
+    const now = performance.now();
+    const dt = Math.min((now - this.lastTime) / 1000, 0.1);
+    this.lastTime = now;
+    const ctx = this.ctx;
+    const W = this.canvas.width, H = this.canvas.height;
+    const showTrails = document.getElementById('simShowTrails').checked;
+
+    // Clear
+    if (showTrails) {
+      ctx.fillStyle = 'rgba(10,10,18,0.15)';
+      ctx.fillRect(0, 0, W, H);
+    } else {
+      ctx.fillStyle = '#0a0a12';
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    // Grid
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    const gs = 32;
+    for (let x = (W / 2) % gs; x < W; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = (H / 2) % gs; y < H; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+    const center = this.getCenter();
+    const simMode = document.getElementById('simMode').value;
+
+    // Draw player/enemy source
+    ctx.beginPath();
+    ctx.arc(center.x, center.y, 14, 0, Math.PI * 2);
+    ctx.fillStyle = simMode === 'player' ? 'rgba(64,192,64,0.6)' : 'rgba(224,64,64,0.6)';
+    ctx.fill();
+    ctx.strokeStyle = simMode === 'player' ? '#4c4' : '#e44';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // In enemy mode, draw a target dummy
+    if (simMode === 'enemy') {
+      ctx.beginPath();
+      ctx.arc(this.mouseX, this.mouseY, 10, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(64,128,224,0.4)';
+      ctx.fill();
+      ctx.strokeStyle = '#48e';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.fillStyle = '#48e';
+      ctx.font = '9px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('target', this.mouseX, this.mouseY - 14);
+    }
+
+    // Shooting
+    const dex = parseInt(document.getElementById('simDex').value) || 0;
+    document.getElementById('simDexVal').textContent = dex;
+    const dexRate = (6.5 * (dex + 17.3)) / 75;
+    const cooldownMs = 1000 / dexRate;
+
+    if (this.projGroup) {
+      if (simMode === 'player') {
+        if (this.mouseDown && now - this.lastShotTime > cooldownMs) {
+          const angle = this.getAngle(center.x, center.y, this.mouseX, this.mouseY);
+          this.fireProjGroup(this.projGroup, center.x, center.y, angle);
+          this.lastShotTime = now;
+        }
+      } else {
+        // Enemy mode: auto-fire with attack pattern controls
+        if (now - this.lastShotTime > cooldownMs) {
+          this.fireAttackPattern(this.projGroup, center.x, center.y, this.mouseX, this.mouseY);
+          this.lastShotTime = now;
+        }
+      }
+    }
+
+    // Update and draw bullets
+    const angleOffset = this.projGroup ? this.parseAngle(this.projGroup.angleOffset) : 0;
+    const alive = [];
+    for (const b of this.bullets) {
+      this.updateBullet(b, dt);
+      if (b.range <= 0 || now - b.createdTime > 10000) continue;
+      if (b.x < -100 || b.x > W + 100 || b.y < -100 || b.y > H + 100) continue;
+      alive.push(b);
+
+      // Draw bullet
+      const sz = b.size * 0.5;
+      const tfAngle = Math.PI / 2;
+      const rot = -b.angle + tfAngle + (angleOffset > 0 ? angleOffset : 0);
+
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(rot);
+
+      // Range fade
+      const life = b.range / b.maxRange;
+      const alpha = Math.max(0.2, life);
+
+      // Colored rectangle representing the sprite
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = b.isParametric ? '#80c0ff' : b.isOrbital ? '#ff80ff' : '#ffee80';
+      ctx.fillRect(-sz / 2, -sz / 2, sz, sz);
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(-sz / 2, -sz / 2, sz, sz);
+
+      // Direction indicator line
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -sz * 0.7);
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+      ctx.stroke();
+
+      ctx.globalAlpha = 1;
+      ctx.restore();
+    }
+    this.bullets = alive;
+
+    // HUD text
+    ctx.fillStyle = '#888';
+    ctx.font = '11px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText(`Bullets: ${alive.length}  |  Fire rate: ${dexRate.toFixed(1)}/s  |  Cooldown: ${cooldownMs.toFixed(0)}ms`, 8, 16);
+    if (simMode === 'player') {
+      ctx.fillText('Hold left click to fire toward cursor', 8, 30);
+    } else {
+      ctx.fillText('Enemy auto-fires at target (move cursor to reposition target)', 8, 30);
+    }
+
+    // Show/hide enemy-specific controls
+    const isEnemy = simMode === 'enemy';
+    document.getElementById('simAimModeLabel').style.display = isEnemy ? '' : 'none';
+    document.getElementById('simShotCountLabel').style.display = isEnemy ? '' : 'none';
+    document.getElementById('simSpreadLabel').style.display = isEnemy ? '' : 'none';
+    document.getElementById('simBurstLabel').style.display = isEnemy ? '' : 'none';
+
+    this.animId = requestAnimationFrame(() => this.loop());
+  }
+};
+
+function openProjSimulator(pgGroup, title) {
+  SIM.open(pgGroup, title);
+}
+
+// Bind simulator buttons
+document.getElementById('simCloseBtn').addEventListener('click', () => SIM.close());
+document.getElementById('projSimOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) SIM.close();
+});
+document.getElementById('simPgBtn').addEventListener('click', () => {
+  if (!selectedPgTab) return;
+  applyPgTabDetail(); // Save current edits first
+  openProjSimulator(selectedPgTab, `Projectile Group ${selectedPgTab.projectileGroupId}`);
+});
+
+document.getElementById('simEnemyBtn').addEventListener('click', () => {
+  if (!selectedEnemy) return;
+  applyEnemyDetail();
+  // Find first attack's projectile group across all phases
+  const phases = selectedEnemy.phases || [];
+  let pg = null, attack = null;
+  for (const phase of phases) {
+    for (const atk of (phase.attacks || [])) {
+      pg = projGroups.find(g => g.projectileGroupId === atk.projectileGroupId);
+      if (pg) { attack = atk; break; }
+    }
+    if (pg) break;
+  }
+  if (!pg) { alert('No attack with a valid projectile group found in this enemy\'s phases.'); return; }
+  // Pre-fill enemy attack controls
+  document.getElementById('simMode').value = 'enemy';
+  document.getElementById('simAimMode').value = attack.aimMode || 'PLAYER';
+  document.getElementById('simShotCount').value = attack.shotCount || 1;
+  document.getElementById('simSpread').value = attack.spreadAngle || 0;
+  document.getElementById('simBurstCount').value = attack.burstCount || 1;
+  document.getElementById('simBurstDelay').value = attack.burstDelayMs || 100;
+  document.getElementById('simBurstAngle').value = attack.angleOffsetPerBurst || 0;
+  // Set dex from enemy stats
+  const edex = selectedEnemy.stats ? selectedEnemy.stats.dex : 10;
+  document.getElementById('simDex').value = edex;
+  openProjSimulator(pg, `${selectedEnemy.name} — Attack (Group ${pg.projectileGroupId})`);
+});
 
 init();

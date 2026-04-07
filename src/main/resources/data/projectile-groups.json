@@ -1792,9 +1792,9 @@
 			{
 				"projectileId": 36,
 				"positionMode": 0,
-				"damage": 35,
+				"damage": 30,
 				"angle": 0,
-				"range": 150,
+				"range": 180,
 				"size": 24,
 				"magnitude": 2.5,
 				"flags": []
@@ -1802,51 +1802,41 @@
 			{
 				"projectileId": 36,
 				"positionMode": 0,
-				"damage": 35,
+				"damage": 30,
 				"angle": 0.25,
-				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"range": 180,
+				"size": 24,
+				"magnitude": 2.5,
 				"flags": []
 			},
 			{
 				"projectileId": 36,
 				"positionMode": 0,
-				"damage": 35,
-				"angle": "{{PI/12}}",
-				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"damage": 30,
+				"angle": "0.15",
+				"range": 180,
+				"size": 24,
+				"magnitude": 2.5,
 				"flags": []
 			},
 			{
 				"projectileId": 36,
 				"positionMode": 0,
-				"damage": 35,
-				"angle": 0.25,
-				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"damage": 30,
+				"angle": "-0.15",
+				"range": 180,
+				"size": 24,
+				"magnitude": 2.5,
 				"flags": []
 			},
 			{
 				"projectileId": 36,
 				"positionMode": 0,
-				"damage": 35,
-				"angle": -0.2618,
+				"damage": 30,
+				"angle": "-0.25",
 				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
-				"flags": []
-			},
-			{
-				"projectileId": 36,
-				"positionMode": 0,
-				"damage": 35,
-				"angle": -0.011799999999999977,
-				"range": 150,
-				"size": 8,
-				"magnitude": 4.5,
+				"size": 24,
+				"magnitude": 2.5,
 				"flags": []
 			}
 		],
@@ -5801,8 +5791,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": 14,
-				"frequency": 25,
+				"amplitude": -10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					12
@@ -5815,8 +5805,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": -14,
-				"frequency": 25,
+				"amplitude": -10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					12
@@ -5864,7 +5854,7 @@
 	{
 		"projectileGroupId": 81,
 		"row": 14,
-		"col": 14,
+		"col": 5,
 		"spriteKey": "rotmg-projectiles.png",
 		"angleOffset": "{{PI/4}}",
 		"projectiles": [
@@ -5875,8 +5865,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": 5,
-				"frequency": 25,
+				"amplitude": 10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					12
@@ -5889,8 +5879,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": -5,
-				"frequency": 25,
+				"amplitude": -10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					12

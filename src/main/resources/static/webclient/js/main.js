@@ -1422,7 +1422,7 @@ function getItemSpriteUrl(item) {
     const itemDef = game.itemData[item.itemId] || item;
     if (itemDef.spriteKey) {
         const url = renderer.getSpriteDataUrl(itemDef.spriteKey, itemDef.col || 0,
-            itemDef.row || 0, itemDef.spriteSize || 8);
+            itemDef.row || 0, itemDef.spriteSize || 8, itemDef.spriteHeight || 0);
         if (url) { spriteCache[cacheKey] = url; return url; }
     }
     return null;

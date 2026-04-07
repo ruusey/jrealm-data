@@ -39,14 +39,8 @@
       <label>Sheet:
         <select id="sheetSelect"></select>
       </label>
-      <label>Grid:
-        <select id="gridSize">
-          <option value="8" selected>8x8</option>
-          <option value="16">16x16</option>
-          <option value="32">32x32</option>
-          <option value="64">64x64</option>
-        </select>
-      </label>
+      <label>Grid W: <input type="number" id="gridSize" min="1" max="128" value="8" style="width:40px;font-size:12px"></label>
+      <label>H: <input type="number" id="gridHeight" min="0" max="128" value="0" style="width:40px;font-size:12px" title="0 = same as width"></label>
       <button id="saveBtn" class="btn-save" disabled>Save All</button>
       <span id="saveStatus"></span>
       <button id="logoutBtn" style="margin-left:auto;background:#533;color:#fcc;border:1px solid #744;padding:4px 12px;border-radius:3px;cursor:pointer;font-size:12px;">Logout</button>
@@ -384,7 +378,8 @@
                 <label>Sprite: <select id="enemySprite"></select></label>
                 <label>Row: <input type="number" id="enemyRow" min="0"></label>
                 <label>Col: <input type="number" id="enemyCol" min="0"></label>
-                <label>Sprite Size: <select id="enemySpriteSize"><option value="8">8</option><option value="16">16</option><option value="32">32</option><option value="64">64</option></select></label>
+                <label>Sprite W: <input type="number" id="enemySpriteSize" min="1" max="128" value="8" style="width:50px"></label>
+                <label>Sprite H: <input type="number" id="enemySpriteHeight" min="0" max="128" value="0" style="width:50px" title="0 = same as width"></label>
                 <label>Render Size: <input type="number" id="enemySize" min="8"></label>
                 <label>Attack ID: <input type="number" id="enemyAttackId">
                     <span id="attackIdInfo" style="font-size:10px;color:#888"></span>
@@ -424,6 +419,7 @@
 
             <div class="detail-actions" style="margin-top:8px">
                 <button id="applyEnemyBtn" class="btn-apply">Apply</button>
+                <button id="simEnemyBtn" class="btn-pick" style="background:#604;border-color:#906;">Simulate</button>
                 <button id="pickEnemySpriteBtn" class="btn-pick">Pick Sprite</button>
                 <button id="goToEnemySheetBtn" class="btn-pick">Go to Sheet</button>
                 <button id="deleteEnemyBtn" class="btn-delete">Delete</button>
@@ -464,6 +460,7 @@
             <div class="detail-actions" style="margin-top:8px">
                 <button id="applyPgDetailBtn" class="btn-apply">Apply</button>
                 <button id="addPgProjBtn" class="btn-add">+ Add Projectile</button>
+                <button id="simPgBtn" class="btn-pick" style="background:#604;border-color:#906;">Simulate</button>
                 <button id="pickPgSpriteBtn" class="btn-pick">Pick Sprite</button>
                 <button id="goToPgSheetBtn" class="btn-pick">Go to Sheet</button>
                 <button id="deletePgBtn" class="btn-delete">Delete</button>
@@ -488,12 +485,8 @@
         <label>Object ID: <input type="number" id="animObjId" readonly></label>
         <label>Type: <input type="text" id="animObjType" readonly></label>
         <label>Sprite: <select id="animSpriteKey"></select></label>
-        <label>Sprite Size: <select id="animSpriteSize">
-          <option value="8">8</option>
-          <option value="16">16</option>
-          <option value="32">32</option>
-          <option value="64">64</option>
-        </select></label>
+        <label>Sprite W: <input type="number" id="animSpriteSize" min="1" max="128" value="8" style="width:50px"></label>
+        <label>Sprite H: <input type="number" id="animSpriteHeight" min="0" max="128" value="0" style="width:50px" title="0 = same as width"></label>
       </div>
       <div class="detail-preview" style="margin:6px 0">
         <span>Preview:</span>
@@ -668,6 +661,52 @@
       <button id="enemyPickerCloseBtn" class="tg-remove" style="font-size:20px">&times;</button>
     </div>
     <div class="picker-list" id="enemyPickerList"></div>
+  </div>
+</div>
+<!-- Projectile Simulator Modal -->
+<div id="projSimOverlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;">
+  <div style="background:#1a1a2e;border:2px solid #444;border-radius:8px;width:90vw;max-width:1100px;height:85vh;display:flex;flex-direction:column;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:12px;padding:8px 12px;border-bottom:1px solid #333;flex-shrink:0;">
+      <h3 style="margin:0;color:#e94560;font-size:14px;" id="simTitle">Projectile Simulator</h3>
+      <span style="color:#888;font-size:11px;" id="simSubtitle"></span>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:12px;">
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;">
+          DEX: <input type="range" id="simDex" min="0" max="75" value="30" style="width:100px;">
+          <span id="simDexVal" style="color:#e0e0e0;min-width:24px;">30</span>
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;">
+          <input type="checkbox" id="simShowTrails"> Trails
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;">
+          Mode:
+          <select id="simMode" style="font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px 4px;">
+            <option value="player">Player (click to aim)</option>
+            <option value="enemy">Enemy (auto-attack)</option>
+          </select>
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simAimModeLabel">
+          Aim:
+          <select id="simAimMode" style="font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px 4px;">
+            <option value="PLAYER">PLAYER</option>
+            <option value="RING">RING</option>
+            <option value="FIXED">FIXED</option>
+          </select>
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simShotCountLabel">
+          Shots: <input type="number" id="simShotCount" min="1" max="32" value="1" style="width:40px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;">
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simSpreadLabel">
+          Spread: <input type="number" id="simSpread" min="0" max="6.28" step="0.05" value="0" style="width:50px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;">
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simBurstLabel">
+          Burst: <input type="number" id="simBurstCount" min="1" max="20" value="1" style="width:35px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;">
+          <input type="number" id="simBurstDelay" min="0" max="2000" step="10" value="100" style="width:45px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;" title="Burst delay ms">
+          <input type="number" id="simBurstAngle" min="-1" max="1" step="0.05" value="0" style="width:45px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;" title="Angle offset per burst">
+        </label>
+        <button id="simCloseBtn" style="background:#533;color:#fcc;border:1px solid #744;padding:4px 10px;border-radius:3px;cursor:pointer;font-size:12px;">Close</button>
+      </div>
+    </div>
+    <canvas id="simCanvas" style="flex:1;background:#0a0a12;cursor:crosshair;"></canvas>
   </div>
 </div>
 <script src="editor.js"></script>

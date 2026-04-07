@@ -749,7 +749,8 @@
 		"stats": {
 			"hp": 200,
 			"dex": 25
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 21,
@@ -1266,7 +1267,8 @@
 			"hp": 300,
 			"def": 5,
 			"dex": 15
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 31,
@@ -2056,7 +2058,8 @@
 			"hp": 400,
 			"def": 4,
 			"dex": 16
-		}
+		},
+		"phases": []
 	},
 	{
 		"enemyId": 45,
@@ -2530,14 +2533,14 @@
 						"projectileGroupId": 63,
 						"cooldownMs": 1000,
 						"burstCount": 2,
-						"burstDelayMs": 200,
+						"burstDelayMs": 50,
 						"angleOffsetPerBurst": 0.26
 					},
 					{
 						"projectileGroupId": 71,
 						"cooldownMs": 500,
-						"burstCount": 3,
-						"burstDelayMs": 80,
+						"burstCount": 2,
+						"burstDelayMs": 150,
 						"predictive": true
 					}
 				]
@@ -2554,8 +2557,8 @@
 					{
 						"projectileGroupId": 63,
 						"cooldownMs": 400,
-						"burstCount": 4,
-						"burstDelayMs": 100,
+						"burstCount": 2,
+						"burstDelayMs": 200,
 						"angleOffsetPerBurst": 0.13,
 						"predictive": true
 					}
@@ -2622,21 +2625,21 @@
 					{
 						"projectileGroupId": 63,
 						"cooldownMs": 800,
-						"burstCount": 3,
+						"burstCount": 2,
 						"burstDelayMs": 150,
 						"angleOffsetPerBurst": 0.13
 					},
 					{
 						"projectileGroupId": 66,
 						"cooldownMs": 600,
-						"burstCount": 3,
-						"burstDelayMs": 100
+						"burstCount": 2,
+						"burstDelayMs": 300
 					},
 					{
 						"projectileGroupId": 71,
-						"cooldownMs": 400,
+						"cooldownMs": 600,
 						"burstCount": 2,
-						"burstDelayMs": 80
+						"burstDelayMs": 450
 					}
 				]
 			}

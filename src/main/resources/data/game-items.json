@@ -2303,7 +2303,7 @@
 		"name": "Staff of the Cosmic Whole",
 		"description": "A golden staff of transcendent understanding, made from crystals present at the formation of the universe.",
 		"damage": {
-			"projectileGroupId": 82,
+			"projectileGroupId": 81,
 			"min": 60,
 			"max": 100
 		},
@@ -2311,7 +2311,17 @@
 		"tier": 12,
 		"targetSlot": 0,
 		"targetClass": -5,
-		"fameBonus": 6
+		"fameBonus": 6,
+		"stats": {
+			"hp": 0,
+			"mp": 0,
+			"att": 0,
+			"def": 0,
+			"spd": 0,
+			"dex": 0,
+			"vit": 0,
+			"wis": 0
+		}
 	},
 	{
 		"itemId": 134,
@@ -2347,7 +2357,17 @@
 		"tier": 14,
 		"targetSlot": 0,
 		"targetClass": -5,
-		"fameBonus": 8
+		"fameBonus": 8,
+		"stats": {
+			"hp": 0,
+			"mp": 0,
+			"att": 0,
+			"def": 0,
+			"spd": 0,
+			"dex": 0,
+			"vit": 0,
+			"wis": 0
+		}
 	},
 	{
 		"itemId": 136,
