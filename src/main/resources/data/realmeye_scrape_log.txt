@@ -1,0 +1,106 @@
+=== RealmEye Monster Scrape Log ===
+Date: 2026-04-07T00:47:58.809886
+
+Source: https://www.realmeye.com/wiki/monster-index
+Note: RealmEye returns HTTP 204 to direct requests/scrapers.
+Data was collected using WebFetch tool which can access the pages.
+
+=== INDEX STATS ===
+Total monsters in index: ~900+ (estimated from full A-Z listing)
+Candidates selected: 61
+Monsters with usable combat data: 59
+Monsters without attacks: 2
+Total attack entries: 168
+
+=== DIFFICULTY BREAKDOWN ===
+Low tier: 14
+Mid tier: 23
+High tier: 11
+Boss tier: 13
+
+=== SELECTION CRITERIA ===
+Monsters were selected to represent:
+- Beach/lowlands enemies (Pirate, Snake, Elf Archer, etc.)
+- Mid-range enemies (Dwarf King, Orc King, etc.)
+- Godlands enemies (Medusa, Beholder, White Demon, etc.)
+- Quest monsters (Ghost King, Lich, Ent Ancient, etc.)
+- Event bosses (Cube God, Skull Shrine, Grand Sphinx, etc.)
+- Dungeon bosses (Arachna, Stheno, Malphas, Septavius, etc.)
+- Endgame bosses (Oryx 1, Oryx 2, Marble Colossus, Void Entity)
+
+=== SKIPPED / NOTES ===
+  Scorpion Queen: no attacks (does not attack directly)
+  Dr Terrible: no attacks (does not attack directly)
+  Scorpion Queen: included but has no attacks (does not attack)
+  Dr Terrible: included but has no direct attacks (spawns turrets)
+
+=== DATA NOTES ===
+- HP values are base HP (no scaling applied)
+- Speed from RealmEye is in tiles/sec; stored as range for game use
+- rateOfFire is set to 100 (default) as RealmEye uses cooldown-based timing
+- Amplitude/frequency extracted from comments where available (wavy shots)
+- 'Piercing' and 'Armor Piercing' are NOT counted as status effects
+- Pattern classification: aimed, spread, ring, bomb, wave, boomerang, spiral, parametric
+
+=== MONSTERS INCLUDED ===
+  [LOW ] Bandit Leader                            HP=    280 DEF=  2 EXP=    88 attacks=2
+  [LOW ] Cyclops King                             HP=    350 DEF= 10 EXP=     3 attacks=1
+  [LOW ] Dwarf King                               HP=    320 DEF=  3 EXP=   102 attacks=1
+  [LOW ] Elf Archer                               HP=     22 DEF=  2 EXP=     6 attacks=1
+  [LOW ] Fire Sprite                              HP=    100 DEF=  0 EXP=    20 attacks=1
+  [LOW ] Goblin Mage                              HP=    280 DEF=  0 EXP=    78 attacks=2
+  [LOW ] Hobbit Mage                              HP=    200 DEF=  2 EXP=    64 attacks=1
+  [LOW ] Ice Sprite                               HP=    100 DEF=  0 EXP=    20 attacks=1
+  [LOW ] Night Elf King                           HP=    180 DEF=  5 EXP=    36 attacks=1
+  [LOW ] Orc King                                 HP=    240 DEF=  3 EXP=    48 attacks=1
+  [LOW ] Pirate                                   HP=      5 DEF=  0 EXP=     2 attacks=1
+  [LOW ] Sandsman King                            HP=    270 DEF=  2 EXP=    86 attacks=1
+  [LOW ] Scorpion Queen                           HP=    100 DEF=  0 EXP=    40 attacks=0
+  [LOW ] Snake                                    HP=      5 DEF=  0 EXP=     2 attacks=1
+  [MID ] Arachna the Spider Queen                 HP=   3200 DEF=  4 EXP=   600 attacks=3
+  [MID ] Beholder                                 HP=   1500 DEF= 12 EXP=   200 attacks=1
+  [MID ] Cyclops God                              HP=   4500 DEF=  8 EXP=   195 attacks=5
+  [MID ] Deathmage                                HP=    900 DEF= 11 EXP=   270 attacks=1
+  [MID ] Djinn                                    HP=   1000 DEF= 12 EXP=   200 attacks=1
+  [MID ] Dreadstump the Pirate King               HP=   1000 DEF=  6 EXP=   200 attacks=4
+  [MID ] Ent Ancient                              HP=   1200 DEF= 15 EXP=  1200 attacks=3
+  [MID ] Ent God                                  HP=   1000 DEF= 18 EXP=   200 attacks=1
+  [MID ] Flayer God                               HP=   1400 DEF= 12 EXP=   560 attacks=2
+  [MID ] Flying Brain                             HP=   1000 DEF= 12 EXP=   200 attacks=1
+  [MID ] Ghost God                                HP=   1000 DEF= 12 EXP=   200 attacks=1
+  [MID ] Great Lizard                             HP=    500 DEF=  4 EXP=   180 attacks=2
+  [MID ] Horned Drake                             HP=   1270 DEF=  4 EXP=   456 attacks=1
+  [MID ] Leviathan                                HP=   2000 DEF= 20 EXP=   600 attacks=2
+  [MID ] Lich                                     HP=   1100 DEF=  7 EXP=  1165 attacks=2
+  [MID ] Lizard God                               HP=    900 DEF= 12 EXP=   320 attacks=1
+  [MID ] Medusa                                   HP=   2000 DEF= 18 EXP=   200 attacks=2
+  [MID ] Oasis Giant                              HP=   3000 DEF= 15 EXP=   325 attacks=1
+  [MID ] Ogre King                                HP=    700 DEF=  7 EXP=   320 attacks=2
+  [MID ] Phoenix Lord                             HP=   3000 DEF= 15 EXP=   195 attacks=1
+  [MID ] Slime God                                HP=   1000 DEF= 12 EXP=   200 attacks=2
+  [MID ] Sprite God                               HP=   1500 DEF= 12 EXP=   200 attacks=2
+  [MID ] White Demon                              HP=   1000 DEF= 12 EXP=   200 attacks=1
+  [HIGH] Archdemon Malphas                        HP=  20000 DEF= 20 EXP=  6000 attacks=5
+  [HIGH] Crystal Prisoner                         HP=  28000 DEF= 25 EXP=  5000 attacks=4
+  [HIGH] Davy Jones                               HP=  26250 DEF= 35 EXP= 15000 attacks=2
+  [HIGH] Ghost King                               HP=   5000 DEF=  7 EXP=  1200 attacks=1
+  [HIGH] Gulpord the Slime God                    HP=  20000 DEF= 20 EXP=  8000 attacks=3
+  [HIGH] Limon the Sprite Goddess                 HP=  12000 DEF= 16 EXP=  2000 attacks=6
+  [HIGH] Pentaract Tower                          HP=  15000 DEF=  0 EXP=    40 attacks=2
+  [HIGH] Red Beehemoth                            HP=  20000 DEF= 25 EXP= 20000 attacks=5
+  [HIGH] Red Demon                                HP=   7000 DEF= 12 EXP=   234 attacks=2
+  [HIGH] Septavius the Ghost God                  HP=  12000 DEF= 12 EXP=  4000 attacks=7
+  [HIGH] Stheno the Snake Queen                   HP=   9000 DEF= 19 EXP=  3000 attacks=3
+  [BOSS] Avatar of the Forgotten King             HP= 125000 DEF= 90 EXP= 60000 attacks=6
+  [BOSS] Cube God                                 HP=  45000 DEF= 40 EXP= 25000 attacks=2
+  [BOSS] Dr Terrible                              HP=  33750 DEF= 25 EXP=  6000 attacks=0
+  [BOSS] Esben the Unwilling                      HP=  45000 DEF= 20 EXP= 30000 attacks=4
+  [BOSS] Grand Sphinx                             HP=  65000 DEF= 25 EXP= 25000 attacks=3
+  [BOSS] Hermit God                               HP=  55000 DEF= 35 EXP= 25000 attacks=3
+  [BOSS] Lord of the Lost Lands                   HP=  60000 DEF= 30 EXP= 35000 attacks=2
+  [BOSS] Marble Colossus                          HP= 187500 DEF= 50 EXP= 80000 attacks=13
+  [BOSS] Oryx the Mad God 1                       HP=  80000 DEF= 45 EXP= 25000 attacks=9
+  [BOSS] Oryx the Mad God 2                       HP= 100000 DEF= 60 EXP= 50000 attacks=11
+  [BOSS] Skull Shrine                             HP=  45000 DEF= 40 EXP= 25000 attacks=1
+  [BOSS] Thessal the Mermaid Goddess              HP=  51750 DEF= 60 EXP= 30000 attacks=4
+  [BOSS] Void Entity                              HP= 300000 DEF= 60 EXP= 80000 attacks=13

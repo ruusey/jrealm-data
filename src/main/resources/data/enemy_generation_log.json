@@ -1,0 +1,824 @@
+[
+	{
+		"enemyId": 71,
+		"name": "Bandit Leader",
+		"realmeyeSource": "/wiki/bandit-leader",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 0,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			113,
+			114
+		],
+		"notes": "Based on Bandit Leader from RealmEye. HP=280, DEF=2, 2 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 72,
+		"name": "Cyclops King",
+		"realmeyeSource": "/wiki/cyclops-king",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 1,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			115
+		],
+		"notes": "Based on Cyclops King from RealmEye. HP=350, DEF=10, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 73,
+		"name": "Dwarf King",
+		"realmeyeSource": "/wiki/dwarf-king",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 2,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			116
+		],
+		"notes": "Based on Dwarf King from RealmEye. HP=320, DEF=3, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 74,
+		"name": "Elf Archer",
+		"realmeyeSource": "/wiki/elf-archer",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 3,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			117
+		],
+		"notes": "Based on Elf Archer from RealmEye. HP=22, DEF=2, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 75,
+		"name": "Fire Sprite",
+		"realmeyeSource": "/wiki/fire-sprite",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 4,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			118
+		],
+		"notes": "Based on Fire Sprite from RealmEye. HP=100, DEF=0, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 76,
+		"name": "Goblin Mage",
+		"realmeyeSource": "/wiki/goblin-mage",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 5,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			119,
+			120
+		],
+		"notes": "Based on Goblin Mage from RealmEye. HP=280, DEF=0, 2 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 77,
+		"name": "Hobbit Mage",
+		"realmeyeSource": "/wiki/hobbit-mage",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 6,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			121
+		],
+		"notes": "Based on Hobbit Mage from RealmEye. HP=200, DEF=2, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 78,
+		"name": "Ice Sprite",
+		"realmeyeSource": "/wiki/ice-sprite",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 7,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			122
+		],
+		"notes": "Based on Ice Sprite from RealmEye. HP=100, DEF=0, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 79,
+		"name": "Night Elf King",
+		"realmeyeSource": "/wiki/night-elf-king",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 8,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			123
+		],
+		"notes": "Based on Night Elf King from RealmEye. HP=180, DEF=5, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 80,
+		"name": "Orc King",
+		"realmeyeSource": "/wiki/orc-king",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 9,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			124
+		],
+		"notes": "Based on Orc King from RealmEye. HP=240, DEF=3, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 81,
+		"name": "Pirate",
+		"realmeyeSource": "/wiki/pirate",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 10,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			125
+		],
+		"notes": "Based on Pirate from RealmEye. HP=5, DEF=0, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 82,
+		"name": "Sandsman King",
+		"realmeyeSource": "/wiki/sandsman-king",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 11,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			126
+		],
+		"notes": "Based on Sandsman King from RealmEye. HP=270, DEF=2, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 83,
+		"name": "Snake",
+		"realmeyeSource": "/wiki/snake",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 20,
+		"spriteCol": 12,
+		"difficulty": "low",
+		"projectileGroupIds": [
+			127
+		],
+		"notes": "Based on Snake from RealmEye. HP=5, DEF=0, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 84,
+		"name": "Arachna the Spider Queen",
+		"realmeyeSource": "/wiki/arachna-the-spider-queen",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 0,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			128,
+			129,
+			130
+		],
+		"notes": "Based on Arachna the Spider Queen from RealmEye. HP=3200, DEF=4, 3 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 85,
+		"name": "Beholder",
+		"realmeyeSource": "/wiki/beholder",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 1,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			131
+		],
+		"notes": "Based on Beholder from RealmEye. HP=1500, DEF=12, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 86,
+		"name": "Cyclops God",
+		"realmeyeSource": "/wiki/cyclops-god",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 2,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			132,
+			133,
+			134
+		],
+		"notes": "Based on Cyclops God from RealmEye. HP=4500, DEF=8, 3 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 87,
+		"name": "Deathmage",
+		"realmeyeSource": "/wiki/deathmage",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 3,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			135
+		],
+		"notes": "Based on Deathmage from RealmEye. HP=900, DEF=11, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 88,
+		"name": "Djinn",
+		"realmeyeSource": "/wiki/djinn",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 4,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			136
+		],
+		"notes": "Based on Djinn from RealmEye. HP=1000, DEF=12, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 89,
+		"name": "Dreadstump the Pirate King",
+		"realmeyeSource": "/wiki/dreadstump-the-pirate-king",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 5,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			137,
+			138,
+			139
+		],
+		"notes": "Based on Dreadstump the Pirate King from RealmEye. HP=1000, DEF=6, 3 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 90,
+		"name": "Ent Ancient",
+		"realmeyeSource": "/wiki/ent-ancient",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 6,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			140,
+			141,
+			142
+		],
+		"notes": "Based on Ent Ancient from RealmEye. HP=1200, DEF=15, 3 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 91,
+		"name": "Ent God",
+		"realmeyeSource": "/wiki/ent-god",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 7,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			143
+		],
+		"notes": "Based on Ent God from RealmEye. HP=1000, DEF=18, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 92,
+		"name": "Flayer God",
+		"realmeyeSource": "/wiki/flayer-god",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 8,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			144,
+			145
+		],
+		"notes": "Based on Flayer God from RealmEye. HP=1400, DEF=12, 2 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 93,
+		"name": "Flying Brain",
+		"realmeyeSource": "/wiki/flying-brain",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 9,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			146
+		],
+		"notes": "Based on Flying Brain from RealmEye. HP=1000, DEF=12, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 94,
+		"name": "Ghost God",
+		"realmeyeSource": "/wiki/ghost-god",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 10,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			147
+		],
+		"notes": "Based on Ghost God from RealmEye. HP=1000, DEF=12, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 95,
+		"name": "Great Lizard",
+		"realmeyeSource": "/wiki/great-lizard",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 11,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			148,
+			149
+		],
+		"notes": "Based on Great Lizard from RealmEye. HP=500, DEF=4, 2 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 96,
+		"name": "Horned Drake",
+		"realmeyeSource": "/wiki/horned-drake",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 12,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			150
+		],
+		"notes": "Based on Horned Drake from RealmEye. HP=1270, DEF=4, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 97,
+		"name": "Leviathan",
+		"realmeyeSource": "/wiki/leviathan",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 13,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			151,
+			152
+		],
+		"notes": "Based on Leviathan from RealmEye. HP=2000, DEF=20, 2 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 98,
+		"name": "Lich",
+		"realmeyeSource": "/wiki/lich",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 14,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			153,
+			154
+		],
+		"notes": "Based on Lich from RealmEye. HP=1100, DEF=7, 2 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 99,
+		"name": "Lizard God",
+		"realmeyeSource": "/wiki/lizard-god",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 15,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			155
+		],
+		"notes": "Based on Lizard God from RealmEye. HP=900, DEF=12, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 100,
+		"name": "Medusa",
+		"realmeyeSource": "/wiki/medusa",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 16,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			156,
+			157
+		],
+		"notes": "Based on Medusa from RealmEye. HP=2000, DEF=18, 2 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 101,
+		"name": "Oasis Giant",
+		"realmeyeSource": "/wiki/oasis-giant",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 17,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			158
+		],
+		"notes": "Based on Oasis Giant from RealmEye. HP=3000, DEF=15, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 102,
+		"name": "Ogre King",
+		"realmeyeSource": "/wiki/ogre-king",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 18,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			159,
+			160
+		],
+		"notes": "Based on Ogre King from RealmEye. HP=700, DEF=7, 2 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 103,
+		"name": "Phoenix Lord",
+		"realmeyeSource": "/wiki/phoenix-lord",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 19,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			161
+		],
+		"notes": "Based on Phoenix Lord from RealmEye. HP=3000, DEF=15, 1 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 104,
+		"name": "Slime God",
+		"realmeyeSource": "/wiki/slime-god",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 20,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			162,
+			163
+		],
+		"notes": "Based on Slime God from RealmEye. HP=1000, DEF=12, 2 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 105,
+		"name": "Sprite God",
+		"realmeyeSource": "/wiki/sprite-god",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 21,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			164,
+			165
+		],
+		"notes": "Based on Sprite God from RealmEye. HP=1500, DEF=12, 2 attack(s), 1 phase(s)."
+	},
+	{
+		"enemyId": 106,
+		"name": "White Demon",
+		"realmeyeSource": "/wiki/white-demon",
+		"spriteSheet": "lofiCharacter10x10.png",
+		"spriteRow": 30,
+		"spriteCol": 22,
+		"difficulty": "mid",
+		"projectileGroupIds": [
+			166
+		],
+		"notes": "Based on White Demon from RealmEye. HP=1000, DEF=12, 1 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 107,
+		"name": "Archdemon Malphas",
+		"realmeyeSource": "/wiki/archdemon-malphas",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 0,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			167,
+			168,
+			169
+		],
+		"notes": "Based on Archdemon Malphas from RealmEye. HP=20000, DEF=20, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 108,
+		"name": "Crystal Prisoner",
+		"realmeyeSource": "/wiki/crystal-prisoner",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 1,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			170,
+			171,
+			172
+		],
+		"notes": "Based on Crystal Prisoner from RealmEye. HP=28000, DEF=25, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 109,
+		"name": "Davy Jones",
+		"realmeyeSource": "/wiki/davy-jones",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 2,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			173,
+			174
+		],
+		"notes": "Based on Davy Jones from RealmEye. HP=26250, DEF=35, 2 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 110,
+		"name": "Ghost King",
+		"realmeyeSource": "/wiki/ghost-king",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 3,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			175
+		],
+		"notes": "Based on Ghost King from RealmEye. HP=5000, DEF=7, 1 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 111,
+		"name": "Gulpord the Slime God",
+		"realmeyeSource": "/wiki/gulpord-the-slime-god",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 4,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			176,
+			177,
+			178
+		],
+		"notes": "Based on Gulpord the Slime God from RealmEye. HP=20000, DEF=20, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 112,
+		"name": "Limon the Sprite Goddess",
+		"realmeyeSource": "/wiki/limon-the-sprite-goddess",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 5,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			179,
+			180,
+			181
+		],
+		"notes": "Based on Limon the Sprite Goddess from RealmEye. HP=12000, DEF=16, 3 attack(s), 2 phase(s)."
+	},
+	{
+		"enemyId": 113,
+		"name": "Pentaract Tower",
+		"realmeyeSource": "/wiki/pentaract",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 6,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			182,
+			183
+		],
+		"notes": "Based on Pentaract Tower from RealmEye. HP=15000, DEF=0, 2 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 114,
+		"name": "Red Beehemoth",
+		"realmeyeSource": "/wiki/red-beehemoth",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 7,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			184,
+			185,
+			186
+		],
+		"notes": "Based on Red Beehemoth from RealmEye. HP=20000, DEF=25, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 115,
+		"name": "Red Demon",
+		"realmeyeSource": "/wiki/red-demon",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 8,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			187,
+			188
+		],
+		"notes": "Based on Red Demon from RealmEye. HP=7000, DEF=12, 2 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 116,
+		"name": "Septavius the Ghost God",
+		"realmeyeSource": "/wiki/septavius-the-ghost-god",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 9,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			189,
+			190,
+			191
+		],
+		"notes": "Based on Septavius the Ghost God from RealmEye. HP=12000, DEF=12, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 117,
+		"name": "Stheno the Snake Queen",
+		"realmeyeSource": "/wiki/stheno-the-snake-queen",
+		"spriteSheet": "lofiBosses16x16.png",
+		"spriteRow": 0,
+		"spriteCol": 10,
+		"difficulty": "high",
+		"projectileGroupIds": [
+			192,
+			193,
+			194
+		],
+		"notes": "Based on Stheno the Snake Queen from RealmEye. HP=9000, DEF=19, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 118,
+		"name": "Avatar of the Forgotten King",
+		"realmeyeSource": "/wiki/avatar-of-the-forgotten-king",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 0,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			195,
+			196,
+			197
+		],
+		"notes": "Based on Avatar of the Forgotten King from RealmEye. HP=125000, DEF=90, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 119,
+		"name": "Cube God",
+		"realmeyeSource": "/wiki/cube-god",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 1,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			198,
+			199
+		],
+		"notes": "Based on Cube God from RealmEye. HP=45000, DEF=40, 2 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 120,
+		"name": "Esben the Unwilling",
+		"realmeyeSource": "/wiki/esben-the-unwilling",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 2,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			200,
+			201,
+			202
+		],
+		"notes": "Based on Esben the Unwilling from RealmEye. HP=45000, DEF=20, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 121,
+		"name": "Grand Sphinx",
+		"realmeyeSource": "/wiki/grand-sphinx",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 3,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			203,
+			204,
+			205
+		],
+		"notes": "Based on Grand Sphinx from RealmEye. HP=65000, DEF=25, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 122,
+		"name": "Hermit God",
+		"realmeyeSource": "/wiki/hermit-god",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 4,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			206,
+			207,
+			208
+		],
+		"notes": "Based on Hermit God from RealmEye. HP=55000, DEF=35, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 123,
+		"name": "Lord of the Lost Lands",
+		"realmeyeSource": "/wiki/lord-of-the-lost-lands",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 5,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			209,
+			210
+		],
+		"notes": "Based on Lord of the Lost Lands from RealmEye. HP=60000, DEF=30, 2 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 124,
+		"name": "Marble Colossus",
+		"realmeyeSource": "/wiki/marble-colossus",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 6,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			211,
+			212,
+			213
+		],
+		"notes": "Based on Marble Colossus from RealmEye. HP=187500, DEF=50, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 125,
+		"name": "Oryx the Mad God 1",
+		"realmeyeSource": "/wiki/oryx-the-mad-god",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 0,
+		"spriteCol": 7,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			214,
+			215,
+			216
+		],
+		"notes": "Based on Oryx the Mad God 1 from RealmEye. HP=80000, DEF=45, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 126,
+		"name": "Oryx the Mad God 2",
+		"realmeyeSource": "/wiki/oryx-the-mad-god-2",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 1,
+		"spriteCol": 0,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			217,
+			218,
+			219
+		],
+		"notes": "Based on Oryx the Mad God 2 from RealmEye. HP=100000, DEF=60, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 127,
+		"name": "Skull Shrine",
+		"realmeyeSource": "/wiki/skull-shrine",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 1,
+		"spriteCol": 1,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			220
+		],
+		"notes": "Based on Skull Shrine from RealmEye. HP=45000, DEF=40, 1 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 128,
+		"name": "Thessal the Mermaid Goddess",
+		"realmeyeSource": "/wiki/thessal-the-mermaid-goddess",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 1,
+		"spriteCol": 2,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			221,
+			222,
+			223
+		],
+		"notes": "Based on Thessal the Mermaid Goddess from RealmEye. HP=51750, DEF=60, 3 attack(s), 3 phase(s)."
+	},
+	{
+		"enemyId": 129,
+		"name": "Void Entity",
+		"realmeyeSource": "/wiki/void-entity",
+		"spriteSheet": "rotmg-bosses-1.png",
+		"spriteRow": 1,
+		"spriteCol": 3,
+		"difficulty": "boss",
+		"projectileGroupIds": [
+			224,
+			225,
+			226
+		],
+		"notes": "Based on Void Entity from RealmEye. HP=300000, DEF=60, 3 attack(s), 3 phase(s)."
+	}
+]
