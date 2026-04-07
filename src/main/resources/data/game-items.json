@@ -5233,5 +5233,197 @@
 		"targetSlot": 1,
 		"targetClass": 6,
 		"fameBonus": 6
+	},
+	{
+		"itemId": 288,
+		"row": 2,
+		"col": 0,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Hunting Trap",
+		"description": "A basic snare that paralyzes enemies caught in its radius.",
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3000,
+			"cooldownDuration": 1000,
+			"mpCost": 40
+		},
+		"consumable": false,
+		"tier": 0,
+		"targetSlot": 1,
+		"targetClass": 12,
+		"fameBonus": 0,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 80,
+			"max": 100
+		}
+	},
+	{
+		"itemId": 289,
+		"row": 2,
+		"col": 1,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Wilderlands Trap",
+		"description": "A reinforced trap favored by rangers of the deep forest.",
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 3500,
+			"cooldownDuration": 1000,
+			"mpCost": 50
+		},
+		"consumable": false,
+		"tier": 1,
+		"targetSlot": 1,
+		"targetClass": 12,
+		"fameBonus": 0,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 130,
+			"max": 160
+		}
+	},
+	{
+		"itemId": 290,
+		"row": 2,
+		"col": 2,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Deepforest Trap",
+		"description": "A cunningly hidden trap lined with paralyzing thorns.",
+		"stats": {
+			"att": 1
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 4000,
+			"cooldownDuration": 1000,
+			"mpCost": 60
+		},
+		"consumable": false,
+		"tier": 2,
+		"targetSlot": 1,
+		"targetClass": 12,
+		"fameBonus": 0,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 200,
+			"max": 240
+		}
+	},
+	{
+		"itemId": 291,
+		"row": 2,
+		"col": 3,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Savage Trap",
+		"description": "A brutal trap with jagged teeth that locks enemies in place.",
+		"stats": {
+			"att": 2
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 4500,
+			"cooldownDuration": 1000,
+			"mpCost": 75
+		},
+		"consumable": false,
+		"tier": 3,
+		"targetSlot": 1,
+		"targetClass": 12,
+		"fameBonus": 1,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 280,
+			"max": 330
+		}
+	},
+	{
+		"itemId": 292,
+		"row": 2,
+		"col": 4,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Demonhunter Trap",
+		"description": "A trap forged to capture even the most powerful demons.",
+		"stats": {
+			"att": 3
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 5000,
+			"cooldownDuration": 1000,
+			"mpCost": 90
+		},
+		"consumable": false,
+		"tier": 4,
+		"targetSlot": 1,
+		"targetClass": 12,
+		"fameBonus": 2,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 380,
+			"max": 440
+		}
+	},
+	{
+		"itemId": 293,
+		"row": 2,
+		"col": 5,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Dragonstalker Trap",
+		"description": "A trap powerful enough to snare dragons in its paralyzing grip.",
+		"stats": {
+			"att": 4
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 5500,
+			"cooldownDuration": 1000,
+			"mpCost": 100
+		},
+		"consumable": false,
+		"tier": 5,
+		"targetSlot": 1,
+		"targetClass": 12,
+		"fameBonus": 4,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 470,
+			"max": 530
+		}
+	},
+	{
+		"itemId": 294,
+		"row": 2,
+		"col": 6,
+		"spriteKey": "rotmg-abilities.png",
+		"name": "Giantcatcher Trap",
+		"description": "A legendary trap that ensnares even the mightiest of foes in an inescapable paralyzing field.",
+		"stats": {
+			"att": 5,
+			"hp": 20,
+			"mp": 20
+		},
+		"effect": {
+			"self": false,
+			"effectId": 2,
+			"duration": 6000,
+			"cooldownDuration": 1000,
+			"mpCost": 105
+		},
+		"consumable": false,
+		"tier": 6,
+		"targetSlot": 1,
+		"targetClass": 12,
+		"fameBonus": 6,
+		"damage": {
+			"projectileGroupId": -1,
+			"min": 550,
+			"max": 620
+		}
 	}
 ]

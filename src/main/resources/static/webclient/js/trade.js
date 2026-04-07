@@ -80,7 +80,7 @@ function hideTradeRequestPopup() {
 
 // --- Nearby Players List with Tooltips and Context Menu ---
 const CLASS_NAMES = ['Rogue','Archer','Wizard','Priest','Warrior','Knight','Paladin',
-    'Assassin','Necromancer','Mystic','Trickster','Sorcerer'];
+    'Assassin','Necromancer','Mystic','Trickster','Sorcerer','Huntress'];
 let lastNearbyUpdate = 0;
 let contextMenuPlayer = null;
 

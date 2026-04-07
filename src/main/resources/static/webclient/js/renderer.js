@@ -920,6 +920,91 @@ export class GameRenderer {
                     }
                     break;
                 }
+
+                case 6: { // TRAP — thrown arc (grenade) then persistent ground ring
+                    const isThrow = fx.targetX !== undefined && fx.targetY !== undefined
+                            && (fx.targetX !== 0 || fx.targetY !== 0) && r === 0;
+                    if (isThrow) {
+                        // Parabolic trap throw arc (800ms flight)
+                        const tx = fx.targetX * SCALE + offsetX;
+                        const ty = fx.targetY * SCALE + offsetY;
+                        const pdx = tx - sx, pdy = ty - sy;
+                        const pdist = Math.sqrt(pdx * pdx + pdy * pdy);
+                        const arcH = pdist * 0.5;
+                        const trapFrac = Math.min(progress, 1.0);
+                        const steps = 20;
+
+                        // Amber trail behind trap
+                        for (let i = 0; i < steps; i++) {
+                            const f0 = i / steps, f1 = (i + 1) / steps;
+                            if (f1 > trapFrac) break;
+                            const x0 = sx + pdx * f0, y0 = sy + pdy * f0 - 4 * arcH * f0 * (1 - f0);
+                            const x1 = sx + pdx * f1, y1 = sy + pdy * f1 - 4 * arcH * f1 * (1 - f1);
+                            const thick = 1 + 3 * (f1 / Math.max(trapFrac, 0.01));
+                            const ta = 0.1 + 0.3 * (f1 / Math.max(trapFrac, 0.01));
+                            g.lineStyle(thick, 0x996622, ta);
+                            g.moveTo(x0, y0);
+                            g.lineTo(x1, y1);
+                        }
+                        g.lineStyle(0);
+
+                        // Spinning trap object
+                        if (trapFrac < 1.0) {
+                            const vx = sx + pdx * trapFrac;
+                            const vy = sy + pdy * trapFrac - 4 * arcH * trapFrac * (1 - trapFrac);
+                            g.beginFill(0x664411, 0.5);
+                            g.drawCircle(vx, vy, 9);
+                            g.endFill();
+                            g.beginFill(0xcc8833, 0.9);
+                            g.drawCircle(vx, vy, 6);
+                            g.endFill();
+                            // Teeth marks on the trap
+                            for (let i = 0; i < 4; i++) {
+                                const a = (i / 4) * Math.PI * 2 + elapsed * 0.01;
+                                g.beginFill(0xffcc44, 0.8);
+                                g.drawRect(vx + Math.cos(a) * 4 - 1, vy + Math.sin(a) * 4 - 1, 2, 2);
+                                g.endFill();
+                            }
+                        }
+                    } else {
+                        // Persistent ground trap ring — stays mostly opaque, pulses
+                        const pulse = 0.7 + 0.3 * Math.sin(elapsed * 0.004);
+                        const fadeAlpha = progress > 0.85 ? (1.0 - progress) / 0.15 : 1.0;
+
+                        // Outer ring
+                        g.lineStyle(3, 0xcc8833, fadeAlpha * pulse * 0.8);
+                        g.drawCircle(sx, sy, r);
+                        // Inner ring
+                        g.lineStyle(1, 0xffaa44, fadeAlpha * pulse * 0.5);
+                        g.drawCircle(sx, sy, r * 0.75);
+                        g.lineStyle(0);
+
+                        // Semi-transparent fill
+                        g.beginFill(0xcc6600, fadeAlpha * 0.1);
+                        g.drawCircle(sx, sy, r);
+                        g.endFill();
+
+                        // Rotating teeth/spikes around the ring
+                        const teeth = 8;
+                        for (let i = 0; i < teeth; i++) {
+                            const a = (i / teeth) * Math.PI * 2 + elapsed * 0.002;
+                            const tr = r * 0.9;
+                            g.beginFill(0xffcc44, fadeAlpha * pulse * 0.7);
+                            g.drawPolygon([
+                                sx + Math.cos(a) * (tr - 4), sy + Math.sin(a) * (tr - 4),
+                                sx + Math.cos(a - 0.1) * (tr + 4), sy + Math.sin(a - 0.1) * (tr + 4),
+                                sx + Math.cos(a + 0.1) * (tr + 4), sy + Math.sin(a + 0.1) * (tr + 4)
+                            ]);
+                            g.endFill();
+                        }
+
+                        // Center marker
+                        g.beginFill(0xffaa44, fadeAlpha * pulse * 0.4);
+                        g.drawCircle(sx, sy, 3);
+                        g.endFill();
+                    }
+                    break;
+                }
             }
         }
 

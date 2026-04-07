@@ -358,5 +358,35 @@
 			"1": 270,
 			"2": 106
 		}
+	},
+	{
+		"spriteOffset": 43,
+		"classId": 12,
+		"className": "Huntress",
+		"baseStats": {
+			"spd": 12,
+			"att": 12,
+			"dex": 12,
+			"wis": 12,
+			"vit": 10,
+			"def": 0,
+			"hp": 150,
+			"mp": 100
+		},
+		"maxStats": {
+			"spd": 50,
+			"att": 75,
+			"dex": 50,
+			"wis": 50,
+			"vit": 40,
+			"def": 25,
+			"hp": 750,
+			"mp": 252
+		},
+		"startingEquipment": {
+			"0": 17,
+			"1": 288,
+			"2": 32
+		}
 	}
 ]
