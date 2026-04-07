@@ -2378,18 +2378,31 @@
 		"description": "A super powerful spell",
 		"damage": {
 			"projectileGroupId": 15,
-			"min": 50,
-			"max": 75
+			"min": 150,
+			"max": 250
 		},
 		"effect": {
-			"effectId": 6,
-			"mpCost": 90
+			"effectId": 14,
+			"mpCost": 110,
+			"duration": 0,
+			"cooldownDuration": 1000,
+			"self": false
 		},
 		"consumable": false,
 		"tier": 14,
 		"targetSlot": 1,
 		"targetClass": 2,
-		"fameBonus": 8
+		"fameBonus": 8,
+		"stats": {
+			"hp": 0,
+			"mp": 0,
+			"att": 0,
+			"def": 0,
+			"spd": 0,
+			"dex": 0,
+			"vit": 0,
+			"wis": 0
+		}
 	},
 	{
 		"itemId": 137,
