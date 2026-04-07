@@ -8619,9 +8619,9 @@
 	},
 	{
 		"projectileGroupId": 165,
-		"row": 6,
-		"col": 4,
-		"spriteKey": "lofiProjectiles.png",
+		"row": 4,
+		"col": 9,
+		"spriteKey": "rotmg-tiles-all.png",
 		"projectiles": [
 			{
 				"projectileId": 165,
@@ -8629,7 +8629,7 @@
 				"damage": 0,
 				"angle": 0,
 				"range": 460,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -8637,9 +8637,9 @@
 	},
 	{
 		"projectileGroupId": 166,
-		"row": 6,
-		"col": 5,
-		"spriteKey": "lofiProjectiles.png",
+		"row": 4,
+		"col": 10,
+		"spriteKey": "rotmg-tiles-all.png",
 		"projectiles": [
 			{
 				"projectileId": 166,
@@ -8647,7 +8647,7 @@
 				"damage": 45,
 				"angle": -0.25,
 				"range": 320,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8657,7 +8657,7 @@
 				"damage": 45,
 				"angle": 0,
 				"range": 320,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8667,7 +8667,7 @@
 				"damage": 45,
 				"angle": 0.25,
 				"range": 320,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -8676,9 +8676,9 @@
 	},
 	{
 		"projectileGroupId": 167,
-		"row": 6,
-		"col": 6,
-		"spriteKey": "lofiProjectiles.png",
+		"row": 4,
+		"col": 10,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 167,
@@ -8686,7 +8686,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 360,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -8694,9 +8694,9 @@
 	},
 	{
 		"projectileGroupId": 168,
-		"row": 6,
+		"row": 7,
 		"col": 7,
-		"spriteKey": "lofiProjectiles.png",
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 168,
@@ -8722,7 +8722,7 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 512,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.8,
 				"flags": []
 			}
@@ -8740,7 +8740,7 @@
 				"damage": 95,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.6,
 				"flags": []
 			},
@@ -8750,7 +8750,7 @@
 				"damage": 95,
 				"angle": 1.5708,
 				"range": 384,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.6,
 				"flags": []
 			},
@@ -8760,7 +8760,7 @@
 				"damage": 95,
 				"angle": 3.1416,
 				"range": 384,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.6,
 				"flags": []
 			},
@@ -8770,12 +8770,11 @@
 				"damage": 95,
 				"angle": 4.7124,
 				"range": 384,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.6,
 				"flags": []
 			}
-		],
-		"angleOffset": "{{PI/4}}"
+		]
 	},
 	{
 		"projectileGroupId": 171,
@@ -8789,7 +8788,7 @@
 				"damage": 110,
 				"angle": 0,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8799,7 +8798,7 @@
 				"damage": 110,
 				"angle": 0.7854,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8809,7 +8808,7 @@
 				"damage": 110,
 				"angle": 1.5708,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8819,7 +8818,7 @@
 				"damage": 110,
 				"angle": 2.3562,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8829,7 +8828,7 @@
 				"damage": 110,
 				"angle": 3.1416,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8839,7 +8838,7 @@
 				"damage": 110,
 				"angle": 3.927,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8849,7 +8848,7 @@
 				"damage": 110,
 				"angle": 4.7124,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8859,11 +8858,12 @@
 				"damage": 110,
 				"angle": 5.4978,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{-PI/4}"
 	},
 	{
 		"projectileGroupId": 172,
@@ -8877,7 +8877,7 @@
 				"damage": 120,
 				"angle": -0.25,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8887,7 +8887,7 @@
 				"damage": 120,
 				"angle": -0.15,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8897,7 +8897,7 @@
 				"damage": 120,
 				"angle": -0.05,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8907,7 +8907,7 @@
 				"damage": 120,
 				"angle": 0.05,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8917,7 +8917,7 @@
 				"damage": 120,
 				"angle": 0.15,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -8927,11 +8927,12 @@
 				"damage": 120,
 				"angle": 0.25,
 				"range": 326,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/2}"
 	},
 	{
 		"projectileGroupId": 173,
@@ -8945,7 +8946,7 @@
 				"damage": 130,
 				"angle": 0,
 				"range": 353,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.6,
 				"flags": []
 			}
@@ -8963,7 +8964,7 @@
 				"damage": 140,
 				"angle": 0,
 				"range": 518,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.6,
 				"flags": []
 			}
@@ -8981,7 +8982,7 @@
 				"damage": 50,
 				"angle": 0,
 				"range": 153,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			}
@@ -9141,9 +9142,9 @@
 	},
 	{
 		"projectileGroupId": 182,
-		"row": 8,
+		"row": 22,
 		"col": 5,
-		"spriteKey": "lofiProjectiles.png",
+		"spriteKey": "rotmg-tiles-all.png",
 		"projectiles": [
 			{
 				"projectileId": 182,
@@ -9151,11 +9152,12 @@
 				"damage": 130,
 				"angle": 0,
 				"range": 128,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.7,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 183,
@@ -9215,9 +9217,9 @@
 	},
 	{
 		"projectileGroupId": 185,
-		"row": 9,
-		"col": 0,
-		"spriteKey": "lofiProjectiles.png",
+		"row": 6,
+		"col": 15,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 185,
@@ -9225,11 +9227,12 @@
 				"damage": 80,
 				"angle": 0,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 186,
@@ -9290,9 +9293,9 @@
 	},
 	{
 		"projectileGroupId": 189,
-		"row": 9,
-		"col": 4,
-		"spriteKey": "lofiProjectiles.png",
+		"row": 0,
+		"col": 5,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 189,
@@ -9300,7 +9303,7 @@
 				"damage": 75,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -9308,9 +9311,9 @@
 	},
 	{
 		"projectileGroupId": 190,
-		"row": 9,
-		"col": 5,
-		"spriteKey": "lofiProjectiles.png",
+		"row": 4,
+		"col": 8,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 190,
@@ -9318,11 +9321,12 @@
 				"damage": 160,
 				"angle": 0,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 191,
@@ -9372,9 +9376,9 @@
 	},
 	{
 		"projectileGroupId": 193,
-		"row": 0,
-		"col": 0,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 7,
+		"col": 6,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 193,
@@ -9382,7 +9386,7 @@
 				"damage": 45,
 				"angle": 0,
 				"range": 352,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			}
@@ -9390,9 +9394,9 @@
 	},
 	{
 		"projectileGroupId": 194,
-		"row": 0,
-		"col": 1,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 7,
+		"col": 8,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 194,
@@ -9400,7 +9404,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 96,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -9409,9 +9413,9 @@
 	},
 	{
 		"projectileGroupId": 195,
-		"row": 0,
-		"col": 2,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 4,
+		"col": 7,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 195,
@@ -9419,7 +9423,7 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.8,
 				"flags": []
 			}
@@ -9428,9 +9432,9 @@
 	},
 	{
 		"projectileGroupId": 196,
-		"row": 0,
-		"col": 3,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 6,
+		"col": 7,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 196,
@@ -9438,7 +9442,7 @@
 				"damage": 170,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.3,
 				"flags": []
 			}
@@ -9446,9 +9450,9 @@
 	},
 	{
 		"projectileGroupId": 197,
-		"row": 0,
-		"col": 4,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 7,
+		"col": 5,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 197,
@@ -9456,17 +9460,18 @@
 				"damage": 170,
 				"angle": 0,
 				"range": 752,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4.2,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 198,
-		"row": 0,
-		"col": 5,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 2,
+		"col": 15,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 198,
@@ -9474,17 +9479,18 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 768,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.3,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{-PI/4}}"
 	},
 	{
 		"projectileGroupId": 199,
-		"row": 0,
-		"col": 6,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 3,
+		"col": 11,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 199,
@@ -9492,7 +9498,7 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 640,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.2,
 				"flags": []
 			}
@@ -9500,9 +9506,9 @@
 	},
 	{
 		"projectileGroupId": 200,
-		"row": 0,
-		"col": 7,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 3,
+		"col": 10,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 200,
@@ -9510,7 +9516,7 @@
 				"damage": 70,
 				"angle": 0,
 				"range": 1248,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -9518,9 +9524,9 @@
 	},
 	{
 		"projectileGroupId": 201,
-		"row": 0,
-		"col": 8,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 4,
+		"col": 5,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 201,
@@ -9528,7 +9534,7 @@
 				"damage": 120,
 				"angle": 0,
 				"range": 1056,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -9536,9 +9542,9 @@
 	},
 	{
 		"projectileGroupId": 202,
-		"row": 0,
-		"col": 9,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 2,
+		"col": 13,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 202,
@@ -9554,9 +9560,9 @@
 	},
 	{
 		"projectileGroupId": 203,
-		"row": 0,
-		"col": 10,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 4,
+		"col": 0,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 203,
@@ -9564,7 +9570,7 @@
 				"damage": 85,
 				"angle": 0,
 				"range": 345,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -9573,9 +9579,9 @@
 	},
 	{
 		"projectileGroupId": 204,
-		"row": 0,
-		"col": 11,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 4,
+		"col": 4,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 204,
@@ -9583,17 +9589,18 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 334,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4.3,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 205,
-		"row": 0,
-		"col": 12,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 3,
+		"col": 14,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 205,
@@ -9601,7 +9608,7 @@
 				"damage": 120,
 				"angle": 0,
 				"range": 343,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4.3,
 				"flags": []
 			}
@@ -9610,9 +9617,9 @@
 	},
 	{
 		"projectileGroupId": 206,
-		"row": 0,
+		"row": 3,
 		"col": 13,
-		"spriteKey": "rotmg-projectiles.png",
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 206,
@@ -9646,9 +9653,9 @@
 	},
 	{
 		"projectileGroupId": 208,
-		"row": 0,
-		"col": 15,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 3,
+		"col": 9,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 208,
@@ -9656,7 +9663,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 563,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.7,
 				"flags": []
 			}
@@ -9664,9 +9671,9 @@
 	},
 	{
 		"projectileGroupId": 209,
-		"row": 1,
-		"col": 1,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 6,
+		"col": 12,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 209,
@@ -9674,7 +9681,7 @@
 				"damage": 95,
 				"angle": 0,
 				"range": 531,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.2,
 				"flags": []
 			}
@@ -9682,9 +9689,9 @@
 	},
 	{
 		"projectileGroupId": 210,
-		"row": 1,
-		"col": 2,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 6,
+		"col": 4,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 210,
@@ -9692,7 +9699,7 @@
 				"damage": 250,
 				"angle": 0,
 				"range": 560,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			}
@@ -9700,9 +9707,9 @@
 	},
 	{
 		"projectileGroupId": 211,
-		"row": 1,
-		"col": 3,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 2,
+		"col": 6,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 211,
@@ -9710,7 +9717,7 @@
 				"damage": 200,
 				"angle": 0,
 				"range": 768,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4,
 				"flags": [],
 				"amplitude": 0.5,
@@ -9720,9 +9727,9 @@
 	},
 	{
 		"projectileGroupId": 212,
-		"row": 1,
-		"col": 4,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 2,
+		"col": 5,
+		"spriteKey": "lofiProjs.png",
 		"projectiles": [
 			{
 				"projectileId": 212,
@@ -9730,7 +9737,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 345,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.2,
 				"flags": []
 			}
@@ -9738,9 +9745,9 @@
 	},
 	{
 		"projectileGroupId": 213,
-		"row": 1,
-		"col": 5,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 2,
+		"col": 3,
+		"spriteKey": "battleOryxObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 213,
@@ -9748,7 +9755,7 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 1152,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -9756,9 +9763,9 @@
 	},
 	{
 		"projectileGroupId": 214,
-		"row": 1,
+		"row": 9,
 		"col": 6,
-		"spriteKey": "rotmg-projectiles.png",
+		"spriteKey": "battleOryxObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 214,
@@ -9766,17 +9773,18 @@
 				"damage": 40,
 				"angle": 0,
 				"range": 640,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4.1,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 215,
 		"row": 1,
-		"col": 7,
-		"spriteKey": "rotmg-projectiles.png",
+		"col": 13,
+		"spriteKey": "battleOryxObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 215,
@@ -9784,7 +9792,7 @@
 				"damage": 75,
 				"angle": 0,
 				"range": 512,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4.2,
 				"flags": []
 			}
@@ -9794,8 +9802,8 @@
 	{
 		"projectileGroupId": 216,
 		"row": 1,
-		"col": 8,
-		"spriteKey": "rotmg-projectiles.png",
+		"col": 12,
+		"spriteKey": "battleOryxObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 216,
@@ -9803,7 +9811,7 @@
 				"damage": 90,
 				"angle": 0,
 				"range": 409,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -9867,9 +9875,9 @@
 	},
 	{
 		"projectileGroupId": 220,
-		"row": 1,
-		"col": 12,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 6,
+		"col": 9,
+		"spriteKey": "battleOryxObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 220,
@@ -9877,7 +9885,7 @@
 				"damage": 100,
 				"angle": -0.15,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9887,7 +9895,7 @@
 				"damage": 100,
 				"angle": -0.112,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9897,7 +9905,7 @@
 				"damage": 100,
 				"angle": -0.075,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9907,7 +9915,7 @@
 				"damage": 100,
 				"angle": -0.038,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9917,7 +9925,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9927,7 +9935,7 @@
 				"damage": 100,
 				"angle": 0.038,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9937,7 +9945,7 @@
 				"damage": 100,
 				"angle": 0.075,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9947,7 +9955,7 @@
 				"damage": 100,
 				"angle": 0.113,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -9957,7 +9965,7 @@
 				"damage": 100,
 				"angle": 0.15,
 				"range": 768,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -9980,13 +9988,14 @@
 				"magnitude": 3.8,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI}}"
 	},
 	{
 		"projectileGroupId": 222,
-		"row": 1,
-		"col": 14,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 5,
+		"col": 8,
+		"spriteKey": "cursedLibraryObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 222,
@@ -9994,7 +10003,7 @@
 				"damage": 65,
 				"angle": 0,
 				"range": 672,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -10003,9 +10012,9 @@
 	},
 	{
 		"projectileGroupId": 223,
-		"row": 1,
-		"col": 15,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 7,
+		"col": 2,
+		"spriteKey": "cursedLibraryObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 223,
@@ -10013,7 +10022,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 576,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -10021,9 +10030,9 @@
 	},
 	{
 		"projectileGroupId": 224,
-		"row": 2,
+		"row": 5,
 		"col": 0,
-		"spriteKey": "rotmg-projectiles.png",
+		"spriteKey": "cursedLibraryObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 224,
@@ -10031,7 +10040,7 @@
 				"damage": 175,
 				"angle": 0,
 				"range": 800,
-				"size": 16,
+				"size": 30,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -10040,9 +10049,9 @@
 	},
 	{
 		"projectileGroupId": 225,
-		"row": 2,
-		"col": 1,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 6,
+		"col": 13,
+		"spriteKey": "cursedLibraryObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 225,
@@ -10050,17 +10059,18 @@
 				"damage": 185,
 				"angle": 0,
 				"range": 896,
-				"size": 16,
+				"size": 30,
 				"magnitude": 4.2,
 				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 226,
-		"row": 2,
-		"col": 2,
-		"spriteKey": "rotmg-projectiles.png",
+		"row": 0,
+		"col": 3,
+		"spriteKey": "crystalCaveObjects8x8.png",
 		"projectiles": [
 			{
 				"projectileId": 226,
@@ -10068,9 +10078,32 @@
 				"damage": 180,
 				"angle": 0,
 				"range": 1024,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.2,
 				"flags": []
+			}
+		]
+	},
+	{
+		"projectileGroupId": 227,
+		"row": 2,
+		"col": 14,
+		"spriteKey": "lofiProjs.png",
+		"angleOffset": "0",
+		"projectiles": [
+			{
+				"projectileId": 227,
+				"positionMode": 0,
+				"angle": "0",
+				"range": 150,
+				"size": 24,
+				"magnitude": 5,
+				"damage": 200,
+				"amplitude": 0,
+				"frequency": 0,
+				"flags": [
+					10
+				]
 			}
 		]
 	}
