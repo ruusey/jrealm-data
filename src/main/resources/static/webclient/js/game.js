@@ -392,22 +392,42 @@ export class GameState {
         replayY = local.pos.y;
 
         // Compare replayed position with where the client currently is.
-        // If close enough, keep the client's current position (no visible correction).
-        // If diverged, smoothly blend toward the replayed position.
+        // Logical position (local.pos) is ALWAYS set to the reconciled result
+        // for accurate collision/dodging. Visual smoothing is handled by a
+        // decaying render offset (_renderOffsetX/Y) so the camera doesn't jerk.
         const errX = replayX - savedX;
         const errY = replayY - savedY;
         const err = Math.sqrt(errX * errX + errY * errY);
 
-        if (err > 32) {
-            // Large desync — hard snap
+        // Adaptive tolerance: at high ping, accept more prediction drift
+        // before applying any correction. This prevents micro-corrections
+        // every ack cycle that create the "vibrating" rubber-band feel.
+        const pingMs = this._lastPingMs || 0;
+        const tolerance = Math.min(4.0, 1.0 + pingMs / 100);
+
+        if (err > 48) {
+            // Massive desync (teleport, realm transition) — hard snap, no offset
             local.pos.x = replayX;
             local.pos.y = replayY;
-        } else if (err > 1.0) {
-            // Blend toward correct position
-            local.pos.x = savedX + errX * 0.4;
-            local.pos.y = savedY + errY * 0.4;
+            local._renderOffsetX = 0;
+            local._renderOffsetY = 0;
+        } else if (err > tolerance) {
+            // Meaningful correction needed.
+            // Set logical position to reconciled result immediately (accurate for collisions).
+            // Store the visual difference as a render offset that decays over ~3-4 frames.
+            local._renderOffsetX = (local._renderOffsetX || 0) + (savedX - replayX);
+            local._renderOffsetY = (local._renderOffsetY || 0) + (savedY - replayY);
+            // Cap the offset so it never accumulates beyond a reasonable visual shift
+            const maxOffset = 8;
+            const offMag = Math.sqrt(local._renderOffsetX * local._renderOffsetX + local._renderOffsetY * local._renderOffsetY);
+            if (offMag > maxOffset) {
+                local._renderOffsetX *= maxOffset / offMag;
+                local._renderOffsetY *= maxOffset / offMag;
+            }
+            local.pos.x = replayX;
+            local.pos.y = replayY;
         } else {
-            // Within tolerance
+            // Within tolerance — prediction is close enough, trust client
             local.pos.x = savedX;
             local.pos.y = savedY;
         }
@@ -867,8 +887,20 @@ export class GameState {
 
         const local = this.getLocalPlayer();
         if (local) {
-            this.cameraX += (local.pos.x - this.cameraX) * 0.35;
-            this.cameraY += (local.pos.y - this.cameraY) * 0.35;
+            // Decay render offset aggressively — ~70% per frame at 60fps.
+            // This means a 6px correction is visually gone in ~3 frames (50ms).
+            // Fast enough for bullet hell, smooth enough to not jerk.
+            if (local._renderOffsetX || local._renderOffsetY) {
+                local._renderOffsetX = (local._renderOffsetX || 0) * 0.3;
+                local._renderOffsetY = (local._renderOffsetY || 0) * 0.3;
+                if (Math.abs(local._renderOffsetX) < 0.2) local._renderOffsetX = 0;
+                if (Math.abs(local._renderOffsetY) < 0.2) local._renderOffsetY = 0;
+            }
+            // Camera follows logical position + render offset for smooth visuals
+            const visualX = local.pos.x + (local._renderOffsetX || 0);
+            const visualY = local.pos.y + (local._renderOffsetY || 0);
+            this.cameraX += (visualX - this.cameraX) * 0.35;
+            this.cameraY += (visualY - this.cameraY) * 0.35;
         }
     }
 
