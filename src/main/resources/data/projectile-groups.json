@@ -7013,9 +7013,7 @@
 				"range": 153,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7034,9 +7032,7 @@
 				"range": 96,
 				"size": 16,
 				"magnitude": 2.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7055,9 +7051,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7076,9 +7070,7 @@
 				"range": 192,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7097,9 +7089,7 @@
 				"range": 416,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7140,9 +7130,7 @@
 				"range": 336,
 				"size": 16,
 				"magnitude": 2.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7160,9 +7148,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7180,9 +7166,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7192,9 +7176,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7204,9 +7186,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7216,9 +7196,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7228,9 +7206,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7240,9 +7216,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7252,9 +7226,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7264,9 +7236,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7276,9 +7246,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7288,9 +7256,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7300,9 +7266,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7312,9 +7276,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7324,9 +7286,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7336,9 +7296,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 121,
@@ -7348,9 +7306,7 @@
 				"range": 160,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7369,9 +7325,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7390,9 +7344,7 @@
 				"range": 224,
 				"size": 8,
 				"magnitude": 2.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7410,9 +7362,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7430,9 +7380,7 @@
 				"range": 128,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7450,9 +7398,7 @@
 				"range": 224,
 				"size": 16,
 				"magnitude": 2.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7470,9 +7416,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7490,9 +7434,7 @@
 				"range": 465,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7510,9 +7452,7 @@
 				"range": 480,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7531,9 +7471,7 @@
 				"range": 128,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7551,9 +7489,7 @@
 				"range": 672,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 131,
@@ -7563,9 +7499,7 @@
 				"range": 672,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 131,
@@ -7575,9 +7509,7 @@
 				"range": 672,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 131,
@@ -7587,9 +7519,7 @@
 				"range": 672,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 131,
@@ -7599,9 +7529,7 @@
 				"range": 672,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 131,
@@ -7611,9 +7539,7 @@
 				"range": 672,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7631,9 +7557,7 @@
 				"range": 96,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7652,9 +7576,7 @@
 				"range": 128,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7672,9 +7594,7 @@
 				"range": 192,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7692,9 +7612,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 135,
@@ -7704,9 +7622,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 135,
@@ -7716,9 +7632,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7736,9 +7650,7 @@
 				"range": 288,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7757,9 +7669,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7777,9 +7687,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7797,9 +7705,7 @@
 				"range": 313,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7817,9 +7723,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 140,
@@ -7829,9 +7733,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7849,9 +7751,7 @@
 				"range": 416,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 141,
@@ -7861,9 +7761,7 @@
 				"range": 416,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 141,
@@ -7873,9 +7771,7 @@
 				"range": 416,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7893,9 +7789,7 @@
 				"range": 336,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7913,9 +7807,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -7934,9 +7826,7 @@
 				"range": 352,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7954,9 +7844,7 @@
 				"range": 492,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -7974,9 +7862,7 @@
 				"range": 691,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 146,
@@ -7986,9 +7872,7 @@
 				"range": 691,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 146,
@@ -7998,9 +7882,7 @@
 				"range": 691,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 146,
@@ -8010,9 +7892,7 @@
 				"range": 691,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 146,
@@ -8022,9 +7902,7 @@
 				"range": 691,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8042,9 +7920,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 147,
@@ -8054,9 +7930,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 147,
@@ -8066,9 +7940,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 147,
@@ -8078,9 +7950,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 147,
@@ -8090,9 +7960,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 147,
@@ -8102,9 +7970,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 147,
@@ -8114,9 +7980,7 @@
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8134,9 +7998,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8146,9 +8008,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8158,9 +8018,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8170,9 +8028,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8182,9 +8038,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8194,9 +8048,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8206,9 +8058,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8218,9 +8068,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8230,9 +8078,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8242,9 +8088,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8254,9 +8098,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 148,
@@ -8266,9 +8108,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -8287,9 +8127,7 @@
 				"range": 96,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -8308,9 +8146,7 @@
 				"range": 312,
 				"size": 16,
 				"magnitude": 3.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -8329,9 +8165,7 @@
 				"range": 364,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -8350,16 +8184,14 @@
 				"range": 489,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
 	{
 		"projectileGroupId": 153,
 		"row": 5,
-		"col": 0,
+		"col": 7,
 		"spriteKey": "lofiProjectiles.png",
 		"projectiles": [
 			{
@@ -8370,9 +8202,7 @@
 				"range": 457,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 153,
@@ -8382,9 +8212,7 @@
 				"range": 457,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 153,
@@ -8394,9 +8222,7 @@
 				"range": 457,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8414,9 +8240,7 @@
 				"range": 320,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 154,
@@ -8426,9 +8250,7 @@
 				"range": 320,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 154,
@@ -8438,9 +8260,7 @@
 				"range": 320,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 154,
@@ -8450,9 +8270,7 @@
 				"range": 320,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8470,9 +8288,7 @@
 				"range": 358,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 155,
@@ -8482,9 +8298,7 @@
 				"range": 358,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 155,
@@ -8494,15 +8308,13 @@
 				"range": 358,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
 	{
 		"projectileGroupId": 156,
-		"row": 5,
+		"row": 6,
 		"col": 3,
 		"spriteKey": "lofiProjectiles.png",
 		"projectiles": [
@@ -8514,9 +8326,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 156,
@@ -8526,9 +8336,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 156,
@@ -8538,9 +8346,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 156,
@@ -8550,9 +8356,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 156,
@@ -8562,9 +8366,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -8583,12 +8385,10 @@
 				"range": 128,
 				"size": 16,
 				"magnitude": 3.4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
-		"angleOffset": "{{PI/4}}"
+		"angleOffset": "{{PI/2}}"
 	},
 	{
 		"projectileGroupId": 158,
@@ -8604,9 +8404,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 158,
@@ -8616,9 +8414,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 158,
@@ -8628,9 +8424,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 158,
@@ -8640,11 +8434,10 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
-		]
+		],
+		"angleOffset": "{{PI/2}"
 	},
 	{
 		"projectileGroupId": 159,
@@ -8660,16 +8453,14 @@
 				"range": 192,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
 	{
 		"projectileGroupId": 160,
-		"row": 5,
-		"col": 7,
+		"row": 6,
+		"col": 1,
 		"spriteKey": "lofiProjectiles.png",
 		"projectiles": [
 			{
@@ -8680,9 +8471,7 @@
 				"range": 96,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8700,9 +8489,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 161,
@@ -8712,9 +8499,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 161,
@@ -8724,9 +8509,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 161,
@@ -8736,9 +8519,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 161,
@@ -8748,9 +8529,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8768,9 +8547,7 @@
 				"range": 352,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8788,9 +8565,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 2.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8808,9 +8583,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 164,
@@ -8820,9 +8593,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 164,
@@ -8832,9 +8603,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 164,
@@ -8844,9 +8613,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8864,9 +8631,7 @@
 				"range": 460,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8884,9 +8649,7 @@
 				"range": 320,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 166,
@@ -8896,9 +8659,7 @@
 				"range": 320,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 166,
@@ -8908,9 +8669,7 @@
 				"range": 320,
 				"size": 16,
 				"magnitude": 3.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -8929,9 +8688,7 @@
 				"range": 360,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8949,9 +8706,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8969,9 +8724,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -8989,9 +8742,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 170,
@@ -9001,9 +8752,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 170,
@@ -9013,9 +8762,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 170,
@@ -9025,9 +8772,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9046,9 +8791,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 171,
@@ -9058,9 +8801,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 171,
@@ -9070,9 +8811,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 171,
@@ -9082,9 +8821,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 171,
@@ -9094,9 +8831,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 171,
@@ -9106,9 +8841,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 171,
@@ -9118,9 +8851,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 171,
@@ -9130,9 +8861,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9150,9 +8879,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 172,
@@ -9162,9 +8889,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 172,
@@ -9174,9 +8899,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 172,
@@ -9186,9 +8909,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 172,
@@ -9198,9 +8919,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 172,
@@ -9210,9 +8929,7 @@
 				"range": 326,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9230,9 +8947,7 @@
 				"range": 353,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9250,9 +8965,7 @@
 				"range": 518,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9270,9 +8983,7 @@
 				"range": 153,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9301,9 +9012,7 @@
 				"range": 480,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 176,
@@ -9313,9 +9022,7 @@
 				"range": 480,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 176,
@@ -9325,9 +9032,7 @@
 				"range": 480,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 176,
@@ -9337,9 +9042,7 @@
 				"range": 480,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9357,9 +9060,7 @@
 				"range": 220,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9377,9 +9078,7 @@
 				"range": 469,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9398,9 +9097,7 @@
 				"range": 588,
 				"size": 24,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9419,9 +9116,7 @@
 				"range": 664,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9439,9 +9134,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9460,9 +9153,7 @@
 				"range": 128,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9480,9 +9171,7 @@
 				"range": 115,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 183,
@@ -9492,9 +9181,7 @@
 				"range": 115,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 183,
@@ -9504,9 +9191,7 @@
 				"range": 115,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9524,9 +9209,7 @@
 				"range": 480,
 				"size": 16,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9544,9 +9227,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9564,9 +9245,7 @@
 				"range": 520,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9585,9 +9264,7 @@
 				"range": 480,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9606,7 +9283,6 @@
 				"size": 16,
 				"magnitude": 3.7,
 				"flags": [
-					10,
 					12
 				]
 			}
@@ -9626,9 +9302,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9646,9 +9320,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9666,9 +9338,7 @@
 				"range": 448,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9686,9 +9356,7 @@
 				"range": 336,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 192,
@@ -9698,9 +9366,7 @@
 				"range": 336,
 				"size": 16,
 				"magnitude": 3.6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9718,9 +9384,7 @@
 				"range": 352,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9738,9 +9402,7 @@
 				"range": 96,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9759,9 +9421,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 3.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9780,9 +9440,7 @@
 				"range": 384,
 				"size": 16,
 				"magnitude": 4.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9800,9 +9458,7 @@
 				"range": 752,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9820,9 +9476,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9840,9 +9494,7 @@
 				"range": 640,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9860,9 +9512,7 @@
 				"range": 1248,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9880,9 +9530,7 @@
 				"range": 1056,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9900,9 +9548,7 @@
 				"range": 1152,
 				"size": 16,
 				"magnitude": 3.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9920,9 +9566,7 @@
 				"range": 345,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9941,9 +9585,7 @@
 				"range": 334,
 				"size": 16,
 				"magnitude": 4.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -9961,9 +9603,7 @@
 				"range": 343,
 				"size": 16,
 				"magnitude": 4.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9982,9 +9622,7 @@
 				"range": 528,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10002,9 +9640,7 @@
 				"range": 528,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10022,9 +9658,7 @@
 				"range": 563,
 				"size": 16,
 				"magnitude": 3.7,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10042,9 +9676,7 @@
 				"range": 531,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10062,9 +9694,7 @@
 				"range": 560,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10082,9 +9712,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"amplitude": 0.5,
 				"frequency": 8
 			}
@@ -10104,9 +9732,7 @@
 				"range": 345,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10124,9 +9750,7 @@
 				"range": 1152,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10144,9 +9768,7 @@
 				"range": 640,
 				"size": 16,
 				"magnitude": 4.1,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10164,9 +9786,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -10185,9 +9805,7 @@
 				"range": 409,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10205,9 +9823,7 @@
 				"range": 560,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -10226,9 +9842,7 @@
 				"range": 560,
 				"size": 16,
 				"magnitude": 4.3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10246,9 +9860,7 @@
 				"range": 403,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -10267,9 +9879,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10279,9 +9889,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10291,9 +9899,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10303,9 +9909,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10315,9 +9919,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10327,9 +9929,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10339,9 +9939,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10351,9 +9949,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 220,
@@ -10363,9 +9959,7 @@
 				"range": 768,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -10384,9 +9978,7 @@
 				"range": 281,
 				"size": 16,
 				"magnitude": 3.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10404,9 +9996,7 @@
 				"range": 672,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -10425,9 +10015,7 @@
 				"range": 576,
 				"size": 16,
 				"magnitude": 4,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10445,9 +10033,7 @@
 				"range": 800,
 				"size": 16,
 				"magnitude": 3.9,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -10466,9 +10052,7 @@
 				"range": 896,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10486,9 +10070,7 @@
 				"range": 1024,
 				"size": 16,
 				"magnitude": 4.2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	}

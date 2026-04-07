@@ -6664,8 +6664,8 @@
 	{
 		"enemyId": 118,
 		"name": "Avatar of the Forgotten King",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 0,
+		"spriteKey": "lofiBosses16x16.png",
+		"row": 2,
 		"col": 0,
 		"spriteSize": 16,
 		"size": 64,
@@ -6761,7 +6761,8 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 119,
@@ -7691,7 +7692,7 @@
 		"spriteKey": "chars16x16dEncounters2.png",
 		"row": 16,
 		"col": 0,
-		"spriteSize": 64,
+		"spriteSize": 16,
 		"size": 64,
 		"attackId": 221,
 		"xp": 30000,
