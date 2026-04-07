@@ -128,6 +128,7 @@ public class PlayerDataService {
         for (PlayerAccountEntity acc : accounts) {
             if (acc.getCharacters() == null) continue;
             for (CharacterEntity ch : acc.getCharacters()) {
+                if (ch.getDeleted() != null) continue; // exclude dead characters
                 if (ch.getStats() == null || ch.getStats().getXp() == null) continue;
                 ranked.add(Map.entry(acc.getAccountName() != null ? acc.getAccountName() : "Unknown", ch));
             }

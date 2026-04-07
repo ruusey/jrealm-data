@@ -70,6 +70,29 @@ button.secondary:hover { background: #4a3a48; }
 .charselect-box { width: 560px; max-height: 90vh; overflow-y: auto; }
 .charselect-box h2 { color: #c8a86e; margin-bottom: 20px; }
 .charselect-box h3 { color: #a89888; font-size: 14px; margin: 12px 0 8px; }
+.charselect-tabs {
+    display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #3a2a38;
+}
+.tab-btn {
+    flex: 1; padding: 10px 16px; background: transparent; border: none;
+    color: #887868; font-size: 14px; font-weight: 600; cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn:hover { color: #c8a86e; }
+.tab-btn.active { color: #c8a86e; border-bottom-color: #c8a86e; }
+#graveyard-list { max-height: 340px; overflow-y: auto; margin-bottom: 12px; }
+#graveyard-list .char-card { cursor: default; border-color: #3a2030; }
+#graveyard-list .char-card:hover { border-color: #5a3040; }
+#graveyard-list .char-card .char-name { color: #a04040; }
+.grave-date { font-size: 10px; color: #804040; margin-top: 2px; }
+.grave-equip { display: flex; gap: 4px; margin-top: 4px; }
+.grave-equip-slot {
+    width: 24px; height: 24px; background: #2a2030; border: 1px solid #3a2a38;
+    border-radius: 3px; image-rendering: pixelated; display: flex;
+    align-items: center; justify-content: center; overflow: hidden;
+}
+.grave-equip-slot img { width: 100%; height: 100%; image-rendering: pixelated; }
 #char-list { max-height: 280px; overflow-y: auto; margin-bottom: 12px; }
 .char-actions { display: flex; gap: 8px; margin-bottom: 8px; }
 .char-actions button { flex: 1; }
@@ -601,6 +624,8 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     .charselect-box { max-height: 85vh; overflow-y: auto; }
     .charselect-box h2 { font-size: 18px; margin-bottom: 10px; }
     #char-list { max-height: 120px; }
+    #graveyard-list { max-height: 160px; }
+    .tab-btn { font-size: 12px; padding: 8px 10px; }
     .char-card { padding: 8px 10px; gap: 8px; }
     .char-card .char-icon { width: 32px; height: 32px; font-size: 16px; }
     .char-card .char-name { font-size: 13px; }

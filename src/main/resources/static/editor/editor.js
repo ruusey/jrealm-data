@@ -4100,7 +4100,9 @@ const SIM = {
   getCenter() { return { x: this.canvas.width / 2, y: this.canvas.height / 2 }; },
 
   getAngle(sx, sy, tx, ty) {
-    return Math.atan2(ty - sy, tx - sx) - Math.PI / 2;
+    // Negate dy to convert screen-space (Y-down) to game-space (Y-up) before
+    // computing the game-engine angle convention (atan2 - PI/2).
+    return Math.atan2(-(ty - sy), tx - sx) - Math.PI / 2;
   },
 
   fireProjGroup(pg, srcX, srcY, baseAngle) {
@@ -4203,15 +4205,15 @@ const SIM = {
       const currOff = b.amplitude * Math.sin(b.timeStep * Math.PI / 180);
       const perpDelta = (currOff - prevOff) * (b.invert ? -1 : 1);
       const fwdX = Math.sin(b.angle) * b.magnitude * scale;
-      const fwdY = Math.cos(b.angle) * b.magnitude * scale;
+      const fwdY = -Math.cos(b.angle) * b.magnitude * scale;
       const perpX = Math.cos(b.angle);
-      const perpY = -Math.sin(b.angle);
+      const perpY = Math.sin(b.angle);
       b.x += fwdX + perpX * perpDelta;
       b.y += fwdY + perpY * perpDelta;
       b.range -= b.magnitude * scale;
     } else {
       const vx = Math.sin(b.angle) * b.magnitude * scale;
-      const vy = Math.cos(b.angle) * b.magnitude * scale;
+      const vy = -Math.cos(b.angle) * b.magnitude * scale;
       b.x += vx;
       b.y += vy;
       b.range -= Math.sqrt(vx * vx + vy * vy);

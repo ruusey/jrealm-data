@@ -92,11 +92,19 @@
     <!-- Character Select Screen -->
     <div id="charselect-screen" class="screen">
         <div class="charselect-box">
-            <h2>Select Character</h2>
-            <div id="char-list"></div>
-            <div class="char-actions">
-                <button id="play-btn" disabled>Play</button>
-                <button id="delete-char-btn" class="danger" disabled>Delete</button>
+            <div class="charselect-tabs">
+                <button id="tab-characters" class="tab-btn active">Characters</button>
+                <button id="tab-graveyard" class="tab-btn">Graveyard</button>
+            </div>
+            <div id="characters-panel">
+                <div id="char-list"></div>
+                <div class="char-actions">
+                    <button id="play-btn" disabled>Play</button>
+                    <button id="delete-char-btn" class="danger" disabled>Delete</button>
+                </div>
+            </div>
+            <div id="graveyard-panel" style="display:none">
+                <div id="graveyard-list"></div>
             </div>
             <div class="char-create">
                 <h3>Create Character</h3>

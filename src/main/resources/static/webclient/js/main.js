@@ -38,13 +38,13 @@ let minimap = null;
 // Must match Java GameSpriteManager.SPRITE_NAMES exactly
 const SPRITE_SHEETS = [
     'rotmg-projectiles.png',
-    'rotmg-bosses.png', 'rotmg-bosses-1.png', 'rotmg-bosses-1_.png',
+    'rotmg-bosses.png', 'rotmg-bosses-1.png',
     'rotmg-items.png', 'rotmg-items-1.png',
     'rotmg-tiles.png', 'rotmg-tiles-1.png', 'rotmg-tiles-2.png', 'rotmg-tiles-all.png',
     'rotmg-abilities.png', 'rotmg-misc.png',
     'rotmg-classes-0.png', 'rotmg-classes-1.png', 'rotmg-classes-2.png', 'rotmg-classes-3.png',
-    'lofi_char.png', 'lofi_environment.png', 'lofi_obj.png', 'lofiObj2.png', 'lofiObj3.png', 'lofiObjBig.png',
-    'lofiEnvironment.png', 'lofiEnvironment2.png', 'lofiEnvironment3.png',
+    'lofiObj2.png', 'lofiObj3.png', 'lofiObjBig.png',
+    'lofiEnvironment2.png', 'lofiEnvironment3.png',
     'lofi_dungeon_features.png',
     'chars8x8rBeach.png', 'chars8x8rHero2.png', 'cursedLibraryChars16x16.png',
     'd1Chars16x16r.png', 'd3Chars8x8r.png', 'cursedLibraryChars8x8.png', 'cursedLibraryObjects8x8.png',
@@ -57,8 +57,9 @@ const SPRITE_SHEETS = [
     'summerNexusObjects8x8.png',
     'oryxHordeChars16x16.png', 'oryxHordeChars8x8.png',
     'secludedThicketChars16x16.png',
-    'test0.png', 'test1.png', 'test2.png', 'test3.png',
-    'test4.png', 'test5.png', 'test6.png', 'test7.png'
+    'lofiWorld.png', 'lofiBosses16x16.png', 'lofiBosses16x20.png',
+    'lofiCharacter10x10.png', 'lofiProjectiles.png',
+    'battleOryxObjects8x8.png'
 ];
 
 // --- Screen Management ---
@@ -205,6 +206,19 @@ function drawClassIcon(canvas, classId) {
     if (img) ctx.drawImage(img, 0, localRow * 8, 8, 8, 0, 0, canvas.width, canvas.height);
 }
 
+// Preloaded item definitions for graveyard display (loaded once)
+let _graveyardItemDefs = null;
+async function ensureItemDefs() {
+    if (_graveyardItemDefs) return _graveyardItemDefs;
+    try {
+        const data = await api.getGameData('game-items.json');
+        _graveyardItemDefs = {};
+        if (Array.isArray(data)) data.forEach(i => _graveyardItemDefs[i.itemId] = i);
+        else _graveyardItemDefs = data;
+    } catch (e) { _graveyardItemDefs = {}; }
+    return _graveyardItemDefs;
+}
+
 function showCharacterSelect() {
     showScreen('charselect');
     selectedCharacter = null;
@@ -214,13 +228,24 @@ function showCharacterSelect() {
     document.getElementById('create-char-btn').disabled = true;
     document.getElementById('char-error').textContent = '';
 
-    // Character list
+    // Split characters into alive and dead
+    const allChars = account.characters || [];
+    const aliveChars = allChars.filter(c => !c.deleted);
+    const deadChars = allChars.filter(c => c.deleted);
+
+    // Reset to characters tab
+    document.getElementById('tab-characters').classList.add('active');
+    document.getElementById('tab-graveyard').classList.remove('active');
+    document.getElementById('characters-panel').style.display = '';
+    document.getElementById('graveyard-panel').style.display = 'none';
+
+    // Character list (alive only)
     const listEl = document.getElementById('char-list');
     listEl.innerHTML = '';
-    if (!account.characters || account.characters.length === 0) {
+    if (aliveChars.length === 0) {
         listEl.innerHTML = '<p style="color:#887868">No characters yet. Create one below!</p>';
     } else {
-        for (const char of account.characters) {
+        for (const char of aliveChars) {
             const card = document.createElement('div');
             card.className = 'char-card';
             const className = ALL_CLASSES[char.characterClass] || `Class ${char.characterClass}`;
@@ -247,7 +272,7 @@ function showCharacterSelect() {
             card.appendChild(iconDiv);
             card.appendChild(infoDiv);
             card.addEventListener('click', () => {
-                document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+                document.querySelectorAll('#char-list .char-card').forEach(c => c.classList.remove('selected'));
                 card.classList.add('selected');
                 selectedCharacter = char;
                 document.getElementById('play-btn').disabled = false;
@@ -256,6 +281,9 @@ function showCharacterSelect() {
             listEl.appendChild(card);
         }
     }
+
+    // Graveyard list (dead characters)
+    renderGraveyard(deadChars);
 
     // Class picker for creating new characters
     const pickerEl = document.getElementById('class-picker');
@@ -285,6 +313,80 @@ function showCharacterSelect() {
     // Load leaderboard
     loadLeaderboard();
 }
+
+async function renderGraveyard(deadChars) {
+    const listEl = document.getElementById('graveyard-list');
+    listEl.innerHTML = '';
+    if (deadChars.length === 0) {
+        listEl.innerHTML = '<p style="color:#887868">No fallen characters.</p>';
+        return;
+    }
+
+    const itemDefs = await ensureItemDefs();
+    const slotNames = ['Weapon', 'Ability', 'Armor', 'Ring'];
+
+    for (const char of deadChars) {
+        const card = document.createElement('div');
+        card.className = 'char-card';
+        const className = ALL_CLASSES[char.characterClass] || `Class ${char.characterClass}`;
+        const stats = char.stats || {};
+        const classId = char.characterClass || 0;
+
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'char-icon';
+        const cvs = document.createElement('canvas');
+        cvs.width = 40; cvs.height = 40;
+        cvs.style.opacity = '0.5';
+        cvs.style.filter = 'grayscale(80%)';
+        drawClassIcon(cvs, classId);
+        iconDiv.appendChild(cvs);
+
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'char-info';
+
+        const deathDate = char.deleted ? new Date(char.deleted).toLocaleDateString() : 'Unknown';
+
+        // Build equipment list
+        const items = char.items || [];
+        let equipHtml = '';
+        for (let i = 0; i < 4; i++) {
+            const equip = items.find(e => e.slotIdx === i);
+            if (equip && equip.itemId >= 0) {
+                const def = itemDefs[equip.itemId];
+                const name = def ? def.name : `Item #${equip.itemId}`;
+                equipHtml += `<span style="color:#a89888;font-size:10px" title="${slotNames[i]}">${name}</span> `;
+            }
+        }
+
+        infoDiv.innerHTML = `
+            <div class="char-name">${className}</div>
+            <div class="char-details">
+                HP: ${stats.hp ?? '?'} | MP: ${stats.mp ?? '?'} |
+                ATT: ${stats.att ?? '?'} | DEF: ${stats.def ?? '?'} |
+                SPD: ${stats.spd ?? '?'} | DEX: ${stats.dex ?? '?'}
+            </div>
+            <div class="grave-date">Died: ${deathDate}</div>
+            ${equipHtml ? `<div class="char-details" style="margin-top:2px">${equipHtml}</div>` : ''}
+        `;
+        card.appendChild(iconDiv);
+        card.appendChild(infoDiv);
+        listEl.appendChild(card);
+    }
+}
+
+// Tab switching for Characters / Graveyard
+document.getElementById('tab-characters').addEventListener('click', () => {
+    document.getElementById('tab-characters').classList.add('active');
+    document.getElementById('tab-graveyard').classList.remove('active');
+    document.getElementById('characters-panel').style.display = '';
+    document.getElementById('graveyard-panel').style.display = 'none';
+});
+document.getElementById('tab-graveyard').addEventListener('click', () => {
+    document.getElementById('tab-graveyard').classList.add('active');
+    document.getElementById('tab-characters').classList.remove('active');
+    document.getElementById('characters-panel').style.display = 'none';
+    document.getElementById('graveyard-panel').style.display = '';
+});
 
 async function loadLeaderboard() {
     const listEl = document.getElementById('leaderboard-list');
@@ -960,6 +1062,9 @@ function gameLoop(timestamp) {
     const dt = Math.min((timestamp - lastTime) / 1000, 0.05); // Cap delta at 50ms
     lastTime = timestamp;
     perfMetrics.update(timestamp);
+    // Feed measured RTT into game state for bullet fast-forward calculations.
+    // perfMetrics.ping is one-way (RTT/2), so multiply back to get full RTT.
+    game._lastPingMs = perfMetrics.ping * 2;
 
     if (currentScreen === 'game' && game.playerId !== null) {
         // Process input

@@ -279,13 +279,17 @@ export class GameState {
         for (const b of packet.bullets) {
             const bullet = {
                 ...b, dx: b.dX, dy: b.dY,
-                targetX: b.pos.x, targetY: b.pos.y
+                targetX: b.pos.x, targetY: b.pos.y,
+                // Stamp with CLIENT time on arrival — never compare server clock vs client clock.
+                // The server's createdTime is only used to compute how old the bullet was
+                // when the server sent this packet (server-side age), not for client-side expiry.
+                _clientCreatedTime: Date.now()
             };
-            // Fast-forward STRAIGHT bullets only to approximate current server position.
-            // Parametric (wavy) and orbital bullets have complex paths that can't be
-            // trivially fast-forwarded without replaying the full physics.
-            const elapsed = (Date.now() - Number(b.createdTime)) / 1000;
-            const catchupScale = Math.min(elapsed * 64, 15); // cap at 15 ticks (~234ms)
+            // Fast-forward STRAIGHT bullets to approximate current server position.
+            // Use half the measured round-trip time (ping/2) as a rough one-way latency estimate.
+            const oneWayMs = (this._lastPingMs || 0) / 2;
+            const catchupSec = Math.min(oneWayMs / 1000, 0.25); // cap at 250ms
+            const catchupScale = catchupSec * 64;
             const isOrb = b.flags && b.flags.includes(20);
             const isParametric = (b.amplitude || 0) !== 0 && (b.frequency || 0) !== 0;
             if (catchupScale > 0.5 && b.magnitude > 0 && !isOrb && !isParametric) {
@@ -825,7 +829,7 @@ export class GameState {
                 }
             }
 
-            const lifetime = now - Number(b.createdTime);
+            const lifetime = now - (b._clientCreatedTime || Number(b.createdTime));
             if (b._traveled > b.range || lifetime > 10000) {
                 this.bullets.delete(id);
             }
