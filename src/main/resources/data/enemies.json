@@ -7,9 +7,9 @@
 		"col": 7,
 		"spriteSize": 16,
 		"size": 64,
-		"attackId": 0,
-		"xp": 2500,
-		"health": 2000,
+		"attackId": 124,
+		"xp": 4500,
+		"health": 4000,
 		"maxSpeed": 1.8,
 		"chaseRange": 390,
 		"attackRange": 512,
@@ -35,7 +35,7 @@
 				},
 				"attacks": [
 					{
-						"projectileGroupId": 0,
+						"projectileGroupId": 211,
 						"cooldownMs": 360,
 						"burstCount": 2,
 						"burstDelayMs": 70
@@ -53,7 +53,7 @@
 				},
 				"attacks": [
 					{
-						"projectileGroupId": 0,
+						"projectileGroupId": 211,
 						"cooldownMs": 180,
 						"burstCount": 4,
 						"burstDelayMs": 56,
@@ -61,7 +61,8 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 0
 	},
 	{
 		"enemyId": 2,
@@ -250,7 +251,7 @@
 	{
 		"enemyId": 6,
 		"name": "Pirate_0",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 0,
 		"col": 11,
 		"spriteSize": 8,
@@ -276,7 +277,7 @@
 	{
 		"enemyId": 7,
 		"name": "Red_Bandit_0",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 0,
 		"col": 9,
 		"spriteSize": 8,
@@ -489,7 +490,7 @@
 	{
 		"enemyId": 13,
 		"name": "The Man",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 13,
 		"col": 0,
 		"spriteSize": 16,
@@ -644,7 +645,7 @@
 	{
 		"enemyId": 16,
 		"name": "LootChest",
-		"spriteKey": "lofi_obj.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"row": 0,
 		"col": 2,
 		"spriteSize": 8,
@@ -663,7 +664,7 @@
 	{
 		"enemyId": 17,
 		"name": "Skeleton Warrior",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 6,
 		"col": 0,
 		"spriteSize": 8,
@@ -689,7 +690,7 @@
 	{
 		"enemyId": 18,
 		"name": "Fire Imp",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 11,
 		"col": 8,
 		"spriteSize": 8,
@@ -715,7 +716,7 @@
 	{
 		"enemyId": 19,
 		"name": "Cave Serpent",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 12,
 		"col": 6,
 		"spriteSize": 8,
@@ -735,7 +736,7 @@
 	{
 		"enemyId": 20,
 		"name": "Ice Sprite",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 7,
 		"col": 4,
 		"spriteSize": 8,
@@ -755,7 +756,7 @@
 	{
 		"enemyId": 21,
 		"name": "Wraith",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 9,
 		"col": 3,
 		"spriteSize": 16,
@@ -775,7 +776,7 @@
 	{
 		"enemyId": 22,
 		"name": "Frost Golem",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 13,
 		"col": 2,
 		"spriteSize": 16,
@@ -801,7 +802,7 @@
 	{
 		"enemyId": 23,
 		"name": "Toxic Ooze",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 9,
 		"col": 5,
 		"spriteSize": 16,
@@ -1040,7 +1041,7 @@
 	{
 		"enemyId": 27,
 		"name": "Void Entity",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 10,
 		"col": 1,
 		"spriteSize": 16,
@@ -1140,7 +1141,7 @@
 	{
 		"enemyId": 28,
 		"name": "Stone Guardian",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 10,
 		"col": 2,
 		"spriteSize": 16,
@@ -1226,7 +1227,7 @@
 	{
 		"enemyId": 29,
 		"name": "Coral Sentry",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 11,
 		"col": 2,
 		"spriteSize": 8,
@@ -1252,7 +1253,7 @@
 	{
 		"enemyId": 30,
 		"name": "Fungal Spitter",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 5,
 		"col": 6,
 		"spriteSize": 8,
@@ -1299,7 +1300,7 @@
 	{
 		"enemyId": 32,
 		"name": "Dark Acolyte",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 9,
 		"col": 2,
 		"spriteSize": 8,
@@ -1345,7 +1346,7 @@
 	{
 		"enemyId": 34,
 		"name": "Ember Hound",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 13,
 		"col": 6,
 		"spriteSize": 8,
@@ -1536,7 +1537,7 @@
 	{
 		"enemyId": 37,
 		"name": "Magma Titan",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 10,
 		"col": 5,
 		"spriteSize": 16,
@@ -1822,7 +1823,7 @@
 	{
 		"enemyId": 40,
 		"name": "Eternal Monarch",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 8,
 		"col": 3,
 		"spriteSize": 16,
@@ -1996,7 +1997,7 @@
 	{
 		"enemyId": 42,
 		"name": "Elven Archer",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 7,
 		"col": 10,
 		"spriteSize": 8,
@@ -2022,7 +2023,7 @@
 	{
 		"enemyId": 43,
 		"name": "Dwarf Brawler",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 4,
 		"col": 0,
 		"spriteSize": 8,
@@ -2043,7 +2044,7 @@
 	{
 		"enemyId": 44,
 		"name": "Undead Mage",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 6,
 		"col": 4,
 		"spriteSize": 8,
@@ -2064,7 +2065,7 @@
 	{
 		"enemyId": 45,
 		"name": "Phantom",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 7,
 		"col": 0,
 		"spriteSize": 8,
@@ -2084,7 +2085,7 @@
 	{
 		"enemyId": 46,
 		"name": "Goblin Berserker",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 5,
 		"col": 2,
 		"spriteSize": 8,
@@ -2110,7 +2111,7 @@
 	{
 		"enemyId": 47,
 		"name": "Whelp",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 14,
 		"col": 0,
 		"spriteSize": 8,
@@ -2156,7 +2157,7 @@
 	{
 		"enemyId": 49,
 		"name": "Iron Golem",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 10,
 		"col": 3,
 		"spriteSize": 16,
@@ -2182,7 +2183,7 @@
 	{
 		"enemyId": 50,
 		"name": "Elder Dragon",
-		"spriteKey": "lofi_char.png",
+		"spriteKey": "rotmg-bosses-1.png",
 		"row": 10,
 		"col": 4,
 		"spriteSize": 16,
@@ -3598,32 +3599,6 @@
 		"phases": []
 	},
 	{
-		"enemyId": 70,
-		"name": "TestEnemy_0",
-		"spriteKey": "test1.png",
-		"row": 0,
-		"col": 2,
-		"spriteSize": 32,
-		"size": 80,
-		"attackId": 111,
-		"xp": 100000,
-		"health": 100000,
-		"maxSpeed": 1.4,
-		"chaseRange": 390,
-		"attackRange": 210,
-		"stats": {
-			"hp": 100000,
-			"def": 100,
-			"dex": 5,
-			"mp": 0,
-			"att": 0,
-			"spd": 0,
-			"vit": 0,
-			"wis": 0
-		},
-		"phases": []
-	},
-	{
 		"enemyId": 71,
 		"name": "Bandit Leader",
 		"spriteKey": "lofiCharacter10x10.png",
@@ -3650,7 +3625,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "WANDER",
 					"speed": 0.7,
@@ -3673,8 +3648,8 @@
 		"enemyId": 72,
 		"name": "Cyclops King",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 1,
+		"row": 22,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 115,
@@ -3696,7 +3671,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "WANDER",
 					"speed": 0.6,
@@ -3709,14 +3684,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 73,
 		"name": "Dwarf King",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 2,
+		"row": 23,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 116,
@@ -3738,7 +3714,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 0.9
@@ -3750,14 +3726,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 74,
 		"name": "Elf Archer",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 3,
+		"row": 24,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 117,
@@ -3779,7 +3756,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "WANDER",
 					"speed": 0.9,
@@ -3792,20 +3769,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 75,
 		"name": "Fire Sprite",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 4,
+		"row": 25,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 118,
 		"xp": 20,
 		"health": 100,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 287,
 		"attackRange": 640,
 		"stats": {
@@ -3821,7 +3799,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "WANDER",
 					"speed": 0.9,
@@ -3834,20 +3812,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 76,
 		"name": "Goblin Mage",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 5,
+		"row": 26,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 119,
 		"xp": 78,
 		"health": 280,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 281,
 		"attackRange": 384,
 		"stats": {
@@ -3863,10 +3842,10 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
-					"speed": 1.0
+					"speed": 1
 				},
 				"attacks": [
 					{
@@ -3879,20 +3858,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 77,
 		"name": "Hobbit Mage",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 6,
+		"row": 27,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 121,
 		"xp": 64,
 		"health": 200,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 284,
 		"attackRange": 160,
 		"stats": {
@@ -3908,7 +3888,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 0.9
@@ -3922,14 +3902,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 78,
 		"name": "Ice Sprite",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 7,
+		"row": 28,
+		"col": 3,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 122,
@@ -3951,7 +3932,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 0.9
@@ -3966,20 +3947,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 79,
 		"name": "Night Elf King",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 8,
+		"row": 29,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 123,
 		"xp": 36,
 		"health": 180,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 207,
 		"attackRange": 224,
 		"stats": {
@@ -3995,10 +3977,10 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
-					"speed": 1.0
+					"speed": 1
 				},
 				"attacks": [
 					{
@@ -4007,20 +3989,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 80,
 		"name": "Orc King",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 9,
+		"row": 31,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 124,
 		"xp": 48,
 		"health": 240,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 221,
 		"attackRange": 256,
 		"stats": {
@@ -4036,10 +4019,10 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
-					"speed": 1.0
+					"speed": 1
 				},
 				"attacks": [
 					{
@@ -4048,14 +4031,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 81,
 		"name": "Pirate",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 10,
+		"row": 32,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 125,
@@ -4077,7 +4061,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 0.9
@@ -4089,14 +4073,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 82,
 		"name": "Sandsman King",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 11,
+		"row": 34,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 126,
@@ -4118,7 +4103,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 0.9
@@ -4130,14 +4115,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 83,
 		"name": "Snake",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 20,
-		"col": 12,
+		"row": 35,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 24,
 		"attackId": 127,
@@ -4159,7 +4145,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 0.9
@@ -4171,13 +4157,14 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 84,
 		"name": "Arachna the Spider Queen",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
+		"row": 40,
 		"col": 0,
 		"spriteSize": 10,
 		"size": 28,
@@ -4200,7 +4187,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.2,
@@ -4246,14 +4233,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 85,
 		"name": "Beholder",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 1,
+		"row": 38,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 28,
 		"attackId": 131,
@@ -4275,7 +4263,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.3,
@@ -4306,14 +4294,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 86,
 		"name": "Cyclops God",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 2,
+		"row": 39,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 28,
 		"attackId": 132,
@@ -4335,10 +4324,10 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
-					"speed": 1.0
+					"speed": 1
 				},
 				"attacks": [
 					{
@@ -4379,7 +4368,8 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 87,
@@ -4408,7 +4398,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.2,
@@ -4447,8 +4437,8 @@
 		"enemyId": 88,
 		"name": "Djinn",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 4,
+		"row": 41,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 28,
 		"attackId": 136,
@@ -4470,7 +4460,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 1.2
@@ -4498,14 +4488,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 89,
 		"name": "Dreadstump the Pirate King",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 5,
+		"row": 42,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 28,
 		"attackId": 137,
@@ -4527,7 +4518,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.1,
@@ -4573,14 +4564,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 90,
 		"name": "Ent Ancient",
 		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 6,
+		"row": 43,
+		"col": 0,
 		"spriteSize": 10,
 		"size": 28,
 		"attackId": 140,
@@ -4602,7 +4594,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.2,
@@ -4653,15 +4645,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 10
 	},
 	{
 		"enemyId": 91,
 		"name": "Ent God",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 11,
 		"col": 7,
-		"spriteSize": 10,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 143,
 		"xp": 200,
@@ -4682,7 +4675,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.4,
@@ -4709,20 +4702,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 92,
 		"name": "Flayer God",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 8,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 11,
+		"col": 5,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 144,
 		"xp": 560,
 		"health": 1400,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 296,
 		"attackRange": 492,
 		"stats": {
@@ -4738,7 +4732,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.3,
@@ -4775,15 +4769,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 93,
 		"name": "Flying Brain",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 9,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 25,
+		"col": 2,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 146,
 		"xp": 200,
@@ -4804,7 +4799,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.2,
@@ -4819,15 +4814,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 94,
 		"name": "Ghost God",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 10,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 5,
+		"col": 15,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 147,
 		"xp": 200,
@@ -4848,7 +4844,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.1,
@@ -4881,20 +4877,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 95,
 		"name": "Great Lizard",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 11,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 6,
+		"col": 14,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 148,
 		"xp": 180,
 		"health": 500,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 278,
 		"attackRange": 353,
 		"stats": {
@@ -4910,7 +4907,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.4,
@@ -4930,15 +4927,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 96,
 		"name": "Horned Drake",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 12,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 2,
+		"col": 8,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 150,
 		"xp": 456,
@@ -4959,7 +4957,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 1.2
@@ -4985,15 +4983,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 97,
 		"name": "Leviathan",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 13,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 10,
+		"col": 15,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 151,
 		"xp": 600,
@@ -5014,7 +5013,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.1,
@@ -5050,15 +5049,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 98,
 		"name": "Lich",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 7,
 		"col": 14,
-		"spriteSize": 10,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 153,
 		"xp": 1165,
@@ -5079,7 +5079,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "CHASE",
 					"speed": 1.2
@@ -5121,15 +5121,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 99,
 		"name": "Lizard God",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 15,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 14,
+		"col": 13,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 155,
 		"xp": 320,
@@ -5150,7 +5151,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.2,
@@ -5184,15 +5185,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 100,
 		"name": "Medusa",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 16,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 14,
+		"col": 2,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 156,
 		"xp": 200,
@@ -5213,7 +5215,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.2,
@@ -5257,15 +5259,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 101,
 		"name": "Oasis Giant",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 17,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 6,
+		"col": 12,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 158,
 		"xp": 325,
@@ -5286,7 +5289,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.2,
@@ -5301,15 +5304,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 102,
 		"name": "Ogre King",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 18,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 4,
+		"col": 8,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 159,
 		"xp": 320,
@@ -5330,7 +5334,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.1,
@@ -5348,15 +5352,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 103,
 		"name": "Phoenix Lord",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 19,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 2,
+		"col": 11,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 161,
 		"xp": 195,
@@ -5377,7 +5382,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.4,
@@ -5393,15 +5398,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 104,
 		"name": "Slime God",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 20,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 9,
+		"col": 1,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 162,
 		"xp": 200,
@@ -5422,7 +5428,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.3,
@@ -5458,15 +5464,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 105,
 		"name": "Sprite God",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 21,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 6,
+		"col": 6,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 164,
 		"xp": 200,
@@ -5487,7 +5494,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.3,
@@ -5508,15 +5515,16 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 106,
 		"name": "White Demon",
-		"spriteKey": "lofiCharacter10x10.png",
-		"row": 30,
-		"col": 22,
-		"spriteSize": 10,
+		"spriteKey": "rotmg-bosses-1.png",
+		"row": 6,
+		"col": 5,
+		"spriteSize": 8,
 		"size": 28,
 		"attackId": 166,
 		"xp": 200,
@@ -5537,10 +5545,10 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
-					"speed": 1.0,
+					"speed": 1,
 					"radius": 107,
 					"direction": "CCW"
 				},
@@ -5573,12 +5581,13 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 8
 	},
 	{
 		"enemyId": 107,
 		"name": "Archdemon Malphas",
-		"spriteKey": "lofiBosses16x16.png",
+		"spriteKey": "chars16x16dEncounters.png",
 		"row": 0,
 		"col": 0,
 		"spriteSize": 16,
@@ -5602,7 +5611,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.5,
@@ -5675,14 +5684,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 108,
 		"name": "Crystal Prisoner",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 1,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 6,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 170,
@@ -5704,7 +5714,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.5,
@@ -5805,14 +5815,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 109,
 		"name": "Davy Jones",
 		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 2,
+		"row": 1,
+		"col": 1,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 173,
@@ -5834,7 +5845,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.6,
@@ -5871,14 +5882,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 110,
 		"name": "Ghost King",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 3,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 19,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 175,
@@ -5900,7 +5912,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.3,
@@ -5947,14 +5959,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 111,
 		"name": "Gulpord the Slime God",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 4,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 25,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 176,
@@ -5976,7 +5989,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 1.1,
@@ -6061,14 +6074,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 112,
 		"name": "Limon the Sprite Goddess",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 5,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 31,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 179,
@@ -6090,7 +6104,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.5,
@@ -6138,14 +6152,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 113,
 		"name": "Pentaract Tower",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 6,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 32,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 182,
@@ -6167,7 +6182,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 1.1,
@@ -6213,7 +6228,7 @@
 				"hpThreshold": 0.25,
 				"movement": {
 					"type": "FLEE",
-					"speed": 2.0,
+					"speed": 2,
 					"fleeRange": 100
 				},
 				"attacks": [
@@ -6233,14 +6248,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 114,
 		"name": "Red Beehemoth",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 7,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 9,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 184,
@@ -6262,7 +6278,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.4,
@@ -6335,7 +6351,8 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 115,
@@ -6364,7 +6381,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.3,
@@ -6431,9 +6448,9 @@
 	{
 		"enemyId": 116,
 		"name": "Septavius the Ghost God",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 9,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 37,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 189,
@@ -6455,7 +6472,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "STRAFE",
 					"speed": 1.3,
@@ -6505,7 +6522,7 @@
 				"hpThreshold": 0.25,
 				"movement": {
 					"type": "FLEE",
-					"speed": 2.0,
+					"speed": 2,
 					"fleeRange": 100
 				},
 				"attacks": [
@@ -6529,14 +6546,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 117,
 		"name": "Stheno the Snake Queen",
-		"spriteKey": "lofiBosses16x16.png",
-		"row": 0,
-		"col": 10,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 38,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 34,
 		"attackId": 192,
@@ -6558,7 +6576,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.4,
@@ -6635,7 +6653,8 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 118,
@@ -6664,10 +6683,10 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
-					"speed": 1.0,
+					"speed": 1,
 					"radius": 63
 				},
 				"attacks": [
@@ -6742,9 +6761,9 @@
 	{
 		"enemyId": 119,
 		"name": "Cube God",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 0,
-		"col": 1,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 2,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 198,
@@ -6766,7 +6785,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.3,
@@ -6830,14 +6849,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 120,
 		"name": "Esben the Unwilling",
-		"spriteKey": "rotmg-bosses-1.png",
+		"spriteKey": "lofiBosses16x20.png",
 		"row": 0,
-		"col": 2,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 200,
@@ -6859,7 +6879,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.1,
@@ -6886,7 +6906,7 @@
 				"hpThreshold": 0.5,
 				"movement": {
 					"type": "CHARGE",
-					"speed": 2.0,
+					"speed": 2,
 					"chargeDistanceMin": 50,
 					"pauseMs": 350
 				},
@@ -6940,14 +6960,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 20
 	},
 	{
 		"enemyId": 121,
 		"name": "Grand Sphinx",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 0,
-		"col": 3,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 26,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 203,
@@ -6969,7 +6990,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.5,
@@ -7020,7 +7041,7 @@
 				"hpThreshold": 0.25,
 				"movement": {
 					"type": "CHASE",
-					"speed": 2.0
+					"speed": 2
 				},
 				"attacks": [
 					{
@@ -7045,14 +7066,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 122,
 		"name": "Hermit God",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 0,
-		"col": 4,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 11,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 206,
@@ -7074,7 +7096,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.4,
@@ -7153,20 +7175,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 123,
 		"name": "Lord of the Lost Lands",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 0,
-		"col": 5,
+		"spriteKey": "chars16x16dEncounters.png",
+		"row": 13,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 209,
 		"xp": 35000,
 		"health": 60000,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 323,
 		"attackRange": 560,
 		"stats": {
@@ -7182,7 +7205,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.2,
@@ -7245,20 +7268,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 124,
 		"name": "Marble Colossus",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 0,
-		"col": 6,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 45,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 211,
 		"xp": 80000,
 		"health": 187500,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 348,
 		"attackRange": 800,
 		"stats": {
@@ -7274,7 +7298,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ORBIT",
 					"speed": 1.2,
@@ -7355,20 +7379,21 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 125,
 		"name": "Oryx the Mad God 1",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 0,
-		"col": 7,
+		"spriteKey": "lofiBosses16x20.png",
+		"row": 1,
+		"col": 1,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 214,
 		"xp": 25000,
 		"health": 80000,
-		"maxSpeed": 1.0,
+		"maxSpeed": 1,
 		"chaseRange": 329,
 		"attackRange": 640,
 		"stats": {
@@ -7384,7 +7409,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.4,
@@ -7460,13 +7485,14 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 20
 	},
 	{
 		"enemyId": 126,
 		"name": "Oryx the Mad God 2",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 1,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 42,
 		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
@@ -7489,7 +7515,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.2,
@@ -7569,13 +7595,14 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 127,
 		"name": "Skull Shrine",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 1,
+		"spriteKey": "lofiBosses16x16.png",
+		"row": 0,
 		"col": 1,
 		"spriteSize": 16,
 		"size": 38,
@@ -7598,7 +7625,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.3,
@@ -7650,14 +7677,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 128,
 		"name": "Thessal the Mermaid Goddess",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 1,
-		"col": 2,
+		"spriteKey": "chars16x16dEncounters2.png",
+		"row": 16,
+		"col": 0,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 221,
@@ -7679,7 +7707,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "ANCHOR",
 					"speed": 1.2,
@@ -7757,14 +7785,15 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 16
 	},
 	{
 		"enemyId": 129,
 		"name": "Void Entity",
-		"spriteKey": "rotmg-bosses-1.png",
-		"row": 1,
-		"col": 3,
+		"spriteKey": "lofiBosses16x20.png",
+		"row": 2,
+		"col": 1,
 		"spriteSize": 16,
 		"size": 38,
 		"attackId": 224,
@@ -7786,7 +7815,7 @@
 		"phases": [
 			{
 				"name": "default",
-				"hpThreshold": 1.0,
+				"hpThreshold": 1,
 				"movement": {
 					"type": "FIGURE_EIGHT",
 					"speed": 1.2,
@@ -7867,6 +7896,7 @@
 					}
 				]
 			}
-		]
+		],
+		"spriteHeight": 20
 	}
 ]

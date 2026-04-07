@@ -2997,7 +2997,7 @@
 		"projectileGroupId": 46,
 		"row": 8,
 		"col": 15,
-		"spriteKey": "lofiObj4.png",
+		"spriteKey": "rotmg-misc.png",
 		"projectiles": [
 			{
 				"projectileId": 46,
@@ -4952,7 +4952,7 @@
 	},
 	{
 		"projectileGroupId": 64,
-		"spriteKey": "lofi_obj.png",
+		"spriteKey": "rotmg-projectiles.png",
 		"row": 6,
 		"col": 5,
 		"projectiles": [
