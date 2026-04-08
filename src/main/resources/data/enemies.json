@@ -7207,7 +7207,7 @@
 			"mp": 0,
 			"att": 0,
 			"spd": 0,
-			"vit": 120,
+			"vit": 0,
 			"wis": 0
 		},
 		"phases": [
@@ -7243,13 +7243,16 @@
 						"projectileGroupId": 209,
 						"cooldownMs": 235,
 						"burstCount": 2,
-						"burstDelayMs": 76
+						"burstDelayMs": 76,
+						"predictive": true
+
 					},
 					{
 						"projectileGroupId": 210,
 						"cooldownMs": 265,
 						"burstCount": 3,
-						"burstDelayMs": 114
+						"burstDelayMs": 114,
+						"predictive": true
 					}
 				]
 			},
@@ -7266,13 +7269,15 @@
 						"cooldownMs": 150,
 						"burstCount": 5,
 						"burstDelayMs": 85,
-						"angleOffsetPerBurst": 0.14
+						"angleOffsetPerBurst": 0.14,
+						"predictive": true
 					},
 					{
 						"projectileGroupId": 210,
 						"cooldownMs": 182,
 						"burstCount": 2,
-						"burstDelayMs": 73
+						"burstDelayMs": 73,
+						"predictive": true
 					}
 				]
 			}
