@@ -677,8 +677,10 @@ export class GameState {
         const tileDef = this.tileData[tile.base];
         if (!tileDef?.data?.slows) return false;
         const tileX = cx * ts, tileY = cy * ts;
-        return (entity.pos.x < tileX + ts && entity.pos.x + size > tileX &&
-                entity.pos.y < tileY + ts && entity.pos.y + size > tileY);
+        // Server uses size/2 hitbox for slow tile detection, not full size
+        const halfSize = Math.floor(size / 2);
+        return (entity.pos.x < tileX + ts && entity.pos.x + halfSize > tileX &&
+                entity.pos.y < tileY + ts && entity.pos.y + halfSize > tileY);
     }
 
     updateVisualEffects() {
@@ -928,9 +930,9 @@ export class GameState {
 
         const local = this.getLocalPlayer();
         if (local) {
-            // Camera follows the visual position (logical + smoothing offset)
-            const visualX = local.pos.x + (local._smoothX || 0);
-            const visualY = local.pos.y + (local._smoothY || 0);
+            // Camera follows the interpolated render position for smooth movement
+            const visualX = (local._renderX !== undefined ? local._renderX : local.pos.x) + (local._smoothX || 0);
+            const visualY = (local._renderY !== undefined ? local._renderY : local.pos.y) + (local._smoothY || 0);
             this.cameraX += (visualX - this.cameraX) * 0.35;
             this.cameraY += (visualY - this.cameraY) * 0.35;
         }

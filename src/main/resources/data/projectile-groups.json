@@ -7732,31 +7732,12 @@
 		"col": 2,
 		"spriteKey": "lofiProjectiles.png",
 		"projectiles": [
-			{
-				"projectileId": 147,
-				"positionMode": 0,
-				"damage": 120,
-				"angle": -0.25,
-				"range": 432,
-				"size": 16,
-				"magnitude": 3,
-				"flags": []
-			},
+			
 			{
 				"projectileId": 147,
 				"positionMode": 0,
 				"damage": 120,
 				"angle": -0.167,
-				"range": 432,
-				"size": 16,
-				"magnitude": 3,
-				"flags": []
-			},
-			{
-				"projectileId": 147,
-				"positionMode": 0,
-				"damage": 120,
-				"angle": -0.083,
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,
@@ -7776,27 +7757,7 @@
 				"projectileId": 147,
 				"positionMode": 0,
 				"damage": 120,
-				"angle": 0.083,
-				"range": 432,
-				"size": 16,
-				"magnitude": 3,
-				"flags": []
-			},
-			{
-				"projectileId": 147,
-				"positionMode": 0,
-				"damage": 120,
 				"angle": 0.167,
-				"range": 432,
-				"size": 16,
-				"magnitude": 3,
-				"flags": []
-			},
-			{
-				"projectileId": 147,
-				"positionMode": 0,
-				"damage": 120,
-				"angle": 0.25,
 				"range": 432,
 				"size": 16,
 				"magnitude": 3,

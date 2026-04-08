@@ -421,11 +421,13 @@ export class GameRenderer {
         const collisionSize = (player.size || PLAYER_SIZE) * SCALE;
         const size = PLAYER_RENDER_SIZE * SCALE;
         const renderOffset = (size - collisionSize) / 2;
-        // Apply visual smoothing offset for local player (decays in ~50ms)
+        // Local player uses interpolated render position for smooth movement between 64Hz ticks
+        const px = isLocal && player._renderX !== undefined ? player._renderX : player.pos.x;
+        const py = isLocal && player._renderY !== undefined ? player._renderY : player.pos.y;
         const smX = isLocal ? (player._smoothX || 0) * SCALE : 0;
         const smY = isLocal ? (player._smoothY || 0) * SCALE : 0;
-        const sx = player.pos.x * SCALE + offsetX - renderOffset + smX;
-        const sy = player.pos.y * SCALE + offsetY - renderOffset + smY;
+        const sx = px * SCALE + offsetX - renderOffset + smX;
+        const sy = py * SCALE + offsetY - renderOffset + smY;
 
         // Animation-driven sprite selection
         const classId = player.classId || 0;

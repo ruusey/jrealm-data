@@ -1125,9 +1125,15 @@ function processInput(dt) {
     if (!game._inputSeq) game._inputSeq = 0;
     let lastSentFlags = game._lastSentDirFlags || -1;
 
+    // Save position before ticks for interpolation
+    const preTickX = local.pos.x;
+    const preTickY = local.pos.y;
+    let ticksRan = 0;
+
     while (simAccumulator >= SIM_TICK_MS) {
         simAccumulator -= SIM_TICK_MS;
         game._inputSeq++;
+        ticksRan++;
 
         // Predict movement locally using IDENTICAL physics to server
         game.simulateTick(local, dirFlags);
@@ -1147,6 +1153,30 @@ function processInput(dt) {
         network.sendPlayerMove(game.playerId, game._inputSeq, dirFlags);
     }
     game._lastSentDirFlags = lastSentFlags;
+
+    // Interpolation: smooth visual position between discrete 64Hz ticks.
+    // Without this, at 60fps the player moves on ~4 out of 5 frames and pauses on the 5th,
+    // creating a visible oscillation/surging effect.
+    // The accumulator remainder tells us how far between the last tick and next tick we are.
+    if (ticksRan > 0) {
+        // Ticks ran this frame — save the post-tick position and velocity for interpolation
+        local._interpFromX = preTickX;
+        local._interpFromY = preTickY;
+        local._interpToX = local.pos.x;
+        local._interpToY = local.pos.y;
+    }
+    // Compute interpolation fraction: how far into the next tick are we?
+    const interpFrac = simAccumulator / SIM_TICK_MS;
+    // Visual position = last tick position + fraction of movement toward next tick
+    if (local._interpToX !== undefined) {
+        const velX = local._interpToX - (local._interpFromX || local._interpToX);
+        const velY = local._interpToY - (local._interpFromY || local._interpToY);
+        local._renderX = local._interpToX + velX * interpFrac;
+        local._renderY = local._interpToY + velY * interpFrac;
+    } else {
+        local._renderX = local.pos.x;
+        local._renderY = local.pos.y;
+    }
 
     // Store dirFlags for rendering (facing direction, animation)
     const up = !!(dirFlags & 0x01), down = !!(dirFlags & 0x02);
