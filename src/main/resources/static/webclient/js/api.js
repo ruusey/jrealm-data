@@ -41,7 +41,6 @@ export class ApiClient {
         const data = await this.request('POST', '/admin/account/login', { email, password });
         this.sessionToken = data.token;
         this.accountGuid = data.accountGuid;
-        this.saveSession();
         return data;
     }
 

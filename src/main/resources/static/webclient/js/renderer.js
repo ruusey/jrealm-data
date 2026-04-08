@@ -1008,6 +1008,62 @@ export class GameRenderer {
                     }
                     break;
                 }
+
+                case 7: { // TRAP_PLACED — persistent armed trap ring (same as case 6 AoE)
+                    const pulse = 0.7 + 0.3 * Math.sin(elapsed * 0.004);
+                    const fadeAlpha = progress > 0.85 ? (1.0 - progress) / 0.15 : 1.0;
+                    g.lineStyle(3, 0xcc8833, fadeAlpha * pulse * 0.8);
+                    g.drawCircle(sx, sy, r);
+                    g.lineStyle(1, 0xffaa44, fadeAlpha * pulse * 0.5);
+                    g.drawCircle(sx, sy, r * 0.75);
+                    g.lineStyle(0);
+                    g.beginFill(0xcc6600, fadeAlpha * 0.1);
+                    g.drawCircle(sx, sy, r);
+                    g.endFill();
+                    const teeth = 8;
+                    for (let i = 0; i < teeth; i++) {
+                        const a = (i / teeth) * Math.PI * 2 + elapsed * 0.002;
+                        const tr = r * 0.9;
+                        g.beginFill(0xffcc44, fadeAlpha * pulse * 0.7);
+                        g.drawPolygon([
+                            sx + Math.cos(a) * (tr - 4), sy + Math.sin(a) * (tr - 4),
+                            sx + Math.cos(a - 0.1) * (tr + 4), sy + Math.sin(a - 0.1) * (tr + 4),
+                            sx + Math.cos(a + 0.1) * (tr + 4), sy + Math.sin(a + 0.1) * (tr + 4)
+                        ]);
+                        g.endFill();
+                    }
+                    g.beginFill(0xffaa44, fadeAlpha * pulse * 0.4);
+                    g.drawCircle(sx, sy, 3);
+                    g.endFill();
+                    break;
+                }
+
+                case 8: { // TRAP_TRIGGER — closing circle snap + flash
+                    // Circle rapidly closes inward then flashes
+                    const closeR = r * (1.0 - progress);
+                    const flashAlpha = progress < 0.3 ? 1.0 : Math.max(0, 1.0 - (progress - 0.3) / 0.7);
+                    // Closing amber ring
+                    g.lineStyle(4, 0xff8800, flashAlpha * 0.9);
+                    g.drawCircle(sx, sy, closeR);
+                    g.lineStyle(2, 0xffcc44, flashAlpha * 0.6);
+                    g.drawCircle(sx, sy, closeR * 0.7);
+                    g.lineStyle(0);
+                    // Flash fill at moment of snap
+                    if (progress < 0.2) {
+                        g.beginFill(0xffaa00, (0.2 - progress) * 3);
+                        g.drawCircle(sx, sy, r);
+                        g.endFill();
+                    }
+                    // Inward-rushing particles
+                    for (let i = 0; i < 8; i++) {
+                        const a = (i / 8) * Math.PI * 2;
+                        const pr = closeR + 8;
+                        g.beginFill(0xffcc44, flashAlpha * 0.7);
+                        g.drawCircle(sx + Math.cos(a) * pr, sy + Math.sin(a) * pr, 2);
+                        g.endFill();
+                    }
+                    break;
+                }
             }
         }
 

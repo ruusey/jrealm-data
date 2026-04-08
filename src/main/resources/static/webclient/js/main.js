@@ -69,26 +69,9 @@ function showScreen(name) {
     currentScreen = name;
 }
 
-// --- Session Restore ---
-// Try to resume a previous session so the user doesn't have to re-login every time
-(async function tryRestoreSession() {
-    if (!api.restoreSession()) return;
-    try {
-        const savedHost = localStorage.getItem('or_gameServer') || 'openrealm.net';
-        gameServerHost = savedHost;
-        document.getElementById('server-addr').value = savedHost;
-        account = await api.getAccount(api.accountGuid);
-        try {
-            const animData = await api.getGameData('animations.json');
-            _animDataByClass = {};
-            if (Array.isArray(animData)) animData.forEach(a => { if (a.objectType === 'player') _animDataByClass[a.objectId] = a; });
-        } catch (e) { /* non-critical */ }
-        showCharacterSelect();
-    } catch (err) {
-        // Token expired or invalid — clear and show login
-        api.clearSession();
-    }
-})();
+// --- Session storage disabled ---
+// Always require fresh login until token-based game server handshake is implemented
+try { localStorage.removeItem('or_session'); localStorage.removeItem('or_gameServer'); } catch (e) {}
 
 // --- Login ---
 document.getElementById('login-form').addEventListener('submit', async (e) => {

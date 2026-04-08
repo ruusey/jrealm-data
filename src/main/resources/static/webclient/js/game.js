@@ -180,6 +180,7 @@ export class GameState {
         const spdStat = computed ? computed.spd : 10;
         let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
         if (this.hasEffect(4)) tilesPerSec *= 1.5; // SPEEDY: 1.5x movement speed
+        if (this.hasEffect(21)) tilesPerSec *= 0.5; // SLOWED: 0.5x movement speed
         // BERSERK (19): doesn't affect movement speed (only dexterity/attack speed)
         // ARMORED (18): doesn't affect movement speed (only defense)
         let spd = tilesPerSec * 32.0 / 64.0; // pixels per tick — ALWAYS /64

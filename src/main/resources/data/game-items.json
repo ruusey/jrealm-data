@@ -2146,7 +2146,7 @@
 		"col": 3,
 		"spriteKey": "rotmg-items.png",
 		"name": "Serpentine Staff",
-		"description": "A staff powered by the magic of SthenoÃ¯Â¿Â½s minions.",
+		"description": "A staff powered by the magic of Stheno\u00c3\u0192\u00c2\u00af\u00c3\u201a\u00c2\u00bf\u00c3\u201a\u00c2\u00bds minions.",
 		"damage": {
 			"projectileGroupId": 79,
 			"min": 20,
@@ -5236,14 +5236,14 @@
 	},
 	{
 		"itemId": 288,
-		"row": 2,
+		"row": 1,
 		"col": 0,
 		"spriteKey": "rotmg-abilities.png",
 		"name": "Hunting Trap",
-		"description": "A basic snare that paralyzes enemies caught in its radius.",
+		"description": "A basic snare trap. Enemies caught in its radius are slowed.",
 		"effect": {
 			"self": false,
-			"effectId": 2,
+			"effectId": 21,
 			"duration": 3000,
 			"cooldownDuration": 1000,
 			"mpCost": 40
@@ -5255,13 +5255,15 @@
 		"fameBonus": 0,
 		"damage": {
 			"projectileGroupId": -1,
-			"min": 80,
-			"max": 100
-		}
+			"min": 75,
+			"max": 95
+		},
+		"trapRadius": 3.5,
+		"trapLifetime": 10000
 	},
 	{
 		"itemId": 289,
-		"row": 2,
+		"row": 1,
 		"col": 1,
 		"spriteKey": "rotmg-abilities.png",
 		"name": "Wilderlands Trap",
@@ -5286,7 +5288,7 @@
 	},
 	{
 		"itemId": 290,
-		"row": 2,
+		"row": 1,
 		"col": 2,
 		"spriteKey": "rotmg-abilities.png",
 		"name": "Deepforest Trap",
@@ -5314,7 +5316,7 @@
 	},
 	{
 		"itemId": 291,
-		"row": 2,
+		"row": 1,
 		"col": 3,
 		"spriteKey": "rotmg-abilities.png",
 		"name": "Savage Trap",
@@ -5342,7 +5344,7 @@
 	},
 	{
 		"itemId": 292,
-		"row": 2,
+		"row": 1,
 		"col": 4,
 		"spriteKey": "rotmg-abilities.png",
 		"name": "Demonhunter Trap",
@@ -5370,7 +5372,7 @@
 	},
 	{
 		"itemId": 293,
-		"row": 2,
+		"row": 1,
 		"col": 5,
 		"spriteKey": "rotmg-abilities.png",
 		"name": "Dragonstalker Trap",
@@ -5398,7 +5400,7 @@
 	},
 	{
 		"itemId": 294,
-		"row": 2,
+		"row": 1,
 		"col": 6,
 		"spriteKey": "rotmg-abilities.png",
 		"name": "Giantcatcher Trap",
