@@ -2,6 +2,10 @@ spring:
   web:
     resources:
       static-locations: classpath:data/, classpath:entity/, classpath:ui/, classpath:static/
+      cache:
+        cachecontrol:
+          no-cache: true
+          no-store: true
   jackson:
     serialization:
       fail-on-empty-beans: false
