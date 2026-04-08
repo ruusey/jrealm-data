@@ -3587,7 +3587,7 @@
 		"chaseRange": 390,
 		"attackRange": 210,
 		"stats": {
-			"hp": 100000,
+			"hp": 10000,
 			"def": 0,
 			"dex": 5,
 			"mp": 0,
@@ -7203,7 +7203,7 @@
 		"stats": {
 			"hp": 60000,
 			"def": 30,
-			"dex": 50,
+			"dex": 25,
 			"mp": 0,
 			"att": 0,
 			"spd": 0,
