@@ -13,9 +13,7 @@
 				"range": 512,
 				"size": 24,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 1,
@@ -31,9 +29,7 @@
 				"range": 512,
 				"size": 24,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 1,
@@ -49,9 +45,7 @@
 				"range": 512,
 				"size": 24,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 1,
@@ -76,9 +70,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 1,
@@ -88,9 +80,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 1,
@@ -100,9 +90,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 1,
@@ -112,9 +100,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 1,
@@ -124,9 +110,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -144,9 +128,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -156,9 +138,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -168,9 +148,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -180,9 +158,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -192,9 +168,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -204,9 +178,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -216,9 +188,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -228,9 +198,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -240,9 +208,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -252,9 +218,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -264,9 +228,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -276,9 +238,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -288,9 +248,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -300,9 +258,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -312,9 +268,7 @@
 				"range": 256,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 2,
@@ -324,9 +278,7 @@
 				"range": 512,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -408,9 +360,7 @@
 				"range": 300,
 				"size": 24,
 				"magnitude": 5.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 7,
@@ -420,9 +370,7 @@
 				"range": 300,
 				"size": 24,
 				"magnitude": 5.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 7,
@@ -432,9 +380,7 @@
 				"range": 300,
 				"size": 24,
 				"magnitude": 5.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 7,
@@ -444,9 +390,7 @@
 				"range": 300,
 				"size": 24,
 				"magnitude": 5.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 7,
@@ -456,9 +400,7 @@
 				"range": 300,
 				"size": 24,
 				"magnitude": 5.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -1047,9 +989,7 @@
 				"range": 300,
 				"size": 20,
 				"magnitude": 2.4,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -1065,9 +1005,7 @@
 				"range": 300,
 				"size": 20,
 				"magnitude": 2.4,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -1083,9 +1021,7 @@
 				"range": 300,
 				"size": 20,
 				"magnitude": 2.4,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -1101,9 +1037,7 @@
 				"range": 300,
 				"size": 20,
 				"magnitude": 2.4,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -1119,9 +1053,7 @@
 				"range": 300,
 				"size": 20,
 				"magnitude": 2.4,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -4812,9 +4744,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4824,9 +4754,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4836,9 +4764,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4848,9 +4774,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4860,9 +4784,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4872,9 +4794,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4884,9 +4804,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4896,9 +4814,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4908,9 +4824,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4920,9 +4834,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4932,9 +4844,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4944,9 +4854,7 @@
 				"range": 300,
 				"size": 16,
 				"magnitude": 3,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -4964,9 +4872,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4976,9 +4882,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -4988,9 +4892,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5000,9 +4902,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5012,9 +4912,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5024,9 +4922,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5036,9 +4932,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5048,9 +4942,7 @@
 				"range": 250,
 				"size": 12,
 				"magnitude": 3.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -5148,9 +5040,7 @@
 				"range": 150,
 				"size": 12,
 				"magnitude": 5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5160,9 +5050,7 @@
 				"range": 150,
 				"size": 12,
 				"magnitude": 5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5172,9 +5060,7 @@
 				"range": 150,
 				"size": 12,
 				"magnitude": 5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5184,9 +5070,7 @@
 				"range": 150,
 				"size": 12,
 				"magnitude": 5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5196,18 +5080,16 @@
 				"range": 150,
 				"size": 12,
 				"magnitude": 5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
 	},
 	{
 		"projectileGroupId": 67,
-		"spriteKey": "rotmg-projectiles.png",
-		"row": 1,
-		"col": 0,
+		"spriteKey": "rotmg-tiles-all.png",
+		"row": 13,
+		"col": 13,
 		"projectiles": [
 			{
 				"projectileId": 0,
@@ -5217,9 +5099,7 @@
 				"range": 180,
 				"size": 10,
 				"magnitude": 4.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5229,9 +5109,7 @@
 				"range": 180,
 				"size": 10,
 				"magnitude": 4.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5241,9 +5119,7 @@
 				"range": 180,
 				"size": 10,
 				"magnitude": 4.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -5261,9 +5137,7 @@
 				"range": 350,
 				"size": 10,
 				"magnitude": 4.5,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"amplitude": 6,
 				"frequency": 35
 			},
@@ -5275,9 +5149,7 @@
 				"range": 350,
 				"size": 10,
 				"magnitude": 4.5,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"amplitude": -6,
 				"frequency": 35
 			}
@@ -5297,9 +5169,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 2,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"amplitude": 20,
 				"frequency": 15
 			},
@@ -5311,9 +5181,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 2,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"amplitude": 20,
 				"frequency": 15
 			},
@@ -5325,9 +5193,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 2,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"amplitude": 20,
 				"frequency": 15
 			}
@@ -5348,9 +5214,7 @@
 				"range": 320,
 				"size": 10,
 				"magnitude": 2.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5360,9 +5224,7 @@
 				"range": 320,
 				"size": 10,
 				"magnitude": 2.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5372,9 +5234,7 @@
 				"range": 320,
 				"size": 10,
 				"magnitude": 2.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5384,9 +5244,7 @@
 				"range": 320,
 				"size": 10,
 				"magnitude": 2.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5396,9 +5254,7 @@
 				"range": 320,
 				"size": 10,
 				"magnitude": 2.8,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -5416,9 +5272,7 @@
 				"range": 400,
 				"size": 24,
 				"magnitude": 2,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -5437,9 +5291,7 @@
 				"range": 280,
 				"size": 8,
 				"magnitude": 6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5449,9 +5301,7 @@
 				"range": 280,
 				"size": 8,
 				"magnitude": 6,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5461,9 +5311,7 @@
 				"range": 280,
 				"size": 8,
 				"magnitude": 6,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -5482,9 +5330,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5500,9 +5346,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5518,9 +5362,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5536,9 +5378,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5554,9 +5394,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5572,9 +5410,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5590,9 +5426,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5608,9 +5442,7 @@
 				"range": 200,
 				"size": 14,
 				"magnitude": 3,
-				"flags": [
-					10
-				],
+				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
@@ -5635,9 +5467,7 @@
 				"range": 280,
 				"size": 14,
 				"magnitude": 2.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5647,9 +5477,7 @@
 				"range": 280,
 				"size": 14,
 				"magnitude": 2.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5659,9 +5487,7 @@
 				"range": 280,
 				"size": 14,
 				"magnitude": 2.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5671,9 +5497,7 @@
 				"range": 280,
 				"size": 14,
 				"magnitude": 2.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5683,9 +5507,7 @@
 				"range": 280,
 				"size": 14,
 				"magnitude": 2.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			},
 			{
 				"projectileId": 0,
@@ -5695,9 +5517,7 @@
 				"range": 280,
 				"size": 14,
 				"magnitude": 2.5,
-				"flags": [
-					10
-				]
+				"flags": []
 			}
 		]
 	},
@@ -10106,5 +9926,74 @@
 			}
 		],
 		"spriteKey": "lofiProjs.png"
+	},
+	{
+		"projectileGroupId": 228,
+		"row": 1,
+		"col": 3,
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{3PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 18,
+				"positionMode": 0,
+				"damage": 10,
+				"angle": -0.3,
+				"range": 70,
+				"size": 20,
+				"magnitude": 5,
+				"flags": [],
+				"effects": [
+					{
+						"effectId": 11,
+						"duration": 3000
+					},
+					{
+						"effectId": 3,
+						"duration": 3000
+					}
+				]
+			},
+			{
+				"projectileId": 18,
+				"positionMode": 0,
+				"damage": 10,
+				"angle": 0,
+				"range": 70,
+				"size": 20,
+				"magnitude": 5,
+				"flags": [],
+				"effects": [
+					{
+						"effectId": 11,
+						"duration": 3000
+					},
+					{
+						"effectId": 3,
+						"duration": 3000
+					}
+				]
+			},
+			{
+				"projectileId": 18,
+				"positionMode": 0,
+				"damage": 10,
+				"angle": 0.3,
+				"range": 70,
+				"size": 20,
+				"magnitude": 5,
+				"flags": [],
+				"effects": [
+					{
+						"effectId": 11,
+						"duration": 3000
+					},
+					{
+						"effectId": 3,
+						"duration": 3000
+					}
+				]
+			}
+		]
 	}
 ]

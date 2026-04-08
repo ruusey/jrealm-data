@@ -528,7 +528,7 @@
 						"burstDelayMs": 250
 					},
 					{
-						"projectileGroupId": 18,
+						"projectileGroupId": 228,
 						"cooldownMs": 2000,
 						"aimMode": "PLAYER",
 						"burstCount": 2,
@@ -562,7 +562,7 @@
 		"col": 2,
 		"spriteSize": 8,
 		"size": 32,
-		"attackId": 18,
+		"attackId": 228,
 		"xp": 180,
 		"health": 90,
 		"maxSpeed": 1.4,
@@ -588,7 +588,7 @@
 				},
 				"attacks": [
 					{
-						"projectileGroupId": 18,
+						"projectileGroupId": 228,
 						"cooldownMs": 600,
 						"aimMode": "PLAYER",
 						"burstCount": 3,
