@@ -181189,7 +181189,9 @@
 		"width": 50,
 		"height": 50,
 		"tileSize": 32,
-		"difficulty": 0.0,
+		"difficulty": 1.0,
+		"terrainId": -1,
+		"dungeonId": -1,
 		"data": {
 			"0": [
 				[
@@ -186445,8 +186447,6 @@
 				"targetNodeId": null,
 				"label": "Testing Arena"
 			}
-		],
-		"terrainId": -1,
-		"dungeonId": -1
+		]
 	}
 ]
