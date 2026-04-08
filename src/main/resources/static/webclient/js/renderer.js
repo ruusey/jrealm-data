@@ -1071,7 +1071,7 @@ export class GameRenderer {
     }
 
     renderDamageTexts(gameState, offsetX, offsetY) {
-        const TEXT_LIFE = 68; // must match game.js
+        const TEXT_LIFE = 50; // must match game.js
         for (const dt of gameState.damageTexts) {
             const sx = dt.x * SCALE + offsetX;
             const sy = dt.y * SCALE + offsetY;

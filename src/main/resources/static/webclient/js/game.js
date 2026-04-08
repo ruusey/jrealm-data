@@ -577,16 +577,28 @@ export class GameState {
         const colors = [0xff4040, 0x40ff40, 0x4080ff, 0x4080ff, 0xff8040];
         const color = colors[packet.textEffectId] || 0xffffff;
 
-        const TEXT_LIFE = 68; // ~1.1s at 60fps (50% longer than original 45)
-        const STACK_OFFSET = 16.0; // world units per stacked text (~32px on screen at 2x scale)
+        const TEXT_LIFE = 50; // ~0.8s at 60fps — clears fast to prevent clutter
+        const STACK_OFFSET = 8.0; // world units per stacked text — tight but readable
 
-        // Deduplicate: if same text already exists near this position, replace it (last-in-first-out)
+        // Merge: if same damage text exists near this position and is very fresh,
+        // combine into a single text showing total (e.g., 8 wizard shots → one big number)
         for (let i = this.damageTexts.length - 1; i >= 0; i--) {
             const dt = this.damageTexts[i];
             const dx = dt.x - x;
-            if (Math.abs(dx) < 20 && dt.text === packet.text && dt.life > TEXT_LIFE * 0.3) {
+            const dy = dt.y - y;
+            const near = Math.abs(dx) < 24 && Math.abs(dy) < 24;
+            // Replace predicted texts with server text
+            if (near && dt._predicted && dt.life > TEXT_LIFE * 0.3) {
                 this.damageTexts.splice(i, 1);
                 break;
+            }
+            // Merge same-value damage texts that arrived within ~100ms (6 frames)
+            if (near && dt.text === packet.text && dt.color === color && dt.life > TEXT_LIFE - 6) {
+                // Bump the count and refresh lifetime
+                dt._count = (dt._count || 1) + 1;
+                dt.text = packet.text + ' x' + dt._count;
+                dt.life = TEXT_LIFE;
+                return; // don't add a new entry
             }
         }
 
@@ -594,9 +606,12 @@ export class GameState {
         let stackCount = 0;
         for (const dt of this.damageTexts) {
             const dx = dt.x - x;
-            if (Math.abs(dx) < 20 && dt.life > TEXT_LIFE * 0.5) stackCount++;
+            if (Math.abs(dx) < 20 && dt.life > TEXT_LIFE * 0.4) stackCount++;
         }
-        this.damageTexts.push({ text: packet.text, x, y: y - stackCount * STACK_OFFSET, color, life: TEXT_LIFE });
+        // Cap stack height to prevent huge towers
+        const maxStack = 4;
+        const offset = Math.min(stackCount, maxStack) * STACK_OFFSET;
+        this.damageTexts.push({ text: packet.text, x, y: y - offset, color, life: TEXT_LIFE, _count: 1 });
     }
 
     addVisualEffect(effect) {
@@ -877,6 +892,42 @@ export class GameState {
             const lifetime = now - (b._clientCreatedTime || Number(b.createdTime));
             if (b._traveled > b.range || lifetime > 10000) {
                 this.bullets.delete(id);
+                continue;
+            }
+
+            // Client-side predicted bullet-enemy hit detection (player bullets only).
+            // Enemy bullets have isEnemy=true or come from the server without the player flag.
+            // Predicted bullets have _predicted=true. Both player shots and predicted shots can hit.
+            if (b.isEnemy) continue;
+            const bSize = b.size || 4;
+            const bx = b.pos.x, by = b.pos.y;
+            for (const [eid, enemy] of this.enemies) {
+                if (!enemy.pos) continue;
+                const eSize = enemy.size || 32;
+                // Simple AABB overlap (matches server's Rectangle.collides)
+                if (bx < enemy.pos.x + eSize && bx + bSize > enemy.pos.x &&
+                    by < enemy.pos.y + eSize && by + bSize > enemy.pos.y) {
+                    // Predicted hit — remove bullet visually
+                    this.bullets.delete(id);
+                    // Show predicted damage text (server will send the real one too,
+                    // but the dedup in handleTextEffect will merge them)
+                    const pg = this.projectileGroups[b.projectileId];
+                    if (b.damage > 0) {
+                        const enemyDef = this.enemyData[enemy.enemyId];
+                        const def = enemyDef?.stats?.def || 0;
+                        const minDmg = Math.floor(b.damage * 0.15);
+                        const dmg = Math.max(minDmg, b.damage - def);
+                        this.damageTexts.push({
+                            text: '-' + dmg,
+                            x: enemy.pos.x + eSize / 2,
+                            y: enemy.pos.y,
+                            color: 0xff4040,
+                            life: 68,
+                            _predicted: true
+                        });
+                    }
+                    break; // bullet can only hit one enemy
+                }
             }
         }
 
