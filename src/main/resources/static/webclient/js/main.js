@@ -1222,7 +1222,9 @@ function processInput(dt) {
     const shootCooldownMs = 1000 / Math.max(shootDex, 1) + 10;
     const canShoot = (performance.now() - game._lastShotTime) > shootCooldownMs;
 
-    if (wantsShoot && !isMouseOverHud && canShoot && renderer) {
+    // STUNNED (3) blocks shooting — matches server's canShoot check
+    const isStunned = game.hasEffect(3);
+    if (wantsShoot && !isMouseOverHud && canShoot && !isStunned && renderer) {
         let world;
         if (aim && aim.shooting) {
             // Aim joystick: project direction from player position

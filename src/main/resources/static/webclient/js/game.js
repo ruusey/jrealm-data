@@ -162,6 +162,15 @@ export class GameState {
     // This MUST produce identical results to the server's movePlayer().
     // Both use: speed = tilesPerSec * 32 / 64, same collision checks, same diagonal logic.
     simulateTick(entity, dirFlags) {
+        // PARALYZED: server returns early, zero movement, no collision checks.
+        // Match exactly: don't run any physics.
+        if (this.hasEffect(2)) return;
+
+        // STASIS (15): doesn't affect player movement (only enemy invulnerability)
+        // STUNNED (3): doesn't affect movement (only blocks shooting)
+        // INVINCIBLE (6): doesn't affect movement
+        // DAZED (11): doesn't affect movement speed (only attack speed/dexterity)
+
         const up    = !!(dirFlags & 0x01);
         const down  = !!(dirFlags & 0x02);
         const left  = !!(dirFlags & 0x04);
@@ -170,8 +179,9 @@ export class GameState {
         const computed = this.getComputedStats();
         const spdStat = computed ? computed.spd : 10;
         let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
-        if (this.hasEffect(4)) tilesPerSec *= 1.5; // SPEEDY
-        if (this.hasEffect(2)) tilesPerSec = 0;     // PARALYZED
+        if (this.hasEffect(4)) tilesPerSec *= 1.5; // SPEEDY: 1.5x movement speed
+        // BERSERK (19): doesn't affect movement speed (only dexterity/attack speed)
+        // ARMORED (18): doesn't affect movement speed (only defense)
         let spd = tilesPerSec * 32.0 / 64.0; // pixels per tick — ALWAYS /64
 
         const movingX = left || right;
