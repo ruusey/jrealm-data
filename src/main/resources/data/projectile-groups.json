@@ -5791,7 +5791,7 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": -10,
+				"amplitude": 10,
 				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
@@ -5828,8 +5828,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": 8,
-				"frequency": 25,
+				"amplitude": 10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					12
@@ -5842,8 +5842,8 @@
 				"angle": 0,
 				"range": 216,
 				"size": 24,
-				"amplitude": -8,
-				"frequency": 25,
+				"amplitude": -10,
+				"frequency": 30,
 				"magnitude": 7,
 				"flags": [
 					12
