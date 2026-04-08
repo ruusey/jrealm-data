@@ -882,7 +882,7 @@
 					{
 						"projectileGroupId": 43,
 						"cooldownMs": 720,
-						"burstCount": 2,
+						"burstCount": 1,
 						"burstDelayMs": 70
 					}
 				]
@@ -900,15 +900,15 @@
 					{
 						"projectileGroupId": 43,
 						"cooldownMs": 480,
-						"burstCount": 3,
+						"burstCount": 2,
 						"burstDelayMs": 105,
 						"angleOffsetPerBurst": 0.2
 					},
 					{
 						"projectileGroupId": 46,
-						"cooldownMs": 1500,
-						"burstCount": 2,
-						"burstDelayMs": 70
+						"cooldownMs": 2000,
+						"burstCount": 1,
+						"burstDelayMs": 500
 					}
 				]
 			},
@@ -7222,11 +7222,21 @@
 				"attacks": [
 					{
 						"projectileGroupId": 209,
-						"cooldownMs": 493
+						"cooldownMs": 700,
+						"burstCount": 3,
+						"burstDelayMs": 200,
+						"angleOffsetPerBurst": 0.35,
+						"predictive": true,
+						"aimMode": "PLAYER"
 					},
 					{
 						"projectileGroupId": 210,
-						"cooldownMs": 361
+						"cooldownMs": 700,
+						"burstCount": 3,
+						"burstDelayMs": 200,
+						"angleOffsetPerBurst": 0.35,
+						"predictive": true,
+						"aimMode": "PLAYER"
 					}
 				]
 			},
@@ -7241,24 +7251,27 @@
 				"attacks": [
 					{
 						"projectileGroupId": 209,
-						"cooldownMs": 235,
-						"burstCount": 2,
-						"burstDelayMs": 76,
-						"predictive": true
-
+						"cooldownMs": 300,
+						"burstCount": 3,
+						"burstDelayMs": 100,
+						"angleOffsetPerBurst": 0.25,
+						"predictive": true,
+						"aimMode": "PLAYER"
 					},
 					{
 						"projectileGroupId": 210,
-						"cooldownMs": 265,
+						"cooldownMs": 300,
 						"burstCount": 3,
-						"burstDelayMs": 114,
-						"predictive": true
+						"angleOffsetPerBurst": 0.25,
+						"burstDelayMs": 100,
+						"predictive": true,
+						"aimMode": "PLAYER"
 					}
 				]
 			},
 			{
 				"name": "desperate",
-				"hpThreshold": 0.25,
+				"hpThreshold": 0.33,
 				"movement": {
 					"type": "CHASE",
 					"speed": 1.7
@@ -7266,18 +7279,23 @@
 				"attacks": [
 					{
 						"projectileGroupId": 209,
-						"cooldownMs": 150,
-						"burstCount": 5,
-						"burstDelayMs": 85,
+						"cooldownMs": 200,
+						"burstCount": 4,
+						"burstDelayMs": 100,
 						"angleOffsetPerBurst": 0.14,
-						"predictive": true
+						"aimMode": "PLAYER",
+						"predictive": true,
+						"mirror": true
 					},
 					{
 						"projectileGroupId": 210,
-						"cooldownMs": 182,
-						"burstCount": 2,
-						"burstDelayMs": 73,
-						"predictive": true
+						"cooldownMs": 200,
+						"burstCount": 4,
+						"burstDelayMs": 100,
+						"angleOffsetPerBurst": 0.14,
+						"aimMode": "PLAYER",
+						"predictive": true,
+						"mirror": true
 					}
 				]
 			}

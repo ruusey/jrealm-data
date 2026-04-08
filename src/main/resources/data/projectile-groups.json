@@ -17,7 +17,7 @@
 				"effects": [
 					{
 						"effectId": 1,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -33,7 +33,7 @@
 				"effects": [
 					{
 						"effectId": 1,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -49,7 +49,7 @@
 				"effects": [
 					{
 						"effectId": 1,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -858,7 +858,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -885,11 +885,11 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					},
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -907,11 +907,11 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					},
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -929,11 +929,11 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					},
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -993,7 +993,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1009,7 +1009,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1025,7 +1025,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1041,7 +1041,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1057,7 +1057,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -1223,7 +1223,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -1454,7 +1454,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1470,7 +1470,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -1786,7 +1786,7 @@
 				"damage": 39,
 				"angle": 0,
 				"range": 100,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"amplitude": 3,
 				"frequency": 5,
@@ -1794,7 +1794,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1804,7 +1804,7 @@
 				"damage": 39,
 				"angle": 0.25,
 				"range": 100,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"amplitude": 3,
 				"frequency": 5,
@@ -1812,7 +1812,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1822,7 +1822,7 @@
 				"damage": 39,
 				"angle": "{{PI/16}}",
 				"range": 100,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"amplitude": -3,
 				"frequency": 5,
@@ -1830,7 +1830,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1840,7 +1840,7 @@
 				"damage": 39,
 				"angle": 0.25,
 				"range": 100,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"amplitude": -3,
 				"frequency": 5,
@@ -1848,7 +1848,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -1865,7 +1865,7 @@
 				"projectileId": 38,
 				"positionMode": 0,
 				"damage": 39,
-				"angle": "-0.15",
+				"angle": "-0.10",
 				"range": 250,
 				"size": 20,
 				"magnitude": 3.5,
@@ -1873,7 +1873,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -1881,7 +1881,7 @@
 				"projectileId": 38,
 				"positionMode": 0,
 				"damage": 39,
-				"angle": "0.15",
+				"angle": "0.10",
 				"range": 250,
 				"size": 20,
 				"magnitude": 3.5,
@@ -1889,7 +1889,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -1907,7 +1907,7 @@
 				"damage": 70,
 				"angle": 0,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1917,7 +1917,7 @@
 				"damage": 70,
 				"angle": 0.25,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1927,7 +1927,7 @@
 				"damage": 70,
 				"angle": "{{PI/8}}",
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1937,7 +1937,7 @@
 				"damage": 70,
 				"angle": 0.25,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1947,7 +1947,7 @@
 				"damage": 70,
 				"angle": -0.3927,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1957,7 +1957,7 @@
 				"damage": 70,
 				"angle": -0.1427,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1967,7 +1967,7 @@
 				"damage": 70,
 				"angle": "{{PI/4}}",
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1977,7 +1977,7 @@
 				"damage": 70,
 				"angle": 0.25,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1987,7 +1987,7 @@
 				"damage": 70,
 				"angle": -0.7854,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1997,7 +1997,7 @@
 				"damage": 70,
 				"angle": -0.5354,
 				"range": 200,
-				"size": 8,
+				"size": 20,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -2022,7 +2022,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2038,7 +2038,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2054,7 +2054,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2070,7 +2070,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2082,7 +2082,13 @@
 				"range": 200,
 				"size": 32,
 				"magnitude": 3.5,
-				"flags": []
+				"flags": [],
+				"effects": [
+					{
+						"effectId": 2,
+						"duration": 1500
+					}
+				]
 			},
 			{
 				"projectileId": 40,
@@ -2096,7 +2102,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2112,7 +2118,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2128,7 +2134,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -2146,8 +2152,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"angle": 0,
-				"range": 180,
-				"size": 8,
+				"range": 230,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": 5,
 				"frequency": 3,
@@ -2155,7 +2161,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2164,8 +2170,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"angle": "{{PI/3}}",
-				"range": 180,
-				"size": 8,
+				"range": 230,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": -5,
 				"frequency": 3,
@@ -2173,7 +2179,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2182,8 +2188,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"angle": "{{2PI/3}}",
-				"range": 180,
-				"size": 8,
+				"range": 230,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": 5,
 				"frequency": 3,
@@ -2191,7 +2197,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2200,8 +2206,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"angle": "{{PI}}",
-				"range": 180,
-				"size": 8,
+				"range": 230,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": -5,
 				"frequency": 3,
@@ -2209,7 +2215,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2218,8 +2224,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"angle": "{{4PI/3}}",
-				"range": 180,
-				"size": 8,
+				"range": 230,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": 5,
 				"frequency": 3,
@@ -2227,7 +2233,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2236,8 +2242,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"angle": "{{5PI/3}}",
-				"range": 180,
-				"size": 8,
+				"range": 230,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": -5,
 				"frequency": 3,
@@ -2245,7 +2251,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -2262,8 +2268,8 @@
 				"positionMode": 0,
 				"damage": 39,
 				"angle": 0,
-				"range": 170,
-				"size": 8,
+				"range": 225,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2272,8 +2278,8 @@
 				"positionMode": 0,
 				"damage": 39,
 				"angle": 0.25,
-				"range": 170,
-				"size": 8,
+				"range": 225,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2282,8 +2288,8 @@
 				"positionMode": 0,
 				"damage": 39,
 				"angle": 0.1963,
-				"range": 170,
-				"size": 8,
+				"range": 225,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2292,8 +2298,8 @@
 				"positionMode": 0,
 				"damage": 39,
 				"angle": 0.44630000000000003,
-				"range": 170,
-				"size": 8,
+				"range": 225,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2302,8 +2308,8 @@
 				"positionMode": 0,
 				"damage": 39,
 				"angle": -0.1963,
-				"range": 170,
-				"size": 8,
+				"range": 225,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2312,8 +2318,8 @@
 				"positionMode": 0,
 				"damage": 39,
 				"angle": 0.0537,
-				"range": 170,
-				"size": 8,
+				"range": 225,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			}
@@ -2330,31 +2336,15 @@
 				"projectileId": 43,
 				"positionMode": 2,
 				"damage": 100,
-				"angle": 0,
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
-				"flags": [],
-				"effects": [
-					{
-						"effectId": 2,
-						"duration": 3000
-					}
-				]
-			},
-			{
-				"projectileId": 43,
-				"positionMode": 2,
-				"damage": 100,
 				"angle": "{{PI/6}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2363,14 +2353,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{PI/3}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2379,14 +2369,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{PI/2}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2395,14 +2385,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{2PI/3}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2411,14 +2401,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{5PI/6}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2427,14 +2417,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{PI}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2443,14 +2433,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{7PI/6}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2459,14 +2449,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{4PI/3}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2475,14 +2465,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{3PI/2}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2491,14 +2481,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{5PI/3}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2507,30 +2497,14 @@
 				"positionMode": 2,
 				"damage": 100,
 				"angle": "{{11PI/6}}",
-				"range": 200,
-				"size": 8,
-				"magnitude": 3.5,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
-					}
-				]
-			},
-			{
-				"projectileId": 43,
-				"positionMode": 0,
-				"damage": 80,
-				"angle": 0,
-				"range": 220,
-				"size": 8,
-				"magnitude": 4,
-				"flags": [],
-				"effects": [
-					{
-						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2539,30 +2513,14 @@
 				"positionMode": 0,
 				"damage": 80,
 				"angle": "{{PI/10}}",
-				"range": 220,
-				"size": 8,
-				"magnitude": 4,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
-					}
-				]
-			},
-			{
-				"projectileId": 43,
-				"positionMode": 0,
-				"damage": 80,
-				"angle": -0.3142,
-				"range": 220,
-				"size": 8,
-				"magnitude": 4,
-				"flags": [],
-				"effects": [
-					{
-						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -2571,30 +2529,14 @@
 				"positionMode": 0,
 				"damage": 80,
 				"angle": "{{PI/5}}",
-				"range": 220,
-				"size": 8,
-				"magnitude": 4,
+				"range": 350,
+				"size": 20,
+				"magnitude": 2,
 				"flags": [],
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
-					}
-				]
-			},
-			{
-				"projectileId": 43,
-				"positionMode": 0,
-				"damage": 80,
-				"angle": -0.6283,
-				"range": 220,
-				"size": 8,
-				"magnitude": 4,
-				"flags": [],
-				"effects": [
-					{
-						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -2612,7 +2554,7 @@
 				"damage": 110,
 				"angle": 0,
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": 7,
 				"frequency": 7,
@@ -2624,7 +2566,7 @@
 				"damage": 110,
 				"angle": "{{PI/12}}",
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": -7,
 				"frequency": 7,
@@ -2636,7 +2578,7 @@
 				"damage": 110,
 				"angle": -0.2618,
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": 7,
 				"frequency": 7,
@@ -2648,7 +2590,7 @@
 				"damage": 110,
 				"angle": "{{PI/6}}",
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": -7,
 				"frequency": 7,
@@ -2660,7 +2602,7 @@
 				"damage": 110,
 				"angle": -0.5236,
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": 7,
 				"frequency": 7,
@@ -2672,7 +2614,7 @@
 				"damage": 110,
 				"angle": "{{PI/4}}",
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": -7,
 				"frequency": 7,
@@ -2684,7 +2626,7 @@
 				"damage": 110,
 				"angle": -0.7854,
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": 7,
 				"frequency": 7,
@@ -2696,7 +2638,7 @@
 				"damage": 110,
 				"angle": "{{PI/3}}",
 				"range": 250,
-				"size": 8,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": -7,
 				"frequency": 7,
@@ -2708,7 +2650,7 @@
 				"damage": 90,
 				"angle": "{{PI/4}}",
 				"range": 180,
-				"size": 8,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -2718,7 +2660,7 @@
 				"damage": 90,
 				"angle": "{{3PI/4}}",
 				"range": 180,
-				"size": 8,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -2728,7 +2670,7 @@
 				"damage": 90,
 				"angle": "{{5PI/4}}",
 				"range": 180,
-				"size": 8,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -2738,7 +2680,7 @@
 				"damage": 90,
 				"angle": "{{7PI/4}}",
 				"range": 180,
-				"size": 8,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -2747,7 +2689,7 @@
 				"positionMode": 0,
 				"angle": "0",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -2768,7 +2710,7 @@
 				"damage": 120,
 				"angle": 0,
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2778,7 +2720,7 @@
 				"damage": 120,
 				"angle": "{{PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2788,7 +2730,7 @@
 				"damage": 120,
 				"angle": "{{PI/4}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2798,7 +2740,7 @@
 				"damage": 120,
 				"angle": "{{3PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2808,7 +2750,7 @@
 				"damage": 120,
 				"angle": "{{PI/2}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2818,7 +2760,7 @@
 				"damage": 120,
 				"angle": "{{5PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2828,7 +2770,7 @@
 				"damage": 120,
 				"angle": "{{3PI/4}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2838,7 +2780,7 @@
 				"damage": 120,
 				"angle": "{{7PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2848,7 +2790,7 @@
 				"damage": 120,
 				"angle": "{{PI}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2858,7 +2800,7 @@
 				"damage": 120,
 				"angle": "{{9PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2868,7 +2810,7 @@
 				"damage": 120,
 				"angle": "{{5PI/4}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2878,7 +2820,7 @@
 				"damage": 120,
 				"angle": "{{11PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2888,7 +2830,7 @@
 				"damage": 120,
 				"angle": "{{3PI/2}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2898,7 +2840,7 @@
 				"damage": 120,
 				"angle": "{{13PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2908,7 +2850,7 @@
 				"damage": 120,
 				"angle": "{{7PI/4}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2918,7 +2860,7 @@
 				"damage": 120,
 				"angle": "{{15PI/8}}",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -2937,7 +2879,17 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 160,
-				"size": 8,
+				"size": 20,
+				"magnitude": 3,
+				"flags": []
+			},
+			{
+				"projectileId": 46,
+				"positionMode": 2,
+				"damage": 150,
+				"angle": -0.25,
+				"range": 160,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2947,7 +2899,7 @@
 				"damage": 150,
 				"angle": 0.25,
 				"range": 160,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2955,9 +2907,9 @@
 				"projectileId": 46,
 				"positionMode": 2,
 				"damage": 150,
-				"angle": "{{PI/2}}",
+				"angle": -0.15,
 				"range": 160,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2965,49 +2917,9 @@
 				"projectileId": 46,
 				"positionMode": 2,
 				"damage": 150,
-				"angle": 0.25,
+				"angle": 0.15,
 				"range": 160,
-				"size": 8,
-				"magnitude": 3,
-				"flags": []
-			},
-			{
-				"projectileId": 46,
-				"positionMode": 2,
-				"damage": 150,
-				"angle": "{{PI}}",
-				"range": 160,
-				"size": 8,
-				"magnitude": 3,
-				"flags": []
-			},
-			{
-				"projectileId": 46,
-				"positionMode": 2,
-				"damage": 150,
-				"angle": 0.25,
-				"range": 160,
-				"size": 8,
-				"magnitude": 3,
-				"flags": []
-			},
-			{
-				"projectileId": 46,
-				"positionMode": 2,
-				"damage": 150,
-				"angle": "{{3PI/2}}",
-				"range": 160,
-				"size": 8,
-				"magnitude": 3,
-				"flags": []
-			},
-			{
-				"projectileId": 46,
-				"positionMode": 2,
-				"damage": 150,
-				"angle": 0.25,
-				"range": 160,
-				"size": 8,
+				"size": 20,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -3193,7 +3105,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3209,7 +3121,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3225,7 +3137,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3241,7 +3153,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3257,7 +3169,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3273,7 +3185,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3289,7 +3201,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3305,7 +3217,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -3334,7 +3246,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3354,7 +3266,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3374,7 +3286,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3394,7 +3306,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3414,7 +3326,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3434,7 +3346,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -3500,20 +3412,20 @@
 				"projectileId": 54,
 				"positionMode": 0,
 				"damage": 14,
-				"angle": 0,
+				"angle": -0.10,
 				"range": 350,
-				"size": 16,
-				"magnitude": 6,
+				"size": 30,
+				"magnitude": 3.5,
 				"flags": []
 			},
 			{
 				"projectileId": 54,
 				"positionMode": 0,
 				"damage": 14,
-				"angle": 0.25,
+				"angle": 0.10,
 				"range": 350,
-				"size": 16,
-				"magnitude": 6,
+				"size": 30,
+				"magnitude": 3.5,
 				"flags": []
 			}
 		]
@@ -3540,7 +3452,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3560,7 +3472,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3580,7 +3492,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3600,7 +3512,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -3732,7 +3644,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3758,7 +3670,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3784,7 +3696,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3810,7 +3722,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3848,7 +3760,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3868,7 +3780,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3888,7 +3800,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3908,7 +3820,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3928,7 +3840,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -3948,7 +3860,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -4140,7 +4052,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4156,7 +4068,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4172,7 +4084,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4188,7 +4100,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4204,7 +4116,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4312,7 +4224,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4332,7 +4244,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4352,7 +4264,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4372,7 +4284,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4392,7 +4304,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4412,7 +4324,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -4596,7 +4508,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4612,7 +4524,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4628,7 +4540,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4644,7 +4556,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4664,7 +4576,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4684,7 +4596,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4704,7 +4616,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -4724,7 +4636,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -5289,7 +5201,7 @@
 				"damage": 8,
 				"angle": "-0.15",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -5299,7 +5211,7 @@
 				"damage": 8,
 				"angle": 0,
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -5309,7 +5221,7 @@
 				"damage": 8,
 				"angle": "0.15",
 				"range": 280,
-				"size": 8,
+				"size": 20,
 				"magnitude": 6,
 				"flags": []
 			}
@@ -5334,7 +5246,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -5350,7 +5262,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -5366,7 +5278,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -5382,7 +5294,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -5398,7 +5310,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -5414,7 +5326,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -5430,7 +5342,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -5446,7 +5358,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6086,7 +5998,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6102,7 +6014,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6127,7 +6039,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6143,7 +6055,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6159,7 +6071,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6258,7 +6170,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6274,7 +6186,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6346,7 +6258,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6418,7 +6330,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6434,7 +6346,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6450,7 +6362,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6466,7 +6378,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6482,7 +6394,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6511,7 +6423,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6531,7 +6443,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6581,7 +6493,7 @@
 				"effects": [
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6601,7 +6513,7 @@
 				"effects": [
 					{
 						"effectId": 2,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6756,7 +6668,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -6776,7 +6688,7 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
@@ -6907,7 +6819,7 @@
 				"damage": 4,
 				"angle": 0,
 				"range": 416,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -7162,7 +7074,7 @@
 				"damage": 28,
 				"angle": 0,
 				"range": 224,
-				"size": 8,
+				"size": 20,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -9907,11 +9819,11 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					},
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -9927,11 +9839,11 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					},
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			},
@@ -9947,11 +9859,11 @@
 				"effects": [
 					{
 						"effectId": 11,
-						"duration": 3000
+						"duration": 1500
 					},
 					{
 						"effectId": 3,
-						"duration": 3000
+						"duration": 1500
 					}
 				]
 			}
