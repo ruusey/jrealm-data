@@ -887,7 +887,6 @@ function setupNetworkHandlers() {
                     // Send login ack and start heartbeat
                     network.sendLoginAck(game.playerId);
                     network.onHeartbeatSend = () => perfMetrics.recordHeartbeatSend();
-                    network.onServerPacket = () => perfMetrics.recordServerPacket();
                     network.startHeartbeat(game.playerId);
 
                     const statusEl = document.getElementById('connection-status');
@@ -994,6 +993,16 @@ function setupNetworkHandlers() {
         game.handleGlobalPlayerPosition(data);
     });
 
+    network.on(PacketId.HEARTBEAT, (data) => {
+        // Server echoes our heartbeat back with our original timestamp.
+        // Measure true RTT from the timestamp we sent.
+        const sent = Number(data.timestamp);
+        const rtt = Date.now() - sent;
+        if (rtt > 0 && rtt < 5000) {
+            perfMetrics.recordHeartbeatResponse(rtt);
+        }
+    });
+
     network.on(PacketId.CREATE_EFFECT, (data) => {
         // Visual particle effect — add to game's effect queue for rendering
         game.addVisualEffect({
@@ -1035,23 +1044,18 @@ const perfMetrics = {
     recordHeartbeatSend() {
         this._lastHeartbeatSend = Date.now();
     },
-    recordServerPacket() {
-        if (this._lastHeartbeatSend > 0) {
-            const rtt = Date.now() - this._lastHeartbeatSend;
-            // Only count reasonable RTTs (< 2s) as ping samples
-            if (rtt > 0 && rtt < 2000) {
-                this._pingSamples.push(rtt);
-                if (this._pingSamples.length > 10) this._pingSamples.shift();
-                // Ping = average RTT / 2
-                const avg = this._pingSamples.reduce((a, b) => a + b, 0) / this._pingSamples.length;
-                this.ping = Math.round(avg / 2);
-                // Jitter = stddev of ping (RTT/2) samples
-                const pingAvg = avg / 2;
-                const variance = this._pingSamples.reduce((sum, s) => sum + ((s / 2) - pingAvg) ** 2, 0) / this._pingSamples.length;
-                this.jitter = Math.round(Math.sqrt(variance));
-            }
-            this._lastHeartbeatSend = 0;
-        }
+    // Called when the server echoes back our heartbeat with the original timestamp.
+    // rtt = actual round-trip time measured from our timestamp.
+    recordHeartbeatResponse(rtt) {
+        this._pingSamples.push(rtt);
+        if (this._pingSamples.length > 10) this._pingSamples.shift();
+        // Ping = average RTT / 2 (one-way estimate)
+        const avg = this._pingSamples.reduce((a, b) => a + b, 0) / this._pingSamples.length;
+        this.ping = Math.round(avg / 2);
+        // Jitter = stddev of one-way samples
+        const pingAvg = avg / 2;
+        const variance = this._pingSamples.reduce((sum, s) => sum + ((s / 2) - pingAvg) ** 2, 0) / this._pingSamples.length;
+        this.jitter = Math.round(Math.sqrt(variance));
     }
 };
 
@@ -1192,7 +1196,8 @@ function processInput(dt) {
                 tick: game._frameTick,
                 dx: local.dx,
                 dy: local.dy,
-                dt: dt
+                dt: dt,
+                time: performance.now() / 1000
             });
             // Cap buffer to prevent memory leak (5 seconds of frames)
             if (game._inputBuffer.length > 300) game._inputBuffer.shift();
@@ -1262,11 +1267,47 @@ function processInput(dt) {
             game.shootingAnimTimer = 0.3; // hold attack anim; refreshes each shot
             const weapon = game.inventory.length > 0 ? game.inventory[0] : null;
             const projGroupId = weapon ? weapon.damage.projectileGroupId : 0;
+            const shootSeq = ++projectileCounter;
             network.sendShoot(
-                ++projectileCounter, game.playerId, projGroupId,
+                shootSeq, game.playerId, projGroupId,
                 world.x, world.y, local.pos.x, local.pos.y
             );
             game._lastShotTime = performance.now();
+
+            // Client-side predictive bullets: spawn local visual bullets immediately
+            // so the player sees shots without waiting for the server round-trip.
+            // Uses negative IDs; removed when server bullets arrive in LoadPacket.
+            const pg = game.projectileGroups[projGroupId];
+            if (pg && pg.projectiles) {
+                // Match server: angle computed from player CENTER (pos + size/2)
+                const halfSize = (local.size || 28) / 2;
+                const cx = local.pos.x + halfSize;
+                const cy = local.pos.y + halfSize;
+                const baseAngle = -(Math.atan2(world.y - cy, world.x - cx) - Math.PI / 2);
+                for (let pi = 0; pi < pg.projectiles.length; pi++) {
+                    const proj = pg.projectiles[pi];
+                    const projAngle = baseAngle + (parseFloat(proj.angle) || 0);
+                    const projHalf = (proj.size || 16) / 2;
+                    const localId = -(shootSeq * 100 + pi);
+                    game.bullets.set(localId, {
+                        id: localId,
+                        projectileId: projGroupId,
+                        pos: { x: cx - projHalf, y: cy - projHalf },
+                        angle: projAngle,
+                        magnitude: proj.magnitude || 3,
+                        range: proj.range || 400,
+                        size: proj.size || 16,
+                        damage: 0,
+                        amplitude: proj.amplitude || 0,
+                        frequency: proj.frequency || 0,
+                        flags: proj.flags || [],
+                        invert: (proj.flags || []).includes(13),
+                        _traveled: 0,
+                        _clientCreatedTime: Date.now(),
+                        _predicted: true
+                    });
+                }
+            }
         }
     }
 

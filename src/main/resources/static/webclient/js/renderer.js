@@ -421,12 +421,8 @@ export class GameRenderer {
         const collisionSize = (player.size || PLAYER_SIZE) * SCALE;
         const size = PLAYER_RENDER_SIZE * SCALE;
         const renderOffset = (size - collisionSize) / 2;
-        // For local player, apply render offset for smooth corrections.
-        // The offset decays to 0 over ~3 frames so the sprite doesn't jerk.
-        const roX = isLocal ? (player._renderOffsetX || 0) * SCALE : 0;
-        const roY = isLocal ? (player._renderOffsetY || 0) * SCALE : 0;
-        const sx = player.pos.x * SCALE + offsetX - renderOffset + roX;
-        const sy = player.pos.y * SCALE + offsetY - renderOffset + roY;
+        const sx = player.pos.x * SCALE + offsetX - renderOffset;
+        const sy = player.pos.y * SCALE + offsetY - renderOffset;
 
         // Animation-driven sprite selection
         const classId = player.classId || 0;
