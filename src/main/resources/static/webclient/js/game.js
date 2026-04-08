@@ -896,37 +896,22 @@ export class GameState {
             }
 
             // Client-side predicted bullet-enemy hit detection (player bullets only).
-            // Enemy bullets have isEnemy=true or come from the server without the player flag.
-            // Predicted bullets have _predicted=true. Both player shots and predicted shots can hit.
-            if (b.isEnemy) continue;
+            // Player bullets have flag 10 (PLAYER_PROJECTILE). Skip everything else.
+            const isPlayerBullet = b._predicted || (b.flags && b.flags.includes(10));
+            if (!isPlayerBullet) continue;
             const bSize = b.size || 4;
             const bx = b.pos.x, by = b.pos.y;
             for (const [eid, enemy] of this.enemies) {
                 if (!enemy.pos) continue;
                 const eSize = enemy.size || 32;
-                // Simple AABB overlap (matches server's Rectangle.collides)
+                // Quick distance cull before AABB
+                const edx = bx - enemy.pos.x, edy = by - enemy.pos.y;
+                if (edx > eSize + 8 || edx < -bSize - 8 || edy > eSize + 8 || edy < -bSize - 8) continue;
+                // AABB overlap
                 if (bx < enemy.pos.x + eSize && bx + bSize > enemy.pos.x &&
                     by < enemy.pos.y + eSize && by + bSize > enemy.pos.y) {
-                    // Predicted hit — remove bullet visually
                     this.bullets.delete(id);
-                    // Show predicted damage text (server will send the real one too,
-                    // but the dedup in handleTextEffect will merge them)
-                    const pg = this.projectileGroups[b.projectileId];
-                    if (b.damage > 0) {
-                        const enemyDef = this.enemyData[enemy.enemyId];
-                        const def = enemyDef?.stats?.def || 0;
-                        const minDmg = Math.floor(b.damage * 0.15);
-                        const dmg = Math.max(minDmg, b.damage - def);
-                        this.damageTexts.push({
-                            text: '-' + dmg,
-                            x: enemy.pos.x + eSize / 2,
-                            y: enemy.pos.y,
-                            color: 0xff4040,
-                            life: 68,
-                            _predicted: true
-                        });
-                    }
-                    break; // bullet can only hit one enemy
+                    break;
                 }
             }
         }
