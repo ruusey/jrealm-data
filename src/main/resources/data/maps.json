@@ -186445,6 +186445,8 @@
 				"targetNodeId": null,
 				"label": "Testing Arena"
 			}
-		]
+		],
+		"terrainId": -1,
+		"dungeonId": -1
 	}
 ]
