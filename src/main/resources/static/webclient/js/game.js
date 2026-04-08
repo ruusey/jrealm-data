@@ -930,7 +930,6 @@ export class GameState {
 
         const local = this.getLocalPlayer();
         if (local) {
-            // Camera follows the interpolated render position for smooth movement
             const visualX = (local._renderX !== undefined ? local._renderX : local.pos.x) + (local._smoothX || 0);
             const visualY = (local._renderY !== undefined ? local._renderY : local.pos.y) + (local._smoothY || 0);
             this.cameraX += (visualX - this.cameraX) * 0.35;

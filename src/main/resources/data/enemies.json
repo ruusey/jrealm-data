@@ -3902,7 +3902,9 @@
 					{
 						"projectileGroupId": 121,
 						"cooldownMs": 767,
-						"shotCount": 15,
+						"shotCount": 1,
+						"burstCount": 2,
+						"burstDelayMs": 333,
 						"spreadAngle": 0.33
 					}
 				]
