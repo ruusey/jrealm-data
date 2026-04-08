@@ -1907,6 +1907,7 @@ function showMapDetail(m) {
     renderMapCanvas();
     renderStaticSpawnList();
     renderSpawnPointList();
+    renderStaticPortalList();
     cancelPlaceEnemy();
   } else if (type === 'dungeon') {
     dungeonEditor.style.display = 'block';
@@ -2144,6 +2145,7 @@ function drawMapOverlay() {
   }
   drawEnemySpawnsOnOverlay();
   drawSpawnPointsOnOverlay();
+  drawStaticPortalsOnOverlay();
 }
 
 // ========== PLAYER SPAWN POINTS ==========
@@ -2205,6 +2207,29 @@ function drawSpawnPointsOnOverlay() {
   });
 }
 
+function drawStaticPortalsOnOverlay() {
+  if (!selectedMap || !selectedMap.staticPortals || selectedMap.staticPortals.length === 0) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const ctx = canvas.getContext('2d');
+  const tileSize = selectedMap.tileSize || 32;
+  selectedMap.staticPortals.forEach(sp => {
+    const px = (sp.x / tileSize) * MAP_TILE_PX;
+    const py = (sp.y / tileSize) * MAP_TILE_PX;
+    ctx.fillStyle = 'rgba(160, 80, 255, 0.4)';
+    ctx.beginPath();
+    ctx.arc(px + MAP_TILE_PX / 2, py + MAP_TILE_PX / 2, MAP_TILE_PX * 0.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#a050ff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold ' + Math.max(7, MAP_TILE_PX * 0.5) + 'px monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('P', px + MAP_TILE_PX / 2, py + MAP_TILE_PX / 2);
+  });
+}
+
 document.getElementById('mapAddSpawnPointBtn').addEventListener('click', () => {
   if (!selectedMap) return;
   if (!selectedMap.spawnPoints) selectedMap.spawnPoints = [];
@@ -2250,6 +2275,94 @@ function placeSpawnPointOnMap(e) {
   renderSpawnPointList();
   drawMapOverlay();
 }
+
+// ========== STATIC PORTALS ON MAPS ==========
+let placingPortal = false;
+
+function renderStaticPortalList() {
+  const container = document.getElementById('staticPortalList');
+  if (!container) return;
+  container.innerHTML = '';
+  if (!selectedMap) return;
+  const portals = selectedMap.staticPortals || [];
+  if (portals.length === 0) {
+    container.innerHTML = '<span style="color:#666;font-size:12px">No static portals on this map.</span>';
+    return;
+  }
+  portals.forEach((sp, idx) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:6px;padding:3px 4px;border-bottom:1px solid #222;font-size:11px';
+    const marker = document.createElement('span');
+    marker.style.cssText = 'color:#c080ff;font-size:14px';
+    marker.textContent = '\u25C6';
+    const info = document.createElement('span');
+    info.style.cssText = 'flex:1;color:#ccc';
+    const portalDef = (typeof portals !== 'undefined' && window._editorPortals) ? window._editorPortals.find(p => p.portalId === sp.portalId) : null;
+    const name = sp.label || (portalDef ? portalDef.portalName : 'Portal ' + sp.portalId);
+    info.textContent = `${name} @ (${sp.x}, ${sp.y}) -> ${sp.targetNodeId || 'vault'}`;
+
+    const idInput = document.createElement('input'); idInput.type = 'number'; idInput.value = sp.portalId;
+    idInput.style.width = '50px'; idInput.title = 'Portal ID';
+    idInput.addEventListener('change', () => { sp.portalId = parseInt(idInput.value) || 0; markDirty('maps'); renderStaticPortalList(); });
+
+    const nodeInput = document.createElement('input'); nodeInput.type = 'text'; nodeInput.value = sp.targetNodeId || '';
+    nodeInput.style.width = '80px'; nodeInput.placeholder = 'node'; nodeInput.title = 'Target node ID';
+    nodeInput.addEventListener('change', () => { sp.targetNodeId = nodeInput.value || null; markDirty('maps'); });
+
+    const labelInput = document.createElement('input'); labelInput.type = 'text'; labelInput.value = sp.label || '';
+    labelInput.style.width = '80px'; labelInput.placeholder = 'label';
+    labelInput.addEventListener('change', () => { sp.label = labelInput.value || null; markDirty('maps'); });
+
+    const rmBtn = document.createElement('button'); rmBtn.className = 'tg-remove'; rmBtn.textContent = '\u00d7';
+    rmBtn.addEventListener('click', () => { selectedMap.staticPortals.splice(idx, 1); markDirty('maps'); renderStaticPortalList(); drawMapOverlay(); });
+
+    row.append(marker, info, idInput, nodeInput, labelInput, rmBtn);
+    container.appendChild(row);
+  });
+}
+
+function addStaticPortal(x, y) {
+  if (!selectedMap) return;
+  if (!selectedMap.staticPortals) selectedMap.staticPortals = [];
+  selectedMap.staticPortals.push({ portalId: 0, x: x, y: y, targetNodeId: 'beach', label: '' });
+  markDirty('maps');
+  renderStaticPortalList();
+  drawMapOverlay();
+}
+
+function placePortalOnMap(e) {
+  if (!selectedMap) return;
+  const canvas = document.getElementById('mapOverlayCanvas');
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const col = Math.floor((e.clientX - rect.left) * scaleX / MAP_TILE_PX);
+  const row = Math.floor((e.clientY - rect.top) * scaleY / MAP_TILE_PX);
+  const tileSize = selectedMap.tileSize || 32;
+  const pixelX = col * tileSize;
+  const pixelY = row * tileSize;
+  addStaticPortal(pixelX, pixelY);
+}
+
+document.getElementById('addStaticPortalBtn')?.addEventListener('click', () => {
+  if (!selectedMap) return;
+  const ts = selectedMap.tileSize || 32;
+  addStaticPortal(ts * 5, ts * 5);
+});
+
+document.getElementById('placePortalOnMapBtn')?.addEventListener('click', () => {
+  placingPortal = true;
+  document.getElementById('placePortalOnMapBtn').style.display = 'none';
+  document.getElementById('cancelPlacePortalBtn').style.display = '';
+  document.getElementById('mapOverlayCanvas').style.cursor = 'crosshair';
+});
+
+document.getElementById('cancelPlacePortalBtn')?.addEventListener('click', () => {
+  placingPortal = false;
+  document.getElementById('placePortalOnMapBtn').style.display = '';
+  document.getElementById('cancelPlacePortalBtn').style.display = 'none';
+  document.getElementById('mapOverlayCanvas').style.cursor = '';
+});
 
 // ========== STATIC ENEMY SPAWNS ==========
 let placingEnemy = false;
@@ -2490,6 +2603,7 @@ function stampSetPieceOnMap(e) {
 function mapCanvasClick(e) {
   if (stampingSetPiece) { stampSetPieceOnMap(e); return; }
   if (placingSpawnPoint) { placeSpawnPointOnMap(e); return; }
+  if (placingPortal) { placePortalOnMap(e); return; }
   if (placingEnemy) { placeEnemyOnMap(e); return; }
   if (!selectedMap || !selectedMap.data || mapBrushTileId < 0) return;
   const canvas = document.getElementById('mapOverlayCanvas');
@@ -3111,7 +3225,6 @@ function showPortalDetail(p) {
   document.getElementById('portalIdField').value = p.portalId;
   document.getElementById('portalNameField').value = p.portalName || '';
   document.getElementById('portalMapId').value = p.mapId != null ? p.mapId : 0;
-  document.getElementById('portalDepth').value = p.targetRealmDepth != null ? p.targetRealmDepth : -1;
   document.getElementById('portalTargetNodeId').value = p.targetNodeId || '';
   document.getElementById('portalSprite').value = p.spriteKey || '';
   document.getElementById('portalRow').value = p.row || 0;
@@ -3135,7 +3248,6 @@ function applyPortalDetail() {
   if (!p) return;
   p.portalName = document.getElementById('portalNameField').value;
   p.mapId = parseInt(document.getElementById('portalMapId').value) || 0;
-  p.targetRealmDepth = parseInt(document.getElementById('portalDepth').value) || -1;
   const nodeId = document.getElementById('portalTargetNodeId').value.trim();
   if (nodeId) p.targetNodeId = nodeId; else delete p.targetNodeId;
   p.spriteKey = document.getElementById('portalSprite').value;
@@ -3150,7 +3262,7 @@ function addPortal() {
   const maxId = portals.reduce((max, p) => Math.max(max, p.portalId), 0);
   const newPortal = {
     portalId: maxId + 1, portalName: 'New_Portal_' + (maxId + 1),
-    mapId: 0, targetRealmDepth: -1,
+    mapId: 0,
     row: 0, col: 0, spriteKey: 'rotmg-tiles-2.png'
   };
   portals.push(newPortal);
@@ -3406,7 +3518,7 @@ function selectRealmEvent(ev) {
   document.getElementById('reId').value = ev.eventId;
   document.getElementById('reName').value = ev.name;
   document.getElementById('reBossId').value = ev.bossEnemyId;
-  document.getElementById('reHealthMult').value = ev.healthMultiplier;
+  document.getElementById('reEventMult').value = ev.eventMultiplier;
   document.getElementById('reSetPieceId').value = ev.setPieceId;
   document.getElementById('reDuration').value = ev.durationSeconds;
   document.getElementById('reAnnounce').value = ev.announceMessage || '';
@@ -3421,7 +3533,7 @@ function applyRealmEvent() {
   const ev = selectedRealmEvent;
   ev.name = document.getElementById('reName').value;
   ev.bossEnemyId = parseInt(document.getElementById('reBossId').value) || 0;
-  ev.healthMultiplier = parseInt(document.getElementById('reHealthMult').value) || 1;
+  ev.eventMultiplier = parseInt(document.getElementById('reEventMult').value) || 1;
   ev.setPieceId = parseInt(document.getElementById('reSetPieceId').value) || -1;
   ev.durationSeconds = parseInt(document.getElementById('reDuration').value) || 300;
   ev.announceMessage = document.getElementById('reAnnounce').value;
@@ -3437,7 +3549,7 @@ function addRealmEvent() {
   const ev = {
     eventId: maxId + 1, name: 'New_Event_' + (maxId + 1),
     announceMessage: 'A %s has appeared!', defeatMessage: 'The event boss has been defeated!',
-    timeoutMessage: 'The event boss has vanished...', bossEnemyId: 1, healthMultiplier: 4,
+    timeoutMessage: 'The event boss has vanished...', bossEnemyId: 1, eventMultiplier: 4,
     setPieceId: -1, allowedZones: ['grasslands'], durationSeconds: 300, minionWaves: []
   };
   realmEvents.push(ev);
@@ -3456,7 +3568,7 @@ function renderMinionWaves() {
     const enemyName = enemies.find(e => e.enemyId === w.enemyId);
     const div = document.createElement('div');
     div.style.cssText = 'background:#1a1a2e;padding:6px;border-radius:4px;margin-bottom:4px;font-size:11px';
-    div.innerHTML = `<b>Wave ${i + 1}</b> @${Math.round(w.triggerHpPercent * 100)}% HP: ${w.count}x enemy#${w.enemyId}${enemyName ? ' (' + enemyName.name + ')' : ''} hp×${w.healthMultiplier} offset=${w.offset}px `
+    div.innerHTML = `<b>Wave ${i + 1}</b> @${Math.round(w.triggerHpPercent * 100)}% HP: ${w.count}x enemy#${w.enemyId}${enemyName ? ' (' + enemyName.name + ')' : ''} hp×${w.eventMultiplier} offset=${w.offset}px `
       + `<button onclick="removeWave(${i})" style="font-size:10px;color:#f66;background:none;border:1px solid #f66;padding:1px 4px;cursor:pointer">X</button>`;
     container.appendChild(div);
   });
@@ -3465,7 +3577,7 @@ function renderMinionWaves() {
 function addMinionWave() {
   if (!selectedRealmEvent) return;
   if (!selectedRealmEvent.minionWaves) selectedRealmEvent.minionWaves = [];
-  selectedRealmEvent.minionWaves.push({ triggerHpPercent: 0.5, enemyId: 1, count: 4, healthMultiplier: 2, offset: 128 });
+  selectedRealmEvent.minionWaves.push({ triggerHpPercent: 0.5, enemyId: 1, count: 4, eventMultiplier: 2, offset: 128 });
   markDirty('realmEvents');
   renderMinionWaves();
 }

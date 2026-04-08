@@ -6,7 +6,7 @@
 		"defeatMessage": "The Skull Shrine has been destroyed!",
 		"timeoutMessage": "The Skull Shrine fades into the darkness...",
 		"bossEnemyId": 2,
-		"healthMultiplier": 6,
+		"eventMultiplier": 6,
 		"setPieceId": 6,
 		"allowedZones": ["grasslands", "highlands"],
 		"durationSeconds": 300,
@@ -15,21 +15,21 @@
 				"triggerHpPercent": 0.75,
 				"enemyId": 17,
 				"count": 4,
-				"healthMultiplier": 2,
+				"eventMultiplier": 2,
 				"offset": 128
 			},
 			{
 				"triggerHpPercent": 0.50,
 				"enemyId": 21,
 				"count": 4,
-				"healthMultiplier": 2,
+				"eventMultiplier": 2,
 				"offset": 160
 			},
 			{
 				"triggerHpPercent": 0.25,
 				"enemyId": 24,
 				"count": 6,
-				"healthMultiplier": 3,
+				"eventMultiplier": 3,
 				"offset": 128
 			}
 		]
@@ -41,7 +41,7 @@
 		"defeatMessage": "The Cube God has been shattered!",
 		"timeoutMessage": "The Cube God has phased out of existence...",
 		"bossEnemyId": 1,
-		"healthMultiplier": 8,
+		"eventMultiplier": 8,
 		"setPieceId": 0,
 		"allowedZones": ["grasslands", "highlands", "summit"],
 		"durationSeconds": 300,
@@ -50,14 +50,14 @@
 				"triggerHpPercent": 0.80,
 				"enemyId": 12,
 				"count": 6,
-				"healthMultiplier": 2,
+				"eventMultiplier": 2,
 				"offset": 128
 			},
 			{
 				"triggerHpPercent": 0.40,
 				"enemyId": 9,
 				"count": 4,
-				"healthMultiplier": 3,
+				"eventMultiplier": 3,
 				"offset": 160
 			}
 		]
@@ -69,7 +69,7 @@
 		"defeatMessage": "The Lord of the Lost Lands has been vanquished!",
 		"timeoutMessage": "The Lord of the Lost Lands retreats to the shadows...",
 		"bossEnemyId": 66,
-		"healthMultiplier": 4,
+		"eventMultiplier": 4,
 		"setPieceId": 5,
 		"allowedZones": ["highlands", "summit"],
 		"durationSeconds": 420,
@@ -78,21 +78,21 @@
 				"triggerHpPercent": 0.80,
 				"enemyId": 32,
 				"count": 6,
-				"healthMultiplier": 3,
+				"eventMultiplier": 3,
 				"offset": 128
 			},
 			{
 				"triggerHpPercent": 0.60,
 				"enemyId": 22,
 				"count": 4,
-				"healthMultiplier": 3,
+				"eventMultiplier": 3,
 				"offset": 160
 			},
 			{
 				"triggerHpPercent": 0.30,
 				"enemyId": 21,
 				"count": 8,
-				"healthMultiplier": 4,
+				"eventMultiplier": 4,
 				"offset": 128
 			}
 		]
@@ -104,7 +104,7 @@
 		"defeatMessage": "The Ghost God has been exorcised!",
 		"timeoutMessage": "The Ghost God drifts away...",
 		"bossEnemyId": 3,
-		"healthMultiplier": 6,
+		"eventMultiplier": 6,
 		"setPieceId": 3,
 		"allowedZones": ["grasslands", "highlands"],
 		"durationSeconds": 240,
@@ -113,14 +113,14 @@
 				"triggerHpPercent": 0.70,
 				"enemyId": 20,
 				"count": 6,
-				"healthMultiplier": 2,
+				"eventMultiplier": 2,
 				"offset": 96
 			},
 			{
 				"triggerHpPercent": 0.35,
 				"enemyId": 24,
 				"count": 6,
-				"healthMultiplier": 3,
+				"eventMultiplier": 3,
 				"offset": 128
 			}
 		]

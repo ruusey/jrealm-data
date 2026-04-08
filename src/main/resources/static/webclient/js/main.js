@@ -645,7 +645,9 @@ function doRealmTransition(portal, isVault) {
     // from():    portalId=id, toVault=-1, toNexus=-1
     // Server checks: isToVault() = toVault != -1, isToNexus() = toNexus != -1
     // So we MUST send -1 (not 0) for "false" flags!
-    if (isVault) {
+    // Check if portal is a vault portal (portalId=2) — treat as vault entry
+    const isVaultPortal = portal && portal.portalId === 2;
+    if (isVault || isVaultPortal) {
         // Prevent double vault entry
         if (game.mapId === 1) return;
         network.sendUsePortal(-1n, game.realmId || 0n, game.playerId, 1, -1);

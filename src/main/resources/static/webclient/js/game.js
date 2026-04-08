@@ -44,6 +44,9 @@ export class GameState {
         // Minimap global player positions (1 Hz from server)
         this.minimapPlayers = [];
 
+        // Current zone/realm difficulty (from LoadPacket)
+        this.difficulty = 0;
+
         // Chat
         this.chatMessages = [];
 
@@ -376,6 +379,9 @@ export class GameState {
         }
         for (const p of packet.portals) {
             this.portals.set(p.id, p);
+        }
+        if (packet.difficulty !== undefined && packet.difficulty > 0) {
+            this.difficulty = packet.difficulty;
         }
     }
 

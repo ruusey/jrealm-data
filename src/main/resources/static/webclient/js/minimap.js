@@ -232,6 +232,27 @@ export class Minimap {
                 ctx.fillText('click to tp', px + 8, py + 9);
             }
         }
+
+        // Difficulty badge (top-left corner of minimap)
+        if (gameState.difficulty > 0) {
+            const diff = gameState.difficulty;
+            const label = `☠ ${diff.toFixed(1)}`;
+            ctx.font = 'bold 11px monospace';
+            const tw = ctx.measureText(label).width;
+            const bw = tw + 8, bh = 16;
+            // Badge background
+            const r = diff <= 2 ? 60 : diff <= 4 ? 180 : diff <= 6 ? 220 : 255;
+            const g = diff <= 2 ? 180 : diff <= 4 ? 160 : diff <= 6 ? 80 : 40;
+            const b = diff <= 2 ? 60 : 40;
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.85)`;
+            ctx.fillRect(4, 4, bw, bh);
+            ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`;
+            ctx.lineWidth = 1;
+            ctx.strokeRect(4, 4, bw, bh);
+            // Badge text
+            ctx.fillStyle = '#fff';
+            ctx.fillText(label, 8, 16);
+        }
     }
 
     _updateHover(e) {

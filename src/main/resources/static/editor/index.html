@@ -253,6 +253,16 @@
             <div id="spawnPointList" style="max-height:120px;overflow-y:auto"></div>
           </div>
 
+          <div style="margin-top:8px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+              <h4 style="margin:0;font-size:12px;color:#8cf">Static Portals</h4>
+              <button id="addStaticPortalBtn" class="btn-add" style="font-size:10px;padding:2px 8px">+ Add Portal</button>
+              <button id="placePortalOnMapBtn" class="btn-pick" style="font-size:10px;padding:2px 8px">Click Map</button>
+              <button id="cancelPlacePortalBtn" class="btn-pick" style="font-size:10px;padding:2px 8px;display:none">Cancel</button>
+            </div>
+            <div id="staticPortalList" style="max-height:180px;overflow-y:auto"></div>
+          </div>
+
           <div class="detail-actions" style="margin-top:6px">
             <button id="applyMapBtn" class="btn-apply">Apply Map Changes</button>
           </div>
@@ -520,7 +530,6 @@
         <label>Portal ID: <input type="number" id="portalIdField" disabled></label>
         <label>Name: <input type="text" id="portalNameField"></label>
         <label>Target Map: <input type="number" id="portalMapId" min="0"></label>
-        <label>Depth: <input type="number" id="portalDepth"></label>
         <label>Target Node ID: <input type="text" id="portalTargetNodeId" placeholder="(optional)"></label>
       </div>
       <h4>Sprite</h4>
@@ -620,7 +629,7 @@
           <label>ID: <input type="number" id="reId" readonly></label>
           <label>Name: <input type="text" id="reName"></label>
           <label>Boss Enemy ID: <input type="number" id="reBossId" min="0"></label>
-          <label>Health Mult: <input type="number" id="reHealthMult" min="1"></label>
+          <label>Event Mult: <input type="number" id="reEventMult" min="1"></label>
           <label>SetPiece ID: <input type="number" id="reSetPieceId" min="-1"></label>
           <label>Duration (s): <input type="number" id="reDuration" min="30"></label>
         </div>

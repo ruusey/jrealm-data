@@ -185,7 +185,7 @@ export const NetEnemy = {
         return {
             id: r.readLong(), enemyId: r.readInt(), weaponId: r.readInt(), size: r.readShort(),
             pos: Vector2f.read(r), dX: r.readFloat(), dY: r.readFloat(),
-            healthMultiplier: r.readInt(), health: r.readInt(), maxHealth: r.readInt(),
+            difficulty: r.readFloat(), health: r.readInt(), maxHealth: r.readInt(),
             shortId: r.readShort()
         };
     }
@@ -303,7 +303,8 @@ export const PacketReaders = {
             enemies: r.readArray(rr => NetEnemy.read(rr)),
             bullets: r.readArray(rr => NetBullet.read(rr)),
             containers: r.readArray(rr => NetLootContainer.read(rr)),
-            portals: r.readArray(rr => NetPortal.read(rr))
+            portals: r.readArray(rr => NetPortal.read(rr)),
+            difficulty: r.readByte()
         };
     },
     [PacketId.UNLOAD](r) {

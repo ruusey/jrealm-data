@@ -3,16 +3,14 @@
 		"portalId": 0,
 		"portalName": "Beach_0_Portal",
 		"mapId": 2,
-		"targetRealmDepth": 0,
-		"row": 8,
-		"col": 12,
-		"spriteKey": "rotmg-tiles-2.png"
+		"row": 7,
+		"col": 11,
+		"spriteKey": "rotmg-tiles-1.png"
 	},
 	{
 		"portalId": 1,
 		"portalName": "Grasslands_0_Portal",
 		"mapId": 4,
-		"targetRealmDepth": 1,
 		"row": 8,
 		"col": 15,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -21,7 +19,6 @@
 		"portalId": 2,
 		"portalName": "Vault_Portal",
 		"mapId": 1,
-		"targetRealmDepth": -1,
 		"row": 3,
 		"col": 6,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -30,7 +27,6 @@
 		"portalId": 3,
 		"portalName": "Exit_Portal",
 		"mapId": 2,
-		"targetRealmDepth": -1,
 		"row": 3,
 		"col": 7,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -39,7 +35,6 @@
 		"portalId": 4,
 		"portalName": "Cave_0_Portal",
 		"mapId": 3,
-		"targetRealmDepth": 2,
 		"row": 58,
 		"col": 8,
 		"spriteKey": "rotmg-tiles-all.png"
@@ -48,7 +43,6 @@
 		"portalId": 5,
 		"portalName": "Boss_0_Portal",
 		"mapId": 5,
-		"targetRealmDepth": 3,
 		"row": 9,
 		"col": 13,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -57,7 +51,6 @@
 		"portalId": 6,
 		"portalName": "Dungeon_0_Portal",
 		"mapId": 6,
-		"targetRealmDepth": 999,
 		"row": 79,
 		"col": 14,
 		"spriteKey": "lofiObj3.png"
@@ -66,7 +59,6 @@
 		"portalId": 7,
 		"portalName": "Undead_Lair_Portal",
 		"mapId": 7,
-		"targetRealmDepth": 999,
 		"row": 9,
 		"col": 11,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -75,7 +67,6 @@
 		"portalId": 8,
 		"portalName": "Ice_Cave_Portal",
 		"mapId": 8,
-		"targetRealmDepth": 999,
 		"row": 84,
 		"col": 15,
 		"spriteKey": "lofiObj3.png"
@@ -84,7 +75,6 @@
 		"portalId": 9,
 		"portalName": "Abyss_Portal",
 		"mapId": 9,
-		"targetRealmDepth": 999,
 		"row": 9,
 		"col": 14,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -93,7 +83,6 @@
 		"portalId": 10,
 		"portalName": "Sunken_Temple_Portal",
 		"mapId": 15,
-		"targetRealmDepth": 999,
 		"row": 4,
 		"col": 12,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -102,7 +91,6 @@
 		"portalId": 11,
 		"portalName": "Mushroom_Grotto_Portal",
 		"mapId": 16,
-		"targetRealmDepth": 999,
 		"row": 10,
 		"col": 8,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -111,7 +99,6 @@
 		"portalId": 12,
 		"portalName": "Magma_Depths_Portal",
 		"mapId": 17,
-		"targetRealmDepth": 999,
 		"row": 51,
 		"col": 15,
 		"spriteKey": "lofiObj3.png"
@@ -120,7 +107,6 @@
 		"portalId": 13,
 		"portalName": "Shadow_Keep_Portal",
 		"mapId": 18,
-		"targetRealmDepth": 999,
 		"row": 9,
 		"col": 15,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -129,7 +115,6 @@
 		"portalId": 14,
 		"portalName": "Serpents_Den_Portal",
 		"mapId": 19,
-		"targetRealmDepth": 999,
 		"row": 86,
 		"col": 12,
 		"spriteKey": "lofiObj3.png"
@@ -138,7 +123,6 @@
 		"portalId": 15,
 		"portalName": "Infernal_Pit_Portal",
 		"mapId": 20,
-		"targetRealmDepth": 999,
 		"row": 75,
 		"col": 11,
 		"spriteKey": "lofiObj3.png"
@@ -147,7 +131,6 @@
 		"portalId": 16,
 		"portalName": "Void_Sanctum_Portal",
 		"mapId": 21,
-		"targetRealmDepth": 999,
 		"row": 8,
 		"col": 14,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -156,7 +139,6 @@
 		"portalId": 17,
 		"portalName": "Dragons_Roost_Portal",
 		"mapId": 22,
-		"targetRealmDepth": 999,
 		"row": 49,
 		"col": 8,
 		"spriteKey": "lofiObj3.png"
@@ -165,7 +147,6 @@
 		"portalId": 18,
 		"portalName": "Enchanted_Maze_Portal",
 		"mapId": 23,
-		"targetRealmDepth": 999,
 		"row": 95,
 		"col": 0,
 		"spriteKey": "lofiObj3.png"
@@ -174,7 +155,6 @@
 		"portalId": 19,
 		"portalName": "Throne_of_Eternity_Portal",
 		"mapId": 24,
-		"targetRealmDepth": 999,
 		"row": 14,
 		"col": 10,
 		"spriteKey": "d3LofiObj.png"
@@ -183,7 +163,6 @@
 		"portalId": 20,
 		"portalName": "Oryx_Castle_Portal",
 		"mapId": 25,
-		"targetRealmDepth": 999,
 		"row": 5,
 		"col": 4,
 		"spriteKey": "rotmg-tiles-2.png"
@@ -192,7 +171,6 @@
 		"portalId": 21,
 		"portalName": "Admin_Arena_21",
 		"mapId": 28,
-		"targetRealmDepth": 999,
 		"row": 25,
 		"col": 2,
 		"spriteKey": "rotmg-tiles.png"
@@ -201,7 +179,6 @@
 		"portalId": 22,
 		"portalName": "Nexus_Portal",
 		"mapId": 29,
-		"targetRealmDepth": -1,
 		"row": 3,
 		"col": 6,
 		"spriteKey": "rotmg-tiles-2.png"

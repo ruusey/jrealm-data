@@ -318,7 +318,7 @@
 				"maxRadius": 0.2,
 				"tileGroupOrdinal": 3,
 				"enemyGroupOrdinal": 3,
-				"difficulty": 4,
+				"difficulty": 4.0,
 				"portalDrops": {}
 			},
 			{
@@ -328,7 +328,7 @@
 				"maxRadius": 0.45,
 				"tileGroupOrdinal": 2,
 				"enemyGroupOrdinal": 2,
-				"difficulty": 3,
+				"difficulty": 3.0,
 				"portalDrops": {}
 			},
 			{
@@ -338,7 +338,7 @@
 				"maxRadius": 0.72,
 				"tileGroupOrdinal": 1,
 				"enemyGroupOrdinal": 1,
-				"difficulty": 2,
+				"difficulty": 2.0,
 				"portalDrops": {}
 			},
 			{
@@ -348,7 +348,7 @@
 				"maxRadius": 1.01,
 				"tileGroupOrdinal": 0,
 				"enemyGroupOrdinal": 0,
-				"difficulty": 1,
+				"difficulty": 1.0,
 				"portalDrops": {}
 			}
 		],
@@ -433,6 +433,7 @@
 		"width": 256,
 		"height": 256,
 		"tileSize": 32,
+		"difficulty": 1.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -484,6 +485,7 @@
 		"width": 256,
 		"height": 256,
 		"tileSize": 32,
+		"difficulty": 2.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -584,6 +586,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 3.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -629,6 +632,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 4.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -674,6 +678,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 4.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -717,6 +722,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 2.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -771,6 +777,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 2.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -859,6 +866,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 3.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -926,6 +934,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 3.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -976,6 +985,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 5.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1029,6 +1039,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 2.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1081,6 +1092,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 3.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1128,6 +1140,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 3.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1174,6 +1187,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 4.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1220,6 +1234,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 3.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1279,6 +1294,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 4.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1323,6 +1339,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 5.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1371,6 +1388,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 5.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1420,6 +1438,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
+		"difficulty": 3.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1491,6 +1510,7 @@
 		"width": 96,
 		"height": 96,
 		"tileSize": 32,
+		"difficulty": 6.0,
 		"tileGroups": [
 			{
 				"ordinal": 0,
@@ -1604,7 +1624,7 @@
 				"maxRadius": 1.01,
 				"tileGroupOrdinal": 0,
 				"enemyGroupOrdinal": 0,
-				"difficulty": 5
+				"difficulty": 5.0
 			},
 			{
 				"zoneId": "castle_inner",
@@ -1613,7 +1633,7 @@
 				"maxRadius": 0.55,
 				"tileGroupOrdinal": 0,
 				"enemyGroupOrdinal": 1,
-				"difficulty": 6
+				"difficulty": 6.0
 			},
 			{
 				"zoneId": "castle_throne",
@@ -1622,7 +1642,7 @@
 				"maxRadius": 0.25,
 				"tileGroupOrdinal": 0,
 				"enemyGroupOrdinal": 2,
-				"difficulty": 7
+				"difficulty": 7.0
 			}
 		]
 	}
