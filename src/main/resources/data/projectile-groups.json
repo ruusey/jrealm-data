@@ -6197,7 +6197,7 @@
 		"row": 14,
 		"col": 10,
 		"spriteKey": "rotmg-projectiles.png",
-		"angleOffset": "{{PI/4}}",
+		"angleOffset": "{{PI}}",
 		"projectiles": [
 			{
 				"projectileId": 100,
@@ -6206,7 +6206,7 @@
 				"angle": "-0.12",
 				"range": 260,
 				"size": 22,
-				"magnitude": 5,
+				"magnitude": 3.5,
 				"amplitude": 7,
 				"frequency": 15,
 				"flags": [
@@ -6216,12 +6216,14 @@
 			{
 				"projectileId": 100,
 				"positionMode": 0,
-				"damage": 70,
-				"angle": "0",
+				"damage": 80,
+				"angle": 0,
 				"range": 260,
-				"size": 22,
-				"magnitude": 5,
-				"flags": []
+				"size": 28,
+				"magnitude": 3.5,
+				"flags": [
+					12
+				]
 			},
 			{
 				"projectileId": 100,
@@ -6230,7 +6232,7 @@
 				"angle": "0.12",
 				"range": 260,
 				"size": 22,
-				"magnitude": 5,
+				"magnitude": 3.5,
 				"amplitude": -7,
 				"frequency": 15,
 				"flags": [

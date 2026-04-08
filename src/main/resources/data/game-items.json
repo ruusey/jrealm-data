@@ -5427,5 +5427,29 @@
 			"min": 550,
 			"max": 620
 		}
+	},
+	{
+		"itemId": 295,
+		"row": 91,
+		"col": 15,
+		"spriteKey": "lofiObj3.png",
+		"spriteSize": 8,
+		"name": "Potion Of Max Stats",
+		"description": "Maxes your stats",
+		"consumable": true,
+		"tier": -1,
+		"targetSlot": -1,
+		"targetClass": -4,
+		"fameBonus": 0,
+		"stats": {
+			"hp": 0,
+			"mp": 0,
+			"def": 0,
+			"att": 0,
+			"spd": 0,
+			"dex": 0,
+			"vit": 0,
+			"wis": 0
+		}
 	}
 ]

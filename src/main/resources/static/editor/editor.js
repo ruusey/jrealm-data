@@ -1540,7 +1540,7 @@ function renderAttackPatternsEditor(body, phase, enemy) {
             const lbl = document.createElement('label'); lbl.textContent = label;
             const inp = document.createElement('input'); inp.type = 'number';
             inp.value = atk[key] != null ? atk[key] : '';
-            inp.style.width = (width || 50) + 'px';
+            inp.style.width = Math.max(70, Math.floor((width || 50) * 1.5)) + 'px';
             if (step) inp.step = step;
             inp.addEventListener('change', () => { atk[key] = parseFloat(inp.value) || 0; markDirty('enemies'); });
             lbl.appendChild(inp);

@@ -38,7 +38,7 @@ header h1 { font-size: 16px; color: #e94560; white-space: nowrap; }
 
 select, input[type="text"], input[type="number"] {
   background: #0f3460; color: #e0e0e0; border: 1px solid #444;
-  padding: 4px 8px; border-radius: 3px; font-size: 13px;
+  padding: 5px 10px; border-radius: 3px; font-size: 13px; min-width: 70px;
 }
 select:focus, input:focus { outline: none; border-color: #e94560; }
 

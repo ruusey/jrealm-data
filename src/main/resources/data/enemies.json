@@ -883,7 +883,7 @@
 						"projectileGroupId": 43,
 						"cooldownMs": 720,
 						"burstCount": 1,
-						"burstDelayMs": 70
+						"burstDelayMs": 105
 					}
 				]
 			},
@@ -899,16 +899,17 @@
 				"attacks": [
 					{
 						"projectileGroupId": 43,
-						"cooldownMs": 480,
+						"cooldownMs": 500,
 						"burstCount": 2,
 						"burstDelayMs": 105,
 						"angleOffsetPerBurst": 0.2
 					},
 					{
 						"projectileGroupId": 46,
-						"cooldownMs": 2000,
+						"cooldownMs": 1500,
 						"burstCount": 1,
-						"burstDelayMs": 500
+						"burstDelayMs": 500,
+						"angleOffsetPerBurst": 0.2
 					}
 				]
 			},
@@ -924,16 +925,17 @@
 				"attacks": [
 					{
 						"projectileGroupId": 43,
-						"cooldownMs": 240,
-						"burstCount": 4,
+						"cooldownMs": 225,
+						"burstCount": 2,
 						"burstDelayMs": 56,
 						"angleOffsetPerBurst": 0.1
 					},
 					{
 						"projectileGroupId": 45,
-						"cooldownMs": 1080,
+						"cooldownMs": 1100,
 						"burstCount": 2,
-						"burstDelayMs": 70
+						"burstDelayMs": 350,
+						"angleOffsetPerBurst": 0.1
 					}
 				]
 			}
@@ -7222,10 +7224,11 @@
 				"attacks": [
 					{
 						"projectileGroupId": 209,
-						"cooldownMs": 700,
+						"cooldownMs": 800,
 						"burstCount": 3,
 						"burstDelayMs": 200,
 						"angleOffsetPerBurst": 0.35,
+						"spreadAngle": 0.15,
 						"predictive": true,
 						"aimMode": "PLAYER"
 					},
@@ -7235,6 +7238,7 @@
 						"burstCount": 3,
 						"burstDelayMs": 200,
 						"angleOffsetPerBurst": 0.35,
+						"spreadAngle": 0.15,
 						"predictive": true,
 						"aimMode": "PLAYER"
 					}
@@ -7255,15 +7259,17 @@
 						"burstCount": 3,
 						"burstDelayMs": 100,
 						"angleOffsetPerBurst": 0.25,
+						"spreadAngle": 0.15,
 						"predictive": true,
 						"aimMode": "PLAYER"
 					},
 					{
 						"projectileGroupId": 210,
-						"cooldownMs": 300,
+						"cooldownMs": 400,
 						"burstCount": 3,
 						"angleOffsetPerBurst": 0.25,
 						"burstDelayMs": 100,
+						"spreadAngle": 0.15,
 						"predictive": true,
 						"aimMode": "PLAYER"
 					}
@@ -7283,16 +7289,18 @@
 						"burstCount": 4,
 						"burstDelayMs": 100,
 						"angleOffsetPerBurst": 0.14,
+						"spreadAngle": 0.15,
 						"aimMode": "PLAYER",
 						"predictive": true,
 						"mirror": true
 					},
 					{
 						"projectileGroupId": 210,
-						"cooldownMs": 200,
+						"cooldownMs": 300,
 						"burstCount": 4,
 						"burstDelayMs": 100,
 						"angleOffsetPerBurst": 0.14,
+						"spreadAngle": 0.15,
 						"aimMode": "PLAYER",
 						"predictive": true,
 						"mirror": true
