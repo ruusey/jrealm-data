@@ -158,6 +158,55 @@ export class GameState {
         return this.effectIds.some(id => id === effectId);
     }
 
+    // Simulate one 64Hz tick of movement for an entity with the given dirFlags.
+    // This MUST produce identical results to the server's movePlayer().
+    // Both use: speed = tilesPerSec * 32 / 64, same collision checks, same diagonal logic.
+    simulateTick(entity, dirFlags) {
+        const up    = !!(dirFlags & 0x01);
+        const down  = !!(dirFlags & 0x02);
+        const left  = !!(dirFlags & 0x04);
+        const right = !!(dirFlags & 0x08);
+
+        const computed = this.getComputedStats();
+        const spdStat = computed ? computed.spd : 10;
+        let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
+        if (this.hasEffect(4)) tilesPerSec *= 1.5; // SPEEDY
+        if (this.hasEffect(2)) tilesPerSec = 0;     // PARALYZED
+        let spd = tilesPerSec * 32.0 / 64.0; // pixels per tick — ALWAYS /64
+
+        const movingX = left || right;
+        const movingY = up || down;
+        if (movingX && movingY) {
+            spd = spd * Math.sqrt(2) / 2.0;
+        }
+
+        let dx = right ? spd : left ? -spd : 0;
+        let dy = down ? spd : up ? -spd : 0;
+
+        if (dx === 0 && dy === 0) return;
+
+        const slow = this._isOnSlowTile(entity) ? 3.0 : 1.0;
+        const effDx = dx / slow;
+        const effDy = dy / slow;
+
+        const origX = entity.pos.x;
+        const origY = entity.pos.y;
+
+        let xBlocked = this._checkCollision(entity, effDx, 0);
+        let yBlocked = this._checkCollision(entity, 0, effDy);
+
+        // Diagonal corner cutting prevention (matches server exactly)
+        if (!xBlocked && !yBlocked && effDx !== 0 && effDy !== 0) {
+            if (this._checkCollision(entity, effDx, effDy)) {
+                if (Math.abs(effDx) >= Math.abs(effDy)) yBlocked = true;
+                else xBlocked = true;
+            }
+        }
+
+        if (!xBlocked) entity.pos.x = origX + effDx;
+        if (!yBlocked) entity.pos.y = origY + effDy;
+    }
+
     // Computed stats = base stats + equipment bonuses (slots 0-3)
     // Matches Java Player.getComputedStats()
     getComputedStats() {
@@ -327,89 +376,72 @@ export class GameState {
         for (const id of packet.portals) this.portals.delete(id);
     }
 
-    // Server reconciliation: replay unacknowledged inputs from server's authoritative position.
+    // Server reconciliation with sequence-numbered inputs.
+    // The server ack contains the last client input seq it processed + its authoritative position.
+    // We discard all inputs up to that seq (exact match, no tick/frame conversion),
+    // then replay remaining inputs from the server position using simulateTick().
+    // Because both client and server run identical physics at exactly 64Hz,
+    // the replay produces the same result as the client's prediction — zero error
+    // unless there's a genuine collision mismatch.
     handlePosAck(data) {
         const local = this.getLocalPlayer();
         if (!local) return;
 
-        if (!this._inputBuffer) this._inputBuffer = [];
-        const serverTicksSinceLastAck = data.seq - (this._lastAckSeq || data.seq);
-        this._lastAckSeq = data.seq;
+        if (!this._pendingInputs) this._pendingInputs = [];
 
-        // Calculate total buffered time in server ticks
-        let totalBufferedTicks = 0;
-        for (const f of this._inputBuffer) totalBufferedTicks += f.dt * 64;
-
-        if (serverTicksSinceLastAck > 10 && serverTicksSinceLastAck > totalBufferedTicks * 2) {
-            this._inputBuffer = [];
-        } else if (serverTicksSinceLastAck > 0) {
-            let ticksToDiscard = serverTicksSinceLastAck;
-            while (this._inputBuffer.length > 0 && ticksToDiscard > 0) {
-                const frameTicks = this._inputBuffer[0].dt * 64;
-                ticksToDiscard -= frameTicks;
-                this._inputBuffer.shift();
-            }
+        // 1. Discard all inputs the server has confirmed (seq <= ack.seq)
+        while (this._pendingInputs.length > 0 && this._pendingInputs[0].seq <= data.seq) {
+            this._pendingInputs.shift();
         }
 
-        // Replay unacknowledged inputs from server's authoritative position
-        const serverX = data.posX;
-        const serverY = data.posY;
-
+        // 2. Save current client position
         const savedX = local.pos.x;
         const savedY = local.pos.y;
-        local.pos.x = serverX;
-        local.pos.y = serverY;
 
-        for (const input of this._inputBuffer) {
-            const slow = this._isOnSlowTile(local) ? 3.0 : 1.0;
-            const predDx = (input.dx / slow) * input.dt * 64;
-            const predDy = (input.dy / slow) * input.dt * 64;
+        // 3. Start from server's authoritative position
+        local.pos.x = data.posX;
+        local.pos.y = data.posY;
 
-            if (Math.abs(predDx) < 0.001 && Math.abs(predDy) < 0.001) continue;
-
-            const xOk = !this._checkCollision(local, predDx, 0);
-            const yOk = !this._checkCollision(local, 0, predDy);
-
-            if (!xOk && !yOk) {
-                // blocked
-            } else if (xOk && yOk) {
-                if (predDx !== 0 && predDy !== 0 && this._checkCollision(local, predDx, predDy)) {
-                    if (Math.abs(predDx) >= Math.abs(predDy)) {
-                        local.pos.x += predDx;
-                    } else {
-                        local.pos.y += predDy;
-                    }
-                } else {
-                    local.pos.x += predDx;
-                    local.pos.y += predDy;
-                }
-            } else if (xOk) {
-                local.pos.x += predDx;
-            } else {
-                local.pos.y += predDy;
-            }
+        // 4. Replay all unacknowledged inputs using the same simulateTick()
+        for (const inp of this._pendingInputs) {
+            this.simulateTick(local, inp.dirFlags);
         }
 
+        // 5. Compare replayed position with where client currently is
         const replayX = local.pos.x;
         const replayY = local.pos.y;
-
-        // Compare replayed position with where the client currently is.
-        // If close enough, keep the client's current position (no visible correction).
-        // If diverged, smoothly blend toward the replayed position.
         const errX = replayX - savedX;
         const errY = replayY - savedY;
         const err = Math.sqrt(errX * errX + errY * errY);
 
-        if (err > 32) {
-            // Large desync — hard snap
+        // Debug: log significant corrections (remove after debugging)
+        if (err > 2.0) {
+            console.log(`[RECONCILE] err=${err.toFixed(2)}px pending=${this._pendingInputs.length} ackSeq=${data.seq} server=(${data.posX.toFixed(1)},${data.posY.toFixed(1)}) saved=(${savedX.toFixed(1)},${savedY.toFixed(1)}) replay=(${replayX.toFixed(1)},${replayY.toFixed(1)})`);
+        }
+
+        if (err > 64) {
+            // Teleport / realm transition — hard snap, clear smoothing
             local.pos.x = replayX;
             local.pos.y = replayY;
-        } else if (err > 1.0) {
-            // Blend toward correct position
-            local.pos.x = savedX + errX * 0.4;
-            local.pos.y = savedY + errY * 0.4;
+            local._smoothX = 0;
+            local._smoothY = 0;
+        } else if (err > 2.0) {
+            // Mismatch detected (wall collision, slow tile edge case).
+            // Snap logical position to replay result immediately (accurate collisions).
+            // Absorb the visual difference into a smoothing offset that decays fast.
+            local._smoothX = (local._smoothX || 0) + (savedX - replayX);
+            local._smoothY = (local._smoothY || 0) + (savedY - replayY);
+            // Cap smoothing offset to prevent accumulation
+            const mag = Math.sqrt(local._smoothX * local._smoothX + local._smoothY * local._smoothY);
+            if (mag > 6) {
+                local._smoothX *= 6 / mag;
+                local._smoothY *= 6 / mag;
+            }
+            local.pos.x = replayX;
+            local.pos.y = replayY;
         } else {
-            // Within tolerance
+            // Under 0.5px: client and server agree. This should be the normal case
+            // at any ping because both run identical physics at the same tick rate.
             local.pos.x = savedX;
             local.pos.y = savedY;
         }
@@ -700,42 +732,22 @@ export class GameState {
 
     updateInterpolation(dt) {
         const SNAP_DISTANCE = 96;
-        const moveScale = dt * 64; // match server tick rate (64Hz)
         const ENEMY_INTERP_DURATION = 62; // ms — snapshot interpolation window
 
         for (const [id, p] of this.players) {
             if (id === this.playerId) {
-                // LOCAL PLAYER: client-predicted movement with server reconciliation.
-                // Each frame: apply velocity with collision checks (instant feel).
-                // On server ack (PlayerPosAckPacket): replay unacknowledged inputs
-                // from server position in handlePosAck() — zero drift, no blending.
-                const hasVel = Math.abs(p.dx) > 0.01 || Math.abs(p.dy) > 0.01;
-                if (hasVel) {
-                    const slow = this._isOnSlowTile(p) ? 3.0 : 1.0;
-                    const predDx = (p.dx / slow) * moveScale;
-                    const predDy = (p.dy / slow) * moveScale;
-
-                    const xOk = !this._checkCollision(p, predDx, 0);
-                    const yOk = !this._checkCollision(p, 0, predDy);
-
-                    if (!xOk && !yOk) {
-                        // blocked
-                    } else if (xOk && yOk) {
-                        if (predDx !== 0 && predDy !== 0 && this._checkCollision(p, predDx, predDy)) {
-                            if (Math.abs(predDx) >= Math.abs(predDy)) {
-                                p.pos.x += predDx;
-                            } else {
-                                p.pos.y += predDy;
-                            }
-                        } else {
-                            p.pos.x += predDx;
-                            p.pos.y += predDy;
-                        }
-                    } else if (xOk) {
-                        p.pos.x += predDx;
-                    } else {
-                        p.pos.y += predDy;
-                    }
+                // LOCAL PLAYER: movement is now handled by the fixed 64Hz simulation
+                // in processInput() via simulateTick(). Nothing to do here except
+                // decay the visual smoothing offset.
+                const dtMs = dt * 1000;
+                if (p._smoothX || p._smoothY) {
+                    // 50ms half-life: corrections are 87.5% gone within 150ms.
+                    // Fast enough for bullet hell, smooth enough to not jerk.
+                    const decay = Math.pow(0.5, dtMs / 50.0);
+                    p._smoothX = (p._smoothX || 0) * decay;
+                    p._smoothY = (p._smoothY || 0) * decay;
+                    if (Math.abs(p._smoothX) < 0.1) p._smoothX = 0;
+                    if (Math.abs(p._smoothY) < 0.1) p._smoothY = 0;
                 }
             } else {
                 // OTHER PLAYERS: lerp toward server position.
@@ -869,8 +881,11 @@ export class GameState {
 
         const local = this.getLocalPlayer();
         if (local) {
-            this.cameraX += (local.pos.x - this.cameraX) * 0.35;
-            this.cameraY += (local.pos.y - this.cameraY) * 0.35;
+            // Camera follows the visual position (logical + smoothing offset)
+            const visualX = local.pos.x + (local._smoothX || 0);
+            const visualY = local.pos.y + (local._smoothY || 0);
+            this.cameraX += (visualX - this.cameraX) * 0.35;
+            this.cameraY += (visualY - this.cameraY) * 0.35;
         }
     }
 

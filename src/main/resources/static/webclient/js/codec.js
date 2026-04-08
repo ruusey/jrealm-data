@@ -368,7 +368,7 @@ export const PacketReaders = {
                  toVault: r.readByte(), toNexus: r.readByte() };
     },
     [PacketId.PLAYER_MOVE](r) {
-        return { entityId: r.readLong(), dir: r.readByte(), move: r.readBoolean(), seq: r.readInt() };
+        return { entityId: r.readLong(), seq: r.readInt(), dirFlags: r.readByte() };
     },
     [PacketId.PLAYER_POS_ACK](r) {
         return { seq: r.readInt(), posX: r.readFloat(), posY: r.readFloat() };
@@ -389,9 +389,9 @@ function buildPacket(packetId, writerFn) {
 }
 
 export const PacketWriters = {
-    playerMove(entityId, dir, move, seq) {
+    playerMove(entityId, seq, dirFlags) {
         return buildPacket(PacketId.PLAYER_MOVE, w => {
-            w.writeLong(entityId); w.writeByte(dir); w.writeBoolean(move); w.writeInt(seq || 0);
+            w.writeLong(entityId); w.writeInt(seq); w.writeByte(dirFlags);
         });
     },
 

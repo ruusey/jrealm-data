@@ -98,8 +98,8 @@ export class GameNetwork {
         this.send(PacketWriters.loginAck(playerId));
     }
 
-    sendPlayerMove(entityId, dir, move, seq) {
-        this.send(PacketWriters.playerMove(entityId, dir, move, seq));
+    sendPlayerMove(entityId, seq, dirFlags) {
+        this.send(PacketWriters.playerMove(entityId, seq, dirFlags));
     }
 
     sendHeartbeat() {

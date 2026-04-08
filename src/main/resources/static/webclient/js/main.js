@@ -1093,116 +1093,101 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
 }
 
+// --- Fixed 64Hz Simulation Tick ---
+// Decoupled from render frame rate. Client simulates at exactly 64Hz to match server.
+const SIM_TICK_RATE = 64;
+const SIM_TICK_MS = 1000.0 / SIM_TICK_RATE;
+const SIM_TICK_SEC = 1.0 / SIM_TICK_RATE;
+let simAccumulator = 0; // ms of unprocessed time
+
+// Build dirFlags bitmask from current keyboard/touch state
+function sampleDirFlags() {
+    if (input.chatMode) return 0;
+    let flags = 0;
+    if (isTouchDevice()) {
+        const joy = getJoystickDir();
+        if (joy.yDir === 0) flags |= 0x01; // up
+        if (joy.yDir === 1) flags |= 0x02; // down
+        if (joy.xDir === 3) flags |= 0x04; // left
+        if (joy.xDir === 2) flags |= 0x08; // right
+    } else {
+        if (input.isKeyDown('KeyW') || input.isKeyDown('ArrowUp'))    flags |= 0x01;
+        if (input.isKeyDown('KeyS') || input.isKeyDown('ArrowDown'))  flags |= 0x02;
+        if (input.isKeyDown('KeyA') || input.isKeyDown('ArrowLeft'))  flags |= 0x04;
+        if (input.isKeyDown('KeyD') || input.isKeyDown('ArrowRight')) flags |= 0x08;
+    }
+    // Cancel opposing directions
+    if ((flags & 0x01) && (flags & 0x02)) flags &= ~(0x01 | 0x02);
+    if ((flags & 0x04) && (flags & 0x08)) flags &= ~(0x04 | 0x08);
+    return flags;
+}
+
 // --- Input Processing ---
 function processInput(dt) {
-    // Determine current X and Y axis directions from keyboard or touch joystick
-    let xDir = null;
-    let yDir = null;
-    if (!input.chatMode) {
-        if (isTouchDevice()) {
-            const joy = getJoystickDir();
-            xDir = joy.xDir;
-            yDir = joy.yDir;
-        } else {
-            if (input.isKeyDown('KeyD') || input.isKeyDown('ArrowRight')) xDir = 2;
-            else if (input.isKeyDown('KeyA') || input.isKeyDown('ArrowLeft')) xDir = 3;
-            if (input.isKeyDown('KeyW') || input.isKeyDown('ArrowUp')) yDir = 0;
-            else if (input.isKeyDown('KeyS') || input.isKeyDown('ArrowDown')) yDir = 1;
-        }
-    }
-
-    // --- Send direction packets to server with sequence number ---
-    // Rate-limit direction changes to prevent packet flooding from analog stick drift.
-    // At most 1 direction change per 50ms (20 changes/sec max).
-    if (!game._lastDirChangeTime) game._lastDirChangeTime = 0;
-    const dirChangeThrottle = performance.now() - game._lastDirChangeTime > 50;
-    if ((xDir !== lastXDir || yDir !== lastYDir) && dirChangeThrottle) {
-        game._lastDirChangeTime = performance.now();
-        const isMoving = xDir !== null || yDir !== null;
-
-        if (!isMoving) {
-            game._inputSeq = (game._inputSeq || 0) + 1;
-            network.sendPlayerMove(game.playerId, 4, false, game._inputSeq);
-        } else {
-            if (yDir !== lastYDir) {
-                if (lastYDir !== null) {
-                    game._inputSeq = (game._inputSeq || 0) + 1;
-                    network.sendPlayerMove(game.playerId, lastYDir, false, game._inputSeq);
-                }
-                if (yDir !== null) {
-                    game._inputSeq = (game._inputSeq || 0) + 1;
-                    network.sendPlayerMove(game.playerId, yDir, true, game._inputSeq);
-                }
-            }
-            if (xDir !== lastXDir) {
-                if (lastXDir !== null) {
-                    game._inputSeq = (game._inputSeq || 0) + 1;
-                    network.sendPlayerMove(game.playerId, lastXDir, false, game._inputSeq);
-                }
-                if (xDir !== null) {
-                    game._inputSeq = (game._inputSeq || 0) + 1;
-                    network.sendPlayerMove(game.playerId, xDir, true, game._inputSeq);
-                }
-            }
-        }
-        lastXDir = xDir;
-        lastYDir = yDir;
-    }
-
-    // Local player velocity prediction + input buffer for server reconciliation.
-    // Each frame: compute velocity from current input, store in input buffer,
-    // apply locally with collision checks. When server acks a seq, replay
-    // all inputs after that seq from the server's authoritative position.
     const local = game.getLocalPlayer();
-    if (local) {
-        // Expire effects locally so client and server agree on timing
-        game.removeExpiredEffects();
+    if (!local) return;
 
-        const computed = game.getComputedStats();
-        const spdStat = computed ? computed.spd : 10;
-        let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
-        if (game.hasEffect(4)) tilesPerSec *= 1.5;  // SPEEDY
-        if (game.hasEffect(2)) tilesPerSec = 0;      // PARALYZED
-        // DAZED (11) only affects dex/attack speed, not movement speed
-        let spd = tilesPerSec * 32.0 / 64.0;
+    game.removeExpiredEffects();
 
-        let pdx = 0, pdy = 0;
-        if (yDir === 0) pdy = -1;
-        if (yDir === 1) pdy = 1;
-        if (xDir === 2) pdx = 1;
-        if (xDir === 3) pdx = -1;
-        if (pdx !== 0 && pdy !== 0) {
-            spd = spd * Math.sqrt(2) / 2;
+    // Sample keyboard state once per render frame
+    let dirFlags = sampleDirFlags();
+    if (game.hasEffect(2)) dirFlags = 0; // PARALYZED
+
+    // Run fixed-timestep simulation ticks (64Hz, matching server exactly)
+    simAccumulator += dt * 1000;
+    // Cap to prevent spiral of death (e.g., tabbed out for 2 seconds)
+    if (simAccumulator > 250) simAccumulator = 250;
+
+    if (!game._pendingInputs) game._pendingInputs = [];
+    if (!game._inputSeq) game._inputSeq = 0;
+    let lastSentFlags = game._lastSentDirFlags || -1;
+
+    while (simAccumulator >= SIM_TICK_MS) {
+        simAccumulator -= SIM_TICK_MS;
+        game._inputSeq++;
+
+        // Predict movement locally using IDENTICAL physics to server
+        game.simulateTick(local, dirFlags);
+
+        // Buffer this input for reconciliation
+        game._pendingInputs.push({
+            seq: game._inputSeq,
+            dirFlags: dirFlags
+        });
+
+        // Cap buffer (32 ticks = 500ms — if we have more, something is wrong)
+        if (game._pendingInputs.length > 64) {
+            game._pendingInputs.shift();
         }
-        local.dx = pdx * spd;
-        local.dy = pdy * spd;
 
-        // Defensive clamp: ensure velocity magnitude never exceeds max possible speed.
-        // max speed = base(4+5.6) * SPEEDY(1.5) * 32/64 = 7.2 px/tick
-        const maxSpd = 8.0;
-        if (Math.abs(local.dx) > maxSpd) local.dx = Math.sign(local.dx) * maxSpd;
-        if (Math.abs(local.dy) > maxSpd) local.dy = Math.sign(local.dy) * maxSpd;
-
-        // Store this frame's input in the buffer with a per-frame tick counter.
-        // The server increments lastInputSeq every tick in movePlayer().
-        // The ack sends the server's tick count, which we use to discard
-        // the corresponding number of client frames.
-        // Skip buffering while PARALYZED — server doesn't increment lastInputSeq
-        // during paralysis, so these frames would pollute reconciliation.
-        if (!game.hasEffect(2)) {
-            game._frameTick = (game._frameTick || 0) + 1;
-            if (!game._inputBuffer) game._inputBuffer = [];
-            game._inputBuffer.push({
-                tick: game._frameTick,
-                dx: local.dx,
-                dy: local.dy,
-                dt: dt,
-                time: performance.now() / 1000
-            });
-            // Cap buffer to prevent memory leak (5 seconds of frames)
-            if (game._inputBuffer.length > 300) game._inputBuffer.shift();
-        }
+        // Send every tick — 1:1 with server processing. 18 bytes * 64Hz = 1.1KB/s.
+        network.sendPlayerMove(game.playerId, game._inputSeq, dirFlags);
     }
+    game._lastSentDirFlags = lastSentFlags;
+
+    // Store dirFlags for rendering (facing direction, animation)
+    const up = !!(dirFlags & 0x01), down = !!(dirFlags & 0x02);
+    const left = !!(dirFlags & 0x04), right = !!(dirFlags & 0x08);
+    if (left) lastXDir = 3;
+    else if (right) lastXDir = 2;
+    else lastXDir = null;
+    if (up) lastYDir = 0;
+    else if (down) lastYDir = 1;
+    else lastYDir = null;
+
+    // Update dx/dy for animation and other systems
+    const computed = game.getComputedStats();
+    const spdStat = computed ? computed.spd : 10;
+    let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
+    if (game.hasEffect(4)) tilesPerSec *= 1.5;
+    if (game.hasEffect(2)) tilesPerSec = 0;
+    let spd = tilesPerSec * 32.0 / 64.0;
+    let pdx = 0, pdy = 0;
+    if (up) pdy = -1; if (down) pdy = 1;
+    if (right) pdx = 1; if (left) pdx = -1;
+    if (pdx !== 0 && pdy !== 0) spd = spd * Math.sqrt(2) / 2;
+    local.dx = pdx * spd;
+    local.dy = pdy * spd;
 
     // Shooting — uses wall-clock timestamp to match server's absolute time check.
     // Server: canShoot = (now - lastShotTime) > (1000 / dex)
