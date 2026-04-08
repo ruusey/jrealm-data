@@ -186405,43 +186405,43 @@
 		"staticPortals": [
 			{
 				"portalId": 0,
-				"x": 384,
-				"y": 192,
+				"x": 736,
+				"y": 96,
 				"targetNodeId": "beach",
 				"label": "Sunken Shore 1"
 			},
 			{
 				"portalId": 0,
 				"x": 512,
-				"y": 192,
+				"y": 864,
 				"targetNodeId": "beach",
 				"label": "Sunken Shore 2"
 			},
 			{
 				"portalId": 2,
-				"x": 384,
-				"y": 480,
+				"x": 640,
+				"y": 608,
 				"targetNodeId": null,
 				"label": "Vault"
 			},
 			{
 				"portalId": 2,
-				"x": 512,
-				"y": 480,
+				"x": 640,
+				"y": 864,
 				"targetNodeId": null,
 				"label": "Vault"
 			},
 			{
 				"portalId": 21,
-				"x": 384,
-				"y": 736,
+				"x": 928,
+				"y": 608,
 				"targetNodeId": null,
 				"label": "Testing Arena"
 			},
 			{
 				"portalId": 21,
-				"x": 512,
-				"y": 736,
+				"x": 960,
+				"y": 928,
 				"targetNodeId": null,
 				"label": "Testing Arena"
 			}
