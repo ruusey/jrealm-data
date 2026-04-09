@@ -8,7 +8,7 @@
 		"height": 32,
 		"terrainId": -1,
 		"dungeonId": -1,
-		"difficulty": 0.0,
+		"difficulty": 0,
 		"data": {
 			"0": [
 				[
@@ -2175,7 +2175,7 @@
 		"height": 32,
 		"dungeonId": -1,
 		"terrainId": -1,
-		"difficulty": 3.0,
+		"difficulty": 3,
 		"data": {
 			"0": [
 				[
@@ -5013,7 +5013,7 @@
 		"height": 256,
 		"terrainId": -1,
 		"dungeonId": -1,
-		"difficulty": 7.0,
+		"difficulty": 7,
 		"data": {
 			"0": [
 				[
@@ -137243,7 +137243,7 @@
 		"width": 128,
 		"height": 128,
 		"tileSize": 32,
-		"difficulty": 1.0,
+		"difficulty": 1,
 		"data": {
 			"0": [
 				[
@@ -170537,7 +170537,7 @@
 		"width": 64,
 		"height": 64,
 		"tileSize": 32,
-		"difficulty": 1.0,
+		"difficulty": 1,
 		"data": {
 			"0": [
 				[
@@ -178999,7 +178999,7 @@
 		"width": 32,
 		"height": 32,
 		"tileSize": 32,
-		"difficulty": 1.0,
+		"difficulty": 1,
 		"data": {
 			"0": [
 				[
@@ -181189,7 +181189,7 @@
 		"width": 50,
 		"height": 50,
 		"tileSize": 32,
-		"difficulty": 1.0,
+		"difficulty": 1,
 		"terrainId": -1,
 		"dungeonId": -1,
 		"data": {
@@ -186446,6 +186446,18 @@
 				"y": 864,
 				"targetNodeId": null,
 				"label": "Testing Arena"
+			}
+		],
+		"staticSpawns": [
+			{
+				"enemyId": 67,
+				"x": 928,
+				"y": 736
+			},
+			{
+				"enemyId": 67,
+				"x": 640,
+				"y": 736
 			}
 		]
 	}
