@@ -79,6 +79,8 @@ const SPRITE_SHEETS = [
   'lostHallsObjects8x8.png','magicWoodsObjects8x8.png','mountainTempleObjects8x8.png',
   'oryxHordeChars16x16.png','oryxHordeChars8x8.png',
   'secludedThicketChars16x16.png','summerNexusObjects8x8.png',
+  // OpenRealm custom sheets
+  'openrealm-items.png','openrealm-classes.png','openrealm-bosses.png',
 ];
 
 let tiles = [];

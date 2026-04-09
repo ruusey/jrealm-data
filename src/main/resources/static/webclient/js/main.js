@@ -59,7 +59,8 @@ const SPRITE_SHEETS = [
     'secludedThicketChars16x16.png',
     'lofiWorld.png', 'lofiBosses16x16.png', 'lofiBosses16x20.png',
     'lofiCharacter10x10.png', 'lofiProjectiles.png',
-    'battleOryxObjects8x8.png'
+    'battleOryxObjects8x8.png',
+    'openrealm-items.png', 'openrealm-classes.png', 'openrealm-bosses.png'
 ];
 
 // --- Screen Management ---
