@@ -186414,8 +186414,8 @@
 			},
 			{
 				"portalId": 0,
-				"x": 512,
-				"y": 864,
+				"x": 864,
+				"y": 96,
 				"targetNodeId": "beach",
 				"label": "Sunken Shore 2"
 			},
@@ -186442,8 +186442,8 @@
 			},
 			{
 				"portalId": 21,
-				"x": 960,
-				"y": 928,
+				"x": 928,
+				"y": 864,
 				"targetNodeId": null,
 				"label": "Testing Arena"
 			}

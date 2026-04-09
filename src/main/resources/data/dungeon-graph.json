@@ -1,12 +1,25 @@
 [
 	{
-		"nodeId": "beach",
-		"displayName": "Sunken Shore",
-		"mapId": 2,
+		"nodeId": "nexus",
+		"displayName": "Nexus",
+		"mapId": 29,
 		"difficulty": 1.0,
 		"entryPoint": true,
 		"bossNode": false,
 		"shared": true,
+		"childNodes": [
+			"beach"
+		],
+		"portalDropNodeMap": {}
+	},
+	{
+		"nodeId": "beach",
+		"displayName": "Sunken Shore",
+		"mapId": 2,
+		"difficulty": 1.0,
+		"entryPoint": false,
+		"bossNode": false,
+		"shared": false,
 		"childNodes": [
 			"grasslands",
 			"coastal_ruins",

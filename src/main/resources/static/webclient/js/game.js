@@ -326,8 +326,12 @@ export class GameState {
             });
         }
         for (const e of packet.enemies) {
-            // Preserve effectIds and health from PlayerStatePacket (LoadPacket overwrites otherwise)
+            // Preserve effectIds from PlayerStatePacket (LoadPacket overwrites otherwise)
             const existing = this.enemies.get(e.id);
+            // Server health is authoritative — use it if provided, overriding predictions.
+            // Only keep predicted health if server sent 0 (meaning it hasn't changed).
+            const serverHealth = e.health;
+            const useHealth = (serverHealth > 0) ? serverHealth : (existing?.health ?? serverHealth);
             this.enemies.set(e.id, {
                 ...e, dx: e.dX, dy: e.dY,
                 targetX: e.pos.x, targetY: e.pos.y,
@@ -336,7 +340,8 @@ export class GameState {
                 _snapTime: performance.now(),
                 animFrame: existing?.animFrame || 0, animTimer: existing?.animTimer || 0,
                 effectIds: existing?.effectIds || [],
-                health: existing?.health ?? e.health
+                health: useHealth,
+                _predictedDead: false, _deathTime: undefined
             });
         }
         // Remove client-predicted bullets when real server bullets arrive.
@@ -905,12 +910,14 @@ export class GameState {
 
             // Client-side predicted bullet-enemy hit detection (player bullets only).
             // Player bullets have flag 10 (PLAYER_PROJECTILE). Skip everything else.
+            // Predicts: damage text, HP bar reduction, and enemy death.
+            // Server remains authoritative — corrections arrive via LoadPacket/TextEffect.
             const isPlayerBullet = b._predicted || (b.flags && b.flags.includes(10));
             if (!isPlayerBullet) continue;
             const bSize = b.size || 4;
             const bx = b.pos.x, by = b.pos.y;
             for (const [eid, enemy] of this.enemies) {
-                if (!enemy.pos) continue;
+                if (!enemy.pos || enemy._predictedDead) continue;
                 const eSize = enemy.size || 32;
                 // Quick distance cull before AABB
                 const edx = bx - enemy.pos.x, edy = by - enemy.pos.y;
@@ -918,6 +925,25 @@ export class GameState {
                 // AABB overlap
                 if (bx < enemy.pos.x + eSize && bx + bSize > enemy.pos.x &&
                     by < enemy.pos.y + eSize && by + bSize > enemy.pos.y) {
+                    // Predict damage and apply to local enemy state
+                    if (b.damage > 0 && enemy.maxHealth > 0) {
+                        const dmg = Math.max(Math.floor(b.damage * 0.85), 1);
+                        enemy.health = Math.max(0, enemy.health - dmg);
+
+                        // Show predicted damage text
+                        const hitX = enemy.pos.x + eSize / 2;
+                        const hitY = enemy.pos.y;
+                        this.damageTexts.push({
+                            text: '-' + dmg, x: hitX, y: hitY - 8,
+                            color: 0xff4444, life: 40, _count: 1, _predicted: true
+                        });
+
+                        // Predict enemy death
+                        if (enemy.health <= 0) {
+                            enemy._predictedDead = true;
+                            enemy._deathTime = performance.now();
+                        }
+                    }
                     this.bullets.delete(id);
                     break;
                 }

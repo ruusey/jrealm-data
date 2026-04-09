@@ -1282,12 +1282,11 @@ function processInput(dt) {
                 for (let pi = 0; pi < pg.projectiles.length; pi++) {
                     const proj = pg.projectiles[pi];
                     const projAngle = baseAngle + (parseFloat(proj.angle) || 0);
-                    const projHalf = (proj.size || 16) / 2;
                     const localId = -(shootSeq * 100 + pi);
                     game.bullets.set(localId, {
                         id: localId,
                         projectileId: projGroupId,
-                        pos: { x: cx - projHalf, y: cy - projHalf },
+                        pos: { x: cx - halfSize, y: cy - halfSize },
                         angle: projAngle,
                         magnitude: proj.magnitude || 3,
                         range: proj.range || 400,
@@ -1326,11 +1325,12 @@ function processInput(dt) {
         addChatMessage('SYSTEM', on ? 'Autofire enabled' : 'Autofire disabled');
     }
 
-    // F1 or R = Go to vault
+    // F1 or R = Go to nexus
     if (input.isKeyDown('F1') || (input.isKeyDown('KeyR') && !input.chatMode)) {
         input.keys['F1'] = false;
         input.keys['KeyR'] = false;
-        doRealmTransition(null, true); // vault
+        network.sendUsePortal(-1n, game.realmId || 0n, game.playerId, -1, 1);
+        game.prepareRealmTransition();
     }
 
     // F2 = Use nearest portal
