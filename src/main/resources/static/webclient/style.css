@@ -1,9 +1,16 @@
+@font-face {
+    font-family: 'OryxSimplex';
+    src: url('/game-data/oryx-simplex.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
     background: #21181e;
     color: #e0d8c8;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-family: 'OryxSimplex', 'Segoe UI', Tahoma, sans-serif;
     overflow: hidden;
     width: 100%;
     height: 100%;

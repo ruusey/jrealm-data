@@ -21,6 +21,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import com.jrealm.data.auth.PlayerIdentityFilter;
+import com.jrealm.data.dto.auth.AccountDto;
+import com.jrealm.data.dto.auth.AccountProvision;
 import com.jrealm.data.dto.CharacterDto;
 import com.jrealm.data.dto.CharacterStatsDto;
 import com.jrealm.data.dto.LeaderboardEntryDto;
@@ -51,19 +53,22 @@ public class PlayerDataService {
     private final transient ChestRepository playerChestRepository;
     private final transient GameItemRefRepository gameItemRefRepository;
     private final transient PlayerIdentityFilter authFilter;
+    private final transient AccountService accountService;
     private final transient ModelMapper mapper;
 
     public PlayerDataService(@Autowired final AccountRepository accountRepository,
             @Autowired final PlayerAccountRepository playerAccountRepository,
             @Autowired final ChestRepository playerChestRepository,
-            @Autowired final GameItemRefRepository gameItemRefRepository, 
+            @Autowired final GameItemRefRepository gameItemRefRepository,
             @Autowired final PlayerIdentityFilter authFilter,
+            @Autowired final AccountService accountService,
             @Autowired final ModelMapper mapper) {
         this.accountRepository = accountRepository;
         this.playerAccountRepository = playerAccountRepository;
         this.playerChestRepository = playerChestRepository;
         this.gameItemRefRepository = gameItemRefRepository;
         this.authFilter = authFilter;
+        this.accountService = accountService;
         this.mapper = mapper;
     }
 
@@ -182,7 +187,9 @@ public class PlayerDataService {
     }
 
     private static final int MAX_CHARACTERS = 20;
+    private static final int MAX_CHARACTERS_DEMO = 1;
     private static final int MAX_CHESTS = 10;
+    private static final int MAX_CHESTS_DEMO = 1;
 
     public PlayerAccountDto createCharacter(final String accountUuid, final Integer classId) throws Exception {
         final long start = Instant.now().toEpochMilli();
@@ -192,8 +199,11 @@ public class PlayerDataService {
         PlayerAccountEntity accountEntity = this.playerAccountRepository.findByAccountUuid(accountUuid);
         if (accountEntity == null)
             throw new Exception("Account with with UUID " + accountUuid + " does not exist");
-        if (accountEntity.getCharacters() != null && accountEntity.getCharacters().size() >= MAX_CHARACTERS)
-            throw new Exception("Character limit reached (" + MAX_CHARACTERS + " max)");
+        // Check demo account character limit
+        final boolean isDemoAccount = this.isAccountDemo(accountUuid);
+        final int charLimit = isDemoAccount ? MAX_CHARACTERS_DEMO : MAX_CHARACTERS;
+        if (accountEntity.getCharacters() != null && accountEntity.getCharacters().size() >= charLimit)
+            throw new Exception("Character limit reached (" + charLimit + " max)");
         final CharacterEntity character = CharacterEntity.builder().characterUuid(PlayerDataService.randomUuid())
                 .characterClass(classId).build();
 
@@ -262,8 +272,10 @@ public class PlayerDataService {
         final PlayerAccountDto account = this.getAccountByUuid(accountUuid);
         if (account == null)
             throw new Exception("Player account with UUID " + accountUuid + " was not found");
-        if (account.getPlayerVault() != null && account.getPlayerVault().size() >= MAX_CHESTS)
-            throw new Exception("Vault chest limit reached (" + MAX_CHESTS + " max)");
+        final boolean isDemoAccount = this.isAccountDemo(accountUuid);
+        final int chestLimit = isDemoAccount ? MAX_CHESTS_DEMO : MAX_CHESTS;
+        if (account.getPlayerVault() != null && account.getPlayerVault().size() >= chestLimit)
+            throw new Exception("Vault chest limit reached (" + chestLimit + " max)");
 
         final ChestDto initialChest = ChestDto.builder().chestUuid(PlayerDataService.randomUuid())
                 .ordinal(account.getPlayerVault() != null ? account.getPlayerVault().size() : 0).build();
@@ -335,6 +347,33 @@ public class PlayerDataService {
         PlayerDataService.log.info("Successfully created account for user {} in {}ms", finalAccount.getAccountEmail(),
                 (Instant.now().toEpochMilli() - start));
         return this.mapper.map(finalAccount, PlayerAccountDto.class);
+    }
+
+    /**
+     * Create a player account entry with no characters and no chests (for guest/demo accounts).
+     */
+    public PlayerAccountDto createEmptyAccount(final String accountUuid, final String email, final String accountName)
+            throws Exception {
+        final long start = Instant.now().toEpochMilli();
+        final PlayerAccountEntity account = PlayerAccountEntity.builder().accountEmail(email).accountName(accountName)
+                .accountUuid(accountUuid).build();
+        final PlayerAccountEntity finalAccount = this.playerAccountRepository.save(account);
+        PlayerDataService.log.info("Successfully created empty guest account for user {} in {}ms",
+                finalAccount.getAccountEmail(), (Instant.now().toEpochMilli() - start));
+        return this.mapper.map(finalAccount, PlayerAccountDto.class);
+    }
+
+    /**
+     * Check if the given account has the OPENREALM_DEMO provision.
+     */
+    private boolean isAccountDemo(final String accountUuid) {
+        try {
+            final AccountDto authAccount = this.accountService.getAccountByGuid(accountUuid);
+            return authAccount != null && authAccount.isDemo();
+        } catch (Exception e) {
+            PlayerDataService.log.warn("Could not check demo status for account {}: {}", accountUuid, e.getMessage());
+            return false;
+        }
     }
 
     public boolean replaceChestItem(final String accountUuid, final String chestUuid, final String targetItemUuid,

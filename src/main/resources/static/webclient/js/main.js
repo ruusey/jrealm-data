@@ -7,7 +7,7 @@ if (window.location.search) {
 
 import { ApiClient } from './api.js';
 import { GameNetwork } from './network.js';
-import { GameState, CLASS_NAMES } from './game.js';
+import { GameState, CLASS_NAMES, ProjectileFlag, StatusEffect } from './game.js';
 import { GameRenderer } from './renderer.js';
 import { InputHandler } from './input.js';
 import { PacketId, PacketWriters } from './codec.js';
@@ -26,6 +26,9 @@ let currentScreen = 'login';
 let account = null;
 let selectedCharacter = null;
 let gameServerHost = 'localhost';
+let loginEmail = '';
+let loginPassword = '';
+let loginToken = null;
 // Movement: track X and Y axes independently for diagonal support
 // Server Cardinality: NORTH=0, SOUTH=1, EAST=2, WEST=3, NONE=4
 let lastXDir = null; // null=none, 2=EAST, 3=WEST
@@ -70,9 +73,40 @@ function showScreen(name) {
     currentScreen = name;
 }
 
-// --- Session storage disabled ---
-// Always require fresh login until token-based game server handshake is implemented
-try { localStorage.removeItem('or_session'); localStorage.removeItem('or_gameServer'); } catch (e) {}
+// Auto-login using saved session token
+(async () => {
+    try {
+        const savedServer = localStorage.getItem('or_gameServer');
+        if (api.restoreSession() && savedServer) {
+            gameServerHost = savedServer;
+            document.getElementById('server-addr').value = savedServer;
+            // Validate the token is still good by resolving the account
+            const authAccount = await api.getMyAccount();
+            loginToken = api.sessionToken;
+            // Fetch the full player account (with characters, etc.)
+            account = await api.getAccount(authAccount.accountGuid);
+            try {
+                const animData = await api.getGameData('animations.json');
+                _animDataByClass = {};
+                if (Array.isArray(animData)) animData.forEach(a => { if (a.objectType === 'player') _animDataByClass[a.objectId] = a; });
+            } catch (e) { /* non-critical */ }
+            showCharacterSelect();
+            return;
+        }
+    } catch (e) {
+        // Token expired or invalid, clear it and fall through to login screen
+        api.clearSession();
+    }
+    // Fallback: auto-login returning guest accounts (legacy)
+    try {
+        const savedGuest = localStorage.getItem('or_guest_email');
+        const savedServer = localStorage.getItem('or_gameServer');
+        if (savedGuest && savedServer) {
+            document.getElementById('server-addr').value = savedServer;
+            setTimeout(() => document.getElementById('guest-btn')?.click(), 100);
+        }
+    } catch (e) {}
+})();
 
 // --- Login ---
 document.getElementById('login-form').addEventListener('submit', async (e) => {
@@ -90,6 +124,10 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     try {
         api.setDataServerUrl(gameServerHost);
         const loginData = await api.login(email, password);
+        loginEmail = email;
+        loginPassword = password;
+        loginToken = loginData.token;
+        api.saveSession();
         try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
         account = await api.getAccount(loginData.accountGuid);
         // Load animation data for character select icons (front-facing idle)
@@ -137,6 +175,8 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
         await api.register(email, password, name);
         // Auto-login after registration
         const loginData = await api.login(email, password);
+        loginToken = loginData.token;
+        api.saveSession();
         try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
         account = await api.getAccount(loginData.accountGuid);
         document.getElementById('register-form').style.display = 'none';
@@ -147,6 +187,123 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     } finally {
         btn.disabled = false;
         btn.textContent = 'Register';
+    }
+});
+
+// --- Guest Login ---
+const GUEST_NAMES = [
+    "Utanu", "Gharr", "Yimi", "Idrae", "Odaru", "Scheev", "Zhiar", "Itani",
+    "Serl", "Oeti", "Tiar", "Issz", "Oshyu", "Deyst", "Oalei", "Vorv",
+    "Iatho", "Uoro", "Urake", "Eashy", "Queq", "Rayr", "Tal", "Drac",
+    "Yangu", "Eango", "Rilr", "Ehoni", "Risrr", "Sek", "Eati", "Laen",
+    "Eendi", "Ril", "Darq", "Seus", "Radph", "Orothi", "Vorck", "Saylt",
+    "Iawa", "Iri", "Lauk", "Lorz"
+];
+let localChatRole = null; // Tracks local player's chatRole for client-side checks
+
+document.getElementById('guest-btn').addEventListener('click', async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Clear form fields so browser autofill doesn't interfere
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    const errorEl = document.getElementById('login-error');
+    const btn = document.getElementById('guest-btn');
+    gameServerHost = document.getElementById('server-addr').value || 'localhost';
+
+    errorEl.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Connecting...';
+
+    try {
+        api.setDataServerUrl(gameServerHost);
+
+        let email = null;
+        let password = null;
+
+        // Check localStorage for existing guest credentials
+        try {
+            email = localStorage.getItem('or_guest_email');
+            password = localStorage.getItem('or_guest_password');
+        } catch (e) { /* storage unavailable */ }
+
+        if (email && password) {
+            // Try to login with existing guest credentials
+            try {
+                const loginData = await api.login(email, password);
+                loginEmail = email;
+                loginPassword = password;
+                loginToken = loginData.token;
+                api.saveSession();
+                try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
+                account = await api.getAccount(loginData.accountGuid);
+                try {
+                    const animData = await api.getGameData('animations.json');
+                    _animDataByClass = {};
+                    if (Array.isArray(animData)) animData.forEach(a => { if (a.objectType === 'player') _animDataByClass[a.objectId] = a; });
+                } catch (e) { /* non-critical */ }
+                localChatRole = 'demo';
+                showCharacterSelect();
+                return;
+            } catch (loginErr) {
+                // Credentials invalid/expired, create new guest
+                try { localStorage.removeItem('or_guest_email'); localStorage.removeItem('or_guest_password'); } catch (e) {}
+            }
+        }
+
+        // Generate new guest credentials
+        const guestId = crypto.randomUUID().slice(0, 8);
+        email = `guest_${guestId}@openrealm.net`;
+        password = crypto.randomUUID();
+        const accountName = GUEST_NAMES[Math.floor(Math.random() * GUEST_NAMES.length)];
+
+        // Register guest account
+        await api.register(email, password, accountName, true);
+
+        // Login
+        const loginData = await api.login(email, password);
+        loginEmail = email;
+        loginPassword = password;
+        loginToken = loginData.token;
+        api.saveSession();
+        try {
+            localStorage.setItem('or_gameServer', gameServerHost);
+            localStorage.setItem('or_guest_email', email);
+            localStorage.setItem('or_guest_password', password);
+        } catch (e) { /* storage unavailable */ }
+        account = await api.getAccount(loginData.accountGuid);
+        try {
+            const animData = await api.getGameData('animations.json');
+            _animDataByClass = {};
+            if (Array.isArray(animData)) animData.forEach(a => { if (a.objectType === 'player') _animDataByClass[a.objectId] = a; });
+        } catch (e) { /* non-critical */ }
+        localChatRole = 'demo';
+
+        // Show guest credentials popup so the user can save them
+        const popup = document.createElement('div');
+        popup.innerHTML = `
+            <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+                        background:#2a2030;border:2px solid #c8a86e;border-radius:8px;
+                        padding:24px;z-index:999;color:#e0d8c8;text-align:center;max-width:400px">
+                <h3 style="color:#c8a86e;margin-bottom:12px">Guest Account Created</h3>
+                <p style="font-size:13px;margin-bottom:8px">Save these credentials to recover your account later:</p>
+                <div style="background:#1a1218;padding:8px;border-radius:4px;margin-bottom:8px;font-family:monospace;font-size:12px;user-select:all">
+                    Email: ${email}<br>Password: ${password}
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()"
+                        style="padding:8px 24px;background:#c8a86e;color:#1a1218;border:none;border-radius:4px;cursor:pointer;font-weight:bold">
+                    Got it!
+                </button>
+            </div>
+        `;
+        document.body.appendChild(popup);
+
+        showCharacterSelect();
+    } catch (err) {
+        errorEl.textContent = err.message;
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Play as Guest';
     }
 });
 
@@ -211,6 +368,13 @@ function showCharacterSelect() {
     document.getElementById('delete-char-btn').disabled = true;
     document.getElementById('create-char-btn').disabled = true;
     document.getElementById('char-error').textContent = '';
+
+    // Populate account info header
+    if (account) {
+        const name = account.accountName || 'Unknown';
+        const email = account.email || '';
+        document.getElementById('account-display-info').innerHTML = `${name} - ${email}`;
+    }
 
     // Split characters into alive and dead
     const allChars = account.characters || [];
@@ -567,6 +731,16 @@ document.getElementById('logout-btn').addEventListener('click', () => {
     api.clearSession();
     account = null;
     selectedCharacter = null;
+    localChatRole = null;
+    loginToken = null;
+    loginEmail = '';
+    loginPassword = '';
+    // Clear guest credentials so a fresh guest account is created next time
+    try {
+        localStorage.removeItem('or_guest_email');
+        localStorage.removeItem('or_guest_password');
+        localStorage.removeItem('or_token');
+    } catch (e) {}
     showScreen('login');
 });
 
@@ -786,11 +960,12 @@ async function startGame() {
     network.onConnect = () => {
         statusEl.textContent = 'Logging in...';
         statusEl.className = '';
-        // Send login command
+        // Send login command (prefer token-based auth, fall back to email+password)
         network.sendLogin(
             selectedCharacter.characterUuid,
-            document.getElementById('email').value,
-            document.getElementById('password').value
+            loginToken ? '' : loginEmail,
+            loginToken ? '' : loginPassword,
+            loginToken
         );
     };
 
@@ -835,10 +1010,14 @@ function setupNetworkHandlers() {
                     console.log(`[LOGIN] playerId=${game.playerId} (type=${typeof game.playerId}), ` +
                         `classId=${game.classId}, spawn=(${game.cameraX}, ${game.cameraY})`);
 
+                    // Store local player's chatRole from server
+                    if (loginResp.chatRole) localChatRole = loginResp.chatRole;
+
                     // Create local player entity
                     game.players.set(game.playerId, {
                         id: game.playerId,
                         name: account.accountName || 'Player',
+                        chatRole: localChatRole || null,
                         classId: loginResp.classId,
                         pos: { x: loginResp.spawnX, y: loginResp.spawnY },
                         targetX: loginResp.spawnX,
@@ -952,7 +1131,9 @@ function setupNetworkHandlers() {
 
     network.on(PacketId.TEXT, (data) => {
         game.handleText(data);
-        addChatMessage(data.from, data.message, data.to);
+        // Look up sender's chatRole from player map for name coloring
+        const senderRole = game.getPlayerRoleByName(data.from);
+        addChatMessage(data.from, data.message, senderRole);
     });
 
     network.on(PacketId.TEXT_EFFECT, (data) => {
@@ -1117,7 +1298,7 @@ function processInput(dt) {
 
     // Sample keyboard state once per render frame
     let dirFlags = sampleDirFlags();
-    if (game.hasEffect(2)) dirFlags = 0; // PARALYZED
+    if (game.hasEffect(StatusEffect.PARALYZED)) dirFlags = 0;
 
     // Run fixed-timestep simulation ticks (64Hz, matching server exactly)
     simAccumulator += dt * 1000;
@@ -1188,8 +1369,8 @@ function processInput(dt) {
     const computed = game.getComputedStats();
     const spdStat = computed ? computed.spd : 10;
     let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
-    if (game.hasEffect(4)) tilesPerSec *= 1.5;
-    if (game.hasEffect(2)) tilesPerSec = 0;
+    if (game.hasEffect(StatusEffect.SPEEDY)) tilesPerSec *= 1.5;
+    if (game.hasEffect(StatusEffect.PARALYZED)) tilesPerSec = 0;
     let spd = tilesPerSec * 32.0 / 64.0;
     let pdx = 0, pdy = 0;
     if (up) pdy = -1; if (down) pdy = 1;
@@ -1232,7 +1413,7 @@ function processInput(dt) {
     const canShoot = (performance.now() - game._lastShotTime) > shootCooldownMs;
 
     // STUNNED (3) blocks shooting — matches server's canShoot check
-    const isStunned = game.hasEffect(3);
+    const isStunned = game.hasEffect(StatusEffect.STUNNED);
     if (wantsShoot && !isMouseOverHud && canShoot && !isStunned && renderer) {
         let world;
         if (aim && aim.shooting) {
@@ -1949,15 +2130,16 @@ document.addEventListener('touchcancel', cleanupDrag);
 
 // --- Chat ---
 const CHAT_ROLE_COLORS = {
-    'sysadmin': '#ff6644',
-    'admin':    '#cc66ff',
-    'mod':      '#44dddd',
+    'sysadmin': '#ff4040',
+    'admin':    '#c8a86e',
+    'mod':      '#a040c0',
+    'demo':     '#cccccc',
 };
 const CHAT_NAME_COLORS = {
     'SYSTEM':   '#c8a86e',
     'Overseer': '#e8c840',
 };
-const DEFAULT_NAME_COLOR = '#80b0e0';
+const DEFAULT_NAME_COLOR = '#4080e0';
 
 function getNameColor(from, role) {
     if (CHAT_NAME_COLORS[from]) return CHAT_NAME_COLORS[from];
@@ -2028,6 +2210,12 @@ function handleChatCommand(msg) {
         return;
     }
 
+    // Block trade commands for demo/guest accounts
+    if ((cmd === 'trade' || cmd === 'accept') && localChatRole === 'demo') {
+        addChatMessage('SYSTEM', 'Guest accounts cannot trade');
+        return;
+    }
+
     // Send as ServerCommandMessage via CommandPacket (commandId byte = 3 = SERVER_COMMAND)
     const payload = JSON.stringify({ command: cmd, args: args });
     network.send(PacketWriters.command(game.playerId, 3, payload));
@@ -2067,6 +2255,24 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && document.activeElement !== chatInput && currentScreen === 'game') {
         chatInput.focus();
     }
+});
+
+// --- HUD Logout Button ---
+document.getElementById('hud-logout-btn').addEventListener('click', () => {
+    network.disconnect();
+    api.clearSession();
+    account = null;
+    selectedCharacter = null;
+    localChatRole = null;
+    loginToken = null;
+    loginEmail = '';
+    loginPassword = '';
+    try {
+        localStorage.removeItem('or_guest_email');
+        localStorage.removeItem('or_guest_password');
+        localStorage.removeItem('or_token');
+    } catch (e) {}
+    showScreen('login');
 });
 
 // --- Trade Buttons ---

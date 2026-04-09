@@ -58,6 +58,13 @@ function showTradeRequestPopup(fromName, network, game, addChatMessage) {
     }
 
     popup.querySelector('.accept').onclick = () => {
+        // Block trading for demo/guest accounts
+        const localPlayer = game.players.get(game.playerId);
+        if (localPlayer && localPlayer.chatRole === 'demo') {
+            addChatMessage('SYSTEM', 'Guest accounts cannot trade');
+            hideTradeRequestPopup();
+            return;
+        }
         network.send(PacketWriters.command(game.playerId, 3,
             JSON.stringify({ command: 'accept', args: [] })));
         hideTradeRequestPopup();
@@ -171,6 +178,13 @@ function showPlayerContextMenu(event, player, game, network, addChatMessage) {
     hud.appendChild(menu);
 
     menu.querySelector('[data-action="trade"]').onclick = () => {
+        // Block trading for demo/guest accounts
+        const localPlayer = game.players.get(game.playerId);
+        if (localPlayer && localPlayer.chatRole === 'demo') {
+            addChatMessage('SYSTEM', 'Guest accounts cannot trade');
+            hideContextMenu();
+            return;
+        }
         network.send(PacketWriters.command(game.playerId, 3,
             JSON.stringify({ command: 'trade', args: [name] })));
         addChatMessage('SYSTEM', `Trade request sent to ${name}`);

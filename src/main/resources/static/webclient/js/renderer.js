@@ -1,6 +1,6 @@
 // PixiJS-based game renderer
 
-import { CLASS_NAMES } from './game.js';
+import { CLASS_NAMES, StatusEffect } from './game.js';
 
 const BASE_SPRITE_SIZE = 8;  // Sprite sheet cell size (pixels in sheet)
 const PLAYER_SIZE = 28;      // World collision size for players
@@ -488,21 +488,21 @@ export class GameRenderer {
             spr.width = size; spr.height = size;
             if (flipX) { spr.anchor.set(1, 0); spr.scale.x = -Math.abs(spr.scale.x); }
 
-            // Status effect tinting — all ProjectileEffectTypes that affect players
+            // Status effect tinting
             const effects = isLocal ? gameState.effectIds : (player.effectIds || []);
-            if (this._hasEffect(effects, 6))       spr.tint = 0xFFFFCC;  // INVINCIBLE → bright golden glow
-            else if (this._hasEffect(effects, 2))  spr.tint = 0x888888;  // PARALYZED → grayscale
-            else if (this._hasEffect(effects, 3))  spr.tint = 0x88AACC;  // STUNNED → blue-grey
-            else if (this._hasEffect(effects, 15)) spr.tint = 0x333338;  // STASIS → dark stone
-            else if (this._hasEffect(effects, 0))  spr.tint = 0xCCBB88;  // INVISIBLE → sepia
-            else if (this._hasEffect(effects, 19)) spr.tint = 0xFF6644;  // BERSERK → fiery red-orange
-            else if (this._hasEffect(effects, 14)) spr.tint = 0xFFAA66;  // DAMAGING → orange
-            else if (this._hasEffect(effects, 18)) spr.tint = 0x8899CC;  // ARMORED → blue-silver
-            else if (this._hasEffect(effects, 1))  spr.tint = 0xFF8888;  // HEALING → warm red
-            else if (this._hasEffect(effects, 4))  spr.tint = 0xBBFF88;  // SPEEDY → green/yellow
-            else if (this._hasEffect(effects, 11)) spr.tint = 0x9988AA;  // DAZED → muted purple
-            else if (this._hasEffect(effects, 16)) spr.tint = 0x992255;  // CURSED → dark magenta
-            else if (this._hasEffect(effects, 17)) spr.tint = 0x40CC40;  // POISONED → sickly green
+            if (this._hasEffect(effects, StatusEffect.INVINCIBLE))      spr.tint = 0xFFFFCC;
+            else if (this._hasEffect(effects, StatusEffect.PARALYZED))  spr.tint = 0x888888;
+            else if (this._hasEffect(effects, StatusEffect.STUNNED))    spr.tint = 0x88AACC;
+            else if (this._hasEffect(effects, StatusEffect.STASIS))     spr.tint = 0x333338;
+            else if (this._hasEffect(effects, StatusEffect.INVISIBLE))  spr.tint = 0xCCBB88;
+            else if (this._hasEffect(effects, StatusEffect.BERSERK))    spr.tint = 0xFF6644;
+            else if (this._hasEffect(effects, StatusEffect.DAMAGING))   spr.tint = 0xFFAA66;
+            else if (this._hasEffect(effects, StatusEffect.ARMORED))    spr.tint = 0x8899CC;
+            else if (this._hasEffect(effects, StatusEffect.HEALING))    spr.tint = 0xFF8888;
+            else if (this._hasEffect(effects, StatusEffect.SPEEDY))     spr.tint = 0xBBFF88;
+            else if (this._hasEffect(effects, StatusEffect.DAZED))      spr.tint = 0x9988AA;
+            else if (this._hasEffect(effects, StatusEffect.CURSED))     spr.tint = 0x992255;
+            else if (this._hasEffect(effects, StatusEffect.POISONED))   spr.tint = 0x40CC40;
 
             addSpriteWithOutline(this.entityLayer, tex, sx, sy, size, size,
                 flipX ? { flipX: true } : null);
@@ -552,9 +552,10 @@ export class GameRenderer {
         // Player name above bars (other players only — local player name goes in sidebar)
         if (!isLocal) {
             const name = player.name || CLASS_NAMES[classId] || 'Player';
+            const nameColor = GameRenderer.getNameColorHex(player.chatRole);
             const nameText = new PIXI.Text(name, {
-                fontSize: 16, fill: 0xffffff,
-                fontFamily: 'monospace', fontWeight: 'bold',
+                fontSize: 16, fill: nameColor,
+                fontFamily: 'OryxSimplex, monospace', fontWeight: 'bold',
                 stroke: 0x000000, strokeThickness: 3
             });
             nameText.anchor.set(0.5, 1);
@@ -597,18 +598,18 @@ export class GameRenderer {
 
             // Status effect tinting — all ProjectileEffectTypes that affect enemies
             if (enemy.effectIds) {
-                if (this._hasEffect(enemy.effectIds, 15))      spr.tint = 0x333338;  // STASIS → dark stone
-                else if (this._hasEffect(enemy.effectIds, 6))  spr.tint = 0xFFFFCC;  // INVINCIBLE → bright glow
-                else if (this._hasEffect(enemy.effectIds, 2))  spr.tint = 0x888888;  // PARALYZED → grayscale
-                else if (this._hasEffect(enemy.effectIds, 3))  spr.tint = 0x88AACC;  // STUNNED → blue-grey
-                else if (this._hasEffect(enemy.effectIds, 11)) spr.tint = 0x9988AA;  // DAZED → muted purple
-                else if (this._hasEffect(enemy.effectIds, 16)) spr.tint = 0x992255;  // CURSED → dark magenta
-                else if (this._hasEffect(enemy.effectIds, 17)) spr.tint = 0x40CC40;  // POISONED → sickly green
-                else if (this._hasEffect(enemy.effectIds, 19)) spr.tint = 0xFF6644;  // BERSERK → fiery red-orange
-                else if (this._hasEffect(enemy.effectIds, 14)) spr.tint = 0xFFAA66;  // DAMAGING → orange
-                else if (this._hasEffect(enemy.effectIds, 18)) spr.tint = 0x8899CC;  // ARMORED → blue-silver
-                else if (this._hasEffect(enemy.effectIds, 4))  spr.tint = 0xBBFF88;  // SPEEDY → green/yellow
-                else if (this._hasEffect(enemy.effectIds, 1))  spr.tint = 0xFF8888;  // HEALING → warm red
+                if (this._hasEffect(enemy.effectIds, StatusEffect.STASIS))      spr.tint = 0x333338;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.INVINCIBLE))  spr.tint = 0xFFFFCC;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.PARALYZED))   spr.tint = 0x888888;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.STUNNED))     spr.tint = 0x88AACC;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.DAZED))       spr.tint = 0x9988AA;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.CURSED))      spr.tint = 0x992255;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.POISONED))    spr.tint = 0x40CC40;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.BERSERK))     spr.tint = 0xFF6644;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.DAMAGING))    spr.tint = 0xFFAA66;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.ARMORED))     spr.tint = 0x8899CC;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.SPEEDY))      spr.tint = 0xBBFF88;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.HEALING))     spr.tint = 0xFF8888;
             }
             addSpriteWithOutline(this.entityLayer, tex, sx, sy, size, size);
             this.entityLayer.addChild(spr);
@@ -624,7 +625,7 @@ export class GameRenderer {
         if (enemyDef) {
             const nameText = new PIXI.Text(enemyDef.name || `Enemy`, {
                 fontSize: 16, fill: 0xff8080,
-                fontFamily: 'monospace', fontWeight: 'bold',
+                fontFamily: 'OryxSimplex, monospace', fontWeight: 'bold',
                 stroke: 0x000000, strokeThickness: 3
             });
             nameText.anchor.set(0.5, 1);
@@ -1087,7 +1088,7 @@ export class GameRenderer {
             const scale = 0.8 + 0.4 * (dt.life / TEXT_LIFE);
             const txt = new PIXI.Text(dt.text, {
                 fontSize: 24, fill: colorStr,
-                fontFamily: 'monospace', fontWeight: 'bold',
+                fontFamily: 'OryxSimplex, monospace', fontWeight: 'bold',
                 stroke: '#000000', strokeThickness: 4
             });
             txt.anchor.set(0.5, 0.5);
@@ -1146,5 +1147,31 @@ export class GameRenderer {
         const worldX = (screenX - screenW / 2) / SCALE + gameState.cameraX;
         const worldY = (screenY - screenH / 2) / SCALE + gameState.cameraY;
         return { x: worldX, y: worldY };
+    }
+
+    /**
+     * Return a PixiJS hex color for a player name based on their chatRole.
+     */
+    static getNameColorHex(chatRole) {
+        switch (chatRole) {
+            case 'sysadmin': return 0xff4040;
+            case 'admin':    return 0xc8a86e;
+            case 'mod':      return 0xa040c0;
+            case 'demo':     return 0xcccccc;
+            default:         return 0x4080e0;
+        }
+    }
+
+    /**
+     * Return a CSS color string for a player name based on their chatRole.
+     */
+    static getNameColorCSS(chatRole) {
+        switch (chatRole) {
+            case 'sysadmin': return '#ff4040';
+            case 'admin':    return '#c8a86e';
+            case 'mod':      return '#a040c0';
+            case 'demo':     return '#cccccc';
+            default:         return '#4080e0';
+        }
     }
 }

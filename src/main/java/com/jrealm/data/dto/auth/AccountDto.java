@@ -38,6 +38,8 @@ public class AccountDto implements Serializable {
 	private List<AccountProvision> accountProvisions;
 	private List<AccountSubscription> accountSubscriptions;
 
+	private boolean guest;
+
 	private Date created;
 	private Date updated;
 	private Date deleted;
@@ -64,6 +66,10 @@ public class AccountDto implements Serializable {
 
 	public boolean isModerator() {
 		return this.hasAccess(AccountProvision.OPENREALM_MODERATOR);
+	}
+
+	public boolean isDemo() {
+		return this.hasAccess(AccountProvision.OPENREALM_DEMO);
 	}
 	@Override
 	public boolean equals(Object obj) {

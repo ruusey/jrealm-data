@@ -214,6 +214,39 @@ public class AccountService {
         }
     }
 
+    /**
+     * Register a guest/demo account. Skips the unique accountName check
+     * since guest names are randomly generated and may collide.
+     */
+    public AccountEntity registerGuestAccount(AccountDto account) throws Exception {
+        try {
+            AccountEntity existing = this.accountRepo.findByEmail(account.getEmail());
+            if (existing != null) {
+                AccountService.log.info("OpenRealm guest user {} already Exists", account.getEmail());
+                throw new Exception(MessageFormat.format("OpenRealm user {0} already Exists", account.getEmail()));
+            }
+
+            // Guest accounts get OPENREALM_DEMO provision (already set by controller)
+            if (account.getAccountSubscriptions() == null || account.getAccountSubscriptions().isEmpty()) {
+                account.setAccountSubscriptions(java.util.Arrays.asList(AccountSubscription.TRIAL));
+            }
+
+            AccountEntity accountEntity = this.saveAccountDetails(account);
+
+            String sessionToken = Util.generateNewToken();
+            Timestamp tokenExp = Util.getNewTokenExp();
+            String hashedPass = SHAHash.generateStrongPasswordHash(account.getPassword());
+            AccountAuthEntity auth = AccountAuthEntity.builder().accountGuid(accountEntity.getAccountGuid())
+                    .password(hashedPass).sessionToken(sessionToken).tokenExpires(tokenExp).build();
+            this.authRepo.save(auth);
+
+            return accountEntity;
+        } catch (Exception e) {
+            AccountService.log.error("Error registering guest account [" + e.getMessage() + "]");
+            throw e;
+        }
+    }
+
     public void changePassword(String accountGuid, String currentPassword, String newPassword) throws Exception {
         AccountAuthEntity auth = this.authRepo.findByAccountGuid(accountGuid);
         if (auth == null) throw new Exception("Account not found");

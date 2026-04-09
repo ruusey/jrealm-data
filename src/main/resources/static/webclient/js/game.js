@@ -1,5 +1,18 @@
 // Game state management - entities, map, player data, trading, damage text
 
+// Projectile behavior flags — control how a bullet moves (stored in Bullet.flags)
+export const ProjectileFlag = {
+    PLAYER_PROJECTILE: 10, PARAMETRIC: 12, INVERTED_PARAMETRIC: 13, ORBITAL: 20
+};
+
+// Entity status effects — applied on-hit or from abilities (stored in entity.effectIds)
+export const StatusEffect = {
+    INVISIBLE: 0, HEALING: 1, PARALYZED: 2, STUNNED: 3, SPEEDY: 4,
+    HEAL: 5, INVINCIBLE: 6, NONE: 8, TELEPORT: 9, DAZED: 11,
+    DAMAGING: 14, STASIS: 15, CURSED: 16, POISONED: 17,
+    ARMORED: 18, BERSERK: 19, SLOWED: 21
+};
+
 export const CLASS_NAMES = ['Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'Knight', 'Paladin', 'Assassin', 'Necromancer', 'Mystic', 'Trickster', 'Sorcerer', 'Huntress'];
 
 export class GameState {
@@ -167,7 +180,7 @@ export class GameState {
     simulateTick(entity, dirFlags) {
         // PARALYZED: server returns early, zero movement, no collision checks.
         // Match exactly: don't run any physics.
-        if (this.hasEffect(2)) return;
+        if (this.hasEffect(StatusEffect.PARALYZED)) return;
 
         // STASIS (15): doesn't affect player movement (only enemy invulnerability)
         // STUNNED (3): doesn't affect movement (only blocks shooting)
@@ -182,8 +195,8 @@ export class GameState {
         const computed = this.getComputedStats();
         const spdStat = computed ? computed.spd : 10;
         let tilesPerSec = 4.0 + 5.6 * (spdStat / 75.0);
-        if (this.hasEffect(4)) tilesPerSec *= 1.5; // SPEEDY: 1.5x movement speed
-        if (this.hasEffect(21)) tilesPerSec *= 0.5; // SLOWED: 0.5x movement speed
+        if (this.hasEffect(StatusEffect.SPEEDY)) tilesPerSec *= 1.5; // SPEEDY: 1.5x movement speed
+        if (this.hasEffect(StatusEffect.SLOWED)) tilesPerSec *= 0.5; // SLOWED: 0.5x movement speed
         // BERSERK (19): doesn't affect movement speed (only dexterity/attack speed)
         // ARMORED (18): doesn't affect movement speed (only defense)
         let spd = tilesPerSec * 32.0 / 64.0; // pixels per tick — ALWAYS /64
@@ -312,6 +325,7 @@ export class GameState {
                 if (existing) {
                     existing.classId = p.classId;
                     existing.name = p.name;
+                    existing.chatRole = p.chatRole;
                     existing.size = p.size || 28;
                     continue;
                 }
@@ -368,7 +382,7 @@ export class GameState {
             const oneWayMs = (this._lastPingMs || 0) / 2;
             const catchupSec = Math.min(oneWayMs / 1000, 0.25); // cap at 250ms
             const catchupScale = catchupSec * 64;
-            const isOrb = b.flags && b.flags.includes(20);
+            const isOrb = b.flags && b.flags.includes(ProjectileFlag.ORBITAL);
             const isParametric = (b.amplitude || 0) !== 0 && (b.frequency || 0) !== 0;
             if (catchupScale > 0.5 && b.magnitude > 0 && !isOrb && !isParametric) {
                 bullet.pos = { ...bullet.pos };
@@ -844,7 +858,7 @@ export class GameState {
             const amp = b.amplitude || 0;
             const freq = b.frequency || 0;
 
-            const isOrbital = b.flags && b.flags.includes(20);
+            const isOrbital = b.flags && b.flags.includes(ProjectileFlag.ORBITAL);
 
             if (isOrbital) {
                 // Orbital projectile — use server-serialized center/radius/phase
@@ -912,7 +926,7 @@ export class GameState {
             // Player bullets have flag 10 (PLAYER_PROJECTILE). Skip everything else.
             // Predicts: damage text, HP bar reduction, and enemy death.
             // Server remains authoritative — corrections arrive via LoadPacket/TextEffect.
-            const isPlayerBullet = b._predicted || (b.flags && b.flags.includes(10));
+            const isPlayerBullet = b._predicted || (b.flags && b.flags.includes(ProjectileFlag.PLAYER_PROJECTILE));
             if (!isPlayerBullet) continue;
             const bSize = b.size || 4;
             const bx = b.pos.x, by = b.pos.y;
@@ -981,6 +995,15 @@ export class GameState {
             if (dist < closestDist && dist < maxDist) { closestDist = dist; closest = loot; }
         }
         return closest;
+    }
+
+    // Look up a player's chatRole by their display name
+    getPlayerRoleByName(name) {
+        if (!name) return null;
+        for (const [id, p] of this.players) {
+            if (p.name === name) return p.chatRole || null;
+        }
+        return null;
     }
 
     // Get nearby players (excluding self) for the players list

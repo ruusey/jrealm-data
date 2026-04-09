@@ -157,11 +157,29 @@ public class AccountController {
     public ResponseEntity<?> createAccount(final HttpServletRequest request, @RequestBody final AccountDto account) {
         ResponseEntity<?> res = null;
         try {
-            final AccountEntity created = this.jrealmAccounts.registerJrealmAccount(account);
-            try {
-                this.jrealmData.createInitialAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName(), CharacterClass.WIZARD.classId);
-            } catch (final Exception charEx) {
-                AccountController.log.error("Account created but initial character setup failed for {}", created.getAccountGuid(), charEx);
+            final boolean isGuest = account.isGuest();
+            if (isGuest) {
+                // Guest/demo accounts get OPENREALM_DEMO provision instead of OPENREALM_PLAYER
+                account.setAccountProvisions(java.util.Arrays.asList(
+                    com.jrealm.data.dto.auth.AccountProvision.OPENREALM_DEMO));
+            }
+            final AccountEntity created = isGuest
+                ? this.jrealmAccounts.registerGuestAccount(account)
+                : this.jrealmAccounts.registerJrealmAccount(account);
+            if (!isGuest) {
+                // Only create initial character + chest for non-guest accounts
+                try {
+                    this.jrealmData.createInitialAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName(), CharacterClass.WIZARD.classId);
+                } catch (final Exception charEx) {
+                    AccountController.log.error("Account created but initial character setup failed for {}", created.getAccountGuid(), charEx);
+                }
+            } else {
+                // Guest accounts start with an empty player account (no characters, no chests)
+                try {
+                    this.jrealmData.createEmptyAccount(created.getAccountGuid(), account.getEmail(), account.getAccountName());
+                } catch (final Exception charEx) {
+                    AccountController.log.error("Guest account created but player account setup failed for {}", created.getAccountGuid(), charEx);
+                }
             }
             res = ApiUtils.buildSuccess(created);
         } catch (final Exception e) {
@@ -182,6 +200,20 @@ public class AccountController {
             res = ApiUtils.buildSuccess("Password changed successfully");
         } catch (final Exception e) {
             res = ApiUtils.buildAndLogError("Failed to change password", e.getMessage());
+        }
+        return res;
+    }
+
+    @RequestMapping(value = "/admin/account/token/resolve", method = RequestMethod.GET, produces = { "application/json" })
+    public ResponseEntity<?> resolveToken(final HttpServletRequest req) {
+        ResponseEntity<?> res = null;
+        try {
+            final AccountDto account = this.authFilter.getAuthedUser(req);
+            if (account == null) throw new Exception("Invalid token");
+            res = ApiUtils.buildSuccess(account);
+        } catch (final Exception e) {
+            final String errMsg = "Failed to resolve account from token";
+            res = ApiUtils.buildAndLogError(errMsg, e.getMessage());
         }
         return res;
     }

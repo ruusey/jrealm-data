@@ -89,8 +89,8 @@ export class GameNetwork {
         }
     }
 
-    sendLogin(characterUuid, email, password) {
-        const loginMsg = JSON.stringify({ characterUuid, email, password });
+    sendLogin(characterUuid, email, password, token) {
+        const loginMsg = JSON.stringify({ characterUuid, email, password, token: token || '' });
         this.send(PacketWriters.command(-1, 1, loginMsg)); // commandId 1 = LOGIN_REQUEST
     }
 

@@ -73,13 +73,18 @@ export class ApiClient {
         try { localStorage.removeItem('or_session'); } catch (e) {}
     }
 
+    async getMyAccount() {
+        return this.request('GET', '/admin/account/token/resolve');
+    }
+
     async getAccount(accountGuid) {
         return this.request('GET', `/data/account/${accountGuid}`);
     }
 
-    async register(email, password, accountName) {
+    async register(email, password, accountName, guest = false) {
         return this.request('POST', '/admin/account/register', {
             email, password, accountName,
+            guest,
             accountProvisions: [],
             accountSubscriptions: []
         });

@@ -52,6 +52,7 @@
                     </select>
                 </div>
                 <button type="submit" id="login-btn">Login</button>
+                <button type="button" id="guest-btn" class="secondary">Play as Guest</button>
                 <p id="login-error" class="error"></p>
                 <p class="register-link">No account? <a href="#" id="show-register">Register</a></p>
             </form>
@@ -96,6 +97,11 @@
     <!-- Character Select Screen -->
     <div id="charselect-screen" class="screen">
         <div class="charselect-box">
+            <div id="account-info" style="text-align:center;margin-bottom:12px;padding:8px;background:#1a1218;border-radius:6px;border:1px solid #3a2a38">
+                <div style="font-size:10px;color:#887868;text-transform:uppercase;letter-spacing:1px">Logged In As</div>
+                <div id="account-display-info" style="font-size:14px;color:#c8a86e;font-weight:bold;margin:4px 0"></div>
+                <button id="logout-btn" class="secondary" style="margin-top:8px;padding:4px 16px;font-size:11px">Logout</button>
+            </div>
             <div class="charselect-tabs">
                 <button id="tab-characters" class="tab-btn active">Characters</button>
                 <button id="tab-graveyard" class="tab-btn">Graveyard</button>
@@ -135,7 +141,6 @@
                     <p id="pw-status" class="error"></p>
                 </details>
             </div>
-            <button id="logout-btn" class="secondary">Back</button>
             <p id="char-error" class="error"></p>
 
             <div class="leaderboard-section">
@@ -182,6 +187,7 @@
                 <div id="nearby-label" style="font-size:10px;color:#887868;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Players Nearby</div>
                 <div id="nearby-players"></div>
             </div>
+            <button id="hud-logout-btn" class="small secondary" style="margin-top:8px;width:100%;">Logout</button>
         </div>
         <!-- Chat -->
         <div id="chat-panel">
