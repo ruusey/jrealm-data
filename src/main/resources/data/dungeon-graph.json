@@ -3,7 +3,7 @@
 		"nodeId": "nexus",
 		"displayName": "Nexus",
 		"mapId": 29,
-		"difficulty": 1.0,
+		"difficulty": 0.0,
 		"entryPoint": true,
 		"bossNode": false,
 		"shared": true,

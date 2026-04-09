@@ -21,6 +21,12 @@ export class Minimap {
         this.hoveredPlayer = null;
         this.onTeleport = null; // callback(playerName)
 
+        // Create difficulty badge DOM element (shown between player identity and minimap)
+        this._badgeEl = document.createElement('div');
+        this._badgeEl.style.cssText = 'font:bold 11px monospace;padding:3px 6px;border-radius:3px;margin-bottom:4px;display:none;color:#fff;text-align:center;';
+        const minimapContainer = this.canvas.parentElement;
+        minimapContainer.parentElement.insertBefore(this._badgeEl, minimapContainer);
+
         this.canvas.addEventListener('wheel', (e) => {
             e.preventDefault();
             const delta = e.deltaY > 0 ? 0.05 : -0.05;
@@ -233,25 +239,18 @@ export class Minimap {
             }
         }
 
-        // Difficulty badge (top-left corner of minimap)
+        // Difficulty badge (DOM element to the left of minimap)
         if (gameState.difficulty > 0) {
             const diff = gameState.difficulty;
-            const label = `☠ ${diff.toFixed(1)}`;
-            ctx.font = 'bold 11px monospace';
-            const tw = ctx.measureText(label).width;
-            const bw = tw + 8, bh = 16;
-            // Badge background
             const r = diff <= 2 ? 60 : diff <= 4 ? 180 : diff <= 6 ? 220 : 255;
             const g = diff <= 2 ? 180 : diff <= 4 ? 160 : diff <= 6 ? 80 : 40;
             const b = diff <= 2 ? 60 : 40;
-            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.85)`;
-            ctx.fillRect(4, 4, bw, bh);
-            ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`;
-            ctx.lineWidth = 1;
-            ctx.strokeRect(4, 4, bw, bh);
-            // Badge text
-            ctx.fillStyle = '#fff';
-            ctx.fillText(label, 8, 16);
+            this._badgeEl.textContent = `☠ ${diff.toFixed(1)}`;
+            this._badgeEl.style.background = `rgba(${r}, ${g}, ${b}, 0.85)`;
+            this._badgeEl.style.border = `1px solid rgb(${r}, ${g}, ${b})`;
+            this._badgeEl.style.display = '';
+        } else {
+            this._badgeEl.style.display = 'none';
         }
     }
 
@@ -264,5 +263,8 @@ export class Minimap {
     destroy() {
         this.tileImage = null;
         this.hoveredPlayer = null;
+        if (this._badgeEl && this._badgeEl.parentElement) {
+            this._badgeEl.parentElement.removeChild(this._badgeEl);
+        }
     }
 }

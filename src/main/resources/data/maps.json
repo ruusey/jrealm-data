@@ -4368,6 +4368,7 @@
 		"height": 100,
 		"terrainId": -1,
 		"dungeonId": 0,
+		"difficulty": 1,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4397,6 +4398,7 @@
 		"height": 100,
 		"terrainId": 3,
 		"dungeonId": 1,
+		"difficulty": 3,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4432,6 +4434,7 @@
 		"height": 120,
 		"terrainId": 4,
 		"dungeonId": 2,
+		"difficulty": 4,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4466,6 +4469,7 @@
 		"height": 80,
 		"terrainId": 5,
 		"dungeonId": 3,
+		"difficulty": 4,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 35,
@@ -4501,6 +4505,7 @@
 		"height": 90,
 		"terrainId": 6,
 		"dungeonId": 4,
+		"difficulty": 2,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4535,6 +4540,7 @@
 		"height": 100,
 		"terrainId": 7,
 		"dungeonId": 5,
+		"difficulty": 2,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4570,6 +4576,7 @@
 		"height": 110,
 		"terrainId": 8,
 		"dungeonId": 6,
+		"difficulty": 3,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4604,6 +4611,7 @@
 		"height": 100,
 		"terrainId": 9,
 		"dungeonId": 7,
+		"difficulty": 3,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4639,6 +4647,7 @@
 		"height": 120,
 		"terrainId": 10,
 		"dungeonId": 8,
+		"difficulty": 5,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4675,6 +4684,7 @@
 		"height": 80,
 		"terrainId": 11,
 		"dungeonId": 9,
+		"difficulty": 2,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4708,6 +4718,7 @@
 		"height": 90,
 		"terrainId": 12,
 		"dungeonId": 10,
+		"difficulty": 3,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4741,6 +4752,7 @@
 		"height": 100,
 		"terrainId": 13,
 		"dungeonId": 11,
+		"difficulty": 3,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4774,6 +4786,7 @@
 		"height": 110,
 		"terrainId": 14,
 		"dungeonId": 12,
+		"difficulty": 4,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4808,6 +4821,7 @@
 		"height": 85,
 		"terrainId": 15,
 		"dungeonId": 13,
+		"difficulty": 3,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4840,6 +4854,7 @@
 		"height": 90,
 		"terrainId": 16,
 		"dungeonId": 14,
+		"difficulty": 4,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4873,6 +4888,7 @@
 		"height": 100,
 		"terrainId": 17,
 		"dungeonId": 15,
+		"difficulty": 5,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4907,6 +4923,7 @@
 		"height": 110,
 		"terrainId": 18,
 		"dungeonId": 16,
+		"difficulty": 5,
 		"dungeonParams": {
 			"minRooms": 20,
 			"maxRooms": 30,
@@ -4942,6 +4959,7 @@
 		"height": 100,
 		"terrainId": 19,
 		"dungeonId": 17,
+		"difficulty": 3,
 		"dungeonParams": {
 			"minRooms": 25,
 			"maxRooms": 40,
@@ -4975,6 +4993,7 @@
 		"height": 130,
 		"terrainId": 20,
 		"dungeonId": 18,
+		"difficulty": 6,
 		"dungeonParams": {
 			"minRooms": 25,
 			"maxRooms": 35,

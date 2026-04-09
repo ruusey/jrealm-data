@@ -252,9 +252,10 @@ document.getElementById('guest-btn').addEventListener('click', async (e) => {
         }
 
         // Generate new guest credentials
-        const guestId = crypto.randomUUID().slice(0, 8);
+        const randHex = () => Math.random().toString(16).slice(2, 10);
+        const guestId = randHex();
         email = `guest_${guestId}@openrealm.net`;
-        password = crypto.randomUUID();
+        password = randHex() + randHex();
         const accountName = GUEST_NAMES[Math.floor(Math.random() * GUEST_NAMES.length)];
 
         // Register guest account

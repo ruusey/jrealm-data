@@ -399,7 +399,7 @@ export class GameState {
         for (const p of packet.portals) {
             this.portals.set(p.id, p);
         }
-        if (packet.difficulty !== undefined && packet.difficulty > 0) {
+        if (packet.difficulty !== undefined) {
             this.difficulty = packet.difficulty;
         }
     }
