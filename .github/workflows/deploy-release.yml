@@ -1,4 +1,4 @@
-name: Build & Release JRealm-Data
+name: Build & Release OpenRealm-Data
 
 on:
   workflow_dispatch:
@@ -9,23 +9,23 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout jrealm-data
+      - name: Checkout openrealm-data
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Resolve jrealm dependency version
-        id: jrealm-version
+      - name: Resolve openrealm dependency version
+        id: openrealm-version
         run: |
-          JREALM_VERSION=$(grep -A1 '<artifactId>jrealm</artifactId>' pom.xml | grep '<version>' | sed 's/.*<version>\(.*\)<\/version>.*/\1/')
-          echo "version=$JREALM_VERSION" >> "$GITHUB_OUTPUT"
+          OPENREALM_VERSION=$(grep -A1 '<artifactId>openrealm</artifactId>' pom.xml | grep '<version>' | sed 's/.*<version>\(.*\)<\/version>.*/\1/')
+          echo "version=$OPENREALM_VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Checkout jrealm dependency
+      - name: Checkout openrealm dependency
         uses: actions/checkout@v4
         with:
-          repository: ruusey/jrealm
-          ref: v${{ steps.jrealm-version.outputs.version }}
-          path: jrealm
+          repository: ruusey/openrealm
+          ref: v${{ steps.openrealm-version.outputs.version }}
+          path: openrealm
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -34,10 +34,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Install jrealm dependency
+      - name: Install openrealm dependency
         run: |
-          mvn -B versions:set -DnewVersion=${{ steps.jrealm-version.outputs.version }} -DgenerateBackupPoms=false -f jrealm/pom.xml
-          mvn -B clean install -DskipTests -f jrealm/pom.xml
+          mvn -B versions:set -DnewVersion=${{ steps.openrealm-version.outputs.version }} -DgenerateBackupPoms=false -f openrealm/pom.xml
+          mvn -B clean install -DskipTests -f openrealm/pom.xml
 
       - name: Extract version from pom.xml
         id: version
@@ -59,24 +59,24 @@ jobs:
           echo "$LOG" >> "$GITHUB_OUTPUT"
           echo "$EOF" >> "$GITHUB_OUTPUT"
 
-      - name: Build jrealm-data
+      - name: Build openrealm-data
         run: mvn -B package -DskipTests --file pom.xml
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.version }}
-          name: JRealm-Data v${{ steps.version.outputs.version }}
+          name: OpenRealm-Data v${{ steps.version.outputs.version }}
           body: |
-            ## JRealm-Data v${{ steps.version.outputs.version }}
+            ## OpenRealm-Data v${{ steps.version.outputs.version }}
 
-            Game data service fat JAR. Requires jrealm v${{ steps.jrealm-version.outputs.version }}.
+            Game data service fat JAR. Requires openrealm v${{ steps.openrealm-version.outputs.version }}.
 
             ### Changes
             ${{ steps.changelog.outputs.log }}
           draft: false
           prerelease: false
-          files: target/jrealm-data.jar
+          files: target/openrealm-data.jar
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

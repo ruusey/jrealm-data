@@ -1,7 +1,7 @@
 @echo off
 
 REM Batch script to download and install Apache Maven 3.8.3, and add it to the system PATH
-SET "WORK_DIR=C://JRealm"
+SET "WORK_DIR=C://OpenRealm"
 rm -rf "%WORK_DIR%"
 REM Set Maven version and download URL
 set "MAVEN_VERSION=3.8.8"
@@ -58,9 +58,9 @@ start powershell -noexit -Command "%INSTALL_DIR%//mongodb-win32-x86_64-windows-%
 REM Start the MongoDB service
 echo MongoDB installation complete and running as a service!
 
-start powershell -noexit -Command "Invoke-WebRequest -Uri https://github.com/ruusey/jrealm-data/releases/latest/download/jrealm-data.jar -OutFile %WORK_DIR%//jrealm-data.jar; java -jar %WORK_DIR%//jrealm-data.jar"
-echo JRealm Data running. Press any key to start JRealm....
+start powershell -noexit -Command "Invoke-WebRequest -Uri https://github.com/ruusey/openrealm-data/releases/latest/download/openrealm-data.jar -OutFile %WORK_DIR%//openrealm-data.jar; java -jar %WORK_DIR%//openrealm-data.jar"
+echo OpenRealm Data running. Press any key to start OpenRealm....
 pause
-start powershell -noexit -Command "Invoke-WebRequest -Uri https://github.com/ruusey/jrealm/releases/latest/download/jrealm.jar -OutFile %WORK_DIR%//jrealm.jar; java -jar %WORK_DIR%//jrealm.jar -embedded 127.0.0.1"
+start powershell -noexit -Command "Invoke-WebRequest -Uri https://github.com/ruusey/openrealm/releases/latest/download/openrealm.jar -OutFile %WORK_DIR%//openrealm.jar; java -jar %WORK_DIR%//openrealm.jar -embedded 127.0.0.1"
 
 

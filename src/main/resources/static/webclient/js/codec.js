@@ -1,4 +1,4 @@
-// Binary packet codec matching JRealm's Java IOService serialization format.
+// Binary packet codec matching OpenRealm's Java IOService serialization format.
 // All multi-byte values are big-endian (network byte order).
 
 const HEADER_SIZE = 5;
