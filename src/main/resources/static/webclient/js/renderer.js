@@ -281,23 +281,45 @@ export class GameRenderer {
 
                 if (isWall) {
                     // === WALL 3D EFFECT ===
-                    // 1) Thin side face flush below wall
-                    const sideH = Math.max(Math.round(drawSize * 0.1), 2);
-                    const side = new PIXI.Graphics();
-                    side.beginFill(0x222228);
-                    side.drawRect(sx, sy + drawSize, drawSize, sideH);
-                    side.endFill();
-                    this.tileLayer.addChild(side);
+                    // Neighbor-aware: only draw effect pieces on edges not covered by another wall.
+                    const isWallAt = (rr, cc) => {
+                        const t = gameState.mapTiles[rr]?.[cc];
+                        if (!t || t.collision <= 0) return false;
+                        return !!gameState.tileData[t.collision]?.data?.isWall;
+                    };
+                    const wN = isWallAt(r - 1, c);
+                    const wS = isWallAt(r + 1, c);
+                    const wW = isWallAt(r, c - 1);
+                    const wE = isWallAt(r, c + 1);
 
-                    // 2) Small drop shadow (1px offset)
-                    const shadow = new PIXI.Sprite(tex);
-                    shadow.x = sx + 1; shadow.y = sy + 1;
-                    shadow.width = drawSize; shadow.height = drawSize;
-                    shadow.tint = 0x000000; shadow.alpha = 0.2;
-                    this.tileLayer.addChild(shadow);
+                    // 1) Thin side face flush below wall (skip if a wall is directly below)
+                    if (!wS) {
+                        const sideH = Math.max(Math.round(drawSize * 0.1), 2);
+                        const side = new PIXI.Graphics();
+                        side.beginFill(0x222228);
+                        side.drawRect(sx, sy + drawSize, drawSize, sideH);
+                        side.endFill();
+                        this.tileLayer.addChild(side);
+                    }
 
-                    // 3) Thin contour outline (1px)
-                    for (const [ox, oy] of [[1,0],[-1,0],[0,1],[0,-1]]) {
+                    // 2) Small drop shadow (1px offset) - skip if both S and E are walls
+                    if (!(wS && wE)) {
+                        const shadow = new PIXI.Sprite(tex);
+                        shadow.x = sx + 1; shadow.y = sy + 1;
+                        shadow.width = drawSize; shadow.height = drawSize;
+                        shadow.tint = 0x000000; shadow.alpha = 0.2;
+                        this.tileLayer.addChild(shadow);
+                    }
+
+                    // 3) Thin contour outline (1px) - skip the side that abuts another wall
+                    const outlines = [
+                        [ 1,  0, wE],
+                        [-1,  0, wW],
+                        [ 0,  1, wS],
+                        [ 0, -1, wN],
+                    ];
+                    for (const [ox, oy, skip] of outlines) {
+                        if (skip) continue;
                         const ol = new PIXI.Sprite(tex);
                         ol.x = sx + ox; ol.y = sy + oy;
                         ol.width = drawSize; ol.height = drawSize;
