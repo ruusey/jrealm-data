@@ -2,8 +2,8 @@
 	{
 		"name": "Overworld",
 		"terrainId": 0,
-		"width": 512,
-		"height": 512,
+		"width": 640,
+		"height": 640,
 		"tileSize": 32,
 		"enemyDensity": 0.00375,
 		"tileGroups": [
@@ -314,7 +314,7 @@
 				"zoneId": "summit",
 				"displayName": "The Summit",
 				"minRadius": 0,
-				"maxRadius": 0.2,
+				"maxRadius": 0.15,
 				"tileGroupOrdinal": 3,
 				"enemyGroupOrdinal": 3,
 				"difficulty": 4.0,
@@ -323,8 +323,8 @@
 			{
 				"zoneId": "highlands",
 				"displayName": "The Highlands",
-				"minRadius": 0.2,
-				"maxRadius": 0.45,
+				"minRadius": 0.15,
+				"maxRadius": 0.35,
 				"tileGroupOrdinal": 2,
 				"enemyGroupOrdinal": 2,
 				"difficulty": 3.0,
@@ -333,8 +333,8 @@
 			{
 				"zoneId": "grasslands",
 				"displayName": "The Grasslands",
-				"minRadius": 0.45,
-				"maxRadius": 0.72,
+				"minRadius": 0.35,
+				"maxRadius": 0.55,
 				"tileGroupOrdinal": 1,
 				"enemyGroupOrdinal": 1,
 				"difficulty": 2.0,
@@ -343,7 +343,7 @@
 			{
 				"zoneId": "beach",
 				"displayName": "The Shore",
-				"minRadius": 0.72,
+				"minRadius": 0.55,
 				"maxRadius": 1.01,
 				"tileGroupOrdinal": 0,
 				"enemyGroupOrdinal": 0,

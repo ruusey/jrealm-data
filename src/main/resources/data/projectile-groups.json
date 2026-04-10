@@ -68,7 +68,7 @@
 				"damage": 50,
 				"angle": -0.3,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -78,7 +78,7 @@
 				"damage": 50,
 				"angle": -0.15,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -88,7 +88,7 @@
 				"damage": 50,
 				"angle": 0,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -98,7 +98,7 @@
 				"damage": 50,
 				"angle": 0.15,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -108,7 +108,7 @@
 				"damage": 50,
 				"angle": 0.3,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -126,7 +126,7 @@
 				"damage": 25,
 				"angle": "{{PI/6}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -136,7 +136,7 @@
 				"damage": 25,
 				"angle": "{{PI/4}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -146,7 +146,7 @@
 				"damage": 25,
 				"angle": "{{PI/3}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -156,7 +156,7 @@
 				"damage": 18,
 				"angle": "{{PI/2}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -166,7 +166,7 @@
 				"damage": 18,
 				"angle": "{{2PI/3}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -176,7 +176,7 @@
 				"damage": 18,
 				"angle": "{{3PI/4}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -186,7 +186,7 @@
 				"damage": 18,
 				"angle": "{{5PI/6}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -196,7 +196,7 @@
 				"damage": 18,
 				"angle": "{{PI}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -206,7 +206,7 @@
 				"damage": 18,
 				"angle": "{{7PI/6}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -216,7 +216,7 @@
 				"damage": 18,
 				"angle": "{{5PI/4}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -226,7 +226,7 @@
 				"damage": 18,
 				"angle": "{{4PI/3}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -236,7 +236,7 @@
 				"damage": 18,
 				"angle": "{{3PI/2}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -246,7 +246,7 @@
 				"damage": 18,
 				"angle": "{{5PI/3}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -256,7 +256,7 @@
 				"damage": 18,
 				"angle": "{{7PI/4}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -266,7 +266,7 @@
 				"damage": 18,
 				"angle": "{{11PI/6}}",
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -276,7 +276,7 @@
 				"damage": 18,
 				"angle": 0,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -509,7 +509,7 @@
 				"damage": 25,
 				"angle": -0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -521,7 +521,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -533,7 +533,7 @@
 				"damage": 25,
 				"angle": 0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -649,7 +649,7 @@
 				"damage": 25,
 				"angle": "-0.19",
 				"range": 120,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -659,7 +659,7 @@
 				"damage": 25,
 				"angle": "0.19",
 				"range": 120,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			}
@@ -677,8 +677,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -689,8 +689,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -701,8 +701,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -713,8 +713,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -725,8 +725,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -737,8 +737,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -749,8 +749,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -761,8 +761,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -773,8 +773,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -785,8 +785,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -797,8 +797,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -809,8 +809,8 @@
 				"positionMode": 2,
 				"damage": 50,
 				"range": 250,
-				"size": 16,
-				"magnitude": 3,
+				"size": 24,
+				"magnitude": 4.2,
 				"flags": [],
 				"amplitude": 0,
 				"frequency": 0,
@@ -877,7 +877,7 @@
 				"damage": 10,
 				"angle": -0.3,
 				"range": 70,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -899,7 +899,7 @@
 				"damage": 10,
 				"angle": 0,
 				"range": 70,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -921,7 +921,7 @@
 				"damage": 10,
 				"angle": 0.3,
 				"range": 70,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -987,7 +987,7 @@
 				"damage": 6,
 				"angle": -0.35,
 				"range": 300,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.4,
 				"flags": [],
 				"effects": [
@@ -1003,7 +1003,7 @@
 				"damage": 6,
 				"angle": 0.35,
 				"range": 300,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.4,
 				"flags": [],
 				"effects": [
@@ -1019,7 +1019,7 @@
 				"damage": 6,
 				"angle": 0.7,
 				"range": 300,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.4,
 				"flags": [],
 				"effects": [
@@ -1035,7 +1035,7 @@
 				"damage": 6,
 				"angle": -0.7,
 				"range": 300,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.4,
 				"flags": [],
 				"effects": [
@@ -1051,7 +1051,7 @@
 				"damage": 6,
 				"angle": 0,
 				"range": 300,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.4,
 				"flags": [],
 				"effects": [
@@ -1419,7 +1419,7 @@
 				"damage": 45,
 				"angle": 0,
 				"range": 216,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			},
@@ -1429,7 +1429,7 @@
 				"damage": 45,
 				"angle": 0.25,
 				"range": 216,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			}
@@ -1448,7 +1448,7 @@
 				"damage": 42,
 				"angle": 0,
 				"range": 236,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": [],
 				"effects": [
@@ -1464,7 +1464,7 @@
 				"damage": 42,
 				"angle": 0.25,
 				"range": 236,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": [],
 				"effects": [
@@ -1526,7 +1526,7 @@
 				"damage": 25,
 				"angle": -0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -1538,7 +1538,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -1550,7 +1550,7 @@
 				"damage": 25,
 				"angle": 0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -1571,7 +1571,7 @@
 				"damage": 25,
 				"angle": -0.05,
 				"range": 195,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -1699,7 +1699,7 @@
 				"damage": 18,
 				"angle": 0,
 				"range": 120,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -1709,7 +1709,7 @@
 				"damage": 18,
 				"angle": 0.25,
 				"range": 120,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			}
@@ -1786,7 +1786,7 @@
 				"damage": 39,
 				"angle": 0,
 				"range": 100,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": 3,
 				"frequency": 5,
@@ -1804,7 +1804,7 @@
 				"damage": 39,
 				"angle": 0.25,
 				"range": 100,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": 3,
 				"frequency": 5,
@@ -1822,7 +1822,7 @@
 				"damage": 39,
 				"angle": "{{PI/16}}",
 				"range": 100,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": -3,
 				"frequency": 5,
@@ -1840,7 +1840,7 @@
 				"damage": 39,
 				"angle": 0.25,
 				"range": 100,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"amplitude": -3,
 				"frequency": 5,
@@ -1867,7 +1867,7 @@
 				"damage": 39,
 				"angle": "-0.10",
 				"range": 250,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": [],
 				"effects": [
@@ -1883,7 +1883,7 @@
 				"damage": 39,
 				"angle": "0.10",
 				"range": 250,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": [],
 				"effects": [
@@ -1907,7 +1907,7 @@
 				"damage": 70,
 				"angle": 0,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1917,7 +1917,7 @@
 				"damage": 70,
 				"angle": 0.25,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1927,7 +1927,7 @@
 				"damage": 70,
 				"angle": "{{PI/8}}",
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1937,7 +1937,7 @@
 				"damage": 70,
 				"angle": 0.25,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1947,7 +1947,7 @@
 				"damage": 70,
 				"angle": -0.3927,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1957,7 +1957,7 @@
 				"damage": 70,
 				"angle": -0.1427,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1967,7 +1967,7 @@
 				"damage": 70,
 				"angle": "{{PI/4}}",
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1977,7 +1977,7 @@
 				"damage": 70,
 				"angle": 0.25,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1987,7 +1987,7 @@
 				"damage": 70,
 				"angle": -0.7854,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -1997,7 +1997,7 @@
 				"damage": 70,
 				"angle": -0.5354,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -2269,7 +2269,7 @@
 				"damage": 39,
 				"angle": 0,
 				"range": 225,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2279,7 +2279,7 @@
 				"damage": 39,
 				"angle": 0.25,
 				"range": 225,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2289,7 +2289,7 @@
 				"damage": 39,
 				"angle": 0.1963,
 				"range": 225,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2299,7 +2299,7 @@
 				"damage": 39,
 				"angle": 0.44630000000000003,
 				"range": 225,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2309,7 +2309,7 @@
 				"damage": 39,
 				"angle": -0.1963,
 				"range": 225,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -2319,7 +2319,7 @@
 				"damage": 39,
 				"angle": 0.0537,
 				"range": 225,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			}
@@ -2338,7 +2338,7 @@
 				"damage": 100,
 				"angle": "{{PI/6}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2354,7 +2354,7 @@
 				"damage": 100,
 				"angle": "{{PI/3}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2370,7 +2370,7 @@
 				"damage": 100,
 				"angle": "{{PI/2}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2386,7 +2386,7 @@
 				"damage": 100,
 				"angle": "{{2PI/3}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2402,7 +2402,7 @@
 				"damage": 100,
 				"angle": "{{5PI/6}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2418,7 +2418,7 @@
 				"damage": 100,
 				"angle": "{{PI}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2434,7 +2434,7 @@
 				"damage": 100,
 				"angle": "{{7PI/6}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2450,7 +2450,7 @@
 				"damage": 100,
 				"angle": "{{4PI/3}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2466,7 +2466,7 @@
 				"damage": 100,
 				"angle": "{{3PI/2}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2482,7 +2482,7 @@
 				"damage": 100,
 				"angle": "{{5PI/3}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2498,7 +2498,7 @@
 				"damage": 100,
 				"angle": "{{11PI/6}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2514,7 +2514,7 @@
 				"damage": 80,
 				"angle": "{{PI/10}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2530,7 +2530,7 @@
 				"damage": 80,
 				"angle": "{{PI/5}}",
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"effects": [
@@ -2710,7 +2710,7 @@
 				"damage": 120,
 				"angle": 0,
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2720,7 +2720,7 @@
 				"damage": 120,
 				"angle": "{{PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2730,7 +2730,7 @@
 				"damage": 120,
 				"angle": "{{PI/4}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2740,7 +2740,7 @@
 				"damage": 120,
 				"angle": "{{3PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2750,7 +2750,7 @@
 				"damage": 120,
 				"angle": "{{PI/2}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2760,7 +2760,7 @@
 				"damage": 120,
 				"angle": "{{5PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2770,7 +2770,7 @@
 				"damage": 120,
 				"angle": "{{3PI/4}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2780,7 +2780,7 @@
 				"damage": 120,
 				"angle": "{{7PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2790,7 +2790,7 @@
 				"damage": 120,
 				"angle": "{{PI}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2800,7 +2800,7 @@
 				"damage": 120,
 				"angle": "{{9PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2810,7 +2810,7 @@
 				"damage": 120,
 				"angle": "{{5PI/4}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2820,7 +2820,7 @@
 				"damage": 120,
 				"angle": "{{11PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2830,7 +2830,7 @@
 				"damage": 120,
 				"angle": "{{3PI/2}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2840,7 +2840,7 @@
 				"damage": 120,
 				"angle": "{{13PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2850,7 +2850,7 @@
 				"damage": 120,
 				"angle": "{{7PI/4}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2860,7 +2860,7 @@
 				"damage": 120,
 				"angle": "{{15PI/8}}",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -2879,7 +2879,7 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 160,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2889,7 +2889,7 @@
 				"damage": 150,
 				"angle": -0.25,
 				"range": 160,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2899,7 +2899,7 @@
 				"damage": 150,
 				"angle": 0.25,
 				"range": 160,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2909,7 +2909,7 @@
 				"damage": 150,
 				"angle": -0.15,
 				"range": 160,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -2919,7 +2919,7 @@
 				"damage": 150,
 				"angle": 0.15,
 				"range": 160,
-				"size": 20,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -3049,7 +3049,7 @@
 				"damage": 30,
 				"angle": 0,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"amplitude": 7,
 				"frequency": 40,
 				"magnitude": 2,
@@ -3063,7 +3063,7 @@
 				"damage": 30,
 				"angle": "{{PI/12}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"amplitude": -7,
 				"frequency": 40,
 				"magnitude": 2,
@@ -3077,7 +3077,7 @@
 				"damage": 30,
 				"angle": "{{23PI/12}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"amplitude": 7,
 				"frequency": 40,
 				"magnitude": 2,
@@ -3099,7 +3099,7 @@
 				"damage": 14,
 				"angle": 0,
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3115,7 +3115,7 @@
 				"damage": 14,
 				"angle": 0.25,
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3131,7 +3131,7 @@
 				"damage": 14,
 				"angle": "{{PI/2}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3147,7 +3147,7 @@
 				"damage": 14,
 				"angle": 0.25,
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3163,7 +3163,7 @@
 				"damage": 14,
 				"angle": "{{PI}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3179,7 +3179,7 @@
 				"damage": 14,
 				"angle": 0.25,
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3195,7 +3195,7 @@
 				"damage": 14,
 				"angle": "{{3PI/2}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3211,7 +3211,7 @@
 				"damage": 14,
 				"angle": 0.25,
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -3236,7 +3236,7 @@
 				"damage": 21,
 				"angle": -0.2,
 				"range": 180,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"amplitude": 4,
 				"frequency": 8,
@@ -3256,7 +3256,7 @@
 				"damage": 21,
 				"angle": 0.04999999999999999,
 				"range": 180,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"amplitude": 4,
 				"frequency": 8,
@@ -3276,7 +3276,7 @@
 				"damage": 21,
 				"angle": 0,
 				"range": 180,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"amplitude": 4,
 				"frequency": 8,
@@ -3296,7 +3296,7 @@
 				"damage": 21,
 				"angle": 0.25,
 				"range": 180,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"amplitude": 4,
 				"frequency": 8,
@@ -3316,7 +3316,7 @@
 				"damage": 21,
 				"angle": 0.2,
 				"range": 180,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"amplitude": 4,
 				"frequency": 8,
@@ -3336,7 +3336,7 @@
 				"damage": 21,
 				"angle": 0.45,
 				"range": 180,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"amplitude": 4,
 				"frequency": 8,
@@ -3365,7 +3365,7 @@
 				"damage": 39,
 				"angle": -0.5,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -3375,7 +3375,7 @@
 				"damage": 39,
 				"angle": -0.25,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -3385,7 +3385,7 @@
 				"damage": 39,
 				"angle": 0.5,
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			},
@@ -3395,7 +3395,7 @@
 				"damage": 39,
 				"angle": "0.25",
 				"range": 200,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -3412,7 +3412,7 @@
 				"projectileId": 54,
 				"positionMode": 0,
 				"damage": 14,
-				"angle": -0.10,
+				"angle": -0.1,
 				"range": 350,
 				"size": 30,
 				"magnitude": 3.5,
@@ -3422,7 +3422,7 @@
 				"projectileId": 54,
 				"positionMode": 0,
 				"damage": 14,
-				"angle": 0.10,
+				"angle": 0.1,
 				"range": 350,
 				"size": 30,
 				"magnitude": 3.5,
@@ -3442,7 +3442,7 @@
 				"damage": 30,
 				"angle": 0.2,
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": 30,
 				"frequency": 7,
@@ -3462,7 +3462,7 @@
 				"damage": 30,
 				"angle": 0.08,
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": -13,
 				"frequency": 8,
@@ -3482,7 +3482,7 @@
 				"damage": 30,
 				"angle": -0.2,
 				"range": 350,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": 30,
 				"frequency": 7,
@@ -3502,7 +3502,7 @@
 				"damage": 30,
 				"angle": -0.08,
 				"range": 350,
-				"size": 12,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": -13,
 				"frequency": 8,
@@ -3530,7 +3530,7 @@
 				"damage": 18,
 				"angle": -0.6,
 				"range": 200,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3540,7 +3540,7 @@
 				"damage": 18,
 				"angle": -0.35,
 				"range": 200,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3550,7 +3550,7 @@
 				"damage": 18,
 				"angle": -0.3,
 				"range": 200,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3560,7 +3560,7 @@
 				"damage": 28,
 				"angle": -0.04999999999999999,
 				"range": 120,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": []
 			},
@@ -3570,7 +3570,7 @@
 				"damage": 28,
 				"angle": 0,
 				"range": 120,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": []
 			},
@@ -3580,7 +3580,7 @@
 				"damage": 28,
 				"angle": 0.25,
 				"range": 120,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": []
 			},
@@ -3590,7 +3590,7 @@
 				"damage": 28,
 				"angle": 0.3,
 				"range": 120,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": []
 			},
@@ -3600,7 +3600,7 @@
 				"damage": 28,
 				"angle": 0.55,
 				"range": 120,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": []
 			},
@@ -3610,7 +3610,7 @@
 				"damage": 28,
 				"angle": 0.6,
 				"range": 120,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": []
 			},
@@ -3620,7 +3620,7 @@
 				"damage": 28,
 				"angle": 0.85,
 				"range": 120,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": []
 			}
@@ -3638,7 +3638,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": [],
 				"effects": [
@@ -3654,7 +3654,7 @@
 				"damage": 60,
 				"angle": "{{PI/4}}",
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -3664,7 +3664,7 @@
 				"damage": 60,
 				"angle": "{{PI/2}}",
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": [],
 				"effects": [
@@ -3680,7 +3680,7 @@
 				"damage": 60,
 				"angle": "{{3PI/4}}",
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -3690,7 +3690,7 @@
 				"damage": 60,
 				"angle": "{{PI}}",
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": [],
 				"effects": [
@@ -3706,7 +3706,7 @@
 				"damage": 60,
 				"angle": "{{5PI/4}}",
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -3716,7 +3716,7 @@
 				"damage": 60,
 				"angle": "{{3PI/2}}",
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": [],
 				"effects": [
@@ -3732,7 +3732,7 @@
 				"damage": 60,
 				"angle": "{{7PI/4}}",
 				"range": 250,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -3750,7 +3750,7 @@
 				"damage": 50,
 				"angle": 0,
 				"range": 220,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2,
 				"amplitude": 6,
 				"frequency": 7,
@@ -3770,7 +3770,7 @@
 				"damage": 50,
 				"angle": "{{PI/3}}",
 				"range": 220,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2,
 				"amplitude": 6,
 				"frequency": 7,
@@ -3790,7 +3790,7 @@
 				"damage": 50,
 				"angle": "{{2PI/3}}",
 				"range": 220,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2,
 				"amplitude": 6,
 				"frequency": 7,
@@ -3810,7 +3810,7 @@
 				"damage": 50,
 				"angle": "{{PI}}",
 				"range": 220,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2,
 				"amplitude": 6,
 				"frequency": 7,
@@ -3830,7 +3830,7 @@
 				"damage": 50,
 				"angle": "{{4PI/3}}",
 				"range": 220,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2,
 				"amplitude": 6,
 				"frequency": 7,
@@ -3850,7 +3850,7 @@
 				"damage": 50,
 				"angle": "{{5PI/3}}",
 				"range": 220,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2,
 				"amplitude": 6,
 				"frequency": 7,
@@ -3878,7 +3878,7 @@
 				"damage": 55,
 				"angle": 0,
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3888,7 +3888,7 @@
 				"damage": 55,
 				"angle": "{{PI/6}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3898,7 +3898,7 @@
 				"damage": 55,
 				"angle": "{{PI/3}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3908,7 +3908,7 @@
 				"damage": 55,
 				"angle": "{{PI/2}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3918,7 +3918,7 @@
 				"damage": 55,
 				"angle": "{{2PI/3}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3928,7 +3928,7 @@
 				"damage": 55,
 				"angle": "{{5PI/6}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3938,7 +3938,7 @@
 				"damage": 55,
 				"angle": "{{PI}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3948,7 +3948,7 @@
 				"damage": 55,
 				"angle": "{{7PI/6}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3958,7 +3958,7 @@
 				"damage": 55,
 				"angle": "{{4PI/3}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3968,7 +3968,7 @@
 				"damage": 55,
 				"angle": "{{3PI/2}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3978,7 +3978,7 @@
 				"damage": 55,
 				"angle": "{{5PI/3}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3988,7 +3988,7 @@
 				"damage": 55,
 				"angle": "{{11PI/6}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -3998,7 +3998,7 @@
 				"damage": 80,
 				"angle": -0.2,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -4008,7 +4008,7 @@
 				"damage": 80,
 				"angle": -0.1,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -4018,7 +4018,7 @@
 				"damage": 80,
 				"angle": 0.1,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -4028,7 +4028,7 @@
 				"damage": 80,
 				"angle": 0.2,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			}
@@ -4126,7 +4126,7 @@
 				"damage": 50,
 				"angle": 0,
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4136,7 +4136,7 @@
 				"damage": 50,
 				"angle": "{{PI/4}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4146,7 +4146,7 @@
 				"damage": 50,
 				"angle": "{{PI/2}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4156,7 +4156,7 @@
 				"damage": 50,
 				"angle": "{{3PI/4}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4166,7 +4166,7 @@
 				"damage": 50,
 				"angle": "{{PI}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4176,7 +4176,7 @@
 				"damage": 50,
 				"angle": "{{5PI/4}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4186,7 +4186,7 @@
 				"damage": 50,
 				"angle": "{{3PI/2}}",
 				"range": 200,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4214,7 +4214,7 @@
 				"damage": 55,
 				"angle": -0.3,
 				"range": 280,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": 5,
 				"frequency": 5,
@@ -4234,7 +4234,7 @@
 				"damage": 55,
 				"angle": -0.15,
 				"range": 280,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": 5,
 				"frequency": 5,
@@ -4254,7 +4254,7 @@
 				"damage": 55,
 				"angle": 0,
 				"range": 280,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": 5,
 				"frequency": 5,
@@ -4274,7 +4274,7 @@
 				"damage": 55,
 				"angle": 0.15,
 				"range": 280,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": -5,
 				"frequency": 5,
@@ -4294,7 +4294,7 @@
 				"damage": 55,
 				"angle": 0.3,
 				"range": 280,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": -5,
 				"frequency": 5,
@@ -4314,7 +4314,7 @@
 				"damage": 55,
 				"angle": 0,
 				"range": 280,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.5,
 				"amplitude": -5,
 				"frequency": 5,
@@ -4342,7 +4342,7 @@
 				"damage": 70,
 				"angle": 0,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4352,7 +4352,7 @@
 				"damage": 70,
 				"angle": "{{PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4362,7 +4362,7 @@
 				"damage": 70,
 				"angle": "{{PI/4}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4372,7 +4372,7 @@
 				"damage": 70,
 				"angle": "{{3PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4382,7 +4382,7 @@
 				"damage": 70,
 				"angle": "{{PI/2}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4392,7 +4392,7 @@
 				"damage": 70,
 				"angle": "{{5PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4402,7 +4402,7 @@
 				"damage": 70,
 				"angle": "{{3PI/4}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4412,7 +4412,7 @@
 				"damage": 70,
 				"angle": "{{7PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4422,7 +4422,7 @@
 				"damage": 70,
 				"angle": "{{PI}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4432,7 +4432,7 @@
 				"damage": 70,
 				"angle": "{{9PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4442,7 +4442,7 @@
 				"damage": 70,
 				"angle": "{{5PI/4}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4452,7 +4452,7 @@
 				"damage": 70,
 				"angle": "{{11PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4462,7 +4462,7 @@
 				"damage": 70,
 				"angle": "{{3PI/2}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4472,7 +4472,7 @@
 				"damage": 70,
 				"angle": "{{13PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4482,7 +4482,7 @@
 				"damage": 70,
 				"angle": "{{7PI/4}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4492,7 +4492,7 @@
 				"damage": 70,
 				"angle": "{{15PI/8}}",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4502,7 +4502,7 @@
 				"damage": 100,
 				"angle": -0.2,
 				"range": 350,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": [],
 				"effects": [
@@ -4518,7 +4518,7 @@
 				"damage": 100,
 				"angle": -0.1,
 				"range": 350,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": [],
 				"effects": [
@@ -4534,7 +4534,7 @@
 				"damage": 100,
 				"angle": 0.1,
 				"range": 350,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": [],
 				"effects": [
@@ -4550,7 +4550,7 @@
 				"damage": 100,
 				"angle": 0.2,
 				"range": 350,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5.5,
 				"flags": [],
 				"effects": [
@@ -4566,7 +4566,7 @@
 				"damage": 80,
 				"angle": -0.15,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": 6,
 				"frequency": 8,
@@ -4586,7 +4586,7 @@
 				"damage": 80,
 				"angle": -0.05,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": 6,
 				"frequency": 8,
@@ -4606,7 +4606,7 @@
 				"damage": 80,
 				"angle": 0.05,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": 6,
 				"frequency": 8,
@@ -4626,7 +4626,7 @@
 				"damage": 80,
 				"angle": 0.15,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"amplitude": 6,
 				"frequency": 8,
@@ -4654,7 +4654,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4664,7 +4664,7 @@
 				"damage": 60,
 				"angle": 0.5236,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4674,7 +4674,7 @@
 				"damage": 60,
 				"angle": 1.0472,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4684,7 +4684,7 @@
 				"damage": 60,
 				"angle": 1.5708,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4694,7 +4694,7 @@
 				"damage": 60,
 				"angle": 2.0944,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4704,7 +4704,7 @@
 				"damage": 60,
 				"angle": 2.618,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4714,7 +4714,7 @@
 				"damage": 60,
 				"angle": 3.1416,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4724,7 +4724,7 @@
 				"damage": 60,
 				"angle": 3.6652,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4734,7 +4734,7 @@
 				"damage": 60,
 				"angle": 4.1888,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4744,7 +4744,7 @@
 				"damage": 60,
 				"angle": 4.7124,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4754,7 +4754,7 @@
 				"damage": 60,
 				"angle": 5.236,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -4764,7 +4764,7 @@
 				"damage": 60,
 				"angle": 5.7596,
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -4782,7 +4782,7 @@
 				"damage": 16,
 				"angle": 0,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4792,7 +4792,7 @@
 				"damage": 16,
 				"angle": 0.7854,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4802,7 +4802,7 @@
 				"damage": 16,
 				"angle": 1.5708,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4812,7 +4812,7 @@
 				"damage": 16,
 				"angle": 2.3562,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4822,7 +4822,7 @@
 				"damage": 16,
 				"angle": 3.1416,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4832,7 +4832,7 @@
 				"damage": 16,
 				"angle": 3.927,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4842,7 +4842,7 @@
 				"damage": 16,
 				"angle": 4.7124,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -4852,7 +4852,7 @@
 				"damage": 16,
 				"angle": 5.4978,
 				"range": 250,
-				"size": 12,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -4870,7 +4870,7 @@
 				"damage": 50,
 				"angle": 0,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": [
 					10
@@ -4882,7 +4882,7 @@
 				"damage": 50,
 				"angle": 1.0472,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": [
 					10
@@ -4894,7 +4894,7 @@
 				"damage": 50,
 				"angle": 2.0944,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": [
 					10
@@ -4906,7 +4906,7 @@
 				"damage": 50,
 				"angle": 3.1416,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": [
 					10
@@ -4918,7 +4918,7 @@
 				"damage": 50,
 				"angle": 4.1888,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": [
 					10
@@ -4930,7 +4930,7 @@
 				"damage": 50,
 				"angle": 5.236,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": [
 					10
@@ -4950,7 +4950,7 @@
 				"damage": 28,
 				"angle": -0.25,
 				"range": 150,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -4960,7 +4960,7 @@
 				"damage": 28,
 				"angle": -0.125,
 				"range": 150,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -4970,7 +4970,7 @@
 				"damage": 28,
 				"angle": 0,
 				"range": 150,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -4980,7 +4980,7 @@
 				"damage": 28,
 				"angle": 0.125,
 				"range": 150,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			},
@@ -4990,7 +4990,7 @@
 				"damage": 28,
 				"angle": 0.25,
 				"range": 150,
-				"size": 12,
+				"size": 24,
 				"magnitude": 5,
 				"flags": []
 			}
@@ -5009,7 +5009,7 @@
 				"damage": 35,
 				"angle": -0.15,
 				"range": 180,
-				"size": 10,
+				"size": 24,
 				"magnitude": 4.5,
 				"flags": []
 			},
@@ -5019,7 +5019,7 @@
 				"damage": 35,
 				"angle": 0,
 				"range": 180,
-				"size": 10,
+				"size": 24,
 				"magnitude": 4.5,
 				"flags": []
 			},
@@ -5029,7 +5029,7 @@
 				"damage": 35,
 				"angle": 0.15,
 				"range": 180,
-				"size": 10,
+				"size": 24,
 				"magnitude": 4.5,
 				"flags": []
 			}
@@ -5047,7 +5047,7 @@
 				"damage": 18,
 				"angle": 0,
 				"range": 350,
-				"size": 10,
+				"size": 24,
 				"magnitude": 4.5,
 				"flags": [],
 				"amplitude": 6,
@@ -5059,7 +5059,7 @@
 				"damage": 18,
 				"angle": 0,
 				"range": 350,
-				"size": 10,
+				"size": 24,
 				"magnitude": 4.5,
 				"flags": [],
 				"amplitude": -6,
@@ -5079,7 +5079,7 @@
 				"damage": 55,
 				"angle": -0.2,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"amplitude": 20,
@@ -5091,7 +5091,7 @@
 				"damage": 55,
 				"angle": 0,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"amplitude": 20,
@@ -5103,7 +5103,7 @@
 				"damage": 55,
 				"angle": 0.2,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2,
 				"flags": [],
 				"amplitude": 20,
@@ -5124,7 +5124,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 320,
-				"size": 10,
+				"size": 24,
 				"magnitude": 2.8,
 				"flags": []
 			},
@@ -5134,7 +5134,7 @@
 				"damage": 25,
 				"angle": 1.2566,
 				"range": 320,
-				"size": 10,
+				"size": 24,
 				"magnitude": 2.8,
 				"flags": []
 			},
@@ -5144,7 +5144,7 @@
 				"damage": 25,
 				"angle": 2.5133,
 				"range": 320,
-				"size": 10,
+				"size": 24,
 				"magnitude": 2.8,
 				"flags": []
 			},
@@ -5154,7 +5154,7 @@
 				"damage": 25,
 				"angle": 3.7699,
 				"range": 320,
-				"size": 10,
+				"size": 24,
 				"magnitude": 2.8,
 				"flags": []
 			},
@@ -5164,7 +5164,7 @@
 				"damage": 25,
 				"angle": 5.0265,
 				"range": 320,
-				"size": 10,
+				"size": 24,
 				"magnitude": 2.8,
 				"flags": []
 			}
@@ -5201,7 +5201,7 @@
 				"damage": 8,
 				"angle": "-0.15",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -5211,7 +5211,7 @@
 				"damage": 8,
 				"angle": 0,
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			},
@@ -5221,7 +5221,7 @@
 				"damage": 8,
 				"angle": "0.15",
 				"range": 280,
-				"size": 20,
+				"size": 24,
 				"magnitude": 6,
 				"flags": []
 			}
@@ -5240,7 +5240,7 @@
 				"damage": 21,
 				"angle": 0,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5256,7 +5256,7 @@
 				"damage": 21,
 				"angle": 0.7854,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5272,7 +5272,7 @@
 				"damage": 21,
 				"angle": 1.5708,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5288,7 +5288,7 @@
 				"damage": 21,
 				"angle": 2.3562,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5304,7 +5304,7 @@
 				"damage": 21,
 				"angle": 3.1416,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5320,7 +5320,7 @@
 				"damage": 21,
 				"angle": 3.927,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5336,7 +5336,7 @@
 				"damage": 21,
 				"angle": 4.7124,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5352,7 +5352,7 @@
 				"damage": 21,
 				"angle": 5.4978,
 				"range": 200,
-				"size": 14,
+				"size": 24,
 				"magnitude": 3,
 				"flags": [],
 				"effects": [
@@ -5377,7 +5377,7 @@
 				"damage": 35,
 				"angle": 0,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": []
 			},
@@ -5387,7 +5387,7 @@
 				"damage": 35,
 				"angle": 1.0472,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": []
 			},
@@ -5397,7 +5397,7 @@
 				"damage": 35,
 				"angle": 2.0944,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": []
 			},
@@ -5407,7 +5407,7 @@
 				"damage": 35,
 				"angle": 3.1416,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": []
 			},
@@ -5417,7 +5417,7 @@
 				"damage": 35,
 				"angle": 4.1888,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": []
 			},
@@ -5427,7 +5427,7 @@
 				"damage": 35,
 				"angle": 5.236,
 				"range": 280,
-				"size": 14,
+				"size": 24,
 				"magnitude": 2.5,
 				"flags": []
 			}
@@ -5742,7 +5742,7 @@
 				"damage": 25,
 				"angle": -0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5754,7 +5754,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5766,7 +5766,7 @@
 				"damage": 25,
 				"angle": 0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5787,7 +5787,7 @@
 				"damage": 25,
 				"angle": -0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5799,7 +5799,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5811,7 +5811,7 @@
 				"damage": 25,
 				"angle": 0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5832,7 +5832,7 @@
 				"damage": 25,
 				"angle": -0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5844,7 +5844,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -5856,7 +5856,7 @@
 				"damage": 25,
 				"angle": 0.1,
 				"range": 180,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [
 					10
@@ -6033,7 +6033,7 @@
 				"damage": 60,
 				"angle": "-0.2",
 				"range": 320,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": [],
 				"effects": [
@@ -6049,7 +6049,7 @@
 				"damage": 60,
 				"angle": "0",
 				"range": 320,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": [],
 				"effects": [
@@ -6065,7 +6065,7 @@
 				"damage": 60,
 				"angle": "0.2",
 				"range": 320,
-				"size": 20,
+				"size": 24,
 				"magnitude": 4,
 				"flags": [],
 				"effects": [
@@ -6127,7 +6127,7 @@
 				"damage": 90,
 				"angle": "0",
 				"range": 300,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5.5,
 				"amplitude": 4,
 				"frequency": 30,
@@ -6141,7 +6141,7 @@
 				"damage": 90,
 				"angle": "0",
 				"range": 300,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5.5,
 				"amplitude": -4,
 				"frequency": 30,
@@ -6463,7 +6463,7 @@
 				"positionMode": 0,
 				"angle": "0",
 				"range": 300,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6533,7 +6533,7 @@
 				"positionMode": 0,
 				"angle": "0",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6556,7 +6556,7 @@
 				"positionMode": 0,
 				"angle": "0",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6579,7 +6579,7 @@
 				"positionMode": 0,
 				"angle": "0",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6602,7 +6602,7 @@
 				"positionMode": 0,
 				"angle": "0",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6679,7 +6679,7 @@
 				"positionMode": 0,
 				"angle": "0",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6708,7 +6708,7 @@
 				"positionMode": 0,
 				"angle": "0.1",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6722,7 +6722,7 @@
 				"positionMode": 0,
 				"angle": "-0.1",
 				"range": 150,
-				"size": 16,
+				"size": 24,
 				"magnitude": 5,
 				"damage": 25,
 				"amplitude": 0,
@@ -6745,7 +6745,7 @@
 				"damage": 4,
 				"angle": 0,
 				"range": 153,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			}
@@ -6764,7 +6764,7 @@
 				"damage": 5,
 				"angle": 0,
 				"range": 96,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.7,
 				"flags": []
 			}
@@ -6783,7 +6783,7 @@
 				"damage": 42,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -6802,7 +6802,7 @@
 				"damage": 12,
 				"angle": 0,
 				"range": 192,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -6862,7 +6862,7 @@
 				"damage": 6,
 				"angle": 0,
 				"range": 336,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.7,
 				"flags": []
 			}
@@ -6880,7 +6880,7 @@
 				"damage": 7,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -6898,7 +6898,7 @@
 				"damage": 4,
 				"angle": -0.15,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6908,7 +6908,7 @@
 				"damage": 4,
 				"angle": -0.107,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6918,7 +6918,7 @@
 				"damage": 4,
 				"angle": -0.064,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6928,7 +6928,7 @@
 				"damage": 4,
 				"angle": -0.021,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6938,7 +6938,7 @@
 				"damage": 4,
 				"angle": 0,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6948,7 +6948,7 @@
 				"damage": 4,
 				"angle": 0.021,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6958,7 +6958,7 @@
 				"damage": 4,
 				"angle": 0.064,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6968,7 +6968,7 @@
 				"damage": 4,
 				"angle": 0.107,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			},
@@ -6978,7 +6978,7 @@
 				"damage": 4,
 				"angle": 0.15,
 				"range": 160,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -6996,7 +6996,7 @@
 				"damage": 6,
 				"angle": 0,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -7015,7 +7015,7 @@
 				"damage": 28,
 				"angle": 0,
 				"range": 224,
-				"size": 20,
+				"size": 24,
 				"magnitude": 2.6,
 				"flags": []
 			}
@@ -7033,7 +7033,7 @@
 				"damage": 19,
 				"angle": 0,
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -7051,7 +7051,7 @@
 				"damage": 2,
 				"angle": 0,
 				"range": 128,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -7069,7 +7069,7 @@
 				"damage": 11,
 				"angle": 0,
 				"range": 224,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.7,
 				"flags": []
 			}
@@ -7087,7 +7087,7 @@
 				"damage": 2,
 				"angle": 0,
 				"range": 256,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -7105,7 +7105,7 @@
 				"damage": 28,
 				"angle": 0,
 				"range": 465,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -7123,7 +7123,7 @@
 				"damage": 53,
 				"angle": 0,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -7142,7 +7142,7 @@
 				"damage": 35,
 				"angle": 0,
 				"range": 128,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -7160,7 +7160,7 @@
 				"damage": 120,
 				"angle": 0,
 				"range": 672,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			},
@@ -7170,7 +7170,7 @@
 				"damage": 120,
 				"angle": 1.0472,
 				"range": 672,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			},
@@ -7180,7 +7180,7 @@
 				"damage": 120,
 				"angle": 2.0944,
 				"range": 672,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			},
@@ -7190,7 +7190,7 @@
 				"damage": 120,
 				"angle": 3.1416,
 				"range": 672,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			},
@@ -7200,7 +7200,7 @@
 				"damage": 120,
 				"angle": 4.1888,
 				"range": 672,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			},
@@ -7210,7 +7210,7 @@
 				"damage": 120,
 				"angle": 5.236,
 				"range": 672,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			}
@@ -7228,7 +7228,7 @@
 				"damage": 8,
 				"angle": 0,
 				"range": 96,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -7247,7 +7247,7 @@
 				"damage": 15,
 				"angle": 0,
 				"range": 128,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			}
@@ -7265,7 +7265,7 @@
 				"damage": 33,
 				"angle": 0,
 				"range": 192,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -7283,7 +7283,7 @@
 				"damage": 25,
 				"angle": -0.15,
 				"range": 768,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7293,7 +7293,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 768,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7303,7 +7303,7 @@
 				"damage": 25,
 				"angle": 0.15,
 				"range": 768,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -7321,7 +7321,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 288,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			}
@@ -7340,7 +7340,7 @@
 				"damage": 10,
 				"angle": 0,
 				"range": 432,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -7358,7 +7358,7 @@
 				"damage": 13,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -7376,7 +7376,7 @@
 				"damage": 16,
 				"angle": 0,
 				"range": 313,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -7394,7 +7394,7 @@
 				"damage": 25,
 				"angle": -0.15,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			},
@@ -7404,7 +7404,7 @@
 				"damage": 25,
 				"angle": 0.15,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -7422,7 +7422,7 @@
 				"damage": 42,
 				"angle": -0.15,
 				"range": 416,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -7432,7 +7432,7 @@
 				"damage": 42,
 				"angle": 0,
 				"range": 416,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			},
@@ -7442,7 +7442,7 @@
 				"damage": 42,
 				"angle": 0.15,
 				"range": 416,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -7460,7 +7460,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 336,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			}
@@ -7478,7 +7478,7 @@
 				"damage": 70,
 				"angle": 0,
 				"range": 512,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -7497,7 +7497,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 352,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -7515,7 +7515,7 @@
 				"damage": 0,
 				"angle": 0,
 				"range": 492,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			}
@@ -7533,7 +7533,7 @@
 				"damage": 50,
 				"angle": 0,
 				"range": 691,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			},
@@ -7543,7 +7543,7 @@
 				"damage": 50,
 				"angle": 1.2566,
 				"range": 691,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			},
@@ -7553,7 +7553,7 @@
 				"damage": 50,
 				"angle": 2.5132,
 				"range": 691,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			},
@@ -7563,7 +7563,7 @@
 				"damage": 50,
 				"angle": 3.7698,
 				"range": 691,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			},
@@ -7573,7 +7573,7 @@
 				"damage": 50,
 				"angle": 5.0264,
 				"range": 691,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -7585,14 +7585,13 @@
 		"col": 2,
 		"spriteKey": "lofiProjectiles.png",
 		"projectiles": [
-			
 			{
 				"projectileId": 147,
 				"positionMode": 0,
 				"damage": 120,
 				"angle": -0.167,
 				"range": 432,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -7602,7 +7601,7 @@
 				"damage": 120,
 				"angle": 0,
 				"range": 432,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -7612,7 +7611,7 @@
 				"damage": 120,
 				"angle": 0.167,
 				"range": 432,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -7630,7 +7629,7 @@
 				"damage": 20,
 				"angle": 0,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7640,7 +7639,7 @@
 				"damage": 20,
 				"angle": 0.5236,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7650,7 +7649,7 @@
 				"damage": 20,
 				"angle": 1.0472,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7660,7 +7659,7 @@
 				"damage": 20,
 				"angle": 1.5708,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7670,7 +7669,7 @@
 				"damage": 20,
 				"angle": 2.0944,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7680,7 +7679,7 @@
 				"damage": 20,
 				"angle": 2.618,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7690,7 +7689,7 @@
 				"damage": 20,
 				"angle": 3.1416,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7700,7 +7699,7 @@
 				"damage": 20,
 				"angle": 3.6652,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7710,7 +7709,7 @@
 				"damage": 20,
 				"angle": 4.1888,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7720,7 +7719,7 @@
 				"damage": 20,
 				"angle": 4.7124,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7730,7 +7729,7 @@
 				"damage": 20,
 				"angle": 5.236,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7740,7 +7739,7 @@
 				"damage": 20,
 				"angle": 5.7596,
 				"range": 353,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -7759,7 +7758,7 @@
 				"damage": 11,
 				"angle": 0,
 				"range": 96,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			}
@@ -7778,7 +7777,7 @@
 				"damage": 30,
 				"angle": 0,
 				"range": 312,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.3,
 				"flags": []
 			}
@@ -7797,7 +7796,7 @@
 				"damage": 70,
 				"angle": 0,
 				"range": 364,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -7816,7 +7815,7 @@
 				"damage": 90,
 				"angle": 0,
 				"range": 489,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -7834,7 +7833,7 @@
 				"damage": 25,
 				"angle": -0.15,
 				"range": 457,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			},
@@ -7844,7 +7843,7 @@
 				"damage": 25,
 				"angle": 0,
 				"range": 457,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			},
@@ -7854,7 +7853,7 @@
 				"damage": 25,
 				"angle": 0.15,
 				"range": 457,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -7872,7 +7871,7 @@
 				"damage": 60,
 				"angle": -0.15,
 				"range": 320,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			},
@@ -7882,7 +7881,7 @@
 				"damage": 60,
 				"angle": -0.05,
 				"range": 320,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			},
@@ -7892,7 +7891,7 @@
 				"damage": 60,
 				"angle": 0.05,
 				"range": 320,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			},
@@ -7902,7 +7901,7 @@
 				"damage": 60,
 				"angle": 0.15,
 				"range": 320,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			}
@@ -7920,7 +7919,7 @@
 				"damage": 65,
 				"angle": -0.25,
 				"range": 358,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7930,7 +7929,7 @@
 				"damage": 65,
 				"angle": 0,
 				"range": 358,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7940,7 +7939,7 @@
 				"damage": 65,
 				"angle": 0.25,
 				"range": 358,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -7958,7 +7957,7 @@
 				"damage": 100,
 				"angle": -0.25,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7968,7 +7967,7 @@
 				"damage": 100,
 				"angle": -0.125,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7978,7 +7977,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7988,7 +7987,7 @@
 				"damage": 100,
 				"angle": 0.125,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -7998,7 +7997,7 @@
 				"damage": 100,
 				"angle": 0.25,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -8017,7 +8016,7 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 128,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.4,
 				"flags": []
 			}
@@ -8036,7 +8035,7 @@
 				"damage": 70,
 				"angle": -0.15,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8046,7 +8045,7 @@
 				"damage": 70,
 				"angle": -0.05,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8056,7 +8055,7 @@
 				"damage": 70,
 				"angle": 0.05,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8066,7 +8065,7 @@
 				"damage": 70,
 				"angle": 0.15,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -8085,7 +8084,7 @@
 				"damage": 42,
 				"angle": 0,
 				"range": 192,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -8103,7 +8102,7 @@
 				"damage": 39,
 				"angle": 0,
 				"range": 96,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -8121,7 +8120,7 @@
 				"damage": 65,
 				"angle": -0.15,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8131,7 +8130,7 @@
 				"damage": 65,
 				"angle": -0.075,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8141,7 +8140,7 @@
 				"damage": 65,
 				"angle": 0,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8151,7 +8150,7 @@
 				"damage": 65,
 				"angle": 0.075,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			},
@@ -8161,7 +8160,7 @@
 				"damage": 65,
 				"angle": 0.15,
 				"range": 460,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -8179,7 +8178,7 @@
 				"damage": 80,
 				"angle": 0,
 				"range": 352,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.1,
 				"flags": []
 			}
@@ -8197,7 +8196,7 @@
 				"damage": 0,
 				"angle": 0,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 2.9,
 				"flags": []
 			}
@@ -8215,7 +8214,7 @@
 				"damage": 100,
 				"angle": -0.25,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -8225,7 +8224,7 @@
 				"damage": 100,
 				"angle": -0.083,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -8235,7 +8234,7 @@
 				"damage": 100,
 				"angle": 0.083,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			},
@@ -8245,7 +8244,7 @@
 				"damage": 100,
 				"angle": 0.25,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3,
 				"flags": []
 			}
@@ -8338,7 +8337,7 @@
 				"damage": 65,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.6,
 				"flags": []
 			}
@@ -8635,7 +8634,7 @@
 				"damage": 125,
 				"angle": -0.15,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			},
@@ -8645,7 +8644,7 @@
 				"damage": 125,
 				"angle": -0.075,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			},
@@ -8655,7 +8654,7 @@
 				"damage": 125,
 				"angle": 0,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			},
@@ -8665,7 +8664,7 @@
 				"damage": 125,
 				"angle": 0.075,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			},
@@ -8675,7 +8674,7 @@
 				"damage": 125,
 				"angle": 0.15,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			}
@@ -8693,7 +8692,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 220,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4,
 				"flags": []
 			}
@@ -8711,7 +8710,7 @@
 				"damage": 0,
 				"angle": 0,
 				"range": 469,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			}
@@ -8749,7 +8748,7 @@
 				"damage": 70,
 				"angle": 0,
 				"range": 664,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -8767,7 +8766,7 @@
 				"damage": 90,
 				"angle": 0,
 				"range": 384,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.6,
 				"flags": []
 			}
@@ -8805,7 +8804,7 @@
 				"damage": 150,
 				"angle": -0.15,
 				"range": 115,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			},
@@ -8815,7 +8814,7 @@
 				"damage": 150,
 				"angle": 0,
 				"range": 115,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			},
@@ -8825,7 +8824,7 @@
 				"damage": 150,
 				"angle": 0.15,
 				"range": 115,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			}
@@ -8843,7 +8842,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.5,
 				"flags": []
 			}
@@ -8880,7 +8879,7 @@
 				"damage": 90,
 				"angle": 0,
 				"range": 520,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			}
@@ -8899,7 +8898,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 480,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.6,
 				"flags": []
 			}
@@ -8917,7 +8916,7 @@
 				"damage": 110,
 				"angle": 0,
 				"range": 288,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": [
 					12
@@ -8974,7 +8973,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 448,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.6,
 				"flags": []
 			}
@@ -8992,7 +8991,7 @@
 				"damage": 90,
 				"angle": -0.15,
 				"range": 336,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.6,
 				"flags": []
 			},
@@ -9002,7 +9001,7 @@
 				"damage": 90,
 				"angle": 0.15,
 				"range": 336,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.6,
 				"flags": []
 			}
@@ -9186,7 +9185,7 @@
 				"damage": 60,
 				"angle": 0,
 				"range": 1152,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.8,
 				"flags": []
 			}
@@ -9261,7 +9260,7 @@
 				"damage": 45,
 				"angle": 0,
 				"range": 528,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.7,
 				"flags": []
 			}
@@ -9279,7 +9278,7 @@
 				"damage": 65,
 				"angle": 0,
 				"range": 528,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.1,
 				"flags": []
 			}
@@ -9463,7 +9462,7 @@
 				"damage": 135,
 				"angle": 0,
 				"range": 560,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.9,
 				"flags": []
 			}
@@ -9482,7 +9481,7 @@
 				"damage": 160,
 				"angle": 0,
 				"range": 560,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.3,
 				"flags": []
 			}
@@ -9500,7 +9499,7 @@
 				"damage": 160,
 				"angle": 0,
 				"range": 403,
-				"size": 16,
+				"size": 24,
 				"magnitude": 4.2,
 				"flags": []
 			}
@@ -9618,7 +9617,7 @@
 				"damage": 100,
 				"angle": 0,
 				"range": 281,
-				"size": 16,
+				"size": 24,
 				"magnitude": 3.8,
 				"flags": []
 			}
@@ -9754,7 +9753,7 @@
 				"damage": 10,
 				"angle": -0.3,
 				"range": 70,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [],
 				"effects": [
@@ -9774,7 +9773,7 @@
 				"damage": 10,
 				"angle": 0,
 				"range": 70,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [],
 				"effects": [
@@ -9794,7 +9793,7 @@
 				"damage": 10,
 				"angle": 0.3,
 				"range": 70,
-				"size": 20,
+				"size": 24,
 				"magnitude": 5,
 				"flags": [],
 				"effects": [

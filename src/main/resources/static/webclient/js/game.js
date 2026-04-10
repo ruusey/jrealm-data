@@ -15,6 +15,11 @@ export const StatusEffect = {
 
 export const CLASS_NAMES = ['Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'Knight', 'Paladin', 'Assassin', 'Necromancer', 'Mystic', 'Trickster', 'Sorcerer', 'Huntress'];
 
+// Circle-collision radius factor for projectile vs entity hit detection.
+// radius = sprite_size * BULLET_HIT_RADIUS_FACTOR. Mirrors GlobalConstants.HIT_RADIUS_FACTOR
+// in the Java server — keep these two values in sync or hits will desync.
+export const BULLET_HIT_RADIUS_FACTOR = 0.4;
+
 export class GameState {
     constructor() {
         this.playerId = null;
@@ -689,9 +694,10 @@ export class GameState {
         if (futureX <= 0 || futureX + size >= mapW) return true;
         if (futureY <= 0 || futureY + size >= mapH) return true;
 
-        // Collision tile check — 85% hitbox, ±5 tile radius
-        // Matches server TileManager.collisionTile exactly
-        const hitSize = Math.floor(size * 0.85);
+        // Collision tile check — 65% hitbox (tighter than sprite), ±5 tile radius.
+        // Tighter hitbox makes movement more forgiving around objects/corners.
+        // MUST match server TileManager.collisionTile exactly (also 0.65f).
+        const hitSize = Math.floor(size * 0.65);
         const cx = Math.floor(entity.pos.x / ts);
         const cy = Math.floor(entity.pos.y / ts);
         for (let ty = cy - 5; ty <= cy + 5; ty++) {
@@ -954,19 +960,28 @@ export class GameState {
             // Player bullets have flag 10 (PLAYER_PROJECTILE). Skip everything else.
             // Predicts: damage text, HP bar reduction, and enemy death.
             // Server remains authoritative — corrections arrive via LoadPacket/TextEffect.
+            //
+            // Circle-vs-circle hit test. radius = size * BULLET_HIT_RADIUS_FACTOR.
+            // Centers come from (pos + size/2). MUST match the server's circleHit()
+            // in RealmManagerServer.java exactly.
             const isPlayerBullet = b._predicted || (b.flags && b.flags.includes(ProjectileFlag.PLAYER_PROJECTILE));
             if (!isPlayerBullet) continue;
             const bSize = b.size || 4;
-            const bx = b.pos.x, by = b.pos.y;
+            const br = bSize * BULLET_HIT_RADIUS_FACTOR;
+            const bcx = b.pos.x + bSize * 0.5;
+            const bcy = b.pos.y + bSize * 0.5;
             for (const [eid, enemy] of this.enemies) {
                 if (!enemy.pos || enemy._predictedDead) continue;
                 const eSize = enemy.size || 32;
-                // Quick distance cull before AABB
-                const edx = bx - enemy.pos.x, edy = by - enemy.pos.y;
-                if (edx > eSize + 8 || edx < -bSize - 8 || edy > eSize + 8 || edy < -bSize - 8) continue;
-                // AABB overlap
-                if (bx < enemy.pos.x + eSize && bx + bSize > enemy.pos.x &&
-                    by < enemy.pos.y + eSize && by + bSize > enemy.pos.y) {
+                const er = eSize * BULLET_HIT_RADIUS_FACTOR;
+                const ecx = enemy.pos.x + eSize * 0.5;
+                const ecy = enemy.pos.y + eSize * 0.5;
+                const edx = bcx - ecx;
+                const edy = bcy - ecy;
+                const rsum = br + er;
+                // Quick AABB cull on bounding square (cheaper than the squared compare)
+                if (edx > rsum || edx < -rsum || edy > rsum || edy < -rsum) continue;
+                if ((edx * edx + edy * edy) < (rsum * rsum)) {
                     // Predict damage and apply to local enemy state
                     if (b.damage > 0 && enemy.maxHealth > 0) {
                         const dmg = Math.max(Math.floor(b.damage * 0.85), 1);
