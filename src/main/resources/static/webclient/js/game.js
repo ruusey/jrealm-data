@@ -369,6 +369,31 @@ export class GameState {
             }
         }
         for (const b of packet.bullets) {
+            // SMART CORRECTION: if we already know this bullet, don't snap-overwrite
+            // its predicted position. Bullet physics is deterministic — once we know
+            // the angle/magnitude/flags, the client predicts the same trajectory as
+            // the server. Re-sends from the server (e.g. when the player moves out
+            // and back into view) would otherwise jerk the bullet backward and look
+            // like it got "cut off". We only large-correct if the divergence is huge
+            // (likely a packet loss / desync), and small drifts are absorbed silently.
+            const existing = this.bullets.get(b.id);
+            if (existing) {
+                const dxErr = existing.pos.x - b.pos.x;
+                const dyErr = existing.pos.y - b.pos.y;
+                const errSq = dxErr * dxErr + dyErr * dyErr;
+                // > 128px (4 tiles) means something went very wrong — accept server pos.
+                // Otherwise, keep client prediction (it's authoritative for in-flight bullets).
+                if (errSq < 128 * 128) {
+                    // Refresh authoritative server fields without touching the predicted
+                    // position or _clientCreatedTime / _traveled.
+                    existing.range = b.range;
+                    existing.damage = b.damage;
+                    existing.flags = b.flags;
+                    continue;
+                }
+                // else: fall through and overwrite (large divergence)
+            }
+
             const bullet = {
                 ...b, dx: b.dX, dy: b.dY,
                 targetX: b.pos.x, targetY: b.pos.y,
@@ -389,6 +414,12 @@ export class GameState {
                 bullet.pos.x += Math.sin(b.angle) * b.magnitude * catchupScale;
                 bullet.pos.y += Math.cos(b.angle) * b.magnitude * catchupScale;
                 bullet._traveled = b.magnitude * catchupScale;
+                // Backdate the client-creation time so that the lifetime check
+                // (now - _clientCreatedTime > 10000) accounts for the server-side
+                // age the bullet had at the moment we received it. Without this,
+                // long-lived bullets get expired by the server before the client
+                // expects, producing a "cut off" disappearance.
+                bullet._clientCreatedTime = Date.now() - oneWayMs;
             }
             this.bullets.set(b.id, bullet);
         }
@@ -688,8 +719,10 @@ export class GameState {
         return false;
     }
 
-    // Check if player is on a slow tile (matches server collidesSlowTile)
-    // Matches server TileManager.collidesSlowTile — checks BASE layer (not collision layer)
+    // Check if player is on a slow tile (matches server collidesSlowTile).
+    // Simple center-cell lookup — must match the server exactly. Previously used
+    // an AABB check with a 14x14 hitbox while the server used 28x28, which caused
+    // disagreement near tile boundaries and player position snap/desync.
     _isOnSlowTile(entity) {
         if (!this.mapTiles || !this.tileData) return false;
         const ts = this.tileSize || 32;
@@ -700,12 +733,7 @@ export class GameState {
         const tile = this.mapTiles[cy]?.[cx];
         if (!tile || tile.base <= 0) return false;
         const tileDef = this.tileData[tile.base];
-        if (!tileDef?.data?.slows) return false;
-        const tileX = cx * ts, tileY = cy * ts;
-        // Server uses size/2 hitbox for slow tile detection, not full size
-        const halfSize = Math.floor(size / 2);
-        return (entity.pos.x < tileX + ts && entity.pos.x + halfSize > tileX &&
-                entity.pos.y < tileY + ts && entity.pos.y + halfSize > tileY);
+        return !!(tileDef?.data?.slows);
     }
 
     updateVisualEffects() {
