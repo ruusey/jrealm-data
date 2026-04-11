@@ -8,6 +8,10 @@ export class InputHandler {
         this.mouseDown = [false, false, false];
         this.mouseClicked = [false, false, false];
         this.chatMode = false;
+        // True while the in-game options menu overlay is open. When set, game
+        // input (movement, shoot, ability, chat) is blocked just like chatMode.
+        // The menu itself handles its own key events via a dedicated listener.
+        this.menuOpen = false;
         this.autofire = false;
 
         // Movement state
@@ -25,6 +29,11 @@ export class InputHandler {
     }
 
     onKeyDown(e) {
+        // When the options menu is open, only let Escape through so the main
+        // handler can close the menu. Everything else is swallowed so the
+        // game loop doesn't pick up keys the user is pressing inside form
+        // controls (e.g. typing in a rebind listener).
+        if (this.menuOpen && e.key !== 'Escape') return;
         if (this.chatMode && e.key !== 'Enter' && e.key !== 'Escape') return;
         this.keys[e.code] = true;
         // Prevent browser defaults for game keys
@@ -61,7 +70,7 @@ export class InputHandler {
     // NORTH=0, SOUTH=1, EAST=2, WEST=3, NONE=4
     // Server only supports 4 cardinal directions, pick dominant axis for diagonals
     getMovementDirection() {
-        if (this.chatMode) return { dir: 4, moving: false, dx: 0, dy: 0 };
+        if (this.chatMode || this.menuOpen) return { dir: 4, moving: false, dx: 0, dy: 0 };
 
         let dx = 0, dy = 0;
         if (this.isKeyDown('KeyW') || this.isKeyDown('ArrowUp'))    dy -= 1;
@@ -91,8 +100,8 @@ export class InputHandler {
         return { dir, moving, dx, dy };
     }
 
-    wantsShoot() { return (this.mouseDown[0] || this.autofire) && !this.chatMode; }
-    wantsAbility() { return this.consumeClick(2) && !this.chatMode; }
+    wantsShoot() { return (this.mouseDown[0] || this.autofire) && !this.chatMode && !this.menuOpen; }
+    wantsAbility() { return this.consumeClick(2) && !this.chatMode && !this.menuOpen; }
 
     toggleAutofire() {
         this.autofire = !this.autofire;

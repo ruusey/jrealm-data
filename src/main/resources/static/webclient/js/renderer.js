@@ -1,6 +1,6 @@
 // PixiJS-based game renderer
 
-import { CLASS_NAMES, StatusEffect } from './game.js';
+import { CLASS_NAMES, StatusEffect, ProjectileFlag } from './game.js';
 
 const BASE_SPRITE_SIZE = 8;  // Sprite sheet cell size (pixels in sheet)
 const PLAYER_SIZE = 28;      // World collision size for players
@@ -447,8 +447,25 @@ export class GameRenderer {
         const screenW = this.app.screen.width, screenH = this.app.screen.height;
         const MAX_RENDERED_BULLETS = 200;
         let bulletCount = 0;
+        // User setting: hide OTHER players' projectiles entirely to save CPU
+        // in crowded areas. Our own bullets and enemy bullets always render.
+        const hideOtherPlayerBullets = !!(gameState.settings
+                && gameState.settings.graphics
+                && gameState.settings.graphics.hideOtherPlayerBullets);
+        const localPlayerId = gameState.playerId;
 
         for (const [id, bullet] of gameState.bullets) {
+            // Filter out other players' bullets when the setting is enabled.
+            // A bullet is a "player bullet" iff it has the PLAYER_PROJECTILE
+            // flag. It's MINE iff its srcEntityId matches my player id (or it
+            // was locally predicted and has a negative id).
+            if (hideOtherPlayerBullets && bullet.flags
+                    && bullet.flags.includes(ProjectileFlag.PLAYER_PROJECTILE)) {
+                const isMine = bullet._predicted
+                        || (bullet.srcEntityId !== undefined && bullet.srcEntityId === localPlayerId);
+                if (!isMine) continue;
+            }
+
             const sx = bullet.pos.x * SCALE + offsetX;
             const sy = bullet.pos.y * SCALE + offsetY;
 

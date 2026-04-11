@@ -7,7 +7,7 @@ if (window.location.search) {
 
 import { ApiClient } from './api.js';
 import { GameNetwork } from './network.js';
-import { GameState, CLASS_NAMES, ProjectileFlag, StatusEffect } from './game.js';
+import { GameState, CLASS_NAMES, ProjectileFlag, StatusEffect, saveSettings } from './game.js';
 import { GameRenderer } from './renderer.js';
 import { InputHandler } from './input.js';
 import { PacketId, PacketWriters } from './codec.js';
@@ -862,6 +862,9 @@ function returnToCharacterSelect() {
         renderer = null;
     }
 
+    // Close the options menu if it's open (we're leaving the game screen)
+    closeOptionsMenu();
+
     // Refresh account data and show character select
     if (account && api.sessionToken) {
         api.getAccount(api.accountGuid).then(acc => {
@@ -871,6 +874,219 @@ function returnToCharacterSelect() {
     } else {
         showCharacterSelect();
     }
+}
+
+// ────────────────────────────────────────────────────────────────────────
+// In-game options menu
+// ────────────────────────────────────────────────────────────────────────
+// The menu is an overlay on top of the #game-screen. Opening it sets
+// input.menuOpen = true which blocks movement/shoot/ability/chat keys.
+// The game keeps ticking behind the menu — this is a multiplayer online
+// game, so the world can't be paused. Close via ESC, backdrop click,
+// "Return to Game" button. The "Home Menu" button calls
+// returnToCharacterSelect() (full disconnect + char-select screen).
+
+function openOptionsMenu() {
+    const menuEl = document.getElementById('options-menu');
+    if (!menuEl || !menuEl.hasAttribute('hidden')) return;
+    menuEl.removeAttribute('hidden');
+    input.menuOpen = true;
+    // Clear any held movement keys so the player stops moving when the menu
+    // pops up mid-stride. Otherwise they'll coast in whatever direction they
+    // were moving while the menu is open.
+    input.keys = {};
+}
+
+function closeOptionsMenu() {
+    const menuEl = document.getElementById('options-menu');
+    if (!menuEl || menuEl.hasAttribute('hidden')) return;
+    // Cancel any in-progress key rebind so its capture-phase listener doesn't
+    // leak past the menu close and silently capture the next key the user presses.
+    if (_rebindCleanup) _rebindCleanup();
+    menuEl.setAttribute('hidden', '');
+    input.menuOpen = false;
+    // Persist any changes made in the menu
+    if (game && game.settings) saveSettings(game.settings);
+}
+
+function toggleOptionsMenu() {
+    const menuEl = document.getElementById('options-menu');
+    if (!menuEl) return;
+    if (menuEl.hasAttribute('hidden')) openOptionsMenu();
+    else closeOptionsMenu();
+}
+
+// Bind the menu's event handlers once at startup. Called from the end of
+// initialization so DOM elements are guaranteed to exist.
+function initOptionsMenu() {
+    const menuEl = document.getElementById('options-menu');
+    if (!menuEl) return;
+
+    // Backdrop click = close (but clicks on the panel itself stay open)
+    document.getElementById('options-backdrop').addEventListener('click', closeOptionsMenu);
+
+    // Tab switching
+    const tabBtns = menuEl.querySelectorAll('.options-tab');
+    const tabPanels = menuEl.querySelectorAll('.options-tab-panel');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.dataset.tab;
+            tabBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+            tabPanels.forEach(p => p.classList.toggle('active', p.dataset.tab === tab));
+        });
+    });
+
+    // Footer buttons
+    document.getElementById('options-resume-btn').addEventListener('click', closeOptionsMenu);
+    document.getElementById('options-home-btn').addEventListener('click', () => {
+        closeOptionsMenu();
+        returnToCharacterSelect();
+    });
+
+    // Mobile gear button opens the menu
+    const mobileOptBtn = document.getElementById('mobile-options-btn');
+    if (mobileOptBtn) {
+        mobileOptBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openOptionsMenu();
+        });
+    }
+
+    // ── Form control wiring — read initial values from game.settings ──
+    const s = game.settings;
+
+    // Graphics
+    bindCheckbox('opt-hide-other-bullets', () => s.graphics.hideOtherPlayerBullets,
+        v => s.graphics.hideOtherPlayerBullets = v);
+    bindCheckbox('opt-show-damage-numbers', () => s.graphics.showDamageNumbers,
+        v => s.graphics.showDamageNumbers = v);
+    bindCheckbox('opt-show-player-names', () => s.graphics.showPlayerNames,
+        v => s.graphics.showPlayerNames = v);
+    bindSelect('opt-render-quality', () => s.graphics.renderQuality,
+        v => s.graphics.renderQuality = v);
+    bindSelect('opt-max-bullets', () => String(s.graphics.maxBulletsOnScreen),
+        v => s.graphics.maxBulletsOnScreen = parseInt(v, 10));
+
+    // Mobile controls
+    bindRange('opt-joystick-sens', 'opt-joystick-sens-val',
+        () => s.mobile.joystickSensitivity, v => s.mobile.joystickSensitivity = v,
+        v => v.toFixed(1));
+    bindCheckbox('opt-left-handed', () => s.mobile.leftHanded, v => s.mobile.leftHanded = v);
+    bindCheckbox('opt-haptic', () => s.mobile.haptic, v => s.mobile.haptic = v);
+
+    // Audio
+    bindRange('opt-vol-master', 'opt-vol-master-val', () => s.audio.master,
+        v => s.audio.master = v, v => Math.round(v * 100) + '%');
+    bindRange('opt-vol-sfx', 'opt-vol-sfx-val', () => s.audio.sfx,
+        v => s.audio.sfx = v, v => Math.round(v * 100) + '%');
+    bindRange('opt-vol-music', 'opt-vol-music-val', () => s.audio.music,
+        v => s.audio.music = v, v => Math.round(v * 100) + '%');
+
+    // Keybind table (desktop controls tab)
+    buildKeybindTable();
+}
+
+function bindCheckbox(id, get, set) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.checked = !!get();
+    el.addEventListener('change', () => set(el.checked));
+}
+
+function bindSelect(id, get, set) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.value = String(get());
+    el.addEventListener('change', () => set(el.value));
+}
+
+function bindRange(id, labelId, get, set, format) {
+    const el = document.getElementById(id);
+    const labelEl = document.getElementById(labelId);
+    if (!el) return;
+    el.value = String(get());
+    if (labelEl) labelEl.textContent = format(get());
+    el.addEventListener('input', () => {
+        const v = parseFloat(el.value);
+        set(v);
+        if (labelEl) labelEl.textContent = format(v);
+    });
+}
+
+// Keybind table rows — only movement keys are actually rebindable for now.
+// The rest are rendered as "locked" with a "coming soon" tag.
+const KEYBIND_ROWS = [
+    { action: 'moveUp',    label: 'Move Up',         locked: false },
+    { action: 'moveDown',  label: 'Move Down',       locked: false },
+    { action: 'moveLeft',  label: 'Move Left',       locked: false },
+    { action: 'moveRight', label: 'Move Right',      locked: false },
+    { action: 'shoot',     label: 'Shoot',           locked: true  },
+    { action: 'ability',   label: 'Ability',         locked: true  },
+    { action: 'chat',      label: 'Open Chat',       locked: true  },
+    { action: 'autofire',  label: 'Toggle Autofire', locked: true  },
+    { action: 'inventory', label: 'Open Inventory',  locked: true  },
+    { action: 'menu',      label: 'Open Menu',       locked: true  }
+];
+
+function formatKeyCode(code) {
+    if (!code) return '—';
+    if (code.startsWith('Key')) return code.substring(3);
+    if (code.startsWith('Mouse')) return 'Mouse' + code.substring(5);
+    return code;
+}
+
+function buildKeybindTable() {
+    const tableEl = document.getElementById('opt-keybind-table');
+    if (!tableEl) return;
+    tableEl.innerHTML = '';
+    const bindings = game.settings.controls.bindings;
+    for (const row of KEYBIND_ROWS) {
+        const rowEl = document.createElement('div');
+        rowEl.className = 'keybind-row' + (row.locked ? ' locked' : '');
+        rowEl.innerHTML = `
+            <span class="keybind-label">${row.label}</span>
+            <span class="keybind-value">${formatKeyCode(bindings[row.action])}</span>
+            ${row.locked ? '' : '<button type="button" class="keybind-rebind-btn">Rebind</button>'}
+        `;
+        if (!row.locked) {
+            const btn = rowEl.querySelector('.keybind-rebind-btn');
+            btn.addEventListener('click', () => startRebind(row.action, rowEl));
+        }
+        tableEl.appendChild(rowEl);
+    }
+}
+
+let _rebindCleanup = null;
+function startRebind(action, rowEl) {
+    // Cancel any in-progress rebind
+    if (_rebindCleanup) _rebindCleanup();
+
+    rowEl.classList.add('rebinding');
+    const valueEl = rowEl.querySelector('.keybind-value');
+    valueEl.textContent = 'press key';
+
+    const listener = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.key === 'Escape') {
+            // Cancel rebind, restore original
+            cleanup();
+            valueEl.textContent = formatKeyCode(game.settings.controls.bindings[action]);
+            return;
+        }
+        game.settings.controls.bindings[action] = e.code;
+        valueEl.textContent = formatKeyCode(e.code);
+        cleanup();
+    };
+    const cleanup = () => {
+        rowEl.classList.remove('rebinding');
+        window.removeEventListener('keydown', listener, true);
+        _rebindCleanup = null;
+    };
+    _rebindCleanup = cleanup;
+    // Capture phase so we intercept the key before the chat handler etc.
+    window.addEventListener('keydown', listener, true);
 }
 
 // --- Game Start ---
@@ -1270,7 +1486,7 @@ let simAccumulator = 0; // ms of unprocessed time
 
 // Build dirFlags bitmask from current keyboard/touch state
 function sampleDirFlags() {
-    if (input.chatMode) return 0;
+    if (input.chatMode || input.menuOpen) return 0;
     let flags = 0;
     if (isTouchDevice()) {
         const joy = getJoystickDir();
@@ -1279,10 +1495,13 @@ function sampleDirFlags() {
         if (joy.xDir === 3) flags |= 0x04; // left
         if (joy.xDir === 2) flags |= 0x08; // right
     } else {
-        if (input.isKeyDown('KeyW') || input.isKeyDown('ArrowUp'))    flags |= 0x01;
-        if (input.isKeyDown('KeyS') || input.isKeyDown('ArrowDown'))  flags |= 0x02;
-        if (input.isKeyDown('KeyA') || input.isKeyDown('ArrowLeft'))  flags |= 0x04;
-        if (input.isKeyDown('KeyD') || input.isKeyDown('ArrowRight')) flags |= 0x08;
+        // Movement keys are rebindable via the options menu (settings.controls.bindings).
+        // Arrow keys are always available as a fallback regardless of rebindings.
+        const b = (game.settings && game.settings.controls && game.settings.controls.bindings) || {};
+        if (input.isKeyDown(b.moveUp    || 'KeyW') || input.isKeyDown('ArrowUp'))    flags |= 0x01;
+        if (input.isKeyDown(b.moveDown  || 'KeyS') || input.isKeyDown('ArrowDown'))  flags |= 0x02;
+        if (input.isKeyDown(b.moveLeft  || 'KeyA') || input.isKeyDown('ArrowLeft'))  flags |= 0x04;
+        if (input.isKeyDown(b.moveRight || 'KeyD') || input.isKeyDown('ArrowRight')) flags |= 0x08;
     }
     // Cancel opposing directions
     if ((flags & 0x01) && (flags & 0x02)) flags &= ~(0x01 | 0x02);
@@ -1494,10 +1713,12 @@ function processInput(dt) {
         network.sendUseAbility(game.playerId, world.x, world.y);
     }
 
-    // ESC = Return to character select (disconnect and switch character)
+    // ESC = Open/close the in-game options menu. (Used to instant-return to
+    // the character select screen, which was dangerous during combat.) The
+    // "Home Menu" button inside the menu still calls returnToCharacterSelect.
     if (input.isKeyDown('Escape')) {
         input.keys['Escape'] = false;
-        returnToCharacterSelect();
+        toggleOptionsMenu();
         return;
     }
 
@@ -2259,9 +2480,13 @@ document.getElementById('chat-toggle').addEventListener('click', () => {
 repositionJoystick();
 window.addEventListener('resize', repositionJoystick);
 
-// Enter key opens chat
+// Enter key opens chat (but not while the options menu is open — Enter inside
+// the menu would otherwise pop chat open behind the modal)
 window.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && document.activeElement !== chatInput && currentScreen === 'game') {
+    if (e.key === 'Enter'
+            && document.activeElement !== chatInput
+            && currentScreen === 'game'
+            && !input.menuOpen) {
         chatInput.focus();
     }
 });
@@ -2331,3 +2556,4 @@ document.getElementById('portal-enter-btn')?.addEventListener('click', () => {
 
 // --- Init ---
 showScreen('login');
+initOptionsMenu();

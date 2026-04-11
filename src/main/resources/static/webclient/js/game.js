@@ -20,11 +20,89 @@ export const CLASS_NAMES = ['Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'K
 // in the Java server — keep these two values in sync or hits will desync.
 export const BULLET_HIT_RADIUS_FACTOR = 0.4;
 
+// Default user settings — applied on first run and merged over any stored
+// settings when the game loads. Most of these are stubbed for now (stored but
+// not yet wired to gameplay); see the in-game options menu for details.
+export const DEFAULT_SETTINGS = {
+    graphics: {
+        hideOtherPlayerBullets: false,  // Wired: renderer.js bullet loop
+        showDamageNumbers: true,        // Stub
+        showPlayerNames: true,          // Stub
+        renderQuality: 'high',          // Stub
+        maxBulletsOnScreen: 0           // Stub (0 = unlimited)
+    },
+    controls: {
+        // Empty overrides = use hardcoded defaults. Movement keys are wired
+        // for real; other actions are stored but ignored by the game loop.
+        bindings: {
+            moveUp: 'KeyW',
+            moveDown: 'KeyS',
+            moveLeft: 'KeyA',
+            moveRight: 'KeyD',
+            shoot: 'Mouse0',
+            ability: 'Mouse2',
+            chat: 'Enter',
+            autofire: 'KeyI',
+            inventory: 'KeyR',
+            menu: 'Escape'
+        }
+    },
+    mobile: {
+        joystickSensitivity: 1.0,   // Stub
+        leftHanded: false,          // Stub
+        haptic: false               // Stub
+    },
+    audio: {
+        master: 1.0,                // Stub (no audio engine yet)
+        sfx: 1.0,                   // Stub
+        music: 0.7                  // Stub
+    }
+};
+
+// Deep-merge helper — preserves stored values while picking up new default
+// keys added in future releases (backwards-compatible settings migration).
+function mergeSettings(defaults, stored) {
+    if (!stored || typeof stored !== 'object') return JSON.parse(JSON.stringify(defaults));
+    const result = {};
+    for (const key in defaults) {
+        if (typeof defaults[key] === 'object' && defaults[key] !== null && !Array.isArray(defaults[key])) {
+            result[key] = mergeSettings(defaults[key], stored[key]);
+        } else {
+            result[key] = (key in stored) ? stored[key] : defaults[key];
+        }
+    }
+    return result;
+}
+
+export function loadSettings() {
+    try {
+        const raw = localStorage.getItem('or_settings');
+        if (!raw) return mergeSettings(DEFAULT_SETTINGS, null);
+        return mergeSettings(DEFAULT_SETTINGS, JSON.parse(raw));
+    } catch (e) {
+        return mergeSettings(DEFAULT_SETTINGS, null);
+    }
+}
+
+export function saveSettings(settings) {
+    try {
+        localStorage.setItem('or_settings', JSON.stringify(settings));
+    } catch (e) {
+        // localStorage unavailable (private mode / quota) — silently ignore
+    }
+}
+
 export class GameState {
     constructor() {
         this.playerId = null;
         this.playerName = '';
         this.classId = 0;
+
+        // User settings (loaded from localStorage, edited via options menu).
+        // Guaranteed to be populated with the default schema on every construct
+        // so code can read e.g. this.settings.graphics.hideOtherPlayerBullets
+        // without null checks.
+        this.settings = loadSettings();
 
         // Entities keyed by ID (BigInt)
         this.players = new Map();
