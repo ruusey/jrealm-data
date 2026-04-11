@@ -694,10 +694,9 @@ export class GameState {
         if (futureX <= 0 || futureX + size >= mapW) return true;
         if (futureY <= 0 || futureY + size >= mapH) return true;
 
-        // Collision tile check — 65% hitbox (tighter than sprite), ±5 tile radius.
-        // Tighter hitbox makes movement more forgiving around objects/corners.
-        // MUST match server TileManager.collisionTile exactly (also 0.65f).
-        const hitSize = Math.floor(size * 0.65);
+        // Collision tile check — 85% hitbox, ±5 tile radius.
+        // MUST match server TileManager.collisionTile exactly (also 0.85f).
+        const hitSize = Math.floor(size * 0.85);
         const cx = Math.floor(entity.pos.x / ts);
         const cy = Math.floor(entity.pos.y / ts);
         for (let ty = cy - 5; ty <= cy + 5; ty++) {
