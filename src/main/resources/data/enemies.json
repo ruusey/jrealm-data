@@ -4928,11 +4928,19 @@
 						"projectileGroupId": 148,
 						"cooldownMs": 597,
 						"aimMode": "RING",
-						"shotCount": 12
+						"shotCount": 12,
+						"spreadAngle": 10,
+						"sourceNoise": 30,
+						"burstCount": 1,
+						"burstDelayMs": 100
 					},
 					{
 						"projectileGroupId": 149,
-						"cooldownMs": 615
+						"cooldownMs": 615,
+						"spreadAngle": 10,
+						"burstCount": 1,
+						"sourceNoise": 30,
+						"burstDelayMs": 100
 					}
 				]
 			}
