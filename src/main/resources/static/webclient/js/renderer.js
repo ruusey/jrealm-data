@@ -281,7 +281,8 @@ export class GameRenderer {
 
                 if (isWall) {
                     // === WALL 3D EFFECT ===
-                    // Neighbor-aware: only draw effect pieces on edges not covered by another wall.
+                    // Light from NW: bright top/left edges, cast shadow to S + E on floor.
+                    // Neighbor-aware: effect pieces only draw on edges not abutting another wall.
                     const isWallAt = (rr, cc) => {
                         const t = gameState.mapTiles[rr]?.[cc];
                         if (!t || t.collision <= 0) return false;
@@ -292,26 +293,61 @@ export class GameRenderer {
                     const wW = isWallAt(r, c - 1);
                     const wE = isWallAt(r, c + 1);
 
-                    // 1) Thin side face flush below wall (skip if a wall is directly below)
+                    // 1) South ground shadow — tall 3-band gradient, reads as wall depth
                     if (!wS) {
-                        const sideH = Math.max(Math.round(drawSize * 0.1), 2);
-                        const side = new PIXI.Graphics();
-                        side.beginFill(0x222228);
-                        side.drawRect(sx, sy + drawSize, drawSize, sideH);
-                        side.endFill();
-                        this.tileLayer.addChild(side);
+                        const sideH = Math.max(Math.round(drawSize * 0.28), 4);
+                        const bandH = Math.ceil(sideH / 3);
+                        // Extend horizontally to include the SE corner under the east shadow
+                        const xEnd = drawSize + (!wE ? Math.round(drawSize * 0.18) : 0);
+                        const sg = new PIXI.Graphics();
+                        sg.beginFill(0x000000, 0.55).drawRect(sx, sy + drawSize,             xEnd, bandH).endFill();
+                        sg.beginFill(0x000000, 0.32).drawRect(sx, sy + drawSize + bandH,     xEnd, bandH).endFill();
+                        sg.beginFill(0x000000, 0.13).drawRect(sx, sy + drawSize + 2 * bandH, xEnd, bandH).endFill();
+                        this.tileLayer.addChild(sg);
                     }
 
-                    // 2) Small drop shadow (1px offset) - skip if both S and E are walls
-                    if (!(wS && wE)) {
-                        const shadow = new PIXI.Sprite(tex);
-                        shadow.x = sx + 1; shadow.y = sy + 1;
-                        shadow.width = drawSize; shadow.height = drawSize;
-                        shadow.tint = 0x000000; shadow.alpha = 0.2;
-                        this.tileLayer.addChild(shadow);
+                    // 2) East ground shadow — softer, narrower than south
+                    if (!wE) {
+                        const sideW = Math.max(Math.round(drawSize * 0.18), 3);
+                        const bandW = Math.ceil(sideW / 3);
+                        // If N is also open, pull top down a hair so corner doesn't stick out
+                        const startY = sy + (wN ? 0 : 2);
+                        const h = (sy + drawSize) - startY;
+                        const eg = new PIXI.Graphics();
+                        eg.beginFill(0x000000, 0.42).drawRect(sx + drawSize,             startY, bandW, h).endFill();
+                        eg.beginFill(0x000000, 0.24).drawRect(sx + drawSize + bandW,     startY, bandW, h).endFill();
+                        eg.beginFill(0x000000, 0.10).drawRect(sx + drawSize + 2 * bandW, startY, bandW, h).endFill();
+                        this.tileLayer.addChild(eg);
                     }
 
-                    // 3) Thin contour outline (1px) - skip the side that abuts another wall
+                    // 2b) West contact AO — weaker than east (faces NW light but wall still occludes)
+                    if (!wW) {
+                        const sideW = Math.max(Math.round(drawSize * 0.13), 3);
+                        const bandW = Math.ceil(sideW / 3);
+                        const wg = new PIXI.Graphics();
+                        // Gradient fades from near-wall (right) outward (left)
+                        wg.beginFill(0x000000, 0.32).drawRect(sx - bandW,         sy, bandW, drawSize).endFill();
+                        wg.beginFill(0x000000, 0.18).drawRect(sx - 2 * bandW,     sy, bandW, drawSize).endFill();
+                        wg.beginFill(0x000000, 0.08).drawRect(sx - 3 * bandW,     sy, bandW, drawSize).endFill();
+                        this.tileLayer.addChild(wg);
+                    }
+
+                    // 2c) North contact AO — weakest, short
+                    if (!wN) {
+                        const sideH = Math.max(Math.round(drawSize * 0.12), 3);
+                        const bandH = Math.ceil(sideH / 3);
+                        // Pull in from corners if neighbors are open, so it doesn't bleed past
+                        const xStart = sx + (wW ? 0 : 2);
+                        const xEnd   = sx + drawSize - (wE ? 0 : 2);
+                        const w = xEnd - xStart;
+                        const ng = new PIXI.Graphics();
+                        ng.beginFill(0x000000, 0.28).drawRect(xStart, sy - bandH,         w, bandH).endFill();
+                        ng.beginFill(0x000000, 0.15).drawRect(xStart, sy - 2 * bandH,     w, bandH).endFill();
+                        ng.beginFill(0x000000, 0.06).drawRect(xStart, sy - 3 * bandH,     w, bandH).endFill();
+                        this.tileLayer.addChild(ng);
+                    }
+
+                    // 3) Thin contour outline (1px) — skip the side that abuts another wall
                     const outlines = [
                         [ 1,  0, wE],
                         [-1,  0, wW],
@@ -323,15 +359,31 @@ export class GameRenderer {
                         const ol = new PIXI.Sprite(tex);
                         ol.x = sx + ox; ol.y = sy + oy;
                         ol.width = drawSize; ol.height = drawSize;
-                        ol.tint = 0x111118; ol.alpha = 0.5;
+                        ol.tint = 0x111118; ol.alpha = 0.55;
                         this.tileLayer.addChild(ol);
                     }
 
-                    // 4) Main wall tile on top
+                    // 4) Main wall tile
                     const spr = new PIXI.Sprite(tex);
                     spr.x = sx; spr.y = sy;
                     spr.width = drawSize; spr.height = drawSize;
                     this.tileLayer.addChild(spr);
+
+                    // 5) Top-edge rim highlight (light from above) when no wall to the north
+                    if (!wN) {
+                        const hl = new PIXI.Graphics();
+                        hl.beginFill(0xFFFFFF, 0.26).drawRect(sx, sy,     drawSize, 2).endFill();
+                        hl.beginFill(0xFFFFFF, 0.11).drawRect(sx, sy + 2, drawSize, 2).endFill();
+                        this.tileLayer.addChild(hl);
+                    }
+
+                    // 6) Left-edge rim highlight (softer) when no wall to the west
+                    if (!wW) {
+                        const hl = new PIXI.Graphics();
+                        hl.beginFill(0xFFFFFF, 0.14).drawRect(sx,     sy, 1, drawSize).endFill();
+                        hl.beginFill(0xFFFFFF, 0.06).drawRect(sx + 1, sy, 1, drawSize).endFill();
+                        this.tileLayer.addChild(hl);
+                    }
                 } else if (isObject) {
                     // === COLLISION OBJECT WITH GROUND SHADOW ===
                     const shadowG = new PIXI.Graphics();

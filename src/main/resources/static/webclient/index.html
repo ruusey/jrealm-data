@@ -153,6 +153,13 @@
     <!-- Game Screen -->
     <div id="game-screen" class="screen">
         <div id="game-canvas-container"></div>
+        <!-- Difficulty icon — square skull+crossbones, positioned next to the minimap
+             (left of it on desktop, right of it on mobile). Deliberately NOT inside
+             #hud so it can't push the ground-loot-panel off-screen on small viewports. -->
+        <div id="difficulty-icon" style="display:none">
+            <span id="difficulty-skull">☠</span>
+            <span id="difficulty-value">1.0</span>
+        </div>
         <!-- HUD Overlay -->
         <div id="hud">
             <div id="player-identity" style="padding:6px 8px;font-family:monospace;font-weight:bold;font-size:14px;color:#c8a86e;border-bottom:1px solid #333;margin-bottom:4px;text-shadow:1px 1px 2px #000;"></div>
@@ -187,7 +194,6 @@
                 <div id="nearby-label" style="font-size:10px;color:#887868;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Players Nearby</div>
                 <div id="nearby-players"></div>
             </div>
-            <button id="hud-logout-btn" class="small secondary" style="margin-top:8px;width:100%;">Logout</button>
         </div>
         <!-- Chat -->
         <div id="chat-panel">

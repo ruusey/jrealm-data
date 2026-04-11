@@ -21,11 +21,10 @@ export class Minimap {
         this.hoveredPlayer = null;
         this.onTeleport = null; // callback(playerName)
 
-        // Create difficulty badge DOM element (shown between player identity and minimap)
-        this._badgeEl = document.createElement('div');
-        this._badgeEl.style.cssText = 'font:bold 11px monospace;padding:3px 6px;border-radius:3px;margin-bottom:4px;display:none;color:#fff;text-align:center;';
-        const minimapContainer = this.canvas.parentElement;
-        minimapContainer.parentElement.insertBefore(this._badgeEl, minimapContainer);
+        // Difficulty icon lives in the DOM (id="difficulty-icon") so CSS can
+        // position it adjacent to the minimap without being in the HUD stack.
+        this._diffIconEl = document.getElementById('difficulty-icon');
+        this._diffValueEl = document.getElementById('difficulty-value');
 
         this.canvas.addEventListener('wheel', (e) => {
             e.preventDefault();
@@ -239,18 +238,22 @@ export class Minimap {
             }
         }
 
-        // Difficulty badge (DOM element to the left of minimap)
-        if (gameState.difficulty > 0) {
-            const diff = gameState.difficulty;
-            const r = diff <= 2 ? 60 : diff <= 4 ? 180 : diff <= 6 ? 220 : 255;
-            const g = diff <= 2 ? 180 : diff <= 4 ? 160 : diff <= 6 ? 80 : 40;
-            const b = diff <= 2 ? 60 : 40;
-            this._badgeEl.textContent = `☠ ${diff.toFixed(1)}`;
-            this._badgeEl.style.background = `rgba(${r}, ${g}, ${b}, 0.85)`;
-            this._badgeEl.style.border = `1px solid rgb(${r}, ${g}, ${b})`;
-            this._badgeEl.style.display = '';
-        } else {
-            this._badgeEl.style.display = 'none';
+        // Difficulty icon — square skull+crossbones adjacent to the minimap.
+        // DOM element sits outside the HUD flex column so it never pushes the
+        // ground loot panel off screen on small/mobile viewports.
+        if (this._diffIconEl && this._diffValueEl) {
+            if (gameState.difficulty > 0) {
+                const diff = gameState.difficulty;
+                const r = diff <= 2 ? 60 : diff <= 4 ? 180 : diff <= 6 ? 220 : 255;
+                const g = diff <= 2 ? 180 : diff <= 4 ? 160 : diff <= 6 ? 80 : 40;
+                const b = diff <= 2 ? 60 : 40;
+                this._diffValueEl.textContent = diff.toFixed(1);
+                this._diffIconEl.style.background = `rgba(${r}, ${g}, ${b}, 0.9)`;
+                this._diffIconEl.style.borderColor = `rgb(${r}, ${g}, ${b})`;
+                this._diffIconEl.style.display = '';
+            } else {
+                this._diffIconEl.style.display = 'none';
+            }
         }
     }
 
@@ -263,8 +266,6 @@ export class Minimap {
     destroy() {
         this.tileImage = null;
         this.hoveredPlayer = null;
-        if (this._badgeEl && this._badgeEl.parentElement) {
-            this._badgeEl.parentElement.removeChild(this._badgeEl);
-        }
+        if (this._diffIconEl) this._diffIconEl.style.display = 'none';
     }
 }

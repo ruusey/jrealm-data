@@ -2176,6 +2176,9 @@
 		"dungeonId": -1,
 		"terrainId": -1,
 		"difficulty": 3,
+		"dungeonParams": {
+			"bossEnemyId": 13
+		},
 		"data": {
 			"0": [
 				[

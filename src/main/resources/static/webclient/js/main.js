@@ -2258,23 +2258,9 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// --- HUD Logout Button ---
-document.getElementById('hud-logout-btn').addEventListener('click', () => {
-    network.disconnect();
-    api.clearSession();
-    account = null;
-    selectedCharacter = null;
-    localChatRole = null;
-    loginToken = null;
-    loginEmail = '';
-    loginPassword = '';
-    try {
-        localStorage.removeItem('or_guest_email');
-        localStorage.removeItem('or_guest_password');
-        localStorage.removeItem('or_token');
-    } catch (e) {}
-    showScreen('login');
-});
+// In-game logout button removed — logout is only available on the character-select
+// screen (#logout-btn). Keeping it out of the HUD frees vertical space so the
+// ground loot panel stays visible on small/mobile viewports.
 
 // --- Trade Buttons ---
 document.getElementById('trade-confirm-btn').addEventListener('click', () => {
