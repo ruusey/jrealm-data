@@ -205,18 +205,19 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 
 /* Difficulty icon — square skull+crossbones positioned adjacent to the minimap.
    Lives OUTSIDE the HUD flex column so it never steals vertical space from the
-   ground-loot panel etc. 50% larger than the old rectangular text badge. */
+   ground-loot panel etc. */
 #difficulty-icon {
     position: fixed;
     /* Desktop default: left of the minimap.
        HUD is 300px wide on the right (#hud { right: 10px; width: 300px }) so
-       the minimap's left edge sits at right:10 + 300 = 310 from the right.
-       Anchor the icon's RIGHT edge at right:315 so it sits just left of the
-       minimap's left edge with a small gap. */
+       the HUD's left edge sits at right:10 + 300 = 310 from the right.
+       Anchor the icon's RIGHT edge at right:322 so there's a 12px gap between
+       the icon and the HUD — enough to clear the player-identity text padding
+       on the HUD's first row. */
     top: 14px;
-    right: 315px;
-    width: 54px;
-    height: 54px;
+    right: 322px;
+    width: 46px;
+    height: 46px;
     border: 2px solid #a04040;
     border-radius: 6px;
     background: rgba(180, 60, 60, 0.9);
@@ -233,11 +234,11 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     line-height: 1;
 }
 #difficulty-skull {
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1;
 }
 #difficulty-value {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     margin-top: 1px;
 }
@@ -640,17 +641,16 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
         margin: 0 !important;
     }
     /* Mobile: minimap is at top-left, so place the difficulty icon to its RIGHT
-       (there's no space to the left — would be off-screen). Same square shape,
-       same 50%-larger size as desktop. */
+       (there's no space to the left — would be off-screen). */
     #difficulty-icon {
         top: 3px !important;
         left: 104px !important;
         right: auto !important;
-        width: 48px !important;
-        height: 48px !important;
+        width: 40px !important;
+        height: 40px !important;
     }
-    #difficulty-skull { font-size: 24px !important; }
-    #difficulty-value { font-size: 9px !important; }
+    #difficulty-skull { font-size: 20px !important; }
+    #difficulty-value { font-size: 8px !important; }
     #perf-overlay { display: none !important; }
     #touch-joystick { bottom: 140px; left: 10px; }
     #touch-aim { right: 105px; }

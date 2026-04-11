@@ -54,5 +54,13 @@
 		"row": 1,
 		"col": 3,
 		"fullSize": false
+	},
+	{
+		"tierId": 6,
+		"name": "Boosted Bag",
+		"spriteKey": "rotmg-misc.png",
+		"row": 9,
+		"col": 5,
+		"fullSize": false
 	}
 ]
