@@ -2190,10 +2190,18 @@ chatInput.addEventListener('keydown', (e) => {
             chatInput.value = '';
         }
         chatInput.blur();
+        // CRITICAL: stop this Enter from bubbling to the window-level
+        // "Enter opens chat" listener below. Without this, the same Enter
+        // press that sends the message also re-focuses the input, so the
+        // player has to click the game canvas to escape chat.
+        e.preventDefault();
+        e.stopPropagation();
     }
     if (e.key === 'Escape') {
         chatInput.value = '';
         chatInput.blur();
+        e.preventDefault();
+        e.stopPropagation();
     }
 });
 
