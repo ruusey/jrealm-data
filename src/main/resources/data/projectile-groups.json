@@ -9779,7 +9779,7 @@
 			{
 				"projectileId": 229,
 				"positionMode": 0,
-				"angle": "-0.15",
+				"angle": "-0.115",
 				"range": 200,
 				"size": 24,
 				"magnitude": 5,
@@ -9793,7 +9793,7 @@
 			{
 				"projectileId": 229,
 				"positionMode": 0,
-				"angle": "0.15",
+				"angle": "0.115",
 				"range": 200,
 				"size": 24,
 				"magnitude": 5,

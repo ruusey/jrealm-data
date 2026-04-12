@@ -3904,6 +3904,28 @@ function bindEvents() {
     scroll.scrollTo({ left: px - scroll.clientWidth / 2, top: py - scroll.clientHeight / 2, behavior: 'smooth' });
   });
 
+  // Simulate from item detail — fires the item's projectile group in player mode
+  document.getElementById('simItemProjBtn').addEventListener('click', () => {
+    const pgId = parseInt(document.getElementById('dmgProjGroup').value);
+    if (pgId < 0) return;
+    applyItemDetail();
+    const pg = getProjGroupById(pgId);
+    if (!pg) { alert('Projectile group ' + pgId + ' not found'); return; }
+    const name = selectedItem ? selectedItem.name : 'Item';
+    document.getElementById('simMode').value = 'player';
+    const dex = selectedItem && selectedItem.stats ? (selectedItem.stats.dex || 0) : 0;
+    document.getElementById('simDex').value = Math.max(10, 30 + dex);
+    SIM.open(pg, `${name} — Simulate (Group ${pgId})`);
+  });
+
+  // Simulate from inline projectile group editor
+  document.getElementById('simInlinePgBtn').addEventListener('click', () => {
+    if (!selectedProjGroup) return;
+    applyProjGroup();
+    document.getElementById('simMode').value = 'player';
+    SIM.open(selectedProjGroup, `Projectile Group ${selectedProjGroup.projectileGroupId} — Simulate`);
+  });
+
   // Projectile groups
   document.getElementById('projGroupBackBtn').addEventListener('click', closeProjGroup);
   document.getElementById('applyProjGroupBtn').addEventListener('click', applyProjGroup);
