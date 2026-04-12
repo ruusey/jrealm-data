@@ -3885,7 +3885,7 @@
 		"stats": {
 			"hp": 200,
 			"def": 2,
-			"dex": 9,
+			"dex": 0,
 			"mp": 0,
 			"att": 0,
 			"spd": 0,
@@ -3903,10 +3903,10 @@
 				"attacks": [
 					{
 						"projectileGroupId": 121,
-						"cooldownMs": 767,
+						"cooldownMs": 1000,
 						"shotCount": 1,
 						"burstCount": 2,
-						"burstDelayMs": 333,
+						"burstDelayMs": 500,
 						"spreadAngle": 0.33
 					}
 				]
