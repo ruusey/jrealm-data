@@ -4515,9 +4515,9 @@
 		"chaseRange": 259,
 		"attackRange": 432,
 		"stats": {
-			"hp": 1000,
+			"hp": 2000,
 			"def": 6,
-			"dex": 14,
+			"dex": 20,
 			"mp": 0,
 			"att": 0,
 			"spd": 0,

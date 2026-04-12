@@ -1901,7 +1901,7 @@ function updateHUD() {
             const bonusStr = bonus > 0 ? ` <span class="stat-bonus">+${bonus}</span>` : '';
             const maxed = isMaxed(statKey, baseVal);
             const color = maxed ? 'color:#c8a86e' : '';
-            return `<div class="stat-row"><span class="stat-label">${label}</span><span class="stat-value" style="${color}">${compVal}${bonusStr}${maxed ? ' ★' : ''}</span></div>`;
+            return `<div class="stat-row"><span class="stat-label">${label}</span><span class="stat-value" style="${color}">${compVal}${bonusStr}</span></div>`;
         };
         document.getElementById('stats-panel').innerHTML =
             statHtml('ATT', 'att', base.att, computed.att) +
