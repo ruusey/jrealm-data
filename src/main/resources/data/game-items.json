@@ -2859,8 +2859,8 @@
 		},
 		"damage": {
 			"projectileGroupId": 229,
-			"min": 200,
-			"max": 210
+			"min": 80,
+			"max": 100
 		},
 		"consumable": false,
 		"tier": -1,
