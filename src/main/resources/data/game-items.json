@@ -2146,7 +2146,7 @@
 		"col": 3,
 		"spriteKey": "rotmg-items.png",
 		"name": "Serpentine Staff",
-		"description": "A staff powered by the magic of Stheno\u00c3\u0192\u00c2\u00af\u00c3\u201a\u00c2\u00bf\u00c3\u201a\u00c2\u00bds minions.",
+		"description": "A staff powered by the magic of SthenoÃƒÂ¯Ã‚Â¿Ã‚Â½s minions.",
 		"damage": {
 			"projectileGroupId": 79,
 			"min": 20,
@@ -2848,10 +2848,17 @@
 		"name": "Coral Bow",
 		"description": "A bow made of living coral",
 		"stats": {
-			"dex": 10
+			"dex": 10,
+			"hp": 0,
+			"mp": 0,
+			"att": 0,
+			"def": 0,
+			"spd": 0,
+			"vit": 0,
+			"wis": 0
 		},
 		"damage": {
-			"projectileGroupId": 30,
+			"projectileGroupId": 229,
 			"min": 200,
 			"max": 210
 		},
