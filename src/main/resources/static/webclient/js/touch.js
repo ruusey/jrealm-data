@@ -52,6 +52,13 @@ export function initTouchControls(input) {
 
     aimBase.addEventListener('touchstart', (e) => {
         e.preventDefault();
+        // Reset any stuck state from a previous interrupted touch (e.g. the
+        // browser cancelled the old touch when chat/inventory stole focus).
+        if (aimActive && aimTouchId !== null) {
+            aimActive = false;
+            aimTouchId = null;
+            aimDir = { dx: 0, dy: 0, shooting: false };
+        }
         aimTouchId = e.changedTouches[0].identifier;
         aimActive = true;
         updateAimJoystick(e.changedTouches[0], aimBase.getBoundingClientRect(), aimThumbEl);
@@ -71,7 +78,7 @@ export function initTouchControls(input) {
         }
     }, { passive: false });
 
-    document.addEventListener('touchend', (e) => {
+    function handleTouchRelease(e) {
         for (const t of e.changedTouches) {
             if (t.identifier === joystickTouchId) {
                 joystickActive = false;
@@ -90,7 +97,12 @@ export function initTouchControls(input) {
                 aimThumbEl.style.top = '50%';
             }
         }
-    });
+    }
+    document.addEventListener('touchend', handleTouchRelease);
+    // touchcancel fires when the browser aborts a touch (e.g. focus stolen by
+    // chat input, system gesture, or inventory interaction). Without this handler
+    // the joystick state gets stuck and the player can't fire until they reload.
+    document.addEventListener('touchcancel', handleTouchRelease);
 
     // Double-tap on game canvas = use ability at tap location
     const gameScreen = document.getElementById('game-canvas-container');

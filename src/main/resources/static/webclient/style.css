@@ -285,14 +285,14 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     background: #1a1218cc;
     border: 1px solid #3a2a38;
     border-radius: 4px;
-    padding: 8px;
+    padding: 6px 8px;
     font-size: 12px;
     margin-bottom: 8px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px 12px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px 8px;
 }
-.stat-row { display: flex; justify-content: space-between; font-size: 13px; }
+.stat-row { display: flex; justify-content: space-between; font-size: 12px; }
 .stat-label { color: #887868; }
 .stat-value { color: #e0d8c8; font-weight: 600; }
 .stat-bonus { color: #40c040; font-size: 11px; }
@@ -347,6 +347,9 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     position: absolute; bottom: 1px; right: 2px;
     font-size: 8px; color: #887868;
 }
+/* Hide slot label when the slot contains an item (has an img or canvas child) */
+.inv-slot:has(img) .slot-label,
+.inv-slot:has(canvas) .slot-label { display: none; }
 .inv-slot .item-tier {
     position: absolute; top: 1px; left: 2px;
     font-size: 8px; font-weight: bold;
@@ -578,20 +581,20 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 #mobile-buttons button:active { background: rgba(200,168,110,0.6); }
 
 #portal-prompt {
-    position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
     z-index: 15; pointer-events: auto;
     background: #2a2030ee; border: 2px solid #8040c0;
-    border-radius: 8px; padding: 8px 16px;
-    display: flex; align-items: center; gap: 12px;
-    box-shadow: 0 2px 12px rgba(128,64,192,0.4);
+    border-radius: 6px; padding: 5px 12px;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 2px 8px rgba(128,64,192,0.4);
 }
 #portal-name {
-    color: #c080ff; font-size: 14px; font-weight: bold;
+    color: #c080ff; font-size: 12px; font-weight: bold;
 }
 #portal-enter-btn {
-    padding: 6px 16px; background: #8040c0; color: #fff;
-    border: none; border-radius: 4px; font-size: 13px; font-weight: 600;
-    cursor: pointer;
+    padding: 4px 10px; background: #8040c0; color: #fff;
+    border: none; border-radius: 4px; font-size: 11px; font-weight: 600;
+    cursor: pointer; width: auto;
 }
 #portal-enter-btn:hover { background: #9050d0; }
 
@@ -627,44 +630,62 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
 }
 #rotate-prompt span { font-size: 48px; margin-bottom: 16px; }
 
-/* Mobile responsive — compact sidebar */
+/* Mobile responsive — compact sidebar.
+   Use clamp() so the HUD scales smoothly across phone sizes (320px–900px)
+   instead of snapping to a single hardcoded width. */
 @media (max-width: 900px), (max-height: 500px) {
-    #hud { width: 88px; top: 2px; right: 2px; bottom: 2px; gap: 1px; }
-    #hud #player-identity { padding: 2px 4px !important; font-size: 8px !important; margin-bottom: 1px !important; }
+    #hud {
+        width: clamp(100px, 16vw, 140px);
+        top: 2px; right: 2px; bottom: 2px; gap: 1px;
+    }
+    #hud #player-identity { padding: 2px 4px !important; font-size: 8px !important; margin-bottom: 1px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     #minimap-container {
         display: block !important;
         position: fixed !important;
         top: 3px; left: 3px;
-        width: 96px !important; height: 96px !important;
+        width: 86px !important; height: 86px !important;
         aspect-ratio: auto !important;
         z-index: 20;
         margin: 0 !important;
     }
-    /* Mobile: minimap is at top-left, so place the difficulty icon to its RIGHT
-       (there's no space to the left — would be off-screen). */
+    /* Difficulty icon: compact pill next to minimap */
     #difficulty-icon {
         top: 3px !important;
-        left: 104px !important;
+        left: 94px !important;
         right: auto !important;
-        width: 40px !important;
-        height: 40px !important;
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 4px !important;
+        border-width: 1px !important;
     }
-    #difficulty-skull { font-size: 20px !important; }
-    #difficulty-value { font-size: 8px !important; }
+    #difficulty-skull { font-size: 14px !important; }
+    #difficulty-value { font-size: 7px !important; margin-top: 0 !important; }
     #perf-overlay { display: none !important; }
     #touch-joystick { bottom: 140px; left: 10px; }
-    #touch-aim { right: 105px; }
-    #mobile-buttons { right: 105px; }
+    #touch-aim { right: calc(clamp(100px, 16vw, 140px) + 14px); }
+    #mobile-buttons { right: calc(clamp(100px, 16vw, 140px) + 14px); }
     #hud-bars { margin-bottom: 2px; }
-    .bar-container { height: 12px; margin-bottom: 1px; }
+    .bar-container { height: 14px; margin-bottom: 1px; }
     .bar span { font-size: 7px; }
-    #stats-panel { font-size: 7px; padding: 2px; gap: 0px 4px; margin-bottom: 2px; }
+    /* Stats: 3-column grid stays, just scale down font */
+    #stats-panel { font-size: 7px; padding: 2px 3px; gap: 0px 3px; margin-bottom: 2px; }
     .stat-row { font-size: 7px; }
     .stat-bonus { font-size: 6px; }
+    .stat-label { font-size: 7px; }
     #inventory-panel { padding: 2px; }
+    /* Slots: size to fill the HUD width responsively (4 slots + gaps) */
     .slot-row { gap: 2px; margin-bottom: 2px; }
-    .inv-slot { width: 22px; height: 22px; border-width: 1px; border-radius: 2px; }
-    .inv-slot img, .inv-slot canvas { width: 18px; height: 18px; }
+    .inv-slot {
+        /* Each slot = (HUD width - padding*2 - gap*3) / 4.
+           With clamp(100,16vw,140) and 2px padding, that's ~22-32px. */
+        width: calc((clamp(100px, 16vw, 140px) - 10px) / 4);
+        height: calc((clamp(100px, 16vw, 140px) - 10px) / 4);
+        border-width: 1px; border-radius: 2px;
+    }
+    .inv-slot img, .inv-slot canvas {
+        width: calc((clamp(100px, 16vw, 140px) - 10px) / 4 - 4px);
+        height: calc((clamp(100px, 16vw, 140px) - 10px) / 4 - 4px);
+    }
     .slot-label { font-size: 5px; }
     .item-tier { font-size: 5px; }
     #equip-label, #inv-label { font-size: 6px; margin-bottom: 1px; letter-spacing: 0px; }
@@ -674,19 +695,15 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     #nearby-section { margin-top: 1px; }
     .nearby-player { padding: 1px 2px; gap: 2px; }
     .np-icon { width: 12px; height: 12px; font-size: 7px; line-height: 12px; }
-    /* Mobile: float the ground loot panel at the top-center of the screen so
-       it's always visible regardless of how much the HUD column is scrolled.
-       Anchored between the difficulty icon (left side) and the mobile action
-       buttons (right side, at right:105). */
+    /* Loot bag: floated top-center, tight grid with no extra stretch */
     #ground-loot-panel {
         position: fixed !important;
         top: 3px !important;
-        left: 160px !important;
-        right: 260px !important;
-        max-width: 260px !important;
+        left: 130px !important;
+        right: auto !important;
+        width: auto !important;
+        max-width: 200px !important;
         margin-top: 0 !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
         padding: 3px 4px !important;
         z-index: 22 !important;
         background: rgba(26, 18, 24, 0.94) !important;
@@ -694,7 +711,7 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
     }
     #ground-loot-panel h4 { font-size: 8px; margin-bottom: 2px; color: #c8a86e; text-transform: uppercase; letter-spacing: 1px; }
-    #ground-loot-slots { gap: 2px; grid-template-columns: repeat(4, 1fr); }
+    #ground-loot-slots { gap: 2px; grid-template-columns: repeat(4, 28px); }
     #ground-loot-slots .inv-slot { width: 28px; height: 28px; }
     #ground-loot-slots .inv-slot img, #ground-loot-slots .inv-slot canvas { width: 22px; height: 22px; }
     #trade-buttons { gap: 2px; margin-top: 2px; }
@@ -706,6 +723,10 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     #chat-messages { height: 80px; font-size: 10px; }
     #chat-input { font-size: 11px; padding: 5px; }
     #connection-status { font-size: 10px; padding: 2px 6px; }
+    /* Portal prompt: smaller on mobile */
+    #portal-prompt { bottom: 16px; padding: 4px 8px; gap: 6px; }
+    #portal-name { font-size: 10px; }
+    #portal-enter-btn { padding: 3px 8px; font-size: 10px; }
     .login-box, .charselect-box { width: 90vw; max-width: 400px; padding: 16px; }
     .charselect-box { max-height: 85vh; overflow-y: auto; }
     .charselect-box h2 { font-size: 18px; margin-bottom: 10px; }
