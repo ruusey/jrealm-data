@@ -4152,6 +4152,7 @@ const SIM = {
   mouseX: 0, mouseY: 0, mouseDown: false,
   lastShotTime: 0, projGroup: null, attackPattern: null,
   burstState: null, // for multi-burst tracking
+  enemy: null, // set when opened from enemy simulate button
 
   parseAngle(str) {
     if (str == null || str === '') return 0;
@@ -4163,8 +4164,9 @@ const SIM = {
     try { return Function('"use strict"; return (' + expr + ')')(); } catch { return 0; }
   },
 
-  open(pgGroup, title) {
+  open(pgGroup, title, enemy) {
     this.projGroup = pgGroup;
+    this.enemy = enemy || null;
     this.overlay = document.getElementById('projSimOverlay');
     this.canvas = document.getElementById('simCanvas');
     this.ctx = this.canvas.getContext('2d');
@@ -4173,6 +4175,7 @@ const SIM = {
     this.burstState = null;
     document.getElementById('simTitle').textContent = title || 'Projectile Simulator';
     document.getElementById('simSubtitle').textContent = pgGroup ? `Group ${pgGroup.projectileGroupId}` : '';
+    if (enemy) this._populatePhases(enemy);
     this.overlay.style.display = 'flex';
     this.resize();
     this.bindEvents();
@@ -4184,7 +4187,54 @@ const SIM = {
     this.overlay.style.display = 'none';
     if (this.animId) cancelAnimationFrame(this.animId);
     this.animId = null;
+    this.enemy = null;
     this.unbindEvents();
+  },
+
+  _populatePhases(enemy) {
+    const sel = document.getElementById('simPhaseSelect');
+    sel.innerHTML = '';
+    const phases = enemy.phases || [];
+    phases.forEach((p, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      const pct = Math.round((p.hpThreshold || 1) * 100);
+      opt.textContent = `${p.name || 'Phase ' + i} (HP≤${pct}%)`;
+      sel.appendChild(opt);
+    });
+    sel.value = '0';
+    this._populateAttacks(phases[0]);
+  },
+
+  _populateAttacks(phase) {
+    const sel = document.getElementById('simAttackSelect');
+    sel.innerHTML = '';
+    const attacks = (phase && phase.attacks) || [];
+    attacks.forEach((atk, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `#${i + 1} (Group ${atk.projectileGroupId})`;
+      sel.appendChild(opt);
+    });
+    sel.value = '0';
+    if (attacks.length > 0) this._loadAttack(attacks[0]);
+  },
+
+  _loadAttack(atk) {
+    const pg = projGroups.find(g => g.projectileGroupId === atk.projectileGroupId);
+    if (pg) {
+      this.projGroup = pg;
+      document.getElementById('simSubtitle').textContent = `Group ${pg.projectileGroupId}`;
+    }
+    document.getElementById('simAimMode').value = atk.aimMode || 'PLAYER';
+    document.getElementById('simCooldown').value = atk.cooldownMs || 1000;
+    document.getElementById('simShotCount').value = atk.shotCount || 1;
+    document.getElementById('simSpread').value = atk.spreadAngle || 0;
+    document.getElementById('simBurstCount').value = atk.burstCount || 1;
+    document.getElementById('simBurstDelay').value = atk.burstDelayMs || 100;
+    document.getElementById('simBurstAngle').value = atk.angleOffsetPerBurst || 0;
+    document.getElementById('simMirror').checked = !!atk.mirror;
+    this.bullets = []; // clear bullets on attack switch
   },
 
   resize() {
@@ -4261,36 +4311,42 @@ const SIM = {
     const burstCount = parseInt(document.getElementById('simBurstCount').value) || 1;
     const burstDelay = parseInt(document.getElementById('simBurstDelay').value) || 100;
     const burstAngleOff = parseFloat(document.getElementById('simBurstAngle').value) || 0;
+    const mirror = document.getElementById('simMirror').checked;
 
     const doFire = (burstIdx) => {
+      const fireAngle = (angle) => {
+        this.fireProjGroup(pg, srcX, srcY, angle);
+        if (mirror) this.fireProjGroup(pg, srcX, srcY, -angle);
+      };
+
       if (mode === 'RING') {
         for (let s = 0; s < shotCount; s++) {
           const angle = (s * 2 * Math.PI / shotCount) + burstAngleOff * burstIdx;
-          this.fireProjGroup(pg, srcX, srcY, angle);
+          this.fireProjGroup(pg, srcX, srcY, angle); // ring doesn't mirror
         }
       } else if (mode === 'FIXED') {
         const fixedAngle = 0 + burstAngleOff * burstIdx;
         if (shotCount <= 1) {
-          this.fireProjGroup(pg, srcX, srcY, fixedAngle);
+          fireAngle(fixedAngle);
         } else {
           const half = spread / 2;
           for (let s = 0; s < shotCount; s++) {
             const t = shotCount > 1 ? s / (shotCount - 1) : 0.5;
             const a = fixedAngle - half + t * spread;
-            this.fireProjGroup(pg, srcX, srcY, a);
+            fireAngle(a);
           }
         }
       } else { // PLAYER
         let baseAngle = this.getAngle(srcX, srcY, targetX, targetY);
         baseAngle += burstAngleOff * burstIdx;
         if (shotCount <= 1) {
-          this.fireProjGroup(pg, srcX, srcY, baseAngle);
+          fireAngle(baseAngle);
         } else {
           const half = spread / 2;
           for (let s = 0; s < shotCount; s++) {
             const t = shotCount > 1 ? s / (shotCount - 1) : 0.5;
             const a = baseAngle - half + t * spread;
-            this.fireProjGroup(pg, srcX, srcY, a);
+            fireAngle(a);
           }
         }
       }
@@ -4389,18 +4445,20 @@ const SIM = {
     const dex = parseInt(document.getElementById('simDex').value) || 0;
     document.getElementById('simDexVal').textContent = dex;
     const dexRate = (6.5 * (dex + 17.3)) / 75;
-    const cooldownMs = 1000 / dexRate;
+    const playerCooldownMs = 1000 / dexRate;
+    // Enemy mode uses the attack's cooldownMs (not DEX rate)
+    const enemyCooldownMs = parseInt(document.getElementById('simCooldown').value) || 1000;
 
     if (this.projGroup) {
       if (simMode === 'player') {
-        if (this.mouseDown && now - this.lastShotTime > cooldownMs) {
+        if (this.mouseDown && now - this.lastShotTime > playerCooldownMs) {
           const angle = this.getAngle(center.x, center.y, this.mouseX, this.mouseY);
           this.fireProjGroup(this.projGroup, center.x, center.y, angle);
           this.lastShotTime = now;
         }
       } else {
-        // Enemy mode: auto-fire with attack pattern controls
-        if (now - this.lastShotTime > cooldownMs) {
+        // Enemy mode: auto-fire using attack cooldown
+        if (now - this.lastShotTime > enemyCooldownMs) {
           this.fireAttackPattern(this.projGroup, center.x, center.y, this.mouseX, this.mouseY);
           this.lastShotTime = now;
         }
@@ -4453,19 +4511,26 @@ const SIM = {
     ctx.fillStyle = '#888';
     ctx.font = '11px monospace';
     ctx.textAlign = 'left';
-    ctx.fillText(`Bullets: ${alive.length}  |  Fire rate: ${dexRate.toFixed(1)}/s  |  Cooldown: ${cooldownMs.toFixed(0)}ms`, 8, 16);
     if (simMode === 'player') {
+      ctx.fillText(`Bullets: ${alive.length}  |  Fire rate: ${dexRate.toFixed(1)}/s  |  Cooldown: ${playerCooldownMs.toFixed(0)}ms`, 8, 16);
       ctx.fillText('Hold left click to fire toward cursor', 8, 30);
     } else {
-      ctx.fillText('Enemy auto-fires at target (move cursor to reposition target)', 8, 30);
+      const mirror = document.getElementById('simMirror').checked;
+      ctx.fillText(`Bullets: ${alive.length}  |  CD: ${enemyCooldownMs}ms${mirror ? '  |  Mirror: ON' : ''}`, 8, 16);
+      ctx.fillText('Enemy auto-fires at target (move cursor to reposition)', 8, 30);
     }
 
-    // Show/hide enemy-specific controls
+    // Show/hide controls based on mode
     const isEnemy = simMode === 'enemy';
+    const hasEnemy = !!this.enemy;
+    document.getElementById('simPhaseLabel').style.display = isEnemy && hasEnemy ? '' : 'none';
+    document.getElementById('simAttackLabel').style.display = isEnemy && hasEnemy ? '' : 'none';
     document.getElementById('simAimModeLabel').style.display = isEnemy ? '' : 'none';
+    document.getElementById('simCooldownLabel').style.display = isEnemy ? '' : 'none';
     document.getElementById('simShotCountLabel').style.display = isEnemy ? '' : 'none';
     document.getElementById('simSpreadLabel').style.display = isEnemy ? '' : 'none';
     document.getElementById('simBurstLabel').style.display = isEnemy ? '' : 'none';
+    document.getElementById('simMirrorLabel').style.display = isEnemy ? '' : 'none';
 
     this.animId = requestAnimationFrame(() => this.loop());
   }
@@ -4489,29 +4554,39 @@ document.getElementById('simPgBtn').addEventListener('click', () => {
 document.getElementById('simEnemyBtn').addEventListener('click', () => {
   if (!selectedEnemy) return;
   applyEnemyDetail();
-  // Find first attack's projectile group across all phases
   const phases = selectedEnemy.phases || [];
-  let pg = null, attack = null;
+  // Verify at least one attack has a valid projectile group
+  let anyPg = false;
   for (const phase of phases) {
     for (const atk of (phase.attacks || [])) {
-      pg = projGroups.find(g => g.projectileGroupId === atk.projectileGroupId);
-      if (pg) { attack = atk; break; }
+      if (projGroups.find(g => g.projectileGroupId === atk.projectileGroupId)) { anyPg = true; break; }
     }
-    if (pg) break;
+    if (anyPg) break;
   }
-  if (!pg) { alert('No attack with a valid projectile group found in this enemy\'s phases.'); return; }
-  // Pre-fill enemy attack controls
+  if (!anyPg) { alert('No attack with a valid projectile group found in this enemy\'s phases.'); return; }
   document.getElementById('simMode').value = 'enemy';
-  document.getElementById('simAimMode').value = attack.aimMode || 'PLAYER';
-  document.getElementById('simShotCount').value = attack.shotCount || 1;
-  document.getElementById('simSpread').value = attack.spreadAngle || 0;
-  document.getElementById('simBurstCount').value = attack.burstCount || 1;
-  document.getElementById('simBurstDelay').value = attack.burstDelayMs || 100;
-  document.getElementById('simBurstAngle').value = attack.angleOffsetPerBurst || 0;
-  // Set dex from enemy stats
   const edex = selectedEnemy.stats ? selectedEnemy.stats.dex : 10;
   document.getElementById('simDex').value = edex;
-  openProjSimulator(pg, `${selectedEnemy.name} — Attack (Group ${pg.projectileGroupId})`);
+  // open() will call _populatePhases → _populateAttacks → _loadAttack for first phase/attack
+  SIM.open(null, `${selectedEnemy.name} — Simulate`, selectedEnemy);
+});
+
+// Phase selector change → repopulate attacks
+document.getElementById('simPhaseSelect').addEventListener('change', () => {
+  if (!SIM.enemy) return;
+  const phases = SIM.enemy.phases || [];
+  const idx = parseInt(document.getElementById('simPhaseSelect').value) || 0;
+  SIM._populateAttacks(phases[idx]);
+});
+
+// Attack selector change → load that attack
+document.getElementById('simAttackSelect').addEventListener('change', () => {
+  if (!SIM.enemy) return;
+  const phaseIdx = parseInt(document.getElementById('simPhaseSelect').value) || 0;
+  const atkIdx = parseInt(document.getElementById('simAttackSelect').value) || 0;
+  const phase = (SIM.enemy.phases || [])[phaseIdx];
+  const atk = (phase && phase.attacks || [])[atkIdx];
+  if (atk) SIM._loadAttack(atk);
 });
 
 init();

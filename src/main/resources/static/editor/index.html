@@ -693,6 +693,12 @@
             <option value="enemy">Enemy (auto-attack)</option>
           </select>
         </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simPhaseLabel">
+          Phase: <select id="simPhaseSelect" style="font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px 4px;max-width:120px;"></select>
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simAttackLabel">
+          Atk: <select id="simAttackSelect" style="font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px 4px;max-width:140px;"></select>
+        </label>
         <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simAimModeLabel">
           Aim:
           <select id="simAimMode" style="font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px 4px;">
@@ -700,6 +706,9 @@
             <option value="RING">RING</option>
             <option value="FIXED">FIXED</option>
           </select>
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simCooldownLabel">
+          CD: <input type="number" id="simCooldown" min="50" max="30000" step="50" value="1000" style="width:55px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;" title="Attack cooldown (ms)">
         </label>
         <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simShotCountLabel">
           Shots: <input type="number" id="simShotCount" min="1" max="32" value="1" style="width:40px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;">
@@ -710,7 +719,10 @@
         <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simBurstLabel">
           Burst: <input type="number" id="simBurstCount" min="1" max="20" value="1" style="width:35px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;">
           <input type="number" id="simBurstDelay" min="0" max="2000" step="10" value="100" style="width:45px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;" title="Burst delay ms">
-          <input type="number" id="simBurstAngle" min="-1" max="1" step="0.05" value="0" style="width:45px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;" title="Angle offset per burst">
+          <input type="number" id="simBurstAngle" min="-3.15" max="3.15" step="0.05" value="0" style="width:45px;font-size:11px;background:#0f3460;color:#e0e0e0;border:1px solid #444;border-radius:3px;padding:2px;" title="Angle offset per burst">
+        </label>
+        <label style="font-size:11px;color:#aaa;display:flex;align-items:center;gap:4px;" id="simMirrorLabel">
+          <input type="checkbox" id="simMirror"> Mirror
         </label>
         <button id="simCloseBtn" style="background:#533;color:#fcc;border:1px solid #744;padding:4px 10px;border-radius:3px;cursor:pointer;font-size:12px;">Close</button>
       </div>
