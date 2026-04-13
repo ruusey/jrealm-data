@@ -2,7 +2,7 @@
 
 // Projectile behavior flags — control how a bullet moves (stored in Bullet.flags)
 export const ProjectileFlag = {
-    PLAYER_PROJECTILE: 10, PARAMETRIC: 12, INVERTED_PARAMETRIC: 13, ORBITAL: 20
+    PLAYER_PROJECTILE: 10, PARAMETRIC: 12, INVERTED_PARAMETRIC: 13, ORBITAL: 20, ARMOR_PIERCING: 23
 };
 
 // Entity status effects — applied on-hit or from abilities (stored in entity.effectIds)
@@ -10,7 +10,7 @@ export const StatusEffect = {
     INVISIBLE: 0, HEALING: 1, PARALYZED: 2, STUNNED: 3, SPEEDY: 4,
     HEAL: 5, INVINCIBLE: 6, NONE: 8, TELEPORT: 9, DAZED: 11,
     DAMAGING: 14, STASIS: 15, CURSED: 16, POISONED: 17,
-    ARMORED: 18, BERSERK: 19, SLOWED: 21
+    ARMORED: 18, BERSERK: 19, SLOWED: 21, ARMOR_BROKEN: 22
 };
 
 export const CLASS_NAMES = ['Rogue', 'Archer', 'Wizard', 'Priest', 'Warrior', 'Knight', 'Paladin', 'Assassin', 'Necromancer', 'Mystic', 'Trickster', 'Sorcerer', 'Huntress'];
@@ -712,8 +712,8 @@ export class GameState {
             const b = this.bullets.get(targetId);
             if (b) { x = b.pos.x; y = b.pos.y; }
         }
-        // Color by text effect type: 0=damage(red), 1=heal(green), 2=armor(blue), 3=env(blue), 4=info(orange)
-        const colors = [0xff4040, 0x40ff40, 0x4080ff, 0x4080ff, 0xff8040];
+        // Color by text effect type: 0=damage(red), 1=heal(green), 2=armor_pierce(cyan-purple), 3=env(blue), 4=info(orange)
+        const colors = [0xff4040, 0x40ff40, 0x60a0ff, 0x4080ff, 0xff8040];
         const color = colors[packet.textEffectId] || 0xffffff;
 
         const TEXT_LIFE = 50; // ~0.8s at 60fps — clears fast to prevent clutter
@@ -1067,9 +1067,12 @@ export class GameState {
                         // Show predicted damage text
                         const hitX = enemy.pos.x + eSize / 2;
                         const hitY = enemy.pos.y;
+                        const isArmorPiercing = b.flags && b.flags.includes(ProjectileFlag.ARMOR_PIERCING);
+                        const isArmorBroken = enemy.effectIds && enemy.effectIds.includes(StatusEffect.ARMOR_BROKEN);
+                        const dmgColor = (isArmorPiercing || isArmorBroken) ? 0x60a0ff : 0xff4444;
                         this.damageTexts.push({
                             text: '-' + dmg, x: hitX, y: hitY - 8,
-                            color: 0xff4444, life: 40, _count: 1, _predicted: true
+                            color: dmgColor, life: 40, _count: 1, _predicted: true
                         });
 
                         // Predict enemy death

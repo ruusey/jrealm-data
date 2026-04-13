@@ -594,7 +594,8 @@
 				"size": 24,
 				"magnitude": 5,
 				"flags": [
-					10
+					10,
+					23
 				]
 			}
 		]
@@ -9802,6 +9803,87 @@
 				"frequency": 0,
 				"flags": [
 					10
+				]
+			}
+		]
+	},
+	{
+		"projectileGroupId": 230,
+		"row": 1,
+		"col": 3,
+		"spriteKey": "rotmg-items-1.png",
+		"angleOffset": "{{3PI/4}}",
+		"projectiles": [
+			{
+				"projectileId": 230,
+				"positionMode": 0,
+				"damage": 10,
+				"angle": -0.3,
+				"range": 90,
+				"size": 24,
+				"magnitude": 5,
+				"flags": [
+					10
+				],
+				"effects": [
+					{
+						"effectId": 22,
+						"duration": 3000
+					}
+				]
+			},
+			{
+				"projectileId": 230,
+				"positionMode": 0,
+				"damage": 10,
+				"angle": -0.1,
+				"range": 90,
+				"size": 24,
+				"magnitude": 5,
+				"flags": [
+					10
+				],
+				"effects": [
+					{
+						"effectId": 22,
+						"duration": 3000
+					}
+				]
+			},
+			{
+				"projectileId": 230,
+				"positionMode": 0,
+				"damage": 10,
+				"angle": 0.1,
+				"range": 90,
+				"size": 24,
+				"magnitude": 5,
+				"flags": [
+					10
+				],
+				"effects": [
+					{
+						"effectId": 22,
+						"duration": 3000
+					}
+				]
+			},
+			{
+				"projectileId": 230,
+				"positionMode": 0,
+				"damage": 10,
+				"angle": 0.3,
+				"range": 90,
+				"size": 24,
+				"magnitude": 5,
+				"flags": [
+					10
+				],
+				"effects": [
+					{
+						"effectId": 22,
+						"duration": 3000
+					}
 				]
 			}
 		]

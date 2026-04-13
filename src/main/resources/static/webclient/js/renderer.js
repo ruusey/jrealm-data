@@ -582,6 +582,7 @@ export class GameRenderer {
             // Status effect tinting
             const effects = isLocal ? gameState.effectIds : (player.effectIds || []);
             if (this._hasEffect(effects, StatusEffect.INVINCIBLE))      spr.tint = 0xFFFFCC;
+            else if (this._hasEffect(effects, StatusEffect.ARMOR_BROKEN)) spr.tint = 0x7060CC;
             else if (this._hasEffect(effects, StatusEffect.PARALYZED))  spr.tint = 0x888888;
             else if (this._hasEffect(effects, StatusEffect.STUNNED))    spr.tint = 0x88AACC;
             else if (this._hasEffect(effects, StatusEffect.STASIS))     spr.tint = 0x333338;
@@ -691,6 +692,7 @@ export class GameRenderer {
             if (enemy.effectIds) {
                 if (this._hasEffect(enemy.effectIds, StatusEffect.STASIS))      spr.tint = 0x333338;
                 else if (this._hasEffect(enemy.effectIds, StatusEffect.INVINCIBLE))  spr.tint = 0xFFFFCC;
+                else if (this._hasEffect(enemy.effectIds, StatusEffect.ARMOR_BROKEN)) spr.tint = 0x7060CC;
                 else if (this._hasEffect(enemy.effectIds, StatusEffect.PARALYZED))   spr.tint = 0x888888;
                 else if (this._hasEffect(enemy.effectIds, StatusEffect.STUNNED))     spr.tint = 0x88AACC;
                 else if (this._hasEffect(enemy.effectIds, StatusEffect.DAZED))       spr.tint = 0x9988AA;

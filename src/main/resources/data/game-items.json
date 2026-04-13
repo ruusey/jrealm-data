@@ -2762,15 +2762,20 @@
 	},
 	{
 		"itemId": 155,
-		"row": 7,
+		"row": 5,
 		"col": 6,
-		"spriteKey": "rotmg-abilities.png",
-		"name": "Test Shield",
-		"description": "A knight shield for testing",
+		"spriteKey": "lofiObj2.png",
+		"name": "Shield Of Ogmur",
+		"description": "An ancient shield that shatters the armor of all it strikes",
 		"stats": {
 			"def": 10,
 			"att": 10,
-			"wis": 10
+			"wis": 10,
+			"hp": 0,
+			"mp": 0,
+			"spd": 0,
+			"dex": 0,
+			"vit": 0
 		},
 		"effect": {
 			"self": false,
@@ -2780,7 +2785,7 @@
 			"mpCost": 80
 		},
 		"damage": {
-			"projectileGroupId": 18,
+			"projectileGroupId": 230,
 			"min": 300,
 			"max": 400
 		},
