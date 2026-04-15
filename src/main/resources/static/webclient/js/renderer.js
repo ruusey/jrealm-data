@@ -658,11 +658,6 @@ export class GameRenderer {
     }
 
     renderEnemy(enemy, offsetX, offsetY, gameState) {
-        // Skip predicted-dead enemies after fade-out (200ms)
-        if (enemy._predictedDead) {
-            const elapsed = performance.now() - (enemy._deathTime || 0);
-            if (elapsed > 200) return;
-        }
         const sx = enemy.pos.x * SCALE + offsetX;
         const sy = enemy.pos.y * SCALE + offsetY;
         const size = (enemy.size || PLAYER_SIZE) * SCALE;
@@ -818,7 +813,7 @@ export class GameRenderer {
         this.healthBarGraphics.clear();
 
         for (const [id, enemy] of gameState.enemies) {
-            if (enemy.maxHealth <= 0 || enemy._predictedDead) continue;
+            if (enemy.maxHealth <= 0) continue;
             const sx = enemy.pos.x * SCALE + offsetX;
             const sy = enemy.pos.y * SCALE + offsetY;
             const size = (enemy.size || PLAYER_SIZE) * SCALE;

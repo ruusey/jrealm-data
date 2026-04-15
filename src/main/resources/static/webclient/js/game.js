@@ -438,7 +438,7 @@ export class GameState {
                 animFrame: existing?.animFrame || 0, animTimer: existing?.animTimer || 0,
                 effectIds: existing?.effectIds || [],
                 health: useHealth,
-                _predictedDead: false, _deathTime: undefined
+
             });
         }
         // Remove client-predicted bullets when real server bullets arrive.
@@ -668,11 +668,6 @@ export class GameState {
         const enemy = this.enemies.get(packet.playerId);
         if (enemy) {
             enemy.health = packet.health;
-            // Server says enemy is alive — undo any client-side predicted death.
-            if (packet.health > 0 && enemy._predictedDead) {
-                enemy._predictedDead = false;
-                enemy._deathTime = undefined;
-            }
         }
     }
 
@@ -699,11 +694,6 @@ export class GameState {
         if (enemy) {
             enemy.health = packet.health;
             enemy.effectIds = packet.effectIds;
-            // Server says enemy is alive — undo any client-side predicted death.
-            if (packet.health > 0 && enemy._predictedDead) {
-                enemy._predictedDead = false;
-                enemy._deathTime = undefined;
-            }
         }
     }
 
@@ -1083,7 +1073,7 @@ export class GameState {
             const bcx = b.pos.x + bSize * 0.5;
             const bcy = b.pos.y + bSize * 0.5;
             for (const [eid, enemy] of this.enemies) {
-                if (!enemy.pos || enemy._predictedDead) continue;
+                if (!enemy.pos) continue;
                 const eSize = enemy.size || 32;
                 const er = eSize * BULLET_HIT_RADIUS_FACTOR;
                 const ecx = enemy.pos.x + eSize * 0.5;
@@ -1110,11 +1100,6 @@ export class GameState {
                             color: dmgColor, life: 40, _count: 1, _predicted: true
                         });
 
-                        // Predict enemy death
-                        if (enemy.health <= 0) {
-                            enemy._predictedDead = true;
-                            enemy._deathTime = performance.now();
-                        }
                     }
                     this.bullets.delete(id);
                     break;
