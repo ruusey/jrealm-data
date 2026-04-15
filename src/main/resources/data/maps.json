@@ -186431,14 +186431,14 @@
 				"portalId": 0,
 				"x": 736,
 				"y": 96,
-				"targetNodeId": "beach",
+				"targetNodeId": "beach-1",
 				"label": "Sunken Shore 1"
 			},
 			{
 				"portalId": 0,
 				"x": 864,
 				"y": 96,
-				"targetNodeId": "beach",
+				"targetNodeId": "beach-2",
 				"label": "Sunken Shore 2"
 			},
 			{

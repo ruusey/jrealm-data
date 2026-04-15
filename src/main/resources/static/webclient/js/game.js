@@ -668,6 +668,11 @@ export class GameState {
         const enemy = this.enemies.get(packet.playerId);
         if (enemy) {
             enemy.health = packet.health;
+            // Server says enemy is alive — undo any client-side predicted death.
+            if (packet.health > 0 && enemy._predictedDead) {
+                enemy._predictedDead = false;
+                enemy._deathTime = undefined;
+            }
         }
     }
 
@@ -689,6 +694,11 @@ export class GameState {
         if (enemy) {
             enemy.health = packet.health;
             enemy.effectIds = packet.effectIds;
+            // Server says enemy is alive — undo any client-side predicted death.
+            if (packet.health > 0 && enemy._predictedDead) {
+                enemy._predictedDead = false;
+                enemy._deathTime = undefined;
+            }
         }
     }
 

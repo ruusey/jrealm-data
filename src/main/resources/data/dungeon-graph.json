@@ -8,13 +8,33 @@
 		"bossNode": false,
 		"shared": true,
 		"childNodes": [
-			"beach"
+			"beach-1",
+			"beach-2"
 		],
 		"portalDropNodeMap": {}
 	},
 	{
-		"nodeId": "beach",
-		"displayName": "Sunken Shore",
+		"nodeId": "beach-1",
+		"displayName": "Sunken Shore 1",
+		"mapId": 2,
+		"difficulty": 1.0,
+		"entryPoint": false,
+		"bossNode": false,
+		"shared": true,
+		"childNodes": [
+			"grasslands",
+			"coastal_ruins",
+			"sunken_temple"
+		],
+		"portalDropNodeMap": {
+			"grasslands": 1,
+			"coastal_ruins": 6,
+			"sunken_temple": 10
+		}
+	},
+	{
+		"nodeId": "beach-2",
+		"displayName": "Sunken Shore 2",
 		"mapId": 2,
 		"difficulty": 1.0,
 		"entryPoint": false,
