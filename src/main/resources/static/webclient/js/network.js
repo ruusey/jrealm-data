@@ -35,7 +35,22 @@ export class GameNetwork {
 
     connect(gameServerHost) {
         const host = gameServerHost || 'localhost';
-        const url = `ws://${host}:2223`;
+        let url;
+        if (location.protocol === 'https:') {
+            // HTTPS page → must use WSS. Route through nginx reverse proxy
+            // using path-based routing (e.g., wss://openrealm.net/ws/useast).
+            // If the host looks like a path segment (no dots/colons), treat it
+            // as a proxy path. Otherwise fall back to direct connection.
+            const isPathSegment = !host.includes('.') && !host.includes(':');
+            if (isPathSegment) {
+                url = `wss://${location.host}/ws/${host}`;
+            } else {
+                url = `wss://${host}:2223`;
+            }
+        } else {
+            // Plain HTTP page → direct WS connection (dev/local)
+            url = `ws://${host}:2223`;
+        }
         console.log('[NET] Connecting to', url);
 
         this.ws = new WebSocket(url);

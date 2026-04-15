@@ -683,6 +683,11 @@ export class GameState {
             this.mana = packet.mana;
             this.effectIds = packet.effectIds;
             this.effectTimes = packet.effectTimes;
+            // DEBUG: log when effects change
+            const activeEffects = packet.effectIds.filter(id => id >= 0);
+            if (activeEffects.length > 0) {
+                console.log(`[EFFECT] Self effects received:`, activeEffects, `at`, performance.now().toFixed(0));
+            }
         }
         const player = this.players.get(packet.playerId);
         if (player) {

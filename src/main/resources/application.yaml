@@ -22,7 +22,7 @@ server:
   tomcat:
     relaxed-query-chars: ['{','}','[',']','\','/']
     relaxed-path-chars: ['{','}','[',']','\','/']
-  port: 80
+  port: ${DATA_PORT:80}
   servlet:
     context-path: /
 logging:
