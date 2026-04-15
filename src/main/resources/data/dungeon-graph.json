@@ -19,7 +19,7 @@
 		"difficulty": 1.0,
 		"entryPoint": false,
 		"bossNode": false,
-		"shared": false,
+		"shared": true,
 		"childNodes": [
 			"grasslands",
 			"coastal_ruins",

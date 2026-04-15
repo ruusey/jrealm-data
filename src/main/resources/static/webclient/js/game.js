@@ -965,6 +965,13 @@ export class GameState {
         // Scale by dt * 64 to be frame-rate independent.
         const now = Date.now();
         const bulletScale = dt * 64; // 1.0 at 64fps, 1.067 at 60fps, 0.444 at 144fps
+        // Viewport threshold: only run local terrain/range/lifetime deletion on
+        // bullets within this distance from the player. Off-screen bullets are left
+        // to the server (UnloadPacket) to avoid desync — if the client independently
+        // deletes a bullet the server still has, the delta LoadPacket won't re-send
+        // it, making the bullet permanently invisible.
+        const localP = this.getLocalPlayer();
+        const vpThresholdSq = 350 * 350; // ~11 tiles — covers all visible screen area
         for (const [id, b] of this.bullets) {
             const amp = b.amplitude || 0;
             const freq = b.frequency || 0;
@@ -1009,28 +1016,41 @@ export class GameState {
                 b._traveled = (b._traveled || 0) + Math.sqrt(vx * vx + vy * vy);
             }
 
-            // Collision tile check — destroy bullet if center enters a collision tile
-            // (matches server proccessTerrainHit: tileBounds.inside(bulletCenter))
+            // Only run local terrain/range/lifetime deletion for bullets near the
+            // player. Off-screen bullets are managed by the server (UnloadPacket).
+            // This prevents the client from independently deleting a bullet that the
+            // server still tracks — if that happens, the delta LoadPacket never
+            // re-sends it, leaving an invisible bullet that can still damage the player.
             const bCenterX = b.pos.x + (b.size || 4) / 2;
             const bCenterY = b.pos.y + (b.size || 4) / 2;
-            const bts = this.tileSize || 32;
-            const btx = Math.floor(bCenterX / bts);
-            const bty = Math.floor(bCenterY / bts);
-            if (this.mapTiles && btx >= 0 && btx < this.mapWidth && bty >= 0 && bty < this.mapHeight) {
-                const bTile = this.mapTiles[bty]?.[btx];
-                if (bTile && bTile.collision > 0) {
-                    const bTileDef = this.tileData[bTile.collision];
-                    if (bTileDef?.data?.hasCollision) {
-                        this.bullets.delete(id);
-                        continue;
+            let nearPlayer = true;
+            if (localP && localP.pos) {
+                const pdx = bCenterX - localP.pos.x;
+                const pdy = bCenterY - localP.pos.y;
+                nearPlayer = (pdx * pdx + pdy * pdy) <= vpThresholdSq;
+            }
+            if (nearPlayer) {
+                // Collision tile check — destroy bullet if center enters a collision tile
+                // (matches server proccessTerrainHit: tileBounds.inside(bulletCenter))
+                const bts = this.tileSize || 32;
+                const btx = Math.floor(bCenterX / bts);
+                const bty = Math.floor(bCenterY / bts);
+                if (this.mapTiles && btx >= 0 && btx < this.mapWidth && bty >= 0 && bty < this.mapHeight) {
+                    const bTile = this.mapTiles[bty]?.[btx];
+                    if (bTile && bTile.collision > 0) {
+                        const bTileDef = this.tileData[bTile.collision];
+                        if (bTileDef?.data?.hasCollision) {
+                            this.bullets.delete(id);
+                            continue;
+                        }
                     }
                 }
-            }
 
-            const lifetime = now - (b._clientCreatedTime || Number(b.createdTime));
-            if (b._traveled > b.range || lifetime > 10000) {
-                this.bullets.delete(id);
-                continue;
+                const lifetime = now - (b._clientCreatedTime || Number(b.createdTime));
+                if (b._traveled > b.range || lifetime > 10000) {
+                    this.bullets.delete(id);
+                    continue;
+                }
             }
 
             // Client-side predicted bullet-enemy hit detection (player bullets only).
