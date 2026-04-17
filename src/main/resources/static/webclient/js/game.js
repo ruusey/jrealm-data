@@ -445,54 +445,55 @@ export class GameState {
 
             });
         }
-        // Remove client-predicted bullets when real server bullets arrive.
-        // Predicted bullets use negative IDs; any incoming server bullet for the
-        // same projectile group from our player means our prediction is replaced.
-        if (packet.bullets.length > 0) {
-            for (const [id, existing] of this.bullets) {
-                if (id < 0 && existing._predicted) {
-                    this.bullets.delete(id);
-                }
-            }
-        }
+        // Predicted bullets (negative IDs) are never bulk-deleted. They expire
+        // naturally via range/lifetime. When the server sends the "real" version of
+        // our own bullet, we skip it — the predicted copy is already rendering and
+        // doing hit detection with zero latency. This eliminates visual gaps under
+        // high latency where the old approach deleted all predictions on every
+        // LoadPacket, even for shots the server hadn't confirmed yet.
         for (const b of packet.bullets) {
-            // SMART CORRECTION: if we already know this bullet, don't snap-overwrite
-            // its predicted position. Bullet physics is deterministic — once we know
-            // the angle/magnitude/flags, the client predicts the same trajectory as
-            // the server. Re-sends from the server (e.g. when the player moves out
-            // and back into view) would otherwise jerk the bullet backward and look
-            // like it got "cut off". We only large-correct if the divergence is huge
-            // (likely a packet loss / desync), and small drifts are absorbed silently.
+            // If we already track this exact bullet (by server ID), just refresh
+            // authoritative fields without snapping position (deterministic physics).
             const existing = this.bullets.get(b.id);
             if (existing) {
                 const dxErr = existing.pos.x - b.pos.x;
                 const dyErr = existing.pos.y - b.pos.y;
                 const errSq = dxErr * dxErr + dyErr * dyErr;
-                // > 128px (4 tiles) means something went very wrong — accept server pos.
-                // Otherwise, keep client prediction (it's authoritative for in-flight bullets).
                 if (errSq < 128 * 128) {
-                    // Refresh authoritative server fields without touching the predicted
-                    // position or _clientCreatedTime / _traveled.
                     existing.range = b.range;
                     existing.damage = b.damage;
                     existing.flags = b.flags;
                     continue;
                 }
-                // else: fall through and overwrite (large divergence)
+            }
+
+            // Skip server-sent copies of our OWN bullets — the predicted version
+            // is already in flight with the correct trajectory. Matching by
+            // PLAYER_PROJECTILE flag + position proximity to a predicted bullet.
+            const isPlayerBullet = b.flags && b.flags.includes(ProjectileFlag.PLAYER_PROJECTILE);
+            if (isPlayerBullet) {
+                let hasPrediction = false;
+                for (const [pid, pb] of this.bullets) {
+                    if (pid >= 0 || !pb._predicted) continue;
+                    if (pb.projectileId !== b.projectileId) continue;
+                    // Same weapon type, check angle match (within ~5 degrees)
+                    const angleDiff = Math.abs(pb.angle - b.angle);
+                    if (angleDiff < 0.09 || angleDiff > Math.PI * 2 - 0.09) {
+                        hasPrediction = true;
+                        break;
+                    }
+                }
+                if (hasPrediction) continue;
             }
 
             const bullet = {
                 ...b, dx: b.dX, dy: b.dY,
                 targetX: b.pos.x, targetY: b.pos.y,
-                // Stamp with CLIENT time on arrival — never compare server clock vs client clock.
-                // The server's createdTime is only used to compute how old the bullet was
-                // when the server sent this packet (server-side age), not for client-side expiry.
                 _clientCreatedTime: Date.now()
             };
             // Fast-forward STRAIGHT bullets to approximate current server position.
-            // Use half the measured round-trip time (ping/2) as a rough one-way latency estimate.
             const oneWayMs = (this._lastPingMs || 0) / 2;
-            const catchupSec = Math.min(oneWayMs / 1000, 0.25); // cap at 250ms
+            const catchupSec = Math.min(oneWayMs / 1000, 0.25);
             const catchupScale = catchupSec * 64;
             const isOrb = b.flags && b.flags.includes(ProjectileFlag.ORBITAL);
             const isParametric = (b.amplitude || 0) !== 0 && (b.frequency || 0) !== 0;
@@ -501,11 +502,6 @@ export class GameState {
                 bullet.pos.x += Math.sin(b.angle) * b.magnitude * catchupScale;
                 bullet.pos.y += Math.cos(b.angle) * b.magnitude * catchupScale;
                 bullet._traveled = b.magnitude * catchupScale;
-                // Backdate the client-creation time so that the lifetime check
-                // (now - _clientCreatedTime > 10000) accounts for the server-side
-                // age the bullet had at the moment we received it. Without this,
-                // long-lived bullets get expired by the server before the client
-                // expects, producing a "cut off" disappearance.
                 bullet._clientCreatedTime = Date.now() - oneWayMs;
             }
             this.bullets.set(b.id, bullet);
