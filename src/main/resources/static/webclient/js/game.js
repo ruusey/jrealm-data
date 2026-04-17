@@ -400,6 +400,10 @@ export class GameState {
     }
 
     handleLoad(packet) {
+        // Diagnostic: log when we receive other players or portals
+        if (packet.players.length > 1 || packet.portals.length > 0 || packet.enemies.length > 0) {
+            console.log(`[LOAD] players=${packet.players.length} enemies=${packet.enemies.length} portals=${packet.portals.length} bullets=${packet.bullets.length} myId=${this.playerId} playerIds=[${packet.players.map(p => p.id).join(',')}]`);
+        }
         for (const p of packet.players) {
             if (p.id === this.playerId) {
                 // Local player: update metadata only. Position is fully client-predicted.
