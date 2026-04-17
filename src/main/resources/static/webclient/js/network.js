@@ -34,26 +34,16 @@ export class GameNetwork {
     }
 
     connect(gameServerHost) {
-        let host = gameServerHost || 'localhost';
-        // Migrate legacy IP-based server values to nginx proxy path segments.
-        // Before HTTPS, the dropdown stored raw IPs (e.g. "100.55.103.226").
-        // These break under WSS since game servers have no TLS cert.
-        const IP_TO_PATH = {
-            '100.55.103.226': 'useast',
-            '51.24.13.231': 'euwest',
-            'openrealm.net': 'local',
-        };
-        if (IP_TO_PATH[host]) {
-            host = IP_TO_PATH[host];
-            try { localStorage.setItem('or_gameServer', host); } catch (e) {}
-        }
+        const host = gameServerHost || 'useast';
         let url;
-        if (location.protocol === 'https:') {
-            // HTTPS page → must use WSS. Route through nginx reverse proxy
-            // using path-based routing (e.g., wss://openrealm.net/ws/useast).
-            url = `wss://${location.host}/ws/${host}`;
+        // Path-segment hosts (useast, euwest, local) route through the nginx
+        // reverse proxy. Direct hostnames/IPs (localhost, 192.168.x.x) connect
+        // straight to the game server on port 2223.
+        const isProxyPath = !host.includes('.') && !host.includes(':') && host !== 'localhost';
+        if (isProxyPath) {
+            const scheme = location.protocol === 'https:' ? 'wss' : 'ws';
+            url = `${scheme}://${location.host}/ws/${host}`;
         } else {
-            // Plain HTTP page → direct WS connection (dev/local)
             url = `ws://${host}:2223`;
         }
         console.log('[NET] Connecting to', url);

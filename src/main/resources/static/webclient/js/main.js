@@ -25,7 +25,7 @@ let renderer = null;
 let currentScreen = 'login';
 let account = null;
 let selectedCharacter = null;
-let gameServerHost = 'localhost';
+let gameServerHost = 'useast';
 let loginEmail = '';
 let loginPassword = '';
 let loginToken = null;
@@ -76,10 +76,7 @@ function showScreen(name) {
 // Auto-login using saved session token
 (async () => {
     try {
-        const savedServer = localStorage.getItem('or_gameServer');
-        if (api.restoreSession() && savedServer) {
-            gameServerHost = savedServer;
-            document.getElementById('server-addr').value = savedServer;
+        if (api.restoreSession()) {
             // Validate the token is still good by resolving the account
             const authAccount = await api.getMyAccount();
             loginToken = api.sessionToken;
@@ -100,9 +97,7 @@ function showScreen(name) {
     // Fallback: auto-login returning guest accounts (legacy)
     try {
         const savedGuest = localStorage.getItem('or_guest_email');
-        const savedServer = localStorage.getItem('or_gameServer');
-        if (savedGuest && savedServer) {
-            document.getElementById('server-addr').value = savedServer;
+        if (savedGuest) {
             setTimeout(() => document.getElementById('guest-btn')?.click(), 100);
         }
     } catch (e) {}
@@ -113,7 +108,6 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    gameServerHost = document.getElementById('server-addr').value || 'localhost';
     const errorEl = document.getElementById('login-error');
     const btn = document.getElementById('login-btn');
 
@@ -122,13 +116,11 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     btn.textContent = 'Logging in...';
 
     try {
-        api.setDataServerUrl(gameServerHost);
         const loginData = await api.login(email, password);
         loginEmail = email;
         loginPassword = password;
         loginToken = loginData.token;
         api.saveSession();
-        try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
         account = await api.getAccount(loginData.accountGuid);
         // Load animation data for character select icons (front-facing idle)
         try {
@@ -162,7 +154,6 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     const name = document.getElementById('reg-name').value;
     const email = document.getElementById('reg-email').value;
     const password = document.getElementById('reg-password').value;
-    gameServerHost = document.getElementById('reg-server').value || 'localhost';
     const errorEl = document.getElementById('register-error');
     const btn = document.getElementById('register-btn');
 
@@ -171,13 +162,11 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     btn.textContent = 'Registering...';
 
     try {
-        api.setDataServerUrl(gameServerHost);
         await api.register(email, password, name);
         // Auto-login after registration
         const loginData = await api.login(email, password);
         loginToken = loginData.token;
         api.saveSession();
-        try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
         account = await api.getAccount(loginData.accountGuid);
         document.getElementById('register-form').style.display = 'none';
         document.getElementById('login-form').style.display = 'block';
@@ -209,14 +198,12 @@ document.getElementById('guest-btn').addEventListener('click', async (e) => {
     document.getElementById('password').value = '';
     const errorEl = document.getElementById('login-error');
     const btn = document.getElementById('guest-btn');
-    gameServerHost = document.getElementById('server-addr').value || 'localhost';
 
     errorEl.textContent = '';
     btn.disabled = true;
     btn.textContent = 'Connecting...';
 
     try {
-        api.setDataServerUrl(gameServerHost);
 
         let email = null;
         let password = null;
@@ -235,7 +222,6 @@ document.getElementById('guest-btn').addEventListener('click', async (e) => {
                 loginPassword = password;
                 loginToken = loginData.token;
                 api.saveSession();
-                try { localStorage.setItem('or_gameServer', gameServerHost); } catch (e) {}
                 account = await api.getAccount(loginData.accountGuid);
                 try {
                     const animData = await api.getGameData('animations.json');
@@ -268,7 +254,6 @@ document.getElementById('guest-btn').addEventListener('click', async (e) => {
         loginToken = loginData.token;
         api.saveSession();
         try {
-            localStorage.setItem('or_gameServer', gameServerHost);
             localStorage.setItem('or_guest_email', email);
             localStorage.setItem('or_guest_password', password);
         } catch (e) { /* storage unavailable */ }
@@ -640,7 +625,10 @@ function hideEquipmentTooltip() {
 }
 
 document.getElementById('play-btn').addEventListener('click', () => {
-    if (selectedCharacter) startGame();
+    if (selectedCharacter) {
+        gameServerHost = document.getElementById('server-addr').value || 'useast';
+        startGame();
+    }
 });
 
 document.getElementById('delete-char-btn').addEventListener('click', async () => {
