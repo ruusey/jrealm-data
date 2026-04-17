@@ -1745,12 +1745,13 @@ function processInput(dt) {
         }
     }
 
-    // Number keys 1-8 = Quick use inventory items (slots 4-11)
+    // Number keys 1-8 = Quick use inventory items in the active bag
     for (let n = 1; n <= 8; n++) {
         const key = `Digit${n}`;
         if (input.isKeyDown(key) && !input.chatMode) {
             input.keys[key] = false;
-            const slotIdx = n + 3;
+            const bagStart = activeBag === 1 ? 4 : 12;
+            const slotIdx = bagStart + (n - 1);
             const item = game.inventory[slotIdx];
             if (item && item.itemId >= 0 && item.consumable) {
                 network.sendMoveItem(game.playerId, slotIdx, slotIdx, false, true);
@@ -1939,6 +1940,7 @@ function updateHUD() {
 
 // --- Inventory System ---
 let selectedSlot = -1; // Currently selected slot for swap (-1 = none)
+let activeBag = 1; // 1 = slots 4-11, 2 = slots 12-19
 let lastInvKey = '';
 let isMouseOverHud = false; // Prevents shooting/ability when hovering over UI
 let dragSlot = -1; // Slot being dragged (-1 = none)
@@ -1966,7 +1968,7 @@ function updateInventoryUI() {
     const invEl = document.getElementById('inv-slots');
 
     // Only rebuild if inventory changed
-    const invKey = game.inventory.map(i => i ? i.itemId : -1).join(',') + ':' + selectedSlot;
+    const invKey = game.inventory.map(i => i ? i.itemId : -1).join(',') + ':' + selectedSlot + ':bag' + activeBag;
     if (!updateInventoryUI._logged && game.inventory.length > 0) {
         updateInventoryUI._logged = true;
         // Inventory log removed for performance
@@ -1979,8 +1981,15 @@ function updateInventoryUI() {
     lastInvKey = fullKey;
 
     // Update labels for trade mode
-    document.getElementById('inv-label').textContent =
-        game.isTrading ? 'YOUR OFFER (click to select)' : 'INVENTORY';
+    const invTabs = document.getElementById('inv-tabs');
+    if (game.isTrading) {
+        invTabs.style.display = 'none';
+        document.getElementById('inv-label').style.display = '';
+        document.getElementById('inv-label').textContent = 'YOUR OFFER (click to select)';
+    } else {
+        invTabs.style.display = '';
+        document.getElementById('inv-label').style.display = 'none';
+    }
 
     equipEl.innerHTML = '';
     invEl.innerHTML = '';
@@ -1989,12 +1998,31 @@ function updateInventoryUI() {
     for (let i = 0; i < 4; i++) {
         equipEl.appendChild(createSlot(game.inventory[i], labels[i], i));
     }
-    for (let i = 4; i < 12; i++) {
-        invEl.appendChild(createSlot(game.inventory[i], `${i - 3}`, i));
+
+    // Render the active bag (bag 1 = slots 4-11, bag 2 = slots 12-19)
+    // During trading, always show bag 1 (trade selections map to slots 4-11)
+    const currentBag = game.isTrading ? 1 : activeBag;
+    const bagStart = currentBag === 1 ? 4 : 12;
+    const bagEnd = bagStart + 8;
+    for (let i = bagStart; i < bagEnd; i++) {
+        invEl.appendChild(createSlot(game.inventory[i], `${i - bagStart + 1}`, i));
     }
 
     updateGroundLootUI();
 }
+
+// Inventory bag tab switching
+document.querySelectorAll('#inv-tabs .inv-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const bag = parseInt(tab.dataset.bag);
+        if (bag === activeBag) return;
+        activeBag = bag;
+        selectedSlot = -1;
+        document.querySelectorAll('#inv-tabs .inv-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        lastInvKey = '';
+    });
+});
 
 function updateGroundLootUI() {
     const lootPanel = document.getElementById('ground-loot-panel');
@@ -2125,7 +2153,7 @@ function createSlot(item, label, slotIdx, isLoot = false) {
         if (dragSlot >= 0) return;
         const now = Date.now();
         if (now - lastClickTime < 350 && item && item.itemId >= 0 && item.consumable
-            && slotIdx >= 4 && slotIdx <= 11) {
+            && slotIdx >= 4 && slotIdx <= 19) {
             // Double click/tap — consume the item
             network.sendMoveItem(game.playerId, slotIdx, slotIdx, false, true);
             lastInvKey = '';
@@ -2206,8 +2234,8 @@ function onSlotClick(slotIdx, item, isRightClick = false) {
     } else {
         if (slotIdx === selectedSlot) {
             selectedSlot = -1; // Deselect
-        } else if (selectedSlot >= 0 && selectedSlot <= 11 && slotIdx >= 0 && slotIdx <= 11) {
-            // Swap/equip/move between slots 0-11
+        } else if (selectedSlot >= 0 && selectedSlot <= 19 && slotIdx >= 0 && slotIdx <= 19) {
+            // Swap/equip/move between slots 0-19
             // console.log(`[INV] Swap slot ${selectedSlot} <-> slot ${slotIdx}`);
             network.sendMoveItem(game.playerId, slotIdx, selectedSlot, false, false);
             selectedSlot = -1;
@@ -2224,7 +2252,7 @@ function onSlotRightClick(slotIdx, item) {
         return;
     }
     // Right-click: drop item to ground
-    if (item && item.itemId >= 0 && slotIdx >= 0 && slotIdx <= 11) {
+    if (item && item.itemId >= 0 && slotIdx >= 0 && slotIdx <= 19) {
         // console.log(`[INV] Dropping item from slot ${slotIdx}`);
         network.sendMoveItem(game.playerId, -1, slotIdx, true, false);
         lastInvKey = '';
@@ -2249,7 +2277,7 @@ function toggleTradeSelection(slotIdx) {
 document.getElementById('game-canvas-container').addEventListener('click', () => {
     // Blur chat input when clicking on game canvas — returns keyboard to game
     document.getElementById('chat-input').blur();
-    if (selectedSlot >= 0 && selectedSlot <= 11 && currentScreen === 'game') {
+    if (selectedSlot >= 0 && selectedSlot <= 19 && currentScreen === 'game') {
         // console.log(`[INV] Dropping item from slot ${selectedSlot} (canvas click)`);
         network.sendMoveItem(game.playerId, -1, selectedSlot, true, false);
         selectedSlot = -1;

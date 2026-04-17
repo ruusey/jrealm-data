@@ -312,6 +312,34 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+#inv-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #3a2a38;
+}
+#inv-tabs .inv-tab {
+    flex: 1;
+    padding: 4px 0;
+    background: transparent;
+    border: none;
+    color: #887868;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+}
+#inv-tabs .inv-tab:hover {
+    color: #c8a86e;
+}
+#inv-tabs .inv-tab.active {
+    color: #c8a86e;
+    border-bottom-color: #c8a86e;
+}
 #equip-slots {
     border-bottom: 2px solid #4a3a50;
     padding-bottom: 6px;
@@ -689,6 +717,8 @@ button.small { padding: 6px 12px; font-size: 12px; width: auto; margin: 0; }
     .slot-label { font-size: 5px; }
     .item-tier { font-size: 5px; }
     #equip-label, #inv-label { font-size: 6px; margin-bottom: 1px; letter-spacing: 0px; }
+    #inv-tabs { margin-bottom: 2px; }
+    #inv-tabs .inv-tab { font-size: 6px; padding: 2px 0; letter-spacing: 0px; }
     #equip-slots { padding-bottom: 2px; margin-bottom: 2px; border-bottom-width: 1px; }
     #nearby-players { max-height: 40px; font-size: 7px; padding: 2px; grid-template-columns: 1fr; }
     #nearby-label { font-size: 6px !important; margin-bottom: 1px !important; }
