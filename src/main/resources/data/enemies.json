@@ -158,8 +158,11 @@
 					{
 						"projectileGroupId": 1,
 						"cooldownMs": 300,
-						"burstCount": 4,
-						"burstDelayMs": 56
+						"burstCount": 1,
+						"burstDelayMs": 56,
+						"angleIncrementPerFiring": 0.2,
+						"aimMode": "RING",
+						"shotCount": 6
 					}
 				]
 			}
@@ -4283,7 +4286,8 @@
 						"projectileGroupId": 131,
 						"cooldownMs": 688,
 						"aimMode": "RING",
-						"shotCount": 5
+						"shotCount": 5,
+						"angleIncrementPerFiring": 0.15
 					}
 				]
 			},
@@ -4299,7 +4303,11 @@
 						"projectileGroupId": 131,
 						"cooldownMs": 479,
 						"aimMode": "RING",
-						"shotCount": 5
+						"shotCount": 5,
+						"angleIncrementPerFiring": 0.25,
+						"speedCount": 2,
+						"minSpeedMult": 0.6,
+						"maxSpeedMult": 1.0
 					}
 				]
 			}
@@ -4770,7 +4778,10 @@
 				"attacks": [
 					{
 						"projectileGroupId": 144,
-						"cooldownMs": 487
+						"cooldownMs": 487,
+						"speedCount": 3,
+						"minSpeedMult": 0.5,
+						"maxSpeedMult": 1.3
 					},
 					{
 						"projectileGroupId": 145,
@@ -5524,7 +5535,10 @@
 						"cooldownMs": 591,
 						"aimMode": "PLAYER",
 						"shotCount": 4,
-						"spreadAngle": 0.32
+						"spreadAngle": 0.32,
+						"speedCount": 3,
+						"minSpeedMult": 0.5,
+						"maxSpeedMult": 1.2
 					},
 					{
 						"projectileGroupId": 165,
@@ -5594,7 +5608,10 @@
 						"cooldownMs": 316,
 						"aimMode": "PLAYER",
 						"shotCount": 3,
-						"spreadAngle": 0.49
+						"spreadAngle": 0.49,
+						"speedCount": 2,
+						"minSpeedMult": 0.7,
+						"maxSpeedMult": 1.3
 					}
 				]
 			}
@@ -5954,8 +5971,11 @@
 					{
 						"projectileGroupId": 175,
 						"cooldownMs": 383,
-						"burstCount": 2,
-						"burstDelayMs": 82
+						"burstCount": 1,
+						"burstDelayMs": 82,
+						"aimMode": "RING",
+						"shotCount": 8,
+						"angleIncrementPerFiring": 0.18
 					}
 				]
 			},
@@ -5971,8 +5991,14 @@
 					{
 						"projectileGroupId": 175,
 						"cooldownMs": 150,
-						"burstCount": 2,
-						"burstDelayMs": 80
+						"burstCount": 1,
+						"burstDelayMs": 80,
+						"aimMode": "RING",
+						"shotCount": 10,
+						"angleIncrementPerFiring": 0.3,
+						"speedCount": 2,
+						"minSpeedMult": 0.6,
+						"maxSpeedMult": 1.0
 					}
 				]
 			}
@@ -6252,8 +6278,11 @@
 					{
 						"projectileGroupId": 182,
 						"cooldownMs": 233,
-						"burstCount": 2,
-						"burstDelayMs": 80
+						"burstCount": 1,
+						"burstDelayMs": 80,
+						"aimMode": "RING",
+						"shotCount": 8,
+						"angleIncrementPerFiring": 0.22
 					},
 					{
 						"projectileGroupId": 183,
@@ -6261,7 +6290,10 @@
 						"shotCount": 3,
 						"spreadAngle": 0.19,
 						"burstCount": 2,
-						"burstDelayMs": 80
+						"burstDelayMs": 80,
+						"speedCount": 2,
+						"minSpeedMult": 0.5,
+						"maxSpeedMult": 1.0
 					}
 				]
 			}
@@ -6530,7 +6562,8 @@
 					},
 					{
 						"projectileGroupId": 191,
-						"cooldownMs": 302
+						"cooldownMs": 302,
+						"angleIncrementPerFiring": 0.12
 					}
 				]
 			},
@@ -6553,13 +6586,19 @@
 						"projectileGroupId": 190,
 						"cooldownMs": 150,
 						"burstCount": 2,
-						"burstDelayMs": 80
+						"burstDelayMs": 80,
+						"speedCount": 2,
+						"minSpeedMult": 0.6,
+						"maxSpeedMult": 1.2
 					},
 					{
 						"projectileGroupId": 191,
 						"cooldownMs": 162,
 						"burstCount": 4,
-						"burstDelayMs": 100
+						"burstDelayMs": 100,
+						"aimMode": "RING",
+						"shotCount": 8,
+						"angleIncrementPerFiring": 0.2
 					}
 				]
 			}

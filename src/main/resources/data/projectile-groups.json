@@ -70,7 +70,8 @@
 				"range": 512,
 				"size": 24,
 				"magnitude": 3,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 60
 			},
 			{
 				"projectileId": 1,
@@ -80,7 +81,8 @@
 				"range": 512,
 				"size": 24,
 				"magnitude": 3,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 30
 			},
 			{
 				"projectileId": 1,
@@ -100,7 +102,8 @@
 				"range": 512,
 				"size": 24,
 				"magnitude": 3,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 30
 			},
 			{
 				"projectileId": 1,
@@ -110,7 +113,8 @@
 				"range": 512,
 				"size": 24,
 				"magnitude": 3,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 60
 			}
 		]
 	},
@@ -7496,7 +7500,8 @@
 				"range": 691,
 				"size": 24,
 				"magnitude": 3.4,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 0
 			},
 			{
 				"projectileId": 146,
@@ -7506,7 +7511,8 @@
 				"range": 691,
 				"size": 24,
 				"magnitude": 3.4,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 80
 			},
 			{
 				"projectileId": 146,
@@ -7516,7 +7522,8 @@
 				"range": 691,
 				"size": 24,
 				"magnitude": 3.4,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 160
 			},
 			{
 				"projectileId": 146,
@@ -7526,7 +7533,8 @@
 				"range": 691,
 				"size": 24,
 				"magnitude": 3.4,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 240
 			},
 			{
 				"projectileId": 146,
@@ -7536,7 +7544,8 @@
 				"range": 691,
 				"size": 24,
 				"magnitude": 3.4,
-				"flags": []
+				"flags": [],
+				"spawnDelayMs": 320
 			}
 		]
 	},
@@ -8243,7 +8252,9 @@
 				"range": 320,
 				"size": 30,
 				"magnitude": 3.1,
-				"flags": []
+				"flags": [],
+				"spawnOffsetX": -20.0,
+				"spawnOffsetY": 0.0
 			},
 			{
 				"projectileId": 166,
@@ -8253,7 +8264,9 @@
 				"range": 320,
 				"size": 30,
 				"magnitude": 3.1,
-				"flags": []
+				"flags": [],
+				"spawnOffsetX": 0.0,
+				"spawnOffsetY": 0.0
 			},
 			{
 				"projectileId": 166,
@@ -8263,7 +8276,9 @@
 				"range": 320,
 				"size": 30,
 				"magnitude": 3.1,
-				"flags": []
+				"flags": [],
+				"spawnOffsetX": 20.0,
+				"spawnOffsetY": 0.0
 			}
 		],
 		"angleOffset": "{{PI/4}}"
@@ -9780,10 +9795,10 @@
 			{
 				"projectileId": 229,
 				"positionMode": 0,
-				"angle": "-0.107",
+				"angle": "-0.1",
 				"range": 200,
 				"size": 24,
-				"magnitude": 5,
+				"magnitude": 5.8,
 				"damage": 25,
 				"amplitude": 0,
 				"frequency": 0,
@@ -9794,10 +9809,10 @@
 			{
 				"projectileId": 229,
 				"positionMode": 0,
-				"angle": "0.107",
+				"angle": "0.1",
 				"range": 200,
 				"size": 24,
-				"magnitude": 5,
+				"magnitude": 5.8,
 				"damage": 25,
 				"amplitude": 0,
 				"frequency": 0,
